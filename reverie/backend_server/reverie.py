@@ -35,8 +35,8 @@ from utils import *
 from maze import *
 from persona.persona import *
 
-os.environ["http_proxy"] = "http://127.0.0.1:7890"
-os.environ["https_proxy"] = "https://127.0.0.1:7890"
+# os.environ["http_proxy"] = "http://127.0.0.1:7899"
+# os.environ["https_proxy"] = "https://127.0.0.1:7899"
 
 ##############################################################################
 #                                  REVERIE                                   #
@@ -81,8 +81,10 @@ class ReverieServer:
         # <curr_time> is the datetime instance that indicates the game's current
         # time. This gets incremented by <sec_per_step> amount everytime the world
         # progresses (that is, everytime curr_env_file is recieved).
-        self.curr_time = datetime.datetime.strptime(reverie_meta['curr_time'],
-                                                    "%B %d, %Y, 09:%M:%S")
+        self.curr_time = datetime.datetime.now()
+        if reverie_meta['curr_time']: 
+            self.curr_time = datetime.datetime.strptime(reverie_meta['curr_time'],
+                                                    "%B %d, %Y, %H:%M:%S")
         # <sec_per_step> denotes the number of seconds in game time that each
         # step moves foward.
         self.sec_per_step = reverie_meta['sec_per_step']
@@ -400,7 +402,7 @@ class ReverieServer:
                     #  "persona": {"Klaus Mueller": {"movement": [38, 12]}},
                     #  "meta": {curr_time: <datetime>}}
                     # Line 400
-                    curr_move_file = f"{sim_folder}/movement/{self.step}.json"
+                    curr_move_file = f"{sim_folder}/movement/{self.step+1}.json"
                     with open(curr_move_file, "w") as outfile:
                         outfile.write(json.dumps(movements, indent=2))
 
@@ -433,7 +435,7 @@ class ReverieServer:
         sim_folder = f"{fs_storage}/{self.sim_code}"
 
         while True:
-            sim_command = input("输入参数: ")
+            sim_command = input("params: ")
             sim_command = sim_command.strip()
             ret_str = ""
 
@@ -603,12 +605,12 @@ class ReverieServer:
 if __name__ == '__main__':
     # rs = ReverieServer("base_the_ville_isabella_maria_klaus",
     #                    "July1_the_ville_isabella_maria_klaus-step-3-1")
-    # rs = ReverieServer("July1_the_ville_isabella_maria_klaus-step-3-20",
-    #                    "July1_the_ville_isabella_maria_klaus-step-3-21")
-    # rs.open_server()
-
-    origin = input("输入智能体名称: ").strip()
-    target = input("输入仿真的名字: ").strip()
-
-    rs = ReverieServer(origin, target)
+    rs = ReverieServer("base_the_ville_n25-test5",
+                       "base_the_ville_n25-test9")
     rs.open_server()
+
+    # origin = input("agent name: ").strip()
+    # target = input("follower name: ").strip()
+
+    # rs = ReverieServer(origin, target)
+    # rs.open_server()

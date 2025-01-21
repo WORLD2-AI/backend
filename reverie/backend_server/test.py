@@ -27,8 +27,8 @@ from reverie.backend_server.persona.prompt_template.gpt_structure import temp_sl
 from reverie.backend_server.utils import *
 
 openai.api_key = random.choice(openai_api_key)
-os.environ["http_proxy"] = "http://127.0.0.1:7890"
-os.environ["https_proxy"] = "https://127.0.0.1:7890"
+os.environ["http_proxy"] = "http://127.0.0.1:7899"
+os.environ["https_proxy"] = "https://127.0.0.1:7899"
 
 load_dotenv(override=True)
 load_dotenv(find_dotenv(), override=True)
@@ -50,9 +50,28 @@ def ChatGPT_request(prompts: object) -> object:
 
     try:
         # openai call
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
-            messages=[{"role": "user", "content": prompts}]
+        client = OpenAI(
+          base_url="https://ai.gitee.com/v1",
+          api_key="05OOE7IOMDE1KJLSPQSLHBDBRWZGQNHEXOHYQ0WQ",
+          default_headers={"X-Package":"1910"},
+        )
+
+        response = client.chat.completions.create(
+          model="glm-4-9b-chat",
+          stream=True,
+          max_tokens=512,
+          temperature=0.7,
+          top_p=0.7,
+          extra_body={
+            "top_k": 50,
+          },
+          frequency_penalty=1,
+          messages=[
+            {
+              "role": "user",
+              "content": "Can you please let us know more details about your "
+            }
+          ],
         )
         reply = response["choices"][0]["message"]["content"]
 
@@ -209,9 +228,9 @@ prompt = """
 
 def test():
     print(f"""chatgpt result: {ChatGPT_request(prompt)}""")
-    print(f"""ChatGPT_turbo result: {ChatGPT_turbo_request(prompt)}""")
-    print(f"""chatgpt4 result: {GPT4_request(prompt)}""")
-    print(f"""localmodel result: {GPTLocal_request(prompt)}""")
+    # print(f"""ChatGPT_turbo result: {ChatGPT_turbo_request(prompt)}""")
+    # print(f"""chatgpt4 result: {GPT4_request(prompt)}""")
+    # print(f"""localmodel result: {GPTLocal_request(prompt)}""")
 
 
 if __name__ == "__main__":

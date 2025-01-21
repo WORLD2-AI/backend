@@ -11,8 +11,8 @@ from django.shortcuts import render
 # from test import ChatGPT_request
 
 PATH = "master_movement_origin.json"
-os.environ["http_proxy"] = "http://127.0.0.1:7890"
-os.environ["https_proxy"] = "https://127.0.0.1:7890"
+os.environ["http_proxy"] = "http://127.0.0.1:7899"
+os.environ["https_proxy"] = "https://127.0.0.1:7899"
 
 
 # @register.filter

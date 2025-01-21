@@ -13,7 +13,7 @@ os.environ["ANTHROPIC_API_KEY"] = "anthropic key"
 messages = [{"content": "Hello, how are you?", "role": "user"}]
 
 # openai call
-response = completion(model="gpt-3.5-turbo", messages=messages)
+response = completion(model="gpt-4o", messages=messages)
 
 # cohere call
 response = completion(model="command-nightly", messages=messages)

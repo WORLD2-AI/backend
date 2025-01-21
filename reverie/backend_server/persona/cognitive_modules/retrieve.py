@@ -8,7 +8,7 @@ import sys
 sys.path.append('../../')
 
 from global_methods import *
-from persona.prompt_template.gpt_structure import *
+from persona.prompt_template.gpt_structure_llama import *
 
 from numpy import dot
 from numpy.linalg import norm
@@ -64,7 +64,13 @@ def cos_sim(a, b):
     a = [0.3, 0.2, 0.5]
     b = [0.2, 0.2, 0.5]
   """
-  return dot(a, b)/(norm(a)*norm(b))
+  try : 
+    dv = dot(a, b)
+    av = (norm(a)*norm(b))
+    return dv/av
+  except Exception as e:
+    print(e)
+    return 0.0
 
 
 def normalize_dict_floats(d, target_min, target_max):
@@ -90,6 +96,9 @@ def normalize_dict_floats(d, target_min, target_max):
     target_min = -5
     target_max = 5
   """
+  if not d :
+    return d
+
   min_val = min(val for val in d.values())
   max_val = max(val for val in d.values())
   range_val = max_val - min_val
@@ -187,11 +196,14 @@ def extract_relevance(persona, nodes, focal_pt):
                  are the float that represents the relevance score. 
   """
   focal_embedding = get_embedding(focal_pt)
-
+  
   relevance_out = dict()
   for count, node in enumerate(nodes): 
     node_embedding = persona.a_mem.embeddings[node.embedding_key]
-    relevance_out[node.node_id] = cos_sim(node_embedding, focal_embedding)
+    v = cos_sim(node_embedding, focal_embedding)
+    if not v :
+      continue
+    relevance_out[node.node_id] = v
 
   return relevance_out
 

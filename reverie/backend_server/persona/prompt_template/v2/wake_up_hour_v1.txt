@@ -9,4 +9,4 @@ Variables:
 !<INPUT 0>!
 
 In general, !<INPUT 1>!
-!<INPUT 2>!'s wake up hour:
+only tell me when !<INPUT 2>!'s wake up hour number, only number and AM or PM

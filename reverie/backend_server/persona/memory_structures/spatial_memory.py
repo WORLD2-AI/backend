@@ -100,16 +100,20 @@ class MemoryTree:
 
     if not curr_arena: 
       return ""
-
+    x = None
     try: 
-      x = ", ".join(list(self.tree[curr_world][curr_sector][curr_arena]))
+      data = self.tree[curr_world][curr_sector].get(curr_arena,"")
+      if data is None:
+        data = self.tree[curr_world][curr_sector].get(curr_arena.lower(),"")
+      if data is not None:
+        x = ", ".join(list(data))
     except: 
-      x = ", ".join(list(self.tree[curr_world][curr_sector][curr_arena.lower()]))
+      x = None
     return x
 
 
 if __name__ == '__main__':
-  x = f"../../../../environment/frontend_server/storage/the_ville_base_LinFamily/personas/Eddy Lin/bootstrap_memory/spatial_memory.json"
+  x = f"{sim_folder}/environment/frontend_server/storage/the_ville_base_LinFamily/personas/Eddy Lin/bootstrap_memory/spatial_memory.json"
   x = MemoryTree(x)
   x.print_tree()
 

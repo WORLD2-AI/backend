@@ -9,54 +9,56 @@ import random
 import openai
 import time
 
+import requests
+
 from utils import *
 
 openai.api_key = random.choice(openai_api_key)
 
-from litellm import completion
+# from litellm import completion
 
 
 def temp_sleep(seconds=0.1):
     time.sleep(seconds)
 
 
-def LLama_single_request(prompt):
-    temp_sleep()
-    openai.api_key = random.choice(openai_api_key)
+# def LLama_single_request(prompt):
+#     temp_sleep()
+#     openai.api_key = random.choice(openai_api_key)
 
-    response = completion(model="meta-llama/Llama-2-7b-hf", messages={"role": "user", "content": prompt})
+#     response = completion(model="meta-llama/Llama-2-7b-hf", messages={"role": "user", "content": prompt})
 
-    return response["choices"][0]["message"]["content"]
+#     return response["choices"][0]["message"]["content"]
 
 
 # ============================================================================
 # #####################[SECTION 1: CHATGPT-3 STRUCTURE] ######################
 # ============================================================================
 
-def GPT4_request(prompt):
-    """
-    Given a prompt and a dictionary of GPT parameters, make a request to OpenAI
-    server and returns the response.
-    ARGS:
-      prompt: a str prompt
-      gpt_parameter: a python dictionary with the keys indicating the names of
-                     the parameter and the values indicating the parameter
-                     values.
-    RETURNS:
-      a str of GPT-3's response.
-    """
-    temp_sleep()
+# def GPT4_request(prompt):
+#     """
+#     Given a prompt and a dictionary of GPT parameters, make a request to OpenAI
+#     server and returns the response.
+#     ARGS:
+#       prompt: a str prompt
+#       gpt_parameter: a python dictionary with the keys indicating the names of
+#                      the parameter and the values indicating the parameter
+#                      values.
+#     RETURNS:
+#       a str of GPT-3's response.
+#     """
+#     temp_sleep()
 
-    try:
-        completion = openai.ChatCompletion.create(
-            model="gpt-4",
-            messages=[{"role": "user", "content": prompt}]
-        )
-        return completion["choices"][0]["message"]["content"]
+#     try:
+#         completion = openai.ChatCompletion.create(
+#             model="gpt-4",
+#             messages=[{"role": "user", "content": prompt}]
+#         )
+#         return completion["choices"][0]["message"]["content"]
 
-    except:
-        print("ChatGPT ERROR")
-        return "ChatGPT ERROR"
+#     except:
+#         print("ChatGPT ERROR")
+#         return "ChatGPT ERROR"
 
 
 def ChatGPT_request(prompt):
@@ -69,60 +71,76 @@ def ChatGPT_request(prompt):
                      the parameter and the values indicating the parameter
                      values.
     RETURNS:
-      a str of GPT-3's response.
+      a str of llm response.
     """
     # temp_sleep()
-    openai.api_key = random.choice(openai_api_key)
-
+    # openai.api_key = random.choice(openai_api_key)
+    print("request prompt:")
+    print(prompt)
     try:
-        completion = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
-            messages=[{"role": "user", "content": prompt}]
-        )
-        return completion["choices"][0]["message"]["content"]
+        headers = {
+            "Content-Type": "application/json",
+            "Authorization":"Bearer app-YModVQ7H9WeGudJOsLnw3s2I"
+        }
+        data = {
+            "inputs": {"query": prompt},
+            "response_mode": "blocking",
+            "user":"test_user"
+            # "messages":[{"role": "user", "content": prompt}],
+            # "stream": False
+        }
+        url = f"{api_url}/v1/completion-messages"
+        response = requests.post(url, headers=headers, data=json.dumps(data),timeout = 30)
+        
+        if response.status_code == 200:
+            print(response.json())
+            return response.json().get("answer", {})
+        else:
+            print(response.json())
+            response.raise_for_status()
 
     except:
-        print ("ChatGPT ERROR")
+        # print ("ChatGPT ERROR")
         return "ChatGPT ERROR"
 
 
-def GPT4_safe_generate_response(prompt,
-                                example_output,
-                                special_instruction,
-                                repeat=3,
-                                fail_safe_response="error",
-                                func_validate=None,
-                                func_clean_up=None,
-                                verbose=False):
-    prompt = 'GPT-3 Prompt:\n"""\n' + prompt + '\n"""\n'
-    prompt += f"Output the response to the prompt above in json. {special_instruction}\n"
-    prompt += "Example output json:\n"
-    prompt += '{"output": "' + str(example_output) + '"}'
+# def GPT4_safe_generate_response(prompt,
+#                                 example_output,
+#                                 special_instruction,
+#                                 repeat=3,
+#                                 fail_safe_response="error",
+#                                 func_validate=None,
+#                                 func_clean_up=None,
+#                                 verbose=False):
+#     prompt = 'GPT-3 Prompt:\n"""\n' + prompt + '\n"""\n'
+#     prompt += f"Output the response to the prompt above in json. {special_instruction}\n"
+#     prompt += "Example output json:\n"
+#     prompt += '{"output": "' + str(example_output) + '"}'
 
-    if verbose:
-        print ("CHAT GPT PROMPT")
-        print (prompt)
+#     if verbose:
+#         print ("CHAT GPT PROMPT")
+#         print (prompt)
 
-    for i in range(repeat):
+#     for i in range(repeat):
 
-        try:
-            curr_gpt_response = GPT4_request(prompt).strip()
-            end_index = curr_gpt_response.rfind('}') + 1
-            curr_gpt_response = curr_gpt_response[:end_index]
-            curr_gpt_response = json.loads(curr_gpt_response)["output"]
+#         try:
+#             curr_gpt_response = GPT4_request(prompt).strip()
+#             end_index = curr_gpt_response.rfind('}') + 1
+#             curr_gpt_response = curr_gpt_response[:end_index]
+#             curr_gpt_response = json.loads(curr_gpt_response)["output"]
 
-            if func_validate(curr_gpt_response, prompt=prompt):
-                return func_clean_up(curr_gpt_response, prompt=prompt)
+#             if func_validate(curr_gpt_response, prompt=prompt):
+#                 return func_clean_up(curr_gpt_response, prompt=prompt)
 
-            if verbose:
-                print ("---- repeat count: \n", i, curr_gpt_response)
-                print (curr_gpt_response)
-                print ("~~~~")
+#             if verbose:
+#                 print ("---- repeat count: \n", i, curr_gpt_response)
+#                 print (curr_gpt_response)
+#                 print ("~~~~")
 
-        except:
-            pass
+#         except:
+#             pass
 
-    return False
+#     return False
 
 
 def ChatGPT_safe_generate_response(prompt,
@@ -141,17 +159,18 @@ def ChatGPT_safe_generate_response(prompt,
     prompt += "Example output json:\n"
     prompt += '{"output": "' + str(example_output) + '"}'
 
-    if verbose:
-        print ("CHAT GPT PROMPT")
-        print (prompt)
-
+    print (prompt)
     for i in range(repeat):
 
         try:
             curr_gpt_response = ChatGPT_request(prompt).strip()
-            end_index = curr_gpt_response.rfind('}') + 1
-            curr_gpt_response = curr_gpt_response[:end_index]
-            curr_gpt_response = json.loads(curr_gpt_response)["output"]
+            if curr_gpt_response.startswith("```"):
+                curr_gpt_response = curr_gpt_response.removeprefix('```json\n').removesuffix('```')
+            # end_index = curr_gpt_response.rfind('}') + 1
+            # curr_gpt_response = curr_gpt_response[:end_index]
+            res = json.loads(curr_gpt_response)
+            print(res)
+            curr_gpt_response = res["output"]
 
             # print ("---ashdfaf")
             # print (curr_gpt_response)
@@ -217,22 +236,35 @@ def GPT_request(prompt, gpt_parameter):
     """
     temp_sleep()
     openai.api_key = random.choice(openai_api_key)
-
-    try:
-        response = openai.ChatCompletion.create(
-            model=gpt_parameter["engine"],
-            messages=[{"role": "user", "content": prompt}],
-            temperature=gpt_parameter["temperature"],
-            max_tokens=gpt_parameter["max_tokens"],
-            top_p=gpt_parameter["top_p"],
-            frequency_penalty=gpt_parameter["frequency_penalty"],
-            presence_penalty=gpt_parameter["presence_penalty"],
-            stream=gpt_parameter["stream"],
-            stop=gpt_parameter["stop"],)
-        return response.choices[0]['message']['content']
-    except Exception as e:
-        print (f"TOKEN LIMIT EXCEEDED: {e}")
-        return "TOKEN LIMIT EXCEEDED"
+    print(prompt)
+    return ChatGPT_request(prompt=prompt)
+    # try:
+    #     headers = {
+    #         "Content-Type": "application/json",
+    #         "Authorization": "Bearer app-YModVQ7H9WeGudJOsLnw3s2I",
+    #     }
+        
+    #     data = {
+    #         "messages":[{"role": "user", "content": prompt}],
+    #         "options":{
+    #             "temperature": gpt_parameter["temperature"],
+    #             "top_p":gpt_parameter["top_p"],
+    #             "frequency_penalty":gpt_parameter["frequency_penalty"],
+    #             "presence_penalty":gpt_parameter["presence_penalty"],
+    #         },
+    #         "max_tokens": gpt_parameter["max_tokens"],
+    #         "stream": gpt_parameter["stream"]
+    #     }
+        
+    #     url = f"{api_url}/api/completion-messages"
+    #     response = requests.post(url, headers=headers, json=data)
+        
+    #     if response.status_code == 200:
+    #         print(response.json())
+    #         return response.json().get("message", {}).get("content", "")
+    # except Exception as e:
+    #     print (f"TOKEN LIMIT EXCEEDED: {e}")
+    #     return "TOKEN LIMIT EXCEEDED"
 
 
 def generate_prompt(curr_input, prompt_lib_file):
@@ -285,16 +317,29 @@ def safe_generate_response(prompt,
     return fail_safe_response
 
 
-def get_embedding(text, model="text-embedding-ada-002"):
-    text = text.replace("\n", " ")
-    if not text:
-        text = "this is blank"
-    return openai.Embedding.create(
-        input=[text], model=model)['data'][0]['embedding']
+def get_embedding(text, model="nomic-embed-text"):
+    # use local embedding model
+    headers = {
+        "Content-Type": "application/json"
+    }
+    data = {
+        "model": "nomic-embed-text",
+        "input": text
+    }
+    url = f"{emb_url}/api/embed"
+    response = requests.post(url, headers=headers, data=json.dumps(data))
+    
+    if response.status_code == 200:
+        content  = response.json()
+        print(content)
+        return content.get("embeddings", [[]])[0]
+    else:
+        response.raise_for_status()
+
 
 
 if __name__ == '__main__':
-    gpt_parameter = {"engine": "gpt-3.5-turbo", "max_tokens": 50,
+    gpt_parameter = {"engine": "gpt-4o", "max_tokens": 50,
                      "temperature": 0, "top_p": 1, "stream": False,
                      "frequency_penalty": 0, "presence_penalty": 0,
                      "stop": ['"']}

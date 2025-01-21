@@ -13,8 +13,8 @@ from environment.frontend_server.templates.flask.local import local_trans
 from test import ChatGPT_request
 
 PATH = "./master_movement.json"
-os.environ["http_proxy"] = "http://127.0.0.1:7890"
-os.environ["https_proxy"] = "https://127.0.0.1:7890"
+os.environ["http_proxy"] = "http://127.0.0.1:7899"
+os.environ["https_proxy"] = "https://127.0.0.1:7899"
 
 # @register.filter
 # def testcall(text):

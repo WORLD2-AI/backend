@@ -42,7 +42,7 @@ def execute(persona, maze, personas, plan):
     # to execute the current action. The goal is to pick one of them.
     target_tiles = None
 
-    print ('aldhfoaf/????')
+    print ('get ai plan:')
     print (plan)
 
     if "<persona>" in plan: 
@@ -78,7 +78,7 @@ def execute(persona, maze, personas, plan):
 
     elif "<random>" in plan: 
       # Executing a random location action.
-      plan = ":".join(plan.split(":")[:-1])
+      plan = ":".join(plan.replace(": ",":").split(":")[:-1])
       target_tiles = maze.address_tiles[plan]
       target_tiles = random.sample(list(target_tiles), 1)
 

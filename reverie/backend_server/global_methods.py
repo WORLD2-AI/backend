@@ -222,7 +222,8 @@ def copyanything(src, dst):
   except OSError as exc: # python >2.5
     if exc.errno in (errno.ENOTDIR, errno.EINVAL):
       shutil.copy(src, dst)
-    else: raise
+    else: 
+      print('file path exits')
 
 
 if __name__ == '__main__':

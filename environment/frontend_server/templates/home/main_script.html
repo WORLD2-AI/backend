@@ -43,25 +43,10 @@
 
 	// Phaser 3.0 global settings. 
 	// Configuration meant to be passed to the main Phaser game instance. 
-	const config = {
-	  type: Phaser.AUTO,
-	  width: 1500,
-	  height: 800,
-	  parent: "game-container",
-	  pixelArt: true,
-	  physics: {
-	    default: "arcade",
-	    arcade: {
-	      gravity: { y: 0 } } },
-	  scene: {
-	    preload: preload,
-	    create: create,
-	    update: update } };
-
 	// const config = {
 	//   type: Phaser.AUTO,
-	//   width: 4480,
-	//   height: 3200,
+	//   width: 1500,
+	//   height: 800,
 	//   parent: "game-container",
 	//   pixelArt: true,
 	//   physics: {
@@ -71,8 +56,23 @@
 	//   scene: {
 	//     preload: preload,
 	//     create: create,
-	//     update: update },
-	//   scale: {zoom: 0.5} };
+	//     update: update } };
+
+	const config = {
+	  type: Phaser.AUTO,
+	  width: 4480,
+	  height: 3200,
+	  parent: "game-container",
+	  pixelArt: true,
+	  physics: {
+	    default: "arcade",
+	    arcade: {
+	      gravity: { y: 0 } } },
+	  scene: {
+	    preload: preload,
+	    create: create,
+	    update: update },
+	  scale: {zoom: 0.5} };
 
 	// Creating the game instance and setting up the main Phaser variables that  
 	// will be used in it. 
@@ -109,7 +109,7 @@
 
 	// <timer_max> determines how frequently our update function will query the 
 	// frontend server. If it's higher, we wait longer cycles. 
-	let timer_max = 0;
+	let timer_max = 10;
 	let timer = timer_max;
 
 	// <phase> -- there are three phases: "process," "update," and "execute."

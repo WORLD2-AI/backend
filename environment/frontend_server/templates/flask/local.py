@@ -7,8 +7,8 @@ from googletrans import Translator
 
 translator = Translator(service_urls=['translate.google.com'])
 
-os.environ["http_proxy"] = "http://127.0.0.1:7890"
-os.environ["https_proxy"] = "https://127.0.0.1:7890"
+os.environ["http_proxy"] = "http://127.0.0.1:7899"
+os.environ["https_proxy"] = "https://127.0.0.1:7899"
 translator.raise_Exception = True
 
 

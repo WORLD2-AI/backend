@@ -23,14 +23,14 @@ def ChatGPT_single_request(prompt):
     openai.api_key = random.choice(openai_api_key)
 
     completion = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
+        model="gpt-4o-mini",
         messages=[{"role": "user", "content": prompt}]
     )
     return completion["choices"][0]["message"]["content"]
 
 
 # ============================================================================
-# #####################[SECTION 1: CHATGPT-3 STRUCTURE] ######################
+# #####################[SECTION 1: CHATGPT-4o STRUCTURE] ######################
 # ============================================================================
 
 def GPT4_request(prompt):
@@ -43,7 +43,7 @@ def GPT4_request(prompt):
                    the parameter and the values indicating the parameter 
                    values.   
   RETURNS: 
-    a str of GPT-3's response. 
+    a str of GPT-4o's response. 
   """
     temp_sleep()
 
@@ -69,14 +69,14 @@ def ChatGPT_request(prompt, gpt_parameter={}):
                    the parameter and the values indicating the parameter 
                    values.   
   RETURNS: 
-    a str of GPT-3's response. 
+    a str of GPT-4o's response. 
   """
     # temp_sleep()
     openai.api_key = random.choice(openai_api_key)
 
     try:
         completion = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
+            model="gpt-4o-mini",
             messages=[{"role": "user", "content": prompt}]
         )
         return completion["choices"][0]["message"]["content"]
@@ -94,7 +94,7 @@ def GPT4_safe_generate_response(prompt,
                                 func_validate=None,
                                 func_clean_up=None,
                                 verbose=False):
-    prompt = 'GPT-3 Prompt:\n"""\n' + prompt + '\n"""\n'
+    prompt = 'GPT-4o Prompt:\n"""\n' + prompt + '\n"""\n'
     prompt += f"Output the response to the prompt above in json. {special_instruction}\n"
     prompt += "Example output json:\n"
     prompt += '{"output": "' + str(example_output) + '"}'
@@ -288,43 +288,46 @@ def safe_generate_response(prompt,
     return fail_safe_response
 
 
-def get_embedding(text, model="text-embedding-ada-002"):
+def get_embedding(text, model="text-embedding-3-small"):
     text = text.replace("\n", " ")
     if not text:
         text = "this is blank"
-    return openai.Embedding.create(
-        input=[text], model=model)['data'][0]['embedding']
+    openai.api_key = random.choice(openai_api_key)
+    respone =  openai.Embedding.create(
+        input=text, model=model)
+    # print(respone)
+    return respone["data"][0]["embedding"]
 
 
-if __name__ == '__main__':
-    gpt_parameter = {"engine": "gpt-3.5-turbo", "max_tokens": 50,
-                     "temperature": 0, "top_p": 1, "stream": False,
-                     "frequency_penalty": 0, "presence_penalty": 0,
-                     "stop": ['"']}
-    curr_input = ["driving to a friend's house"]
-    prompt_lib_file = "prompt_template/test_prompt_July5.txt"
-    prompt = generate_prompt(curr_input, prompt_lib_file)
+# if __name__ == '__main__':
+#     gpt_parameter = {"engine": "gpt-4o-mini", "max_tokens": 50,
+#                      "temperature": 0, "top_p": 1, "stream": False,
+#                      "frequency_penalty": 0, "presence_penalty": 0,
+#                      "stop": ['"']}
+#     curr_input = ["driving to a friend's house"]
+#     prompt_lib_file = f"{fs_back_end}/prompt_template/test_prompt_July5.txt"
+#     prompt = generate_prompt(curr_input, prompt_lib_file)
 
 
-    def __func_validate(gpt_response):
-        if len(gpt_response.strip()) <= 1:
-            return False
-        if len(gpt_response.strip().split(" ")) > 1:
-            return False
-        return True
+#     def __func_validate(gpt_response):
+#         if len(gpt_response.strip()) <= 1:
+#             return False
+#         if len(gpt_response.strip().split(" ")) > 1:
+#             return False
+#         return True
 
 
-    def __func_clean_up(gpt_response):
-        cleaned_response = gpt_response.strip()
-        return cleaned_response
+#     def __func_clean_up(gpt_response):
+#         cleaned_response = gpt_response.strip()
+#         return cleaned_response
 
 
-    output = safe_generate_response(prompt,
-                                    gpt_parameter,
-                                    5,
-                                    "rest",
-                                    __func_validate,
-                                    __func_clean_up,
-                                    True)
+#     output = safe_generate_response(prompt,
+#                                     gpt_parameter,
+#                                     5,
+#                                     "rest",
+#                                     __func_validate,
+#                                     __func_clean_up,
+#                                     True)
 
-    print(output)
+#     print(output)
