@@ -1,0 +1,27 @@
+{
+  "Adam Smith": {
+    "maze": "the_ville",
+    "x": 21,
+    "y": 63
+  },
+  "Arthur Burton": {
+    "maze": "the_ville",
+    "x": 54,
+    "y": 16
+  },
+  "Ayesha Khan": {
+    "maze": "the_ville",
+    "x": 117,
+    "y": 57
+  },
+  "Carlos Gomez": {
+    "maze": "the_ville",
+    "x": 95,
+    "y": 22
+  },
+  "Carmen Ortiz": {
+    "maze": "the_ville",
+    "x": 59,
+    "y": 71
+  }
+}

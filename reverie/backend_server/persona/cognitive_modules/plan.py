@@ -105,8 +105,14 @@ def generate_hourly_schedule(persona, wake_up_hour):
           n_m1_activity += ["sleeping"]
           wake_up_hour -= 1
         else: 
-          n_m1_activity += [run_gpt_prompt_generate_hourly_schedule(
-                          persona, curr_hour_str, n_m1_activity, hour_str)[0]]
+          hour_plan = run_gpt_prompt_generate_hourly_schedule(
+                          persona, curr_hour_str, n_m1_activity, hour_str)[0]
+          if hour_plan:
+            n_m1_activity += [""+hour_plan]
+            # todo 
+            # When the debugging is done ,clse it!!!!
+            # break
+
   
   # Step 1. Compressing the hourly schedule to the following format: 
   # The integer indicates the number of hours. They should add up to 24. 

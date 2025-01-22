@@ -213,9 +213,14 @@ class Persona:
 
         # Main cognitive sequence begins here.
         perceived = self.perceive(maze)
+        print("perceived data:")
+        print_json(perceive)
         retrieved = self.retrieve(perceived)
+        print("retrieved data:")
+        print_json(retrieved)
         plan = self.plan(maze, personas, new_day, retrieved)
         self.reflect()
+        print("get plan:",plan)
 
         # <execution> is a triple set that contains the following components:
         # <next_tile> is a x,y coordinate. e.g., (58, 9)

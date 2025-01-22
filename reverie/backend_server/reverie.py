@@ -470,6 +470,7 @@ class ReverieServer:
                     # Example: run 1000
                     int_count = int(sim_command.split()[-1])
                     rs.start_server(int_count)
+                    self.save()
 
                 elif ("print persona schedule"
                       in sim_command[:22].lower()):

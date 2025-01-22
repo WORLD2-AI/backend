@@ -13,7 +13,7 @@ import sys
 sys.path.append('../../')
 
 from global_methods import *
-from persona.prompt_template.gpt_structure_llama import *
+from persona.prompt_template.gpt_structure import *
 from persona.prompt_template.print_prompt import *
 
 
@@ -114,6 +114,8 @@ def run_gpt_prompt_daily_plan(persona,
   def __func_clean_up(gpt_response, prompt=""):
     cr = []
     _cr = gpt_response.split(")")
+    if len(_cr) == 0:
+      _cr = gpt_response.split(".")
     for i in _cr: 
       if i[-1].isdigit(): 
         i = i[:-1].strip()
@@ -140,7 +142,7 @@ def run_gpt_prompt_daily_plan(persona,
   gpt_param = {"engine": "gpt-4o", "max_tokens": 500,
                "temperature": 1, "top_p": 1, "stream": False,
                "frequency_penalty": 0, "presence_penalty": 0, "stop": None}
-  prompt_template = f"{fs_back_end}/persona/prompt_template/v2/daily_planning_v6.txt"
+  prompt_template = f"{fs_back_end}/persona/prompt_template/v2/daily_planning_v7.txt"
   prompt_input = create_prompt_input(persona, wake_up_hour, test_input)
   prompt = generate_prompt(prompt_input, prompt_template)
   fail_safe = get_fail_safe()
@@ -760,7 +762,7 @@ def run_gpt_prompt_event_triple(action_description, persona, verbose=False):
     fs = (persona.name, "is", "idle")
     return fs
 
-  gpt_param = {"engine": "gpt-4o", "max_tokens": 30,
+  gpt_param = {"engine": "gpt-4o", "max_tokens": 50,
                "temperature": 0, "top_p": 1, "stream": False,
                "frequency_penalty": 0, "presence_penalty": 0, "stop": ["\n"]}
   prompt_template = f"{fs_back_end}/persona/prompt_template/v2/generate_event_triple_v1.txt"
@@ -814,7 +816,7 @@ def run_gpt_prompt_act_obj_desc(act_game_object, act_desp, persona, verbose=Fals
     fs = f"{act_game_object} is idle"
     return fs
 
-  gpt_param = {"engine": "gpt-4o", "max_tokens": 30,
+  gpt_param = {"engine": "gpt-4o", "max_tokens": 50,
                "temperature": 0, "top_p": 1, "stream": False,
                "frequency_penalty": 0, "presence_penalty": 0, "stop": ["\n"]}
   prompt_template = f"{fs_back_end}/persona/prompt_template/v2/generate_obj_event_v1.txt"
@@ -862,7 +864,7 @@ def run_gpt_prompt_act_obj_event_triple(act_game_object, act_obj_desc, persona, 
     fs = (act_game_object, "is", "idle")
     return fs
 
-  gpt_param = {"engine": "gpt-4o", "max_tokens": 30,
+  gpt_param = {"engine": "gpt-4o", "max_tokens": 50,
                "temperature": 0, "top_p": 1, "stream": False,
                "frequency_penalty": 0, "presence_penalty": 0, "stop": ["\n"]}
   prompt_template = f"{fs_back_end}/persona/prompt_template/v2/generate_event_triple_v1.txt"

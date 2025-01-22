@@ -1,0 +1,277 @@
+{
+  "vision_r": 8,
+  "att_bandwidth": 8,
+  "retention": 8,
+  "curr_time": "January 21, 2025, 09:31:59",
+  "curr_tile": [
+    108,
+    34
+  ],
+  "daily_plan_req": "Ayesha Khan goes to the library at Oak Hill College to take classes from 10am to 2pm, and then spends her days studying at the library.",
+  "name": "Ayesha Khan",
+  "first_name": "Ayesha",
+  "last_name": "Khan",
+  "age": 20,
+  "innate": "curious, determined, independent",
+  "learned": "Ayesha Khan is a college student who loves to explore literature. She is curious and determined to understand the nuances of each work.",
+  "currently": "Ayesha Khan is researching for her senior thesis on the use of language in Shakespeare\u2019s plays. She is also taking classes to learn more about writing.",
+  "lifestyle": "Ayesha Khan goes to bed around 10pm, awakes up around 6am, eats dinner around 5pm.",
+  "living_area": "the Ville:Dorm for Oak Hill College:Ayesha Khan's room",
+  "concept_forget": 100,
+  "daily_reflection_time": 180,
+  "daily_reflection_size": 5,
+  "overlap_reflect_th": 4,
+  "kw_strg_event_reflect_th": 10,
+  "kw_strg_thought_reflect_th": 9,
+  "recency_w": 1,
+  "relevance_w": 1,
+  "importance_w": 1,
+  "recency_decay": 0.995,
+  "importance_trigger_max": 250,
+  "importance_trigger_curr": 218,
+  "importance_ele_n": 13,
+  "thought_count": 5,
+  "daily_req": [
+    "Wake up and complete the morning routine at 6:00 am.",
+    "Have breakfast and review notes for classes from 7:00 am to 8:00 am.",
+    "Commute to Oak Hill College and prepare for classes from 9:00 am to 9:30 am.",
+    "Attend classes at the library from 10:00 am to 2:00 pm.",
+    "Take a lunch break at 2:00 pm.",
+    "Research for the senior thesis on Shakespeare\u2019s plays at the library from 3:00 pm to 5:00 pm.",
+    "Have dinner at 5:00 pm.",
+    "Study and revise class materials at home from 6:00 pm to 8:00 pm.",
+    "Relax by reading literature for enjoyment from 8:00 pm to 9:30 pm.",
+    "Prepare for the next day and unwind before bed from 9:30 pm to 10:00 pm.",
+    "Go to bed at 10:00 pm."
+  ],
+  "f_daily_schedule": [
+    [
+      "sleeping",
+      360
+    ],
+    [
+      "waking up and completing her morning routine",
+      60
+    ],
+    [
+      "having breakfast and reviewing notes for her classes",
+      60
+    ],
+    [
+      "commuting to Oak Hill College and preparing for her classes (on the way to commuting to Oak Hill College and preparing for her classe)",
+      120
+    ],
+    [
+      "commuting to Oak Hill College and preparing for her classes (conversing about Ayesha Khan and Carlos Gomez discussing poetry techniques, inspirations from Shakespeare, and modern poets such as Sarah Kay and Ocean Vuong who incorporate classical elements into their work.)",
+      12
+    ],
+    [
+      "attending her first class at the library at Oak Hill College (taking out her notebook and organizing her materials)",
+      5
+    ],
+    [
+      "attending her first class at the library at Oak Hill College (listening to the professor's introduction to the class topic)",
+      10
+    ],
+    [
+      "attending her first class at the library at Oak Hill College (taking notes on the lecture)",
+      15
+    ],
+    [
+      "attending her first class at the library at Oak Hill College (participating in a class discussion)",
+      10
+    ],
+    [
+      "attending her first class at the library at Oak Hill College (asking questions to clarify her understanding)",
+      5
+    ],
+    [
+      "attending her first class at the library at Oak Hill College (reviewing her notes and highlighting key points)",
+      10
+    ],
+    [
+      "attending her first class at the library at Oak Hill College (packing up her materials and preparing to leave for her next class)",
+      5
+    ],
+    [
+      "attending her second class at the library at Oak Hill College",
+      60
+    ],
+    [
+      "Ayesha is attending her third class at the library at Oak Hill College",
+      60
+    ],
+    [
+      "attending her fourth class at the library at Oak Hill College",
+      60
+    ],
+    [
+      "taking a lunch break at the library",
+      60
+    ],
+    [
+      "researching for her senior thesis on Shakespeare\u2019s plays at the library",
+      120
+    ],
+    [
+      "having dinner at home",
+      60
+    ],
+    [
+      "studying and revising class materials at home",
+      120
+    ],
+    [
+      "relaxing by reading literature for enjoyment",
+      60
+    ],
+    [
+      "preparing for the next day and unwinding before bed",
+      60
+    ],
+    [
+      "going to bed",
+      60
+    ],
+    [
+      "sleeping",
+      60
+    ],
+    [
+      "sleeping",
+      0
+    ]
+  ],
+  "f_daily_schedule_hourly_org": [
+    [
+      "sleeping",
+      360
+    ],
+    [
+      "waking up and completing her morning routine",
+      60
+    ],
+    [
+      "having breakfast and reviewing notes for her classes",
+      60
+    ],
+    [
+      "commuting to Oak Hill College and preparing for her classes",
+      120
+    ],
+    [
+      "attending her first class at the library at Oak Hill College",
+      60
+    ],
+    [
+      "attending her second class at the library at Oak Hill College",
+      60
+    ],
+    [
+      "Ayesha is attending her third class at the library at Oak Hill College",
+      60
+    ],
+    [
+      "attending her fourth class at the library at Oak Hill College",
+      60
+    ],
+    [
+      "taking a lunch break at the library",
+      60
+    ],
+    [
+      "researching for her senior thesis on Shakespeare\u2019s plays at the library",
+      120
+    ],
+    [
+      "having dinner at home",
+      60
+    ],
+    [
+      "studying and revising class materials at home",
+      120
+    ],
+    [
+      "relaxing by reading literature for enjoyment",
+      60
+    ],
+    [
+      "preparing for the next day and unwinding before bed",
+      60
+    ],
+    [
+      "going to bed",
+      60
+    ],
+    [
+      "sleeping",
+      60
+    ]
+  ],
+  "act_address": "<persona> Carlos Gomez",
+  "act_start_time": "January 21, 2025, 09:19:09",
+  "act_duration": 12,
+  "act_description": "conversing about Ayesha Khan and Carlos Gomez discussing poetry techniques, inspirations from Shakespeare, and modern poets such as Sarah Kay and Ocean Vuong who incorporate classical elements into their work.",
+  "act_pronunciatio": "\ud83d\udcac",
+  "act_event": [
+    "Ayesha Khan",
+    "chat with",
+    "Carlos Gomez"
+  ],
+  "act_obj_description": null,
+  "act_obj_pronunciatio": null,
+  "act_obj_event": [
+    null,
+    null,
+    null
+  ],
+  "chatting_with": "Carlos Gomez",
+  "chat": [
+    [
+      "Ayesha Khan",
+      "Hi Carlos! It's great to see you here. How's the discussion on poetry techniques going?"
+    ],
+    [
+      "Carlos Gomez",
+      "Hi Ayesha! It's going well, the discussions are quite engaging. I'm picking up some interesting insights to incorporate into my poetry. How are your classes going?"
+    ],
+    [
+      "Ayesha Khan",
+      "That's wonderful to hear! My classes are keeping me busy, especially with my senior thesis on Shakespeare\u2019s plays. Have you ever incorporated any Shakespearean techniques into your poetry?"
+    ],
+    [
+      "Carlos Gomez",
+      "I've definitely been inspired by his work! I occasionally try to incorporate some of his dramatic flair and intricate wordplay into my poetry. It's a challenging but rewarding process. Speaking of techniques, do you have a favorite Shakespearean technique you've been exploring for your thesis?"
+    ],
+    [
+      "Ayesha Khan",
+      "I'm glad to hear that, Carlos! I've been delving into Shakespeare's use of iambic pentameter and his ability to convey deep emotions through soliloquies. It's fascinating how he uses language to reveal the inner thoughts of his characters. Is there a particular aspect of his writing that you find most challenging to emulate?"
+    ],
+    [
+      "Carlos Gomez",
+      "I agree, the way he captures the essence of his characters is truly impressive. For me, the most challenging part is emulating his mastery of rhythm while maintaining my own voice. It\u2019s a balancing act I'm still perfecting. Speaking of which, have you come across any modern poets who draw from Shakespeare in interesting ways?"
+    ],
+    [
+      "Ayesha Khan",
+      "I can see how that would be challenging, Carlos. There are a few modern poets I\u2019ve been reading who have interesting takes. For example, I think Sarah Kay does a beautiful job of weaving classical elements like those found in Shakespeare\u2019s works into her contemporary poetry. Have you read any of her work?"
+    ],
+    [
+      "Carlos Gomez",
+      "Yes, I've read some of Sarah Kay's poems, and I love how she brings classical influences into her work while keeping it fresh and relatable. Her ability to connect with the reader on such a personal level is something I admire. It\u2019s always inspiring to see how different poets interpret Shakespearean techniques in their unique voices. If you have any recommendations for other poets I should explore, I'd love to hear them!"
+    ],
+    [
+      "Ayesha Khan",
+      "I completely agree, Carlos. I think you'd really enjoy Ocean Vuong's poetry. He has a way of incorporating classical themes into his work while bringing new perspectives and depth. Let me know what you think if you ever get a chance to read some of his pieces!"
+    ],
+    [
+      "Carlos Gomez",
+      "Thanks for the recommendation, Ayesha! I'll definitely check out Ocean Vuong's work. It's always exciting to discover new poets who bring depth to classical themes. Let's catch up soon and share more thoughts on poetry!"
+    ]
+  ],
+  "chatting_with_buffer": {
+    "Carlos Gomez": 800
+  },
+  "chatting_end_time": "January 21, 2025, 09:31:00",
+  "act_path_set": true,
+  "planned_path": []
+}

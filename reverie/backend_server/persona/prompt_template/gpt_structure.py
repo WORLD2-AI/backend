@@ -8,7 +8,7 @@ import json
 import random
 import openai
 import time
-
+import re
 from utils import *
 
 openai.api_key = random.choice(openai_api_key)
@@ -49,7 +49,7 @@ def GPT4_request(prompt):
 
     try:
         completion = openai.ChatCompletion.create(
-            model="gpt-4",
+            model="gpt-4o",
             messages=[{"role": "user", "content": prompt}]
         )
         return completion["choices"][0]["message"]["content"]
@@ -76,16 +76,27 @@ def ChatGPT_request(prompt, gpt_parameter={}):
 
     try:
         completion = openai.ChatCompletion.create(
-            model="gpt-4o-mini",
+            model="gpt-4o",
             messages=[{"role": "user", "content": prompt}]
         )
-        return completion["choices"][0]["message"]["content"]
+        result =  completion["choices"][0]["message"]["content"]
+        return filter_result(respone=result)
 
     except Exception as e:
         print(f"ChatGPT ERROR{e}")
         return f"ChatGPT ERROR{e}"
 
-
+def filter_result(respone:str):
+    if respone is None:
+        return ""
+    if respone.startswith("```"):
+        pattern = r'```\w+\s*(.*?)\s*```'
+        # Extract JSON content
+        match = re.search(pattern, respone)
+        if match is not None:
+            respone = match.group(1)
+    respone = respone.strip()
+    return respone
 def GPT4_safe_generate_response(prompt,
                                 example_output,
                                 special_instruction,
@@ -146,9 +157,8 @@ def ChatGPT_safe_generate_response(prompt,
         print(prompt)
 
     for i in range(repeat):
-
         try:
-            curr_gpt_response = ChatGPT_request(prompt).strip()
+            curr_gpt_response = ChatGPT_request(prompt)
             end_index = curr_gpt_response.rfind('}') + 1
             curr_gpt_response = curr_gpt_response[:end_index]
             curr_gpt_response = json.loads(curr_gpt_response)["output"]
@@ -272,19 +282,15 @@ def safe_generate_response(prompt,
                            func_validate=None,
                            func_clean_up=None,
                            verbose=False):
-    if verbose:
-        print(prompt)
+    # if verbose:
+    print("prompt:",prompt)
     openai.api_key = random.choice(openai_api_key)
 
     for i in range(repeat):
         curr_gpt_response = GPT_request(prompt, gpt_parameter)
-        time.sleep(1)
+        print("gpt respone:",curr_gpt_response)
         if func_validate(curr_gpt_response, prompt=prompt):
             return func_clean_up(curr_gpt_response, prompt=prompt)
-        if verbose:
-            print("---- repeat count: ", i, curr_gpt_response)
-            print(curr_gpt_response)
-            print("~~~~")
     return fail_safe_response
 
 
@@ -299,14 +305,8 @@ def get_embedding(text, model="text-embedding-3-small"):
     return respone["data"][0]["embedding"]
 
 
-# if __name__ == '__main__':
-#     gpt_parameter = {"engine": "gpt-4o-mini", "max_tokens": 50,
-#                      "temperature": 0, "top_p": 1, "stream": False,
-#                      "frequency_penalty": 0, "presence_penalty": 0,
-#                      "stop": ['"']}
-#     curr_input = ["driving to a friend's house"]
-#     prompt_lib_file = f"{fs_back_end}/prompt_template/test_prompt_July5.txt"
-#     prompt = generate_prompt(curr_input, prompt_lib_file)
+if __name__ == '__main__':
+    print(filter_result('```json\n{"output": "🤔"}```'))
 
 
 #     def __func_validate(gpt_response):

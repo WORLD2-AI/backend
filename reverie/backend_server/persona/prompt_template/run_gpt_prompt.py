@@ -14,7 +14,7 @@ from random import random
 sys.path.append('../../')
 
 from global_methods import *
-from persona.prompt_template.gpt_structure_llama import *
+from persona.prompt_template.gpt_structure import *
 from persona.prompt_template.print_prompt import *
 
 
@@ -56,6 +56,10 @@ def run_gpt_prompt_wake_up_hour(persona, test_input=None, verbose=False):
         return prompt_input
 
     def __func_clean_up(gpt_response, prompt=""):
+        # reg match hour
+        gpt_response = re.findall("\d+.*[am|pm]",gpt_response.strip().lower())
+        if len(gpt_response) > 0 :
+            gpt_response = gpt_response[0]
         cr = int(gpt_response.strip().lower().split("am")[0])
         return cr
 
@@ -68,7 +72,9 @@ def run_gpt_prompt_wake_up_hour(persona, test_input=None, verbose=False):
         fs = 8
         return fs
 
-    gpt_param = {}
+    gpt_param = {"engine": "gpt-4o", "max_tokens": 10,
+                 "temperature": 0.8, "top_p": 1, "stream": False,
+                 "frequency_penalty": 0, "presence_penalty": 0, "stop": ["\n"]}
     prompt_template = f"{fs_back_end}/persona/prompt_template/v2/wake_up_hour_v1.txt"
     prompt_input = create_prompt_input(persona, test_input)
     prompt = generate_prompt(prompt_input, prompt_template)
@@ -110,14 +116,15 @@ def run_gpt_prompt_daily_plan(persona,
         prompt_input += [f"{str(wake_up_hour)}:00 am"]
         return prompt_input
 
-    def __func_clean_up(gpt_response, prompt=""):
+    def __func_clean_up(gpt_response:str, prompt=""):
         cr = []
-        _cr = gpt_response.split(")")
+        gpt_response = gpt_response.removeprefix("---")
+        gpt_response = gpt_response.removesuffix("---")
+        _cr = gpt_response.split("\n")
         for i in _cr:
-            if i[-1].isdigit():
-                i = i[:-1].strip()
-                if i[-1] == "." or i[-1] == ",":
-                    cr += [i[:-1].strip()]
+            if re.match("\d+\).*[am|pm]\.",i.lower()):
+                if len(i.split(")")) >=2: 
+                    cr +=[i.split(")")[1].strip()] 
         return cr
 
     def __func_validate(gpt_response, prompt=""):
@@ -139,15 +146,15 @@ def run_gpt_prompt_daily_plan(persona,
     gpt_param = {"engine": "gpt-4o", "max_tokens": 500,
                  "temperature": 1, "top_p": 1, "stream": False,
                  "frequency_penalty": 0, "presence_penalty": 0, "stop": None}
-    prompt_template = f"{fs_back_end}/persona/prompt_template/v2/daily_planning_v6.txt"
+    prompt_template = f"{fs_back_end}/persona/prompt_template/v2/daily_planning_v7.txt"
     prompt_input = create_prompt_input(persona, wake_up_hour, test_input)
     prompt = generate_prompt(prompt_input, prompt_template)
     fail_safe = get_fail_safe()
 
     output = safe_generate_response(prompt, gpt_param, 5, fail_safe,
                                     __func_validate, __func_clean_up)
-    output = ([f"wake up and complete the morning routine at {wake_up_hour}:00 am"]
-              + output)
+    # output = ([f"wake up and complete the morning routine at {wake_up_hour}:00 am"]
+    #           + output)
 
     if debug or verbose:
         print_run_prompts(prompt_template, persona, gpt_param,
@@ -214,7 +221,9 @@ def run_gpt_prompt_generate_hourly_schedule(persona,
 
         return prompt_input
 
-    def __func_clean_up(gpt_response, prompt=""):
+    def __func_clean_up(gpt_response:str, prompt=""):
+        if len(gpt_response.split("Activity:")) >= 2:
+            gpt_response = gpt_response.split("Activity:")[1]
         cr = gpt_response.strip()
         if cr[-1] == ".":
             cr = cr[:-1]
@@ -1886,7 +1895,7 @@ def run_gpt_prompt_event_poignancy(persona, event_description, test_input=None, 
             return False
 
     print ("start produce event") ########
-    gpt_param = {"engine": "gpt-4o", "max_tokens": 500,
+    gpt_param = {"engine": "gpt-4o", "max_tokens": 100,
                  "temperature": 0, "top_p": 1, "stream": False,
                  "frequency_penalty": 0, "presence_penalty": 0, "stop": None}
     prompt_template = f"{fs_back_end}/persona/prompt_template/v3_ChatGPT/poignancy_event_v1.txt" ########

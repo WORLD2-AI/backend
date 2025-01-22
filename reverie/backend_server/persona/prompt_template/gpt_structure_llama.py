@@ -1,9 +1,4 @@
-"""
-手动修改方法：# llama2 call
 
-把所有openai.ChatCompletion.create换成下面这个
-# response = completion(model="meta-llama/Llama-2-7b-hf", messages={"role": "user", "content": prompt})
-"""
 import json
 import random
 import openai
