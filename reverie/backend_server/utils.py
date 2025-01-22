@@ -2,7 +2,7 @@
 import json
 from collections.abc import Iterable
 openai_api_key = [
-    "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"
+   
 ]
 # Put your name
 key_owner = "test_sim_ai"
