@@ -213,11 +213,11 @@ class Persona:
 
         # Main cognitive sequence begins here.
         perceived = self.perceive(maze)
-        print("perceived data:")
-        print_json(perceive)
+        logger_info("perceived data:")
+        logger_info(perceive)
         retrieved = self.retrieve(perceived)
-        print("retrieved data:")
-        print_json(retrieved)
+        logger_info("retrieved data:")
+        logger_info(retrieved)
         plan = self.plan(maze, personas, new_day, retrieved)
         self.reflect()
         print("get plan:",plan)

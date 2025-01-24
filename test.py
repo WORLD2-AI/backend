@@ -10,13 +10,13 @@ import json
 import os
 import random
 import openai
-import time
+import re
 
 # from dotenv import load_dotenv, find_dotenv
 # from litellm import completion
 # from gpt4all import GPT4All, Embed4All
 
-# from reverie.backend_server.persona.prompt_template.gpt_structure import temp_sleep
+# from reverie.backend_server.persona.prompt_template.gpt_structure_llama import temp_sleep
 # from reverie.backend_server.utils import *
 
 # openai.api_key = random.choice(openai_api_key)
@@ -169,7 +169,34 @@ import time
 
 
 def test():
-    print(", ".join("the Ville:artist's co-living space: kitchen:<random>".replace(": ",":").split(":")[:-1]))
+    input_text = '''Jane Anderson is in kitchen in Jane Anderson's house.
+Jane Anderson is going to Jane Anderson's house that has the following areas: {kitchen,  bedroom, bathroom}
+Stay in the current area if the activity can be done there. Never go into other people's rooms unless necessary.
+For cooking, Jane Anderson should go to the following area in Jane Anderson's house:
+Answer: {kitchen}
+---
+Tom Watson is in common room in Tom Watson's apartment.
+Tom Watson is going to Hobbs Cafe that has the following areas: {cafe}
+Stay in the current area if the activity can be done there. Never go into other people's rooms unless necessary.
+For getting coffee, Tom Watson should go to the following area in Hobbs Cafe:
+Answer: {cafe}
+---
+
+Latoya Williams is going to artist's co-living space that has the following areas: {Latoya Williams's room, Latoya Williams's bathroom, kitchen, common room}
+* Stay in the current area if the activity can be done there.
+* NEVER go into other people's rooms unless necessary.
+Latoya Williams is Edit photos for the travel series. For Edit photos for the travel series, Latoya Williams should go to the following area in artist's co-living space (MUST pick one of {Latoya Williams's room, Latoya Williams's bathroom, kitchen, common room}):
+Answer: {'''
+    cr = '(Arthur Burton, close, The Rose and Crown Pub) \n\nxx'
+    matched = re.findall(r'\([\s\S]+\)',cr)
+    print(matched)
+    if matched and len(matched) > 0 :
+        cr = matched[0]
+    cr = cr.removeprefix("(")
+    cr = cr.removesuffix(")")
+    cr = [i.strip() for i in cr.split(",")]
+    print(cr[1:])
+
 
 
 if __name__ == "__main__":

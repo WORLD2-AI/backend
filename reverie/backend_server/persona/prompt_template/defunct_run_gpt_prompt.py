@@ -13,7 +13,7 @@ import sys
 sys.path.append('../../')
 
 from global_methods import *
-from persona.prompt_template.gpt_structure import *
+from persona.prompt_template.gpt_structure_llama import *
 from persona.prompt_template.print_prompt import *
 
 
@@ -324,10 +324,7 @@ def run_gpt_prompt_task_decomp(persona,
     return prompt_input
 
   def __func_clean_up(gpt_response, prompt=""):
-    print ("TOODOOOOOO")
     print (gpt_response)
-    print ("-==- -==- -==- ")
-
     # TODO SOMETHING HERE sometimes fails... See screenshot
     temp = [i.strip() for i in gpt_response.split("\n")]
     _cr = []
@@ -400,34 +397,13 @@ def run_gpt_prompt_task_decomp(persona,
   prompt_input = create_prompt_input(persona, task, duration)
   prompt = generate_prompt(prompt_input, prompt_template)
   fail_safe = get_fail_safe()
-
-  print ("?????")
-  print (prompt)
   output = safe_generate_response(prompt, gpt_param, 5, get_fail_safe(),
                                    __func_validate, __func_clean_up)
-
-  # TODO THERE WAS A BUG HERE... 
-  # This is for preventing overflows...
-  """
-  File "/Users/joonsungpark/Desktop/Stanford/Projects/
-  generative-personas/src_exploration/reverie_simulation/
-  brain/get_next_action_v3.py", line 364, in run_gpt_prompt_task_decomp
-  fin_output[-1][1] += (duration - ftime_sum)
-  IndexError: list index out of range
-  """
-
-  print ("IMPORTANT VVV DEBUG")
-
-  # print (prompt_input)
-  # print (prompt)
-  print (output)
 
   fin_output = []
   time_sum = 0
   for i_task, i_duration in output: 
     time_sum += i_duration
-    # HM?????????
-    # if time_sum < duration: 
     if time_sum <= duration: 
       fin_output += [[i_task, i_duration]]
     else: 
@@ -584,18 +560,23 @@ def run_gpt_prompt_action_arena(action_description,
     
     return prompt_input
 
-  def __func_clean_up(gpt_response, prompt=""):
-    cleaned_response = gpt_response.split("}")[0]
-    return cleaned_response
-
-  def __func_validate(gpt_response, prompt=""): 
-    if len(gpt_response.strip()) < 1: 
-      return False
-    if "}" not in gpt_response:
-      return False
-    if "," in gpt_response: 
-      return False
-    return True
+  def __func_clean_up(gpt_response:str, prompt=""):
+        gpt_response = gpt_response.strip()
+        pattern = r'\{([\s\S]+)\}'
+        match = re.findall(pattern,gpt_response)
+        if match and len(match) > 0  :
+            gpt_response = match[0]
+            gpt_response = gpt_response.replace("{","")
+            gpt_response = gpt_response.replace("}","")
+            return gpt_response.strip()
+  def __func_validate(gpt_response, prompt=""):
+      if len(gpt_response.strip()) < 1:
+          return False
+      if "}" not in gpt_response or "{" not in gpt_response:
+          return False
+      if "," in gpt_response:
+          return False
+      return True
   
   def get_fail_safe(): 
     fs = ("kitchen")
@@ -615,11 +596,7 @@ def run_gpt_prompt_action_arena(action_description,
   x = [i.strip() for i in persona.s_mem.get_str_accessible_sector_arenas(y).split(",")]
   if output not in x: 
     output = random.choice(x)
-
-  if debug or verbose: 
-    print_run_prompts(prompt_template, persona, gpt_param, 
-                      prompt_input, prompt, output)
-
+  logger_info(output)
   return output, [output, prompt, gpt_param, prompt_input, fail_safe]
 
 
@@ -736,48 +713,48 @@ def run_gpt_prompt_pronunciatio(action_description, persona, verbose=False):
 
 
 
-def run_gpt_prompt_event_triple(action_description, persona, verbose=False): 
-  def create_prompt_input(action_description, persona): 
-    if "(" in action_description: 
-      action_description = action_description.split("(")[-1].split(")")[0]
-    prompt_input = [persona.name, 
-                    action_description,
-                    persona.name]
-    return prompt_input
+# def run_gpt_prompt_event_triple(action_description, persona, verbose=False): 
+#   def create_prompt_input(action_description, persona): 
+#     if "(" in action_description: 
+#       action_description = action_description.split("(")[-1].split(")")[0]
+#     prompt_input = [persona.name, 
+#                     action_description,
+#                     persona.name]
+#     return prompt_input
   
-  def __func_clean_up(gpt_response, prompt=""):
-    cr = gpt_response.strip()
-    cr = [i.strip() for i in cr.split(")")[0].split(",")]
-    return cr
+#   def __func_clean_up(gpt_response, prompt=""):
+#     cr = gpt_response.strip()
+#     cr = [i.strip() for i in cr.split(")")[0].split(",")]
+#     return cr
 
-  def __func_validate(gpt_response, prompt=""): 
-    try: 
-      gpt_response = __func_clean_up(gpt_response, prompt="")
-      if len(gpt_response) != 2: 
-        return False
-    except: return False
-    return True 
+#   def __func_validate(gpt_response, prompt=""): 
+#     try: 
+#       gpt_response = __func_clean_up(gpt_response, prompt="")
+#       if len(gpt_response) != 2: 
+#         return False
+#     except: return False
+#     return True 
 
-  def get_fail_safe(persona): 
-    fs = (persona.name, "is", "idle")
-    return fs
+#   def get_fail_safe(persona): 
+#     fs = (persona.name, "is", "idle")
+#     return fs
 
-  gpt_param = {"engine": "gpt-4o", "max_tokens": 50,
-               "temperature": 0, "top_p": 1, "stream": False,
-               "frequency_penalty": 0, "presence_penalty": 0, "stop": ["\n"]}
-  prompt_template = f"{fs_back_end}/persona/prompt_template/v2/generate_event_triple_v1.txt"
-  prompt_input = create_prompt_input(action_description, persona)
-  prompt = generate_prompt(prompt_input, prompt_template)
-  fail_safe = get_fail_safe(persona)
-  output = safe_generate_response(prompt, gpt_param, 5, fail_safe,
-                                   __func_validate, __func_clean_up)
-  output = (persona.name, output[0], output[1])
+#   gpt_param = {"engine": "gpt-4o", "max_tokens": 50,
+#                "temperature": 0, "top_p": 1, "stream": False,
+#                "frequency_penalty": 0, "presence_penalty": 0, "stop": ["\n"]}
+#   prompt_template = f"{fs_back_end}/persona/prompt_template/v2/generate_event_triple_v1.txt"
+#   prompt_input = create_prompt_input(action_description, persona)
+#   prompt = generate_prompt(prompt_input, prompt_template)
+#   fail_safe = get_fail_safe(persona)
+#   output = safe_generate_response(prompt, gpt_param, 5, fail_safe,
+#                                    __func_validate, __func_clean_up)
+#   output = (persona.name, output[0], output[1])
 
-  if debug or verbose: 
-    print_run_prompts(prompt_template, persona, gpt_param, 
-                      prompt_input, prompt, output)
+#   if debug or verbose: 
+#     print_run_prompts(prompt_template, persona, gpt_param, 
+#                       prompt_input, prompt, output)
   
-  return output, [output, prompt, gpt_param, prompt_input, fail_safe]
+#   return output, [output, prompt, gpt_param, prompt_input, fail_safe]
 
 
 
@@ -840,46 +817,46 @@ def run_gpt_prompt_act_obj_desc(act_game_object, act_desp, persona, verbose=Fals
 
 
 
-def run_gpt_prompt_act_obj_event_triple(act_game_object, act_obj_desc, persona, verbose=False): 
-  def create_prompt_input(act_game_object, act_obj_desc): 
-    prompt_input = [act_game_object, 
-                    act_obj_desc,
-                    act_game_object]
-    return prompt_input
+# def run_gpt_prompt_act_obj_event_triple(act_game_object, act_obj_desc, persona, verbose=False): 
+#   def create_prompt_input(act_game_object, act_obj_desc): 
+#     prompt_input = [act_game_object, 
+#                     act_obj_desc,
+#                     act_game_object]
+#     return prompt_input
   
-  def __func_clean_up(gpt_response, prompt=""):
-    cr = gpt_response.strip()
-    cr = [i.strip() for i in cr.split(")")[0].split(",")]
-    return cr
+#   def __func_clean_up(gpt_response, prompt=""):
+#     cr = gpt_response.strip()
+#     cr = [i.strip() for i in cr.split(")")[0].split(",")]
+#     return cr
 
-  def __func_validate(gpt_response, prompt=""): 
-    try: 
-      gpt_response = __func_clean_up(gpt_response, prompt="")
-      if len(gpt_response) != 2: 
-        return False
-    except: return False
-    return True 
+#   def __func_validate(gpt_response, prompt=""): 
+#     try: 
+#       gpt_response = __func_clean_up(gpt_response, prompt="")
+#       if len(gpt_response) != 2: 
+#         return False
+#     except: return False
+#     return True 
 
-  def get_fail_safe(act_game_object): 
-    fs = (act_game_object, "is", "idle")
-    return fs
+#   def get_fail_safe(act_game_object): 
+#     fs = (act_game_object, "is", "idle")
+#     return fs
 
-  gpt_param = {"engine": "gpt-4o", "max_tokens": 50,
-               "temperature": 0, "top_p": 1, "stream": False,
-               "frequency_penalty": 0, "presence_penalty": 0, "stop": ["\n"]}
-  prompt_template = f"{fs_back_end}/persona/prompt_template/v2/generate_event_triple_v1.txt"
-  prompt_input = create_prompt_input(act_game_object, act_obj_desc)
-  prompt = generate_prompt(prompt_input, prompt_template)
-  fail_safe = get_fail_safe(act_game_object)
-  output = safe_generate_response(prompt, gpt_param, 5, fail_safe,
-                                   __func_validate, __func_clean_up)
-  output = (act_game_object, output[0], output[1])
+#   gpt_param = {"engine": "gpt-4o", "max_tokens": 50,
+#                "temperature": 0, "top_p": 1, "stream": False,
+#                "frequency_penalty": 0, "presence_penalty": 0, "stop": ["\n"]}
+#   prompt_template = f"{fs_back_end}/persona/prompt_template/v2/generate_event_triple_v1.txt"
+#   prompt_input = create_prompt_input(act_game_object, act_obj_desc)
+#   prompt = generate_prompt(prompt_input, prompt_template)
+#   fail_safe = get_fail_safe(act_game_object)
+#   output = safe_generate_response(prompt, gpt_param, 5, fail_safe,
+#                                    __func_validate, __func_clean_up)
+#   output = (act_game_object, output[0], output[1])
 
-  if debug or verbose: 
-    print_run_prompts(prompt_template, persona, gpt_param, 
-                      prompt_input, prompt, output)
+#   if debug or verbose: 
+#     print_run_prompts(prompt_template, persona, gpt_param, 
+#                       prompt_input, prompt, output)
   
-  return output, [output, prompt, gpt_param, prompt_input, fail_safe]
+#   return output, [output, prompt, gpt_param, prompt_input, fail_safe]
 
 
 

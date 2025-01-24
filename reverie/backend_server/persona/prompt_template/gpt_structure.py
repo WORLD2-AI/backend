@@ -86,17 +86,7 @@ def ChatGPT_request(prompt, gpt_parameter={}):
         print(f"ChatGPT ERROR{e}")
         return f"ChatGPT ERROR{e}"
 
-def filter_result(respone:str):
-    if respone is None:
-        return ""
-    if respone.startswith("```"):
-        pattern = r'```\w+\s*(.*?)\s*```'
-        # Extract JSON content
-        match = re.search(pattern, respone)
-        if match is not None:
-            respone = match.group(1)
-    respone = respone.strip()
-    return respone
+
 def GPT4_safe_generate_response(prompt,
                                 example_output,
                                 special_instruction,

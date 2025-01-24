@@ -9,9 +9,6 @@ Variables:
 !<INPUT 5>! -- prompt_ending
 
 <commentblockmarker>###</commentblockmarker>
-Hourly schedule format: 
-!<INPUT 0>!
-===
 !<INPUT 1>!
 !<INPUT 2>!
 !<INPUT 3>!!<INPUT 4>!

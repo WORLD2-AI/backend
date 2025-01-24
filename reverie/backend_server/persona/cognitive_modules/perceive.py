@@ -9,7 +9,7 @@ sys.path.append('../../')
 
 from operator import itemgetter
 from global_methods import *
-from persona.prompt_template.gpt_structure import *
+from persona.prompt_template.gpt_structure_llama import *
 from persona.prompt_template.run_gpt_prompt import *
 
 def generate_poig_score(persona, event_type, description): 

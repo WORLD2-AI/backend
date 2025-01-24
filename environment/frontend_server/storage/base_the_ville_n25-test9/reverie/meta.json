@@ -1,15 +1,16 @@
 {
-  "fork_sim_code": "base_the_ville_n25-test5",
-  "start_date": "February 13, 2024",
-  "curr_time": "January 21, 2025, 09:32:09",
+  "fork_sim_code": "base_the_ville_n25-test",
+  "start_date": "February 23, 2024",
+  "curr_time": "",
   "sec_per_step": 10,
   "maze_name": "the_ville",
   "persona_names": [
     "Adam Smith",
     "Arthur Burton",
     "Ayesha Khan",
+    "Carlos Gomez",
     "Carmen Ortiz",
-    "Carlos Gomez"
+    "Francisco Lopez"
   ],
-  "step": 1
+  "step": 0
 }

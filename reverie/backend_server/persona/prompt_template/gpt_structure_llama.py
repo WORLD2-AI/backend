@@ -70,12 +70,12 @@ def ChatGPT_request(prompt):
     """
     # temp_sleep()
     # openai.api_key = random.choice(openai_api_key)
-    print("request prompt:")
-    print(prompt)
+    print("-------------------request prompt---------------------")
+    logger_info(prompt)
     try:
         headers = {
             "Content-Type": "application/json",
-            "Authorization":"Bearer app-YModVQ7H9WeGudJOsLnw3s2I"
+            "Authorization":"Bearer app-cYXRNIAFUZY7ywce7OOkXcN9"
         }
         data = {
             "inputs": {"query": prompt},
@@ -88,10 +88,12 @@ def ChatGPT_request(prompt):
         response = requests.post(url, headers=headers, data=json.dumps(data),timeout = 30)
         
         if response.status_code == 200:
-            print(response.json())
-            return response.json().get("answer", {})
+            print("---------------success result ---------------------------------")
+            logger_info(response.json())
+            return filter_result(response.json().get("answer", {}))
         else:
-            print(response.json())
+            print("-------------error result ----------------------------")
+            logger_info(response.json())
             response.raise_for_status()
 
     except:
@@ -147,24 +149,20 @@ def ChatGPT_safe_generate_response(prompt,
                                    func_clean_up=None,
                                    verbose=False):
     # prompt = 'GPT-3 Prompt:\n"""\n' + prompt + '\n"""\n'
-    openai.api_key = random.choice(openai_api_key)
+    # openai.api_key = random.choice(openai_api_key)
 
     prompt = '"""\n' + prompt + '\n"""\n'
     prompt += f"Output the response to the prompt above in json. {special_instruction}\n"
     prompt += "Example output json:\n"
     prompt += '{"output": "' + str(example_output) + '"}'
 
-    print (prompt)
     for i in range(repeat):
 
         try:
             curr_gpt_response = ChatGPT_request(prompt).strip()
-            if curr_gpt_response.startswith("```"):
-                curr_gpt_response = curr_gpt_response.removeprefix('```json\n').removesuffix('```')
             # end_index = curr_gpt_response.rfind('}') + 1
             # curr_gpt_response = curr_gpt_response[:end_index]
             res = json.loads(curr_gpt_response)
-            print(res)
             curr_gpt_response = res["output"]
 
             # print ("---ashdfaf")
@@ -173,11 +171,6 @@ def ChatGPT_safe_generate_response(prompt,
 
             if func_validate(curr_gpt_response, prompt=prompt):
                 return func_clean_up(curr_gpt_response, prompt=prompt)
-
-            if verbose:
-                print ("---- repeat count: \n", i, curr_gpt_response)
-                print (curr_gpt_response)
-                print ("~~~~")
 
         except:
             pass
@@ -229,9 +222,8 @@ def GPT_request(prompt, gpt_parameter):
     RETURNS:
       a str of GPT-3's response.
     """
-    temp_sleep()
+
     openai.api_key = random.choice(openai_api_key)
-    print(prompt)
     return ChatGPT_request(prompt=prompt)
     # try:
     #     headers = {
@@ -297,18 +289,12 @@ def safe_generate_response(prompt,
                            func_validate=None,
                            func_clean_up=None,
                            verbose=False):
-    if verbose:
-        print (prompt)
     openai.api_key = random.choice(openai_api_key)
 
     for i in range(repeat):
         curr_gpt_response = GPT_request(prompt, gpt_parameter)
         if func_validate(curr_gpt_response, prompt=prompt):
             return func_clean_up(curr_gpt_response, prompt=prompt)
-        if verbose:
-            print ("---- repeat count: ", i, curr_gpt_response)
-            print (curr_gpt_response)
-            print ("~~~~")
     return fail_safe_response
 
 
@@ -326,7 +312,7 @@ def get_embedding(text, model="nomic-embed-text"):
     
     if response.status_code == 200:
         content  = response.json()
-        print(content)
+        logger_info(content)
         return content.get("embeddings", [[]])[0]
     else:
         response.raise_for_status()

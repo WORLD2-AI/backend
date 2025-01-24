@@ -219,7 +219,7 @@ def generate_action_event_triple(act_desp, persona):
   EXAMPLE OUTPUT: 
     "🧈🍞"
   """
-  if debug: print ("GNS FUNCTION: <generate_action_event_triple>")
+  logger_info("generate_action_event_triple")
   return run_gpt_prompt_event_triple(act_desp, persona)[0]
 
 

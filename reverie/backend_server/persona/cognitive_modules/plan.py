@@ -34,7 +34,7 @@ def generate_wake_up_hour(persona):
   EXAMPLE OUTPUT: 
     8
   """
-  if debug: print ("GNS FUNCTION: <generate_wake_up_hour>")
+  logger_info("get wake up hour:",persona)
   return int(run_gpt_prompt_wake_up_hour(persona)[0])
 
 
@@ -64,7 +64,7 @@ def generate_first_daily_plan(persona, wake_up_hour):
      'work on painting project from 4:00 pm to 6:00 pm', 
      'have dinner at 6:00 pm', 'watch TV from 7:00 pm to 8:00 pm']
   """
-  if debug: print ("GNS FUNCTION: <generate_first_daily_plan>")
+  logger_info('get persona daily play:',persona)
   return run_gpt_prompt_daily_plan(persona, wake_up_hour)[0]
 
 
@@ -87,7 +87,7 @@ def generate_hourly_schedule(persona, wake_up_hour):
     [['sleeping', 360], ['waking up and starting her morning routine', 60], 
      ['eating breakfast', 60],..
   """
-  if debug: print ("GNS FUNCTION: <generate_hourly_schedule>")
+  logger_info("generate_hourly_schedule")
 
   hour_str = ["00:00 AM", "01:00 AM", "02:00 AM", "03:00 AM", "04:00 AM", 
               "05:00 AM", "06:00 AM", "07:00 AM", "08:00 AM", "09:00 AM", 
@@ -107,6 +107,8 @@ def generate_hourly_schedule(persona, wake_up_hour):
         else: 
           hour_plan = run_gpt_prompt_generate_hourly_schedule(
                           persona, curr_hour_str, n_m1_activity, hour_str)[0]
+          if hour_plan.startswith(f"{persona.scratch.get_str_firstname()} is"):
+            hour_plan = hour_plan.replace(f"{persona.scratch.get_str_firstname()} is","").strip()
           if hour_plan:
             n_m1_activity += [""+hour_plan]
             # todo 
@@ -166,7 +168,7 @@ def generate_task_decomp(persona, task, duration):
      ['starting to work on her painting', 15]] 
 
   """
-  if debug: print ("GNS FUNCTION: <generate_task_decomp>")
+  logger_info("generate_task_decomp")
   return run_gpt_prompt_task_decomp(persona, task, duration)[0]
 
 
@@ -184,7 +186,7 @@ def generate_action_sector(act_desp, persona, maze):
   EXAMPLE OUTPUT: 
     "bedroom 2"
   """
-  if debug: print ("GNS FUNCTION: <generate_action_sector>")
+  logger_info("generate_action_sector")
   return run_gpt_prompt_action_sector(act_desp, persona, maze)[0]
 
 
@@ -202,7 +204,7 @@ def generate_action_arena(act_desp, persona, maze, act_world, act_sector):
   EXAMPLE OUTPUT: 
     "bedroom 2"
   """
-  if debug: print ("GNS FUNCTION: <generate_action_arena>")
+  logger_info("generate_action_arena")
   return run_gpt_prompt_action_arena(act_desp, persona, maze, act_world, act_sector)[0]
 
 
@@ -601,12 +603,8 @@ def _determine_action(persona, maze):
   # Generate an <Action> instance from the action description and duration. By
   # this point, we assume that all the relevant actions are decomposed and 
   # ready in f_daily_schedule. 
-  print ("DEBUG LJSDLFSKJF")
-  for i in persona.scratch.f_daily_schedule: print (i)
-  print (curr_index)
-  print (len(persona.scratch.f_daily_schedule))
-  print (persona.scratch.name)
-  print ("------")
+  for i in persona.scratch.f_daily_schedule: logger_info (i)
+
 
   # 1440
   x_emergency = 0

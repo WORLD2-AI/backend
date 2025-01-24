@@ -31,4 +31,4 @@ For eating dinner, Jane Anderson should go to the following area: {Hobbs Cafe}
 Area options: {!<INPUT 7>!}. 
 * Stay in the current area if the activity can be done there. Only go out if the activity needs to take place in another place.
 * Must be one of the "Area options," verbatim.
-!<INPUT 8>! is !<INPUT 9>!. For !<INPUT 10>!, !<INPUT 11>! should go to the following area: {
+!<INPUT 8>! is !<INPUT 9>!. For !<INPUT 10>!, !<INPUT 11>! should go to the following area.output formate should be {some place} but no more: {

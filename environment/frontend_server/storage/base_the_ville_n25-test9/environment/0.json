@@ -3,7 +3,7 @@
     "maze": "the_ville",
     "x": 20,
     "y": 65
-  }, 
+  },
   "Arthur Burton": {
     "maze": "the_ville",
     "x": 53,
@@ -23,6 +23,11 @@
     "maze": "the_ville",
     "x": 57,
     "y": 74
+  },
+  "Francisco Lopez": {
+    "maze": "the_ville",
+    "x": 16,
+    "y": 32
   }
 }
 

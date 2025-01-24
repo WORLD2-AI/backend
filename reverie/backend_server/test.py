@@ -1,7 +1,7 @@
 """
 Author: TuringsCat ()
 
-File: gpt_structure.py
+File: gpt_structure_llama.py
 Description: Wrapper functions for calling OpenAI APIs.
 
 TODO:
@@ -23,7 +23,7 @@ from dotenv import load_dotenv, find_dotenv
 from litellm import completion
 from gpt4all import GPT4All, Embed4All
 
-from reverie.backend_server.persona.prompt_template.gpt_structure import temp_sleep
+from reverie.backend_server.persona.prompt_template.gpt_structure_llama import temp_sleep
 from reverie.backend_server.utils import *
 
 openai.api_key = random.choice(openai_api_key)

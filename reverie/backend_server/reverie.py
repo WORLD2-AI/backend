@@ -470,7 +470,6 @@ class ReverieServer:
                     # Example: run 1000
                     int_count = int(sim_command.split()[-1])
                     rs.start_server(int_count)
-                    self.save()
 
                 elif ("print persona schedule"
                       in sim_command[:22].lower()):
@@ -606,7 +605,7 @@ class ReverieServer:
 if __name__ == '__main__':
     # rs = ReverieServer("base_the_ville_isabella_maria_klaus",
     #                    "July1_the_ville_isabella_maria_klaus-step-3-1")
-    rs = ReverieServer("base_the_ville_n25-test5",
+    rs = ReverieServer("base_the_ville_n25-test",
                        "base_the_ville_n25-test9")
     rs.open_server()
 

@@ -14,7 +14,7 @@ from random import random
 sys.path.append('../../')
 
 from global_methods import *
-from persona.prompt_template.gpt_structure import *
+from persona.prompt_template.gpt_structure_llama import *
 from persona.prompt_template.print_prompt import *
 
 
@@ -55,12 +55,14 @@ def run_gpt_prompt_wake_up_hour(persona, test_input=None, verbose=False):
                         persona.scratch.get_str_firstname()]
         return prompt_input
 
-    def __func_clean_up(gpt_response, prompt=""):
+    def __func_clean_up(gpt_response:str, prompt=""):
         # reg match hour
-        gpt_response = re.findall("\d+.*[am|pm]",gpt_response.strip().lower())
-        if len(gpt_response) > 0 :
-            gpt_response = gpt_response[0]
-        cr = int(gpt_response.strip().lower().split("am")[0])
+        match = re.findall("\d+.*[am|pm]",gpt_response.strip().lower())
+        if len(match) > 0 :
+            gpt_response = match[0]
+            gpt_response = gpt_response.removesuffix("am")
+            gpt_response = gpt_response.removesuffix("pm")
+        cr = int(gpt_response)
         return cr
 
     def __func_validate(gpt_response, prompt=""):
@@ -142,7 +144,7 @@ def run_gpt_prompt_daily_plan(persona,
               'relax and watch TV from 7:00 pm to 8:00 pm',
               'go to bed at 11:00 pm']
         return fs
-
+    logger_info("get daily plan:start")
     gpt_param = {"engine": "gpt-4o", "max_tokens": 500,
                  "temperature": 1, "top_p": 1, "stream": False,
                  "frequency_penalty": 0, "presence_penalty": 0, "stop": None}
@@ -156,9 +158,7 @@ def run_gpt_prompt_daily_plan(persona,
     # output = ([f"wake up and complete the morning routine at {wake_up_hour}:00 am"]
     #           + output)
 
-    if debug or verbose:
-        print_run_prompts(prompt_template, persona, gpt_param,
-                          prompt_input, prompt, output)
+    logger_info("get daily plan result: ",output)
 
     return output, [output, prompt, gpt_param, prompt_input, fail_safe]
 
@@ -178,10 +178,10 @@ def run_gpt_prompt_generate_hourly_schedule(persona,
                             test_input=None):
         if test_input: return test_input
         schedule_format = ""
-        for i in hour_str:
-            schedule_format += f"[{persona.scratch.get_str_curr_date_str()} -- {i}]"
-            schedule_format += f" Activity: [Fill in]\n"
-        schedule_format = schedule_format[:-1]
+        # for i in hour_str:
+        #     schedule_format += f"[{persona.scratch.get_str_curr_date_str()} -- {i}]"
+        #     schedule_format += f" Activity: [Fill in]\n"
+        # schedule_format = schedule_format[:-1]
 
         intermission_str = f"Here the originally intended hourly breakdown of"
         intermission_str += f" {persona.scratch.get_str_firstname()}'s schedule today: "
@@ -199,11 +199,8 @@ def run_gpt_prompt_generate_hourly_schedule(persona,
                 prior_schedule += f" {persona.scratch.get_str_firstname()}"
                 prior_schedule += f" is {i}\n"
 
-        prompt_ending = f"[(ID:{get_random_alphanumeric()})"
-        prompt_ending += f" {persona.scratch.get_str_curr_date_str()}"
-        prompt_ending += f" -- {curr_hour_str}] Activity:"
-        prompt_ending += f" {persona.scratch.get_str_firstname()} is"
-
+        prompt_ending = f"output what {persona.scratch.get_str_firstname()} will do at {curr_hour_str},output formate should like  ["
+        prompt_ending += f" {persona.scratch.get_str_curr_date_str()} -- {curr_hour_str}] Activity:{persona.scratch.get_str_firstname()} is do something"
         if intermission2:
             intermission2 = f"\n{intermission2}"
 
@@ -288,8 +285,8 @@ def run_gpt_prompt_generate_hourly_schedule(persona,
     output = safe_generate_response(prompt, gpt_param, 5, fail_safe,
                                     __func_validate, __func_clean_up)
 
-    if debug or verbose:
-        print_run_prompts(prompt_template, persona, gpt_param,
+
+    logger_info("run_gpt_prompt_generate_hourly_schedule result:",prompt_template, persona, gpt_param,
                           prompt_input, prompt, output)
 
     return output, [output, prompt, gpt_param, prompt_input, fail_safe]
@@ -327,14 +324,13 @@ def run_gpt_prompt_task_decomp(persona,
 
         curr_time_range = ""
 
-        print ("DEBUG")
-        print (persona.scratch.f_daily_schedule_hourly_org)
-        print (all_indices)
+        logger_info (persona.scratch.f_daily_schedule_hourly_org)
+        logger_info (all_indices)
 
         summ_str = f'Today is {persona.scratch.curr_time.strftime("%B %d, %Y")}. '
         summ_str += f'From '
         for index in all_indices:
-            print ("index", index)
+            logger_info ("index", index)
             if index < len(persona.scratch.f_daily_schedule_hourly_org):
                 start_min = 0
                 for i in range(index):
@@ -363,12 +359,8 @@ def run_gpt_prompt_task_decomp(persona,
         prompt_input += [persona.scratch.get_str_firstname()]
         return prompt_input
 
-    def __func_clean_up(gpt_response, prompt=""):
-        print ("TOODOOOOOO")
-        print (gpt_response)
-        print ("-==- -==- -==- ")
-
-        # TODO SOMETHING HERE sometimes fails... See screenshot
+    def __func_clean_up(gpt_response:str, prompt=""):
+        gpt_response = gpt_response.removeprefix("1)")
         temp = [i.strip() for i in gpt_response.split("\n")]
         _cr = []
         cr = []
@@ -393,7 +385,7 @@ def run_gpt_prompt_task_decomp(persona,
             cr += [[task, duration]]
 
         total_expected_min = int(prompt.split("(total duration in minutes")[-1]
-                                 .split("):")[0].strip())
+                                 .split("),")[0].strip())
 
         # TODO -- now, you need to make sure that this is the same as the sum of
         #         the current action sequence.
@@ -443,38 +435,22 @@ def run_gpt_prompt_task_decomp(persona,
     gpt_param = {"engine": "gpt-4o", "max_tokens": 1000,
                  "temperature": 0, "top_p": 1, "stream": False,
                  "frequency_penalty": 0, "presence_penalty": 0, "stop": None}
-    prompt_template = f"{fs_back_end}/persona/prompt_template/v2/task_decomp_v3.txt"
+    prompt_template = f"{fs_back_end}/persona/prompt_template/v2/task_decomp_v4.txt"
     prompt_input = create_prompt_input(persona, task, duration)
     prompt = generate_prompt(prompt_input, prompt_template)
     fail_safe = get_fail_safe()
-
-    print ("?????")
-    print (prompt)
     output = safe_generate_response(prompt, gpt_param, 5, get_fail_safe(),
                                     __func_validate, __func_clean_up)
 
-    # TODO THERE WAS A BUG HERE...
-    # This is for preventing overflows...
-    """
-    File "/Users/joonsungpark/Desktop/Stanford/Projects/
-    generative-personas/src_exploration/reverie_simulation/
-    brain/get_next_action_v3.py", line 364, in run_gpt_prompt_task_decomp
-    fin_output[-1][1] += (duration - ftime_sum)
-    IndexError: list index out of range
-    """
 
-    print ("IMPORTANT VVV DEBUG")
-
-    # print (prompt_input)
-    # print (prompt)
-    print (output)
+    logger_info ("run_gpt_prompt_task_decomp result:",output)
 
     fin_output = []
     time_sum = 0
     for i_task, i_duration in output:
         time_sum += i_duration
-        # HM?????????
-        # if time_sum < duration:
+        i_task = i_task.removeprefix(persona.scratch.get_str_firstname()+" is")
+        i_task = i_task.strip()
         if time_sum <= duration:
             fin_output += [[i_task, i_duration]]
         else:
@@ -496,8 +472,8 @@ def run_gpt_prompt_task_decomp(persona,
     output = ret
 
 
-    if debug or verbose:
-        print_run_prompts(prompt_template, persona, gpt_param,
+    # if debug or verbose:
+    logger_info(prompt_template, persona, gpt_param,
                           prompt_input, prompt, output)
 
     return output, [output, prompt, gpt_param, prompt_input, fail_safe]
@@ -561,19 +537,19 @@ def run_gpt_prompt_action_sector(action_description,
         return prompt_input
 
 
-
-
-
-
-
-    def __func_clean_up(gpt_response, prompt=""):
-        cleaned_response = gpt_response.split("}")[0]
-        return cleaned_response
-
+    def __func_clean_up(gpt_response:str, prompt=""):
+        gpt_response = gpt_response.strip()
+        pattern = r'\{([\s\S]+)\}'
+        match = re.findall(pattern,gpt_response)
+        if match and len(match) > 0  :
+            gpt_response = match[0]
+            gpt_response = gpt_response.replace("{","")
+            gpt_response = gpt_response.replace("}","")
+            return gpt_response.strip()
     def __func_validate(gpt_response, prompt=""):
         if len(gpt_response.strip()) < 1:
             return False
-        if "}" not in gpt_response:
+        if "}" not in gpt_response or "{" not in gpt_response:
             return False
         if "," in gpt_response:
             return False
@@ -696,14 +672,19 @@ def run_gpt_prompt_action_arena(action_description,
 
         return prompt_input
 
-    def __func_clean_up(gpt_response, prompt=""):
-        cleaned_response = gpt_response.split("}")[0]
-        return cleaned_response
-
+    def __func_clean_up(gpt_response:str, prompt=""):
+        gpt_response = gpt_response.strip()
+        pattern = r'\{([\s\S]+)\}'
+        match = re.findall(pattern,gpt_response)
+        if match and len(match) > 0  :
+            gpt_response = match[0]
+            gpt_response = gpt_response.replace("{","")
+            gpt_response = gpt_response.replace("}","")
+            return gpt_response.strip()
     def __func_validate(gpt_response, prompt=""):
         if len(gpt_response.strip()) < 1:
             return False
-        if "}" not in gpt_response:
+        if "}" not in gpt_response or "{" not in gpt_response:
             return False
         if "," in gpt_response:
             return False
@@ -716,21 +697,21 @@ def run_gpt_prompt_action_arena(action_description,
     gpt_param = {"engine": "gpt-4o", "max_tokens": 100,
                  "temperature": 0, "top_p": 1, "stream": False,
                  "frequency_penalty": 0, "presence_penalty": 0, "stop": None}
-    prompt_template = f"{fs_back_end}/persona/prompt_template/v1/action_location_object_vMar11.txt"
+    prompt_template = f"{fs_back_end}/persona/prompt_template/v1/action_location_object_vMar12.txt"
     prompt_input = create_prompt_input(action_description, persona, maze, act_world, act_sector)
     prompt = generate_prompt(prompt_input, prompt_template)
 
     fail_safe = get_fail_safe()
     output = safe_generate_response(prompt, gpt_param, 5, fail_safe,
                                     __func_validate, __func_clean_up)
-    print (output)
+    # print (output)
     # y = f"{act_world}:{act_sector}"
     # x = [i.strip() for i in persona.s_mem.get_str_accessible_sector_arenas(y).split(",")]
     # if output not in x:
     #   output = random.choice(x)
 
-    if debug or verbose:
-        print_run_prompts(prompt_template, persona, gpt_param,
+    # if debug or verbose:
+    logger_info(prompt_template, persona, gpt_param,
                           prompt_input, prompt, output)
 
     return output, [output, prompt, gpt_param, prompt_input, fail_safe]
@@ -838,7 +819,6 @@ def run_gpt_prompt_pronunciatio(action_description, persona, verbose=False):
         return True
         return True
 
-    print ("asdhfapsh8p9hfaiafdsi;ldfj as DEBUG 4") ########
     gpt_param = {"engine": "gpt-4o", "max_tokens": 100,
                  "temperature": 0, "top_p": 1, "stream": False,
                  "frequency_penalty": 0, "presence_penalty": 0, "stop": None}
@@ -896,10 +876,16 @@ def run_gpt_prompt_event_triple(action_description, persona, verbose=False):
                         persona.name]
         return prompt_input
 
-    def __func_clean_up(gpt_response, prompt=""):
+    def __func_clean_up(gpt_response:str, prompt=""):
         cr = gpt_response.strip()
-        cr = [i.strip() for i in cr.split(")")[0].split(",")]
-        return cr
+        matched = re.findall(r'\([\s\S]+\)',cr)
+        if matched and len(matched) > 0 :
+            cr = matched[0]
+        cr = cr.removeprefix("(")
+        cr = cr.removesuffix(")")
+        cr = [i.strip() for i in cr.split(",")]
+        return cr[1:]
+
 
     def __func_validate(gpt_response, prompt=""):
         try:
@@ -958,9 +944,8 @@ def run_gpt_prompt_event_triple(action_description, persona, verbose=False):
                                     __func_validate, __func_clean_up)
     output = (persona.name, output[0], output[1])
 
-    if debug or verbose:
-        print_run_prompts(prompt_template, persona, gpt_param,
-                          prompt_input, prompt, output)
+    # if debug or verbose:
+    logger_info("run_gpt_prompt_event_triple result:", prompt, output)
 
     return output, [output, prompt, gpt_param, prompt_input, fail_safe]
 
@@ -1014,7 +999,6 @@ def run_gpt_prompt_act_obj_desc(act_game_object, act_desp, persona, verbose=Fals
             return False
         return True
 
-    print ("asdhfapsh8p9hfaiafdsi;ldfj as DEBUG 6") ########
     gpt_param = {"engine": "gpt-4o", "max_tokens": 100,
                  "temperature": 0, "top_p": 1, "stream": False,
                  "frequency_penalty": 0, "presence_penalty": 0, "stop": None}
@@ -1063,10 +1047,15 @@ def run_gpt_prompt_act_obj_event_triple(act_game_object, act_obj_desc, persona, 
                         act_game_object]
         return prompt_input
 
-    def __func_clean_up(gpt_response, prompt=""):
+    def __func_clean_up(gpt_response:str, prompt=""):
         cr = gpt_response.strip()
-        cr = [i.strip() for i in cr.split(")")[0].split(",")]
-        return cr
+        matched = re.findall(r'\([\s\S]+\)',cr)
+        if matched and len(matched) > 0 :
+            cr = matched[0]
+        cr = cr.removeprefix("(")
+        cr = cr.removesuffix(")")
+        cr = [i.strip() for i in cr.split(",")]
+        return cr[1:]
 
     def __func_validate(gpt_response, prompt=""):
         try:
@@ -1091,9 +1080,7 @@ def run_gpt_prompt_act_obj_event_triple(act_game_object, act_obj_desc, persona, 
                                     __func_validate, __func_clean_up)
     output = (act_game_object, output[0], output[1])
 
-    if debug or verbose:
-        print_run_prompts(prompt_template, persona, gpt_param,
-                          prompt_input, prompt, output)
+    logger_info(persona, output)
 
     return output, [output, prompt, gpt_param, prompt_input, fail_safe]
 
@@ -1639,7 +1626,6 @@ def run_gpt_prompt_summarize_conversation(persona, conversation, test_input=None
             return False
 
 
-    print ("asdhfapsh8p9hfaiafdsi;ldfj as DEBUG 11") ########
     gpt_param = {"engine": "gpt-4o", "max_tokens": 100,
                  "temperature": 0, "top_p": 1, "stream": False,
                  "frequency_penalty": 0, "presence_penalty": 0, "stop": None}
@@ -1965,7 +1951,6 @@ def run_gpt_prompt_thought_poignancy(persona, event_description, test_input=None
         except:
             return False
 
-    print ("asdhfapsh8p9hfaiafdsi;ldfj as DEBUG 8") ########
     gpt_param = {"engine": "gpt-4o", "max_tokens": 100,
                  "temperature": 0, "top_p": 1, "stream": False,
                  "frequency_penalty": 0, "presence_penalty": 0, "stop": None}
@@ -2011,6 +1996,8 @@ def run_gpt_prompt_chat_poignancy(persona, event_description, test_input=None, v
         return prompt_input
 
     def __func_clean_up(gpt_response, prompt=""):
+        if isinstance(gpt_response,int):
+            return gpt_response
         gpt_response = int(gpt_response.strip())
         return gpt_response
 
@@ -2037,7 +2024,6 @@ def run_gpt_prompt_chat_poignancy(persona, event_description, test_input=None, v
         except:
             return False
 
-    print ("asdhfapsh8p9hfaiafdsi;ldfj as DEBUG 9") ########
     gpt_param = {"engine": "gpt-4o", "max_tokens": 100,
                  "temperature": 0, "top_p": 1, "stream": False,
                  "frequency_penalty": 0, "presence_penalty": 0, "stop": None}
@@ -2113,7 +2099,6 @@ def run_gpt_prompt_focal_pt(persona, statements, n, test_input=None, verbose=Fal
             return False
 
 
-    print ("asdhfapsh8p9hfaiafdsi;ldfj as DEBUG 12") ########
     gpt_param = {"engine": "gpt-4o", "max_tokens": 100,
                  "temperature": 0, "top_p": 1, "stream": False,
                  "frequency_penalty": 0, "presence_penalty": 0, "stop": None}
@@ -2232,7 +2217,6 @@ def run_gpt_prompt_agent_chat_summarize_ideas(persona, target_persona, statement
         except:
             return False
 
-    print ("asdhfapsh8p9hfaiafdsi;ldfj as DEBUG 17") ########
     gpt_param = {"engine": "gpt-4o", "max_tokens": 100,
                  "temperature": 0, "top_p": 1, "stream": False,
                  "frequency_penalty": 0, "presence_penalty": 0, "stop": None}
@@ -2300,7 +2284,6 @@ def run_gpt_prompt_agent_chat_summarize_relationship(persona, target_persona, st
         except:
             return False
 
-    print ("asdhfapsh8p9hfaiafdsi;ldfj as DEBUG 18") ########
     gpt_param = {"engine": "gpt-4o", "max_tokens": 100,
                  "temperature": 0, "top_p": 1, "stream": False,
                  "frequency_penalty": 0, "presence_penalty": 0, "stop": None}
@@ -2509,7 +2492,6 @@ def run_gpt_prompt_summarize_ideas(persona, statements, question, test_input=Non
         except:
             return False
 
-    print ("asdhfapsh8p9hfaiafdsi;ldfj as DEBUG 16") ########
     gpt_param = {"engine": "gpt-4o", "max_tokens": 50,
                  "temperature": 0, "top_p": 1, "stream": False,
                  "frequency_penalty": 0, "presence_penalty": 0, "stop": None}
@@ -2728,7 +2710,6 @@ def run_gpt_prompt_memo_on_convo(persona, all_utt, test_input=None, verbose=Fals
             return False
 
 
-    print ("asdhfapsh8p9hfaiafdsi;ldfj as DEBUG 15") ########
     gpt_param = {"engine": "gpt-4o", "max_tokens": 50,
                  "temperature": 0, "top_p": 1, "stream": False,
                  "frequency_penalty": 0, "presence_penalty": 0, "stop": None}

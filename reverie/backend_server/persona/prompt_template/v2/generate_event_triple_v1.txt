@@ -23,8 +23,13 @@ Output: (Michael Bernstein, write, email)
 Input: Percy Liang is teaching students in a classroom. 
 Output: (Percy Liang, teach, students)
 ---
+Input: some subject is being used for doing somthing.
+Output: (some subject, is, used)
+---
 Input: Merrie Morris is running on a treadmill. 
 Output: (Merrie Morris, run, treadmill)
 ---
+
+Output should only include result and formate like (subject, is ,object),but no more reason.
 Input: !<INPUT 0>! is !<INPUT 1>!. 
 Output: (!<INPUT 2>!,

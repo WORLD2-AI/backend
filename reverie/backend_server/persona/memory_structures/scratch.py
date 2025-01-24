@@ -333,12 +333,12 @@ class Scratch:
     today_min_elapsed += self.curr_time.minute
     today_min_elapsed += advance
 
-    x = 0
-    for task, duration in self.f_daily_schedule: 
-      x += duration
-    x = 0
-    for task, duration in self.f_daily_schedule_hourly_org: 
-      x += duration
+    # x = 0
+    # for task, duration in self.f_daily_schedule: 
+    #   x += duration
+    # x = 0
+    # for task, duration in self.f_daily_schedule_hourly_org: 
+    #   x += duration
 
     # We then calculate the current index based on that. 
     curr_index = 0
