@@ -306,9 +306,9 @@ def generate_convo_summary(persona, convo):
   return convo_summary
 
 
-def generate_decide_to_talk(init_persona, target_persona, retrieved): 
-  x =run_gpt_prompt_decide_to_talk(init_persona, target_persona, retrieved)[0]
-  if debug: print ("GNS FUNCTION: <generate_decide_to_talk>")
+def generate_decide_to_talk(init_persona, target_persona,retrieved): 
+  x = run_gpt_prompt_decide_to_talk(init_persona, target_persona,retrieved)[0]
+  logger_info(f"generate_decide_to_talk result:{x}")
 
   if x == "yes": 
     return True
@@ -882,7 +882,7 @@ def _chat_react(maze, persona, focused_event, reaction_mode, personas):
     chatting_end_time = temp_curr_time + datetime.timedelta(minutes=inserted_act_dur)
   else: 
     chatting_end_time = curr_time + datetime.timedelta(minutes=inserted_act_dur)
-
+  persona.scratch.chatting_end_time = chatting_end_time
   for role, p in [("init", init_persona), ("target", target_persona)]: 
     if role == "init": 
       act_address = f"<persona> {target_persona.name}"

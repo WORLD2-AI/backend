@@ -1,51 +1,288 @@
 {
-  "vision_r": 8, 
-  "att_bandwidth": 8, 
-  "retention": 8, 
-  "curr_time": null, 
-  "curr_tile": null, 
-  "daily_plan_req": "Ayesha Khan goes to the library at Oak Hill College to take classes from 10am to 2pm, and then spends her days studying at the library.", 
-  "name": "Ayesha Khan", 
-  "first_name": "Ayesha", 
-  "last_name": "Khan", 
-  "age": 20, 
-  "innate": "curious, determined, independent", 
-  "learned": "Ayesha Khan is a college student who loves to explore literature. She is curious and determined to understand the nuances of each work.", 
-  "currently": "Ayesha Khan is researching for her senior thesis on the use of language in Shakespeare’s plays. She is also taking classes to learn more about writing.", 
-  "lifestyle": "Ayesha Khan goes to bed around 10pm, awakes up around 6am, eats dinner around 5pm.", 
-  "living_area": "the Ville:Dorm for Oak Hill College:Ayesha Khan's room", 
+  "vision_r": 8,
+  "att_bandwidth": 8,
+  "retention": 8,
+  "curr_time": "January 25, 2025, 10:59:49",
+  "curr_tile": [
+    113,
+    27
+  ],
+  "daily_plan_req": "Ayesha Khan goes to the library at Oak Hill College to take classes from 10am to 2pm, and then spends her days studying at the library.",
+  "name": "Ayesha Khan",
+  "first_name": "Ayesha",
+  "last_name": "Khan",
+  "age": 20,
+  "innate": "curious, determined, independent",
+  "learned": "Ayesha Khan is a college student who loves to explore literature. She is curious and determined to understand the nuances of each work.",
+  "currently": "Ayesha Khan is researching for her senior thesis on the use of language in Shakespeare\u2019s plays. She is also taking classes to learn more about writing.",
+  "lifestyle": "Ayesha Khan goes to bed around 10pm, awakes up around 6am, eats dinner around 5pm.",
+  "living_area": "the Ville:Dorm for Oak Hill College:Ayesha Khan's room",
   "concept_forget": 100,
   "daily_reflection_time": 180,
   "daily_reflection_size": 5,
   "overlap_reflect_th": 4,
-  "kw_strg_event_reflect_th": 10, 
-  "kw_strg_thought_reflect_th": 9, 
-
+  "kw_strg_event_reflect_th": 10,
+  "kw_strg_thought_reflect_th": 9,
   "recency_w": 1,
   "relevance_w": 1,
   "importance_w": 1,
   "recency_decay": 0.995,
   "importance_trigger_max": 250,
-  "importance_trigger_curr": 250,
-  "importance_ele_n": 0, 
-  "thought_count": 5, 
-  
-  "daily_req": [], 
-  "f_daily_schedule": [],
-  "f_daily_schedule_hourly_org": [],
-  "act_address": null, 
-  "act_start_time": null, 
-  "act_duration": null, 
-  "act_description": null, 
-  "act_pronunciatio": null, 
-  "act_event": ["Ayesha Khan", null, null], 
-  "act_obj_description": null, 
-  "act_obj_pronunciatio": null, 
-  "act_obj_event": [null, null, null], 
-  "chatting_with": null, 
-  "chat": null,
-  "chatting_with_buffer": {}, 
-  "chatting_end_time": null,
-  "act_path_set": false, 
+  "importance_trigger_curr": 199,
+  "importance_ele_n": 21,
+  "thought_count": 5,
+  "daily_req": [
+    "Wake up and complete the morning routine at 6:00 am.",
+    "Have breakfast and review notes for the day at 6:30 am.",
+    "Travel to Oak Hill College library at 9:00 am.",
+    "Attend classes at the library from 10:00 am to 2:00 pm.",
+    "Have lunch at 2:30 pm.",
+    "Research for senior thesis at the library from 3:00 pm to 5:00 pm.",
+    "Have dinner at 5:30 pm.",
+    "Continue studying and writing at the library from 6:00 pm to 8:00 pm.",
+    "Relax and read literature for leisure from 8:00 pm to 9:30 pm.",
+    "Prepare for bed and sleep at 10:00 pm."
+  ],
+  "f_daily_schedule": [
+    [
+      "sleeping",
+      360
+    ],
+    [
+      "waking up and completing her morning routine",
+      60
+    ],
+    [
+      "having breakfast and reviewing notes for the day",
+      60
+    ],
+    [
+      "preparing for her day and organizing her study materials for her classes and thesis research",
+      60
+    ],
+    [
+      "traveling to Oak Hill College library",
+      60
+    ],
+    [
+      "attending classes at the Oak Hill College library (reviewing her notes from the previous class)",
+      10
+    ],
+    [
+      "attending classes at the Oak Hill College library (listening to the professor's lecture on Shakespearean language)",
+      30
+    ],
+    [
+      "attending classes at the Oak Hill College library (participating in a group discussion about the use of metaphors in *Hamlet*)",
+      20
+    ],
+    [
+      "attending classes at the Oak Hill College library (on the way to taking detailed notes on the lecture)",
+      0
+    ],
+    [
+      "attending classes at the Oak Hill College library (conversing about Ayesha Khan and Francisco Lopez discussing their experiences with Shakespeare lectures and improv classes, exploring how these activities influence their confidence and creativity, and brainstorming a potential collaboration combining Shakespeare and improv for a unique project.)",
+      13
+    ],
+    [
+      "attending classes at the Oak Hill College library (asking the professor a question about iambic pentameter)",
+      5
+    ],
+    [
+      "attending classes at the Oak Hill College library (reading a passage from *Macbeth* aloud with her classmates)",
+      15
+    ],
+    [
+      "attending classes at the Oak Hill College library (analyzing the passage for thematic elements)",
+      20
+    ],
+    [
+      "attending classes at the Oak Hill College library (writing a short reflection on the lecture)",
+      15
+    ],
+    [
+      "attending classes at the Oak Hill College library (taking a short break to stretch and hydrate)",
+      10
+    ],
+    [
+      "attending classes at the Oak Hill College library (reviewing the syllabus for upcoming assignments)",
+      10
+    ],
+    [
+      "attending classes at the Oak Hill College library (discussing her thesis topic with a classmate)",
+      15
+    ],
+    [
+      "attending classes at the Oak Hill College library (researching a specific scene from *Othello* for her thesis)",
+      20
+    ],
+    [
+      "attending classes at the Oak Hill College library (jotting down ideas for her thesis outline)",
+      15
+    ],
+    [
+      "attending classes at the Oak Hill College library (listening to a guest speaker discuss Shakespeare's influence on modern literature)",
+      30
+    ],
+    [
+      "attending classes at the Oak Hill College library (summarizing the key points from the guest lecture)",
+      10
+    ],
+    [
+      "having lunch",
+      60
+    ],
+    [
+      "researching for her senior thesis at the Oak Hill College library",
+      120
+    ],
+    [
+      "having dinner",
+      60
+    ],
+    [
+      "continuing to study and write for her senior thesis at the Oak Hill College library",
+      120
+    ],
+    [
+      "relaxing and reading literature for leisure",
+      60
+    ],
+    [
+      "preparing for bed and winding down for the night",
+      60
+    ],
+    [
+      "sleeping",
+      120
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ]
+  ],
+  "f_daily_schedule_hourly_org": [
+    [
+      "sleeping",
+      360
+    ],
+    [
+      "waking up and completing her morning routine",
+      60
+    ],
+    [
+      "having breakfast and reviewing notes for the day",
+      60
+    ],
+    [
+      "preparing for her day and organizing her study materials for her classes and thesis research",
+      60
+    ],
+    [
+      "traveling to Oak Hill College library",
+      60
+    ],
+    [
+      "attending classes at the Oak Hill College library",
+      240
+    ],
+    [
+      "having lunch",
+      60
+    ],
+    [
+      "researching for her senior thesis at the Oak Hill College library",
+      120
+    ],
+    [
+      "having dinner",
+      60
+    ],
+    [
+      "continuing to study and write for her senior thesis at the Oak Hill College library",
+      120
+    ],
+    [
+      "relaxing and reading literature for leisure",
+      60
+    ],
+    [
+      "preparing for bed and winding down for the night",
+      60
+    ],
+    [
+      "sleeping",
+      120
+    ]
+  ],
+  "act_address": "<persona> Francisco Lopez",
+  "act_start_time": "January 25, 2025, 10:57:19",
+  "act_duration": 13,
+  "act_description": "conversing about Ayesha Khan and Francisco Lopez discussing their experiences with Shakespeare lectures and improv classes, exploring how these activities influence their confidence and creativity, and brainstorming a potential collaboration combining Shakespeare and improv for a unique project.",
+  "act_pronunciatio": "\ud83d\udcac",
+  "act_event": [
+    "Ayesha Khan",
+    "chat with",
+    "Francisco Lopez"
+  ],
+  "act_obj_description": null,
+  "act_obj_pronunciatio": null,
+  "act_obj_event": [
+    null,
+    null,
+    null
+  ],
+  "chatting_with": "Francisco Lopez",
+  "chat": [
+    [
+      "Ayesha Khan",
+      "Hi Francisco! I didn\u2019t expect to see you here. How\u2019s the improv class going? It must be so different from what we\u2019re doing in the Shakespeare lecture."
+    ],
+    [
+      "Francisco Lopez",
+      "Hey Ayesha! Yeah, it\u2019s definitely a different vibe\u2014improv is all about being spontaneous and in the moment, while Shakespeare feels so structured and precise. But I\u2019m loving it! The instructor gave me some great feedback today, and I\u2019m starting to feel more confident. How\u2019s the Shakespeare lecture going? Are you enjoying it?"
+    ],
+    [
+      "Ayesha Khan",
+      "It\u2019s going well! I\u2019m really enjoying diving into the nuances of Shakespeare\u2019s language\u2014it\u2019s fascinating how much meaning is packed into every word. But I have to admit, improv sounds like a fun challenge! Do you think it\u2019s helping you with your confidence in other areas too?"
+    ],
+    [
+      "Francisco Lopez",
+      "Absolutely! Improv has been a game-changer for me. It\u2019s not just about being funny\u2014it\u2019s about trusting yourself and going with the flow, which has helped me feel more comfortable in all kinds of situations. Like, even when I\u2019m brainstorming ideas for my web series, I feel more open to trying new things. What about you? Do you think studying Shakespeare has influenced how you approach other subjects or even everyday conversations?"
+    ],
+    [
+      "Ayesha Khan",
+      "That\u2019s amazing to hear! I think studying Shakespeare has definitely made me more attentive to the power of language and how it shapes communication. It\u2019s made me more deliberate in my writing and even in how I express myself in conversations. But I\u2019m curious\u2014do you ever find yourself drawing connections between improv and Shakespeare? Like, maybe the way characters in his plays have to think on their feet in certain scenes?"
+    ],
+    [
+      "Francisco Lopez",
+      "That\u2019s such a great point! I hadn\u2019t thought about it that way, but now that you mention it, there are definitely similarities. Like in Shakespeare\u2019s comedies, characters often have to improvise in tricky situations, and it\u2019s all about timing and delivery\u2014just like in improv! It\u2019s cool how both art forms rely on quick thinking and creativity. Maybe we should collaborate sometime\u2014improv meets Shakespeare? That could be a fun project!"
+    ],
+    [
+      "Ayesha Khan",
+      "That sounds like an amazing idea! A collaboration between improv and Shakespeare could be so unique and creative. I\u2019d love to explore that with you\u2014maybe we could even workshop something for a class project or a performance. What do you think?"
+    ],
+    [
+      "Francisco Lopez",
+      "That sounds awesome! Let\u2019s definitely brainstorm some ideas and see where it takes us. Maybe we can start by picking a scene from Shakespeare and adding some improv twists to it. I\u2019m excited to see how our styles blend!"
+    ],
+    [
+      "Ayesha Khan",
+      "That sounds like a great starting point! Let\u2019s meet up after class next week to discuss ideas and pick a scene. I\u2019m really excited to see how we can combine our perspectives\u2014Shakespeare and improv could create something truly unique!"
+    ],
+    [
+      "Francisco Lopez",
+      "Sounds like a plan! I\u2019ll bring some improv ideas, and you can bring your Shakespeare expertise. Let\u2019s make it something memorable! See you next week!"
+    ]
+  ],
+  "chatting_with_buffer": {
+    "Francisco Lopez": 800
+  },
+  "chatting_end_time": "January 25, 2025, 11:11:00",
+  "act_path_set": true,
   "planned_path": []
 }

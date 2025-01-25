@@ -1,0 +1,61 @@
+{
+  "persona": {
+    "Adam Smith": {
+      "movement": [
+        21,
+        62
+      ],
+      "pronunciatio": "\ud83d\udcd6\ud83d\udca1",
+      "description": "writing and researching for his book on creativity (brainstorming examples of creative individuals to include in his book) @ the Ville:Adam Smith's house:main room:desk",
+      "chat": null
+    },
+    "Arthur Burton": {
+      "movement": [
+        55,
+        20
+      ],
+      "pronunciatio": "\ud83c\udf4b\ud83c\udf4a",
+      "description": "preparing ingredients and setting up the bar for the evening (cutting and storing lemons, limes, and oranges) @ the Ville:The Rose and Crown Pub:pub:refrigerator",
+      "chat": null
+    },
+    "Ayesha Khan": {
+      "movement": [
+        115,
+        26
+      ],
+      "pronunciatio": "\ud83d\udc42\ud83d\udcda",
+      "description": "attending classes at the Oak Hill College library (listening to the professor's lecture on Shakespearean language) @ the Ville:Oak Hill College:classroom:classroom student seating",
+      "chat": null
+    },
+    "Carlos Gomez": {
+      "movement": [
+        94,
+        21
+      ],
+      "pronunciatio": "\ud83d\udcc1\ud83d\udcdd",
+      "description": "writing poetry inspired by nature (saving and organizing the poem in his collection folder) @ the Ville:Carlos Gomez's apartment:main room:desk",
+      "chat": null
+    },
+    "Carmen Ortiz": {
+      "movement": [
+        67,
+        46
+      ],
+      "pronunciatio": "\ud83d\udcb5\ud83e\uddee",
+      "description": "managing Harvey Oak Supply Store and assisting customers (locking the store's front door and turning off the lights) (organizing the cash register and counting the day's earnings) @ the Ville:Harvey Oak Supply Store:supply store:supply store counter",
+      "chat": null
+    },
+    "Francisco Lopez": {
+      "movement": [
+        65,
+        32
+      ],
+      "pronunciatio": "\ud83c\udfad\ud83d\udc65",
+      "description": "attending an improvisational comedy class (performing a short improv scene with a group) @ the Ville:Oak Hill College:hallway:<random>",
+      "chat": null
+    }
+  },
+  "meta": {
+    "curr_time": "January 25, 2025, 10:43:49"
+  }
+}

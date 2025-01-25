@@ -72,10 +72,11 @@ def ChatGPT_request(prompt):
     # openai.api_key = random.choice(openai_api_key)
     print("-------------------request prompt---------------------")
     logger_info(prompt)
+    token =  random.choice(openai_api_key)
     try:
         headers = {
             "Content-Type": "application/json",
-            "Authorization":"Bearer app-cYXRNIAFUZY7ywce7OOkXcN9"
+            "Authorization":"Bearer "+token
         }
         data = {
             "inputs": {"query": prompt},

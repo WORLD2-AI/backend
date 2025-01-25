@@ -5,8 +5,8 @@
         21,
         65
       ],
-      "pronunciatio": "\ud83d\ude34\ud83d\udecc",
-      "description": "sleeping @ the Ville:Adam Smith's house:main room:bed",
+      "pronunciatio": "\ud83d\udcda\ud83d\uddf3\ufe0f",
+      "description": "researching and reading about the local mayor election candidates @ the Ville:Adam Smith's house:main room:desk",
       "chat": null
     },
     "Arthur Burton": {
@@ -14,26 +14,26 @@
         54,
         14
       ],
-      "pronunciatio": "\ud83c\udf7a\ud83d\udeaa",
-      "description": "closing The Rose and Crown Pub, cleaning up, and preparing to head home for the night @ the Ville:The Rose and Crown Pub:pub:behind the bar counter",
+      "pronunciatio": "\ud83d\udccb\ud83c\udf78",
+      "description": "planning the day's specials and organizing the bar inventory @ the Ville:The Rose and Crown Pub:pub:behind the bar counter",
       "chat": null
     },
     "Ayesha Khan": {
       "movement": [
-        119,
+        117,
         61
       ],
-      "pronunciatio": "\ud83d\ude34\ud83d\udecc",
-      "description": "sleeping @ the Ville:Dorm for Oak Hill College:Ayesha Khan's room:bed",
+      "pronunciatio": "\ud83d\udcda\ud83d\udeb6\u200d",
+      "description": "traveling to Oak Hill College library and beginning her study session @ the Ville:Oak Hill College:library:library table",
       "chat": null
     },
     "Carlos Gomez": {
       "movement": [
-        93,
-        18
+        94,
+        19
       ],
-      "pronunciatio": "\ud83d\ude34\ud83d\udecc",
-      "description": "sleeping @ the Ville:Carlos Gomez's apartment:main room:bed",
+      "pronunciatio": "\ud83c\udf73\ud83d\udcd6",
+      "description": "having breakfast and relaxing while reading a poetry collection @ the Ville:Carlos Gomez's apartment:main room:desk",
       "chat": null
     },
     "Carmen Ortiz": {
@@ -41,21 +41,21 @@
         58,
         74
       ],
-      "pronunciatio": "\ud83d\udecc\ud83c\udf19",
-      "description": "winding down and preparing for bed @ the Ville:Tamara Taylor and Carmen Ortiz's house:Carmen Ortiz's room:bed",
+      "pronunciatio": "\ud83d\udc4b\ud83c\udfea",
+      "description": "managing Harvey Oak Supply Store and assisting customers with their needs (greeting customers as they enter the store) @ the Ville:Harvey Oak Supply Store:supply store:supply store counter",
       "chat": null
     },
     "Francisco Lopez": {
       "movement": [
         16,
-        32
+        31
       ],
-      "pronunciatio": "\ud83d\udecc\ud83c\udf19",
-      "description": "winding down and preparing for bed @ the Ville:artist's co-living space:Francisco Lopez's room:bed",
+      "pronunciatio": "\ud83c\udfad\ud83d\udcdd",
+      "description": "preparing for the improvisational comedy class and reviewing notes @ the Ville:artist's co-living space:Francisco Lopez's room:shelf",
       "chat": null
     }
   },
   "meta": {
-    "curr_time": "January 24, 2025, 22:19:37"
+    "curr_time": "January 25, 2025, 09:33:49"
   }
 }

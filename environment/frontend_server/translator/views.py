@@ -277,6 +277,8 @@ def process_environment(request):
 
     data = json.loads(request.body)
     step = data["step"]
+    if step <= 0:
+        step = 1
     sim_code = data["sim_code"]
     environment = data["environment"]
 
@@ -305,6 +307,8 @@ def update_environment(request):
 
     data = json.loads(request.body)
     step = data["step"]
+    if step <= 0:
+        step = 1
     sim_code = data["sim_code"]
 
     response_data = {"<step>": -1}

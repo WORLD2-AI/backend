@@ -15,7 +15,8 @@ Right now, it is !<INPUT 1>!.
 !<INPUT 2>! 
 !<INPUT 3>! 
 
-My question: Let's think step by step. Of the following three options, what should !<INPUT 4>! do?
+Output reason step by step.
+My question: Of the following three options, what should !<INPUT 4>! do?
 Option 1: Wait on !<INPUT 5>! until !<INPUT 6>! is done !<INPUT 7>!
 Option 2: Continue on to !<INPUT 8>! now
 

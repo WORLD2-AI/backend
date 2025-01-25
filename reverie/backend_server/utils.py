@@ -3,9 +3,10 @@ import json
 import re
 import logging
 import traceback
-openai_api_key = [
-    "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"
-]
+# openai_api_key = [
+#     "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"
+# ]
+openai_api_key = ["app-cYXRNIAFUZY7ywce7OOkXcN9"]
 # Put your name
 key_owner = "test_sim_ai"
 
