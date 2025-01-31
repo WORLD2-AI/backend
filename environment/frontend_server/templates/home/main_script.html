@@ -451,7 +451,7 @@
 	        initials = (
 	          (initials.shift()?.[1] || '') + (initials.pop()?.[1] || '')
 	        ).toUpperCase();
-	        pronunciatios[curr_persona_name].setText(initials + ": " + pronunciatio_content);
+            pronunciatios[curr_persona_name].setText(initials + ": " + pronunciatio_content + "\n"+splitAndWrap(inner_activity_content,20));
 	      }
 
 	      console.log(curr_persona_name);
@@ -547,6 +547,19 @@
 	  }
 	}
 
+    /**
+     * strings are split by a specified length
+     * @param text
+     * @param n
+     * @returns {string}
+     */
+    function splitAndWrap(text, n = 7) {
+         let result = [];
+         for (let i = 0; i < text.length; i += n) {
+              result.push(text.substring(i, i + n));
+        }
+        return result.join('\n');
+    }
 	// Control button binders
 	var play_button=document.getElementById("play_button");
 	var pause_button=document.getElementById("pause_button");
