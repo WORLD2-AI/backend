@@ -165,8 +165,8 @@
 	  this.load.image("CuteRPG_Mountains_B", "{% static 'assets/the_ville/visuals/map_assets/cute_rpg_word_VXAce/tilesets/CuteRPG_Mountains_B.png' %}");
 	  this.load.image("CuteRPG_Desert_B", "{% static 'assets/the_ville/visuals/map_assets/cute_rpg_word_VXAce/tilesets/CuteRPG_Desert_B.png' %}");
 	  this.load.image("CuteRPG_Forest_C", "{% static 'assets/the_ville/visuals/map_assets/cute_rpg_word_VXAce/tilesets/CuteRPG_Forest_C.png' %}");
-	  this.load.image("Road_test1024", "{% static 'assets/the_ville/visuals/map_assets/Road_test1024.png' %}");
-	  this.load.image("height96_trees_mega_pack_cc_by_3_0", "{% static 'assets/the_ville/visuals/map_assets/height96_trees_mega_pack_cc_by_3_0.png' %}");
+	  this.load.image("CityRoad", "{% static 'assets/the_ville/visuals/map_assets/Road_test1024.png' %}");
+	  this.load.image("Trees", "{% static 'assets/the_ville/visuals/map_assets/height96_trees_mega_pack_cc_by_3_0.png' %}");
 
 	  // Joon: This is the export json file you get from Tiled. 
 	  this.load.tilemapTiledJSON("map", "{% static 'assets/the_ville/visuals/the_ville_jan7-2.json' %}");
@@ -211,6 +211,8 @@
 	  const CuteRPG_Mountains_B = map.addTilesetImage("CuteRPG_Mountains_B", "CuteRPG_Mountains_B");
 	  const CuteRPG_Desert_B = map.addTilesetImage("CuteRPG_Desert_B", "CuteRPG_Desert_B");
 	  const CuteRPG_Forest_C = map.addTilesetImage("CuteRPG_Forest_C", "CuteRPG_Forest_C");
+	  const CityRoad = map.addTilesetImage("CityRoad", "CityRoad");
+	  const Trees = map.addTilesetImage("Trees", "Trees");
 
 	  // The first parameter is the layer name (or index) taken from Tiled, the 
 	  // second parameter is the tileset you set above, and the final two 
@@ -221,11 +223,12 @@
 	  //       named things there. 
 	  let tileset_group_1 = [CuteRPG_Field_B, CuteRPG_Field_C, CuteRPG_Harbor_C, CuteRPG_Village_B, 
 	  											 CuteRPG_Forest_B, CuteRPG_Desert_C, CuteRPG_Mountains_B, CuteRPG_Desert_B, CuteRPG_Forest_C,
-	  											 interiors_pt1, interiors_pt2, interiors_pt3, interiors_pt4, interiors_pt5, walls];
+	  											 interiors_pt1, interiors_pt2, interiors_pt3, interiors_pt4, interiors_pt5, walls, CityRoad];
 	  const bottomGroundLayer = map.createLayer("Bottom Ground", tileset_group_1, 0, 0);
 	  const exteriorGroundLayer = map.createLayer("Exterior Ground", tileset_group_1, 0, 0);
 	  const exteriorDecorationL1Layer = map.createLayer("Exterior Decoration L1", tileset_group_1, 0, 0);
 	  const exteriorDecorationL2Layer = map.createLayer("Exterior Decoration L2", tileset_group_1, 0, 0);
+	  const cityRoadLayer = map.createLayer("City Road", tileset_group_1, 0, 0);
 	  const interiorGroundLayer = map.createLayer("Interior Ground", tileset_group_1, 0, 0);
 	  const wallLayer = map.createLayer("Wall", [CuteRPG_Field_C, walls], 0, 0);
 	  const interiorFurnitureL1Layer = map.createLayer("Interior Furniture L1", tileset_group_1, 0, 0);
