@@ -2627,7 +2627,7 @@
          "imageheight":896,
          "imagewidth":896,
          "margin":0,
-         "name":"City Objects",
+         "name":"CityObject",
          "spacing":0,
          "tilecount":784,
          "tileheight":32,

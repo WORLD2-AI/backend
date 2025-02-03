@@ -63,7 +63,7 @@
  <tileset firstgid="34485" name="CityRoad" tilewidth="32" tileheight="32" tilecount="1024" columns="32">
   <image source="map_assets/Road_test1024.png" trans="000000" width="1024" height="1024"/>
  </tileset>
- <tileset firstgid="35509" name="City Objects" tilewidth="32" tileheight="32" tilecount="784" columns="28">
+ <tileset firstgid="35509" name="CityObject" tilewidth="32" tileheight="32" tilecount="784" columns="28">
   <image source="map_assets/city_extension_prev.png" trans="000000" width="896" height="896"/>
  </tileset>
  <tileset firstgid="36293" name="interiors_pt7" tilewidth="32" tileheight="32" tilecount="54" columns="6">
