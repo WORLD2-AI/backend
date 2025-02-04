@@ -72,7 +72,7 @@
 	    preload: preload,
 	    create: create,
 	    update: update },
-	  scale: {zoom: 0.5} };
+	  scale: {zoom: 0.25} };
 
 	// Creating the game instance and setting up the main Phaser variables that  
 	// will be used in it. 
@@ -459,7 +459,7 @@
 	        movement_target[curr_persona_name] = [curr_x * tile_width, 
 	                                              curr_y * tile_width]; 
 	        let pronunciatio_content = execute_movement["persona"][curr_persona_name]["pronunciatio"];
-	        // This is what gives the pronunciatio balloon the name initials. We 
+	        // This is what gives the pronunciatio balloon the name initials. We
 	        // use regex to extract the initials of the personas. 
 	        // E.g., "Dolores Murphy" -> "DM"
 	        let rgx = new RegExp(/(\p{L}{1})\p{L}+/, 'gu');
