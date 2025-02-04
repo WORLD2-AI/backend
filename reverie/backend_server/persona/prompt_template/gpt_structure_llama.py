@@ -86,7 +86,7 @@ def ChatGPT_request(prompt):
             # "stream": False
         }
         url = f"{api_url}/v1/completion-messages"
-        response = requests.post(url, headers=headers, data=json.dumps(data),timeout = 30)
+        response = requests.post(url, headers=headers, data=json.dumps(data),timeout = 120)
         
         if response.status_code == 200:
             print("---------------success result ---------------------------------")
@@ -97,9 +97,9 @@ def ChatGPT_request(prompt):
             logger_info(response.json())
             response.raise_for_status()
 
-    except:
-        # print ("ChatGPT ERROR")
-        return "ChatGPT ERROR"
+    except Exception as e:
+        print ("ChatGPT ERROR",e)
+        return ""
 
 
 # def GPT4_safe_generate_response(prompt,

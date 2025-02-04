@@ -213,8 +213,7 @@ class Persona:
 
         # Main cognitive sequence begins here.
         perceived = self.perceive(maze)
-        logger_info("perceived data:")
-        logger_info(perceive)
+        logger_info("perceived data:",perceive)
         retrieved = self.retrieve(perceived)
         logger_info("retrieved data:")
         logger_info(retrieved)

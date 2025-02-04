@@ -1,7 +1,7 @@
 {
   "fork_sim_code": "base_the_ville_n25-test",
-  "start_date": "January 25, 2025",
-  "curr_time": "January 25, 2025, 09:39:59",
+  "start_date": "February 23, 2024",
+  "curr_time": "",
   "sec_per_step": 10,
   "maze_name": "the_ville",
   "persona_names": [
@@ -12,5 +12,5 @@
     "Carmen Ortiz",
     "Francisco Lopez"
   ],
-  "step": 2401
+  "step": 0
 }

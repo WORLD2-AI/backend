@@ -219,6 +219,8 @@ def run_gpt_prompt_generate_hourly_schedule(persona,
         return prompt_input
 
     def __func_clean_up(gpt_response:str, prompt=""):
+        if not gpt_response:
+            raise ValueError("gpt_response is empty")
         if len(gpt_response.split("Activity:")) >= 2:
             gpt_response = gpt_response.split("Activity:")[1]
         cr = gpt_response.strip()

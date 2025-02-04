@@ -6,7 +6,7 @@ import traceback
 # openai_api_key = [
 #     "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"
 # ]
-openai_api_key = ["app-cYXRNIAFUZY7ywce7OOkXcN9"]
+openai_api_key = ["app-YModVQ7H9WeGudJOsLnw3s2I"]
 # Put your name
 key_owner = "test_sim_ai"
 
@@ -18,9 +18,9 @@ fs_storage = "E:\\code\\python\\Town\\environment\\frontend_server\\storage"
 fs_temp_storage = "E:\\code\\python\\Town\\environment\\frontend_server\\temp_storage"
 fs_back_end = "E:\\code\python\\Town\\reverie\\backend_server"
 collision_block_id = "32125"
-# api_url = "http://127.0.0.1:11434"
 emb_url = "http://127.0.0.1:11434"
-api_url = "http://8.130.125.153"
+api_url = "http://127.0.0.1"
+# api_url = "http://8.130.125.153"
 # Verbose 
 debug = True
 logging.basicConfig(level=logging.DEBUG if debug else logging.INFO)
@@ -44,6 +44,8 @@ def filter_result(respone:str):
     respone = respone.strip()
     if respone is None:
         return ""
+    if "</think>" in respone:
+        respone = respone.split("</think>")[1]
     if "**" in respone:
         respone = respone.replace("**","")
     if respone.startswith("```"):
