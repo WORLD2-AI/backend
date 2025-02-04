@@ -197,7 +197,15 @@ Answer: {'''
     cr = [i.strip() for i in cr.split(",")]
     print(cr[1:])
 
+def test_json_data():
+    respone = '```json\n{\n  "output": "Arthur Burton and Francisco Lopez have a collaborative and supportive relationship. They frequently discuss Francisco\'s improv and Shakespeare project, showing mutual interest and engagement in each other\'s creative endeavors. Arthur shares details about his new seasonal cocktail, \'Winter’s Muse,\' indicating a level of trust and openness. They also plan to meet with Carlos and Ayesha to brainstorm ideas for The Rose and Crown, suggesting they work together on shared goals. Overall, they seem to respect and value each other\'s contributions and ideas."\n}\n```'
+    pattern = r'```json([\s\S]+)```'
+    # Extract JSON content
+    match = re.search(pattern, respone)
+    print(match[0])
+    print(match.group(1))
 
 
 if __name__ == "__main__":
-    test()
+    # test()
+    test_json_data()

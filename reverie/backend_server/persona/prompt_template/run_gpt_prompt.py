@@ -1123,7 +1123,7 @@ def run_gpt_prompt_new_decomp_schedule(persona,
             new_plan_init += "\n"
             if count < len(truncated_act_dur) - 1:
                 for_time += datetime.timedelta(minutes=int(i[1]))
-
+        new_plan_init += "Output planned schedule but nothing else , and formate should be time ~ time -- do something (on the way xxxx).\n"
         new_plan_init += (for_time + datetime.timedelta(minutes=int(i[1]))).strftime("%H:%M") + " ~"
 
         prompt_input = [persona_name,
@@ -1141,6 +1141,7 @@ def run_gpt_prompt_new_decomp_schedule(persona,
         return prompt_input
 
     def __func_clean_up(gpt_response, prompt=""):
+        prompt = prompt.split("Output planned schedule but nothing else , and formate should be time ~ time -- do something (on the way xxxx).\n")[0]
         new_schedule = prompt + " " + gpt_response.strip()
         new_schedule = new_schedule.split("The revised schedule:")[-1].strip()
         new_schedule = new_schedule.split("\n")
@@ -1157,7 +1158,6 @@ def run_gpt_prompt_new_decomp_schedule(persona,
             delta_min = int(delta.total_seconds()/60)
             if delta_min < 0: delta_min = 0
             ret += [[action, delta_min]]
-
         return ret
 
     def __func_validate(gpt_response, prompt=""):
@@ -1231,8 +1231,7 @@ def run_gpt_prompt_new_decomp_schedule(persona,
 
 
 
-    if debug or verbose:
-        print_run_prompts(prompt_template, persona, gpt_param,
+    logger_info(prompt_template, persona, gpt_param,
                           prompt_input, prompt, output)
 
     return output, [output, prompt, gpt_param, prompt_input, fail_safe]
@@ -2069,10 +2068,9 @@ def run_gpt_prompt_focal_pt(persona, statements, n, test_input=None, verbose=Fal
         return prompt_input
 
     def __func_clean_up(gpt_response, prompt=""):
-        gpt_response = "1) " + gpt_response.strip()
-        ret = []
-        for i in gpt_response.split("\n"):
-            ret += [i.split(") ")[-1]]
+        if not isinstance(gpt_response,list):
+            raise TypeError(f"run_gpt_prompt_focal_pt result type error: {gpt_response}")
+        ret = [i.strip() for i in gpt_response]
         return ret
 
     def __func_validate(gpt_response, prompt=""):
@@ -2088,8 +2086,7 @@ def run_gpt_prompt_focal_pt(persona, statements, n, test_input=None, verbose=Fal
 
     # ChatGPT Plugin ===========================================================
     def __chat_func_clean_up(gpt_response, prompt=""): ############
-        ret = ast.literal_eval(gpt_response)
-        return ret
+        return __func_clean_up(gpt_response)
 
     def __chat_func_validate(gpt_response, prompt=""): ############
         try:
@@ -2173,8 +2170,7 @@ def run_gpt_prompt_insight_and_guidance(persona, statements, n, test_input=None,
     output = safe_generate_response(prompt, gpt_param, 5, fail_safe,
                                     __func_validate, __func_clean_up)
 
-    if debug or verbose:
-        print_run_prompts(prompt_template, persona, gpt_param,
+    logger_info(prompt_template, persona, gpt_param,
                           prompt_input, prompt, output)
 
     return output, [output, prompt, gpt_param, prompt_input, fail_safe]

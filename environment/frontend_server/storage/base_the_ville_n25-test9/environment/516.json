@@ -7,26 +7,26 @@
   "Arthur Burton": {
     "maze": "the_ville",
     "x": 62,
-    "y": 41
+    "y": 36
   },
   "Ayesha Khan": {
     "maze": "the_ville",
     "x": 113,
-    "y": 26
+    "y": 27
   },
   "Carlos Gomez": {
     "maze": "the_ville",
-    "x": 109,
+    "x": 103,
     "y": 32
   },
   "Carmen Ortiz": {
     "maze": "the_ville",
-    "x": 63,
-    "y": 48
+    "x": 62,
+    "y": 35
   },
   "Francisco Lopez": {
     "maze": "the_ville",
-    "x": 113,
+    "x": 114,
     "y": 26
   }
 }

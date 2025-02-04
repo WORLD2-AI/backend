@@ -19,7 +19,7 @@ from persona.prompt_template.gpt_structure_llama import *
 from persona.cognitive_modules.retrieve import *
 
 def generate_focal_points(persona, n=3): 
-  if debug: print ("GNS FUNCTION: <generate_focal_points>")
+  logger_info("generate_focal_points start")
   
   nodes = [[i.last_accessed, i]
             for i in persona.a_mem.seq_event + persona.a_mem.seq_thought
@@ -36,7 +36,7 @@ def generate_focal_points(persona, n=3):
 
 
 def generate_insights_and_evidence(persona, nodes, n=5): 
-  if debug: print ("GNS FUNCTION: <generate_insights_and_evidence>")
+  logger_info ("generate_insights_and_evidence")
 
   statements = ""
   for count, node in enumerate(nodes): 

@@ -1,32 +1,32 @@
 {
   "Adam Smith": {
     "maze": "the_ville",
-    "x": 21,
-    "y": 63
+    "x": 20,
+    "y": 65
   },
   "Arthur Burton": {
     "maze": "the_ville",
-    "x": 57,
-    "y": 15
+    "x": 59,
+    "y": 43
   },
   "Ayesha Khan": {
     "maze": "the_ville",
-    "x": 117,
-    "y": 57
+    "x": 118,
+    "y": 61
   },
   "Carlos Gomez": {
     "maze": "the_ville",
-    "x": 94,
-    "y": 23
+    "x": 116,
+    "y": 31
   },
   "Carmen Ortiz": {
     "maze": "the_ville",
-    "x": 59,
-    "y": 71
+    "x": 57,
+    "y": 74
   },
   "Francisco Lopez": {
     "maze": "the_ville",
-    "x": 15,
-    "y": 28
+    "x": 16,
+    "y": 32
   }
 }

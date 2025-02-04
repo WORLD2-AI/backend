@@ -2,10 +2,10 @@
   "vision_r": 8,
   "att_bandwidth": 8,
   "retention": 8,
-  "curr_time": "January 25, 2025, 10:59:49",
+  "curr_time": "January 25, 2025, 16:39:49",
   "curr_tile": [
-    62,
-    42
+    54,
+    25
   ],
   "daily_plan_req": "Arthur Burton opens The Rose and Crown Pub at 5pm everyday, and stands at the counter until 10pm, at which point he closes the bar.",
   "name": "Arthur Burton",
@@ -28,8 +28,8 @@
   "importance_w": 1,
   "recency_decay": 0.995,
   "importance_trigger_max": 250,
-  "importance_trigger_curr": 100,
-  "importance_ele_n": 65,
+  "importance_trigger_curr": 239,
+  "importance_ele_n": 8,
   "thought_count": 5,
   "daily_req": [
     "Wake up and complete the morning routine at 7:00 am.",
@@ -94,32 +94,84 @@
       25
     ],
     [
-      "preparing ingredients and setting up the bar for the evening (setting up the bar counter with tools and equipment)",
-      15
+      "preparing ingredients and setting up the bar for the evening (on the way to on the way to setting up the bar counter with tools and equipment)",
+      0
     ],
     [
-      "preparing ingredients and setting up the bar for the evening (checking inventory levels for beer and wine)",
-      20
+      "preparing ingredients and setting up the bar for the evening (conversing about Arthur Burton and Carlos Gomez discussing Carlos's creative writing workshop, a Shakespeare and improv project, and plans to meet at 7pm to try Arthur's new seasonal cocktail while sharing poetry and brainstorming ideas for The Rose and Crown.)",
+      6
     ],
     [
-      "preparing ingredients and setting up the bar for the evening (arranging seating and tables for customers)",
-      15
-    ],
-    [
-      "preparing ingredients and setting up the bar for the evening (wiping down the bar and ensuring cleanliness)",
-      15
-    ],
-    [
-      "preparing ingredients and setting up the bar for the evening (turning on the bar lights and music system)",
+      "preparing ingredients and setting up the bar for the evening (conversing about Arthur Burton thanking Carmen Ortiz for cocktail ingredient recommendations and discussing tips for mixing a new cocktail, with Carmen offering advice on using lavender and bitters and expressing interest in trying the drink at The Rose and Crown later.)  ",
       5
     ],
     [
-      "having lunch",
-      52
+      "preparing ingredients and setting up the bar for the evening (setting up the bar counter with tools and equipment)  ",
+      15
     ],
     [
-      "experimenting with creating a new cocktail recipe",
-      120
+      "preparing ingredients and setting up the bar for the evening (checking inventory levels for beer and wine)  ",
+      20
+    ],
+    [
+      "preparing ingredients and setting up the bar for the evening (on the way to arranging seating and tables for customers) )",
+      0
+    ],
+    [
+      "preparing ingredients and setting up the bar for the evening (conversing about Arthur Burton and Francisco Lopez discussing Francisco's improv and Shakespeare project, Arthur's new seasonal cocktail 'Winter\u2019s Muse,' and their plans to meet with Carlos and Ayesha later to brainstorm ideas for The Rose and Crown.)",
+      8
+    ],
+    [
+      "preparing ingredients and setting up the bar for the evening (arranging seating and tables for customers)  ",
+      15
+    ],
+    [
+      "preparing ingredients and setting up the bar for the evening (wiping down the bar and ensuring cleanliness, turning on the bar lights and music system)",
+      3
+    ],
+    [
+      "experimenting with creating a new cocktail recipe (gathering ingredients for the new cocktail recipe)",
+      10
+    ],
+    [
+      "experimenting with creating a new cocktail recipe (researching flavor combinations for the cocktail)",
+      15
+    ],
+    [
+      "experimenting with creating a new cocktail recipe (mixing a base spirit with a potential flavor pairing)",
+      10
+    ],
+    [
+      "experimenting with creating a new cocktail recipe (tasting the initial mixture and noting adjustments)",
+      10
+    ],
+    [
+      "experimenting with creating a new cocktail recipe (adding a secondary ingredient to enhance the flavor)",
+      10
+    ],
+    [
+      "experimenting with creating a new cocktail recipe (shaking the cocktail to test its texture and balance)",
+      10
+    ],
+    [
+      "experimenting with creating a new cocktail recipe (garnishing the cocktail and evaluating its presentation)",
+      10
+    ],
+    [
+      "experimenting with creating a new cocktail recipe (documenting the recipe and any changes needed)",
+      15
+    ],
+    [
+      "experimenting with creating a new cocktail recipe (cleaning up the workspace and organizing ingredients)",
+      10
+    ],
+    [
+      "experimenting with creating a new cocktail recipe (preparing a second iteration of the cocktail with adjustments)",
+      15
+    ],
+    [
+      "experimenting with creating a new cocktail recipe (finalizing the recipe and storing it for future use)",
+      5
     ],
     [
       "having dinner",
@@ -160,6 +212,18 @@
     [
       "sleeping",
       0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      50
     ],
     [
       "sleeping",
@@ -220,39 +284,31 @@
       60
     ]
   ],
-  "act_address": "the Ville:Harvey Oak Supply Store:supply store:supply store product shelf",
-  "act_start_time": "January 25, 2025, 10:54:09",
+  "act_address": "the Ville:The Rose and Crown Pub:pub:shelf",
+  "act_start_time": "January 25, 2025, 12:31:09",
   "act_duration": 20,
-  "act_description": "preparing ingredients and setting up the bar for the evening (restocking the bar with liquor bottles)",
-  "act_pronunciatio": "\ud83c\udf7e\ud83d\udce6",
+  "act_description": "preparing ingredients and setting up the bar for the evening (checking inventory levels for beer and wine)  ",
+  "act_pronunciatio": "\ud83c\udf7a\ud83c\udf77",
   "act_event": [
     "Arthur Burton",
-    "restock",
-    "liquor bottles"
+    "check",
+    "inventory levels"
   ],
-  "act_obj_description": "being restocked with liquor bottles",
-  "act_obj_pronunciatio": "\ud83c\udf7e\ud83d\udce6",
+  "act_obj_description": "being checked for inventory levels of beer and wine",
+  "act_obj_pronunciatio": "\ud83c\udf7a\ud83d\udcca",
   "act_obj_event": [
-    "supply store product shelf",
+    "shelf",
     "is",
-    "restocked"
+    "checked"
   ],
   "chatting_with": null,
   "chat": null,
   "chatting_with_buffer": {
-    "Carlos Gomez": 383,
-    "Carmen Ortiz": 453
+    "Carlos Gomez": -1017,
+    "Carmen Ortiz": -1065,
+    "Francisco Lopez": -693
   },
   "chatting_end_time": null,
   "act_path_set": true,
-  "planned_path": [
-    [
-      60,
-      43
-    ],
-    [
-      59,
-      43
-    ]
-  ]
+  "planned_path": []
 }

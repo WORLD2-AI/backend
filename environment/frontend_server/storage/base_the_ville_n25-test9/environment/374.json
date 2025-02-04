@@ -11,13 +11,13 @@
   },
   "Ayesha Khan": {
     "maze": "the_ville",
-    "x": 116,
-    "y": 30
+    "x": 119,
+    "y": 27
   },
   "Carlos Gomez": {
     "maze": "the_ville",
-    "x": 94,
-    "y": 21
+    "x": 98,
+    "y": 29
   },
   "Carmen Ortiz": {
     "maze": "the_ville",
@@ -26,7 +26,7 @@
   },
   "Francisco Lopez": {
     "maze": "the_ville",
-    "x": 22,
-    "y": 26
+    "x": 18,
+    "y": 28
   }
 }

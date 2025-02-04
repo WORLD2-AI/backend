@@ -2,10 +2,10 @@
   "vision_r": 8,
   "att_bandwidth": 8,
   "retention": 8,
-  "curr_time": "January 25, 2025, 10:59:49",
+  "curr_time": "January 25, 2025, 16:39:49",
   "curr_tile": [
-    62,
-    48
+    66,
+    46
   ],
   "daily_plan_req": "Carmen opens Harvey Oak Supply Store at 8am, stands behind its counter, and closes it at 6pm, at which point, she likes to go to The Rose and Crown Pub to relax",
   "name": "Carmen Ortiz",
@@ -28,8 +28,8 @@
   "importance_w": 1,
   "recency_decay": 0.995,
   "importance_trigger_max": 250,
-  "importance_trigger_curr": 182,
-  "importance_ele_n": 31,
+  "importance_trigger_curr": 107,
+  "importance_ele_n": 72,
   "thought_count": 5,
   "daily_req": [
     "Wake up and complete the morning routine at 7:00 am.",
@@ -120,24 +120,68 @@
       10
     ],
     [
-      "managing Harvey Oak Supply Store and assisting customers (locking the store's front door and turning off the lights) (double-checking that all store systems (e.g., alarms, lights) are turned off) (organizing the cash register and preparing the deposit)",
-      10
+      "managing Harvey Oak Supply Store and assisting customers (on the way to organizing the cash register and preparing the deposit)",
+      0
     ],
     [
-      "managing Harvey Oak Supply Store and assisting customers (locking the store's front door and turning off the lights) (double-checking that all store systems (e.g., alarms, lights) are turned off) (tidying up the store shelves and ensuring everything is in order)",
+      "managing Harvey Oak Supply Store and assisting customers (conversing about Arthur Burton thanking Carmen Ortiz for cocktail ingredient recommendations and discussing tips for mixing a new cocktail, with Carmen offering advice on using lavender and bitters and expressing interest in trying the drink at The Rose and Crown later.)",
+      4
+    ],
+    [
+      "managing Harvey Oak Supply Store and assisting customers (locking the store's front door and turning off the lights) (organizing the cash register and preparing the deposit)  ",
+      6
+    ],
+    [
+      "managing Harvey Oak Supply Store and assisting customers (locking the store's front door and turning off the lights) (double-checking that all store systems (e.g., alarms, lights) are turned off) (tidying up the store shelves and ensuring everything is in order)  ",
       15
     ],
     [
-      "managing Harvey Oak Supply Store and assisting customers (locking the store's front door and turning off the lights) (double-checking that all store systems (e.g., alarms, lights) are turned off) (reviewing the day's sales and updating inventory records)",
+      "managing Harvey Oak Supply Store and assisting customers (locking the store's front door and turning off the lights) (double-checking that all store systems (e.g., alarms, lights) are turned off) (reviewing the day's sales and updating inventory records)  ",
       10
     ],
     [
-      "managing Harvey Oak Supply Store and assisting customers (locking the store's front door and turning off the lights) (double-checking that all store systems (e.g., alarms, lights) are turned off) (grabbing her belongings and preparing to leave the store)",
-      355
+      "managing Harvey Oak Supply Store and assisting customers (locking the store's front door and turning off the lights) (double-checking that all store systems (e.g., alarms, lights) are turned off) (grabbing her belongings and preparing to leave the store)   (locking the store's front door and turning off the lights)",
+      10
+    ],
+    [
+      "managing Harvey Oak Supply Store and assisting customers (locking the store's front door and turning off the lights) (double-checking that all store systems (e.g., alarms, lights) are turned off) (grabbing her belongings and preparing to leave the store)   (double-checking that all store systems (e.g., alarms, lights) are turned off)",
+      10
+    ],
+    [
+      "managing Harvey Oak Supply Store and assisting customers (locking the store's front door and turning off the lights) (double-checking that all store systems (e.g., alarms, lights) are turned off) (grabbing her belongings and preparing to leave the store)   (grabbing her belongings and preparing to leave the store)",
+      10
+    ],
+    [
+      "managing Harvey Oak Supply Store and assisting customers (locking the store's front door and turning off the lights) (double-checking that all store systems (e.g., alarms, lights) are turned off) (grabbing her belongings and preparing to leave the store)   (reviewing the day's sales and inventory updates)",
+      15
+    ],
+    [
+      "managing Harvey Oak Supply Store and assisting customers (locking the store's front door and turning off the lights) (double-checking that all store systems (e.g., alarms, lights) are turned off) (grabbing her belongings and preparing to leave the store)   (organizing the counter and ensuring it is tidy for the next day)",
+      10
+    ],
+    [
+      "managing Harvey Oak Supply Store and assisting customers (locking the store's front door and turning off the lights) (double-checking that all store systems (e.g., alarms, lights) are turned off) (grabbing her belongings and preparing to leave the store)   (checking the store's email and responding to customer inquiries)",
+      15
+    ],
+    [
+      "managing Harvey Oak Supply Store and assisting customers (locking the store's front door and turning off the lights) (double-checking that all store systems (e.g., alarms, lights) are turned off) (grabbing her belongings and preparing to leave the store)   (preparing a to-do list for the next day)",
+      10
+    ],
+    [
+      "managing Harvey Oak Supply Store and assisting customers (locking the store's front door and turning off the lights) (double-checking that all store systems (e.g., alarms, lights) are turned off) (grabbing her belongings and preparing to leave the store)   (ensuring all perishable items are stored properly)",
+      10
+    ],
+    [
+      "managing Harvey Oak Supply Store and assisting customers (locking the store's front door and turning off the lights) (double-checking that all store systems (e.g., alarms, lights) are turned off) (grabbing her belongings and preparing to leave the store)   (counting the cash register and preparing the deposit)",
+      15
+    ],
+    [
+      "managing Harvey Oak Supply Store and assisting customers (locking the store's front door and turning off the lights) (double-checking that all store systems (e.g., alarms, lights) are turned off) (grabbing her belongings and preparing to leave the store)   (turning off the store's computer systems)",
+      250
     ],
     [
       "closing Harvey Oak Supply Store and preparing to go to The Rose and Crown Pub to relax",
-      60
+      2
     ],
     [
       "relaxing at The Rose and Crown Pub and enjoying her evening",
@@ -182,6 +226,10 @@
     [
       "sleeping",
       0
+    ],
+    [
+      "sleeping",
+      58
     ]
   ],
   "f_daily_schedule_hourly_org": [
@@ -226,27 +274,27 @@
       60
     ]
   ],
-  "act_address": "the Ville:Harvey Oak Supply Store:supply store:supply store product shelf",
-  "act_start_time": "January 25, 2025, 10:48:09",
-  "act_duration": 15,
-  "act_description": "managing Harvey Oak Supply Store and assisting customers (locking the store's front door and turning off the lights) (tidying up the store and ensuring everything is in its proper place)",
-  "act_pronunciatio": "\ud83e\uddf9\ud83d\udce6",
+  "act_address": "the Ville:Harvey Oak Supply Store:supply store:supply store counter",
+  "act_start_time": "January 25, 2025, 11:29:09",
+  "act_duration": 4,
+  "act_description": "managing Harvey Oak Supply Store and assisting customers (conversing about Arthur Burton thanking Carmen Ortiz for cocktail ingredient recommendations and discussing tips for mixing a new cocktail, with Carmen offering advice on using lavender and bitters and expressing interest in trying the drink at The Rose and Crown later.)",
+  "act_pronunciatio": "\ud83c\udf78\ud83d\udcac",
   "act_event": [
     "Carmen Ortiz",
-    "tidy",
-    "store"
+    "converse",
+    "Arthur Burton"
   ],
-  "act_obj_description": "tidied up and organized",
-  "act_obj_pronunciatio": "\ud83e\uddf9\ud83d\udce6",
+  "act_obj_description": "being used by Carmen Ortiz to assist customers",
+  "act_obj_pronunciatio": "\ud83d\udc69\u200d\ud83d\udcbc",
   "act_obj_event": [
-    "supply store product shelf",
+    "supply store counter",
     "is",
-    "tidied up and organized"
+    "used"
   ],
   "chatting_with": null,
   "chat": null,
   "chatting_with_buffer": {
-    "Arthur Burton": 453
+    "Arthur Burton": -1065
   },
   "chatting_end_time": null,
   "act_path_set": true,

@@ -8,8 +8,9 @@
             "name": "Python Debugger: Current File",
             "type": "debugpy",
             "request": "launch",
-            "program": "${file}",
+            "program": "E:\\code\\python\\Town\\environment\\frontend_server\\manage.py",
             "console": "integratedTerminal",
+            "cwd": "E:\\code\\python\\Town\\environment\\frontend_server",
             "args": ["runserver"]
         }
     ]

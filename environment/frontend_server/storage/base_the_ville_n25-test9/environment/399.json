@@ -16,8 +16,8 @@
   },
   "Carlos Gomez": {
     "maze": "the_ville",
-    "x": 94,
-    "y": 21
+    "x": 119,
+    "y": 31
   },
   "Carmen Ortiz": {
     "maze": "the_ville",
@@ -27,6 +27,6 @@
   "Francisco Lopez": {
     "maze": "the_ville",
     "x": 41,
-    "y": 32
+    "y": 26
   }
 }

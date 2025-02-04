@@ -41,16 +41,16 @@ def logger_info(*args):
     for arg in args:
         logger.info(arg)
 def filter_result(respone:str):
+    respone = respone.strip()
     if respone is None:
         return ""
-    if respone.startswith("```"):
-        pattern = r'```\w+\s*(.*?)\s*```'
-        # Extract JSON content
-        match = re.search(pattern, respone)
-        if match is not None:
-            respone = match.group(1)
     if "**" in respone:
         respone = respone.replace("**","")
+    if respone.startswith("```"):
+        json_pattern =  r'```json([\s\S]+)```'
+        match = re.search(json_pattern,respone)
+        if match is not None:
+            respone =  match.group(1)
     respone = respone.strip()
     return respone
 

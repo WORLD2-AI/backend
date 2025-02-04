@@ -21,12 +21,12 @@
   },
   "Carmen Ortiz": {
     "maze": "the_ville",
-    "x": 63,
-    "y": 48
+    "x": 65,
+    "y": 47
   },
   "Francisco Lopez": {
     "maze": "the_ville",
-    "x": 106,
+    "x": 101,
     "y": 32
   }
 }

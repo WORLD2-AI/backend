@@ -90,7 +90,7 @@ def ChatGPT_request(prompt):
         
         if response.status_code == 200:
             print("---------------success result ---------------------------------")
-            logger_info(response.json())
+            logger_info(response.json().get("answer", {}))
             return filter_result(response.json().get("answer", {}))
         else:
             print("-------------error result ----------------------------")
@@ -300,6 +300,8 @@ def safe_generate_response(prompt,
 
 
 def get_embedding(text, model="nomic-embed-text"):
+    if text == "" :
+        return []
     # use local embedding model
     headers = {
         "Content-Type": "application/json"

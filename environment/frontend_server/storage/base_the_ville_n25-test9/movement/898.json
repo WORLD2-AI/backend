@@ -1,0 +1,111 @@
+{
+  "persona": {
+    "Adam Smith": {
+      "movement": [
+        22,
+        48
+      ],
+      "pronunciatio": "\ud83d\udcda\ud83d\uddc2\ufe0f",
+      "description": "writing and researching for his book on creativity (organizing his research materials for easy reference) @ the Ville:Adam Smith's house:main room:desk",
+      "chat": null
+    },
+    "Arthur Burton": {
+      "movement": [
+        55,
+        25
+      ],
+      "pronunciatio": "\ud83d\udcac",
+      "description": "conversing about Arthur Burton and Francisco Lopez discussing Francisco's improv and Shakespeare project, Arthur's new seasonal cocktail 'Winter\u2019s Muse,' and their plans to meet with Carlos and Ayesha later to brainstorm ideas for The Rose and Crown. @ <persona> Francisco Lopez",
+      "chat": [
+        [
+          "Arthur Burton",
+          "Hey Francisco! Great to see you here. I heard you\u2019ve been diving into improv and Shakespeare lately\u2014sounds like a fascinating mix. How\u2019s it going?"
+        ],
+        [
+          "Francisco Lopez",
+          "Hey Arthur! Yeah, it\u2019s been such a fun journey so far. Improv and Shakespeare actually complement each other in surprising ways\u2014it\u2019s all about spontaneity and emotional depth. I\u2019ve been brainstorming with Ayesha and Carlos about a project that blends the two, and it\u2019s been really exciting. Speaking of which, I heard you\u2019re working on a new seasonal cocktail for tonight. What\u2019s the inspiration behind it?"
+        ],
+        [
+          "Arthur Burton",
+          "That\u2019s fantastic to hear, Francisco! It sounds like you\u2019re all onto something really creative. As for the cocktail, I was inspired by the changing seasons\u2014think warm spices, a hint of citrus, and a touch of floral notes. It\u2019s called \u2018Winter\u2019s Muse.\u2019 I\u2019m actually meeting Carlos later to try it out and brainstorm some ideas for the pub. Maybe you and Ayesha could join us? I\u2019d love to hear more about your project and see if we can tie it into something here at The Rose and Crown."
+        ],
+        [
+          "Francisco Lopez",
+          "That sounds amazing, Arthur! 'Winter\u2019s Muse' sounds like the perfect drink to spark some creativity. I\u2019d love to join you and Carlos later\u2014Ayesha and I have been exploring how to weave Shakespearean themes into improv, and I think it could be a great fit for The Rose and Crown. What time are you meeting?"
+        ],
+        [
+          "Arthur Burton",
+          "We\u2019re meeting at 7pm tonight. It\u2019ll be a great chance to share ideas and see how everything comes together. I\u2019ll make sure to save a spot for you and Ayesha!"
+        ],
+        [
+          "Francisco Lopez",
+          "Perfect, I\u2019ll let Ayesha know and we\u2019ll be there at 7pm. I\u2019m really looking forward to it\u2014this could be the start of something special! Thanks for including us, Arthur."
+        ]
+      ]
+    },
+    "Ayesha Khan": {
+      "movement": [
+        119,
+        22
+      ],
+      "pronunciatio": "\ud83c\udfad\ud83c\udf3f",
+      "description": "attending classes at the Oak Hill College library (conversing about Carlos Gomez and Ayesha Khan discussing a collaborative project that blends Shakespeare\u2019s works with improv techniques, exploring themes of nature and emotional transitions, and planning to meet to further develop the idea with potential contributions from Francisco and Arthur.) @ the Ville:Oak Hill College:library:bookshelf",
+      "chat": null
+    },
+    "Carlos Gomez": {
+      "movement": [
+        61,
+        25
+      ],
+      "pronunciatio": "\u231b",
+      "description": "waiting to start conversing about Arthur Burton and Carlos Gomez discussing Carlos's creative writing workshop, a Shakespeare and improv project, and plans to meet at 7pm to try Arthur's new seasonal cocktail while sharing poetry and brainstorming ideas for The Rose and Crown. @ <waiting> 63 32",
+      "chat": null
+    },
+    "Carmen Ortiz": {
+      "movement": [
+        65,
+        48
+      ],
+      "pronunciatio": "\ud83c\udf78\ud83d\udcac",
+      "description": "managing Harvey Oak Supply Store and assisting customers (conversing about Arthur Burton thanking Carmen Ortiz for cocktail ingredient recommendations and discussing tips for mixing a new cocktail, with Carmen offering advice on using lavender and bitters and expressing interest in trying the drink at The Rose and Crown later.) @ the Ville:Harvey Oak Supply Store:supply store:supply store counter",
+      "chat": null
+    },
+    "Francisco Lopez": {
+      "movement": [
+        55,
+        26
+      ],
+      "pronunciatio": "\ud83d\udcac",
+      "description": "conversing about Arthur Burton and Francisco Lopez discussing Francisco's improv and Shakespeare project, Arthur's new seasonal cocktail 'Winter\u2019s Muse,' and their plans to meet with Carlos and Ayesha later to brainstorm ideas for The Rose and Crown. @ <persona> Arthur Burton",
+      "chat": [
+        [
+          "Arthur Burton",
+          "Hey Francisco! Great to see you here. I heard you\u2019ve been diving into improv and Shakespeare lately\u2014sounds like a fascinating mix. How\u2019s it going?"
+        ],
+        [
+          "Francisco Lopez",
+          "Hey Arthur! Yeah, it\u2019s been such a fun journey so far. Improv and Shakespeare actually complement each other in surprising ways\u2014it\u2019s all about spontaneity and emotional depth. I\u2019ve been brainstorming with Ayesha and Carlos about a project that blends the two, and it\u2019s been really exciting. Speaking of which, I heard you\u2019re working on a new seasonal cocktail for tonight. What\u2019s the inspiration behind it?"
+        ],
+        [
+          "Arthur Burton",
+          "That\u2019s fantastic to hear, Francisco! It sounds like you\u2019re all onto something really creative. As for the cocktail, I was inspired by the changing seasons\u2014think warm spices, a hint of citrus, and a touch of floral notes. It\u2019s called \u2018Winter\u2019s Muse.\u2019 I\u2019m actually meeting Carlos later to try it out and brainstorm some ideas for the pub. Maybe you and Ayesha could join us? I\u2019d love to hear more about your project and see if we can tie it into something here at The Rose and Crown."
+        ],
+        [
+          "Francisco Lopez",
+          "That sounds amazing, Arthur! 'Winter\u2019s Muse' sounds like the perfect drink to spark some creativity. I\u2019d love to join you and Carlos later\u2014Ayesha and I have been exploring how to weave Shakespearean themes into improv, and I think it could be a great fit for The Rose and Crown. What time are you meeting?"
+        ],
+        [
+          "Arthur Burton",
+          "We\u2019re meeting at 7pm tonight. It\u2019ll be a great chance to share ideas and see how everything comes together. I\u2019ll make sure to save a spot for you and Ayesha!"
+        ],
+        [
+          "Francisco Lopez",
+          "Perfect, I\u2019ll let Ayesha know and we\u2019ll be there at 7pm. I\u2019m really looking forward to it\u2014this could be the start of something special! Thanks for including us, Arthur."
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "curr_time": "January 25, 2025, 12:29:19"
+  }
+}

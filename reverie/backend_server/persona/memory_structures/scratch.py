@@ -547,13 +547,14 @@ class Scratch:
     if self.chatting_with: 
       end_time = self.chatting_end_time
     else: 
+      self.chatting_end_time = None
       x = self.act_start_time
       if x.second != 0: 
         x = x.replace(second=0)
         x = (x + datetime.timedelta(minutes=1))
       end_time = (x + datetime.timedelta(minutes=self.act_duration))
 
-    if end_time.strftime("%H:%M:%S") <= self.curr_time.strftime("%H:%M:%S"): 
+    if end_time.strftime("%H:%M:%S") <= self.curr_time.strftime("%H:%M:%S") : 
       return True
     return False
 

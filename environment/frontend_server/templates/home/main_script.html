@@ -110,6 +110,7 @@
 	// <timer_max> determines how frequently our update function will query the 
 	// frontend server. If it's higher, we wait longer cycles. 
 	let timer_max = 10;
+	let first_stop = true
 	let timer = timer_max;
 
 	// <phase> -- there are three phases: "process," "update," and "execute."
@@ -405,7 +406,8 @@
 	    // Note that we do not want to overburden the backend too much by 
 	    // over-querying; so, we have a timer set so we only query it once every
 	    // timer_max cycles. 
-	    if (timer <= 0) {
+	    if (timer <= 0||first_stop) {
+			first_stop = false
 	      var update_xobj = new XMLHttpRequest();
 	      update_xobj.overrideMimeType("application/json");
 	      update_xobj.open('POST', "{% url 'update_environment' %}", true);

@@ -1,0 +1,103 @@
+{
+  "persona": {
+    "Adam Smith": {
+      "movement": [
+        21,
+        62
+      ],
+      "pronunciatio": "\ud83d\udcda\ud83d\uddc2\ufe0f",
+      "description": "writing and researching for his book on creativity (organizing his research materials for easy reference) @ the Ville:Adam Smith's house:main room:desk",
+      "chat": null
+    },
+    "Arthur Burton": {
+      "movement": [
+        62,
+        32
+      ],
+      "pronunciatio": "\ud83d\udcac",
+      "description": "conversing about Arthur Burton and Carlos Gomez discussing Carlos's creative writing workshop, a Shakespeare and improv project, and plans to meet at 7pm to try Arthur's new seasonal cocktail while sharing poetry and brainstorming ideas for The Rose and Crown. @ <persona> Carlos Gomez",
+      "chat": [
+        [
+          "Arthur Burton",
+          "Hey Carlos! Just saw you deep in thought over there. How's the creative writing workshop going? And hey, don't forget to stop by later to try that new seasonal cocktail I mentioned earlier. I think it might pair perfectly with your sunrise poetry vibe!"
+        ],
+        [
+          "Carlos Gomez",
+          "Hey Arthur! The workshop's been great\u2014Ayesha and I are brainstorming this wild project blending Shakespeare and improv. It's got me fired up! And don't worry, I won't miss trying your new cocktail. I\u2019m curious to see how it vibes with my poetry. What time should I swing by?"
+        ],
+        [
+          "Arthur Burton",
+          "How about you come by around 7pm? That way, you can enjoy the drink and maybe even share some of your new ideas with me. I\u2019d love to hear more about this Shakespeare and improv project\u2014it sounds fascinating!"
+        ],
+        [
+          "Carlos Gomez",
+          "7pm sounds perfect, Arthur! I\u2019ll bring some of my sunrise poetry too\u2014maybe we can brainstorm how your cocktail and my words can inspire something fresh for The Rose and Crown. And yeah, I\u2019ll definitely fill you in on the Shakespeare and improv project. It\u2019s shaping up to be something really unique!"
+        ],
+        [
+          "Arthur Burton",
+          "Sounds like a plan, Carlos! I\u2019ll make sure to have everything ready for you at 7pm. Looking forward to hearing your poetry and diving into this Shakespeare and improv project\u2014it\u2019s always exciting to see where creativity takes us. See you then!"
+        ]
+      ]
+    },
+    "Ayesha Khan": {
+      "movement": [
+        57,
+        25
+      ],
+      "pronunciatio": "\ud83c\udfad\ud83c\udf3f",
+      "description": "attending classes at the Oak Hill College library (conversing about Carlos Gomez and Ayesha Khan discussing a collaborative project that blends Shakespeare\u2019s works with improv techniques, exploring themes of nature and emotional transitions, and planning to meet to further develop the idea with potential contributions from Francisco and Arthur.) @ the Ville:Oak Hill College:library:bookshelf",
+      "chat": null
+    },
+    "Carlos Gomez": {
+      "movement": [
+        62,
+        32
+      ],
+      "pronunciatio": "\ud83d\udcac",
+      "description": "conversing about Arthur Burton and Carlos Gomez discussing Carlos's creative writing workshop, a Shakespeare and improv project, and plans to meet at 7pm to try Arthur's new seasonal cocktail while sharing poetry and brainstorming ideas for The Rose and Crown. @ <persona> Arthur Burton",
+      "chat": [
+        [
+          "Arthur Burton",
+          "Hey Carlos! Just saw you deep in thought over there. How's the creative writing workshop going? And hey, don't forget to stop by later to try that new seasonal cocktail I mentioned earlier. I think it might pair perfectly with your sunrise poetry vibe!"
+        ],
+        [
+          "Carlos Gomez",
+          "Hey Arthur! The workshop's been great\u2014Ayesha and I are brainstorming this wild project blending Shakespeare and improv. It's got me fired up! And don't worry, I won't miss trying your new cocktail. I\u2019m curious to see how it vibes with my poetry. What time should I swing by?"
+        ],
+        [
+          "Arthur Burton",
+          "How about you come by around 7pm? That way, you can enjoy the drink and maybe even share some of your new ideas with me. I\u2019d love to hear more about this Shakespeare and improv project\u2014it sounds fascinating!"
+        ],
+        [
+          "Carlos Gomez",
+          "7pm sounds perfect, Arthur! I\u2019ll bring some of my sunrise poetry too\u2014maybe we can brainstorm how your cocktail and my words can inspire something fresh for The Rose and Crown. And yeah, I\u2019ll definitely fill you in on the Shakespeare and improv project. It\u2019s shaping up to be something really unique!"
+        ],
+        [
+          "Arthur Burton",
+          "Sounds like a plan, Carlos! I\u2019ll make sure to have everything ready for you at 7pm. Looking forward to hearing your poetry and diving into this Shakespeare and improv project\u2014it\u2019s always exciting to see where creativity takes us. See you then!"
+        ]
+      ]
+    },
+    "Carmen Ortiz": {
+      "movement": [
+        68,
+        46
+      ],
+      "pronunciatio": "\ud83c\udf78\ud83d\udcac",
+      "description": "managing Harvey Oak Supply Store and assisting customers (conversing about Arthur Burton thanking Carmen Ortiz for cocktail ingredient recommendations and discussing tips for mixing a new cocktail, with Carmen offering advice on using lavender and bitters and expressing interest in trying the drink at The Rose and Crown later.) @ the Ville:Harvey Oak Supply Store:supply store:supply store counter",
+      "chat": null
+    },
+    "Francisco Lopez": {
+      "movement": [
+        113,
+        26
+      ],
+      "pronunciatio": "\ud83c\udfad\ud83d\udde3\ufe0f",
+      "description": "attending an improvisational comedy class (conversing about Ayesha Khan and Francisco Lopez discussing their experiences with Shakespeare lectures and improv classes, exploring how these activities influence their confidence and creativity, and brainstorming a potential collaboration combining Shakespeare and improv for a unique project.) @ the Ville:Oak Hill College:classroom:classroom podium",
+      "chat": null
+    }
+  },
+  "meta": {
+    "curr_time": "January 25, 2025, 11:36:49"
+  }
+}
