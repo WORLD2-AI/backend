@@ -60,7 +60,7 @@
 
 	const config = {
 	  type: Phaser.AUTO,
-	  width: 4480,
+	  width: 4800,
 	  height: 3200,
 	  parent: "game-container",
 	  pixelArt: true,
@@ -72,7 +72,7 @@
 	    preload: preload,
 	    create: create,
 	    update: update },
-	  scale: {zoom: 0.5} };
+	  scale: {zoom: 0.25} };
 
 	// Creating the game instance and setting up the main Phaser variables that  
 	// will be used in it. 
@@ -166,9 +166,14 @@
 	  this.load.image("CuteRPG_Mountains_B", "{% static 'assets/the_ville/visuals/map_assets/cute_rpg_word_VXAce/tilesets/CuteRPG_Mountains_B.png' %}");
 	  this.load.image("CuteRPG_Desert_B", "{% static 'assets/the_ville/visuals/map_assets/cute_rpg_word_VXAce/tilesets/CuteRPG_Desert_B.png' %}");
 	  this.load.image("CuteRPG_Forest_C", "{% static 'assets/the_ville/visuals/map_assets/cute_rpg_word_VXAce/tilesets/CuteRPG_Forest_C.png' %}");
+	  this.load.image("CityRoad", "{% static 'assets/the_ville/visuals/map_assets/Road_test1024.png' %}");
+	  this.load.image("BasketballPlace", "{% static 'assets/the_ville/visuals/map_assets/basketball_place.png' %}");
+	  this.load.image("CityObject", "{% static 'assets/the_ville/visuals/map_assets/city_extension_prev.png' %}");
+	  this.load.image("Waters", "{% static 'assets/the_ville/visuals/map_assets/CuteRPG_Mountains_A1.png' %}");
+	  this.load.image("Trees", "{% static 'assets/the_ville/visuals/map_assets/height96_trees_mega_pack_cc_by_3_0.png' %}");
 
 	  // Joon: This is the export json file you get from Tiled. 
-	  this.load.tilemapTiledJSON("map", "{% static 'assets/the_ville/visuals/the_ville_jan7.json' %}");
+	  this.load.tilemapTiledJSON("map", "{% static 'assets/the_ville/visuals/the_ville_jan7-2.json' %}");
 
 	  // An atlas is a way to pack multiple images together into one texture. I'm 
 	  // using it to load all the player animations (walking left, walking right, 
@@ -210,6 +215,11 @@
 	  const CuteRPG_Mountains_B = map.addTilesetImage("CuteRPG_Mountains_B", "CuteRPG_Mountains_B");
 	  const CuteRPG_Desert_B = map.addTilesetImage("CuteRPG_Desert_B", "CuteRPG_Desert_B");
 	  const CuteRPG_Forest_C = map.addTilesetImage("CuteRPG_Forest_C", "CuteRPG_Forest_C");
+	  const CityRoad = map.addTilesetImage("CityRoad", "CityRoad");
+	  const Trees = map.addTilesetImage("Trees", "Trees");
+	  const BasketballPlace = map.addTilesetImage("BasketballPlace", "BasketballPlace");
+	  const CityObject = map.addTilesetImage("CityObject", "CityObject");
+	  const Waters = map.addTilesetImage("Waters", "Waters");
 
 	  // The first parameter is the layer name (or index) taken from Tiled, the 
 	  // second parameter is the tileset you set above, and the final two 
@@ -219,16 +229,22 @@
 	  //       they are; you actually need to open up tiled and see how you 
 	  //       named things there. 
 	  let tileset_group_1 = [CuteRPG_Field_B, CuteRPG_Field_C, CuteRPG_Harbor_C, CuteRPG_Village_B, 
-	  											 CuteRPG_Forest_B, CuteRPG_Desert_C, CuteRPG_Mountains_B, CuteRPG_Desert_B, CuteRPG_Forest_C,
-	  											 interiors_pt1, interiors_pt2, interiors_pt3, interiors_pt4, interiors_pt5, walls];
+								CuteRPG_Forest_B, CuteRPG_Desert_C, CuteRPG_Mountains_B, CuteRPG_Desert_B, CuteRPG_Forest_C,
+								interiors_pt1, interiors_pt2, interiors_pt3, interiors_pt4, interiors_pt5, walls, CityRoad,
+								Trees, BasketballPlace,CityObject,Waters
+							];
 	  const bottomGroundLayer = map.createLayer("Bottom Ground", tileset_group_1, 0, 0);
 	  const exteriorGroundLayer = map.createLayer("Exterior Ground", tileset_group_1, 0, 0);
+	  const cityRoadLayer = map.createLayer("City Road", tileset_group_1, 0, 0);
 	  const exteriorDecorationL1Layer = map.createLayer("Exterior Decoration L1", tileset_group_1, 0, 0);
 	  const exteriorDecorationL2Layer = map.createLayer("Exterior Decoration L2", tileset_group_1, 0, 0);
+	  const exteriorDecorationL3Layer = map.createLayer("Exterior Decoration L3", tileset_group_1, 0, 0);
 	  const interiorGroundLayer = map.createLayer("Interior Ground", tileset_group_1, 0, 0);
 	  const wallLayer = map.createLayer("Wall", [CuteRPG_Field_C, walls], 0, 0);
 	  const interiorFurnitureL1Layer = map.createLayer("Interior Furniture L1", tileset_group_1, 0, 0);
-	  const interiorFurnitureL2Layer = map.createLayer("Interior Furniture L2 ", tileset_group_1, 0, 0);
+	  const interiorFurnitureL2Layer = map.createLayer("Interior Furniture L2", tileset_group_1, 0, 0);
+	  const interiorFurnitureL3Layer = map.createLayer("Interior Furniture L3", tileset_group_1, 0, 0);
+	  const interiorFurnitureL4Layer = map.createLayer("Interior Furniture L4", tileset_group_1, 0, 0);
 	  const foregroundL1Layer = map.createLayer("Foreground L1", tileset_group_1, 0, 0);
 	  const foregroundL2Layer = map.createLayer("Foreground L2", tileset_group_1, 0, 0);
 	  foregroundL1Layer.setDepth(2);
@@ -445,7 +461,7 @@
 	        movement_target[curr_persona_name] = [curr_x * tile_width, 
 	                                              curr_y * tile_width]; 
 	        let pronunciatio_content = execute_movement["persona"][curr_persona_name]["pronunciatio"];
-	        // This is what gives the pronunciatio balloon the name initials. We 
+	        // This is what gives the pronunciatio balloon the name initials. We
 	        // use regex to extract the initials of the personas. 
 	        // E.g., "Dolores Murphy" -> "DM"
 	        let rgx = new RegExp(/(\p{L}{1})\p{L}+/, 'gu');
@@ -453,7 +469,7 @@
 	        initials = (
 	          (initials.shift()?.[1] || '') + (initials.pop()?.[1] || '')
 	        ).toUpperCase();
-	        pronunciatios[curr_persona_name].setText(initials + ": " + pronunciatio_content);
+            pronunciatios[curr_persona_name].setText(initials + ": " + pronunciatio_content + "\n"+splitAndWrap(inner_activity_content,20));
 	      }
 
 	      console.log(curr_persona_name);
@@ -549,6 +565,19 @@
 	  }
 	}
 
+    /**
+     * strings are split by a specified length
+     * @param text
+     * @param n
+     * @returns {string}
+     */
+    function splitAndWrap(text, n = 7) {
+         let result = [];
+         for (let i = 0; i < text.length; i += n) {
+              result.push(text.substring(i, i + n));
+        }
+        return result.join('\n');
+    }
 	// Control button binders
 	var play_button=document.getElementById("play_button");
 	var pause_button=document.getElementById("pause_button");
