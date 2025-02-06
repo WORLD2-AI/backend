@@ -11,7 +11,7 @@ openai_api_key = ["app-YModVQ7H9WeGudJOsLnw3s2I"]
 key_owner = "test_sim_ai"
 
 maze_assets_loc = "E:\\code\\python\\Town\\environment\\frontend_server\\static_dirs\\assets"
-env_matrix = f"{maze_assets_loc}/the_ville/matrix"
+env_matrix = f"{maze_assets_loc}/the_ville/matrix2"
 env_visuals = f"{maze_assets_loc}/the_ville/visuals"
 
 fs_storage = "E:\\code\\python\\Town\\environment\\frontend_server\\storage"

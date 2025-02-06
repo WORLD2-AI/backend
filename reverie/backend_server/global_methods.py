@@ -103,6 +103,8 @@ def read_file_to_list(curr_file, header=False, strip_trail=True):
     with open(curr_file) as f_analysis_file: 
       data_reader = csv.reader(f_analysis_file, delimiter=",")
       for count, row in enumerate(data_reader): 
+        if len(row) == 0:
+          continue
         if strip_trail: 
           row = [i.strip() for i in row]
         analysis_list += [row]
