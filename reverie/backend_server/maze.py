@@ -77,15 +77,15 @@ class Maze:
     maze_folder = f"{env_matrix}/maze"
 
     _cm = maze_folder + "/collision_maze.csv"
-    collision_maze_raw = read_file_to_list(_cm, header=False)[0]
+    self.collision_maze = read_file_to_list(_cm, header=False)
     _sm = maze_folder + "/sector_maze.csv"
-    sector_maze_raw = read_file_to_list(_sm, header=False)[0]
+    sector_maze = read_file_to_list(_sm, header=False)
     _am = maze_folder + "/arena_maze.csv"
-    arena_maze_raw = read_file_to_list(_am, header=False)[0]
+    arena_maze = read_file_to_list(_am, header=False)
     _gom = maze_folder + "/game_object_maze.csv"
-    game_object_maze_raw = read_file_to_list(_gom, header=False)[0]
+    game_object_maze = read_file_to_list(_gom, header=False)
     _slm = maze_folder + "/spawning_location_maze.csv"
-    spawning_location_maze_raw = read_file_to_list(_slm, header=False)[0]
+    spawning_location_maze = read_file_to_list(_slm, header=False)
 
     # Loading the maze. The mazes are taken directly from the json exports of
     # Tiled maps. They should be in csv format. 
@@ -96,18 +96,18 @@ class Maze:
     # identical (e.g., 70 x 40).
     # example format: [['0', '0', ... '25309', '0',...], ['0',...]...]
     # 25309 is the collision bar number right now.
-    self.collision_maze = []
-    sector_maze = []
-    arena_maze = []
-    game_object_maze = []
-    spawning_location_maze = []
-    for i in range(0, len(collision_maze_raw), meta_info["maze_width"]): 
-      tw = meta_info["maze_width"]
-      self.collision_maze += [collision_maze_raw[i:i+tw]]
-      sector_maze += [sector_maze_raw[i:i+tw]]
-      arena_maze += [arena_maze_raw[i:i+tw]]
-      game_object_maze += [game_object_maze_raw[i:i+tw]]
-      spawning_location_maze += [spawning_location_maze_raw[i:i+tw]]
+    # self.collision_maze = []
+    # sector_maze = []
+    # arena_maze = []
+    # game_object_maze = []
+    # spawning_location_maze = []
+    # for i in range(0, len(collision_maze_raw), meta_info["maze_width"]): 
+    #   tw = meta_info["maze_width"]
+    #   self.collision_maze += [collision_maze_raw[i:i+tw]]
+    #   sector_maze += [sector_maze_raw[i:i+tw]]
+    #   arena_maze += [arena_maze_raw[i:i+tw]]
+    #   game_object_maze += [game_object_maze_raw[i:i+tw]]
+    #   spawning_location_maze += [spawning_location_maze_raw[i:i+tw]]
 
     # Once we are done loading in the maze, we now set up self.tiles. This is
     # a matrix accessed by row:col where each access point is a dictionary
