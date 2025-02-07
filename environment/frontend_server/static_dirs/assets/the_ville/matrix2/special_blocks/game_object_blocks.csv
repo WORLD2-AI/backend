@@ -11,13 +11,13 @@
 33, the Ville, <all>, refrigerator
 43, the Ville, <all>, toaster
 53, the Ville, <all>, cooking area
-32268, the Ville, <all>, common room table
+
 73, the Ville, <all>, common room sofa
 4, the Ville, <all>, guitar
-32219, the Ville, <all>, microphone
+
 
 15, the Ville, <all>, bar customer seating
-42, the Ville, <all>, behind the bar counter
+44, the Ville, <all>, behind the bar counter
 78, the Ville, <all>, behind the cafe counter
 54, the Ville, <all>, cafe customer seating
 77, the Ville, <all>, piano
@@ -35,3 +35,4 @@
 
 
 47, the Ville, <all>, pool table
+19, the Ville, <all>, table

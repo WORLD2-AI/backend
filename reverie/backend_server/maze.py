@@ -148,7 +148,7 @@ class Maze:
           tile_details["spawning_location"] = slb_dict[spawning_location_maze[i][j]]
         
         tile_details["collision"] = False
-        if self.collision_maze[i][j] != "0": 
+        if int(self.collision_maze[i][j]) > 0 : 
           tile_details["collision"] = True
 
         tile_details["events"] = set()

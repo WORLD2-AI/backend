@@ -13,7 +13,7 @@ openai.api_key = random.choice(openai_api_key)
 # from litellm import completion
 
 
-def temp_sleep(seconds=0.1):
+def temp_sleep(seconds=0.5):
     time.sleep(seconds)
 
 
@@ -68,7 +68,7 @@ def ChatGPT_request(prompt):
     RETURNS:
       a str of llm response.
     """
-    # temp_sleep()
+    temp_sleep()
     # openai.api_key = random.choice(openai_api_key)
     print("-------------------request prompt---------------------")
     logger_info(prompt)

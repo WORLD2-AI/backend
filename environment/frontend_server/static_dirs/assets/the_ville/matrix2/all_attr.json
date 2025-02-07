@@ -1,0 +1,343 @@
+{
+    "the Ville": {
+        "Artist's co-living space": {
+            "Latoya Williams's room": [
+                "bed",
+                "desk",
+                "refrigerator",
+                "closet"
+            ],
+            "Latoya Williams's bathroom":[
+                "bathroom sink",
+                "shower",
+                "toilet"
+            ],
+
+            "Rajiv Patel's room": [
+                "bed",
+                "desk",
+                "refrigerator",
+                "closet"
+            ],
+            "Rajiv Patel's bathroom":  [
+                "bathroom sink",
+                "shower",
+                "toilet"
+            ],
+
+            "Abigail Chen's room": [
+                "bed",
+                "desk",
+                "refrigerator",
+                "closet"
+            ],
+            "Abigail Chen's bathroom":  [
+                "bathroom sink",
+                "shower",
+                "toilet"
+            ],
+
+            
+            "Francisco Lopez's room": [
+                "bed",
+                "desk",
+                "refrigerator",
+                "closet"
+            ],
+            "Francisco Lopez's bathroom":  [
+                "bathroom sink",
+                "shower",
+                "toilet"
+            ],
+
+            "Hailey Johnson's room": [
+                "bed",
+                "desk",
+                "refrigerator",
+                "closet"
+            ],
+            "Hailey Johnson's bathroom":  [
+                "bathroom sink",
+                "shower",
+                "toilet"
+            ],
+            "common room":[
+                "common room sofa",
+                "desk"
+            ],
+            "kitchen":[
+                "toaster",
+                "refrigerator",
+                "kitchen sink",
+                "cooking area"
+            ]
+            
+        },
+        "Moonlight Tavern": {
+            "bathroom": [
+                "bathroom sink",
+                "toilet"
+            ],
+            "sing": [
+                "microphone",
+                "speakers"
+            ],
+            "kitchen": [
+                "cooking area",
+                "kitchen sink",
+                "refrigerator"
+            ],
+            "front desk": [
+                "refrigerator"
+            ],
+            "bar customer seating": [
+                "bar stools",
+                "tables",
+                "chairs"
+            ]
+        },
+        "Hobbs Cafe": {
+            "sofa": [
+                "cafe customer seating",
+                "common room sofa"
+            ],
+            "meeting table": [
+                "desk",
+                "piano"
+            ],
+            "cafe": [
+                "pool table",
+                "desk"
+            ],
+            "front desk": [
+                "blackboard",
+                "behind the cafe counter",
+                "shelf"
+            ]
+        },
+        "Supermarket": {
+            "outdoor area": [
+                "computer desk"
+            ],
+            "home appliance area": [
+                "shelf"
+            ],
+            "food area": [
+                "grocery store shelf",
+                "shelf"
+            ],
+            "checkout counter": [
+                "computer desk"
+            ]
+        },
+        "Classroom": {},
+        "Gym": {
+            "room": [
+                "lifting weight",
+                "computer desk"
+            ]
+        },
+        "Library": {
+            "room": [
+                "computer desk",
+                "bookshelf",
+                "computer",
+                "library sofa"
+            ]
+        },
+        "Restaurant": {
+            "dining area": [
+                "desk",
+                "table"
+            ],
+            "VIP room1": [
+                "desk",
+                "table"
+            ],
+            "VIP room2": [
+                "desk",
+                "table"
+            ],
+            "VIP room3": [
+                "desk",
+                "table"
+            ],
+            "kitchen": [
+                "kitchen sink",
+                "cooking area",
+                "refrigerator"
+            ],
+            "bathroom": [
+                "bathroom sink",
+                "toilet"
+            ]
+        },
+        "Arthur Burton's apartment": {
+            "main room": [
+                "bed",
+                "desk",
+                "refrigerator",
+                "closet",
+                "kitchen sink",
+                "cooking area"
+            ],
+            "bathroom": [
+                "bathroom sink",
+                "shower",
+                "toilet"
+            ]
+        },
+        "Ryan Park's apartment": {
+            "main room": [
+                "bed",
+                "desk",
+                "refrigerator",
+                "closet",
+                "kitchen sink",
+                "cooking area"
+            ],
+            "bathroom": [
+                "bathroom sink",
+                "shower",
+                "toilet"
+            ]
+        },
+        "Isabella Rodriguez's apartment": {
+            "main room": [
+                "bed",
+                "desk",
+                "refrigerator",
+                "closet",
+                "kitchen sink",
+                "cooking area",
+                "common room sofa"
+            ],
+            "bathroom": [
+                "bathroom sink",
+                "shower",
+                "toilet"
+            ]
+        },
+        "Giorgio Rossi's apartment": {
+            "main room": [
+                "bed",
+                "desk",
+                "refrigerator",
+                "closet",
+                "kitchen sink",
+                "cooking area"
+            ],
+            "bathroom": [
+                "bathroom sink",
+                "shower",
+                "toilet"
+            ]
+        },
+        "Carlos Gomez's apartment": {
+            "main room": [
+                "bed",
+                "desk",
+                "refrigerator",
+                "closet",
+                "kitchen sink",
+                "cooking area",
+                "common room sofa"
+            ],
+            "bathroom": [
+                "bathroom sink",
+                "shower",
+                "toilet"
+            ]
+        },
+       
+        "Tamara Taylor and Carmen Ortiz's house": {
+            "Tamara Taylor's room": [
+                "bed",
+                "desk",
+                "refrigerator",
+                "closet"
+            ],
+            "Carmen Ortiz's room": [
+                "bed",
+                "guitar",
+                "closet"
+            ],
+            "common room": [
+                "desk",
+                "bookshelf"
+            ],
+            "kitchen": [
+                "toaster",
+                "refrigerator",
+                "kitchen sink",
+                "cooking area"
+            ],
+            "bathroom": [
+                "bathroom sink",
+                "shower",
+                "toilet"
+            ],
+            "garden": [
+                "house garden"
+            ]
+        },
+        "Moreno family's house": {
+            "Tom and Jane Moreno's bedroom": [
+                "bed",
+                "desk",
+                "closet"
+            ],
+            "empty bedroom": [
+                "bed",
+                "closet"
+            ],
+            "common room": [
+                "desk",
+                "shelf" 
+            ],
+            "kitchen": [
+                "refrigerator",
+                "kitchen sink",
+                "cooking area"
+            ],
+            "bathroom": [
+                "bathroom sink",
+                "shower",
+                "toilet"
+            ],
+            "garden": [
+                "house garden",
+                "desk"
+            ]
+        },
+        "Lin family's house": {
+            "Mei and John Lin's bedroom": [
+                "bed",
+                "desk",
+                "closet"
+            ],
+            "Eddy Lin's bedroom": [
+                "bed",
+                "desk",
+                "closet"
+            ],
+            "common room": [
+                "desk",
+                "shelf"
+            ],
+            "kitchen": [
+                "refrigerator",
+                "kitchen sink",
+                "cooking area"
+            ],
+            "bathroom": [
+                "bathroom sink",
+                "shower",
+                "toilet"
+            ],
+            "garden": [
+                "house garden"
+            ]
+        }
+    }
+}

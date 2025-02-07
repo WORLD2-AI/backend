@@ -38,7 +38,7 @@
         "supply store counter"
       ]
     },
-    "The Willows Market and Pharmacy": {
+    "Supermarket": {
       "store": [
         "behind the pharmacy counter",
         "pharmacy store shelf",
@@ -46,16 +46,6 @@
         "grocery store shelf",
         "behind the grocery counter",
         "grocery store counter"
-      ]
-    },
-    "Dorm for Oak Hill College": {
-      "garden": [
-        "dorm garden"
-      ]
-    },
-    "Johnson Park": {
-      "park": [
-        "park garden"
       ]
     }
   }

@@ -16,11 +16,11 @@ fs_temp_storage = "E:\\code\\python\\Town\\environment\\frontend_server\\temp_st
 fs_back_end = "E:\\code\python\\Town\\reverie\\backend_server"
 collision_block_id = "32125"
 emb_url = "http://127.0.0.1:11434"
-api_url = "http://127.0.0.1"
-openai_api_key = ["app-YModVQ7H9WeGudJOsLnw3s2I"]
+# api_url = "http://127.0.0.1"
+# openai_api_key = ["app-YModVQ7H9WeGudJOsLnw3s2I"]
 
-# api_url = "http://8.130.125.153"
-# openai_api_key = ["app-cYXRNIAFUZY7ywce7OOkXcN9"]
+api_url = "http://8.130.125.153"
+openai_api_key = ["app-cYXRNIAFUZY7ywce7OOkXcN9"]
 # Verbose 
 debug = True
 logging.basicConfig(level=logging.DEBUG if debug else logging.INFO)
