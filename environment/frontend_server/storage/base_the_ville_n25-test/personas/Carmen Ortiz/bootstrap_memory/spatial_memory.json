@@ -1,71 +1,89 @@
 {
-  "the Ville": {
-    "Tamara Taylor and Carmen Ortiz's house": {
-      "Tamara Taylor's room": [
-        "closet",
-        "desk",
-        "bed"
-      ],
-      "common room": [
-        "shelf",
-        "common room table"
-      ],
-      "bathroom": [
-        "toilet",
-        "shower",
-        "bathroom sink"
-      ],
-      "Carmen Ortiz's room": [
-        "bed",
-        "closet",
-        "guitar"
-      ],
-      "garden": [
-        "house garden"
-      ]
-    },
-    "Harvey Oak Supply Store": {
-      "supply store": [
-        "supply store product shelf",
-        "behind the supply store counter",
-        "supply store counter"
-      ]
-    },
-    "The Willows Market and Pharmacy": {
-      "store": [
-        "behind the pharmacy counter",
-        "pharmacy store shelf",
-        "pharmacy store counter",
-        "grocery store shelf",
-        "behind the grocery counter",
-        "grocery store counter"
-      ]
-    },
-    "Hobbs Cafe": {
-      "cafe": [
-        "refrigerator",
-        "cafe customer seating",
-        "cooking area",
-        "kitchen sink",
-        "behind the cafe counter",
-        "piano"
-      ]
-    },
-    "The Rose and Crown Pub": {
-      "pub": [
-        "shelf",
-        "refrigerator",
-        "bar customer seating",
-        "behind the bar counter",
-        "kitchen sink",
-        "cooking area",
-        "microphone"
-      ]
-    },
-    "Johnson Park": {
-      "park": [
-        "park garden"
-      ]
+    "the ville": {
+        "tamara taylor and carmen ortiz's house": {
+            "tamara taylor's room": [
+                "bed",
+                "desk",
+                "refrigerator",
+                "closet"
+            ],
+            "carmen ortiz's room": [
+                "bed",
+                "guitar",
+                "closet"
+            ],
+            "common room": [
+                "desk",
+                "bookshelf"
+            ],
+            "kitchen": [
+                "toaster",
+                "refrigerator",
+                "kitchen sink",
+                "cooking area"
+            ],
+            "bathroom": [
+                "bathroom sink",
+                "shower",
+                "toilet"
+            ],
+            "garden": [
+                "house garden"
+            ]
+        },
+        "supermarket": {
+            "outdoor gear section": [
+                "computer desk"
+            ],
+            "home appliance area": [
+                "shelf"
+            ],
+            "food area": [
+                "grocery store shelf",
+                "shelf"
+            ],
+            "checkout counter": [
+                "computer desk"
+            ]
+        },
+        "hobbs cafe": {
+            "sofa": [
+                "cafe customer seating",
+                "common room sofa"
+            ],
+            "meeting area": [
+                "desk",
+                "piano"
+            ],
+            "cafe": [
+                "pool table",
+                "desk"
+            ],
+            "front desk": [
+                "blackboard",
+                "behind the cafe counter",
+                "shelf"
+            ]
+        },
+        "moonlight tavern": {
+            "bathroom": [
+                "bathroom sink",
+                "toilet"
+            ],
+            "sing": [
+                "game console"
+            ],
+            "front desk": [
+                "refrigerator"
+            ],
+            "bar customer seating": [
+                "bar seat"
+            ]
+        },
+        "johnson park": {
+            "lake": [
+                "log bridge"
+            ]
+        }
     }
-  }
 }

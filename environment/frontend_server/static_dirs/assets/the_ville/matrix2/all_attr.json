@@ -1,62 +1,57 @@
 {
-    "the Ville": {
-        "Artist's co-living space": {
-            "Latoya Williams's room": [
+    "the ville": {
+        "artist's co-living space": {
+            "latoya williams's room": [
                 "bed",
                 "desk",
                 "refrigerator",
                 "closet"
             ],
-            "Latoya Williams's bathroom":[
+            "latoya williams's bathroom":[
                 "bathroom sink",
                 "shower",
                 "toilet"
             ],
-
-            "Rajiv Patel's room": [
+            "rajiv patel's room": [
                 "bed",
                 "desk",
                 "refrigerator",
                 "closet"
             ],
-            "Rajiv Patel's bathroom":  [
+            "rajiv patel's bathroom":  [
                 "bathroom sink",
                 "shower",
                 "toilet"
             ],
-
-            "Abigail Chen's room": [
+            "abigail chen's room": [
                 "bed",
                 "desk",
                 "refrigerator",
                 "closet"
             ],
-            "Abigail Chen's bathroom":  [
+            "abigail chen's bathroom":  [
                 "bathroom sink",
                 "shower",
                 "toilet"
             ],
-
-            
-            "Francisco Lopez's room": [
+            "francisco lopez's room": [
                 "bed",
                 "desk",
                 "refrigerator",
                 "closet"
             ],
-            "Francisco Lopez's bathroom":  [
+            "francisco lopez's bathroom":  [
                 "bathroom sink",
                 "shower",
                 "toilet"
             ],
-
-            "Hailey Johnson's room": [
+            "hailey johnson's room": [
                 "bed",
                 "desk",
                 "refrigerator",
                 "closet"
             ],
-            "Hailey Johnson's bathroom":  [
+            "hailey johnson's bathroom":  [
                 "bathroom sink",
                 "shower",
                 "toilet"
@@ -71,16 +66,14 @@
                 "kitchen sink",
                 "cooking area"
             ]
-            
         },
-        "Moonlight Tavern": {
+        "moonlight tavern": {
             "bathroom": [
                 "bathroom sink",
                 "toilet"
             ],
             "sing": [
-                "microphone",
-                "speakers"
+                "game console"
             ],
             "kitchen": [
                 "cooking area",
@@ -91,17 +84,15 @@
                 "refrigerator"
             ],
             "bar customer seating": [
-                "bar stools",
-                "tables",
-                "chairs"
+                "bar seat"
             ]
         },
-        "Hobbs Cafe": {
+        "hobbs cafe": {
             "sofa": [
                 "cafe customer seating",
                 "common room sofa"
             ],
-            "meeting table": [
+            "meeting area": [
                 "desk",
                 "piano"
             ],
@@ -115,8 +106,8 @@
                 "shelf"
             ]
         },
-        "Supermarket": {
-            "outdoor area": [
+        "supermarket": {
+            "outdoor gear section": [
                 "computer desk"
             ],
             "home appliance area": [
@@ -130,14 +121,14 @@
                 "computer desk"
             ]
         },
-        "Classroom": {},
-        "Gym": {
+        "classroom": {},
+        "gym": {
             "room": [
                 "lifting weight",
                 "computer desk"
             ]
         },
-        "Library": {
+        "library": {
             "room": [
                 "computer desk",
                 "bookshelf",
@@ -145,7 +136,7 @@
                 "library sofa"
             ]
         },
-        "Restaurant": {
+        "restaurant": {
             "dining area": [
                 "desk",
                 "table"
@@ -172,8 +163,8 @@
                 "toilet"
             ]
         },
-        "Arthur Burton's apartment": {
-            "main room": [
+        "arthur burton's apartment": {
+            "arthur burton's room": [
                 "bed",
                 "desk",
                 "refrigerator",
@@ -181,14 +172,14 @@
                 "kitchen sink",
                 "cooking area"
             ],
-            "bathroom": [
+            "arthur burton's bathroom": [
                 "bathroom sink",
                 "shower",
                 "toilet"
             ]
         },
-        "Ryan Park's apartment": {
-            "main room": [
+        "ryan park's apartment": {
+            "ryan park's room": [
                 "bed",
                 "desk",
                 "refrigerator",
@@ -196,14 +187,14 @@
                 "kitchen sink",
                 "cooking area"
             ],
-            "bathroom": [
+            "ryan park's bathroom": [
                 "bathroom sink",
                 "shower",
                 "toilet"
             ]
         },
-        "Isabella Rodriguez's apartment": {
-            "main room": [
+        "isabella rodriguez's apartment": {
+            "isabella rodriguez's room": [
                 "bed",
                 "desk",
                 "refrigerator",
@@ -212,14 +203,14 @@
                 "cooking area",
                 "common room sofa"
             ],
-            "bathroom": [
+            "isabella rodriguez's bathroom": [
                 "bathroom sink",
                 "shower",
                 "toilet"
             ]
         },
-        "Giorgio Rossi's apartment": {
-            "main room": [
+        "giorgio rossi's apartment": {
+            "giorgio rossi's room": [
                 "bed",
                 "desk",
                 "refrigerator",
@@ -227,14 +218,14 @@
                 "kitchen sink",
                 "cooking area"
             ],
-            "bathroom": [
+            "giorgio rossi's bathroom": [
                 "bathroom sink",
                 "shower",
                 "toilet"
             ]
         },
-        "Carlos Gomez's apartment": {
-            "main room": [
+        "carlos gomez's apartment": {
+            "carlos gomez's room": [
                 "bed",
                 "desk",
                 "refrigerator",
@@ -243,21 +234,20 @@
                 "cooking area",
                 "common room sofa"
             ],
-            "bathroom": [
+            "carlos gomez's bathroom": [
                 "bathroom sink",
                 "shower",
                 "toilet"
             ]
         },
-       
-        "Tamara Taylor and Carmen Ortiz's house": {
-            "Tamara Taylor's room": [
+        "tamara taylor and carmen ortiz's house": {
+            "tamara taylor's room": [
                 "bed",
                 "desk",
                 "refrigerator",
                 "closet"
             ],
-            "Carmen Ortiz's room": [
+            "carmen ortiz's room": [
                 "bed",
                 "guitar",
                 "closet"
@@ -281,8 +271,8 @@
                 "house garden"
             ]
         },
-        "Moreno family's house": {
-            "Tom and Jane Moreno's bedroom": [
+        "moreno family's house": {
+            "tom and jane moreno's bedroom": [
                 "bed",
                 "desk",
                 "closet"
@@ -310,13 +300,13 @@
                 "desk"
             ]
         },
-        "Lin family's house": {
-            "Mei and John Lin's bedroom": [
+        "lin family's house": {
+            "mei and john lin's bedroom": [
                 "bed",
                 "desk",
                 "closet"
             ],
-            "Eddy Lin's bedroom": [
+            "eddy lin's bedroom": [
                 "bed",
                 "desk",
                 "closet"
@@ -338,6 +328,10 @@
             "garden": [
                 "house garden"
             ]
+        },
+        "johnson park": {
+            "lake": ["log bridge"],
+            "basketball court":[]
         }
     }
 }

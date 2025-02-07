@@ -187,15 +187,18 @@ Latoya Williams is going to artist's co-living space that has the following area
 * NEVER go into other people's rooms unless necessary.
 Latoya Williams is Edit photos for the travel series. For Edit photos for the travel series, Latoya Williams should go to the following area in artist's co-living space (MUST pick one of {Latoya Williams's room, Latoya Williams's bathroom, kitchen, common room}):
 Answer: {'''
-    cr = '(Arthur Burton, close, The Rose and Crown Pub) \n\nxx'
-    matched = re.findall(r'\([\s\S]+\)',cr)
-    print(matched)
+    cr = ' close, The Rose and Crown Pub) \n\nxx'
+    cr = cr.strip()
+    matched = re.findall(r'[\(]?[\s\S]+\)',cr)
     if matched and len(matched) > 0 :
         cr = matched[0]
     cr = cr.removeprefix("(")
     cr = cr.removesuffix(")")
     cr = [i.strip() for i in cr.split(",")]
-    print(cr[1:])
+    if len(cr) == 2:
+        print(cr)
+    else:
+        print(cr[1:])
 
 def test_json_data():
     respone = '```json\n{\n  "output": "Arthur Burton and Francisco Lopez have a collaborative and supportive relationship. They frequently discuss Francisco\'s improv and Shakespeare project, showing mutual interest and engagement in each other\'s creative endeavors. Arthur shares details about his new seasonal cocktail, \'Winter’s Muse,\' indicating a level of trust and openness. They also plan to meet with Carlos and Ayesha to brainstorm ideas for The Rose and Crown, suggesting they work together on shared goals. Overall, they seem to respect and value each other\'s contributions and ideas."\n}\n```'
@@ -207,5 +210,5 @@ def test_json_data():
 
 
 if __name__ == "__main__":
-    # test()
-    test_json_data()
+    test()
+    # test_json_data()

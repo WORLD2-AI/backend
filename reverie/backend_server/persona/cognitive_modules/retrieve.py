@@ -8,7 +8,7 @@ import sys
 sys.path.append('../../')
 
 from global_methods import *
-from persona.prompt_template.gpt_structure_llama import *
+from persona.prompt_template.gpt_structure import *
 
 from numpy import dot
 from numpy.linalg import norm

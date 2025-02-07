@@ -17,10 +17,10 @@ fs_back_end = "E:\\code\python\\Town\\reverie\\backend_server"
 collision_block_id = "32125"
 emb_url = "http://127.0.0.1:11434"
 # api_url = "http://127.0.0.1"
-# openai_api_key = ["app-YModVQ7H9WeGudJOsLnw3s2I"]
+openai_api_key = ["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"]
 
-api_url = "http://8.130.125.153"
-openai_api_key = ["app-cYXRNIAFUZY7ywce7OOkXcN9"]
+# api_url = "http://8.130.125.153"
+# openai_api_key = ["app-cYXRNIAFUZY7ywce7OOkXcN9"]
 # Verbose 
 debug = True
 logging.basicConfig(level=logging.DEBUG if debug else logging.INFO)
@@ -33,11 +33,10 @@ def logger_info(*args):
     :param args: The data to print.
     """
     stack = traceback.extract_stack()
-    previous_frame = stack[-2]
-    previous_function = previous_frame.name
-    previous_file = previous_frame.filename
-    previous_line_number = previous_frame.lineno
-    logger.info(f"Call stack function [{previous_function}]: line :[{previous_file}:{previous_line_number}]")
+    last_five = stack[-5:-1]
+    logger.info("---------------call stack------------")
+    for frame in last_five:
+        logger.info(f"Function [{frame.name}]: File {frame.filename}, line {frame.lineno}")
     for arg in args:
         logger.info(arg)
 def filter_result(respone:str):

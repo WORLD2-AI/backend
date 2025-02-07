@@ -1,73 +1,73 @@
-21, the Ville, artist's co-living space, Latoya Williams's room
-22, the Ville, artist's co-living space, Latoya Williams's bathroom
-23, the Ville, artist's co-living space, Rajiv Patel's room
-24, the Ville, artist's co-living space, Rajiv Patel's bathroom
-25, the Ville, artist's co-living space, Abigail Chen's room
-26, the Ville, artist's co-living space, Abigail Chen's bathroom
-29, the Ville, artist's co-living space, Francisco Lopez's room
-30, the Ville, artist's co-living space, Francisco Lopez's bathroom
-31, the Ville, artist's co-living space, Hailey Johnson's room
-32, the Ville, artist's co-living space, Hailey Johnson's bathroom
-34, the Ville, artist's co-living space, common room
-33, the Ville, artist's co-living space, kitchen
+21, the ville, artist's co-living space, latoya williams's room
+22, the ville, artist's co-living space, latoya williams's bathroom
+23, the ville, artist's co-living space, rajiv patel's room
+24, the ville, artist's co-living space, rajiv patel's bathroom
+25, the ville, artist's co-living space, abigail chen's room
+26, the ville, artist's co-living space, abigail chen's bathroom
+29, the ville, artist's co-living space, francisco lopez's room
+30, the ville, artist's co-living space, francisco lopez's bathroom
+31, the ville, artist's co-living space, hailey johnson's room
+32, the ville, artist's co-living space, hailey johnson's bathroom
+34, the ville, artist's co-living space, common room
+33, the ville, artist's co-living space, kitchen
 
-34, the Ville, Moonlight Tavern, bathroom
-36, the Ville, Moonlight Tavern, sing
-37, the Ville, Moonlight Tavern, kitchen
-38, the Ville, Moonlight Tavern, front desk
-39, the Ville, Moonlight Tavern, bar customer seating
+35, the ville, moonlight tavern, bathroom
+36, the ville, moonlight tavern, sing
+37, the ville, moonlight tavern, kitchen
+38, the ville, moonlight tavern, front desk
+39, the ville, moonlight tavern, bar customer seating
 
+40, the ville, hobbs cafe, sofa
+41, the ville, hobbs cafe, meeting area
+42, the ville, hobbs cafe, cafe
+43, the ville, hobbs cafe, front desk
 
-40, the Ville, Hobbs Cafe, sofa
-41, the Ville, Hobbs Cafe, meeting table
-42, the Ville, Hobbs Cafe, cafe
-43, the Ville, Hobbs Cafe, front desk
+44, the ville, supermarket, outdoor gear section
+45, the ville, supermarket, home appliance area
+46, the ville, supermarket, food area
+47, the ville, supermarket, checkout counter
 
-44, the Ville, Supermarket, outdoor area
-45, the Ville, Supermarket, home appliance area
-46, the Ville, Supermarket, food area
-47, the Ville, Supermarket, checkout counter
+48, the ville, restaurant, dining area
+49, the ville, restaurant, vip room1
+50, the ville, restaurant, vip room2
+52, the ville, restaurant, vip room3
+53, the ville, restaurant, kitchen
+54, the ville, restaurant, bathroom
 
-48, the Ville, Restaurant, dining area
-49, the Ville, Restaurant, VIP room1
-50, the Ville, Restaurant, VIP room2
-52, the Ville, Restaurant, VIP room3
-53, the Ville, Restaurant, kitchen
-54, the Ville, Restaurant, bathroom
+55, the ville, gym, room
+56, the ville, library, room
 
+57, the ville, arthur burton's apartment, arthur burton's room
+58, the ville, arthur burton's apartment, arthur burton's bathroom
+59, the ville, ryan park's apartment, ryan park's room
+60, the ville, ryan park's apartment, ryan park's bathroom
+61, the ville, isabella rodriguez's apartment, isabella rodriguez's room
+2, the ville, isabella rodriguez's apartment, isabella rodriguez's bathroom
+62, the ville, giorgio rossi's apartment, giorgio rossi's room
+3, the ville, giorgio rossi's apartment, giorgio rossi's bathroom
+63, the ville, carlos gomez's apartment, carlos gomez's room
+4, the ville, carlos gomez's apartment, carlos gomez's bathroom
 
-55, the Ville, Gym, room
-56, the Ville, Library, room
+104, the ville, tamara taylor and carmen ortiz's house, tamara taylor's room
+103, the ville, tamara taylor and carmen ortiz's house, carmen ortiz's room
+100, the ville, tamara taylor and carmen ortiz's house, common room
+101, the ville, tamara taylor and carmen ortiz's house, kitchen
+102, the ville, tamara taylor and carmen ortiz's house, bathroom
+74, the ville, tamara taylor and carmen ortiz's house, garden
 
+108, the ville, moreno family's house, tom and jane moreno's bedroom
+109, the ville, moreno family's house, empty bedroom
+105, the ville, moreno family's house, common room
+106, the ville, moreno family's house, kitchen
+107, the ville, moreno family's house, bathroom
+117, the ville, moreno family's house, garden
 
-57, the Ville, Arthur Burton's apartment, main room
-58, the Ville, Arthur Burton's apartment, bathroom
-59, the Ville, Ryan Park's apartment, main room
-60, the Ville, Ryan Park's apartment, bathroom
-61, the Ville, Isabella Rodriguez's apartment, main room
-2, the Ville, Isabella Rodriguez's apartment, bathroom
-62, the Ville, Giorgio Rossi's apartment, main room
-3, the Ville, Giorgio Rossi's apartment, bathroom
-63, the Ville, Carlos Gomez's apartment, main room
-4, the Ville, Carlos Gomez's apartment, bathroom
+114, the ville, lin family's house, mei and john lin's bedroom
+115, the ville, lin family's house, eddy lin's bedroom
+110, the ville, lin family's house, common room
+111, the ville, lin family's house, kitchen
+112, the ville, lin family's house, bathroom
+116, the ville, lin family's house, garden
 
-104, the Ville, Tamara Taylor and Carmen Ortiz's house, Tamara Taylor's room
-103, the Ville, Tamara Taylor and Carmen Ortiz's house, Carmen Ortiz's room
-100, the Ville, Tamara Taylor and Carmen Ortiz's house, common room
-101, the Ville, Tamara Taylor and Carmen Ortiz's house, kitchen
-102, the Ville, Tamara Taylor and Carmen Ortiz's house, bathroom
-74, the Ville, Tamara Taylor and Carmen Ortiz's house, garden
-
-108, the Ville, Moreno family's house, Tom and Jane Moreno's bedroom
-109, the Ville, Moreno family's house, empty bedroom
-105, the Ville, Moreno family's house, common room
-106, the Ville, Moreno family's house, kitchen
-107, the Ville, Moreno family's house, bathroom
-117, the Ville, Moreno family's house, garden
-
-114, the Ville, Lin family's house, Mei and John Lin's bedroom
-115, the Ville, Lin family's house, Eddy Lin's bedroom
-110, the Ville, Lin family's house, common room
-111, the Ville, Lin family's house, kitchen
-112, the Ville, Lin family's house, bathroom
-116, the Ville, Lin family's house, garden
+75, the ville, johnson park, lake
+76, the ville, johnson park, basketball court

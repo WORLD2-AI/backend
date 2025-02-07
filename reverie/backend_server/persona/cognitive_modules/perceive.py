@@ -8,7 +8,7 @@ sys.path.append('../../')
 
 from operator import itemgetter
 from global_methods import *
-from persona.prompt_template.gpt_structure_llama import *
+from persona.prompt_template.gpt_structure import *
 from persona.prompt_template.run_gpt_prompt import *
 
 def generate_poig_score(persona, event_type, description): 
@@ -60,6 +60,10 @@ def perceive(persona, maze):
                                               [i["sector"]]): 
         persona.s_mem.tree[i["world"]][i["sector"]][i["arena"]] = []
     if i["game_object"]: 
+      if not persona.s_mem.tree[i["world"]][i["sector"]]:
+        persona.s_mem.tree[i["world"]][i["sector"]] = {}
+      if not persona.s_mem.tree[i["world"]][i["sector"]][i["arena"]]:
+        persona.s_mem.tree[i["world"]][i["sector"]][i["arena"]] = []
       if (i["game_object"] not in persona.s_mem.tree[i["world"]]
                                                     [i["sector"]]
                                                     [i["arena"]]): 

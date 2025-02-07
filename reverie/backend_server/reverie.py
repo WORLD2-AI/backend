@@ -596,9 +596,9 @@ class ReverieServer:
 
                 print(ret_str)
 
-            except:
+            except Exception as e:
                 traceback.print_exc()
-                print("Error.")
+                print("Error.",e)
                 pass
 
 

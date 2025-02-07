@@ -148,7 +148,7 @@ class Maze:
           tile_details["spawning_location"] = slb_dict[spawning_location_maze[i][j]]
         
         tile_details["collision"] = False
-        if int(self.collision_maze[i][j]) > 0 : 
+        if int(self.collision_maze[i][j]) >= 0 : 
           tile_details["collision"] = True
 
         tile_details["events"] = set()
@@ -199,6 +199,7 @@ class Maze:
           addresses += [add]
 
         for add in addresses: 
+          add = add.lower()
           if add in self.address_tiles: 
             self.address_tiles[add].add((j, i))
           else: 

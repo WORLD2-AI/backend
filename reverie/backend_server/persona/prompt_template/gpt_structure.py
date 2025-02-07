@@ -54,8 +54,8 @@ def GPT4_request(prompt):
         )
         return completion["choices"][0]["message"]["content"]
 
-    except:
-        print("ChatGPT ERROR")
+    except Exception as e:
+        logger_info("ChatGPT ERROR",e)
         return "ChatGPT ERROR"
 
 
@@ -73,17 +73,18 @@ def ChatGPT_request(prompt, gpt_parameter={}):
   """
     # temp_sleep()
     openai.api_key = random.choice(openai_api_key)
-
+    logger_info("-----------prompt-------------------",prompt)
     try:
         completion = openai.ChatCompletion.create(
             model="gpt-4o",
             messages=[{"role": "user", "content": prompt}]
         )
         result =  completion["choices"][0]["message"]["content"]
+        logger_info("-----------result-------------------",result)
         return filter_result(respone=result)
 
     except Exception as e:
-        print(f"ChatGPT ERROR{e}")
+        logger_info(f"ChatGPT ERROR{e}")
         return f"ChatGPT ERROR{e}"
 
 
@@ -101,8 +102,8 @@ def GPT4_safe_generate_response(prompt,
     prompt += '{"output": "' + str(example_output) + '"}'
 
     if verbose:
-        print("CHAT GPT PROMPT")
-        print(prompt)
+        logger_info("CHAT GPT PROMPT")
+        logger_info(prompt)
 
     for i in range(repeat):
 
@@ -116,9 +117,9 @@ def GPT4_safe_generate_response(prompt,
                 return func_clean_up(curr_gpt_response, prompt=prompt)
 
             if verbose:
-                print("---- repeat count: \n", i, curr_gpt_response)
-                print(curr_gpt_response)
-                print("~~~~")
+                logger_info("---- repeat count: \n", i, curr_gpt_response)
+                logger_info(curr_gpt_response)
+                logger_info("~~~~")
 
         except:
             pass
@@ -142,9 +143,6 @@ def ChatGPT_safe_generate_response(prompt,
     prompt += "Example output json:\n"
     prompt += '{"output": "' + str(example_output) + '"}'
 
-    if verbose:
-        print("CHAT GPT PROMPT")
-        print(prompt)
 
     for i in range(repeat):
         try:
@@ -153,17 +151,9 @@ def ChatGPT_safe_generate_response(prompt,
             curr_gpt_response = curr_gpt_response[:end_index]
             curr_gpt_response = json.loads(curr_gpt_response)["output"]
 
-            # print ("---ashdfaf")
-            # print (curr_gpt_response)
-            # print ("000asdfhia")
-
             if func_validate(curr_gpt_response, prompt=prompt):
                 return func_clean_up(curr_gpt_response, prompt=prompt)
             time.sleep(1)
-            if verbose:
-                print("---- repeat count: \n", i, curr_gpt_response)
-                print(curr_gpt_response)
-                print("~~~~")
 
         except:
             pass
@@ -178,8 +168,8 @@ def ChatGPT_safe_generate_response_OLD(prompt,
                                        func_clean_up=None,
                                        verbose=False):
     if verbose:
-        print("CHAT GPT PROMPT")
-        print(prompt)
+        logger_info("CHAT GPT PROMPT")
+        logger_info(prompt)
 
     openai.api_key = random.choice(openai_api_key)
 
@@ -189,13 +179,13 @@ def ChatGPT_safe_generate_response_OLD(prompt,
             if func_validate(curr_gpt_response, prompt=prompt):
                 return func_clean_up(curr_gpt_response, prompt=prompt)
             if verbose:
-                print(f"---- repeat count: {i}")
-                print(curr_gpt_response)
-                print("~~~~")
+                logger_info(f"---- repeat count: {i}")
+                logger_info(curr_gpt_response)
+                logger_info("~~~~")
                 time.sleep(1)
         except:
             pass
-    print("FAIL SAFE TRIGGERED")
+    logger_info("FAIL SAFE TRIGGERED")
     return fail_safe_response
 
 
@@ -217,7 +207,9 @@ def GPT_request(prompt, gpt_parameter):
   """
     temp_sleep()
     openai.api_key = random.choice(openai_api_key)
-
+    # openai.api_key = random.choice(openai_api_key)
+    print("-------------------request prompt---------------------")
+    logger_info(prompt)
     try:
         response = openai.ChatCompletion.create(
             model=gpt_parameter["engine"],
@@ -230,10 +222,13 @@ def GPT_request(prompt, gpt_parameter):
             stream=gpt_parameter["stream"],
             stop=gpt_parameter["stop"], )
         time.sleep(1)
+        print("---------------success result ---------------------------------")
+        logger_info(response.choices[0]['message'], {})
         return response.choices[0]['message']['content']
     except Exception as e:
-        print(f"TOKEN LIMIT EXCEEDED: {e}")
-        return "TOKEN LIMIT EXCEEDED"
+        print("-------------error result ----------------------------")
+        logger_info(response,e)
+        raise e
 
 
 def generate_prompt(curr_input, prompt_lib_file):
@@ -273,12 +268,10 @@ def safe_generate_response(prompt,
                            func_clean_up=None,
                            verbose=False):
     # if verbose:
-    print("prompt:",prompt)
     openai.api_key = random.choice(openai_api_key)
 
     for i in range(repeat):
         curr_gpt_response = GPT_request(prompt, gpt_parameter)
-        print("gpt respone:",curr_gpt_response)
         if func_validate(curr_gpt_response, prompt=prompt):
             return func_clean_up(curr_gpt_response, prompt=prompt)
     return fail_safe_response
@@ -291,12 +284,12 @@ def get_embedding(text, model="text-embedding-3-small"):
     openai.api_key = random.choice(openai_api_key)
     respone =  openai.Embedding.create(
         input=text, model=model)
-    # print(respone)
+    # logger_info(respone)
     return respone["data"][0]["embedding"]
 
 
 if __name__ == '__main__':
-    print(filter_result('```json\n{"output": "🤔"}```'))
+    logger_info(filter_result('```json\n{"output": "🤔"}```'))
 
 
 #     def __func_validate(gpt_response):
@@ -320,4 +313,4 @@ if __name__ == '__main__':
 #                                     __func_clean_up,
 #                                     True)
 
-#     print(output)
+#     logger_info(output)

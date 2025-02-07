@@ -225,7 +225,7 @@ def generate_action_game_object(act_desp, act_address, persona, maze):
   EXAMPLE OUTPUT: 
     "bed"
   """
-  if debug: print ("GNS FUNCTION: <generate_action_game_object>")
+  logger_info("generate_action_game_object",act_desp, act_address, persona)
   if not persona.s_mem.get_str_accessible_arena_game_objects(act_address): 
     return "<random>"
   return run_gpt_prompt_action_game_object(act_desp, persona, maze, act_address)[0]
@@ -1008,7 +1008,7 @@ def plan(persona, maze, personas, new_day, retrieved):
     if persona_name != persona.scratch.chatting_with: 
       persona.scratch.chatting_with_buffer[persona_name] -= 1
 
-  return persona.scratch.act_address
+  return persona.scratch.act_address.lower()
 
 
 

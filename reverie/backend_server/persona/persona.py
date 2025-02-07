@@ -219,7 +219,7 @@ class Persona:
         logger_info(retrieved)
         plan = self.plan(maze, personas, new_day, retrieved)
         self.reflect()
-        print("get plan:",plan)
+        logger_info("get plan:",plan)
 
         # <execution> is a triple set that contains the following components:
         # <next_tile> is a x,y coordinate. e.g., (58, 9)

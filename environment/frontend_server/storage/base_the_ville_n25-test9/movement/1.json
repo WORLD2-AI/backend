@@ -1,0 +1,52 @@
+{
+  "persona": {
+    "carmen ortiz": {
+      "movement": [
+        58,
+        74
+      ],
+      "pronunciatio": "\ud83d\udecf\ufe0f\ud83d\ude34",
+      "description": "going to bed @ the ville:tamara taylor and carmen ortiz's house:carmen ortiz's room:bed",
+      "chat": null
+    },
+    "arthur burton": {
+      "movement": [
+        52,
+        14
+      ],
+      "pronunciatio": "\ud83d\ude0c\ud83c\udf3f",
+      "description": "relaxing or unwinding @ the ville:arthur burton's apartment:arthur burton's room:bed",
+      "chat": null
+    },
+    "latoya williams": {
+      "movement": [
+        16,
+        17
+      ],
+      "pronunciatio": "\ud83d\ude34",
+      "description": "sleeping @ the ville:artist's co-living space:latoya williams's room:bed",
+      "chat": null
+    },
+    "carlos gomez": {
+      "movement": [
+        93,
+        18
+      ],
+      "pronunciatio": "\ud83d\ude34",
+      "description": "sleeping @ the ville:carlos gomez's apartment:carlos gomez's room:bed",
+      "chat": null
+    },
+    "francisco lopez": {
+      "movement": [
+        16,
+        31
+      ],
+      "pronunciatio": "\ud83d\udecc\ud83d\udca4",
+      "description": "going to bed @ the ville:artist's co-living space:francisco lopez's room:bed",
+      "chat": null
+    }
+  },
+  "meta": {
+    "curr_time": "February 07, 2025, 23:38:07"
+  }
+}

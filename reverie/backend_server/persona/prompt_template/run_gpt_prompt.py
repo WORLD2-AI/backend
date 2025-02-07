@@ -14,7 +14,7 @@ from random import random
 sys.path.append('../../')
 
 from global_methods import *
-from persona.prompt_template.gpt_structure_llama import *
+from persona.prompt_template.gpt_structure import *
 from persona.prompt_template.print_prompt import *
 
 
@@ -609,12 +609,10 @@ def run_gpt_prompt_action_sector(action_description,
     if output not in x:
         # output = random.choice(x)
         output = persona.scratch.living_area.split(":")[1]
+    logger_info("run_gpt_prompt_task_decomp",output)
+    # print ("DEBUG", random.choice(x), "------", output)
 
-    print ("DEBUG", random.choice(x), "------", output)
-
-    if debug or verbose:
-        print_run_prompts(prompt_template, persona, gpt_param,
-                          prompt_input, prompt, output)
+   
 
     return output, [output, prompt, gpt_param, prompt_input, fail_safe]
 
@@ -676,7 +674,7 @@ def run_gpt_prompt_action_arena(action_description,
 
     def __func_clean_up(gpt_response:str, prompt=""):
         gpt_response = gpt_response.strip()
-        pattern = r'\{([\s\S]+)\}'
+        pattern = r'\{?([\s\S]+)\}'
         match = re.findall(pattern,gpt_response)
         if match and len(match) > 0  :
             gpt_response = match[0]
@@ -686,7 +684,7 @@ def run_gpt_prompt_action_arena(action_description,
     def __func_validate(gpt_response, prompt=""):
         if len(gpt_response.strip()) < 1:
             return False
-        if "}" not in gpt_response or "{" not in gpt_response:
+        if "}" not in gpt_response:
             return False
         if "," in gpt_response:
             return False
@@ -880,12 +878,14 @@ def run_gpt_prompt_event_triple(action_description, persona, verbose=False):
 
     def __func_clean_up(gpt_response:str, prompt=""):
         cr = gpt_response.strip()
-        matched = re.findall(r'\([\s\S]+\)',cr)
+        matched = re.findall(r'[\(]?[\s\S]+\)',cr)
         if matched and len(matched) > 0 :
             cr = matched[0]
         cr = cr.removeprefix("(")
         cr = cr.removesuffix(")")
         cr = [i.strip() for i in cr.split(",")]
+        if len(cr) == 2:
+            return  cr
         return cr[1:]
 
 
@@ -1051,12 +1051,14 @@ def run_gpt_prompt_act_obj_event_triple(act_game_object, act_obj_desc, persona, 
 
     def __func_clean_up(gpt_response:str, prompt=""):
         cr = gpt_response.strip()
-        matched = re.findall(r'\([\s\S]+\)',cr)
+        matched = re.findall(r'[\(]?[\s\S]+\)',cr)
         if matched and len(matched) > 0 :
             cr = matched[0]
         cr = cr.removeprefix("(")
         cr = cr.removesuffix(")")
         cr = [i.strip() for i in cr.split(",")]
+        if len(cr) == 2:
+            return cr
         return cr[1:]
 
     def __func_validate(gpt_response, prompt=""):

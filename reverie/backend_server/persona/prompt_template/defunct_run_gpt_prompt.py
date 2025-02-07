@@ -13,7 +13,7 @@ import sys
 sys.path.append('../../')
 
 from global_methods import *
-from persona.prompt_template.gpt_structure_llama import *
+from persona.prompt_template.gpt_structure import *
 from persona.prompt_template.print_prompt import *
 
 

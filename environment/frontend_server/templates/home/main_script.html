@@ -302,7 +302,7 @@
 	    let new_sprite = this.physics.add
 	                         .sprite(start_pos[0], start_pos[1], "atlas", "misa-front")
 	                         .setSize(30, 40)
-	                         .setOffset(0, 32); // DEBUG 1 --- I added 32 offset on Dec 29. 
+	                         .setOffset(0, 0); // DEBUG 1 --- I added 32 offset on Dec 29. 
 	    // Here, we are creating the persona and its pronunciatio sprites.
 	    personas[persona_name] = new_sprite;
 	    pronunciatios[persona_name] = this.add.text(
@@ -430,7 +430,7 @@
 	      update_xobj.addEventListener("load", function() {
 	        if (this.readyState === 4) {
 	          if (update_xobj.status === 200) {
-	            if (JSON.parse(update_xobj.responseText)["<step>"] == step) {
+	            if (JSON.parse(update_xobj.responseText)["<step>"] >= step) {
 	              execute_movement = JSON.parse(update_xobj.responseText)
 	              phase = "execute";
 	            }
@@ -469,7 +469,7 @@
 	        initials = (
 	          (initials.shift()?.[1] || '') + (initials.pop()?.[1] || '')
 	        ).toUpperCase();
-            pronunciatios[curr_persona_name].setText(initials + ": " + pronunciatio_content + "\n"+splitAndWrap(inner_activity_content,20));
+            pronunciatios[curr_persona_name].setText(initials + ": " + pronunciatio_content + "\n"+splitAndWrap("",20));
 	      }
 
 	      console.log(curr_persona_name);
@@ -572,6 +572,7 @@
      * @returns {string}
      */
     function splitAndWrap(text, n = 7) {
+		if (!text) return text;
          let result = [];
          for (let i = 0; i < text.length; i += n) {
               result.push(text.substring(i, i + n));
