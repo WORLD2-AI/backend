@@ -167,9 +167,6 @@ def ChatGPT_safe_generate_response_OLD(prompt,
                                        func_validate=None,
                                        func_clean_up=None,
                                        verbose=False):
-    if verbose:
-        logger_info("CHAT GPT PROMPT")
-        logger_info(prompt)
 
     openai.api_key = random.choice(openai_api_key)
 
@@ -178,14 +175,9 @@ def ChatGPT_safe_generate_response_OLD(prompt,
             curr_gpt_response = ChatGPT_request(prompt).strip()
             if func_validate(curr_gpt_response, prompt=prompt):
                 return func_clean_up(curr_gpt_response, prompt=prompt)
-            if verbose:
-                logger_info(f"---- repeat count: {i}")
-                logger_info(curr_gpt_response)
-                logger_info("~~~~")
-                time.sleep(1)
-        except:
+        except Exception as e:
+            logger_info("ChatGPT ERROR",e)
             pass
-    logger_info("FAIL SAFE TRIGGERED")
     return fail_safe_response
 
 

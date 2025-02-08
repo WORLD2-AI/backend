@@ -1,0 +1,52 @@
+{
+  "persona": {
+    "carmen ortiz": {
+      "movement": [
+        69,
+        26
+      ],
+      "pronunciatio": "\ud83c\udf79\ud83c\udf19",
+      "description": "relaxing at The Moonlight Tavern @ the ville:moonlight tavern:bar customer seating:bar seat",
+      "chat": null
+    },
+    "arthur burton": {
+      "movement": [
+        68,
+        25
+      ],
+      "pronunciatio": "\ud83c\udf82\ud83c\udf79",
+      "description": "standing at the counter and serving customers at Moonlight Tavern (preparing a special drink for a customer's birthday)   @ the ville:moonlight tavern:kitchen:cooking area",
+      "chat": null
+    },
+    "latoya williams": {
+      "movement": [
+        77,
+        39
+      ],
+      "pronunciatio": "\ud83e\udd1d\ud83c\udf10",
+      "description": "joining a discussion group about the local election (networking with other attendees)   @ the ville:moonlight tavern:bar customer seating:bar seat",
+      "chat": null
+    },
+    "carlos gomez": {
+      "movement": [
+        94,
+        18
+      ],
+      "pronunciatio": "\ud83d\udcd6\ud83c\udf3c",
+      "description": "relaxing and reading a poetry book @ the ville:hobbs cafe:sofa:common room sofa",
+      "chat": null
+    },
+    "francisco lopez": {
+      "movement": [
+        52,
+        30
+      ],
+      "pronunciatio": "\ud83c\udfa4\ud83c\udfb6",
+      "description": "attending an open mic night for comedy (warming up with vocal exercises)   @ the ville:artist's co-living space:francisco lopez's room:easel",
+      "chat": null
+    }
+  },
+  "meta": {
+    "curr_time": "February 08, 2025, 20:47:26"
+  }
+}

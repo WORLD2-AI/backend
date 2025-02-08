@@ -57,20 +57,22 @@
       ]
     },
     "supermarket": {
-      "outdoor gear section": [
-        "computer desk"
-      ],
-      "home appliance area": [
-        "shelf"
-      ],
-      "food area": [
-        "grocery store shelf",
-        "shelf"
-      ],
-      "checkout counter": [
-        "computer desk"
-      ]
-    },
+            "outdoor gear section": [
+                "shelf"
+            ],
+            "home appliance area": [
+                "shelf"
+            ],
+            "food area": [
+                "grocery store shelf",
+                "computer desk",
+                "shelf"
+            ],
+            "checkout counter": [
+                "computer desk",
+                "behind the counter"
+            ]
+        },
     "johnson park": {
       "lake": []
     },

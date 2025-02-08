@@ -1,18 +1,18 @@
 {
   "arthur burton": {
     "maze": "the_ville",
-    "x": 52,
+    "x": 54,
     "y": 14
   },
   "carlos gomez": {
     "maze": "the_ville",
-    "x": 93,
+    "x": 94,
     "y": 18
   },
   "carmen ortiz": {
     "maze": "the_ville",
-    "x": 58,
-    "y": 74
+    "x": 57,
+    "y": 73
   },
   "francisco lopez": {
     "maze": "the_ville",
@@ -22,6 +22,6 @@
   "latoya williams": {
     "maze": "the_ville",
     "x": 16,
-    "y": 17
+    "y": 18
   }
 }

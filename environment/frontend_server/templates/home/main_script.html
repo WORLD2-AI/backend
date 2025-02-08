@@ -302,7 +302,7 @@
 	    let new_sprite = this.physics.add
 	                         .sprite(start_pos[0], start_pos[1], "atlas", "misa-front")
 	                         .setSize(30, 40)
-	                         .setOffset(0, 0); // DEBUG 1 --- I added 32 offset on Dec 29. 
+	                         .setOffset(0, 32); // DEBUG 1 --- I added 32 offset on Dec 29. 
 	    // Here, we are creating the persona and its pronunciatio sprites.
 	    personas[persona_name] = new_sprite;
 	    pronunciatios[persona_name] = this.add.text(

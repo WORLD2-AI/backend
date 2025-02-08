@@ -59,17 +59,19 @@
         },
         "supermarket": {
             "outdoor gear section": [
-                "computer desk"
+                "shelf"
             ],
             "home appliance area": [
                 "shelf"
             ],
             "food area": [
                 "grocery store shelf",
+                "computer desk",
                 "shelf"
             ],
             "checkout counter": [
-                "computer desk"
+                "computer desk",
+                "behind the counter"
             ]
         },
         "classroom": {},

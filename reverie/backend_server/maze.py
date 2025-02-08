@@ -15,6 +15,7 @@ import math
 from global_methods import *
 from utils import *
 
+BASE_MAP_VALUE = "-1"
 class Maze: 
   def __init__(self, maze_name): 
     # READING IN THE BASIC META INFORMATION ABOUT THE MAP
@@ -148,7 +149,7 @@ class Maze:
           tile_details["spawning_location"] = slb_dict[spawning_location_maze[i][j]]
         
         tile_details["collision"] = False
-        if int(self.collision_maze[i][j]) >= 0 : 
+        if self.collision_maze[i][j] != BASE_MAP_VALUE : 
           tile_details["collision"] = True
 
         tile_details["events"] = set()

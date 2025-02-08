@@ -14,7 +14,7 @@ env_visuals = f"{maze_assets_loc}/the_ville/visuals"
 fs_storage = "E:\\code\\python\\Town\\environment\\frontend_server\\storage"
 fs_temp_storage = "E:\\code\\python\\Town\\environment\\frontend_server\\temp_storage"
 fs_back_end = "E:\\code\python\\Town\\reverie\\backend_server"
-collision_block_id = "32125"
+collision_block_id = "0"
 emb_url = "http://127.0.0.1:11434"
 # api_url = "http://127.0.0.1"
 openai_api_key = ["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"]
@@ -25,7 +25,7 @@ openai_api_key = ["sk-proj-sT4G0ZecORSmcnH7OJR_kPNFvEWhNc7MDzbdJoEf-96n4s3BpAjAt
 debug = True
 logging.basicConfig(level=logging.DEBUG if debug else logging.INFO)
 logger = logging.getLogger()
-
+print_call_stack = False
 def logger_info(*args):
     """
     Recursively print JSON data with indentation for better readability.
@@ -33,9 +33,11 @@ def logger_info(*args):
     :param args: The data to print.
     """
     stack = traceback.extract_stack()
-    last_five = stack[-5:-1]
-    logger.info("---------------call stack------------")
-    for frame in last_five:
+    last_stck = stack[-2:-1]
+    if print_call_stack:
+        logger.info("---------------call stack------------")
+        last_stck = stack[-5:-1]
+    for frame in last_stck:
         logger.info(f"Function [{frame.name}]: File {frame.filename}, line {frame.lineno}")
     for arg in args:
         logger.info(arg)

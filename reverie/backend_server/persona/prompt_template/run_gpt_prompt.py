@@ -345,7 +345,7 @@ def run_gpt_prompt_task_decomp(persona,
                 start_time_str = start_time.strftime("%H:%M%p")
                 end_time_str = end_time.strftime("%H:%M%p")
                 summ_str += f"{start_time_str} ~ {end_time_str}, {persona.name} is planning on {persona.scratch.f_daily_schedule_hourly_org[index][0]}, "
-                if curr_f_org_index+1 == index:
+                if curr_f_org_index == index:
                     curr_time_range = f'{start_time_str} ~ {end_time_str}'
         summ_str = summ_str[:-2] + "."
 
@@ -2822,7 +2822,7 @@ def run_gpt_generate_iterative_chat_utt(maze, init_persona, target_persona, retr
         if persona.a_mem.seq_chat:
             if int((persona.scratch.curr_time - persona.a_mem.seq_chat[-1].created).total_seconds()/60) > 480:
                 prev_convo_insert = ""
-        print (prev_convo_insert)
+        logger_info (prev_convo_insert)
 
         curr_sector = f"{maze.access_tile(persona.scratch.curr_tile)['sector']}"
         curr_arena= f"{maze.access_tile(persona.scratch.curr_tile)['arena']}"
@@ -2864,13 +2864,13 @@ def run_gpt_generate_iterative_chat_utt(maze, init_persona, target_persona, retr
         return cleaned_dict
 
     def __chat_func_validate(gpt_response, prompt=""):
-        print ("ugh...")
+
         try:
             # print ("debug 1")
             # print (gpt_response)
             # print ("debug 2")
 
-            print (extract_first_json_dict(gpt_response))
+            logger_info (extract_first_json_dict(gpt_response))
             # print ("debug 3")
 
             return True
@@ -2883,16 +2883,13 @@ def run_gpt_generate_iterative_chat_utt(maze, init_persona, target_persona, retr
         cleaned_dict["end"] = False
         return cleaned_dict
 
-    print ("11")
+    logger_info ("run_gpt_generate_iterative_chat_utt start")
     prompt_template = f"{fs_back_end}/persona/prompt_template/v3_ChatGPT/iterative_convo_v1.txt"
     prompt_input = create_prompt_input(maze, init_persona, target_persona, retrieved, curr_context, curr_chat)
-    print ("22")
     prompt = generate_prompt(prompt_input, prompt_template)
-    print (prompt)
     fail_safe = get_fail_safe()
     output = ChatGPT_safe_generate_response_OLD(prompt, 3, fail_safe,
                                                 __chat_func_validate, __chat_func_clean_up, verbose)
-    print (output)
 
     gpt_param = {"engine": "gpt-4o", "max_tokens": 50,
                  "temperature": 0, "top_p": 1, "stream": False,
