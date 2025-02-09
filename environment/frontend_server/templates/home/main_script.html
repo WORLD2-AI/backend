@@ -458,7 +458,7 @@
 			first_stop = false
 	      var update_xobj = new XMLHttpRequest();
 	      update_xobj.overrideMimeType("application/json");
-	      update_xobj.open('POST', "{% url 'update_environment' %}", true);
+	      update_xobj.open('POST', "{% url 'update_environment' %}", false);
 	      update_xobj.addEventListener("load", function() {
 	        if (this.readyState === 4) {
 	          if (update_xobj.status === 200) {
