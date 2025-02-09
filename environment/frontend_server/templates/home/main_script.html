@@ -39,7 +39,7 @@
 		let x = spans[i].innerText.split(",");
 		persona_names[x[0]] = [parseInt(x[1]), parseInt(x[2])]
 	}
-
+	let t = null;
 
 	// Phaser 3.0 global settings. 
 	// Configuration meant to be passed to the main Phaser game instance. 
@@ -80,7 +80,8 @@
 	let cursors;
 	let player;
 	let showDebug = false;
-
+	let params = getUrlParams();
+	console.log('get url params', params);
 	// Persona related variables. This should have the name of the persona as its 
 	// keys, and the instances of the Persona class as the values.
 	var spawn_tile_loc = {};
@@ -387,29 +388,31 @@
 	  // Moving personas take place in three distinct phases: "process," "update,"
 	  // and "execute." These phases are determined by the value of <phase>. 
 	  // Only one of the three phases is incurred in each update cycle. 
-	  if (phase == "process") {
-	    // "process" takes all current locations of the personas and send them to
-	    // the frontend server in a json form. Here, we first create the json 
-	    // file that records all persona locations: 
-	    let data = {"step": step, 
-	    						"sim_code": sim_code,
-	                "environment": {}}
-	    for (let i=0; i<Object.keys(personas).length; i++) {
-	      let persona_name = Object.keys(personas)[i];
-	      data["environment"][persona_name] = {"maze": curr_maze,
-	                                           "x": Math.ceil((personas[persona_name].body.position.x) / tile_width),
-	                                           "y": Math.ceil((personas[persona_name].body.position.y) / tile_width)}
-	    }
-	    var json = JSON.stringify(data);
-	    // We then send this to the frontend server: 
-	    var retrieve_xobj = new XMLHttpRequest();
-	    retrieve_xobj.overrideMimeType("application/json");
-	    retrieve_xobj.open('POST', "{% url 'process_environment' %}", true);
-	    retrieve_xobj.send(json);   
+	  if (phase == "process" ) {
+		if( params['update'] == "true"){
+			// "process" takes all current locations of the personas and send them to
+			// the frontend server in a json form. Here, we first create the json 
+			// file that records all persona locations: 
+			let data = {"step": step, 
+									"sim_code": sim_code,
+						"environment": {}}
+			for (let i=0; i<Object.keys(personas).length; i++) {
+			let persona_name = Object.keys(personas)[i];
+			data["environment"][persona_name] = {"maze": curr_maze,
+												"x": Math.ceil((personas[persona_name].body.position.x) / tile_width),
+												"y": Math.ceil((personas[persona_name].body.position.y) / tile_width)}
+			}
+			var json = JSON.stringify(data);
+			// We then send this to the frontend server: 
+			var retrieve_xobj = new XMLHttpRequest();
+			retrieve_xobj.overrideMimeType("application/json");
+			retrieve_xobj.open('POST', "{% url 'process_environment' %}", true);
+			retrieve_xobj.send(json); 
+		}
+	      
 	    // Finally, we update the phase variable to start the "udpate" process. 
 	    // Now that we sent all persona locations to the backend server, we need
-	    // to wait until the backend determines what the personas will do next. 
-	    phase = "update";
+	    // to wait until the backend determines what the personas will do next. 	   
 	  } 
 
 	  else if (phase == "update") { 
@@ -438,7 +441,7 @@
 	          }
 	        }
 	      });
-	      update_xobj.send(JSON.stringify({"step": step, "sim_code": sim_code }));   
+			update_xobj.send(JSON.stringify({"step": step, "sim_code": sim_code })); 
 	    }
 	    timer = timer - 1; 
 	  } 
@@ -530,7 +533,10 @@
 	          curr_persona.body.x = movement_target[curr_persona_name][0];
 	          curr_persona.body.y = movement_target[curr_persona_name][1];
 	        }
-	        phase = "process";
+			phase = "update";
+			if ( params['update'] == "true"){
+				phase = "process";
+			}
 	        execute_count = execute_count_max + 1;
 	        step = step + 1;
 	      }
@@ -550,7 +556,7 @@
 		        	chat_content += execute_movement["persona"][curr_persona_name]["chat"][j][0] + ": " + execute_movement["persona"][curr_persona_name]["chat"][j][1] + "<br>"
 		        }
 		      } else {
-		      	chat_content = "<em>暂无</em>"
+		      	chat_content = "<em>None</em>"
 		      }
 	        // action_description += description_content + "<br>";
 
@@ -579,6 +585,22 @@
         }
         return result.join('\n');
     }
+	function getUrlParams() {
+		let params = {};
+		let queryString = window.location.href;
+		queryString = queryString.split('?')[1];
+		if (!queryString){
+			return params;
+		}
+		queryString.split('&').forEach(pair => {
+			let [key, value] = pair.split('=');
+			if (!key) return;
+			let decodedKey = decodeURIComponent(key);
+			let decodedValue = decodeURIComponent(value || '');
+			params[decodedKey] = decodedValue;
+		});
+		return params;
+	}
 	// Control button binders
 	var play_button=document.getElementById("play_button");
 	var pause_button=document.getElementById("pause_button");
