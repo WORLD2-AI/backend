@@ -117,6 +117,7 @@
 	// frontend server. If it's higher, we wait longer cycles. 
 	let timer_max = 10;
 	let first_stop = true
+	let first_load = true
 	let timer = timer_max;
 
 	// <phase> -- there are three phases: "process," "update," and "execute."
@@ -416,7 +417,8 @@
 	  // Moving personas take place in three distinct phases: "process," "update,"
 	  // and "execute." These phases are determined by the value of <phase>. 
 	  // Only one of the three phases is incurred in each update cycle. 
-	  if (phase == "process" ) {
+	  if (phase == "process" || first_load) {
+		first_load = false
 		if( params['update'] == "true"){
 			phase = "update";
 			// "process" takes all current locations of the personas and send them to
@@ -435,7 +437,7 @@
 			// We then send this to the frontend server: 
 			var retrieve_xobj = new XMLHttpRequest();
 			retrieve_xobj.overrideMimeType("application/json");
-			retrieve_xobj.open('POST', "{% url 'process_environment' %}", true);
+			retrieve_xobj.open('POST', "{% url 'process_environment' %}", false);
 			retrieve_xobj.send(json); 
 		}
 	      
