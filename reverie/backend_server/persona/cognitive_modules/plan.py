@@ -64,7 +64,7 @@ def generate_first_daily_plan(persona, wake_up_hour):
      'work on painting project from 4:00 pm to 6:00 pm', 
      'have dinner at 6:00 pm', 'watch TV from 7:00 pm to 8:00 pm']
   """
-  logger_info('get persona daily play:',persona)
+  logger_info('get persona daily play:',persona.name)
   return run_gpt_prompt_daily_plan(persona, wake_up_hour)[0]
 
 
