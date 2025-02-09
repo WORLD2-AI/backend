@@ -39,6 +39,7 @@
 		let x = spans[i].innerText.split(",");
 		persona_names[x[0]] = [parseInt(x[1]), parseInt(x[2])]
 	}
+	console.log('persona_names:',persona_names)
 	let t = null;
 
 	// Phaser 3.0 global settings. 
@@ -60,8 +61,8 @@
 
 	const config = {
 	  type: Phaser.AUTO,
-	  width: 4800,
-	  height: 3200,
+	  width: 1440,
+	  height: 900,
 	  parent: "game-container",
 	  pixelArt: true,
 	  physics: {
@@ -72,8 +73,11 @@
 	    preload: preload,
 	    create: create,
 	    update: update },
-	  scale: {zoom: 0.5} };
+	  scale: {zoom: 0.7} };
 
+
+	
+	  
 	// Creating the game instance and setting up the main Phaser variables that  
 	// will be used in it. 
 	const game = new Phaser.Game(config);
@@ -96,6 +100,7 @@
 
 	var personas = {};
 	var pronunciatios = {};
+	let persona_name_tags = {};
 	let anims_direction;
 	let pre_anims_direction;
 	let pre_anims_direction_dict = {};
@@ -112,7 +117,6 @@
 	// frontend server. If it's higher, we wait longer cycles. 
 	let timer_max = 10;
 	let first_stop = true
-	let first_load = true
 	let timer = timer_max;
 
 	// <phase> -- there are three phases: "process," "update," and "execute."
@@ -188,6 +192,9 @@
 	  this.load.atlas("atlas", 
 	                  "https://mikewesthad.github.io/phaser-3-tilemap-blog-posts/post-1/assets/atlas/atlas.png", 
 	                  "https://mikewesthad.github.io/phaser-3-tilemap-blog-posts/post-1/assets/atlas/atlas.json");
+
+
+
 	}
 
 	function create() {  
@@ -309,12 +316,25 @@
 	    personas[persona_name] = new_sprite;
 	    pronunciatios[persona_name] = this.add.text(
 	                                   new_sprite.body.x - 6, 
-	                                   new_sprite.body.y - 42 - 32, // DEBUG 1 --- I added 32 offset on Dec 29. 
+	                                   new_sprite.body.y - 42, // DEBUG 1 --- I added 32 offset on Dec 29. 
 	                                   "🦁", {
-	                                   font: "28px monospace", 
-	                                   fill: "#000000", 
+	                                   font: "18px Arial", 
+	                                   fill: "#fff",
 	                                   padding: { x: 8, y: 8}, 
-	                                   backgroundColor: "#ffffff",
+	                                   backgroundColor: "#00000066",
+									   stroke: '#000',
+    									strokeThickness: 1,
+	                                   border:"solid",
+	                                   borderRadius:"10px"}).setDepth(3);
+		
+		persona_name_tags[persona_name] = this.add.text(
+	                                   new_sprite.body.x, 
+	                                   new_sprite.body.y - 24, // DEBUG 1 --- I added 32 offset on Dec 29. 
+	                                   formatPersonName(persona_name), {
+	                                   font: "bold 16px velvet",
+									   stroke: '#fff',
+    									strokeThickness: 2,
+	                                   fill: "#000", 
 	                                   border:"solid",
 	                                   borderRadius:"10px"}).setDepth(3);
 	  }
@@ -384,13 +404,19 @@
 	    player.body.setVelocityY(camera_speed);
 	  }
 
+
+	  let curr_focused_persona = document.getElementById("temp_focus").textContent;
+		if (curr_focused_persona != "") {
+			player.body.x = personas[curr_focused_persona].body.x;
+			player.body.y = personas[curr_focused_persona].body.y;
+			// document.getElementById("temp_focus").innerHTML = "";
+		}
 	  // console.log("phase: " + phase + ", step: " + step);
 	  // *** MOVE PERSONAS ***
 	  // Moving personas take place in three distinct phases: "process," "update,"
 	  // and "execute." These phases are determined by the value of <phase>. 
 	  // Only one of the three phases is incurred in each update cycle. 
-	  if (phase == "process" || first_load) {
-		first_load = false
+	  if (phase == "process" ) {
 		if( params['update'] == "true"){
 			phase = "update";
 			// "process" takes all current locations of the personas and send them to
@@ -409,7 +435,7 @@
 			// We then send this to the frontend server: 
 			var retrieve_xobj = new XMLHttpRequest();
 			retrieve_xobj.overrideMimeType("application/json");
-			retrieve_xobj.open('POST', "{% url 'process_environment' %}", false);
+			retrieve_xobj.open('POST', "{% url 'process_environment' %}", true);
 			retrieve_xobj.send(json); 
 		}
 	      
@@ -460,6 +486,7 @@
 	      let curr_persona_name = Object.keys(personas)[i];
 	      let curr_persona = personas[curr_persona_name];
 	      let curr_pronunciatio = pronunciatios[Object.keys(personas)[i]];
+		  let curr_persona_name_tags = persona_name_tags[Object.keys(personas)[i]];
 
 	      if (execute_count == execute_count_max) { 
 	        let curr_x = execute_movement["persona"][curr_persona_name]["movement"][0];
@@ -467,15 +494,14 @@
 	        movement_target[curr_persona_name] = [curr_x * tile_width, 
 	                                              curr_y * tile_width]; 
 	        let pronunciatio_content = execute_movement["persona"][curr_persona_name]["pronunciatio"];
+
+			let description = execute_movement["persona"][curr_persona_name]["description"]
 	        // This is what gives the pronunciatio balloon the name initials. We
 	        // use regex to extract the initials of the personas. 
 	        // E.g., "Dolores Murphy" -> "DM"
-	        let rgx = new RegExp(/(\p{L}{1})\p{L}+/, 'gu');
-	        let initials = [...curr_persona_name.matchAll(rgx)] || [];
-	        initials = (
-	          (initials.shift()?.[1] || '') + (initials.pop()?.[1] || '')
-	        ).toUpperCase();
-            pronunciatios[curr_persona_name].setText(initials + ": " + pronunciatio_content + "\n"+splitAndWrap("",20));
+	        
+	        initials = formatPersonName(curr_persona_name)
+            pronunciatios[curr_persona_name].setText(`(${pronunciatio_content}) ${splitAndWrap(description.slice(0,60)+"...",50)}`);
 	      }
 
 	      console.log(curr_persona_name);
@@ -504,8 +530,11 @@
 	        	anims_direction = "";
 	        }
 
-	        curr_pronunciatio.x = curr_persona.body.x - 6; 
-          curr_pronunciatio.y = curr_persona.body.y - 42 - 32; // DEBUG 1 --- I added 32 offset on Dec 29. 
+	      curr_pronunciatio.x = curr_persona.body.x + 38; 
+          curr_pronunciatio.y = curr_persona.body.y - tile_width / 2; // DEBUG 1 --- I added 32 offset on Dec 29. 
+
+		  curr_persona_name_tags.x = curr_persona.body.x;
+		  curr_persona_name_tags.y = curr_persona.body.y - 24;
 
           if (anims_direction == "l") {
 			      curr_persona.anims.play("misa-left-walk", true);
@@ -588,6 +617,17 @@
         }
         return result.join('\n');
     }
+	/**
+	 * 格式化人物名字
+	*/
+	function formatPersonName(origin_name){
+		// 人物名称处理正则 
+		let person_name_inital_reg = new RegExp(/(\p{L}{1})\p{L}+/, 'gu');
+		let initials = [...origin_name.matchAll(person_name_inital_reg)] || [];
+		return (
+			(initials.shift()?.[1] || '') + (initials.pop()?.[1] || '')
+		).toUpperCase();;
+	}
 	function getUrlParams() {
 		let params = {};
 		let queryString = window.location.href;
