@@ -49,6 +49,7 @@ def perceive(persona, maze):
   # in the form of a tree constructed using dictionaries. 
   for k in nearby_tiles: 
     i = maze.access_tile(k)
+    logger_info(k,i)
     if i["world"]: 
       if (i["world"] not in persona.s_mem.tree): 
         persona.s_mem.tree[i["world"]] = {}
