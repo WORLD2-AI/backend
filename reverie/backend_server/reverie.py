@@ -312,9 +312,6 @@ class ReverieServer:
 
         # The main while loop of Reverie.
         while (True):
-            count += 1
-            if count %100 == 0 :
-                self.save()
             # Done with this iteration if <int_counter> reaches 0.
             # if int_counter == 0:
             #     break
@@ -418,6 +415,9 @@ class ReverieServer:
                 self.step += 1
                 self.curr_time += datetime.timedelta(seconds=self.sec_per_step)
             # Sleep so we don't burn our machines.
+            count += 1
+            if count %100 == 0 :
+                self.save()
             time.sleep(self.server_sleep)
 
     def open_server(self):
