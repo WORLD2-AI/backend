@@ -5,18 +5,18 @@
   "curr_time": "February 09, 2025, 18:52:30",
   "curr_tile": [
     94,
-    20
+    19
   ],
   "daily_plan_req": "",
-  "name": "carlos gomez",
-  "first_name": "carlos",
-  "last_name": "gomez",
-  "age": 32,
-  "innate": "loud, rude, toxic",
-  "learned": "carlos gomez is a poet who loves to explore his inner thoughts and feelings. He is always looking for new ways to express himself.",
-  "currently": "carlos gomez is working on a collection of poetry that explores the beauty of the natural world. He is also attending creative writing workshops to hone his skills.",
-  "lifestyle": "carlos gomez goes to bed around 10pm, awakes up around 7am, eats dinner around 5pm.",
-  "living_area": "the ville:carlos gomez's apartment:main room",
+  "name": "frank",
+  "first_name": "frank",
+  "last_name": "frank",
+  "age": 45,
+  "innate": "contradictions and conflicts, immoral, shameless, helpful",
+  "learned": "frank is an inveterate drunkard. He relishes a fast-paced, alcohol-soaked existence. When things are going his way, he laughs heartily and indulges in debauchery, as if the world is bathed in the dawn of hope. When fortune turns against him, he has nowhere to hide. He thinks solitude might make him stop, but it never will.",
+  "currently": "frank is a bachelor. frank drinks all day long and is always in a semi-drunken state. frank spends his days indulging in alcohol and seeking out misfortunes, and his behavior often leaves people agape.",
+  "lifestyle": "frank is drinking all day long and always in a semi-drunken state. sleeping time is random and inconsistent.",
+  "living_area": "the ville:frank's apartment:frank's room",
   "concept_forget": 100,
   "daily_reflection_time": 180,
   "daily_reflection_size": 5,
@@ -28,102 +28,91 @@
   "importance_w": 1,
   "recency_decay": 0.995,
   "importance_trigger_max": 250,
-  "importance_trigger_curr": 220,
-  "importance_ele_n": 10,
+  "importance_trigger_curr": 235,
+  "importance_ele_n": 9,
   "thought_count": 5,
   "daily_req": [
-    "Wake up and complete the morning routine at 7:00 am.",
-    "Have breakfast at 8:00 am.",
-    "Spend time in nature for inspiration from 9:00 am to 11:00 am.",
-    "Attend a creative writing workshop from 11:30 am to 1:30 pm.",
-    "Have lunch at 2:00 pm.",
-    "Work on poetry collection from 3:00 pm to 4:30 pm.",
-    "Relax and unwind before dinner from 4:30 pm to 5:00 pm.",
-    "Have dinner at 5:00 pm.",
-    "Reflect on poetry themes and ideas from 6:00 pm to 7:00 pm.",
-    "Read poetry for inspiration from 7:00 pm to 8:00 pm.",
-    "Relax and prepare for bed from 8:00 pm to 10:00 pm.",
-    "Go to bed at 10:00 pm."
+    "Wake up and complete the morning routine at 11:00 am.",
+    "Have a light brunch and a drink at 11:30 am.",
+    "Spend time people-watching at a local caf\u00e9 with a drink from 12:30 pm to 2:00 pm.",
+    "Visit a local pub for a few drinks from 2:30 pm to 4:00 pm.",
+    "Go for a stroll in the park with a drink in hand from 4:30 pm to 5:30 pm.",
+    "Return home and take a nap from 6:00 pm to 7:00 pm.",
+    "Cook or order a simple dinner and enjoy it with wine at 8:00 pm.",
+    "Relax and listen to music while enjoying a drink from 9:00 pm to 10:30 pm.",
+    "Head to bed when feeling tired, likely around 11:00 pm."
   ],
   "f_daily_schedule": [
     [
       "sleeping",
-      420
+      660
     ],
     [
       "waking up and completing his morning routine",
       60
     ],
     [
-      "having breakfast",
+      "having a light brunch and a drink",
       60
     ],
     [
-      "spending time in nature for inspiration",
-      180
-    ],
-    [
-      "attending a creative writing workshop",
+      "spending time people-watching at a local caf\u00e9 with a drink",
       120
     ],
     [
-      "having lunch",
-      60
-    ],
-    [
-      "working on his poetry collection",
+      "visiting a local pub for a few drinks",
       120
     ],
     [
-      "having dinner",
+      "going for a stroll in the park with a drink in hand",
       60
     ],
     [
-      "reflecting on poetry themes and ideas",
+      "returning home and taking a nap",
       60
     ],
     [
-      "reading poetry for inspiration (on the way to selecting a poetry book from his collection)",
+      "continuing his nap (on the way to tossing and turning in bed)",
       0
     ],
     [
-      "reading poetry for inspiration (conversing about Frank and Carlos discussing the themes of nature in poetry, with Carlos encouraging Frank to explore poetry as a means of reflection and self-discovery.)",
+      "continuing his nap (conversing about Frank and Carlos discussing the themes of nature in poetry, with Carlos encouraging Frank to explore poetry as a means of reflection and self-discovery.)",
       8
     ],
     [
-      "reading poetry for inspiration (reading the first poem slowly to absorb its meaning)  ",
-      5
-    ],
-    [
-      "reading poetry for inspiration (taking notes on themes and stylistic elements)  ",
+      "continuing his nap (tossing and turning in bed)  ",
       10
     ],
     [
-      "reading poetry for inspiration (reading another poem for different perspectives)  ",
+      "continuing his nap (drifting in and out of sleep)  ",
       10
     ],
     [
-      "reading poetry for inspiration (reflecting on how the poems relate to his own work)  ",
+      "continuing his nap (snoring lightly)  ",
       10
     ],
     [
-      "reading poetry for inspiration (jotting down ideas inspired by the poems)  ",
+      "continuing his nap (dreaming about a past adventure)  ",
       10
     ],
     [
-      "reading poetry for inspiration (organizing his notes for future reference)",
-      7
+      "continuing his nap (waking up briefly and checking the time)  ",
+      10
     ],
     [
-      "relaxing and preparing for bed",
-      120
+      "continuing his nap (settling back into a deeper sleep)",
+      2
     ],
     [
-      "going to bed",
+      "cooking or ordering a simple dinner and enjoying it with wine",
       60
     ],
     [
-      "sleeping",
+      "relaxing and listening to music while enjoying a drink",
+      120
+    ],
+    [
+      "heading to bed when feeling tired",
       60
     ],
     [
@@ -134,66 +123,58 @@
   "f_daily_schedule_hourly_org": [
     [
       "sleeping",
-      420
+      660
     ],
     [
       "waking up and completing his morning routine",
       60
     ],
     [
-      "having breakfast",
+      "having a light brunch and a drink",
       60
     ],
     [
-      "spending time in nature for inspiration",
-      180
-    ],
-    [
-      "attending a creative writing workshop",
+      "spending time people-watching at a local caf\u00e9 with a drink",
       120
     ],
     [
-      "having lunch",
-      60
-    ],
-    [
-      "working on his poetry collection",
+      "visiting a local pub for a few drinks",
       120
     ],
     [
-      "having dinner",
+      "going for a stroll in the park with a drink in hand",
       60
     ],
     [
-      "reflecting on poetry themes and ideas",
+      "returning home and taking a nap",
       60
     ],
     [
-      "reading poetry for inspiration",
+      "continuing his nap",
       60
     ],
     [
-      "relaxing and preparing for bed",
+      "cooking or ordering a simple dinner and enjoying it with wine",
+      60
+    ],
+    [
+      "relaxing and listening to music while enjoying a drink",
       120
     ],
     [
-      "going to bed",
-      60
-    ],
-    [
-      "sleeping",
+      "heading to bed when feeling tired",
       60
     ]
   ],
-  "act_address": "<persona> frank",
+  "act_address": "<persona> carlos gomez",
   "act_start_time": "February 09, 2025, 18:52:10",
   "act_duration": 8,
   "act_description": "conversing about Frank and Carlos discussing the themes of nature in poetry, with Carlos encouraging Frank to explore poetry as a means of reflection and self-discovery.",
   "act_pronunciatio": "\ud83d\udcac",
   "act_event": [
-    "carlos gomez",
+    "frank",
     "chat with",
-    "frank"
+    "carlos gomez"
   ],
   "act_obj_description": null,
   "act_obj_pronunciatio": null,
@@ -202,7 +183,7 @@
     null,
     null
   ],
-  "chatting_with": "frank",
+  "chatting_with": "carlos gomez",
   "chat": [
     [
       "frank",
@@ -234,7 +215,7 @@
     ]
   ],
   "chatting_with_buffer": {
-    "frank": 800
+    "carlos gomez": 800
   },
   "chatting_end_time": "February 09, 2025, 19:01:00",
   "act_path_set": true,

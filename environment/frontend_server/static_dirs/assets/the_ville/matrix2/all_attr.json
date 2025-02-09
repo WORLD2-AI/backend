@@ -180,8 +180,8 @@
                 "toilet"
             ]
         },
-        "ryan park's apartment": {
-            "ryan park's room": [
+        "kiki's apartment": {
+            "kiki's room": [
                 "bed",
                 "desk",
                 "refrigerator",
@@ -189,14 +189,14 @@
                 "kitchen sink",
                 "cooking area"
             ],
-            "ryan park's bathroom": [
+            "kiki's bathroom": [
                 "bathroom sink",
                 "shower",
                 "toilet"
             ]
         },
-        "isabella rodriguez's apartment": {
-            "isabella rodriguez's room": [
+        "cichengege's apartment": {
+            "cichengege's room": [
                 "bed",
                 "desk",
                 "refrigerator",
@@ -205,13 +205,13 @@
                 "cooking area",
                 "common room sofa"
             ],
-            "isabella rodriguez's bathroom": [
+            "cichengege's bathroom": [
                 "bathroom sink",
                 "shower",
                 "toilet"
             ]
         },
-        "giorgio rossi's apartment": {
+        "frank's apartment": {
             "giorgio rossi's room": [
                 "bed",
                 "desk",
@@ -273,8 +273,8 @@
                 "house garden"
             ]
         },
-        "moreno family's house": {
-            "tom and jane moreno's bedroom": [
+        "mk's house": {
+            "mk's bedroom": [
                 "bed",
                 "desk",
                 "closet"
