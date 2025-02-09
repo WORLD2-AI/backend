@@ -1,8 +1,8 @@
 {
   "arthur burton": {
     "maze": "the_ville",
-    "x": 68,
-    "y": 27
+    "x": 66,
+    "y": 25
   },
   "carlos gomez": {
     "maze": "the_ville",
@@ -11,8 +11,8 @@
   },
   "carmen ortiz": {
     "maze": "the_ville",
-    "x": 66,
-    "y": 29
+    "x": 67,
+    "y": 28
   },
   "francisco lopez": {
     "maze": "the_ville",
@@ -21,13 +21,13 @@
   },
   "latoya williams": {
     "maze": "the_ville",
-    "x": 16,
-    "y": 20
+    "x": 17,
+    "y": 19
   },
   "kiki": {
     "maze": "the_ville",
-    "x": 87,
-    "y": 80
+    "x": 22,
+    "y": 24
   },
   "cichengege": {
     "maze": "the_ville",
@@ -37,11 +37,11 @@
   "frank": {
     "maze": "the_ville",
     "x": 94,
-    "y": 20
+    "y": 19
   },
   "mk": {
     "maze": "the_ville",
     "x": 87,
-    "y": 80
+    "y": 79
   }
 }
