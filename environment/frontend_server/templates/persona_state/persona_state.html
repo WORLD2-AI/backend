@@ -10,7 +10,7 @@
 </style>
 
 
-<h3 style="width:80%; margin:0 auto; margin-top:5em; padding:1em; padding-left:3.5em; padding-right:2em; border-radius:10px; padding-top:3em"><a href="{{request.META.HTTP_REFERER}}">< Return to simulation</a></h3>
+<h3 style="width:80%; margin:0 auto; margin-top:5em; padding:1em; padding-left:3.5em; padding-right:2em; border-radius:10px; padding-top:3em"><a href="{{request.META.HTTP_REFERER}}">< Home</a></h3>
 
 
 <div class="media" style="width:80%; margin:0 auto; margin-top:2em; background-color:#EEEEEE; padding:1em; padding-left:3.5em; padding-right:2em; border-radius:10px; padding-top:3em">
@@ -24,8 +24,8 @@
   <div class="media-body" style='padding-left:3em; padding-top:0.5em; padding-bottom:1em'>
   	<div class="row">
     	<h1 class="col-md-8" style="margin-bottom:0.8em; font-size:2em; ">
-			{{persona_names_mapping|get_item:persona_name}}
-<!--			{persona_names_mapping[persona_name]}}-->
+			<!-- {{persona_names_mapping|get_item:persona_name}} -->
+			{{persona_name}}
     	</h1>
     </div>
     <div style="">

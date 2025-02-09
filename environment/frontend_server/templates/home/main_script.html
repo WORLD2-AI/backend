@@ -390,6 +390,7 @@
 	  // Only one of the three phases is incurred in each update cycle. 
 	  if (phase == "process" ) {
 		if( params['update'] == "true"){
+			phase = "update";
 			// "process" takes all current locations of the personas and send them to
 			// the frontend server in a json form. Here, we first create the json 
 			// file that records all persona locations: 
