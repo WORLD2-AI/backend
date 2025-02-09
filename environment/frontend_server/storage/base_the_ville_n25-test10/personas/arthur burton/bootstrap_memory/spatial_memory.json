@@ -1,0 +1,100 @@
+{
+  "the ville": {
+    "arthur burton's apartment": {
+      "arthur burton's room": [
+        "bed",
+        "desk",
+        "refrigerator",
+        "closet",
+        "kitchen sink",
+        "cooking area"
+      ],
+      "arthur burton's bathroom": [
+        "bathroom sink",
+        "shower",
+        "toilet"
+      ]
+    },
+    "restaurant": {
+      "dining area": [
+        "desk",
+        "table"
+      ],
+      "vip room1": [
+        "desk",
+        "table"
+      ],
+      "vip room2": [
+        "desk",
+        "table"
+      ],
+      "vip room3": [
+        "desk",
+        "table"
+      ],
+      "bathroom": [
+        "bathroom sink",
+        "toilet"
+      ]
+    },
+    "hobbs cafe": {
+      "sofa": [
+        "cafe customer seating",
+        "common room sofa"
+      ],
+      "meeting area": [
+        "desk",
+        "piano"
+      ],
+      "cafe": [
+        "pool table",
+        "desk"
+      ],
+      "front desk": [
+        "blackboard",
+        "behind the cafe counter",
+        "shelf"
+      ]
+    },
+    "supermarket": {
+            "outdoor gear section": [
+                "shelf"
+            ],
+            "home appliance area": [
+                "shelf"
+            ],
+            "food area": [
+                "grocery store shelf",
+                "computer desk",
+                "shelf"
+            ],
+            "checkout counter": [
+                "computer desk",
+                "behind the counter"
+            ]
+        },
+    "johnson park": {
+      "lake": []
+    },
+    "moonlight tavern": {
+      "bathroom": [
+        "bathroom sink",
+        "toilet"
+      ],
+      "sing": [
+        "game console"
+      ],
+      "kitchen": [
+        "cooking area",
+        "kitchen sink",
+        "refrigerator"
+      ],
+      "front desk": [
+        "refrigerator"
+      ],
+      "bar customer seating": [
+        "bar seat"
+      ]
+    }
+  }
+}
