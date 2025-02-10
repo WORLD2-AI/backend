@@ -18,6 +18,7 @@ to the memory stream, and "reverie" to refer to the overarching simulation
 framework.
 """
 import json
+import threading
 import numpy
 import datetime
 import pickle
@@ -437,7 +438,8 @@ class ReverieServer:
 
         # <sim_folder> points to the current simulation folder.
         sim_folder = f"{fs_storage}/{self.sim_code}"
-
+        t1 = threading.Thread(target=rs.start_server, args=([1]))
+        t1.start()
         while True:
             sim_command = input("params: ")
             sim_command = sim_command.strip()
@@ -469,11 +471,11 @@ class ReverieServer:
                     # Example: save
                     self.save()
 
-                elif sim_command[:3].lower() == "run":
-                    # Runs the number of steps specified in the prompt.
-                    # Example: run 1000
-                    int_count = int(sim_command.split()[-1])
-                    rs.start_server(int_count)
+                # elif sim_command[:3].lower() == "run":
+                #     # Runs the number of steps specified in the prompt.
+                #     # Example: run 1000
+                #     int_count = int(sim_command.split()[-1])
+                #     rs.start_server(int_count)
 
                 elif ("print persona schedule"
                       in sim_command[:22].lower()):
