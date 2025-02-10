@@ -418,6 +418,7 @@ class ReverieServer:
             # Sleep so we don't burn our machines.
             count += 1
             if count %100 == 0 :
+                count = 0
                 self.save()
             time.sleep(self.server_sleep)
 
