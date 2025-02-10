@@ -18,6 +18,7 @@ to the memory stream, and "reverie" to refer to the overarching simulation
 framework.
 """
 import json
+import threading
 import numpy
 import datetime
 import pickle
@@ -26,7 +27,7 @@ import math
 import os
 import shutil
 import traceback
-
+import concurrent.futures
 from selenium import webdriver
 
 from global_methods import *
@@ -312,9 +313,6 @@ class ReverieServer:
 
         # The main while loop of Reverie.
         while (True):
-            count += 1
-            if count %100 == 0 :
-                self.save()
             # Done with this iteration if <int_counter> reaches 0.
             # if int_counter == 0:
             #     break
@@ -381,21 +379,28 @@ class ReverieServer:
                 # This is where the core brains of the personas are invoked.
                 movements = {"persona": dict(),
                                 "meta": dict()}
-                for persona_name, persona in self.personas.items():
+                # for persona_name, persona in self.personas.items():
                     # <next_tile> is a x,y coordinate. e.g., (58, 9)
                     # <pronunciatio> is an emoji. e.g., "\ud83d\udca4"
                     # <description> is a string description of the movement. e.g.,
                     #   writing her next novel (editing her novel)
                     #   @ double studio:double studio:common room:sofa
+                    
+
+                def move_persona(persona_name, persona, maze, personas, personas_tile, curr_time):
                     next_tile, pronunciatio, description = persona.move(
-                        self.maze, self.personas, self.personas_tile[persona_name],
-                        self.curr_time)
-                    movements["persona"][persona_name] = {}
-                    movements["persona"][persona_name]["movement"] = next_tile
-                    movements["persona"][persona_name]["pronunciatio"] = pronunciatio
-                    movements["persona"][persona_name]["description"] = description
-                    movements["persona"][persona_name]["chat"] = (persona
-                                                                    .scratch.chat)
+                        maze, personas, personas_tile[persona_name], curr_time)
+                    return persona_name, next_tile, pronunciatio, description, persona.scratch.chat
+
+                with concurrent.futures.ThreadPoolExecutor() as executor:
+                    futures = {executor.submit(move_persona, persona_name, persona, self.maze, self.personas, self.personas_tile, self.curr_time): persona_name for persona_name, persona in self.personas.items()}
+                    for future in concurrent.futures.as_completed(futures):
+                        persona_name, next_tile, pronunciatio, description, chat = future.result()
+                        movements["persona"][persona_name] = {}
+                        movements["persona"][persona_name]["movement"] = next_tile
+                        movements["persona"][persona_name]["pronunciatio"] = pronunciatio
+                        movements["persona"][persona_name]["description"] = description
+                        movements["persona"][persona_name]["chat"] = chat
 
                 # Include the meta information about the current stage in the
                 # movements dictionary.
@@ -418,6 +423,10 @@ class ReverieServer:
                 self.step += 1
                 self.curr_time += datetime.timedelta(seconds=self.sec_per_step)
             # Sleep so we don't burn our machines.
+            count += 1
+            if count %100 == 0 :
+                count = 0
+                self.save()
             time.sleep(self.server_sleep)
 
     def open_server(self):
@@ -437,7 +446,8 @@ class ReverieServer:
 
         # <sim_folder> points to the current simulation folder.
         sim_folder = f"{fs_storage}/{self.sim_code}"
-
+        t1 = threading.Thread(target=rs.start_server, args=([1]))
+        t1.start()
         while True:
             sim_command = input("params: ")
             sim_command = sim_command.strip()
@@ -469,11 +479,11 @@ class ReverieServer:
                     # Example: save
                     self.save()
 
-                elif sim_command[:3].lower() == "run":
-                    # Runs the number of steps specified in the prompt.
-                    # Example: run 1000
-                    int_count = int(sim_command.split()[-1])
-                    rs.start_server(int_count)
+                # elif sim_command[:3].lower() == "run":
+                #     # Runs the number of steps specified in the prompt.
+                #     # Example: run 1000
+                #     int_count = int(sim_command.split()[-1])
+                #     rs.start_server(int_count)
 
                 elif ("print persona schedule"
                       in sim_command[:22].lower()):
@@ -610,7 +620,7 @@ if __name__ == '__main__':
     # rs = ReverieServer("base_the_ville_isabella_maria_klaus",
     #                    "July1_the_ville_isabella_maria_klaus-step-3-1")
     rs = ReverieServer("base_the_ville_n25-test",
-                       "base_the_ville_n25-test9")
+                       "base_the_ville_n25-test10")
     rs.open_server()
 
     # origin = input("agent name: ").strip()

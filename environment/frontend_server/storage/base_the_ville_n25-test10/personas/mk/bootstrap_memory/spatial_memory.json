@@ -1,0 +1,158 @@
+{
+    "the ville": {
+        "mk's house": {
+            "mk's bedroom": [
+                "bed",
+                "desk",
+                "closet"
+            ],
+            "empty bedroom": [
+                "bed",
+                "closet"
+            ],
+            "common room": [
+                "desk",
+                "shelf"
+            ],
+            "kitchen": [
+                "refrigerator",
+                "kitchen sink",
+                "cooking area"
+            ],
+            "bathroom": [
+                "bathroom sink",
+                "shower",
+                "toilet"
+            ],
+            "garden": [
+                "house garden",
+                "desk"
+            ],
+            "mk's  bedroom": [
+                "bed"
+            ],
+            "classroom": [
+                "house garden"
+            ]
+        },
+        "library": {
+            "room": [
+                "computer desk",
+                "bookshelf",
+                "computer",
+                "library sofa"
+            ]
+        },
+        "restaurant": {
+            "dining area": [
+                "desk",
+                "table"
+            ],
+            "VIP room1": [
+                "desk",
+                "table"
+            ],
+            "VIP room2": [
+                "desk",
+                "table"
+            ],
+            "VIP room3": [
+                "desk",
+                "table"
+            ],
+            "kitchen": [
+                "kitchen sink",
+                "cooking area",
+                "refrigerator"
+            ],
+            "bathroom": [
+                "bathroom sink",
+                "toilet"
+            ]
+        },
+        "supermarket": {
+            "home appliance area": [
+                "shelf"
+            ],
+            "food area": [
+                "grocery store shelf",
+                "computer desk",
+                "shelf"
+            ],
+            "checkout counter": [
+                "computer desk",
+                "behind the counter"
+            ]
+        },
+        "johnson park": {
+            "lake": [
+                "log bridge"
+            ],
+            "basketball court": []
+        },
+        "hobbs cafe": {
+            "sofa": [
+                "cafe customer seating",
+                "common room sofa"
+            ],
+            "meeting area": [
+                "desk",
+                "piano"
+            ],
+            "cafe": [
+                "pool table",
+                "desk"
+            ],
+            "front desk": [
+                "blackboard",
+                "behind the cafe counter",
+                "shelf"
+            ]
+        },
+        "moonlight tavern": {
+            "bathroom": [
+                "bathroom sink",
+                "toilet"
+            ],
+            "sing": [
+                "game console"
+            ],
+            "kitchen": [
+                "cooking area",
+                "kitchen sink",
+                "refrigerator"
+            ],
+            "front desk": [
+                "refrigerator"
+            ],
+            "bar customer seating": [
+                "bar seat"
+            ]
+        },
+        "cichengege's apartment": {
+            "cichengege's room": [
+                "bed",
+                "desk",
+                "refrigerator",
+                "closet",
+                "kitchen sink",
+                "cooking area",
+                "common room sofa"
+            ],
+            "cichengege's bathroom": [
+                "bathroom sink",
+                "shower",
+                "toilet"
+            ]
+        },
+        "lin family's house": {
+            "mei and john lin's bedroom": [
+                "closet",
+                "desk"
+            ],
+            "garden": [
+                "house garden"
+            ]
+        }
+    }
+}

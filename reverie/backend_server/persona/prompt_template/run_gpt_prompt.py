@@ -1857,6 +1857,8 @@ def run_gpt_prompt_event_poignancy(persona, event_description, test_input=None, 
         if isinstance(gpt_response, int):
             return gpt_response
         gpt_response = int(gpt_response.strip())
+        if gpt_response < 1 or gpt_response > 10:
+            raise ValueError("The response is not in the range of 1 to 10.")
         return gpt_response
 
     def __func_validate(gpt_response, prompt=""):
@@ -1891,7 +1893,7 @@ def run_gpt_prompt_event_poignancy(persona, event_description, test_input=None, 
     prompt_input = create_prompt_input(persona, event_description)  ########
     prompt = generate_prompt(prompt_input, prompt_template)
     example_output = "5" ########
-    special_instruction = "The output should ONLY contain ONE integer value on the scale of 1 to 10." ########
+    special_instruction = "The output should only contain ONE integer value on the scale of 1 to 10." ########
     fail_safe = get_fail_safe() ########
     output = ChatGPT_safe_generate_response(prompt, example_output, special_instruction, 3, fail_safe,
                                             __chat_func_validate, __chat_func_clean_up, True)
@@ -2898,9 +2900,7 @@ def run_gpt_generate_iterative_chat_utt(maze, init_persona, target_persona, retr
 
 
 
-
-
-
+    
 
 
 
