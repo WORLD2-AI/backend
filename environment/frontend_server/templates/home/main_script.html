@@ -367,6 +367,7 @@
 	    frameRate: 4,
 	    repeat: -1 });
 
+      // set the view zoom
       const minZoom = 0.3; // minimal scaling
       const maxZoom = 3;   // maximum scale
 
@@ -378,6 +379,16 @@
       this.input.keyboard.on('keydown-X', () => {
         const newZoom = this.cameras.main.zoom * 0.9;
         this.cameras.main.setZoom(Phaser.Math.Clamp(newZoom, minZoom, maxZoom));
+      });
+
+      // the configuration on the map can also be scrolled with the mouse
+      // disable input events for the game
+      this.input.enabled = false;
+      // listens for global mouse scroll events
+      window.addEventListener('wheel', (event) => {
+          // allows default scrolling behavior
+          event.preventDefault();
+          window.scrollBy(0, event.deltaY);
       });
 
 	}
