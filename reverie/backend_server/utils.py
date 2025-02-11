@@ -2,6 +2,7 @@
 import json
 import re
 import logging
+import sys
 import traceback
 
 # Put your name
@@ -23,7 +24,7 @@ openai_api_key = ["sk-proj-sT4G0ZecORSmcnH7OJR_kPNFvEWhNc7MDzbdJoEf-96n4s3BpAjAt
 # openai_api_key = ["app-cYXRNIAFUZY7ywce7OOkXcN9"]
 # Verbose 
 debug = True
-logging.basicConfig(level=logging.DEBUG if debug else logging.INFO)
+logging.basicConfig(level=logging.DEBUG if debug else logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s',stream= sys.stdout)
 logger = logging.getLogger()
 print_call_stack = False
 def logger_info(*args):
