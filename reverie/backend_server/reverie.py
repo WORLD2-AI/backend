@@ -335,7 +335,7 @@ class ReverieServer:
                     new_env = json.load(json_file)
                     env_retrieved = True
             except Exception as e:
-                logger_error('error in reading env file',e)
+                logger_info('error in reading env file',e)
                 pass
 
             if env_retrieved:
