@@ -432,6 +432,8 @@ class ReverieServer:
                 curr_step["step"] = self.step
                 with open(f"{fs_temp_storage}/curr_step.json", "w") as outfile:
                     outfile.write(json.dumps(curr_step, indent=2))
+            if count >= 10000:
+                count = 0
             time.sleep(self.server_sleep)
 
     def open_server(self):
