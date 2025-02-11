@@ -425,14 +425,14 @@ class ReverieServer:
                 self.curr_time += datetime.timedelta(seconds=self.sec_per_step)
             # Sleep so we don't burn our machines.
             count += 1
-            if count %100 == 0 :
+            if count %100 == 0 : # per 100 step to save data
                 self.save()
-            if count % 10000 == 0: # to save play step at every 10000 steps 
-                curr_step = dict()
-                curr_step["step"] = self.step
-                with open(f"{fs_temp_storage}/curr_step.json", "w") as outfile:
-                    outfile.write(json.dumps(curr_step, indent=2))
-            if count >= 10000:
+                if self.step  >= 10000 and self.step - 10000 > 2000 : # start play step from cur step - 10000 
+                    curr_step = dict()
+                    curr_step["step"] = self.step - 10000
+                    with open(f"{fs_temp_storage}/curr_step.json", "w") as outfile:
+                        outfile.write(json.dumps(curr_step, indent=2))
+            if count >= 100000:
                 count = 0
             time.sleep(self.server_sleep)
 
