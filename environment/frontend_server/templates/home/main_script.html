@@ -517,8 +517,8 @@
 	      if (execute_count == execute_count_max) { 
 	        let curr_x = execute_movement["persona"][curr_persona_name]["movement"][0];
 	        let curr_y = execute_movement["persona"][curr_persona_name]["movement"][1];
-	        movement_target[curr_persona_name] = [curr_x * tile_width, 
-	                                              curr_y * tile_width]; 
+	        movement_target[curr_persona_name] = [curr_x * tile_width+1, 
+	                                              curr_y * tile_width+1]; 
 	        let pronunciatio_content = execute_movement["persona"][curr_persona_name]["pronunciatio"];
 
 			let description = execute_movement["persona"][curr_persona_name]["description"]
