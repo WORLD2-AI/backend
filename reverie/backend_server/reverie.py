@@ -325,6 +325,10 @@ class ReverieServer:
             if not check_if_file_exists(curr_env_file):
                 time.sleep(self.server_sleep)
                 continue
+            if check_if_file_exists(f"{sim_folder}/movement/{self.step}.json"):
+                self.step += 1
+                logger_info('exist movement file, skip this step',self.step)
+                continue
             try:
                 # Try and save block for robustness of the while loop.
                 with open(curr_env_file) as json_file:
