@@ -191,10 +191,6 @@ class ReverieServer:
         for persona_name, persona in self.personas.items():
             save_folder = f"{sim_folder}/personas/{persona_name}/bootstrap_memory"
             persona.save(save_folder)
-        curr_step = dict()
-        curr_step["step"] = self.step
-        with open(f"{fs_temp_storage}/curr_step.json", "w") as outfile:
-            outfile.write(json.dumps(curr_step, indent=2))
 
     def start_path_tester_server(self):
         """
@@ -430,8 +426,12 @@ class ReverieServer:
             # Sleep so we don't burn our machines.
             count += 1
             if count %100 == 0 :
-                count = 0
                 self.save()
+            if count % 10000 == 0: # to save play step at every 10000 steps 
+                curr_step = dict()
+                curr_step["step"] = self.step
+                with open(f"{fs_temp_storage}/curr_step.json", "w") as outfile:
+                    outfile.write(json.dumps(curr_step, indent=2))
             time.sleep(self.server_sleep)
 
     def open_server(self):
