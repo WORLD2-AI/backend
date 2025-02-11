@@ -321,13 +321,13 @@ class ReverieServer:
             # frontend has done its job and moved the personas, then it will put a
             # new environment file that matches our step count. That's when we run
             # the content of this for loop. Otherwise, we just wait.
+            if check_if_file_exists(f"{sim_folder}/movement/{self.step-1}.json"):
+                self.step += 1
+                logger_info('exist movement file, skip this step',self.step)
+                continue
             curr_env_file = f"{sim_folder}/environment/{self.step}.json"
             if not check_if_file_exists(curr_env_file):
                 time.sleep(self.server_sleep)
-                continue
-            if check_if_file_exists(f"{sim_folder}/movement/{self.step}.json"):
-                self.step += 1
-                logger_info('exist movement file, skip this step',self.step)
                 continue
             try:
                 # Try and save block for robustness of the while loop.
