@@ -30,6 +30,9 @@
 	// <step> -- one full loop around all three phases determined by <phase> is 
 	// a step. We use this to link the steps in the backend. 
 	let step = parseInt(document.getElementById('step').innerHTML);
+	if (params[step] && int(params[step]) > 0){
+		step = int(params[step])
+	}
 	let sim_code = document.getElementById('sim_code').innerHTML;
 	// let persona_names = document.getElementById('persona_name_list').innerHTML.split(",");
 
