@@ -19,6 +19,52 @@
     color: #007bff;
 }
 </style>
+<style>
+	.container {
+		width: 80%;
+		margin: 20px auto;
+		position: relative;
+		height: 30px;
+	}
+
+	#progress-bar {
+		background: rgba(0, 0, 0, 0.3);
+		height: 4px;
+		border-radius: 2px;
+		position: relative;
+		top: 13px;
+		width: 100%;
+	}
+
+	#progress {
+		background: #111111;
+		height: 100%;
+		width: 100%;
+		transition: width 0.1s;
+	}
+
+	/* Updated slider style to float over the progress bar */
+	#slider {
+		position: absolute;
+		z-index: 10;
+		width: 16px;
+		height: 16px;
+		background: #7a7979;
+		border-radius: 50%;
+		top: 50%; /* vertically center the slider inside its parent */
+		transform: translateY(-50%);
+		left: calc(100% - 8px);
+		cursor: pointer;
+		box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+	}
+
+	.frame-info {
+		display: flex;
+		justify-content: space-between;
+		margin-top: 35px;
+		padding: 0 5%;
+	}
+</style>
 <div>
     <div class="media-left media-middle">
         <a href="#">
@@ -54,7 +100,20 @@
             <span style="color: white;">2. When you press the Z key, the view zooms in, and when you press the X key, the view zooms out.</span>
         </div>
     </div>
-	<div id="game-container" style="text-align: center"></div>
+	<div id="game-container" style="text-align: center">
+
+	</div>
+	<div class="container">
+        <div id="progress-bar">
+            <div id="progress"></div>
+            <div id="slider"></div>
+        </div>
+        <div class="frame-info">
+            <span>当前帧: <span id="current-frame">5200</span></span>
+            <span>起始帧: <span id="start-frame">1200</span></span>
+            <span>终止帧: <span id="end-frame">5200</span></span>
+        </div>
+    </div>
 	<div style="width:55%; margin: 0 auto; margin-top:4.5em">
 		<h3 style="margin-bottom:-0.5em; font-size:1.5em;color: teal;">cur time:</h3>
 		<div class="row">

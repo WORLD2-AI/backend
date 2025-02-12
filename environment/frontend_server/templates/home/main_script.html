@@ -34,6 +34,11 @@
 	if (params["step"] && parseInt(params["step"]) > 0){
 		step = parseInt(params["step"])
 	}
+	let setTimeoutHandle = null;
+	let drag_step = step;
+	let currentEndFrame = step;
+	let currentStartFrame = calculateStartFrame(currentEndFrame);
+	let currentFrame = currentEndFrame
 	let sim_code = document.getElementById('sim_code').innerHTML;
 	// let persona_names = document.getElementById('persona_name_list').innerHTML.split(",");
 
@@ -506,6 +511,11 @@
 	  } 
 
 	  else { 
+		if (drag_step && drag_step != step){
+			step = drag_step
+			drag_step = 0
+			return 
+		} 
 	    // This is where we actually move the personas in the visual world. Each
 	    // backend computation in execute_movement moves each persona by one tile
 	    // (or some personas might not move if they choose not to). 
@@ -601,6 +611,7 @@
 			}
 	        execute_count = execute_count_max + 1;
 	        step = step + 1;
+			changeProgressBarToEnd(step)
 	      }
 	    }
 
@@ -677,6 +688,82 @@
 	// Control button binders
 	var play_button=document.getElementById("play_button");
 	var pause_button=document.getElementById("pause_button");
+
+
+	let isDragging = false;
+	
+	
+	// 初始化进度条
+	const progressBar = document.getElementById('progress-bar');
+	const progress = document.getElementById('progress');
+	const slider = document.getElementById('slider');
+	const containerRect = progressBar.getBoundingClientRect();
+
+	// 事件监听
+	slider.addEventListener('mousedown', startDragging);
+	document.addEventListener('mousemove', handleDragging);
+	document.addEventListener('mouseup', stopDragging);
+
+	function calculateStartFrame(endFrame) {
+		let startFrame = endFrame - 4000;
+		return startFrame < 1200 ? 1200 : startFrame;
+	}
+
+	function updateFramesDisplay() {
+		document.getElementById('current-frame').textContent = Math.floor(currentFrame);
+		document.getElementById('start-frame').textContent = currentStartFrame;
+		document.getElementById('end-frame').textContent = currentEndFrame;
+	}
+
+	function startDragging(e) {
+		isDragging = true;
+		updateProgress(e.clientX);
+	}
+
+	function handleDragging(e) {
+		if (!isDragging) return;
+		updateProgress(e.clientX);
+	}
+
+	function stopDragging() {
+		isDragging = false;
+	}
+
+	function updateProgress(clientX) {
+		const rect = progressBar.getBoundingClientRect();
+		let percent = (clientX - rect.left) / rect.width * 100;
+		percent = Math.min(100, Math.max(0, percent));
+		
+		const currentFrame = currentStartFrame + (percent / 100) * (currentEndFrame - currentStartFrame);
+		
+		progress.style.width = `${percent}%`;
+		slider.style.left = `calc(${percent}% - 8px)`;
+		document.getElementById('current-frame').textContent = Math.floor(currentFrame);
+		updateFramesDisplay();
+		if (setTimeoutHandle){
+			clearTimeout(setTimeoutHandle)
+		}
+		setTimeoutHandle = setTimeout(()=>{
+			drag_step = Math.floor(currentFrame);
+		}, 200)
+		drag_step = Math.floor(currentFrame);
+	}
+	function changeProgressBarToEnd(endFranme){
+		// last frame
+		if (currentEndFrame < endFranme){
+			currentEndFrame = endFranme;
+			currentFrame = currentEndFrame
+			currentStartFrame = calculateStartFrame(currentEndFrame);
+		}
+		let percent = 100
+		if (endFranme < currentEndFrame){
+			percent = (endFranme - currentStartFrame) / (currentEndFrame - currentStartFrame) * 100;
+		}
+		progress.style.width = `${percent}%`;
+		slider.style.left = `calc(${percent}% - 8px)`;
+		updateFramesDisplay();
+	}
+	changeProgressBarToEnd(currentEndFrame)
 </script>
 
 
