@@ -29,6 +29,7 @@
 
 	// <step> -- one full loop around all three phases determined by <phase> is 
 	// a step. We use this to link the steps in the backend. 
+	let params = getUrlParams();
 	let step = parseInt(document.getElementById('step').innerHTML);
 	if (params[step] && int(params[step]) > 0){
 		step = int(params[step])
@@ -87,7 +88,7 @@
 	let cursors;
 	let player;
 	let showDebug = false;
-	let params = getUrlParams();
+	
 	console.log('get url params', params);
 	// Persona related variables. This should have the name of the persona as its 
 	// keys, and the instances of the Persona class as the values.
