@@ -263,9 +263,12 @@ def safe_generate_response(prompt,
     openai.api_key = random.choice(openai_api_key)
 
     for i in range(repeat):
-        curr_gpt_response = GPT_request(prompt, gpt_parameter)
-        if func_validate(curr_gpt_response, prompt=prompt):
-            return func_clean_up(curr_gpt_response, prompt=prompt)
+        try:
+            curr_gpt_response = GPT_request(prompt, gpt_parameter).strip()
+            if func_validate(curr_gpt_response, prompt=prompt):
+                return func_clean_up(curr_gpt_response, prompt=prompt)
+        except:
+            pass
     return fail_safe_response
 
 
