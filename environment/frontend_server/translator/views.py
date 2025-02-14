@@ -167,7 +167,51 @@ def home(request):
                "mode": "simulate"}
     template = "home/home.html"
     return render(request, template, context)
+def play(request):
+    f_curr_sim_code = "temp_storage/curr_sim_code.json"
+    f_curr_step = "temp_storage/curr_step.json"
 
+    if not check_if_file_exists(f_curr_step):
+        context = {}
+        template = "home/error_start_backend.html"
+        return render(request, template, context)
+
+    with open(f_curr_sim_code) as json_file:
+        sim_code = json.load(json_file)["sim_code"]
+
+    with open(f_curr_step) as json_file:
+        step = json.load(json_file)["step"]
+
+    # os.remove(f_curr_step)
+
+    persona_names = []
+    persona_names_set = set()
+    for i in find_filenames(f"storage/{sim_code}/personas", ""):
+        x = i.split("/")[-1].strip()
+        if x[0] != ".":
+            persona_names += [[x, x.replace(" ", "_")]]
+            persona_names_set.add(x)
+
+    persona_init_pos = []
+    file_count = []
+    for i in find_filenames(f"storage/{sim_code}/environment", ".json"):
+        x = i.split("/")[-1].strip()
+        if x[0] != ".":
+            file_count += [int(x.split(".")[0])]
+    curr_json = f'storage/{sim_code}/environment/{str(max(file_count))}.json'
+    with open(curr_json) as json_file:
+        persona_init_pos_dict = json.load(json_file)
+        for key, val in persona_init_pos_dict.items():
+            if key in persona_names_set:
+                persona_init_pos += [[key, val["x"], val["y"]]]
+
+    context = {"sim_code": sim_code,
+               "step": step,
+               "persona_names": persona_names,
+               "persona_init_pos": persona_init_pos,
+               "mode": "simulate"}
+    template = "home/play.html"
+    return render(request, template, context)
 
 def replay(request, sim_code, step):
     sim_code = sim_code
@@ -307,16 +351,25 @@ def update_environment(request):
 
     data = json.loads(request.body)
     step = data["step"]
+    page = data.get("page", 1)
+    if not page:
+        page = 1
     if step <= 0:
         step = 1
     sim_code = data["sim_code"]
-
+    temp_data = []
     response_data = {"<step>": -1}
-    if (check_if_file_exists(f"storage/{sim_code}/movement/{step}.json")):
-        with open(f"storage/{sim_code}/movement/{step}.json") as json_file:
-            response_data = json.load(json_file)
-            response_data["<step>"] = step
-
+    for i in range (0,page):
+        if (check_if_file_exists(f"storage/{sim_code}/movement/{step+i}.json")):
+            with open(f"storage/{sim_code}/movement/{step+i}.json") as json_file:
+                # get json file data
+                data = json_file.read()
+                temp = json.loads(data)
+                temp["<step>"] = step+i
+                temp_data.append(temp)
+                response_data = json.loads(data)
+                response_data["<step>"] = step+i
+    response_data["data"] = temp_data
     return JsonResponse(response_data)
 
 
