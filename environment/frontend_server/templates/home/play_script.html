@@ -621,7 +621,7 @@
 						}
 					}
 				});
-				update_xobj.send(JSON.stringify({ "step": step, "sim_code": sim_code,"page":10}));
+				update_xobj.send(JSON.stringify({ "step": last_step, "sim_code": sim_code,"page":10}));
 				setTimeout(() => {
 					postTimeoutHandle = false
 				}, 2000);
