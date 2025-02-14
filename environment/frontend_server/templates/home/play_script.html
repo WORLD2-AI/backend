@@ -36,6 +36,7 @@
 	}
 	last_step = step;
 	let setTimeoutHandle = null;
+	let postTimeoutHandle = false;
 	let drag_step = step;
 	let currentEndFrame = step;
 	let currentStartFrame = calculateStartFrame(currentEndFrame);
@@ -598,6 +599,10 @@
 	}
 	function getFrameData(){
 		if (last_step - step < 10) {
+			if (postTimeoutHandle){
+				return 
+			}
+			postTimeoutHandle = true
 			var update_xobj = new XMLHttpRequest();
 				update_xobj.overrideMimeType("application/json");
 				update_xobj.open('POST', "{% url 'update_environment' %}", !first_stop);
@@ -612,11 +617,14 @@
 									frame_data[element['<step>']] = element
 								});
 							}
-							
+							postTimeoutHandle = false
 						}
 					}
 				});
 				update_xobj.send(JSON.stringify({ "step": step, "sim_code": sim_code,"page":10}));
+				setTimeout(() => {
+					postTimeoutHandle = false
+				}, 2000);
 		}
 	}
 
