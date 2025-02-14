@@ -472,6 +472,9 @@
 		getFrameData()
 			
 			execute_movement = frame_data[step+1];
+			if (!execute_movement || !execute_movement["meta"]) {
+				return
+			}
 			document.getElementById("game-time-content").innerHTML = execute_movement["meta"]["curr_time"];
 			for (let i = 0; i < Object.keys(personas).length; i++) {
 				let curr_persona_name = Object.keys(personas)[i];
