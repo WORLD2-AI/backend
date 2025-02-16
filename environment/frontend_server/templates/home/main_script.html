@@ -48,7 +48,7 @@
 		let x = spans[i].innerText.split(",");
 		persona_names[x[0]] = [parseInt(x[1]), parseInt(x[2])]
 	}
-	// console.log('persona_names:',persona_names)
+    console.log('persona_names:',persona_names)
 	let t = null;
 
 	// Phaser 3.0 global settings. 
@@ -202,8 +202,9 @@
 	                  "https://mikewesthad.github.io/phaser-3-tilemap-blog-posts/post-1/assets/atlas/atlas.png", 
 	                  "https://mikewesthad.github.io/phaser-3-tilemap-blog-posts/post-1/assets/atlas/atlas.json");
 
-
-
+      for (const key in persona_names){
+        this.load.atlas(key,`assets/characters/town/${key}.png`,"`assets/characters/town/atlas.png`");
+      }
 	}
 
 	function create() {  
@@ -352,29 +353,38 @@
 	  // Create the player's walking animations from the texture atlas. These are
 	  // stored in the global animation manager so any sprite can access them.
 	  const anims = this.anims;
-	  anims.create({
-	    key: "misa-left-walk",
-	    frames: anims.generateFrameNames("atlas", { prefix: "misa-left-walk.", start: 0, end: 3, zeroPad: 3 }),
-	    frameRate: 4,
-	    repeat: -1 });
+	  for (let i=0; i<Object.keys(persona_names).length; i++) {
+              let persona_name = Object.keys(persona_names)[i];
+              let left_walk_name = persona_name + "-left-walk";
+              let right_walk_name = persona_name + "-right-walk";
+              let down_walk_name = persona_name + "-down-walk";
+              let up_walk_name = persona_name + "-up-walk";
 
-	  anims.create({
-	    key: "misa-right-walk",
-	    frames: anims.generateFrameNames("atlas", { prefix: "misa-right-walk.", start: 0, end: 3, zeroPad: 3 }),
-	    frameRate: 4,
-	    repeat: -1 });
+              console.log(persona_name, left_walk_name, "DEUBG")
+            anims.create({
+              key: left_walk_name,
+              frames: anims.generateFrameNames(persona_name, { prefix: "left-walk.", start: 0, end: 3, zeroPad: 3 }),
+              frameRate: 4,
+              repeat: -1 });
 
-	  anims.create({
-	    key: "misa-front-walk",
-	    frames: anims.generateFrameNames("atlas", { prefix: "misa-front-walk.", start: 0, end: 3, zeroPad: 3 }),
-	    frameRate: 4,
-	    repeat: -1 });
+            anims.create({
+              key: right_walk_name,
+              frames: anims.generateFrameNames(persona_name, { prefix: "right-walk.", start: 0, end: 3, zeroPad: 3 }),
+              frameRate: 4,
+              repeat: -1 });
 
-	  anims.create({
-	    key: "misa-back-walk",
-	    frames: anims.generateFrameNames("atlas", { prefix: "misa-back-walk.", start: 0, end: 3, zeroPad: 3 }),
-	    frameRate: 4,
-	    repeat: -1 });
+            anims.create({
+              key: down_walk_name,
+              frames: anims.generateFrameNames(persona_name, { prefix: "down-walk.", start: 0, end: 3, zeroPad: 3 }),
+              frameRate: 4,
+              repeat: -1 });
+
+            anims.create({
+              key: up_walk_name,
+              frames: anims.generateFrameNames(persona_name, { prefix: "up-walk.", start: 0, end: 3, zeroPad: 3 }),
+              frameRate: 4,
+              repeat: -1 });
+	  }
 
       // set the view zoom
       const minZoom = 0.3; // minimal scaling
