@@ -202,10 +202,11 @@
 	                  "https://mikewesthad.github.io/phaser-3-tilemap-blog-posts/post-1/assets/atlas/atlas.png", 
 	                  "https://mikewesthad.github.io/phaser-3-tilemap-blog-posts/post-1/assets/atlas/atlas.json");
 
-      for (const key in persona_names){
-        this.load.atlas(key,`/static/assets/characters/town/${key}.png`,`/static/assets/characters/town/atlas.json`);
+      for (let key in persona_names){
+          key = key.replace(" ","_")
+          key = key.toLowerCase()
+          this.load.atlas(key,`/static/assets/characters/town/${key}.png`,`/static/assets/characters/town/atlas.json`);
       }
-
 
 	}
 
@@ -357,6 +358,7 @@
 	  const anims = this.anims;
 	  for (let i=0; i<Object.keys(persona_names).length; i++) {
               let persona_name = Object.keys(persona_names)[i];
+
               let left_walk_name = persona_name + "-left-walk";
               let right_walk_name = persona_name + "-right-walk";
               let down_walk_name = persona_name + "-down-walk";
@@ -643,13 +645,8 @@
 
 
     function updatePersonaAnimation(curr_persona, anims_direction, curr_persona_name, pre_anims_direction_dict) {
-        //const baseTexture = curr_persona_name.toLowerCase(); // 动态生成基础纹理名
-        const baseTexture = curr_persona_name; // 动态生成基础纹理名
-        console.log("baseTexture",baseTexture,curr_persona_name.toLowerCase())
-        console.log(curr_persona.anims.exists(`${baseTexture}-left-walk`),"aaaa")
-        console.log(curr_persona.anims.exists(`${baseTexture}-right-walk`),"aaaa")
-        console.log(curr_persona.anims.exists(`${baseTexture}-back-walk`),"aaaa")
-        console.log(curr_persona.anims.exists(`${baseTexture}-front-walk`),"aaaa")
+        let baseTextureLowerCase = curr_persona_name.toLowerCase(); // 动态生成基础纹理名
+        let baseTexture = baseTextureLowerCase.replace(" ","_")
         if (anims_direction === "l") {
             curr_persona.anims.play(`${baseTexture}-left-walk`, true);
         } else if (anims_direction === "r") {
@@ -660,9 +657,14 @@
             curr_persona.anims.play(`${baseTexture}-down-walk`, true);
         } else {
             curr_persona.anims.stop();
-            // 如果我们在移动，选择一个闲置的帧
-            const idleTexture = `${baseTexture}-${pre_anims_direction_dict[curr_persona_name]}`;
-            curr_persona.setTexture("atlas", idleTexture);
+            // If we were moving, pick an idle frame to use
+            //console.log(pre_anims_direction_dict[baseTextureLowerCase],"pre_anims_direction_dict")
+            //console.log('Current texture key:', curr_persona.texture.key);
+            console.log("curr_persona_name："+curr_persona_name,curr_persona)
+	      if (pre_anims_direction_dict[baseTextureLowerCase] === "l") curr_persona.setTexture(baseTexture, "left"); else
+	      if (pre_anims_direction_dict[baseTextureLowerCase] === "r") curr_persona.setTexture(baseTexture, "right"); else
+	      if (pre_anims_direction_dict[baseTextureLowerCase] === "u") curr_persona.setTexture(baseTexture, "up"); else
+	      if (pre_anims_direction_dict[baseTextureLowerCase] === "d") curr_persona.setTexture(baseTexture, "down");
         }
     }
     /**
