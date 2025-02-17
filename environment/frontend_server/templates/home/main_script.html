@@ -557,8 +557,8 @@
 				}
 				x = personas[curr_persona_name].body.position.x
 				y = personas[curr_persona_name].body.position.y
-				console.log(curr_persona_name, x, y, movement_target[curr_persona_name][0], movement_target[curr_persona_name][1]);
-				console.log("persona pos:", Math.ceil(x / tile_width), Math.ceil(y / tile_width))
+				//console.log(curr_persona_name, x, y, movement_target[curr_persona_name][0], movement_target[curr_persona_name][1]);
+				//console.log("persona pos:", Math.ceil(x / tile_width), Math.ceil(y / tile_width))
 				if (execute_count > 0) {
 					if (curr_persona.body.x < movement_target[curr_persona_name][0]) {
 						curr_persona.body.x += movement_speed;
@@ -643,19 +643,23 @@
 
 
     function updatePersonaAnimation(curr_persona, anims_direction, curr_persona_name, pre_anims_direction_dict) {
-        const baseTexture = curr_persona_name.toLowerCase(); // 动态生成基础纹理名
-
+        //const baseTexture = curr_persona_name.toLowerCase(); // 动态生成基础纹理名
+        const baseTexture = curr_persona_name; // 动态生成基础纹理名
+        console.log("baseTexture",baseTexture,curr_persona_name.toLowerCase())
+        console.log(curr_persona.anims.exists(`${baseTexture}-left-walk`),"aaaa")
+        console.log(curr_persona.anims.exists(`${baseTexture}-right-walk`),"aaaa")
+        console.log(curr_persona.anims.exists(`${baseTexture}-back-walk`),"aaaa")
+        console.log(curr_persona.anims.exists(`${baseTexture}-front-walk`),"aaaa")
         if (anims_direction === "l") {
             curr_persona.anims.play(`${baseTexture}-left-walk`, true);
         } else if (anims_direction === "r") {
             curr_persona.anims.play(`${baseTexture}-right-walk`, true);
         } else if (anims_direction === "u") {
-            curr_persona.anims.play(`${baseTexture}-back-walk`, true);
+            curr_persona.anims.play(`${baseTexture}-up-walk`, true);
         } else if (anims_direction === "d") {
-            curr_persona.anims.play(`${baseTexture}-front-walk`, true);
+            curr_persona.anims.play(`${baseTexture}-down-walk`, true);
         } else {
             curr_persona.anims.stop();
-
             // 如果我们在移动，选择一个闲置的帧
             const idleTexture = `${baseTexture}-${pre_anims_direction_dict[curr_persona_name]}`;
             curr_persona.setTexture("atlas", idleTexture);
@@ -752,7 +756,7 @@
 		percent = Math.min(100, Math.max(0, percent));
 		
 		currentFrame = currentStartFrame + (percent / 100) * (currentEndFrame - currentStartFrame);
-		console.log("currentFrame",currentFrame)
+		//console.log("currentFrame",currentFrame)
 		progress.style.width = `${percent}%`;
 		slider.style.left = `calc(${percent}% - 8px)`;
 		document.getElementById('current-frame').textContent = Math.floor(currentFrame);
