@@ -1,0 +1,34 @@
+{
+  "persona": {
+    "cichengege": {
+      "movement": [
+        20,
+        88
+      ],
+      "pronunciatio": "\ud83c\udf54\ud83d\ude0a",
+      "description": "meeting Latoya Williams for a date at Johnson Park (stopping by a food stand to get snacks) @ the ville:johnson park:lake:log bridge",
+      "chat": null
+    },
+    "latoya williams": {
+      "movement": [
+        40,
+        35
+      ],
+      "pronunciatio": "\ud83d\udeb6\u2764\ufe0f",
+      "description": "Latoya is going to Johnson Park for a date with Cichengege @ the ville:johnson park:park:lake",
+      "chat": null
+    },
+    "kiki": {
+      "movement": [
+        18,
+        65
+      ],
+      "pronunciatio": "\ud83d\udeb6\ud83d\ude0a",
+      "description": "Kiki is taking a walk in Johnson Park @ the ville:johnson park:lake:log bridge",
+      "chat": null
+    }
+  },
+  "meta": {
+    "curr_time": "February 14, 2025, 18:07:00"
+  }
+}

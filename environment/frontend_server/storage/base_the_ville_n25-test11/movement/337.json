@@ -1,0 +1,100 @@
+{
+  "persona": {
+    "latoya williams": {
+      "movement": [
+        31,
+        86
+      ],
+      "pronunciatio": "\ud83c\udf33\ud83d\ude0a",
+      "description": "Latoya is going to Johnson Park for a date with Cichengege @ the ville:johnson park:park:lake",
+      "chat": null
+    },
+    "kiki": {
+      "movement": [
+        28,
+        87
+      ],
+      "pronunciatio": "\ud83d\udcac",
+      "description": "conversing about Kiki confronting Cichengege about lying and being with someone else on Valentine's Day, leading to an honest discussion about their relationship and a commitment to work through issues together. @ <persona> cichengege",
+      "chat": [
+        [
+          "kiki",
+          "Cichengege, why are you here with someone else when you told me you were working overtime? I thought we were supposed to be together."
+        ],
+        [
+          "cichengege",
+          "Kiki, I know this looks bad, and I\u2019m really sorry for lying to you. I didn\u2019t handle this situation the way I should have, and I apologize. Let's talk about this properly when we get home."
+        ],
+        [
+          "kiki",
+          "It hurts to see you with someone else, especially on Valentine's Day. I don't know if I can just wait until we get home to talk. We need to figure this out now."
+        ],
+        [
+          "cichengege",
+          "Kiki, I completely understand how you feel, and I'm truly sorry for hurting you. Let's step aside and have a conversation right here. I want to understand your feelings better and figure out a way to make things right."
+        ],
+        [
+          "kiki",
+          "Okay, let's talk here. I just want to understand why you felt the need to lie to me and what this means for us moving forward."
+        ],
+        [
+          "cichengege",
+          "Kiki, I want to be honest with you. My feelings have been conflicted, and I should have been upfront about it from the start. I care about you deeply and never intended to hurt you, but I got swept up in trying to figure out my own emotions. I want us to be open about how we really feel and work through this together, if you're willing."
+        ],
+        [
+          "kiki",
+          "I appreciate your honesty, Cichengege. I care about you too, but this has really shaken my trust. I'm willing to work through this if we can both commit to being open and honest with each other, starting now. Let's set some time to talk more in detail soon."
+        ],
+        [
+          "cichengege",
+          "I'm grateful for your willingness to work through this with me, Kiki. Let's make a commitment right now to be more honest with each other. I'll make sure we set aside some time soon to have a deeper conversation about our relationship. Thank you for giving us this chance."
+        ]
+      ]
+    },
+    "cichengege": {
+      "movement": [
+        28,
+        86
+      ],
+      "pronunciatio": "\ud83d\udcac",
+      "description": "conversing about Kiki confronting Cichengege about lying and being with someone else on Valentine's Day, leading to an honest discussion about their relationship and a commitment to work through issues together. @ <persona> kiki",
+      "chat": [
+        [
+          "kiki",
+          "Cichengege, why are you here with someone else when you told me you were working overtime? I thought we were supposed to be together."
+        ],
+        [
+          "cichengege",
+          "Kiki, I know this looks bad, and I\u2019m really sorry for lying to you. I didn\u2019t handle this situation the way I should have, and I apologize. Let's talk about this properly when we get home."
+        ],
+        [
+          "kiki",
+          "It hurts to see you with someone else, especially on Valentine's Day. I don't know if I can just wait until we get home to talk. We need to figure this out now."
+        ],
+        [
+          "cichengege",
+          "Kiki, I completely understand how you feel, and I'm truly sorry for hurting you. Let's step aside and have a conversation right here. I want to understand your feelings better and figure out a way to make things right."
+        ],
+        [
+          "kiki",
+          "Okay, let's talk here. I just want to understand why you felt the need to lie to me and what this means for us moving forward."
+        ],
+        [
+          "cichengege",
+          "Kiki, I want to be honest with you. My feelings have been conflicted, and I should have been upfront about it from the start. I care about you deeply and never intended to hurt you, but I got swept up in trying to figure out my own emotions. I want us to be open about how we really feel and work through this together, if you're willing."
+        ],
+        [
+          "kiki",
+          "I appreciate your honesty, Cichengege. I care about you too, but this has really shaken my trust. I'm willing to work through this if we can both commit to being open and honest with each other, starting now. Let's set some time to talk more in detail soon."
+        ],
+        [
+          "cichengege",
+          "I'm grateful for your willingness to work through this with me, Kiki. Let's make a commitment right now to be more honest with each other. I'll make sure we set aside some time soon to have a deeper conversation about our relationship. Thank you for giving us this chance."
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "curr_time": "February 14, 2025, 18:47:10"
+  }
+}

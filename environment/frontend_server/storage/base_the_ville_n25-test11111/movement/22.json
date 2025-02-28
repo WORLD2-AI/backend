@@ -1,0 +1,34 @@
+{
+  "persona": {
+    "cichengege": {
+      "movement": [
+        28,
+        65
+      ],
+      "pronunciatio": "\ud83d\udec0\ud83d\ude0a",
+      "description": "relaxing and enjoying some leisure activities @ the ville:cichengege's apartment:cichengege's room:common room sofa",
+      "chat": null
+    },
+    "latoya williams": {
+      "movement": [
+        38,
+        19
+      ],
+      "pronunciatio": "\ud83c\udf7d\ufe0f\ud83d\ude0a",
+      "description": "Latoya is preparing and eating dinner @ the ville:artist's co-living space:kitchen:cooking area",
+      "chat": null
+    },
+    "kiki": {
+      "movement": [
+        19,
+        66
+      ],
+      "pronunciatio": "\ud83c\udf7d\ufe0f\ud83d\ude42",
+      "description": "preparing for dinner @ the ville:kiki's apartment:kiki's room:cooking area",
+      "chat": null
+    }
+  },
+  "meta": {
+    "curr_time": "February 14, 2025, 17:33:20"
+  }
+}

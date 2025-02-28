@@ -338,20 +338,18 @@
 	                                   "🦁", {
 	                                   font: "18px Arial", 
 	                                   fill: "#fff",
-	                                   padding: { x: 8, y: 8}, 
+	                                //    padding: { x: 8, y: 8}, 
 	                                   backgroundColor: "#00000066",
-									   stroke: '#000',
-    									strokeThickness: 1,
-	                                   border:"solid",
-	                                   borderRadius:"10px"}).setDepth(3);
+									   stroke: '#000',strokeThickness: 0,
+	                                   border:"none"}).setDepth(3);
 		
 		persona_name_tags[persona_name] = this.add.text(
 	                                   new_sprite.body.x, 
-	                                   new_sprite.body.y - 24, // DEBUG 1 --- I added 32 offset on Dec 29. 
+	                                   new_sprite.body.y - 42, // DEBUG 1 --- I added 32 offset on Dec 29. 
 	                                   formatPersonName(persona_name), {
 	                                   font: "bold 16px velvet",
 									   stroke: '#fff',
-    									strokeThickness: 2,
+									   strokeThickness: 2,
 	                                   fill: "#000", 
 	                                   border:"solid",
 	                                   borderRadius:"10px"}).setDepth(3);
@@ -412,11 +410,11 @@
       // disable input events for the game
       this.input.enabled = false;
       // listens for global mouse scroll events
-      window.addEventListener('wheel', (event) => {
-          // allows default scrolling behavior
-          event.preventDefault();
-          window.scrollBy(0, event.deltaY);
-      });
+    //   window.addEventListener('wheel', (event) => {
+    //       // allows default scrolling behavior
+    //       event.preventDefault();
+    //       window.scrollBy(0, event.deltaY);
+    //   });
 
 	}
 
@@ -510,7 +508,12 @@
 					// E.g., "Dolores Murphy" -> "DM"
 
 					initials = formatPersonName(curr_persona_name)
-					pronunciatios[curr_persona_name].setText(`(${pronunciatio_content}) ${splitAndWrap(description.slice(0, 60) + "...", 50)}`);
+					if (pronunciatio_content){
+						pronunciatios[curr_persona_name].setText(``);
+						// pronunciatios[curr_persona_name].setText(`(${pronunciatio_content}) ${splitAndWrap(description.slice(0, 60) + "...", 50)}`);
+					}else{
+						pronunciatios[curr_persona_name].setText(``);
+					}
 				}
 				x = personas[curr_persona_name].body.position.x
 				y = personas[curr_persona_name].body.position.y
@@ -545,7 +548,7 @@
 					curr_pronunciatio.y = curr_persona.body.y - tile_width / 2; // DEBUG 1 --- I added 32 offset on Dec 29. 
 
 					curr_persona_name_tags.x = curr_persona.body.x;
-					curr_persona_name_tags.y = curr_persona.body.y - 24;
+					curr_persona_name_tags.y = curr_persona.body.y - 42;
 
 					updatePersonaAnimation(curr_persona, anims_direction, curr_persona_name, pre_anims_direction_dict);
 
@@ -566,6 +569,7 @@
 					execute_count = execute_count_max + 1;
 					step = step + 1;
 					changeProgressBarToEnd(step)
+					return 
 				}
 			}
 
@@ -613,6 +617,12 @@
 							if (data["data"] && data["data"].length > 0) {
 								last_step = data['<step>']+1
 								data['data'].forEach(element => {
+									keys = Object.keys(element.persona)
+									for(let i = 0;i< keys.length;i++){
+										if (element.persona[keys[i]].chat){
+											element.persona[keys[i]].pronunciatio = ""
+										}
+									}
 									frame_data[element['<step>']] = element
 								});
 							}
@@ -713,7 +723,7 @@
 
 	function calculateStartFrame(endFrame) {
 		let startFrame = endFrame - 4000;
-		return startFrame < 1200 ? 1200 : startFrame;
+		return startFrame < 1 ? 1 : startFrame;
 	}
 
 	function updateFramesDisplay() {

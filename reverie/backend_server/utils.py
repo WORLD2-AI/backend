@@ -3,6 +3,7 @@ import json
 import re
 import logging
 import sys
+import time
 import traceback
 
 # Put your name
@@ -27,6 +28,8 @@ debug = True
 logging.basicConfig(level=logging.DEBUG if debug else logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s',stream= sys.stdout)
 logger = logging.getLogger()
 print_call_stack = False
+log_file_path = "backend_server.log"
+file =  open(log_file_path, "a") 
 def logger_info(*args):
     """
     Recursively print JSON data with indentation for better readability.
@@ -38,10 +41,17 @@ def logger_info(*args):
     if print_call_stack:
         logger.info("---------------call stack------------")
         last_stck = stack[-5:-1]
+    str_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
     for frame in last_stck:
-        logger.info(f"Function [{frame.name}]: File {frame.filename}, line {frame.lineno}")
+        # put log info to file
+        
+        file.write(f"Function [{frame.name}]: File {frame.filename}, line {frame.lineno}\n")
+        logger.info(f"{str_time} Function [{frame.name}]: File {frame.filename}, line {frame.lineno}")
     for arg in args:
+        file.write(str(arg))
+        file.write("\n")
         logger.info(arg)
+        
 def filter_result(respone:str):
     respone = respone.strip()
     if respone is None:

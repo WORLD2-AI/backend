@@ -1,1 +1,1213 @@
-{"node_3": {"node_count": 3, "type_count": 2, "type": "event", "depth": 0, "created": "2025-02-14 17:00:10", "expiration": null, "subject": "latoya williams", "predicate": "is", "object": "sleep", "description": "latoya williams is sleeping", "embedding_key": "latoya williams is sleeping", "poignancy": 1, "keywords": ["sleep", "latoya williams"], "filling": []}, "node_2": {"node_count": 2, "type_count": 1, "type": "thought", "depth": 1, "created": "2025-02-14 17:00:00", "expiration": "2025-03-16 17:00:00", "subject": "latoya williams", "predicate": "plan", "object": "Friday February 14", "description": "This is latoya williams's plan for Friday February 14: Wake up and complete morning routine at 6:00 am., Work on photography series from 7:00 am to 12:00 pm., Have lunch at 12:00 pm., Continue working on photography series from 1:00 pm to 5:00 pm., Eat dinner at 5:30 pm., Go for a walk in Johnson Park at 6:00 pm., Return home and relax from 7:00 pm to 9:45 pm., Prepare for bed and unwind from 9:45 pm to 10:00 pm., Go to bed at 10:00 pm..", "embedding_key": "This is latoya williams's plan for Friday February 14: Wake up and complete morning routine at 6:00 am., Work on photography series from 7:00 am to 12:00 pm., Have lunch at 12:00 pm., Continue working on photography series from 1:00 pm to 5:00 pm., Eat dinner at 5:30 pm., Go for a walk in Johnson Park at 6:00 pm., Return home and relax from 7:00 pm to 9:45 pm., Prepare for bed and unwind from 9:45 pm to 10:00 pm., Go to bed at 10:00 pm..", "poignancy": 5, "keywords": ["plan"], "filling": null}, "node_1": {"node_count": 1, "type_count": 1, "type": "event", "depth": 0, "created": "2025-02-14 17:00:00", "expiration": null, "subject": "latoya williams", "predicate": "is", "object": "idle", "description": "latoya williams is idle", "embedding_key": "latoya williams is idle", "poignancy": 1, "keywords": ["latoya williams", "idle"], "filling": []}}
+{
+    "node_60": {
+        "node_count": 60,
+        "type_count": 56,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 19:16:50",
+        "expiration": null,
+        "subject": "the ville:artist's co-living space:common room:seat",
+        "predicate": "is",
+        "object": "idle",
+        "description": "seat is idle",
+        "embedding_key": "seat is idle",
+        "poignancy": 1,
+        "keywords": [
+            "idle",
+            "seat"
+        ],
+        "filling": []
+    },
+    "node_59": {
+        "node_count": 59,
+        "type_count": 55,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 19:16:50",
+        "expiration": null,
+        "subject": "the ville:artist's co-living space:common room:common room sofa",
+        "predicate": "is",
+        "object": "idle",
+        "description": "common room sofa is idle",
+        "embedding_key": "common room sofa is idle",
+        "poignancy": 1,
+        "keywords": [
+            "common room sofa",
+            "idle"
+        ],
+        "filling": []
+    },
+    "node_58": {
+        "node_count": 58,
+        "type_count": 54,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 19:13:10",
+        "expiration": null,
+        "subject": "latoya williams",
+        "predicate": "reflect",
+        "object": "events",
+        "description": "latoya williams is reflecting on the evening's events",
+        "embedding_key": "reflecting on the evening's events",
+        "poignancy": 8,
+        "keywords": [
+            "events",
+            "latoya williams"
+        ],
+        "filling": []
+    },
+    "node_57": {
+        "node_count": 57,
+        "type_count": 53,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 19:12:10",
+        "expiration": null,
+        "subject": "the ville:classroom:classroom:seat",
+        "predicate": "is",
+        "object": "idle",
+        "description": "seat is idle",
+        "embedding_key": "seat is idle",
+        "poignancy": 1,
+        "keywords": [
+            "idle",
+            "seat"
+        ],
+        "filling": []
+    },
+    "node_56": {
+        "node_count": 56,
+        "type_count": 52,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 19:08:20",
+        "expiration": null,
+        "subject": "latoya williams",
+        "predicate": "change",
+        "object": "clothes",
+        "description": "latoya williams is changing into comfortable clothes) ",
+        "embedding_key": "changing into comfortable clothes",
+        "poignancy": 1,
+        "keywords": [
+            "latoya williams",
+            "clothes"
+        ],
+        "filling": []
+    },
+    "node_55": {
+        "node_count": 55,
+        "type_count": 51,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 19:08:10",
+        "expiration": null,
+        "subject": "the ville:frank's apartment:frank's room:seat",
+        "predicate": "is",
+        "object": "idle",
+        "description": "seat is idle",
+        "embedding_key": "seat is idle",
+        "poignancy": 1,
+        "keywords": [
+            "idle",
+            "seat"
+        ],
+        "filling": []
+    },
+    "node_54": {
+        "node_count": 54,
+        "type_count": 50,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 19:08:10",
+        "expiration": null,
+        "subject": "the ville:frank's apartment:frank's room:closet",
+        "predicate": "is",
+        "object": "idle",
+        "description": "closet is idle",
+        "embedding_key": "closet is idle",
+        "poignancy": 1,
+        "keywords": [
+            "closet",
+            "idle"
+        ],
+        "filling": []
+    },
+    "node_53": {
+        "node_count": 53,
+        "type_count": 49,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 19:08:10",
+        "expiration": null,
+        "subject": "the ville:frank's apartment:frank's room:cooking area",
+        "predicate": "is",
+        "object": "idle",
+        "description": "cooking area is idle",
+        "embedding_key": "cooking area is idle",
+        "poignancy": 1,
+        "keywords": [
+            "cooking area",
+            "idle"
+        ],
+        "filling": []
+    },
+    "node_52": {
+        "node_count": 52,
+        "type_count": 48,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 19:08:10",
+        "expiration": null,
+        "subject": "the ville:frank's apartment:frank's room:kitchen sink",
+        "predicate": "is",
+        "object": "idle",
+        "description": "kitchen sink is idle",
+        "embedding_key": "kitchen sink is idle",
+        "poignancy": 1,
+        "keywords": [
+            "idle",
+            "kitchen sink"
+        ],
+        "filling": []
+    },
+    "node_51": {
+        "node_count": 51,
+        "type_count": 47,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 19:08:10",
+        "expiration": null,
+        "subject": "the ville:frank's apartment:frank's room:desk",
+        "predicate": "is",
+        "object": "idle",
+        "description": "desk is idle",
+        "embedding_key": "desk is idle",
+        "poignancy": 1,
+        "keywords": [
+            "idle",
+            "desk"
+        ],
+        "filling": []
+    },
+    "node_50": {
+        "node_count": 50,
+        "type_count": 46,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 19:08:10",
+        "expiration": null,
+        "subject": "the ville:frank's apartment:frank's room:bed",
+        "predicate": "is",
+        "object": "idle",
+        "description": "bed is idle",
+        "embedding_key": "bed is idle",
+        "poignancy": 1,
+        "keywords": [
+            "bed",
+            "idle"
+        ],
+        "filling": []
+    },
+    "node_49": {
+        "node_count": 49,
+        "type_count": 45,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 19:08:10",
+        "expiration": null,
+        "subject": "the ville:frank's apartment:frank's room:refrigerator",
+        "predicate": "is",
+        "object": "idle",
+        "description": "refrigerator is idle",
+        "embedding_key": "refrigerator is idle",
+        "poignancy": 1,
+        "keywords": [
+            "refrigerator",
+            "idle"
+        ],
+        "filling": []
+    },
+    "node_48": {
+        "node_count": 48,
+        "type_count": 44,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 19:07:30",
+        "expiration": null,
+        "subject": "the ville:frank's apartment:frank's bathroom:toilet",
+        "predicate": "is",
+        "object": "idle",
+        "description": "toilet is idle",
+        "embedding_key": "toilet is idle",
+        "poignancy": 1,
+        "keywords": [
+            "toilet",
+            "idle"
+        ],
+        "filling": []
+    },
+    "node_47": {
+        "node_count": 47,
+        "type_count": 43,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 19:07:30",
+        "expiration": null,
+        "subject": "the ville:frank's apartment:frank's bathroom:shower",
+        "predicate": "is",
+        "object": "idle",
+        "description": "shower is idle",
+        "embedding_key": "shower is idle",
+        "poignancy": 1,
+        "keywords": [
+            "shower",
+            "idle"
+        ],
+        "filling": []
+    },
+    "node_46": {
+        "node_count": 46,
+        "type_count": 42,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 19:07:30",
+        "expiration": null,
+        "subject": "the ville:frank's apartment:frank's bathroom:bathroom sink",
+        "predicate": "is",
+        "object": "idle",
+        "description": "bathroom sink is idle",
+        "embedding_key": "bathroom sink is idle",
+        "poignancy": 1,
+        "keywords": [
+            "bathroom sink",
+            "idle"
+        ],
+        "filling": []
+    },
+    "node_45": {
+        "node_count": 45,
+        "type_count": 41,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 19:02:50",
+        "expiration": null,
+        "subject": "latoya williams",
+        "predicate": "change",
+        "object": "clothes",
+        "description": "latoya williams is changing into comfortable clothes) ",
+        "embedding_key": "changing into comfortable clothes",
+        "poignancy": 1,
+        "keywords": [
+            "latoya williams",
+            "clothes"
+        ],
+        "filling": []
+    },
+    "node_44": {
+        "node_count": 44,
+        "type_count": 40,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 18:49:20",
+        "expiration": null,
+        "subject": "the ville:johnson park:park:lake",
+        "predicate": "is",
+        "object": "idle",
+        "description": "lake is idle",
+        "embedding_key": "lake is idle",
+        "poignancy": 1,
+        "keywords": [
+            "lake",
+            "idle"
+        ],
+        "filling": []
+    },
+    "node_43": {
+        "node_count": 43,
+        "type_count": 39,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 18:49:20",
+        "expiration": null,
+        "subject": "the ville:johnson park:park:lake",
+        "predicate": "is",
+        "object": "visited",
+        "description": "lake is in a state of being visited by Latoya Williams and Cichengege at Johnson Park",
+        "embedding_key": "lake is in a state of being visited by Latoya Williams and Cichengege at Johnson Park",
+        "poignancy": 8,
+        "keywords": [
+            "visited",
+            "lake"
+        ],
+        "filling": []
+    },
+    "node_42": {
+        "node_count": 42,
+        "type_count": 38,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 18:49:20",
+        "expiration": null,
+        "subject": "latoya williams",
+        "predicate": "go",
+        "object": "Johnson Park",
+        "description": "latoya williams is Latoya is going to Johnson Park for a date with Cichengege",
+        "embedding_key": "latoya williams is Latoya is going to Johnson Park for a date with Cichengege",
+        "poignancy": 7,
+        "keywords": [
+            "Johnson Park",
+            "latoya williams"
+        ],
+        "filling": []
+    },
+    "node_41": {
+        "node_count": 41,
+        "type_count": 37,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 18:49:10",
+        "expiration": null,
+        "subject": "kiki",
+        "predicate": "take",
+        "object": "walk",
+        "description": "kiki is Kiki is taking a walk in Johnson Park",
+        "embedding_key": "kiki is Kiki is taking a walk in Johnson Park",
+        "poignancy": 6,
+        "keywords": [
+            "walk",
+            "kiki"
+        ],
+        "filling": []
+    },
+    "node_40": {
+        "node_count": 40,
+        "type_count": 36,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 18:49:10",
+        "expiration": null,
+        "subject": "the ville:johnson park:lake:log bridge",
+        "predicate": "is",
+        "object": "use",
+        "description": "log bridge is in use by Kiki",
+        "embedding_key": "log bridge is in use by Kiki",
+        "poignancy": 8,
+        "keywords": [
+            "log bridge",
+            "use"
+        ],
+        "filling": []
+    },
+    "node_39": {
+        "node_count": 39,
+        "type_count": 35,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 18:49:10",
+        "expiration": null,
+        "subject": "cichengege",
+        "predicate": "walk",
+        "object": "home",
+        "description": "cichengege is returning walking back home from Johnson Park",
+        "embedding_key": "walking back home from Johnson Park",
+        "poignancy": 7,
+        "keywords": [
+            "home",
+            "cichengege"
+        ],
+        "filling": []
+    },
+    "node_38": {
+        "node_count": 38,
+        "type_count": 34,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 18:41:20",
+        "expiration": null,
+        "subject": "the ville:johnson park:lake:log bridge",
+        "predicate": "is",
+        "object": "idle",
+        "description": "log bridge is idle",
+        "embedding_key": "log bridge is idle",
+        "poignancy": 1,
+        "keywords": [
+            "log bridge",
+            "idle"
+        ],
+        "filling": []
+    },
+    "node_37": {
+        "node_count": 37,
+        "type_count": 33,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 18:41:20",
+        "expiration": null,
+        "subject": "kiki",
+        "predicate": "chat with",
+        "object": "cichengege",
+        "description": "kiki is conversing about Kiki confronting Cichengege about lying and being with someone else on Valentine's Day, leading to an honest discussion about their relationship and a commitment to work through issues together.",
+        "embedding_key": "kiki is conversing about Kiki confronting Cichengege about lying and being with someone else on Valentine's Day, leading to an honest discussion about their relationship and a commitment to work through issues together.",
+        "poignancy": 8,
+        "keywords": [
+            "cichengege",
+            "kiki"
+        ],
+        "filling": []
+    },
+    "node_36": {
+        "node_count": 36,
+        "type_count": 32,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 18:41:20",
+        "expiration": null,
+        "subject": "cichengege",
+        "predicate": "chat with",
+        "object": "kiki",
+        "description": "cichengege is conversing about Kiki confronting Cichengege about lying and being with someone else on Valentine's Day, leading to an honest discussion about their relationship and a commitment to work through issues together.",
+        "embedding_key": "cichengege is conversing about Kiki confronting Cichengege about lying and being with someone else on Valentine's Day, leading to an honest discussion about their relationship and a commitment to work through issues together.",
+        "poignancy": 7,
+        "keywords": [
+            "cichengege",
+            "kiki"
+        ],
+        "filling": []
+    },
+    "node_35": {
+        "node_count": 35,
+        "type_count": 31,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 18:41:20",
+        "expiration": null,
+        "subject": "the ville:johnson park:park:lake",
+        "predicate": "is",
+        "object": "idle",
+        "description": "lake is idle",
+        "embedding_key": "lake is idle",
+        "poignancy": 1,
+        "keywords": [
+            "lake",
+            "idle"
+        ],
+        "filling": []
+    },
+    "node_34": {
+        "node_count": 34,
+        "type_count": 30,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 18:41:10",
+        "expiration": null,
+        "subject": "the ville:johnson park:park:lake",
+        "predicate": "is",
+        "object": "visited",
+        "description": "lake is in a state of being visited by Latoya Williams and Cichengege at Johnson Park",
+        "embedding_key": "lake is in a state of being visited by Latoya Williams and Cichengege at Johnson Park",
+        "poignancy": 6,
+        "keywords": [
+            "visited",
+            "lake"
+        ],
+        "filling": []
+    },
+    "node_33": {
+        "node_count": 33,
+        "type_count": 29,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 18:41:10",
+        "expiration": null,
+        "subject": "cichengege",
+        "predicate": "converse",
+        "object": "Latoya Williams",
+        "description": "cichengege is meeting conversing about Latoya Williams and Cichengege discussing their day and exploring ideas on how Latoya can use her photography to highlight community resilience and transformation, address local issues, and foster engagement through art and activism while enjoying a walk in the park.",
+        "embedding_key": "conversing about Latoya Williams and Cichengege discussing their day and exploring ideas on how Latoya can use her photography to highlight community resilience and transformation, address local issues, and foster engagement through art and activism while enjoying a walk in the park.",
+        "poignancy": 7,
+        "keywords": [
+            "Latoya Williams",
+            "cichengege"
+        ],
+        "filling": []
+    },
+    "node_32": {
+        "node_count": 32,
+        "type_count": 28,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 18:41:10",
+        "expiration": null,
+        "subject": "latoya williams",
+        "predicate": "go",
+        "object": "Johnson Park",
+        "description": "latoya williams is Latoya is going to Johnson Park for a date with Cichengege",
+        "embedding_key": "latoya williams is Latoya is going to Johnson Park for a date with Cichengege",
+        "poignancy": 8,
+        "keywords": [
+            "Johnson Park",
+            "latoya williams"
+        ],
+        "filling": []
+    },
+    "node_31": {
+        "node_count": 31,
+        "type_count": 3,
+        "type": "thought",
+        "depth": 1,
+        "created": "2025-02-14 18:40:50",
+        "expiration": "2025-03-16 18:40:50",
+        "subject": "latoya williams",
+        "predicate": "is",
+        "object": "latoya williams",
+        "description": "latoya williams Latoya Williams might have found it interesting that Cichengege is eager to engage in discussions about photography, community issues, and upcoming elections, and is willing to collaborate on art projects that inspire change.",
+        "embedding_key": "latoya williams Latoya Williams might have found it interesting that Cichengege is eager to engage in discussions about photography, community issues, and upcoming elections, and is willing to collaborate on art projects that inspire change.",
+        "poignancy": 6,
+        "keywords": [
+            "latoya williams",
+            "is"
+        ],
+        "filling": [
+            "node_26"
+        ]
+    },
+    "node_30": {
+        "node_count": 30,
+        "type_count": 2,
+        "type": "thought",
+        "depth": 1,
+        "created": "2025-02-14 18:40:50",
+        "expiration": "2025-03-16 18:40:50",
+        "subject": "latoya williams",
+        "predicate": "is",
+        "object": "planning",
+        "description": "For latoya williams's planning: Latoya Williams needs to remember to explore themes of community resilience and transformation in her photography series, focusing on capturing moments of positive action within the community, such as cleanup initiatives or public gatherings for causes, and to consider including a diverse range of people and",
+        "embedding_key": "For latoya williams's planning: Latoya Williams needs to remember to explore themes of community resilience and transformation in her photography series, focusing on capturing moments of positive action within the community, such as cleanup initiatives or public gatherings for causes, and to consider including a diverse range of people and",
+        "poignancy": 3,
+        "keywords": [
+            "latoya williams",
+            "planning",
+            "is"
+        ],
+        "filling": [
+            "node_26"
+        ]
+    },
+    "node_29": {
+        "node_count": 29,
+        "type_count": 27,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 18:26:20",
+        "expiration": null,
+        "subject": "kiki",
+        "predicate": "take",
+        "object": "walk",
+        "description": "kiki is Kiki is taking a walk in Johnson Park",
+        "embedding_key": "kiki is Kiki is taking a walk in Johnson Park",
+        "poignancy": 6,
+        "keywords": [
+            "walk",
+            "kiki"
+        ],
+        "filling": []
+    },
+    "node_28": {
+        "node_count": 28,
+        "type_count": 26,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 18:19:00",
+        "expiration": null,
+        "subject": "cichengege",
+        "predicate": "chat with",
+        "object": "latoya williams",
+        "description": "cichengege is conversing about Latoya Williams and Cichengege discussing their day and exploring ideas on how Latoya can use her photography to highlight community resilience and transformation, address local issues, and foster engagement through art and activism while enjoying a walk in the park.",
+        "embedding_key": "cichengege is conversing about Latoya Williams and Cichengege discussing their day and exploring ideas on how Latoya can use her photography to highlight community resilience and transformation, address local issues, and foster engagement through art and activism while enjoying a walk in the park.",
+        "poignancy": 4,
+        "keywords": [
+            "latoya williams",
+            "cichengege"
+        ],
+        "filling": []
+    },
+    "node_27": {
+        "node_count": 27,
+        "type_count": 25,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 18:19:00",
+        "expiration": null,
+        "subject": "latoya williams",
+        "predicate": "chat with",
+        "object": "cichengege",
+        "description": "latoya williams is conversing about Latoya Williams and Cichengege discussing their day and exploring ideas on how Latoya can use her photography to highlight community resilience and transformation, address local issues, and foster engagement through art and activism while enjoying a walk in the park.",
+        "embedding_key": "latoya williams is conversing about Latoya Williams and Cichengege discussing their day and exploring ideas on how Latoya can use her photography to highlight community resilience and transformation, address local issues, and foster engagement through art and activism while enjoying a walk in the park.",
+        "poignancy": 6,
+        "keywords": [
+            "latoya williams",
+            "cichengege"
+        ],
+        "filling": [
+            "node_26"
+        ]
+    },
+    "node_26": {
+        "node_count": 26,
+        "type_count": 1,
+        "type": "chat",
+        "depth": 0,
+        "created": "2025-02-14 18:19:00",
+        "expiration": null,
+        "subject": "latoya williams",
+        "predicate": "chat with",
+        "object": "cichengege",
+        "description": "conversing about Latoya Williams and Cichengege discussing their day and exploring ideas on how Latoya can use her photography to highlight community resilience and transformation, address local issues, and foster engagement through art and activism while enjoying a walk in the park.",
+        "embedding_key": "conversing about Latoya Williams and Cichengege discussing their day and exploring ideas on how Latoya can use her photography to highlight community resilience and transformation, address local issues, and foster engagement through art and activism while enjoying a walk in the park.",
+        "poignancy": 6,
+        "keywords": [
+            "latoya williams",
+            "cichengege"
+        ],
+        "filling": [
+            [
+                "latoya williams",
+                "Hi Cichengege! It's such a beautiful evening for a walk in the park. I'm really glad we could meet up. How has your day been?"
+            ],
+            [
+                "cichengege",
+                "Hi Latoya! I'm really glad we could meet up too. My day has been pretty good; I've been looking forward to our date all day. How about you? How's your day been?"
+            ],
+            [
+                "latoya williams",
+                "My day has been quite productive. I spent some time working on my photography series and participated in some interesting discussions about the upcoming mayor election. It\u2019s nice to unwind with a pleasant walk. The park looks lovely tonight."
+            ],
+            [
+                "cichengege",
+                "That sounds really interesting, Latoya. I'd love to hear more about your photography series and the elections. It's always nice to hear your thoughts on these topics. Shall we continue walking while you tell me more?"
+            ],
+            [
+                "latoya williams",
+                "Sure, I'd love to share more about them. My photography series is inspired by different textures and colors I encountered during my travels. As for the election, I'm really curious about how the new candidates plan to address the city's issues. It's been quite a hot topic at the cafe discussions. So, what aspect of photography interests you the most, Cichengege? And do you have any thoughts on the upcoming election?"
+            ],
+            [
+                "cichengege",
+                "I'm fascinated by how photography can capture the essence of a moment or a place, especially through unique textures and colors. As for the election, I think it's crucial for the new candidates to have a strong plan for improving public transportation and addressing environmental concerns. It's such an important time for the city, and I'm eager to see who will make the positive changes we need. Let's keep walking and discussing!"
+            ],
+            [
+                "latoya williams",
+                "I completely agree, Cichengege. It's so important for leaders to focus on sustainable growth and better infrastructure. It's encouraging to see that more people in the community are engaging with these issues. I'm really passionate about creating awareness through my art as well. Maybe I can capture some of these community conversations in my next project. What do you think?"
+            ],
+            [
+                "cichengege",
+                "I think that's a brilliant idea, Latoya. Using your art to highlight community conversations could really make people think and engage more with these important issues. It would be great to see how you bring these stories to life through your photography. Let's definitely keep this conversation going and see where it leads us as we explore the park."
+            ],
+            [
+                "latoya williams",
+                "Thank you, Cichengege! I'll definitely give it some thought. It's exciting to think about combining art with activism in such a meaningful way. As we continue our walk, maybe we could find a nice spot to sit and brainstorm some ideas? I'm sure your input would be incredibly valuable."
+            ],
+            [
+                "cichengege",
+                "Absolutely, Latoya! I'd love to help brainstorm ideas with you. There's a cozy bench just ahead where we can sit and chat more about how you can blend your photography with activism. Your art has the power to inspire change, and I feel it\u2019s an exciting path to explore."
+            ],
+            [
+                "latoya williams",
+                "That sounds perfect, Cichengege. Let's sit and see what ideas we can come up with. I appreciate your willingness to help, and I'm excited about the possibilities. It's important to me that my art contributes to positive change, and having your perspective will definitely add depth to the project."
+            ],
+            [
+                "cichengege",
+                "I'm really flattered that you think my perspective can add value to your project, Latoya. I'm excited to see how we can collaborate and bring your vision to life. Let's start brainstorming and see how we can make a real impact through your art."
+            ],
+            [
+                "latoya williams",
+                "Thank you, Cichengege. I really value your insights, and I believe that together we can come up with some compelling ideas. Let's get started and jot down any thoughts that come to mind. I'm excited to see where this collaboration takes us."
+            ],
+            [
+                "cichengege",
+                "Absolutely, let's dive into it. I was thinking we might explore themes like community resilience or transformation through the lens of your photography. These could tie in neatly with the issues we've been discussing, like environmental concerns and public participation. What do you think about starting with those angles?"
+            ],
+            [
+                "latoya williams",
+                "I think those themes are fantastic starting points, Cichengege. Community resilience and transformation are such powerful concepts, especially with everything going on in the city right now. Let's jot down some ideas on how we can visually represent these themes in the photography series. Perhaps we could focus on capturing moments of positive action within the community, like cleanup initiatives or public gatherings for causes. What do you think about that approach?"
+            ],
+            [
+                "cichengege",
+                "I think that's a wonderful approach, Latoya. Capturing moments of positive action can really highlight the strength and unity of our community. We can also explore different perspectives by including a diverse range of people and stories. This could add even more depth to the series. Let's keep brainstorming these ideas and maybe come up with a few more angles as we enjoy our walk."
+            ]
+        ]
+    },
+    "node_25": {
+        "node_count": 25,
+        "type_count": 24,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 18:18:50",
+        "expiration": null,
+        "subject": "the ville:johnson park:lake:log bridge",
+        "predicate": "is",
+        "object": "idle",
+        "description": "log bridge is idle",
+        "embedding_key": "log bridge is idle",
+        "poignancy": 1,
+        "keywords": [
+            "log bridge",
+            "idle"
+        ],
+        "filling": []
+    },
+    "node_24": {
+        "node_count": 24,
+        "type_count": 23,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 18:18:50",
+        "expiration": null,
+        "subject": "the ville:johnson park:lake:log bridge",
+        "predicate": "is",
+        "object": "used",
+        "description": "log bridge is currently being used by visitors for crossing, showing signs of wear from frequent use, but still stable and functional",
+        "embedding_key": "log bridge is currently being used by visitors for crossing, showing signs of wear from frequent use, but still stable and functional",
+        "poignancy": 1,
+        "keywords": [
+            "used",
+            "log bridge"
+        ],
+        "filling": []
+    },
+    "node_23": {
+        "node_count": 23,
+        "type_count": 22,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 18:18:50",
+        "expiration": null,
+        "subject": "cichengege",
+        "predicate": "continue",
+        "object": "walk",
+        "description": "cichengege is meeting continuing their walk and enjoying the park scenery",
+        "embedding_key": "continuing their walk and enjoying the park scenery",
+        "poignancy": 4,
+        "keywords": [
+            "walk",
+            "cichengege"
+        ],
+        "filling": []
+    },
+    "node_22": {
+        "node_count": 22,
+        "type_count": 21,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 18:18:40",
+        "expiration": null,
+        "subject": "the ville:johnson park:park:lake",
+        "predicate": "is",
+        "object": "viewed",
+        "description": "lake is being viewed by Latoya and Cichengege at Johnson Park",
+        "embedding_key": "lake is being viewed by Latoya and Cichengege at Johnson Park",
+        "poignancy": 7,
+        "keywords": [
+            "lake",
+            "viewed"
+        ],
+        "filling": []
+    },
+    "node_21": {
+        "node_count": 21,
+        "type_count": 20,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 18:14:20",
+        "expiration": null,
+        "subject": "the ville:frank's apartment:frank's bathroom:shower",
+        "predicate": "is",
+        "object": "idle",
+        "description": "shower is idle",
+        "embedding_key": "shower is idle",
+        "poignancy": 1,
+        "keywords": [
+            "shower",
+            "idle"
+        ],
+        "filling": []
+    },
+    "node_20": {
+        "node_count": 20,
+        "type_count": 19,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 18:14:20",
+        "expiration": null,
+        "subject": "the ville:frank's apartment:frank's bathroom:toilet",
+        "predicate": "is",
+        "object": "idle",
+        "description": "toilet is idle",
+        "embedding_key": "toilet is idle",
+        "poignancy": 1,
+        "keywords": [
+            "toilet",
+            "idle"
+        ],
+        "filling": []
+    },
+    "node_19": {
+        "node_count": 19,
+        "type_count": 18,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 18:14:20",
+        "expiration": null,
+        "subject": "the ville:frank's apartment:frank's bathroom:bathroom sink",
+        "predicate": "is",
+        "object": "idle",
+        "description": "bathroom sink is idle",
+        "embedding_key": "bathroom sink is idle",
+        "poignancy": 1,
+        "keywords": [
+            "bathroom sink",
+            "idle"
+        ],
+        "filling": []
+    },
+    "node_18": {
+        "node_count": 18,
+        "type_count": 17,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 18:13:20",
+        "expiration": null,
+        "subject": "latoya williams",
+        "predicate": "go",
+        "object": "Johnson Park",
+        "description": "latoya williams is Latoya is going to Johnson Park for a date with Cichengege",
+        "embedding_key": "latoya williams is Latoya is going to Johnson Park for a date with Cichengege",
+        "poignancy": 6,
+        "keywords": [
+            "latoya williams",
+            "Johnson Park"
+        ],
+        "filling": []
+    },
+    "node_17": {
+        "node_count": 17,
+        "type_count": 16,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 18:13:10",
+        "expiration": null,
+        "subject": "the ville:frank's apartment:frank's room:bed",
+        "predicate": "is",
+        "object": "idle",
+        "description": "bed is idle",
+        "embedding_key": "bed is idle",
+        "poignancy": 1,
+        "keywords": [
+            "bed",
+            "idle"
+        ],
+        "filling": []
+    },
+    "node_16": {
+        "node_count": 16,
+        "type_count": 15,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 18:13:10",
+        "expiration": null,
+        "subject": "the ville:frank's apartment:frank's room:refrigerator",
+        "predicate": "is",
+        "object": "idle",
+        "description": "refrigerator is idle",
+        "embedding_key": "refrigerator is idle",
+        "poignancy": 1,
+        "keywords": [
+            "refrigerator",
+            "idle"
+        ],
+        "filling": []
+    },
+    "node_15": {
+        "node_count": 15,
+        "type_count": 14,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 18:13:10",
+        "expiration": null,
+        "subject": "the ville:frank's apartment:frank's room:kitchen sink",
+        "predicate": "is",
+        "object": "idle",
+        "description": "kitchen sink is idle",
+        "embedding_key": "kitchen sink is idle",
+        "poignancy": 1,
+        "keywords": [
+            "idle",
+            "kitchen sink"
+        ],
+        "filling": []
+    },
+    "node_14": {
+        "node_count": 14,
+        "type_count": 13,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 18:13:10",
+        "expiration": null,
+        "subject": "the ville:frank's apartment:frank's room:desk",
+        "predicate": "is",
+        "object": "idle",
+        "description": "desk is idle",
+        "embedding_key": "desk is idle",
+        "poignancy": 1,
+        "keywords": [
+            "idle",
+            "desk"
+        ],
+        "filling": []
+    },
+    "node_13": {
+        "node_count": 13,
+        "type_count": 12,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 18:13:10",
+        "expiration": null,
+        "subject": "the ville:frank's apartment:frank's room:cooking area",
+        "predicate": "is",
+        "object": "idle",
+        "description": "cooking area is idle",
+        "embedding_key": "cooking area is idle",
+        "poignancy": 1,
+        "keywords": [
+            "cooking area",
+            "idle"
+        ],
+        "filling": []
+    },
+    "node_12": {
+        "node_count": 12,
+        "type_count": 11,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 18:13:10",
+        "expiration": null,
+        "subject": "the ville:frank's apartment:frank's room:closet",
+        "predicate": "is",
+        "object": "idle",
+        "description": "closet is idle",
+        "embedding_key": "closet is idle",
+        "poignancy": 1,
+        "keywords": [
+            "closet",
+            "idle"
+        ],
+        "filling": []
+    },
+    "node_11": {
+        "node_count": 11,
+        "type_count": 10,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 18:13:10",
+        "expiration": null,
+        "subject": "the ville:frank's apartment:frank's room:seat",
+        "predicate": "is",
+        "object": "idle",
+        "description": "seat is idle",
+        "embedding_key": "seat is idle",
+        "poignancy": 1,
+        "keywords": [
+            "idle",
+            "seat"
+        ],
+        "filling": []
+    },
+    "node_10": {
+        "node_count": 10,
+        "type_count": 9,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 18:08:10",
+        "expiration": null,
+        "subject": "the ville:classroom:classroom:seat",
+        "predicate": "is",
+        "object": "idle",
+        "description": "seat is idle",
+        "embedding_key": "seat is idle",
+        "poignancy": 1,
+        "keywords": [
+            "idle",
+            "seat"
+        ],
+        "filling": []
+    },
+    "node_9": {
+        "node_count": 9,
+        "type_count": 8,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 18:05:10",
+        "expiration": null,
+        "subject": "the ville:artist's co-living space:common room:common room sofa",
+        "predicate": "is",
+        "object": "idle",
+        "description": "common room sofa is idle",
+        "embedding_key": "common room sofa is idle",
+        "poignancy": 1,
+        "keywords": [
+            "common room sofa",
+            "idle"
+        ],
+        "filling": []
+    },
+    "node_8": {
+        "node_count": 8,
+        "type_count": 7,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 18:05:10",
+        "expiration": null,
+        "subject": "the ville:artist's co-living space:common room:seat",
+        "predicate": "is",
+        "object": "idle",
+        "description": "seat is idle",
+        "embedding_key": "seat is idle",
+        "poignancy": 1,
+        "keywords": [
+            "idle",
+            "seat"
+        ],
+        "filling": []
+    },
+    "node_7": {
+        "node_count": 7,
+        "type_count": 6,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 18:03:20",
+        "expiration": null,
+        "subject": "the ville:artist's co-living space:kitchen:cooking area",
+        "predicate": "is",
+        "object": "idle",
+        "description": "cooking area is idle",
+        "embedding_key": "cooking area is idle",
+        "poignancy": 1,
+        "keywords": [
+            "cooking area",
+            "idle"
+        ],
+        "filling": []
+    },
+    "node_6": {
+        "node_count": 6,
+        "type_count": 5,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 18:03:20",
+        "expiration": null,
+        "subject": "the ville:artist's co-living space:kitchen:kitchen sink",
+        "predicate": "is",
+        "object": "idle",
+        "description": "kitchen sink is idle",
+        "embedding_key": "kitchen sink is idle",
+        "poignancy": 1,
+        "keywords": [
+            "idle",
+            "kitchen sink"
+        ],
+        "filling": []
+    },
+    "node_5": {
+        "node_count": 5,
+        "type_count": 4,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 18:03:20",
+        "expiration": null,
+        "subject": "the ville:artist's co-living space:kitchen:toaster",
+        "predicate": "is",
+        "object": "idle",
+        "description": "toaster is idle",
+        "embedding_key": "toaster is idle",
+        "poignancy": 1,
+        "keywords": [
+            "toaster",
+            "idle"
+        ],
+        "filling": []
+    },
+    "node_4": {
+        "node_count": 4,
+        "type_count": 3,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 18:03:20",
+        "expiration": null,
+        "subject": "the ville:artist's co-living space:kitchen:refrigerator",
+        "predicate": "is",
+        "object": "idle",
+        "description": "refrigerator is idle",
+        "embedding_key": "refrigerator is idle",
+        "poignancy": 1,
+        "keywords": [
+            "refrigerator",
+            "idle"
+        ],
+        "filling": []
+    },
+    "node_3": {
+        "node_count": 3,
+        "type_count": 2,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 18:00:10",
+        "expiration": null,
+        "subject": "latoya williams",
+        "predicate": "go",
+        "object": "Johnson Park",
+        "description": "latoya williams is Latoya is going to Johnson Park for a date with Cichengege",
+        "embedding_key": "latoya williams is Latoya is going to Johnson Park for a date with Cichengege",
+        "poignancy": 7,
+        "keywords": [
+            "latoya williams",
+            "Johnson Park"
+        ],
+        "filling": []
+    },
+    "node_2": {
+        "node_count": 2,
+        "type_count": 1,
+        "type": "thought",
+        "depth": 1,
+        "created": "2025-02-14 18:00:00",
+        "expiration": "2025-03-16 18:00:00",
+        "subject": "latoya williams",
+        "predicate": "plan",
+        "object": "Friday February 14",
+        "description": "This is latoya williams's plan for Friday February 14: Wake up and complete the morning routine at 6:00 am., Have breakfast at 6:30 am., Check emails and plan the day's tasks at 7:00 am., Work on photography series from 8:00 am to 12:00 pm., Have lunch at 12:00 pm., Participate in discussions about the upcoming mayor election at a local cafe from 1:00 pm to 2:00 pm., Continue working on the photography series from 2:30 pm to 5:00 pm., Eat dinner at 5:30 pm., Get ready for the date at 5:45 pm., Go to Johnson Park for a date with Cichengege at 6:00 pm., Encounter and deal with the situation involving Kiki at 6:20 pm., Return home and reflect on the evening at 7:30 pm., Relax and unwind by reading or watching TV at 8:00 pm., Prepare for bed at 9:30 pm., Go to bed at 10:00 pm..",
+        "embedding_key": "This is latoya williams's plan for Friday February 14: Wake up and complete the morning routine at 6:00 am., Have breakfast at 6:30 am., Check emails and plan the day's tasks at 7:00 am., Work on photography series from 8:00 am to 12:00 pm., Have lunch at 12:00 pm., Participate in discussions about the upcoming mayor election at a local cafe from 1:00 pm to 2:00 pm., Continue working on the photography series from 2:30 pm to 5:00 pm., Eat dinner at 5:30 pm., Get ready for the date at 5:45 pm., Go to Johnson Park for a date with Cichengege at 6:00 pm., Encounter and deal with the situation involving Kiki at 6:20 pm., Return home and reflect on the evening at 7:30 pm., Relax and unwind by reading or watching TV at 8:00 pm., Prepare for bed at 9:30 pm., Go to bed at 10:00 pm..",
+        "poignancy": 5,
+        "keywords": [
+            "plan"
+        ],
+        "filling": null
+    },
+    "node_1": {
+        "node_count": 1,
+        "type_count": 1,
+        "type": "event",
+        "depth": 0,
+        "created": "2025-02-14 18:00:00",
+        "expiration": null,
+        "subject": "latoya williams",
+        "predicate": "is",
+        "object": "idle",
+        "description": "latoya williams is idle",
+        "embedding_key": "latoya williams is idle",
+        "poignancy": 1,
+        "keywords": [
+            "latoya williams",
+            "idle"
+        ],
+        "filling": []
+    }
+}

@@ -536,11 +536,11 @@
 			// The execute_count_max is computed by tile_width/movement_speed, which
 			// defines a one step sequence in this world. 
 			document.getElementById("game-time-content").innerHTML = execute_movement["meta"]["curr_time"];
-			for (let i = 0; i < Object.keys(personas).length; i++) {
-				let curr_persona_name = Object.keys(personas)[i];
+			for (let m = 0; m < Object.keys(personas).length; m++) {
+				let curr_persona_name = Object.keys(personas)[m];
 				let curr_persona = personas[curr_persona_name];
-				let curr_pronunciatio = pronunciatios[Object.keys(personas)[i]];
-				let curr_persona_name_tags = persona_name_tags[Object.keys(personas)[i]];
+				let curr_pronunciatio = pronunciatios[Object.keys(personas)[m]];
+				let curr_persona_name_tags = persona_name_tags[Object.keys(personas)[m]];
 
 				if (execute_count == execute_count_max+1) {
 					let curr_x = execute_movement["persona"][curr_persona_name]["movement"][0];
@@ -611,6 +611,7 @@
 					execute_count = execute_count_max + 1;
 					step = step + 1;
 					changeProgressBarToEnd(step)
+					return 
 				}
 			}
 
