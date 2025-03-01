@@ -134,30 +134,6 @@
 		<hr style="border-color:#999999">
 		<br>
 
-		{% for p_name, p_name_os in persona_names %}
-			<div class="media" style="background-color:#EEEEEE; padding:1em; padding-left:3.5em; padding-right:2em; border-radius:10px">
-			  <div class="media-left media-middle">
-			    <a href="#">
-			      <img class="media-object" src="{% static 'assets/characters/town/profile/'|add:p_name_os|add:'.png' %}" style="width:5em">
-			    </a>
-			  </div>
-			  <div class="media-body" style='padding-left:3em; padding-top:0.5em; padding-bottom:1em'>
-			  	<div class="row">
-			    	<h2 class="col-md-8" id="name__{{ p_name_os }}" style="margin-bottom:0.8em; font-size:1.85em; ">
-			    		{{p_name}} &nbsp;&nbsp;
-			    		<a href="{% url 'replay_persona_state' sim_code step p_name_os %}" style="font-size:0.6em">status</a>
-			    	</h2>
-			    </div>
-			    <div style="">
-					  <p style="font-size:1.2em"><strong>action:</strong> <br><span id="current_action__{{ p_name_os }}"></span></p>
-					  <p style="font-size:1.2em"><strong>pos:</strong> <br><span id="target_address__{{ p_name_os }}"></span></p>
-					  <p style="font-size:1.2em"><strong>chat:</strong> <br><span id="chat__{{ p_name_os }}"></span></p>
-					</div>
-			  </div>
-			</div>	
-			<br>
-		{% endfor %}
-
 	</div>
 </div>
 
@@ -217,4 +193,20 @@
 		});
 	{% endfor %}
 </script>
+<div class="dialog-container" id="gameDialog" >
+	<div class="header-section">
+		<div class="character-info" >▶&nbsp;<span id="character_name"></span> </div>
+		<div class="location-info"><i class="geo-alt-fill"></i><span>Position:&nbsp;</span><span id="character_pos"></span></div>
+		<div class="user_action">Action:&nbsp;<span id="character_atcion"></span></div>
+	</div>
+	<div class="chat-content" id="dialog_content" >
+		
+	</div>
+	<div class="input-section">
+		<input type="text" class="chat-input"  placeholder="input chat content..." />
+		<button style="background-color: #c9a769; color: #1a2a1a; padding: 8px 4px; border: none; border-radius: 4px; margin-left: 10px;" onclick="alert('Sorry, It will ok as soon as possible.')">Send</button>
+	</div>
+</div>
+
+
 {% endblock js_content %}

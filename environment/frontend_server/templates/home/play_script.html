@@ -148,6 +148,7 @@
 	let isDraggingmMap = false;
 	let startPointerPos = new Phaser.Math.Vector2();
 	let focus_name = ""
+	let dial_content = '<div style="color: #c9a769; margin-bottom: 8px;word-break: break-word"><span>#name#</span><span><p>#content#</p></span></div>'
 	// ###########################################################################
 	// ENGINE
 	// ###########################################################################
@@ -497,7 +498,7 @@
 
 	  if (focus_name){
 		player.body.x = personas[focus_name].body.x;
-		player.body.y = personas[focus_name].body.y;
+		player.body.y = personas[focus_name].body.y;		
 	  }
 
 	//   let curr_focused_persona = document.getElementById("temp_focus").textContent;
@@ -619,19 +620,38 @@
 					let curr_persona_name_os = curr_persona_name.replace(/ /g, "_");
 					let description_content = execute_movement["persona"][curr_persona_name]["description"];
 					let chat_content = ""
+					
+					// if (execute_movement["persona"][curr_persona_name]["chat"] != null) {
+					// 	for (let j = 0; j < execute_movement["persona"][curr_persona_name]["chat"].length; j++) {
 
-					if (execute_movement["persona"][curr_persona_name]["chat"] != null) {
-						for (let j = 0; j < execute_movement["persona"][curr_persona_name]["chat"].length; j++) {
-							chat_content += execute_movement["persona"][curr_persona_name]["chat"][j][0] + ": " + execute_movement["persona"][curr_persona_name]["chat"][j][1] + "<br>"
+					// 		chat_content += execute_movement["persona"][curr_persona_name]["chat"][j][0] + ": " + execute_movement["persona"][curr_persona_name]["chat"][j][1] + "<br>"
+					// 	}
+					// } else {
+					// 	chat_content = "<em>None</em>"
+					// }
+					if (focus_name == curr_persona_name){
+						if (execute_movement["persona"][curr_persona_name]["chat"] != null){
+							fill_dialog_content = ""
+							let temp_content = dial_content
+							for (let j = 0; j < execute_movement["persona"][curr_persona_name]["chat"].length; j++) {
+								let temp_content = dial_content
+								fill_dialog_content += temp_content.replace("#name#",execute_movement["persona"][curr_persona_name]["chat"][j][0]).replace("#content#",execute_movement["persona"][curr_persona_name]["chat"][j][1])
+							}
+						}else{
+							fill_dialog_content = "<span>None</span>"
 						}
-					} else {
-						chat_content = "<em>None</em>"
+						
+						document.getElementById("character_name").innerHTML = curr_persona_name
+						document.getElementById("character_pos").innerHTML = description_content.split("@")[1]
+						document.getElementById("character_atcion").innerHTML = description_content.split("@")[0]
+						document.getElementById("dialog_content").innerHTML = fill_dialog_content
 					}
+					update_dialog_user_info(focus_name != "")
 					// action_description += description_content + "<br>";
 
-					document.getElementById("current_action__" + curr_persona_name_os).innerHTML = description_content.split("@")[0];
-					document.getElementById("target_address__" + curr_persona_name_os).innerHTML = description_content.split("@")[1];
-					document.getElementById("chat__" + curr_persona_name_os).innerHTML = chat_content;
+					// document.getElementById("current_action__" + curr_persona_name_os).innerHTML = description_content.split("@")[0];
+					// document.getElementById("target_address__" + curr_persona_name_os).innerHTML = description_content.split("@")[1];
+					// document.getElementById("chat__" + curr_persona_name_os).innerHTML = chat_content;
 				}
 
 			}
@@ -820,7 +840,18 @@
 	changeProgressBarToEnd(currentEndFrame)
 	const element = document.getElementById('game-container');
 	element.addEventListener('contextmenu', (e) => {e.preventDefault();focus_name = "";})
+	function update_dialog_user_info(visible) {
+		const dialog = document.getElementById('gameDialog');
+		if (visible) {
+			dialog.classList.add('dialog-visible');
+			setTimeout(() => dialog.style.overflow = 'visible', 300);
+		} else {
+			dialog.classList.remove('dialog-visible');
+			dialog.style.overflow = 'hidden';
+		}
+	}
 </script>
+
 
 
 
