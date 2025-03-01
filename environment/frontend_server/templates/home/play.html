@@ -10,13 +10,13 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: #f8f9fa;
+    background-color: #242425;
     text-align: center;
     padding: 10px;
     box-shadow: 0 -2px 5px rgba(0,0,0,.2);
     z-index: 1000;
     text-decoration: none;
-    color: #007bff;
+    color: #1a1a1a;
 }
 </style>
 <style>
@@ -50,7 +50,7 @@
 		width: 16px;
 		height: 16px;
 		background: #fdfbfb;
-		border-radius: 50%;
+		border-radius: 2px;
 		top: 50%; /* vertically center the slider inside its parent */
 		transform: translateY(-50%);
 		left: calc(100% - 8px);
@@ -66,11 +66,6 @@
 	}
 </style>
 <div>
-    <div class="media-left media-middle">
-        <a href="#">
-            <img class="media-object" src="{% static 'img/logo.jpg' %}" style="width: 10em; margin-left: 30px;">
-        </a>
-    </div>
     <!-- <div style="display: flex; justify-content: center; width: 100%;">
     	<div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
     		{% for p_name, p_name_os in persona_names %}
@@ -92,7 +87,6 @@
     		{% endfor %}
     	</div>
     </div> -->
-	<br>
 	<div style="display: none" id="temp_focus"></div>
     <div style="display: flex; justify-content: flex-end; padding-right: 10%;">
         <div style="text-align: left;">
@@ -165,11 +159,6 @@
 		{% endfor %}
 
 	</div>
-    <div class="fixed-bottom-link">
-        <a href="{% static 'Helloword.pdf' %}" target="_blank" style="margin-right: 15px">White Paper</a>
-        <a href="https://twitter.com/E3A_EternalAI" target="_blank" style="margin-right: 15px">X (Twitter)</a>
-        <a href="https://discord.gg/Ppf5SZ4q" target="_blank" style="margin-right: 15px">Discord</a>
-    </div>
 </div>
 
   

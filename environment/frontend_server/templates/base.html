@@ -1,7 +1,3 @@
-<!-- 
-Author: Joon Sung Park (joonspk@stanford.edu)
--->
-
 <!DOCTYPE html>
 {% load staticfiles %}
 <html lang="en">
@@ -15,8 +11,122 @@ Author: Joon Sung Park (joonspk@stanford.edu)
 	<link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css' %}" >
 	<script src="{% static 'js/jquery-latest.min.js' %}" type="text/javascript"></script>
 </head>
- 
-<body class="top-navigation" style="background-color: black">
+<style>
+	.navbar-custom {
+		background-color: #000 !important;
+		padding: 15px 0;
+		border-bottom: 1px solid rgba(0, 247, 255, 0.1);
+	}
+	
+	.nav-link-custom {
+		color: #fff !important;
+		font-size: 1.1rem;
+		margin: 0 15px;
+		position: relative;
+		transition: all 0.3s ease;
+	}
+	
+	.nav-link-custom:hover {
+		color: #2695f7 !important;
+		text-shadow: 0 0 1px #2695f7,
+				   0 0 1px #2695f7,
+				   0 0 1px #2695f7;
+	}
+	
+	/* 调整汉堡菜单颜色 */
+	.navbar-toggler {
+		border-color: rgba(0, 247, 255, 0.5);
+	}
+	nav::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px; /* 阴影高度 */
+            background: linear-gradient(to right, transparent, #2695f7, #1e88e5, transparent);
+            opacity: 0; /* 默认隐藏 */
+            transition: opacity 0.3s ease; /* 添加过渡效果 */
+        }
+
+        /* 鼠标悬停时显示渐变阴影 */
+        nav:hover::after {
+            opacity: 1; /* 显示阴影 */
+        }
+		.sidebar {
+            position: fixed; /* 固定定位 */
+            top: 50%; /* 定位到屏幕垂直中间 */
+            right: 0; /* 定位到屏幕右侧 */
+            transform: translateY(-50%); /* 向上移动自身高度的一半，实现垂直居中 */
+            width: 200px; /* 侧边栏宽度 */
+            background-color: #2695f7; /* 背景颜色 */
+            color: white; /* 文字颜色 */
+            padding: 20px;
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+            border-radius: 10px 0 0 10px; /* 圆角 */
+        }
+
+        .sidebar h2 {
+            margin-top: 0;
+            font-size: 20px;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .sidebar ul li a:hover {
+            text-decoration: underline;
+        }
+</style>
+<body style="background-color: black">
+	<div style="display: block; width: 100%;height: 100px;">
+		<nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+			<div class="container">
+				<a href="/" class="navbar-brand">
+					<img class="media-object" src="{% static 'img/logo.jpg' %}" style="width: 10em; margin-left: 30px;">
+				</a>			
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav ms-auto">
+						<li class="nav-item" style="width: 45px;">
+							<a class="nav-link nav-link-custom" href="https://github.com/AI-HelloWorld/AI-HelloWorld">
+								<img src="{% static 'img/github.jpg' %}" style="width: 30px;height: auto;" />
+							</a>
+						</li>
+						<li class="nav-item" style="width: 45px;">
+							<a class="nav-link nav-link-custom" href="t.me/AIHelloWorld" target="_blank">
+								<img src="{% static 'img/telegram.png' %}" style="width: 30px;height: auto;" />
+							</a>
+						</li>
+						<li class="nav-item" style="width: 45px;">
+							<a class="nav-link nav-link-custom" href="https://twitter.com/E3A_EternalAI" target="_blank"><img src="{% static 'img/x.png' %}" style="width: 30px;height: auto;" /></a>
+						</li>
+						<li class="nav-item" style="width: 45px;">
+							<a class="nav-link nav-link-custom" href="https://discord.gg/Ppf5SZ4q" target="_blank"><img src="{% static 'img/discord.jpg' %}" style="width: 30px;height: auto;" /></a>
+						</li>
+						<li class="nav-item" style="padding-left: 40px;">
+							<a class="nav-link nav-link-custom" href="{% static 'Helloword.pdf' %}" target="_blank">White Paper</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link nav-link-custom" href="#" onclick="alert('please wait...')">登录</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</div>
   {% block content %}
 	{% endblock content %}
 	
