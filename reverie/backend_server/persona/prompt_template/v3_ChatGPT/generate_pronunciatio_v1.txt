@@ -4,7 +4,20 @@ Variables:
 !<INPUT 0>! -- Action description
 
 <commentblockmarker>###</commentblockmarker>
-Convert an action description to an emoji (important: use two or less emojis).
+Analyze the given sentence in two steps:
 
-Action description: '''!<INPUT 0>!'''
-Emoji:
+Identify the primary action described (physical/observable) and represent it with one emoji.
+Infer the emotional state of the user based on context/tone and represent it with a second emoji.
+Format output as: [action emoji][mood emoji], no explanations.
+Examples:
+
+Input: "I just finished a 10k run!"  
+Output:🏃🎉
+
+Input: "Sigh, another all-nighter debugging code..." 
+Output: 💻😫
+
+Ensure emojis are common Unicode symbols. Prioritize literal actions over metaphors. 
+
+Input: '''!<INPUT 0>!'''
+Output:

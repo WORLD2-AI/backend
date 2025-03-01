@@ -48,7 +48,7 @@
 		let x = spans[i].innerText.split(",");
 		persona_names[x[0]] = [parseInt(x[1]), parseInt(x[2])]
 	}
-	// console.log('persona_names:',persona_names)
+    console.log('persona_names:',persona_names)
 	let t = null;
 
 	// Phaser 3.0 global settings. 
@@ -202,7 +202,11 @@
 	                  "https://mikewesthad.github.io/phaser-3-tilemap-blog-posts/post-1/assets/atlas/atlas.png", 
 	                  "https://mikewesthad.github.io/phaser-3-tilemap-blog-posts/post-1/assets/atlas/atlas.json");
 
-
+      for (let key in persona_names){
+          key = key.replace(" ","_")
+          key = key.toLowerCase()
+          this.load.atlas(key,`/static/assets/characters/town/${key}.png`,`/static/assets/characters/town/atlas.json`);
+      }
 
 	}
 
@@ -352,29 +356,39 @@
 	  // Create the player's walking animations from the texture atlas. These are
 	  // stored in the global animation manager so any sprite can access them.
 	  const anims = this.anims;
-	  anims.create({
-	    key: "misa-left-walk",
-	    frames: anims.generateFrameNames("atlas", { prefix: "misa-left-walk.", start: 0, end: 3, zeroPad: 3 }),
-	    frameRate: 4,
-	    repeat: -1 });
+	  for (let i=0; i<Object.keys(persona_names).length; i++) {
+              let persona_name = Object.keys(persona_names)[i];
 
-	  anims.create({
-	    key: "misa-right-walk",
-	    frames: anims.generateFrameNames("atlas", { prefix: "misa-right-walk.", start: 0, end: 3, zeroPad: 3 }),
-	    frameRate: 4,
-	    repeat: -1 });
+              let left_walk_name = persona_name + "-left-walk";
+              let right_walk_name = persona_name + "-right-walk";
+              let down_walk_name = persona_name + "-down-walk";
+              let up_walk_name = persona_name + "-up-walk";
 
-	  anims.create({
-	    key: "misa-front-walk",
-	    frames: anims.generateFrameNames("atlas", { prefix: "misa-front-walk.", start: 0, end: 3, zeroPad: 3 }),
-	    frameRate: 4,
-	    repeat: -1 });
+              console.log(persona_name, left_walk_name, "DEUBG")
+            anims.create({
+              key: left_walk_name,
+              frames: anims.generateFrameNames(persona_name, { prefix: "left-walk.", start: 0, end: 3, zeroPad: 3 }),
+              frameRate: 4,
+              repeat: -1 });
 
-	  anims.create({
-	    key: "misa-back-walk",
-	    frames: anims.generateFrameNames("atlas", { prefix: "misa-back-walk.", start: 0, end: 3, zeroPad: 3 }),
-	    frameRate: 4,
-	    repeat: -1 });
+            anims.create({
+              key: right_walk_name,
+              frames: anims.generateFrameNames(persona_name, { prefix: "right-walk.", start: 0, end: 3, zeroPad: 3 }),
+              frameRate: 4,
+              repeat: -1 });
+
+            anims.create({
+              key: down_walk_name,
+              frames: anims.generateFrameNames(persona_name, { prefix: "down-walk.", start: 0, end: 3, zeroPad: 3 }),
+              frameRate: 4,
+              repeat: -1 });
+
+            anims.create({
+              key: up_walk_name,
+              frames: anims.generateFrameNames(persona_name, { prefix: "up-walk.", start: 0, end: 3, zeroPad: 3 }),
+              frameRate: 4,
+              repeat: -1 });
+	  }
 
       // set the view zoom
       const minZoom = 0.3; // minimal scaling
@@ -398,7 +412,7 @@
           // allows default scrolling behavior
           event.preventDefault();
           window.scrollBy(0, event.deltaY);
-      });
+      }, { passive: false });
 
 	}
 
@@ -504,7 +518,7 @@
 							timer = timer_max;
 						}
 					}
-				});
+				}, { passive: false });
 				update_xobj.send(JSON.stringify({ "step": step, "sim_code": sim_code }));
 			}
 			timer = timer - 1;
@@ -522,11 +536,11 @@
 			// The execute_count_max is computed by tile_width/movement_speed, which
 			// defines a one step sequence in this world. 
 			document.getElementById("game-time-content").innerHTML = execute_movement["meta"]["curr_time"];
-			for (let i = 0; i < Object.keys(personas).length; i++) {
-				let curr_persona_name = Object.keys(personas)[i];
+			for (let m = 0; m < Object.keys(personas).length; m++) {
+				let curr_persona_name = Object.keys(personas)[m];
 				let curr_persona = personas[curr_persona_name];
-				let curr_pronunciatio = pronunciatios[Object.keys(personas)[i]];
-				let curr_persona_name_tags = persona_name_tags[Object.keys(personas)[i]];
+				let curr_pronunciatio = pronunciatios[Object.keys(personas)[m]];
+				let curr_persona_name_tags = persona_name_tags[Object.keys(personas)[m]];
 
 				if (execute_count == execute_count_max+1) {
 					let curr_x = execute_movement["persona"][curr_persona_name]["movement"][0];
@@ -545,8 +559,8 @@
 				}
 				x = personas[curr_persona_name].body.position.x
 				y = personas[curr_persona_name].body.position.y
-				console.log(curr_persona_name, x, y, movement_target[curr_persona_name][0], movement_target[curr_persona_name][1]);
-				console.log("persona pos:", Math.ceil(x / tile_width), Math.ceil(y / tile_width))
+				//console.log(curr_persona_name, x, y, movement_target[curr_persona_name][0], movement_target[curr_persona_name][1]);
+				//console.log("persona pos:", Math.ceil(x / tile_width), Math.ceil(y / tile_width))
 				if (execute_count > 0) {
 					if (curr_persona.body.x < movement_target[curr_persona_name][0]) {
 						curr_persona.body.x += movement_speed;
@@ -577,24 +591,7 @@
 
 					curr_persona_name_tags.x = curr_persona.body.x;
 					curr_persona_name_tags.y = curr_persona.body.y - 24;
-
-					if (anims_direction == "l") {
-						curr_persona.anims.play("misa-left-walk", true);
-					} else if (anims_direction == "r") {
-						curr_persona.anims.play("misa-right-walk", true);
-					} else if (anims_direction == "u") {
-						curr_persona.anims.play("misa-back-walk", true);
-					} else if (anims_direction == "d") {
-						curr_persona.anims.play("misa-front-walk", true);
-					} else {
-						curr_persona.anims.stop();
-
-						// If we were moving, pick an idle frame to use
-						if (pre_anims_direction_dict[curr_persona_name] == "l") curr_persona.setTexture("atlas", "misa-left"); else
-							if (pre_anims_direction_dict[curr_persona_name] == "r") curr_persona.setTexture("atlas", "misa-right"); else
-								if (pre_anims_direction_dict[curr_persona_name] == "u") curr_persona.setTexture("atlas", "misa-back"); else
-									if (pre_anims_direction_dict[curr_persona_name] == "d") curr_persona.setTexture("atlas", "misa-front");
-					};
+                    updatePersonaAnimation(curr_persona, anims_direction, curr_persona_name, pre_anims_direction_dict);
 
 				}
 				else {
@@ -614,6 +611,7 @@
 					execute_count = execute_count_max + 1;
 					step = step + 1;
 					changeProgressBarToEnd(step)
+					return 
 				}
 			}
 
@@ -646,6 +644,30 @@
 		}
 	}
 
+
+    function updatePersonaAnimation(curr_persona, anims_direction, curr_persona_name, pre_anims_direction_dict) {
+        let baseTextureLowerCase = curr_persona_name.toLowerCase(); // 动态生成基础纹理名
+        let baseTexture = baseTextureLowerCase.replace(" ","_")
+        if (anims_direction === "l") {
+            curr_persona.anims.play(`${baseTexture}-left-walk`, true);
+        } else if (anims_direction === "r") {
+            curr_persona.anims.play(`${baseTexture}-right-walk`, true);
+        } else if (anims_direction === "u") {
+            curr_persona.anims.play(`${baseTexture}-up-walk`, true);
+        } else if (anims_direction === "d") {
+            curr_persona.anims.play(`${baseTexture}-down-walk`, true);
+        } else {
+            curr_persona.anims.stop();
+            // If we were moving, pick an idle frame to use
+            //console.log(pre_anims_direction_dict[baseTextureLowerCase],"pre_anims_direction_dict")
+            //console.log('Current texture key:', curr_persona.texture.key);
+            console.log("curr_persona_name："+curr_persona_name,curr_persona)
+	      if (pre_anims_direction_dict[baseTextureLowerCase] === "l") curr_persona.setTexture(baseTexture, "left"); else
+	      if (pre_anims_direction_dict[baseTextureLowerCase] === "r") curr_persona.setTexture(baseTexture, "right"); else
+	      if (pre_anims_direction_dict[baseTextureLowerCase] === "u") curr_persona.setTexture(baseTexture, "up"); else
+	      if (pre_anims_direction_dict[baseTextureLowerCase] === "d") curr_persona.setTexture(baseTexture, "down");
+        }
+    }
     /**
      * strings are split by a specified length
      * @param text
@@ -702,9 +724,9 @@
 	const containerRect = progressBar.getBoundingClientRect();
 
 	// 事件监听
-	slider.addEventListener('mousedown', startDragging);
-	document.addEventListener('mousemove', handleDragging);
-	document.addEventListener('mouseup', stopDragging);
+	slider.addEventListener('mousedown', startDragging, { passive: false });
+	document.addEventListener('mousemove', handleDragging, { passive: false });
+	document.addEventListener('mouseup', stopDragging, { passive: false });
 
 	function calculateStartFrame(endFrame) {
 		let startFrame = endFrame - 4000;
@@ -737,7 +759,7 @@
 		percent = Math.min(100, Math.max(0, percent));
 		
 		currentFrame = currentStartFrame + (percent / 100) * (currentEndFrame - currentStartFrame);
-		console.log("currentFrame",currentFrame)
+		//console.log("currentFrame",currentFrame)
 		progress.style.width = `${percent}%`;
 		slider.style.left = `calc(${percent}% - 8px)`;
 		document.getElementById('current-frame').textContent = Math.floor(currentFrame);

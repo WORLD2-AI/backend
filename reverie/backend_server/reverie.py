@@ -28,6 +28,7 @@ import os
 import shutil
 import traceback
 import concurrent.futures
+import pytz
 from selenium import webdriver
 
 from global_methods import *
@@ -82,7 +83,7 @@ class ReverieServer:
         # <curr_time> is the datetime instance that indicates the game's current
         # time. This gets incremented by <sec_per_step> amount everytime the world
         # progresses (that is, everytime curr_env_file is recieved).
-        self.curr_time = datetime.datetime.now()
+        self.curr_time = datetime.datetime.now(pytz.timezone('US/Pacific'))
         if reverie_meta['curr_time']: 
             self.curr_time = datetime.datetime.strptime(reverie_meta['curr_time'],
                                                     "%B %d, %Y, %H:%M:%S")
@@ -627,7 +628,7 @@ if __name__ == '__main__':
     # rs = ReverieServer("base_the_ville_isabella_maria_klaus",
     #                    "July1_the_ville_isabella_maria_klaus-step-3-1")
     rs = ReverieServer("base_the_ville_n25-test",
-                       "base_the_ville_n25-test10")
+                       "base_the_ville_n25-test11")
     rs.open_server()
 
     # origin = input("agent name: ").strip()

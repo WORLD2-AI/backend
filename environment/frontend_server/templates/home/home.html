@@ -77,7 +77,7 @@
     			<div id="on_screen_det_trigger-{{p_name_os}}" style="display: flex; align-items: center; gap: 20px; background-color: #EEEEEE; padding: 1em; padding-left: 1.5em; padding-right: 2em; border-radius: 10px; cursor: pointer; flex: 0 0 calc(20% - 20px); max-width: calc(20% - 20px);">
     				<div class="media-left media-middle">
     					<a href="#">
-    						<img class="media-object" src="{% static 'img/atlas.png' %}" style="width: 2em">
+                            <img class="media-object" src="{% static 'assets/characters/town/profile/'|add:p_name_os|add:'.png' %}" style="width: 2em">
     					</a>
     				</div>
     				<div>
@@ -144,7 +144,7 @@
 			<div class="media" style="background-color:#EEEEEE; padding:1em; padding-left:3.5em; padding-right:2em; border-radius:10px">
 			  <div class="media-left media-middle">
 			    <a href="#">
-			      <img class="media-object" src="{% static 'img/atlas.png' %}" style="width:5em">
+                   <img class="media-object" src="{% static 'assets/characters/town/profile/'|add:p_name_os|add:'.png' %}" style="width: 5em">
 			    </a>
 			  </div>
 			  <div class="media-body" style='padding-left:3em; padding-top:0.5em; padding-bottom:1em'>
@@ -166,6 +166,7 @@
 
 	</div>
     <div class="fixed-bottom-link">
+		<a href="{% static 'Helloword.pdf' %}" target="_blank" style="margin-right: 15px">White Paper</a>
         <a href="https://twitter.com/E3A_EternalAI" target="_blank" style="margin-right: 15px">X (Twitter)</a>
         <a href="https://discord.gg/Ppf5SZ4q" target="_blank" style="margin-right: 15px">Discord</a>
     </div>

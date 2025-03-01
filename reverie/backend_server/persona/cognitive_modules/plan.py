@@ -478,7 +478,7 @@ def _long_term_planning(persona, new_day):
   """
   # We start by creating the wake up hour for the persona. 
   wake_up_hour = generate_wake_up_hour(persona)
-
+  # wake_up_hour = 17
   # When it is a new day, we start by creating the daily_req of the persona.
   # Note that the daily_req is a list of strings that describe the persona's
   # day in broad strokes.
@@ -499,6 +499,7 @@ def _long_term_planning(persona, new_day):
   # Based on the daily_req, we create an hourly schedule for the persona, 
   # which is a list of todo items with a time duration (in minutes) that 
   # add up to 24 hours.
+  
   persona.scratch.f_daily_schedule = generate_hourly_schedule(persona, 
                                                               wake_up_hour)
   persona.scratch.f_daily_schedule_hourly_org = (persona.scratch
@@ -603,8 +604,6 @@ def _determine_action(persona, maze):
   # Generate an <Action> instance from the action description and duration. By
   # this point, we assume that all the relevant actions are decomposed and 
   # ready in f_daily_schedule. 
-  for i in persona.scratch.f_daily_schedule: logger_info (i)
-
 
   # 1440
   x_emergency = 0

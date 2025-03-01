@@ -1,0 +1,13 @@
+{
+  "fork_sim_code": "base_the_ville_n25-test",
+  "start_date": "February 23, 2024",
+  "curr_time": "February 14, 2025, 19:19:20",
+  "sec_per_step": 10,
+  "maze_name": "the_ville",
+  "persona_names": [
+    "latoya williams",
+    "kiki",
+    "cichengege"
+  ],
+  "step": 0
+}

@@ -42,8 +42,7 @@ def execute(persona, maze, personas, plan):
     # to execute the current action. The goal is to pick one of them.
     target_tiles = None
 
-    print ('get ai plan:')
-    print (plan)
+    logger_info ('new action plan:',plan)
 
     if "<persona>" in plan: 
       # Executing persona-persona interaction.
@@ -108,6 +107,12 @@ def execute(persona, maze, personas, plan):
     new_target_tiles = []
     for i in target_tiles: 
       curr_event_set = maze.access_tile(i)["events"]
+      used = False
+      for event in curr_event_set: 
+        if "used" in event:
+          used = True
+      if used:
+        continue
       pass_curr_tile = False
       for j in curr_event_set: 
         if j[0] in persona_name_set: 

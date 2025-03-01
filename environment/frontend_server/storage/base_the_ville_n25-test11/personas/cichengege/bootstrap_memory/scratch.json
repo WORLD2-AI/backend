@@ -1,0 +1,228 @@
+{
+  "vision_r": 5,
+  "att_bandwidth": 8,
+  "retention": 8,
+  "curr_time": "February 14, 2025, 19:19:10",
+  "curr_tile": [
+    27,
+    66
+  ],
+  "daily_plan_req": "cichengege is kiki's boyfrind. Kiki is cichengege's girlfriend but cichengege also likes Latoya Williams. Tody is Valentine's Day. At 6 PM of today,cichengege will have a date with Latoya Williams at Johnson Park. So cichengege told Kiki that he had to work overtime that evening. kiki will not have a date with cichengege, Kiki is so boring, she decided to take a walk in Johnson Park at 6:20 PM. she ran into Latoya Williams and cichengege on a bridge during their date.\n\nKiki walked up to them, tearfully questioning cichengege about why he was with another woman. cichengege felt extremely awkward but tried to comfort Kiki first. After a big argument, the two of them eventually went home in silence at 7:00 PM.",
+  "name": "cichengege",
+  "first_name": "cichengege",
+  "last_name": "cichengege",
+  "age": 26,
+  "innate": "friendly, helpful, organized,",
+  "learned": "cichengege is a vibrant young person who loves to help others. He is always looking for new ways to make everyone's life easier and more enjoyable.",
+  "currently": "cichengege is a kiki's boy friend who enjoys surfing the internet, scrolling through Twitter, observing the blockchain, and investing in cryptocurrencies.",
+  "lifestyle": "cichengege usually goes to bed around 11 pm., wakes up at 10 am., and has dinner around 6 pm.",
+  "living_area": "the ville:cichengege's apartment:cichengege's room",
+  "concept_forget": 100,
+  "daily_reflection_time": 180,
+  "daily_reflection_size": 5,
+  "overlap_reflect_th": 4,
+  "kw_strg_event_reflect_th": 10,
+  "kw_strg_thought_reflect_th": 9,
+  "recency_w": 1,
+  "relevance_w": 1,
+  "importance_w": 1,
+  "recency_decay": 0.995,
+  "importance_trigger_max": 250,
+  "importance_trigger_curr": 168,
+  "importance_ele_n": 42,
+  "thought_count": 5,
+  "daily_req": [
+    "Wake up and complete the morning routine at 10:00 am.",
+    "Check cryptocurrency investments and surf the internet for news from 11:00 am to 12:30 pm.",
+    "Have lunch at 1:00 pm.",
+    "Continue browsing the internet and engage with friends online from 2:00 pm to 3:30 pm.",
+    "Plan for the date with Latoya and relax until 5:00 pm.",
+    "Get ready for the date and leave home at 5:30 pm.",
+    "Meet Latoya for a date at Johnson Park at 6:00 pm.",
+    "Encounter with Kiki, resulting in an argument until 7:00 pm.",
+    "Return home and have a quiet evening from 7:00 pm.",
+    "Reflect on the day and unwind until bed at 11:00 pm."
+  ],
+  "f_daily_schedule": [
+    [
+      "sleeping",
+      1020
+    ],
+    [
+      "planning for the date with Latoya and relaxing",
+      30
+    ],
+    [
+      "meeting Latoya Williams for a date at Johnson Park (arriving at Johnson Park and looking for Latoya)",
+      10
+    ],
+    [
+      "meeting Latoya Williams for a date at Johnson Park (greeting Latoya and starting their walk)",
+      10
+    ],
+    [
+      "meeting Latoya Williams for a date at Johnson Park (chatting with Latoya about their day)",
+      10
+    ],
+    [
+      "meeting Latoya Williams for a date at Johnson Park (stopping by a food stand to get snacks)",
+      10
+    ],
+    [
+      "meeting Latoya Williams for a date at Johnson Park (continuing their walk and enjoying the park scenery)",
+      10
+    ],
+    [
+      "meeting Latoya Williams for a date at Johnson Park (on the way to reaching the bridge where they encounter Kiki)",
+      0
+    ],
+    [
+      "meeting Latoya Williams for a date at Johnson Park (conversing about Latoya Williams and Cichengege discussing their day and exploring ideas on how Latoya can use her photography to highlight community resilience and transformation, address local issues, and foster engagement through art and activism while enjoying a walk in the park.)",
+      22
+    ],
+    [
+      "returning home after the argument with Kiki and having a quiet evening (walking back home from Johnson Park)",
+      20
+    ],
+    [
+      "returning home after the argument with Kiki and having a quiet evening (on the way to taking a moment to sit quietly and gather his thoughts)",
+      0
+    ],
+    [
+      "returning home after the argument with Kiki and having a quiet evening (conversing about Kiki confronting Cichengege about lying and being with someone else on Valentine's Day, leading to an honest discussion about their relationship and a commitment to work through issues together.)",
+      8
+    ],
+    [
+      "returning home after the argument with Kiki and having a quiet evening (making himself a cup of tea to help relax)  ",
+      10
+    ],
+    [
+      "returning home after the argument with Kiki and having a quiet evening (sitting on the couch, reflecting on the argument with Kiki)  ",
+      10
+    ],
+    [
+      "returning home after the argument with Kiki and having a quiet evening (deciding to watch a calming video to unwind)  ",
+      10
+    ],
+    [
+      "reflecting on the day's events and trying to unwind at home",
+      20
+    ],
+    [
+      "processing his emotions and considering how to address the situation with Kiki and Latoya (sitting quietly and taking deep breaths to calm himself)",
+      10
+    ],
+    [
+      "processing his emotions and considering how to address the situation with Kiki and Latoya (writing down his thoughts and feelings in a journal)",
+      15
+    ],
+    [
+      "processing his emotions and considering how to address the situation with Kiki and Latoya (considering how to apologize to Kiki and what to say to Latoya)",
+      15
+    ],
+    [
+      "processing his emotions and considering how to address the situation with Kiki and Latoya (drafting a message to Kiki to express his regret and willingness to talk)",
+      10
+    ],
+    [
+      "processing his emotions and considering how to address the situation with Kiki and Latoya (planning a way to have an honest conversation with both Kiki and Latoya)",
+      10
+    ],
+    [
+      "contemplating how to communicate honestly with both Kiki and Latoya to resolve the situation and restore trust",
+      60
+    ],
+    [
+      "going to bed, trying to rest and prepare for the next day",
+      60
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      30
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      30
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ]
+  ],
+  "f_daily_schedule_hourly_org": [
+    [
+      "sleeping",
+      1020
+    ],
+    [
+      "planning for the date with Latoya and relaxing",
+      60
+    ],
+    [
+      "meeting Latoya Williams for a date at Johnson Park",
+      60
+    ],
+    [
+      "returning home after the argument with Kiki and having a quiet evening",
+      60
+    ],
+    [
+      "reflecting on the day's events and trying to unwind at home",
+      60
+    ],
+    [
+      "processing his emotions and considering how to address the situation with Kiki and Latoya",
+      60
+    ],
+    [
+      "contemplating how to communicate honestly with both Kiki and Latoya to resolve the situation and restore trust",
+      60
+    ],
+    [
+      "going to bed, trying to rest and prepare for the next day",
+      60
+    ]
+  ],
+  "act_address": "the ville:cichengege's apartment:cichengege's room:kitchen sink",
+  "act_start_time": "February 14, 2025, 19:17:00",
+  "act_duration": 10,
+  "act_description": "returning home after the argument with Kiki and having a quiet evening (making himself a cup of tea to help relax)  ",
+  "act_pronunciatio": "\u2615\ud83d\ude0c",
+  "act_event": [
+    "cichengege",
+    "make",
+    "tea"
+  ],
+  "act_obj_description": "in use with running water as cichengege makes tea",
+  "act_obj_pronunciatio": "\ud83c\udf75\ud83d\ude42",
+  "act_obj_event": [
+    "kitchen sink",
+    "is",
+    "use"
+  ],
+  "chatting_with": null,
+  "chat": null,
+  "chatting_with_buffer": {
+    "latoya williams": 570,
+    "kiki": 618
+  },
+  "chatting_end_time": null,
+  "act_path_set": true,
+  "planned_path": []
+}

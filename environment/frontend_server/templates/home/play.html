@@ -10,13 +10,13 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: #f8f9fa;
+    background-color: #242425;
     text-align: center;
     padding: 10px;
     box-shadow: 0 -2px 5px rgba(0,0,0,.2);
     z-index: 1000;
     text-decoration: none;
-    color: #007bff;
+    color: #1a1a1a;
 }
 </style>
 <style>
@@ -50,7 +50,7 @@
 		width: 16px;
 		height: 16px;
 		background: #fdfbfb;
-		border-radius: 50%;
+		border-radius: 2px;
 		top: 50%; /* vertically center the slider inside its parent */
 		transform: translateY(-50%);
 		left: calc(100% - 8px);
@@ -66,18 +66,13 @@
 	}
 </style>
 <div>
-    <div class="media-left media-middle">
-        <a href="#">
-            <img class="media-object" src="{% static 'img/logo.jpg' %}" style="width: 10em; margin-left: 30px;">
-        </a>
-    </div>
-    <div style="display: flex; justify-content: center; width: 100%;">
+    <!-- <div style="display: flex; justify-content: center; width: 100%;">
     	<div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
     		{% for p_name, p_name_os in persona_names %}
     			<div id="on_screen_det_trigger-{{p_name_os}}" style="display: flex; align-items: center; gap: 20px; background-color: #EEEEEE; padding: 1em; padding-left: 1.5em; padding-right: 2em; border-radius: 10px; cursor: pointer; flex: 0 0 calc(20% - 20px); max-width: calc(20% - 20px);">
     				<div class="media-left media-middle">
     					<a href="#">
-    						<img class="media-object" src="{% static 'img/atlas.png' %}" style="width: 2em">
+                            <img class="media-object" src="{% static 'assets/characters/town/profile/'|add:p_name_os|add:'.png' %}" style="width: 2em">
     					</a>
     				</div>
     				<div>
@@ -91,15 +86,14 @@
     			</div>
     		{% endfor %}
     	</div>
-    </div>
-	<br>
+    </div> -->
 	<div style="display: none" id="temp_focus"></div>
-    <div style="display: flex; justify-content: flex-end; padding-right: 10%;">
+    <!-- <div style="display: flex; justify-content: flex-end; padding-right: 10%;">
         <div style="text-align: left;">
             <span style="color: white;">1. Use the keyboard arrow keys to move the screen, and click the avatar above to track the perspective.</span><br/>
             <span style="color: white;">2. When you press the Z key, the view zooms in, and when you press the X key, the view zooms out.</span>
         </div>
-    </div>
+    </div> -->
 	<div id="game-container" style="text-align: center">
 
 	</div>
@@ -114,11 +108,12 @@
             <span>end: <span id="end-frame">5200</span></span>
         </div>
     </div>
-	<div style="width:55%; margin: 0 auto; margin-top:4.5em">
-		<h3 style="margin-bottom:-0.5em; font-size:1.5em;color: teal;">cur time:</h3>
+	<div style="width:100%;  margin-top:4.5em">
 		<div class="row">
-			<div class="col-md-8" id="game-time" style="">
-				<h2><span id="game-time-content" style="color: white;"></span></h2>
+			<div class="col-md-8" id="game-time" style="margin: 0 auto;width: 100%;">
+				<h2 style="text-align: center;">
+					<span id="game-time-content" style="color: white;"></span>
+				</h2>
 			</div>
 			<div class="col-md-4">
 				
@@ -140,42 +135,8 @@
 		<hr style="border-color:#999999">
 		<br>
 
-		{% for p_name, p_name_os in persona_names %}
-			<div class="media" style="background-color:#EEEEEE; padding:1em; padding-left:3.5em; padding-right:2em; border-radius:10px">
-			  <div class="media-left media-middle">
-			    <a href="#">
-			      <img class="media-object" src="{% static 'img/atlas.png' %}" style="width:5em">
-			    </a>
-			  </div>
-			  <div class="media-body" style='padding-left:3em; padding-top:0.5em; padding-bottom:1em'>
-			  	<div class="row">
-			    	<h2 class="col-md-8" id="name__{{ p_name_os }}" style="margin-bottom:0.8em; font-size:1.85em; ">
-			    		{{p_name}} &nbsp;&nbsp;
-			    		<a href="{% url 'replay_persona_state' sim_code step p_name_os %}" style="font-size:0.6em">status</a>
-			    	</h2>
-			    </div>
-			    <div style="">
-					  <p style="font-size:1.2em"><strong>action:</strong> <br><span id="current_action__{{ p_name_os }}"></span></p>
-					  <p style="font-size:1.2em"><strong>pos:</strong> <br><span id="target_address__{{ p_name_os }}"></span></p>
-					  <p style="font-size:1.2em"><strong>chat:</strong> <br><span id="chat__{{ p_name_os }}"></span></p>
-					</div>
-			  </div>
-			</div>	
-			<br>
-		{% endfor %}
-
 	</div>
-    <div class="fixed-bottom-link">
-        <a href="https://twitter.com/E3A_EternalAI" target="_blank" style="margin-right: 15px">X (Twitter)</a>
-        <a href="https://discord.gg/Ppf5SZ4q" target="_blank" style="margin-right: 15px">Discord</a>
-    </div>
 </div>
-
-  
-
-
-
-<div style="padding-bottom:15em"> </div>
 
 
 <!-- partial -->
@@ -227,4 +188,26 @@
 		});
 	{% endfor %}
 </script>
+<div class="dialog-container" id="gameDialog" >
+	<div class="header-section">
+		<div class="character-info" >▶&nbsp;<span id="character_name"></span> </div>
+		<div class="location-info"><i class="geo-alt-fill"></i><span>Position:&nbsp;</span><span id="character_pos"></span></div>
+		<div class="user_action">Action:&nbsp;<span id="character_atcion"></span></div>
+	</div>
+	<div class="chat-content"  >
+		<div style="display: inline; color: #ebe7e7;">
+			Chat:
+		</div>
+		<div id="dialog_content">
+			None
+		</div>
+		
+	</div>
+	<div class="input-section">
+		<input type="text" class="chat-input"  placeholder="input chat content..." />
+		<button style="background-color: #c9a769; color: #1a2a1a; padding: 8px 4px; border: none; border-radius: 4px; margin-left: 10px;" onclick="alert('Sorry, It will ok as soon as possible.')">Send</button>
+	</div>
+</div>
+
+
 {% endblock js_content %}

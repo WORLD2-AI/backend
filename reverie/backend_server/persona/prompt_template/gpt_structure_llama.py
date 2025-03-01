@@ -17,13 +17,8 @@ def temp_sleep(seconds=0.5):
     time.sleep(seconds)
 
 
-# def LLama_single_request(prompt):
-#     temp_sleep()
-#     openai.api_key = random.choice(openai_api_key)
-
-#     response = completion(model="meta-llama/Llama-2-7b-hf", messages={"role": "user", "content": prompt})
-
-#     return response["choices"][0]["message"]["content"]
+def ChatGPT_single_request(prompt):
+    return ChatGPT_request(prompt)
 
 
 # ============================================================================
