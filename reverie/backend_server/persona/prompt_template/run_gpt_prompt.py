@@ -825,7 +825,7 @@ def run_gpt_prompt_pronunciatio(action_description, persona, verbose=False):
     prompt_template = f"{fs_back_end}/persona/prompt_template/v3_ChatGPT/generate_pronunciatio_v1.txt" ########
     prompt_input = create_prompt_input(action_description)  ########
     prompt = generate_prompt(prompt_input, prompt_template)
-    example_output = "🛁🧖‍♀️" ########
+    example_output = "🛁😄" ########
     special_instruction = "The value for the output must ONLY contain the emojis." ########
     fail_safe = get_fail_safe()
     output = ChatGPT_safe_generate_response(prompt, example_output, special_instruction, 3, fail_safe,
@@ -942,12 +942,13 @@ def run_gpt_prompt_event_triple(action_description, persona, verbose=False):
     prompt_input = create_prompt_input(action_description, persona)
     prompt = generate_prompt(prompt_input, prompt_template)
     fail_safe = get_fail_safe(persona) ########
+    logger_info("run_gpt_prompt_event_triple")
     output = safe_generate_response(prompt, gpt_param, 5, fail_safe,
                                     __func_validate, __func_clean_up)
     output = (persona.name, output[0], output[1])
 
     # if debug or verbose:
-    logger_info("run_gpt_prompt_event_triple result:", prompt, output)
+    
 
     return output, [output, prompt, gpt_param, prompt_input, fail_safe]
 

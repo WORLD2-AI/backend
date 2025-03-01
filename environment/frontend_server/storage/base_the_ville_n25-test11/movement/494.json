@@ -1,0 +1,34 @@
+{
+  "persona": {
+    "latoya williams": {
+      "movement": [
+        40,
+        45
+      ],
+      "pronunciatio": "\ud83d\udcad\ud83d\ude0c",
+      "description": "returning home after the date and the encounter with Kiki (reflecting on the evening's events) @ the ville:artist's co-living space:latoya williams's room:seat",
+      "chat": null
+    },
+    "kiki": {
+      "movement": [
+        18,
+        64
+      ],
+      "pronunciatio": "\ud83d\ude2e\u200d\ud83d\udca8",
+      "description": "going home in silence after an argument with Cichengege (taking deep breaths to calm herself) @ the ville:kiki's apartment:kiki's room:seat",
+      "chat": null
+    },
+    "cichengege": {
+      "movement": [
+        27,
+        65
+      ],
+      "pronunciatio": "\ud83d\udcac\ud83e\udd1d",
+      "description": "returning home after the argument with Kiki and having a quiet evening (conversing about Kiki confronting Cichengege about lying and being with someone else on Valentine's Day, leading to an honest discussion about their relationship and a commitment to work through issues together.) @ the ville:cichengege's apartment:cichengege's room:common room sofa",
+      "chat": null
+    }
+  },
+  "meta": {
+    "curr_time": "February 14, 2025, 19:13:10"
+  }
+}

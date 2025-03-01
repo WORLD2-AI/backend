@@ -1,26 +1,12 @@
 {
   "fork_sim_code": "base_the_ville_n25-test",
   "start_date": "February 23, 2024",
-  "curr_time": "February 09, 2025, 11:14:00",
+  "curr_time": "February 14, 2025, 06:00:00",
   "sec_per_step": 10,
   "maze_name": "the_ville",
   "persona_names": [
-    "christopher gardner",
-    "linda",
-    "chris gardner",
-    "tom moreno",
-    "jane moreno",
-    "tamara taylor",
-    "rajiv patel",
-    "carmen ortiz",
-    "arthur burton",
     "latoya williams",
-    "carlos gomez",
-    "francisco lopez",
-    "kiki",
-    "cichengege",
-    "frank",
-    "mk"
+    "cichengege"
   ],
-  "step": 1096
+  "step": 0
 }

@@ -72,6 +72,10 @@
 
 	const config = {
 	  type: Phaser.AUTO,
+	  fps: {
+		target: 45, // 设置目标帧率为 8 FPS
+		forceSetTimeOut: true // 确保帧率稳定（适用于低帧率场景）
+	  },
 	  width: 1600,
 	  height: 1000,
 	  parent: "game-container",
@@ -108,7 +112,7 @@
 		spawn_tile_loc[key] = persona_names[key] ;
 	}
 	console.log(spawn_tile_loc);
-
+	let lastTime = 0;
 	var personas = {};
 	var pronunciatios = {};
 	let persona_name_tags = {};
@@ -141,7 +145,10 @@
 	let execute_count = execute_count_max+1;
 	let movement_target = {};
 	
-
+	let isDraggingmMap = false;
+	let startPointerPos = new Phaser.Math.Vector2();
+	let focus_name = ""
+	let dial_content = '<div style="color: #c9a769; margin-bottom: 8px;word-break: break-word"><span>#name#</span><span><p>#content#</p></span></div>'
 	// ###########################################################################
 	// ENGINE
 	// ###########################################################################
@@ -206,7 +213,11 @@
 	                  "https://mikewesthad.github.io/phaser-3-tilemap-blog-posts/post-1/assets/atlas/atlas.png", 
 	                  "https://mikewesthad.github.io/phaser-3-tilemap-blog-posts/post-1/assets/atlas/atlas.json");
 
-
+      for (let key in persona_names){
+          key = key.replace(" ","_")
+          key = key.toLowerCase()
+          this.load.atlas(key,`/static/assets/characters/town/${key}.png`,`/static/assets/characters/town/atlas.json`);
+      }
 
 	}
 
@@ -305,13 +316,15 @@
 	  // The image  used for the sprite has a bit of whitespace, so I'm using 
 	  // setSize & setOffset to control the size of the player's body.
 	  player = this.physics.add.
-	                sprite(800, 288, "atlas", "misa-front").
+	                sprite(1000, 400,"player").
+					setVelocity(0,0).
 	                setSize(30, 40).
 	                setOffset(0, 0);
 	  player.setDepth(-1);
+	  
 	  // Setting up the camera. 
 	  const camera = this.cameras.main;
-      {#camera.setZoom(0.75);#}
+    //   {#camera.setZoom(0.75);#}
 	  camera.startFollow(player);
 	  camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 	  cursors = this.input.keyboard.createCursorKeys();
@@ -325,7 +338,16 @@
 	    let new_sprite = this.physics.add
 	                         .sprite(start_pos[0], start_pos[1], "atlas", "misa-front")
 	                         .setSize(30, 40)
-	                         .setOffset(0, 32); // DEBUG 1 --- I added 32 offset on Dec 29. 
+	                         .setOffset(0, 32);
+
+		new_sprite.setInteractive(); 					 
+		new_sprite.on('pointerup', () => {
+			if (persona_name == focus_name){
+				focus_name = ""
+			}else{
+				focus_name = persona_name
+			}
+		})				 
 	    // Here, we are creating the persona and its pronunciatio sprites.
 	    personas[persona_name] = new_sprite;
 	    pronunciatios[persona_name] = this.add.text(
@@ -334,20 +356,18 @@
 	                                   "🦁", {
 	                                   font: "18px Arial", 
 	                                   fill: "#fff",
-	                                   padding: { x: 8, y: 8}, 
+	                                //    padding: { x: 8, y: 8}, 
 	                                   backgroundColor: "#00000066",
-									   stroke: '#000',
-    									strokeThickness: 1,
-	                                   border:"solid",
-	                                   borderRadius:"10px"}).setDepth(3);
+									   stroke: '#000',strokeThickness: 0,
+	                                   border:"none"}).setDepth(3);
 		
 		persona_name_tags[persona_name] = this.add.text(
 	                                   new_sprite.body.x, 
-	                                   new_sprite.body.y - 24, // DEBUG 1 --- I added 32 offset on Dec 29. 
+	                                   new_sprite.body.y - 42, // DEBUG 1 --- I added 32 offset on Dec 29. 
 	                                   formatPersonName(persona_name), {
 	                                   font: "bold 16px velvet",
 									   stroke: '#fff',
-    									strokeThickness: 2,
+									   strokeThickness: 2,
 	                                   fill: "#000", 
 	                                   border:"solid",
 	                                   borderRadius:"10px"}).setDepth(3);
@@ -356,29 +376,39 @@
 	  // Create the player's walking animations from the texture atlas. These are
 	  // stored in the global animation manager so any sprite can access them.
 	  const anims = this.anims;
-	  anims.create({
-	    key: "misa-left-walk",
-	    frames: anims.generateFrameNames("atlas", { prefix: "misa-left-walk.", start: 0, end: 3, zeroPad: 3 }),
-	    frameRate: 4,
-	    repeat: -1 });
+	  for (let i=0; i<Object.keys(persona_names).length; i++) {
+              let persona_name = Object.keys(persona_names)[i];
 
-	  anims.create({
-	    key: "misa-right-walk",
-	    frames: anims.generateFrameNames("atlas", { prefix: "misa-right-walk.", start: 0, end: 3, zeroPad: 3 }),
-	    frameRate: 4,
-	    repeat: -1 });
+              let left_walk_name = persona_name + "-left-walk";
+              let right_walk_name = persona_name + "-right-walk";
+              let down_walk_name = persona_name + "-down-walk";
+              let up_walk_name = persona_name + "-up-walk";
 
-	  anims.create({
-	    key: "misa-front-walk",
-	    frames: anims.generateFrameNames("atlas", { prefix: "misa-front-walk.", start: 0, end: 3, zeroPad: 3 }),
-	    frameRate: 4,
-	    repeat: -1 });
+            //   console.log(persona_name, left_walk_name, "DEUBG")
+            anims.create({
+              key: left_walk_name,
+              frames: anims.generateFrameNames(persona_name, { prefix: "left-walk.", start: 0, end: 3, zeroPad: 3 }),
+              frameRate: 4,
+              repeat: -1 });
 
-	  anims.create({
-	    key: "misa-back-walk",
-	    frames: anims.generateFrameNames("atlas", { prefix: "misa-back-walk.", start: 0, end: 3, zeroPad: 3 }),
-	    frameRate: 4,
-	    repeat: -1 });
+            anims.create({
+              key: right_walk_name,
+              frames: anims.generateFrameNames(persona_name, { prefix: "right-walk.", start: 0, end: 3, zeroPad: 3 }),
+              frameRate: 4,
+              repeat: -1 });
+
+            anims.create({
+              key: down_walk_name,
+              frames: anims.generateFrameNames(persona_name, { prefix: "down-walk.", start: 0, end: 3, zeroPad: 3 }),
+              frameRate: 4,
+              repeat: -1 });
+
+            anims.create({
+              key: up_walk_name,
+              frames: anims.generateFrameNames(persona_name, { prefix: "up-walk.", start: 0, end: 3, zeroPad: 3 }),
+              frameRate: 4,
+              repeat: -1 });
+	  }
 
       // set the view zoom
       const minZoom = 0.3; // minimal scaling
@@ -394,15 +424,38 @@
         this.cameras.main.setZoom(Phaser.Math.Clamp(newZoom, minZoom, maxZoom));
       });
 
-      // the configuration on the map can also be scrolled with the mouse
-      // disable input events for the game
-      this.input.enabled = false;
-      // listens for global mouse scroll events
-      window.addEventListener('wheel', (event) => {
-          // allows default scrolling behavior
-          event.preventDefault();
-          window.scrollBy(0, event.deltaY);
-      });
+		// 输入事件绑定
+		this.input.on('pointerdown', (pointer) => {
+			if (pointer.leftButtonDown()) {
+				isDraggingmMap = true;
+				console.log("pointer",pointer.x,pointer.y)
+				startPointerPos.set(pointer.x, pointer.y);
+			}
+		});
+
+		this.input.on('pointermove', (pointer) => {
+			if (isDraggingmMap && pointer.leftButtonDown()) {
+				// 计算摄像机偏移量
+				let deltaX = startPointerPos.x - pointer.x;
+				let deltaY = startPointerPos.y - pointer.y;
+				player.body.setVelocity(deltaX*5,deltaY*5)
+			}
+		});
+
+		this.input.on('pointerup', () => {
+			isDraggingmMap = false;
+		});
+		this.input.on('wheel', (pointer, gameObjects, deltaX, deltaY) => {
+			// 获取缩放前的鼠标世界坐标
+			// 计算新缩放级别（deltaY > 0 滚轮向下）
+			const newZoom = Phaser.Math.Clamp(
+				this.cameras.main.zoom - deltaY * 0.001, 
+				0.5, // 最小缩放
+				3    // 最大缩放
+			);
+			// 设置新缩放级别
+			this.cameras.main.setZoom(newZoom);
+		});
 
 	}
 
@@ -443,13 +496,16 @@
 	    player.body.setVelocityY(camera_speed);
 	  }
 
+	  if (focus_name){
+		player.body.x = personas[focus_name].body.x;
+		player.body.y = personas[focus_name].body.y;		
+	  }
 
-	  let curr_focused_persona = document.getElementById("temp_focus").textContent;
-		if (curr_focused_persona != "") {
-			player.body.x = personas[curr_focused_persona].body.x;
-			player.body.y = personas[curr_focused_persona].body.y;
-			// document.getElementById("temp_focus").innerHTML = "";
-		}
+	//   let curr_focused_persona = document.getElementById("temp_focus").textContent;
+	// 	if (curr_focused_persona != "") {
+			
+	// 		// document.getElementById("temp_focus").innerHTML = "";
+	// 	}
 	  // console.log("phase: " + phase + ", step: " + step);
 	  // *** MOVE PERSONAS ***
 	  // Moving personas take place in three distinct phases: "process," "update,"
@@ -500,8 +556,8 @@
 				}
 				x = personas[curr_persona_name].body.position.x
 				y = personas[curr_persona_name].body.position.y
-				console.log(curr_persona_name, x, y, movement_target[curr_persona_name][0], movement_target[curr_persona_name][1]);
-				console.log("persona pos:", Math.ceil(x / tile_width), Math.ceil(y / tile_width))
+				// console.log(curr_persona_name, x, y, movement_target[curr_persona_name][0], movement_target[curr_persona_name][1]);
+				// console.log("persona pos:", Math.ceil(x / tile_width), Math.ceil(y / tile_width))
 				if (execute_count > 0) {
 					if (curr_persona.body.x < movement_target[curr_persona_name][0]) {
 						curr_persona.body.x += movement_speed;
@@ -531,25 +587,10 @@
 					curr_pronunciatio.y = curr_persona.body.y - tile_width / 2; // DEBUG 1 --- I added 32 offset on Dec 29. 
 
 					curr_persona_name_tags.x = curr_persona.body.x;
-					curr_persona_name_tags.y = curr_persona.body.y - 24;
+					curr_persona_name_tags.y = curr_persona.body.y - 42;
 
-					if (anims_direction == "l") {
-						curr_persona.anims.play("misa-left-walk", true);
-					} else if (anims_direction == "r") {
-						curr_persona.anims.play("misa-right-walk", true);
-					} else if (anims_direction == "u") {
-						curr_persona.anims.play("misa-back-walk", true);
-					} else if (anims_direction == "d") {
-						curr_persona.anims.play("misa-front-walk", true);
-					} else {
-						curr_persona.anims.stop();
+					updatePersonaAnimation(curr_persona, anims_direction, curr_persona_name, pre_anims_direction_dict);
 
-						// If we were moving, pick an idle frame to use
-						if (pre_anims_direction_dict[curr_persona_name] == "l") curr_persona.setTexture("atlas", "misa-left"); else
-							if (pre_anims_direction_dict[curr_persona_name] == "r") curr_persona.setTexture("atlas", "misa-right"); else
-								if (pre_anims_direction_dict[curr_persona_name] == "u") curr_persona.setTexture("atlas", "misa-back"); else
-									if (pre_anims_direction_dict[curr_persona_name] == "d") curr_persona.setTexture("atlas", "misa-front");
-					};
 				} else {
 					// Once we are done moving the personas, we move on to the "process"
 					// stage where we will send the current locations of all personas at the
@@ -567,6 +608,7 @@
 					execute_count = execute_count_max + 1;
 					step = step + 1;
 					changeProgressBarToEnd(step)
+					return 
 				}
 			}
 
@@ -578,19 +620,38 @@
 					let curr_persona_name_os = curr_persona_name.replace(/ /g, "_");
 					let description_content = execute_movement["persona"][curr_persona_name]["description"];
 					let chat_content = ""
+					
+					// if (execute_movement["persona"][curr_persona_name]["chat"] != null) {
+					// 	for (let j = 0; j < execute_movement["persona"][curr_persona_name]["chat"].length; j++) {
 
-					if (execute_movement["persona"][curr_persona_name]["chat"] != null) {
-						for (let j = 0; j < execute_movement["persona"][curr_persona_name]["chat"].length; j++) {
-							chat_content += execute_movement["persona"][curr_persona_name]["chat"][j][0] + ": " + execute_movement["persona"][curr_persona_name]["chat"][j][1] + "<br>"
+					// 		chat_content += execute_movement["persona"][curr_persona_name]["chat"][j][0] + ": " + execute_movement["persona"][curr_persona_name]["chat"][j][1] + "<br>"
+					// 	}
+					// } else {
+					// 	chat_content = "<em>None</em>"
+					// }
+					if (focus_name == curr_persona_name){
+						if (execute_movement["persona"][curr_persona_name]["chat"] != null){
+							fill_dialog_content = ""
+							let temp_content = dial_content
+							for (let j = 0; j < execute_movement["persona"][curr_persona_name]["chat"].length; j++) {
+								let temp_content = dial_content
+								fill_dialog_content += temp_content.replace("#name#",execute_movement["persona"][curr_persona_name]["chat"][j][0]).replace("#content#",execute_movement["persona"][curr_persona_name]["chat"][j][1])
+							}
+						}else{
+							fill_dialog_content = "<span>None</span>"
 						}
-					} else {
-						chat_content = "<em>None</em>"
+						
+						document.getElementById("character_name").innerHTML = curr_persona_name
+						document.getElementById("character_pos").innerHTML = description_content.split("@")[1]
+						document.getElementById("character_atcion").innerHTML = description_content.split("@")[0]
+						document.getElementById("dialog_content").innerHTML = fill_dialog_content
 					}
+					update_dialog_user_info(focus_name != "")
 					// action_description += description_content + "<br>";
 
-					document.getElementById("current_action__" + curr_persona_name_os).innerHTML = description_content.split("@")[0];
-					document.getElementById("target_address__" + curr_persona_name_os).innerHTML = description_content.split("@")[1];
-					document.getElementById("chat__" + curr_persona_name_os).innerHTML = chat_content;
+					// document.getElementById("current_action__" + curr_persona_name_os).innerHTML = description_content.split("@")[0];
+					// document.getElementById("target_address__" + curr_persona_name_os).innerHTML = description_content.split("@")[1];
+					// document.getElementById("chat__" + curr_persona_name_os).innerHTML = chat_content;
 				}
 
 			}
@@ -627,6 +688,30 @@
 				}, 2000);
 		}
 	}
+
+    function updatePersonaAnimation(curr_persona, anims_direction, curr_persona_name, pre_anims_direction_dict) {
+        let baseTextureLowerCase = curr_persona_name.toLowerCase(); // 动态生成基础纹理名
+        let baseTexture = baseTextureLowerCase.replace(" ","_")
+        if (anims_direction === "l") {
+            curr_persona.anims.play(`${baseTexture}-left-walk`, true);
+        } else if (anims_direction === "r") {
+            curr_persona.anims.play(`${baseTexture}-right-walk`, true);
+        } else if (anims_direction === "u") {
+            curr_persona.anims.play(`${baseTexture}-up-walk`, true);
+        } else if (anims_direction === "d") {
+            curr_persona.anims.play(`${baseTexture}-down-walk`, true);
+        } else {
+            curr_persona.anims.stop();
+            // If we were moving, pick an idle frame to use
+            //console.log(pre_anims_direction_dict[baseTextureLowerCase],"pre_anims_direction_dict")
+            //console.log('Current texture key:', curr_persona.texture.key);
+            // console.log("curr_persona_name："+curr_persona_name,curr_persona)
+	      if (pre_anims_direction_dict[baseTextureLowerCase] === "l") curr_persona.setTexture(baseTexture, "left"); else
+	      if (pre_anims_direction_dict[baseTextureLowerCase] === "r") curr_persona.setTexture(baseTexture, "right"); else
+	      if (pre_anims_direction_dict[baseTextureLowerCase] === "u") curr_persona.setTexture(baseTexture, "up"); else
+	      if (pre_anims_direction_dict[baseTextureLowerCase] === "d") curr_persona.setTexture(baseTexture, "down");
+        }
+    }
 
     /**
      * strings are split by a specified length
@@ -690,7 +775,7 @@
 
 	function calculateStartFrame(endFrame) {
 		let startFrame = endFrame - 4000;
-		return startFrame < 1200 ? 1200 : startFrame;
+		return startFrame < 1 ? 1 : startFrame;
 	}
 
 	function updateFramesDisplay() {
@@ -719,7 +804,7 @@
 		percent = Math.min(100, Math.max(0, percent));
 		
 		currentFrame = currentStartFrame + (percent / 100) * (currentEndFrame - currentStartFrame);
-		console.log("currentFrame",currentFrame)
+		// console.log("currentFrame",currentFrame)
 		progress.style.width = `${percent}%`;
 		slider.style.left = `calc(${percent}% - 8px)`;
 		document.getElementById('current-frame').textContent = Math.floor(currentFrame);
@@ -753,7 +838,20 @@
 		updateFramesDisplay();
 	}
 	changeProgressBarToEnd(currentEndFrame)
+	const element = document.getElementById('game-container');
+	element.addEventListener('contextmenu', (e) => {e.preventDefault();focus_name = "";})
+	function update_dialog_user_info(visible) {
+		const dialog = document.getElementById('gameDialog');
+		if (visible) {
+			dialog.classList.add('dialog-visible');
+			setTimeout(() => dialog.style.overflow = 'visible', 300);
+		} else {
+			dialog.classList.remove('dialog-visible');
+			dialog.style.overflow = 'hidden';
+		}
+	}
 </script>
+
 
 
 
