@@ -88,12 +88,12 @@
     	</div>
     </div> -->
 	<div style="display: none" id="temp_focus"></div>
-    <div style="display: flex; justify-content: flex-end; padding-right: 10%;">
+    <!-- <div style="display: flex; justify-content: flex-end; padding-right: 10%;">
         <div style="text-align: left;">
             <span style="color: white;">1. Use the keyboard arrow keys to move the screen, and click the avatar above to track the perspective.</span><br/>
             <span style="color: white;">2. When you press the Z key, the view zooms in, and when you press the X key, the view zooms out.</span>
         </div>
-    </div>
+    </div> -->
 	<div id="game-container" style="text-align: center">
 
 	</div>
@@ -108,11 +108,12 @@
             <span>end: <span id="end-frame">5200</span></span>
         </div>
     </div>
-	<div style="width:55%; margin: 0 auto; margin-top:4.5em">
-		<h3 style="margin-bottom:-0.5em; font-size:1.5em;color: teal;">cur time:</h3>
+	<div style="width:100%;  margin-top:4.5em">
 		<div class="row">
-			<div class="col-md-8" id="game-time" style="">
-				<h2><span id="game-time-content" style="color: white;"></span></h2>
+			<div class="col-md-8" id="game-time" style="margin: 0 auto;width: 100%;">
+				<h2 style="text-align: center;">
+					<span id="game-time-content" style="color: white;"></span>
+				</h2>
 			</div>
 			<div class="col-md-4">
 				
@@ -136,12 +137,6 @@
 
 	</div>
 </div>
-
-  
-
-
-
-<div style="padding-bottom:15em"> </div>
 
 
 <!-- partial -->
@@ -199,7 +194,13 @@
 		<div class="location-info"><i class="geo-alt-fill"></i><span>Position:&nbsp;</span><span id="character_pos"></span></div>
 		<div class="user_action">Action:&nbsp;<span id="character_atcion"></span></div>
 	</div>
-	<div class="chat-content" id="dialog_content" >
+	<div class="chat-content"  >
+		<div style="display: inline; color: #ebe7e7;">
+			Chat:
+		</div>
+		<div id="dialog_content">
+			None
+		</div>
 		
 	</div>
 	<div class="input-section">

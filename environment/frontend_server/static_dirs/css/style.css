@@ -24,7 +24,7 @@ body,
   /* visibility: hidden; */
   position: fixed;
   right: -420px;
-  top: 20%;
+  top: 25%;
   width: 400px;
   max-height: 750px;
   background: linear-gradient(145deg, #0d1f0d 30%, #1a2a1a 100%);
@@ -34,6 +34,7 @@ body,
   font-family: 'Arial', sans-serif;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   /* overflow: hidden; */
+  z-index: 100;
 }
 
 .dialog-visible {
@@ -71,6 +72,7 @@ body,
   overflow-y: auto;
   overflow-x: hidden;
   background: rgba(13, 31, 13, 0.9);
+  color: #8d9e8d;
 }
 
 .input-section {
