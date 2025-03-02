@@ -629,9 +629,9 @@
 					// } else {
 					// 	chat_content = "<em>None</em>"
 					// }
+					fill_dialog_content = ""
 					if (focus_name == curr_persona_name){
 						if (execute_movement["persona"][curr_persona_name]["chat"] != null){
-							fill_dialog_content = ""
 							let temp_content = dial_content
 							for (let j = 0; j < execute_movement["persona"][curr_persona_name]["chat"].length; j++) {
 								let temp_content = dial_content
@@ -639,18 +639,19 @@
 							}
 						}else{
 							fill_dialog_content = "<span>None</span>"
-						}						
+						}
+						document.getElementById("dialog_content").innerHTML = fill_dialog_content					
 					}
 					if (focus_name != ""){
 						document.getElementById("character_name").innerHTML = focus_name
 						document.getElementById("character_pos").innerHTML = description_content.split("@")[1]
 						document.getElementById("character_atcion").innerHTML = description_content.split("@")[0]
-						document.getElementById("dialog_content").innerHTML = fill_dialog_content
+						document.getElementById("character_detail").innerHTML = document.getElementById("status_"+curr_persona_name_os).innerHTML
 					}else{
 						document.getElementById("character_name").innerHTML = "None"
 						document.getElementById("character_pos").innerHTML = "None"
 						document.getElementById("character_atcion").innerHTML = "None"
-						document.getElementById("dialog_content").innerHTML = "<span>None</span>"
+						document.getElementById("character_detail").innerHTML = ""
 					}
 				}
 
