@@ -20,7 +20,7 @@
 }
 </style>
 <style>
-	.container {
+	.bar-ontainer {
 		width: 80%;
 		margin: 20px auto;
 		position: relative;
@@ -66,27 +66,19 @@
 	}
 </style>
 <div>
-    <!-- <div style="display: flex; justify-content: center; width: 100%;">
-    	<div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
+    <div style="display: none; justify-content: center; width: 100%;">
+    	<div style="display: none;">
     		{% for p_name, p_name_os in persona_names %}
-    			<div id="on_screen_det_trigger-{{p_name_os}}" style="display: flex; align-items: center; gap: 20px; background-color: #EEEEEE; padding: 1em; padding-left: 1.5em; padding-right: 2em; border-radius: 10px; cursor: pointer; flex: 0 0 calc(20% - 20px); max-width: calc(20% - 20px);">
-    				<div class="media-left media-middle">
-    					<a href="#">
-                            <img class="media-object" src="{% static 'assets/characters/town/profile/'|add:p_name_os|add:'.png' %}" style="width: 2em">
-    					</a>
-    				</div>
-    				<div>
-    					<div class="row">
-    						<h2 id="name__{{ p_name_os }}" style="margin-bottom: 0.8em; font-size: 1em;">
-    							{{p_name}} &nbsp;&nbsp;
-    							<a href="{% url 'replay_persona_state' sim_code step p_name_os %}" style="font-size: 0.6em;">status</a>
-    						</h2>
-    					</div>
-    				</div>
-    			</div>
+				<div id = "avatar_{{p_name_os}}">
+					<img class="media-object" src="{% static 'assets/characters/town/profile/'|add:p_name_os|add:'.png' %}" style="width: 2em">
+				</div>
+				<div id ="status_{{p_name_os}}">
+					<a href="{% url 'replay_persona_state' sim_code step p_name_os %}" style="font-size: 0.6em; color: #ADD8E6; text-shadow: 0 0 5px #ADD8E6;">User Detail</a>
+				</div>
+    			
     		{% endfor %}
     	</div>
-    </div> -->
+    </div>
 	<div style="display: none" id="temp_focus"></div>
     <!-- <div style="display: flex; justify-content: flex-end; padding-right: 10%;">
         <div style="text-align: left;">
@@ -94,10 +86,44 @@
             <span style="color: white;">2. When you press the Z key, the view zooms in, and when you press the X key, the view zooms out.</span>
         </div>
     </div> -->
-	<div id="game-container" style="text-align: center">
+	<!-- botstrap 写一个容器，分成两份，左边空一个栅格占用60% 右边20% 右边再空一个栅格 -->
+	<div class="container-fluid" style="min-width:1860px">
+        <div class="row">
+			<div class="col-md-1"></div>
+            <div class="col-md-7" >
+                <div class="text-white" id="game-container">
+                    <!-- game content -->
+                </div>
+            </div>
+			
+            <div class="col-md-4">
+				<div class="text-white" >
+                    <div class="dialog-container" id="gameDialog">
+                        <div class="header-section">
+							<div class="character-info" >▶&nbsp;<span id="character_name"></span><span id="character_detail"></span> </div>
+							<div class="location-info"><i class="geo-alt-fill"></i><span>Position:&nbsp;</span><span id="character_pos"></span></div>
+							<div class="user_action">Action:&nbsp;<span id="character_atcion"></span></div>
+						</div>
+						<div class="chat-content"  >
+							<div style="display: inline; color: #ebe7e7;">
+								Chat:
+							</div>
+							<div id="dialog_content">
+								None
+							</div>
+							
+						</div>
+						<div class="input-section">
+							<input type="text" class="chat-input"  placeholder="input chat content..." />
+							<button style="background-color: #c9a769; color: #1a2a1a; padding: 8px 4px; border: none; border-radius: 4px; margin-left: 10px;" onclick="alert('Sorry, It will be ok as soon as possible.')">Send</button>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	</div>
-	<div class="container">
+	<div class="bar-ontainer">
         <div id="progress-bar">
             <div id="progress"></div>
             <div id="slider"></div>
@@ -188,26 +214,7 @@
 		});
 	{% endfor %}
 </script>
-<div class="dialog-container" id="gameDialog" >
-	<div class="header-section">
-		<div class="character-info" >▶&nbsp;<span id="character_name"></span> </div>
-		<div class="location-info"><i class="geo-alt-fill"></i><span>Position:&nbsp;</span><span id="character_pos"></span></div>
-		<div class="user_action">Action:&nbsp;<span id="character_atcion"></span></div>
-	</div>
-	<div class="chat-content"  >
-		<div style="display: inline; color: #ebe7e7;">
-			Chat:
-		</div>
-		<div id="dialog_content">
-			None
-		</div>
-		
-	</div>
-	<div class="input-section">
-		<input type="text" class="chat-input"  placeholder="input chat content..." />
-		<button style="background-color: #c9a769; color: #1a2a1a; padding: 8px 4px; border: none; border-radius: 4px; margin-left: 10px;" onclick="alert('Sorry, It will ok as soon as possible.')">Send</button>
-	</div>
-</div>
+
 
 
 {% endblock js_content %}
