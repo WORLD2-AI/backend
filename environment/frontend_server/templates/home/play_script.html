@@ -76,8 +76,8 @@
 		target: 45, // 设置目标帧率为 8 FPS
 		forceSetTimeOut: true // 确保帧率稳定（适用于低帧率场景）
 	  },
-	  width: 1600,
-	  height: 1000,
+	  width: 1200,
+	  height: 800,
 	  parent: "game-container",
 	  pixelArt: true,
 	  physics: {
@@ -639,19 +639,19 @@
 							}
 						}else{
 							fill_dialog_content = "<span>None</span>"
-						}
-						
-						document.getElementById("character_name").innerHTML = curr_persona_name
+						}						
+					}
+					if (focus_name != ""){
+						document.getElementById("character_name").innerHTML = focus_name
 						document.getElementById("character_pos").innerHTML = description_content.split("@")[1]
 						document.getElementById("character_atcion").innerHTML = description_content.split("@")[0]
 						document.getElementById("dialog_content").innerHTML = fill_dialog_content
+					}else{
+						document.getElementById("character_name").innerHTML = "None"
+						document.getElementById("character_pos").innerHTML = "None"
+						document.getElementById("character_atcion").innerHTML = "None"
+						document.getElementById("dialog_content").innerHTML = "<span>None</span>"
 					}
-					update_dialog_user_info(focus_name != "")
-					// action_description += description_content + "<br>";
-
-					// document.getElementById("current_action__" + curr_persona_name_os).innerHTML = description_content.split("@")[0];
-					// document.getElementById("target_address__" + curr_persona_name_os).innerHTML = description_content.split("@")[1];
-					// document.getElementById("chat__" + curr_persona_name_os).innerHTML = chat_content;
 				}
 
 			}
