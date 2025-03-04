@@ -1,0 +1,229 @@
+{
+  "vision_r": 6,
+  "att_bandwidth": 6,
+  "retention": 8,
+  "curr_time": "March 07, 2025, 06:24:30",
+  "curr_tile": [
+    60,
+    73
+  ],
+  "daily_plan_req": "2:00 PM - 4:00 PM: Worked out at the gym and discussed the virtual fitness data market with rajiv, proposing the idea of issuing \"FitCoin\" using blockchain and smart contracts, and was very enthusiastic about it.\nEvening to late night: Refined the plan with rajiv, decided to launch the test issuance of FitCoin next week, and assessed its potential impact on the fitness industr",
+  "name": "tamara taylor",
+  "first_name": "tamara",
+  "last_name": "taylor",
+  "age": 30,
+  "innate": "imaginative, patient, kind",
+  "learned": "tamara is an internet industry worker.",
+  "currently": "Refined the plan with rajiv, decided to launch the test issuance of FitCoin next week, and assessed its potential impact on the fitness industr",
+  "lifestyle": "tamara taylor goes to bed around 10pm, awakes up around 6am, eats dinner around 6pm.",
+  "living_area": "the ville:tamara taylor and carmen ortiz's house:tamara taylor's room",
+  "concept_forget": 100,
+  "daily_reflection_time": 180,
+  "daily_reflection_size": 5,
+  "overlap_reflect_th": 4,
+  "kw_strg_event_reflect_th": 10,
+  "kw_strg_thought_reflect_th": 9,
+  "recency_w": 1,
+  "relevance_w": 1,
+  "importance_w": 1,
+  "recency_decay": 0.995,
+  "importance_trigger_max": 250,
+  "importance_trigger_curr": 225,
+  "importance_ele_n": 19,
+  "thought_count": 5,
+  "daily_req": [
+    "Wake up and complete the morning routine at 6:00 am.",
+    "Have breakfast and review emails from 7:00 am to 8:00 am.",
+    "Attend virtual team meeting from 9:00 am to 10:00 am.",
+    "Work on refining the FitCoin launch plan from 10:30 am to 12:00 pm.",
+    "Have lunch at 12:00 pm.",
+    "Respond to work emails and coordinate with team members from 12:30 pm to 1:30 pm.",
+    "Work out at the gym and discuss the virtual fitness data market with Rajiv from 2:00 pm to 4:00 pm.",
+    "Continue working on FitCoin preparations from 4:30 pm to 5:30 pm.",
+    "Eat dinner at 6:00 pm.",
+    "Relax and unwind, possibly watch TV or read from 7:00 pm to 8:00 pm.",
+    "Refine the FitCoin plan with Rajiv, deciding to launch the test issuance next week, from 8:30 pm to 9:30 pm.",
+    "Prepare for bed and unwind from 9:30 pm to 10:00 pm."
+  ],
+  "f_daily_schedule": [
+    [
+      "sleeping",
+      360
+    ],
+    [
+      "waking up and completing her morning routine",
+      60
+    ],
+    [
+      "having breakfast and reviewing emails (on the way to making breakfast)",
+      0
+    ],
+    [
+      "having breakfast and reviewing emails (conversing about Tamara Taylor asking Frank about his plans after seeing him at the liquor store, with Frank planning for an interesting weekend and Tamara preparing for a launch plan for FitCoin with Rajiv.)",
+      3
+    ],
+    [
+      "having breakfast and reviewing emails (making breakfast)  ",
+      10
+    ],
+    [
+      "having breakfast and reviewing emails (eating breakfast)  ",
+      20
+    ],
+    [
+      "having breakfast and reviewing emails (opening her laptop to check emails)  ",
+      5
+    ],
+    [
+      "having breakfast and reviewing emails (reading and responding to important emails)  ",
+      15
+    ],
+    [
+      "having breakfast and reviewing emails (organizing her inbox and flagging emails for follow-up)",
+      7
+    ],
+    [
+      "preparing for the virtual team meeting",
+      60
+    ],
+    [
+      "attending a virtual team meeting",
+      120
+    ],
+    [
+      "working on refining the FitCoin launch plan",
+      60
+    ],
+    [
+      "having lunch",
+      60
+    ],
+    [
+      "responding to work emails and coordinating with team members",
+      60
+    ],
+    [
+      "working out at the gym and discussing the virtual fitness data market with Rajiv, proposing the idea of issuing \"FitCoin\" using blockchain and smart contracts, and is very enthusiastic about it",
+      180
+    ],
+    [
+      "continuing to work on FitCoin preparations",
+      60
+    ],
+    [
+      "eating dinner",
+      60
+    ],
+    [
+      "relaxing and unwinding, possibly watching TV or reading",
+      120
+    ],
+    [
+      "refining the FitCoin plan with Rajiv, deciding to launch the test issuance next week",
+      60
+    ],
+    [
+      "preparing for bed and unwinding",
+      60
+    ],
+    [
+      "sleeping",
+      60
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ]
+  ],
+  "f_daily_schedule_hourly_org": [
+    [
+      "sleeping",
+      360
+    ],
+    [
+      "waking up and completing her morning routine",
+      60
+    ],
+    [
+      "having breakfast and reviewing emails",
+      60
+    ],
+    [
+      "preparing for the virtual team meeting",
+      60
+    ],
+    [
+      "attending a virtual team meeting",
+      120
+    ],
+    [
+      "working on refining the FitCoin launch plan",
+      60
+    ],
+    [
+      "having lunch",
+      60
+    ],
+    [
+      "responding to work emails and coordinating with team members",
+      60
+    ],
+    [
+      "working out at the gym and discussing the virtual fitness data market with Rajiv, proposing the idea of issuing \"FitCoin\" using blockchain and smart contracts, and is very enthusiastic about it",
+      180
+    ],
+    [
+      "continuing to work on FitCoin preparations",
+      60
+    ],
+    [
+      "eating dinner",
+      60
+    ],
+    [
+      "relaxing and unwinding, possibly watching TV or reading",
+      120
+    ],
+    [
+      "refining the FitCoin plan with Rajiv, deciding to launch the test issuance next week",
+      60
+    ],
+    [
+      "preparing for bed and unwinding",
+      60
+    ],
+    [
+      "sleeping",
+      60
+    ]
+  ],
+  "act_address": "the ville:tamara taylor and carmen ortiz's house:tamara taylor's room:bed",
+  "act_start_time": "March 07, 2025, 06:05:00",
+  "act_duration": 60,
+  "act_description": "waking up and completing her morning routine",
+  "act_pronunciatio": "\u23f0\ud83d\ude42",
+  "act_event": [
+    "tamara taylor",
+    "wake",
+    "up"
+  ],
+  "act_obj_description": "unmade",
+  "act_obj_pronunciatio": "\ud83d\udecf\ufe0f\ud83d\ude15",
+  "act_obj_event": [
+    "bed",
+    "is",
+    "unmade"
+  ],
+  "chatting_with": null,
+  "chat": null,
+  "chatting_with_buffer": {
+    "frank": 682
+  },
+  "chatting_end_time": null,
+  "act_path_set": true,
+  "planned_path": []
+}

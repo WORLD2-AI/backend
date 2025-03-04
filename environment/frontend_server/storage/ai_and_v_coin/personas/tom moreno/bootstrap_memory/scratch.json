@@ -1,0 +1,234 @@
+{
+  "vision_r": 8,
+  "att_bandwidth": 10,
+  "retention": 6,
+  "curr_time": "March 07, 2025, 06:24:30",
+  "curr_tile": [
+    97,
+    74
+  ],
+  "daily_plan_req": "10:00 AM - 12:00 PM: Organized shelves at the supermarket and analyzed sales data, secretly planning to invest in the supermarket's supply chain through virtual economic investments. Observed the interactions between Cichenggege, Kiki, and LW, and pondered the similarities between interpersonal relationships and market economics.\nAfternoon: Continued to analyze market demand, identified a potential business opportunity with a certain type of imported fruit, and planned to speculate on commodity futures in the virtual market.\nAt 6pm,tom went to the moonlight tavern bar to relax.",
+  "name": "tom moreno",
+  "first_name": "tom",
+  "last_name": "moreno",
+  "age": 52,
+  "innate": "rude, aggressive, energetic",
+  "learned": "tom moreno is a grocery shop keeper at The supermarket who loves interacting with customers. He is always willing to help out and make sure everyone is taken care of.",
+  "currently": "Tom is the store manager of a supermarket and is currently seeking a breakthrough in business.",
+  "lifestyle": "tom moreno goes to bed around 11pm, awakes up around 7am, eats dinner around 5pm.",
+  "living_area": "the ville:moreno family's house:tom moreno's bedroom",
+  "concept_forget": 100,
+  "daily_reflection_time": 180,
+  "daily_reflection_size": 5,
+  "overlap_reflect_th": 4,
+  "kw_strg_event_reflect_th": 10,
+  "kw_strg_thought_reflect_th": 9,
+  "recency_w": 1,
+  "relevance_w": 1,
+  "importance_w": 1,
+  "recency_decay": 0.995,
+  "importance_trigger_max": 250,
+  "importance_trigger_curr": 236,
+  "importance_ele_n": 11,
+  "thought_count": 5,
+  "daily_req": [
+    "Wake up and complete the morning routine at 7:00 am.",
+    "Arrive at the supermarket, greet the staff, and prepare for the day at 8:45 am.",
+    "Interact with morning customers and ensure smooth operations from 9:00 am to 10:00 am.",
+    "Organize shelves and analyze sales data from 10:00 am to 12:00 pm.",
+    "Break for lunch and quickly survey competitor pricing trends from 12:00 pm to 12:45 pm.",
+    "Manage afternoon operations, focusing on market demand analysis and identifying potential imported fruit opportunities from 1:00 pm to 4:00 pm.",
+    "Review virtual investment strategies, pondering economic parallels from 4:00 pm to 4:45 pm.",
+    "Eat dinner at 5:00 pm.",
+    "Visit the Moonlight Tavern Bar to relax at 6:00 pm.",
+    "Reflect on the day's achievements and prepare for the next day from 9:00 pm to 10:00 pm.",
+    "Wind down and prepare for bed, hoping for new business insights at 11:00 pm."
+  ],
+  "f_daily_schedule": [
+    [
+      "sleeping",
+      420
+    ],
+    [
+      "Tom is waking up and completing his morning routine (Tom is waking up and stretching)",
+      10
+    ],
+    [
+      "Tom is waking up and completing his morning routine (brushing his teeth and washing his face)",
+      10
+    ],
+    [
+      "Tom is waking up and completing his morning routine (taking a shower)",
+      10
+    ],
+    [
+      "Tom is waking up and completing his morning routine (getting dressed)",
+      10
+    ],
+    [
+      "Tom is waking up and completing his morning routine (having breakfast)",
+      10
+    ],
+    [
+      "Tom is waking up and completing his morning routine (checking the news on his phone)",
+      10
+    ],
+    [
+      "finishing his morning routine and preparing to leave for the supermarket (Tom is brushing his teeth and washing his face)",
+      10
+    ],
+    [
+      "finishing his morning routine and preparing to leave for the supermarket (getting dressed for the day)",
+      10
+    ],
+    [
+      "finishing his morning routine and preparing to leave for the supermarket (having breakfast)",
+      20
+    ],
+    [
+      "finishing his morning routine and preparing to leave for the supermarket (checking his phone for messages and emails)",
+      10
+    ],
+    [
+      "finishing his morning routine and preparing to leave for the supermarket (gathering his belongings and preparing to leave)",
+      10
+    ],
+    [
+      "interacting with morning customers and ensuring smooth operations",
+      60
+    ],
+    [
+      "organizing shelves at the supermarket and analyzing sales data, while secretly planning to invest in the supermarket's supply chain through virtual economic investments",
+      60
+    ],
+    [
+      "continuing to organize shelves at the supermarket and analyze sales data, while secretly planning to invest in the supermarket's supply chain through virtual economic investments",
+      60
+    ],
+    [
+      "taking a break for lunch and quickly surveying competitor pricing trends",
+      60
+    ],
+    [
+      "managing afternoon operations, focusing on market demand analysis and identifying potential imported fruit opportunities",
+      180
+    ],
+    [
+      "reviewing virtual investment strategies, pondering economic parallels",
+      60
+    ],
+    [
+      "eating dinner",
+      60
+    ],
+    [
+      "visiting the Moonlight Tavern Bar to relax",
+      60
+    ],
+    [
+      "relaxing at the Moonlight Tavern Bar, enjoying his time off from work",
+      60
+    ],
+    [
+      "continuing to relax at the Moonlight Tavern Bar, reflecting on the day's events and enjoying his time off from work",
+      60
+    ],
+    [
+      "reflecting on the day's achievements and preparing for the next day",
+      60
+    ],
+    [
+      "winding down and preparing for bed, hoping for new business insights",
+      120
+    ],
+    [
+      "sleeping",
+      0
+    ]
+  ],
+  "f_daily_schedule_hourly_org": [
+    [
+      "sleeping",
+      420
+    ],
+    [
+      "Tom is waking up and completing his morning routine",
+      60
+    ],
+    [
+      "finishing his morning routine and preparing to leave for the supermarket",
+      60
+    ],
+    [
+      "interacting with morning customers and ensuring smooth operations",
+      60
+    ],
+    [
+      "organizing shelves at the supermarket and analyzing sales data, while secretly planning to invest in the supermarket's supply chain through virtual economic investments",
+      60
+    ],
+    [
+      "continuing to organize shelves at the supermarket and analyze sales data, while secretly planning to invest in the supermarket's supply chain through virtual economic investments",
+      60
+    ],
+    [
+      "taking a break for lunch and quickly surveying competitor pricing trends",
+      60
+    ],
+    [
+      "managing afternoon operations, focusing on market demand analysis and identifying potential imported fruit opportunities",
+      180
+    ],
+    [
+      "reviewing virtual investment strategies, pondering economic parallels",
+      60
+    ],
+    [
+      "eating dinner",
+      60
+    ],
+    [
+      "visiting the Moonlight Tavern Bar to relax",
+      60
+    ],
+    [
+      "relaxing at the Moonlight Tavern Bar, enjoying his time off from work",
+      60
+    ],
+    [
+      "continuing to relax at the Moonlight Tavern Bar, reflecting on the day's events and enjoying his time off from work",
+      60
+    ],
+    [
+      "reflecting on the day's achievements and preparing for the next day",
+      60
+    ],
+    [
+      "winding down and preparing for bed, hoping for new business insights",
+      120
+    ]
+  ],
+  "act_address": "the ville:moreno family's house:tom moreno's bedroom:bed",
+  "act_start_time": "March 07, 2025, 06:00:00",
+  "act_duration": 420,
+  "act_description": "sleeping",
+  "act_pronunciatio": "\ud83d\udca4\ud83d\ude34",
+  "act_event": [
+    "tom moreno",
+    "is",
+    "sleep"
+  ],
+  "act_obj_description": "being slept in by Tom Moreno",
+  "act_obj_pronunciatio": "\ud83d\udecc\ud83d\ude34",
+  "act_obj_event": [
+    "bed",
+    "is",
+    "slept"
+  ],
+  "chatting_with": null,
+  "chat": null,
+  "chatting_with_buffer": {},
+  "chatting_end_time": null,
+  "act_path_set": true,
+  "planned_path": []
+}

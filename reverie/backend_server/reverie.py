@@ -628,7 +628,7 @@ if __name__ == '__main__':
     # rs = ReverieServer("base_the_ville_isabella_maria_klaus",
     #                    "July1_the_ville_isabella_maria_klaus-step-3-1")
     rs = ReverieServer("base_the_ville_n25-test",
-                       "base_the_ville_n25-test11")
+                       "ai_and_v_coin")
     rs.open_server()
 
     # origin = input("agent name: ").strip()
