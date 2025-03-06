@@ -37,7 +37,7 @@
   "frank": {
     "maze": "the_ville",
     "x": 57,
-    "y": 30
+    "y": 29
   },
   "mk": {
     "maze": "the_ville",
@@ -47,12 +47,12 @@
   "tamara taylor": {
     "maze": "the_ville",
     "x": 56,
-    "y": 30
+    "y": 29
   },
   "jane moreno": {
     "maze": "the_ville",
     "x": 68,
-    "y": 67
+    "y": 68
   },
   "tom moreno": {
     "maze": "the_ville",
@@ -77,6 +77,6 @@
   "christopher gardner": {
     "maze": "the_ville",
     "x": 132,
-    "y": 73
+    "y": 74
   }
 }

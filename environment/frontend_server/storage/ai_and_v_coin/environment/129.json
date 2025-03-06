@@ -1,23 +1,23 @@
 {
   "arthur burton": {
     "maze": "the_ville",
-    "x": 9,
+    "x": 10,
     "y": 70
   },
   "carlos gomez": {
     "maze": "the_ville",
     "x": 41,
-    "y": 69
+    "y": 70
   },
   "carmen ortiz": {
     "maze": "the_ville",
     "x": 64,
-    "y": 73
+    "y": 74
   },
   "francisco lopez": {
     "maze": "the_ville",
     "x": 17,
-    "y": 25
+    "y": 26
   },
   "latoya williams": {
     "maze": "the_ville",
@@ -27,7 +27,7 @@
   "kiki": {
     "maze": "the_ville",
     "x": 17,
-    "y": 69
+    "y": 70
   },
   "cichengege": {
     "maze": "the_ville",
@@ -47,7 +47,7 @@
   "tamara taylor": {
     "maze": "the_ville",
     "x": 60,
-    "y": 73
+    "y": 74
   },
   "jane moreno": {
     "maze": "the_ville",
@@ -57,7 +57,7 @@
   "tom moreno": {
     "maze": "the_ville",
     "x": 97,
-    "y": 74
+    "y": 75
   },
   "rajiv patel": {
     "maze": "the_ville",
@@ -67,16 +67,16 @@
   "chris gardner": {
     "maze": "the_ville",
     "x": 133,
-    "y": 81
+    "y": 82
   },
   "linda": {
     "maze": "the_ville",
-    "x": 36,
+    "x": 37,
     "y": 52
   },
   "christopher gardner": {
     "maze": "the_ville",
-    "x": 131,
+    "x": 132,
     "y": 73
   }
 }

@@ -2,9 +2,9 @@
   "vision_r": 6,
   "att_bandwidth": 6,
   "retention": 8,
-  "curr_time": "March 07, 2025, 06:24:30",
+  "curr_time": "March 07, 2025, 06:59:20",
   "curr_tile": [
-    66,
+    67,
     68
   ],
   "daily_plan_req": "\u200cAt 4 PM, attended a family gathering at the Gardner family's house.\nAt 4:05 PM, attended Carmen's speech in the common room.\nAt 4:15 PM, in the empty guest bedroom, joined the discussion with Carlos and Carmen Linda, supported Lina's views, showcased my own NFT music works, and emphasized the potential for decentralization in the art field.\nAt 5 PM, concluded the family gathering and headed to the Moonlight Tavern Bar.\nAt 5:30 PM, at the Moonlight Tavern Bar, chatted with Chris Gardner, discussing the combination of NFT music and visual arts, and exploring decentralized creation.\nAt 6 PM, at the Moonlight Tavern Bar, discussed collaboration details with Lina, preparing for an NFT art project.\nAt 7 PM, left the Moonlight Tavern Bar.",
@@ -219,5 +219,14 @@
   "chatting_with_buffer": {},
   "chatting_end_time": null,
   "act_path_set": true,
-  "planned_path": []
+  "planned_path": [
+    [
+      68,
+      66
+    ],
+    [
+      68,
+      65
+    ]
+  ]
 }

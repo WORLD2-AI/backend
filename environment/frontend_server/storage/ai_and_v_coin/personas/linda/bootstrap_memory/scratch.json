@@ -2,10 +2,10 @@
   "vision_r": 6,
   "att_bandwidth": 8,
   "retention": 8,
-  "curr_time": "March 07, 2025, 06:24:30",
+  "curr_time": "March 07, 2025, 06:59:20",
   "curr_tile": [
-    40,
-    44
+    23,
+    46
   ],
   "daily_plan_req": "At 4 PM, attended a family gathering at the Gardner family's house.\nAt 4:05 PM, attended Carmen's speech in the common room.\nAt 4:15 PM, in the empty guest bedroom, joined the discussion with Carlos and Carmen, advocating for the integration of technology and art, and suggested creating unregulated creative spaces.\nAt 5 PM, concluded the family gathering and headed to the Moonlight Tavern Bar.\nAt 6 PM, at the Moonlight Tavern Bar, chatted with Jane Moreno, discussing the combination of NFT music and visual arts, and exploring decentralized creation.\u3002\nAt 7 PM, left the Moonlight Tavern Bar.",
   "name": "linda",
@@ -28,8 +28,8 @@
   "importance_w": 1,
   "recency_decay": 0.995,
   "importance_trigger_max": 250,
-  "importance_trigger_curr": 233,
-  "importance_ele_n": 6,
+  "importance_trigger_curr": 221,
+  "importance_ele_n": 9,
   "thought_count": 5,
   "daily_req": [
     "Wake up and complete the morning routine at 5:00 am.",
@@ -139,6 +139,10 @@
     [
       "sleeping",
       0
+    ],
+    [
+      "sleeping",
+      0
     ]
   ],
   "f_daily_schedule_hourly_org": [
@@ -199,32 +203,27 @@
       120
     ]
   ],
-  "act_address": "the ville:classroom:classroom:<random>",
-  "act_start_time": "March 07, 2025, 06:00:00",
+  "act_address": "the ville:classroom:classroom:behind the table",
+  "act_start_time": "March 07, 2025, 06:30:00",
   "act_duration": 30,
-  "act_description": "working on integrating virtual elements with art (researching current trends in virtual art)",
-  "act_pronunciatio": "\ud83d\udd0d\ud83e\udd14",
+  "act_description": "working on integrating virtual elements with art (brainstorming ideas for integrating virtual elements)",
+  "act_pronunciatio": "\ud83d\ude42",
   "act_event": [
     "linda",
-    "research",
-    "trends"
+    "brainstorm",
+    "ideas"
   ],
-  "act_obj_description": "immersed in creative exploration and research",
-  "act_obj_pronunciatio": "\ud83d\udd0d\ud83e\udd14",
+  "act_obj_description": "cluttered with sketches and digital tools for brainstorming sessions",
+  "act_obj_pronunciatio": "\ud83d\ude42",
   "act_obj_event": [
-    "<random>",
+    "behind the table",
     "is",
-    "immersed"
+    "cluttered"
   ],
   "chatting_with": null,
   "chat": null,
   "chatting_with_buffer": {},
   "chatting_end_time": null,
   "act_path_set": true,
-  "planned_path": [
-    [
-      41,
-      46
-    ]
-  ]
+  "planned_path": []
 }

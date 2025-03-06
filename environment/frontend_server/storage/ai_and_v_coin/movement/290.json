@@ -1,0 +1,151 @@
+{
+  "persona": {
+    "linda": {
+      "movement": [
+        23,
+        46
+      ],
+      "pronunciatio": "\ud83d\ude42",
+      "description": "working on integrating virtual elements with art (brainstorming ideas for integrating virtual elements) @ the ville:classroom:classroom:behind the table",
+      "chat": null
+    },
+    "tamara taylor": {
+      "movement": [
+        60,
+        74
+      ],
+      "pronunciatio": "\u23f0\ud83d\ude42",
+      "description": "waking up and completing her morning routine @ the ville:tamara taylor and carmen ortiz's house:tamara taylor's room:bed",
+      "chat": null
+    },
+    "jane moreno": {
+      "movement": [
+        67,
+        65
+      ],
+      "pronunciatio": "\ud83c\udf05\ud83d\ude0c",
+      "description": "Jane is waking up and completing her morning routine @ the ville:tamara taylor and carmen ortiz's house:bathroom:<random>",
+      "chat": null
+    },
+    "rajiv patel": {
+      "movement": [
+        27,
+        13
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude0c",
+      "description": "sleeping @ the ville:artist's co-living space:rajiv patel's room:bed",
+      "chat": null
+    },
+    "tom moreno": {
+      "movement": [
+        97,
+        75
+      ],
+      "pronunciatio": "\ud83d\udca4\ud83d\ude34",
+      "description": "sleeping @ the ville:moreno family's house:tom moreno's bedroom:bed",
+      "chat": null
+    },
+    "christopher gardner": {
+      "movement": [
+        132,
+        72
+      ],
+      "pronunciatio": "\u2600\ufe0f\ud83d\ude0c",
+      "description": "waking up and completing the morning routine @ the ville:Moore family's house:christopher gardner's room:<random>",
+      "chat": null
+    },
+    "carlos gomez": {
+      "movement": [
+        41,
+        70
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude0c",
+      "description": "sleeping @ the ville:carlos gomez's apartment:carlos gomez's room:bed",
+      "chat": null
+    },
+    "carmen ortiz": {
+      "movement": [
+        64,
+        74
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude0c",
+      "description": "sleeping @ the ville:tamara taylor and carmen ortiz's house:carmen ortiz's room:bed",
+      "chat": null
+    },
+    "arthur burton": {
+      "movement": [
+        10,
+        70
+      ],
+      "pronunciatio": "\ud83d\udca4\ud83d\ude0c",
+      "description": "sleeping @ the ville:arthur burton's apartment:arthur burton's room:bed",
+      "chat": null
+    },
+    "latoya williams": {
+      "movement": [
+        17,
+        13
+      ],
+      "pronunciatio": "\ud83c\udf05\ud83d\ude0a",
+      "description": "Latoya is waking up and completing her morning routine @ the ville:artist's co-living space:latoya williams's room:bed",
+      "chat": null
+    },
+    "mk": {
+      "movement": [
+        87,
+        79
+      ],
+      "pronunciatio": "\u2615\ud83e\udd14",
+      "description": "continuing to simulate data for his AI economic model, running algorithms, and adjusting parameters while sipping his espresso @ the ville:mk's house:mk's bedroom:desk",
+      "chat": null
+    },
+    "francisco lopez": {
+      "movement": [
+        17,
+        26
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude0c",
+      "description": "sleeping @ the ville:artist's co-living space:francisco lopez's room:bed",
+      "chat": null
+    },
+    "kiki": {
+      "movement": [
+        17,
+        70
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude0c",
+      "description": "sleeping @ the ville:kiki's apartment:kiki's room:bed",
+      "chat": null
+    },
+    "chris gardner": {
+      "movement": [
+        133,
+        82
+      ],
+      "pronunciatio": "\ud83c\udf05\ud83d\ude42",
+      "description": "waking up and completing his morning routine @ the ville:Moore family's house:chris gardner's room:seat",
+      "chat": null
+    },
+    "frank": {
+      "movement": [
+        122,
+        30
+      ],
+      "pronunciatio": "\ud83d\uded2\ud83e\udd14",
+      "description": "visiting the local liquor store and stocking up @ the ville:supermarket:food area:grocery store shelf",
+      "chat": null
+    },
+    "cichengege": {
+      "movement": [
+        25,
+        70
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude0c",
+      "description": "sleeping @ the ville:cichengege's apartment:cichengege's room:bed",
+      "chat": null
+    }
+  },
+  "meta": {
+    "curr_time": "March 07, 2025, 06:48:10"
+  }
+}

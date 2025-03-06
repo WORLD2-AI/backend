@@ -2,7 +2,7 @@
   "vision_r": 4,
   "att_bandwidth": 4,
   "retention": 3,
-  "curr_time": "March 07, 2025, 06:24:30",
+  "curr_time": "March 07, 2025, 06:59:20",
   "curr_tile": [
     122,
     30
@@ -28,8 +28,8 @@
   "importance_w": 1,
   "recency_decay": 0.995,
   "importance_trigger_max": 250,
-  "importance_trigger_curr": 180,
-  "importance_ele_n": 48,
+  "importance_trigger_curr": -4,
+  "importance_ele_n": 172,
   "thought_count": 5,
   "daily_req": [
     "Wake up and complete the morning routine at 2:00 am.",
@@ -291,7 +291,7 @@
   "chatting_with": null,
   "chat": null,
   "chatting_with_buffer": {
-    "tamara taylor": 682
+    "tamara taylor": 473
   },
   "chatting_end_time": null,
   "act_path_set": true,
