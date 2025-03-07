@@ -1,0 +1,209 @@
+{
+  "persona": {
+    "linda": {
+      "movement": [
+        29,
+        44
+      ],
+      "pronunciatio": "\u270f\ufe0f\ud83e\udd14",
+      "description": "working on integrating virtual elements with art (sketching initial concepts) @ the ville:classroom:classroom:seat",
+      "chat": null
+    },
+    "jane moreno": {
+      "movement": [
+        63,
+        68
+      ],
+      "pronunciatio": "\ud83c\udf73\ud83d\ude0a",
+      "description": "having breakfast (frying eggs) @ the ville:tamara taylor and carmen ortiz's house:kitchen:cooking area",
+      "chat": null
+    },
+    "rajiv patel": {
+      "movement": [
+        27,
+        13
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude0c",
+      "description": "sleeping @ the ville:artist's co-living space:rajiv patel's room:bed",
+      "chat": null
+    },
+    "tamara taylor": {
+      "movement": [
+        35,
+        85
+      ],
+      "pronunciatio": "\ud83c\udf7d\ufe0f\ud83d\ude0a",
+      "description": "having breakfast and reviewing emails (eating breakfast)   @ the ville:tamara taylor and carmen ortiz's house:kitchen:toaster",
+      "chat": null
+    },
+    "christopher gardner": {
+      "movement": [
+        121,
+        77
+      ],
+      "pronunciatio": "\ud83d\udcac",
+      "description": "conversing about Chris Gardner and his son, Christopher Gardner, discussing their morning activities, Christopher's excitement for art class at school, and Chris's enthusiasm for his work in stock market research. @ <persona> chris gardner",
+      "chat": [
+        [
+          "chris gardner",
+          "Good morning, Christopher! Did you sleep well? I hope you're ready for another exciting day."
+        ],
+        [
+          "christopher gardner",
+          "Good morning, Dad! Yes, I slept well and I'm really excited for school today. Are you having breakfast with me?"
+        ],
+        [
+          "chris gardner",
+          "Of course, I am! I'm just setting the table for us. What are you most looking forward to at school today?"
+        ],
+        [
+          "christopher gardner",
+          "I'm really looking forward to art class today. We're starting a new project, and I have some ideas I can't wait to try out."
+        ],
+        [
+          "chris gardner",
+          "That sounds wonderful, Christopher! I can't wait to see what you create. Make sure to show me when you're done, okay? And if you need any help with ideas, you know I'm here."
+        ],
+        [
+          "christopher gardner",
+          "Thanks, Dad! I'll definitely show you when it's done. What are you looking forward to at work today?"
+        ],
+        [
+          "chris gardner",
+          "I'm looking forward to doing some stock market research and attending a meeting later. I hope to learn a lot and maybe come up with some new strategies. But the best part of my day is always coming back home to spend time with you and your mom. Let's make sure to have a great day, okay?"
+        ]
+      ]
+    },
+    "tom moreno": {
+      "movement": [
+        97,
+        75
+      ],
+      "pronunciatio": "\ud83d\udca4\ud83d\ude34",
+      "description": "sleeping @ the ville:moreno family's house:tom moreno's bedroom:bed",
+      "chat": null
+    },
+    "chris gardner": {
+      "movement": [
+        123,
+        77
+      ],
+      "pronunciatio": "\ud83d\udcac",
+      "description": "conversing about Chris Gardner and his son, Christopher Gardner, discussing their morning activities, Christopher's excitement for art class at school, and Chris's enthusiasm for his work in stock market research. @ <persona> christopher gardner",
+      "chat": [
+        [
+          "chris gardner",
+          "Good morning, Christopher! Did you sleep well? I hope you're ready for another exciting day."
+        ],
+        [
+          "christopher gardner",
+          "Good morning, Dad! Yes, I slept well and I'm really excited for school today. Are you having breakfast with me?"
+        ],
+        [
+          "chris gardner",
+          "Of course, I am! I'm just setting the table for us. What are you most looking forward to at school today?"
+        ],
+        [
+          "christopher gardner",
+          "I'm really looking forward to art class today. We're starting a new project, and I have some ideas I can't wait to try out."
+        ],
+        [
+          "chris gardner",
+          "That sounds wonderful, Christopher! I can't wait to see what you create. Make sure to show me when you're done, okay? And if you need any help with ideas, you know I'm here."
+        ],
+        [
+          "christopher gardner",
+          "Thanks, Dad! I'll definitely show you when it's done. What are you looking forward to at work today?"
+        ],
+        [
+          "chris gardner",
+          "I'm looking forward to doing some stock market research and attending a meeting later. I hope to learn a lot and maybe come up with some new strategies. But the best part of my day is always coming back home to spend time with you and your mom. Let's make sure to have a great day, okay?"
+        ]
+      ]
+    },
+    "kiki": {
+      "movement": [
+        17,
+        70
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude0c",
+      "description": "sleeping @ the ville:kiki's apartment:kiki's room:bed",
+      "chat": null
+    },
+    "mk": {
+      "movement": [
+        87,
+        79
+      ],
+      "pronunciatio": "\u2699\ufe0f\ud83e\udd14",
+      "description": "continuing to run algorithms and adjust parameters for his AI economic model simulations while sipping his espresso (adjusting parameters based on the data review) @ the ville:mk's house:common room:desk",
+      "chat": null
+    },
+    "arthur burton": {
+      "movement": [
+        10,
+        70
+      ],
+      "pronunciatio": "\ud83d\udca4\ud83d\ude0c",
+      "description": "sleeping @ the ville:arthur burton's apartment:arthur burton's room:bed",
+      "chat": null
+    },
+    "latoya williams": {
+      "movement": [
+        42,
+        20
+      ],
+      "pronunciatio": "\ud83c\udf7d\ufe0f\ud83d\ude42",
+      "description": "having breakfast (eating her breakfast) @ the ville:artist's co-living space:kitchen:toaster",
+      "chat": null
+    },
+    "francisco lopez": {
+      "movement": [
+        17,
+        26
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude0c",
+      "description": "sleeping @ the ville:artist's co-living space:francisco lopez's room:bed",
+      "chat": null
+    },
+    "carlos gomez": {
+      "movement": [
+        41,
+        70
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude0c",
+      "description": "sleeping @ the ville:carlos gomez's apartment:carlos gomez's room:bed",
+      "chat": null
+    },
+    "carmen ortiz": {
+      "movement": [
+        64,
+        74
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude0c",
+      "description": "sleeping @ the ville:tamara taylor and carmen ortiz's house:carmen ortiz's room:bed",
+      "chat": null
+    },
+    "frank": {
+      "movement": [
+        126,
+        27
+      ],
+      "pronunciatio": "\ud83d\udeb6\ud83c\udf74",
+      "description": "returning home from the park (on the way to continuing his walk home while eating the snack)   @ the ville:supermarket:food area:shelf",
+      "chat": null
+    },
+    "cichengege": {
+      "movement": [
+        25,
+        70
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude0c",
+      "description": "sleeping @ the ville:cichengege's apartment:cichengege's room:bed",
+      "chat": null
+    }
+  },
+  "meta": {
+    "curr_time": "March 07, 2025, 07:21:10"
+  }
+}

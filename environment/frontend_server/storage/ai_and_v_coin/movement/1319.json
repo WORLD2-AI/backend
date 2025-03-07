@@ -1,0 +1,151 @@
+{
+  "persona": {
+    "linda": {
+      "movement": [
+        23,
+        46
+      ],
+      "pronunciatio": "\u2615\ufe0f\ud83d\ude0c",
+      "description": "working on integrating virtual elements with art (taking a short break) @ the ville:johnson park:lake:log bridge",
+      "chat": null
+    },
+    "tamara taylor": {
+      "movement": [
+        59,
+        74
+      ],
+      "pronunciatio": "\ud83d\udcc4\ud83d\ude10",
+      "description": "preparing for the virtual team meeting (reviewing the meeting agenda)   @ the ville:tamara taylor and carmen ortiz's house:tamara taylor's room:desk",
+      "chat": null
+    },
+    "jane moreno": {
+      "movement": [
+        99,
+        65
+      ],
+      "pronunciatio": "\ud83d\udcc8\ud83e\udd14",
+      "description": "working on NFT music projects and researching virtual economy trends (reviewing recent trends in the virtual economy) @ the ville:moreno family's house:jane moreno's bedroom:desk",
+      "chat": null
+    },
+    "rajiv patel": {
+      "movement": [
+        27,
+        13
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude0c",
+      "description": "sleeping @ the ville:artist's co-living space:rajiv patel's room:bed",
+      "chat": null
+    },
+    "arthur burton": {
+      "movement": [
+        9,
+        67
+      ],
+      "pronunciatio": "\ud83d\udcf0\u2615",
+      "description": "waking up and completing his morning routine (reading the morning news) @ the ville:arthur burton's apartment:arthur burton's room:seat",
+      "chat": null
+    },
+    "tom moreno": {
+      "movement": [
+        97,
+        75
+      ],
+      "pronunciatio": "\ud83d\udca4\ud83d\ude34",
+      "description": "sleeping @ the ville:moreno family's house:tom moreno's bedroom:bed",
+      "chat": null
+    },
+    "carmen ortiz": {
+      "movement": [
+        63,
+        66
+      ],
+      "pronunciatio": "\u2615\ud83d\ude0c",
+      "description": "having breakfast and preparing to leave for work (making coffee)   @ the ville:tamara taylor and carmen ortiz's house:kitchen:cooking area",
+      "chat": null
+    },
+    "mk": {
+      "movement": [
+        82,
+        69
+      ],
+      "pronunciatio": "\ud83d\udcca\ud83e\udd14",
+      "description": "continuing to work on his AI economic model simulations, running algorithms, and adjusting parameters, while considering taking a short break to refresh his mind (reviewing the results of the overnight simulations) @ the ville:mk's house:mk's bedroom:desk",
+      "chat": null
+    },
+    "carlos gomez": {
+      "movement": [
+        43,
+        70
+      ],
+      "pronunciatio": "\ud83c\udf73\ud83d\ude0a",
+      "description": "having breakfast (preparing his breakfast) @ the ville:carlos gomez's apartment:carlos gomez's room:refrigerator",
+      "chat": null
+    },
+    "chris gardner": {
+      "movement": [
+        122,
+        77
+      ],
+      "pronunciatio": "\ud83d\udc57\ud83d\ude10",
+      "description": "heading to work (getting dressed for work)   @ the ville:gardner family's house:chris gardner's room:closet",
+      "chat": null
+    },
+    "francisco lopez": {
+      "movement": [
+        30,
+        19
+      ],
+      "pronunciatio": "\ud83c\udf73\ud83d\ude42",
+      "description": "having breakfast and reviewing notes for the thesis (preparing breakfast) @ the ville:artist's co-living space:kitchen:toaster",
+      "chat": null
+    },
+    "latoya williams": {
+      "movement": [
+        18,
+        16
+      ],
+      "pronunciatio": "\ud83e\uddf9\ud83d\ude42",
+      "description": "continuing her morning routine and preparing to work on her photography series inspired by her travels (Latoya is tidying up her workspace) @ the ville:artist's co-living space:latoya williams's room:desk",
+      "chat": null
+    },
+    "kiki": {
+      "movement": [
+        17,
+        70
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude0c",
+      "description": "sleeping @ the ville:kiki's apartment:kiki's room:bed",
+      "chat": null
+    },
+    "frank": {
+      "movement": [
+        125,
+        41
+      ],
+      "pronunciatio": "\ud83d\udeb6\ud83d\ude0c",
+      "description": "returning home and watching TV with drinks (walking back home from the park) @ the ville:frank's apartment:giorgio rossi's bathroom:bathroom sink",
+      "chat": null
+    },
+    "christopher gardner": {
+      "movement": [
+        118,
+        79
+      ],
+      "pronunciatio": "\ud83e\udde5\ud83d\ude42",
+      "description": "attending school (arriving at school and hanging up his coat)   @ the ville:classroom:classroom:<random>",
+      "chat": null
+    },
+    "cichengege": {
+      "movement": [
+        25,
+        70
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude0c",
+      "description": "sleeping @ the ville:cichengege's apartment:cichengege's room:bed",
+      "chat": null
+    }
+  },
+  "meta": {
+    "curr_time": "March 07, 2025, 08:06:30"
+  }
+}

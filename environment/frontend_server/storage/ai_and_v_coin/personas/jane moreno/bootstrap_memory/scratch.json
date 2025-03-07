@@ -2,10 +2,10 @@
   "vision_r": 6,
   "att_bandwidth": 6,
   "retention": 8,
-  "curr_time": "March 07, 2025, 06:59:20",
+  "curr_time": "March 07, 2025, 08:52:10",
   "curr_tile": [
-    67,
-    68
+    99,
+    65
   ],
   "daily_plan_req": "\u200cAt 4 PM, attended a family gathering at the Gardner family's house.\nAt 4:05 PM, attended Carmen's speech in the common room.\nAt 4:15 PM, in the empty guest bedroom, joined the discussion with Carlos and Carmen Linda, supported Lina's views, showcased my own NFT music works, and emphasized the potential for decentralization in the art field.\nAt 5 PM, concluded the family gathering and headed to the Moonlight Tavern Bar.\nAt 5:30 PM, at the Moonlight Tavern Bar, chatted with Chris Gardner, discussing the combination of NFT music and visual arts, and exploring decentralized creation.\nAt 6 PM, at the Moonlight Tavern Bar, discussed collaboration details with Lina, preparing for an NFT art project.\nAt 7 PM, left the Moonlight Tavern Bar.",
   "name": "jane moreno",
@@ -28,8 +28,8 @@
   "importance_w": 1,
   "recency_decay": 0.995,
   "importance_trigger_max": 250,
-  "importance_trigger_curr": 233,
-  "importance_ele_n": 13,
+  "importance_trigger_curr": 188,
+  "importance_ele_n": 41,
   "thought_count": 5,
   "daily_req": [
     "Wake up and complete the morning routine at 6:00 am.",
@@ -83,8 +83,36 @@
       5
     ],
     [
-      "working on NFT music projects and researching virtual economy trends",
-      240
+      "working on NFT music projects and researching virtual economy trends (reviewing recent trends in the virtual economy)",
+      30
+    ],
+    [
+      "working on NFT music projects and researching virtual economy trends (brainstorming ideas for her NFT music projects)",
+      30
+    ],
+    [
+      "working on NFT music projects and researching virtual economy trends (composing new music for her NFT project)",
+      45
+    ],
+    [
+      "working on NFT music projects and researching virtual economy trends (researching potential platforms for showcasing her NFT music)",
+      30
+    ],
+    [
+      "working on NFT music projects and researching virtual economy trends (taking a short break to refresh)",
+      15
+    ],
+    [
+      "working on NFT music projects and researching virtual economy trends (networking with other NFT artists online)",
+      30
+    ],
+    [
+      "working on NFT music projects and researching virtual economy trends (finalizing details for her upcoming NFT release)",
+      30
+    ],
+    [
+      "working on NFT music projects and researching virtual economy trends (organizing her research notes and project files)",
+      30
     ],
     [
       "Jane is preparing for lunch",
@@ -129,6 +157,42 @@
     [
       "sleeping",
       60
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
     ],
     [
       "sleeping",
@@ -197,36 +261,27 @@
       60
     ]
   ],
-  "act_address": "the ville:tamara taylor and carmen ortiz's house:bathroom:<random>",
-  "act_start_time": "March 07, 2025, 06:00:00",
-  "act_duration": 60,
-  "act_description": "Jane is waking up and completing her morning routine",
-  "act_pronunciatio": "\ud83c\udf05\ud83d\ude0c",
+  "act_address": "the ville:moreno family's house:jane moreno's bedroom:desk",
+  "act_start_time": "March 07, 2025, 08:30:00",
+  "act_duration": 30,
+  "act_description": "working on NFT music projects and researching virtual economy trends (brainstorming ideas for her NFT music projects)",
+  "act_pronunciatio": "\ud83e\udd14\ud83c\udfa8",
   "act_event": [
     "jane moreno",
-    "wake",
-    "up"
+    "brainstorm",
+    "ideas"
   ],
-  "act_obj_description": "waking up and completing a morning routine",
-  "act_obj_pronunciatio": "\u23f0\ud83d\ude42",
+  "act_obj_description": "in use with notes and materials related to NFT music projects and virtual economy research",
+  "act_obj_pronunciatio": "\ud83d\udcda\ud83e\udd14",
   "act_obj_event": [
-    "<random>",
-    "wake",
-    "up"
+    "desk",
+    "is",
+    "use"
   ],
   "chatting_with": null,
   "chat": null,
   "chatting_with_buffer": {},
   "chatting_end_time": null,
   "act_path_set": true,
-  "planned_path": [
-    [
-      68,
-      66
-    ],
-    [
-      68,
-      65
-    ]
-  ]
+  "planned_path": []
 }

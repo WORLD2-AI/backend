@@ -1,0 +1,243 @@
+{
+  "persona": {
+    "frank": {
+      "movement": [
+        78,
+        53
+      ],
+      "pronunciatio": "\ud83d\udcac",
+      "description": "conversing about Mk and Frank discussing Mk's progress with simulations, Frank's day of relaxation, and planning to celebrate Mk's breakthrough with a drink. @ <persona> mk",
+      "chat": [
+        [
+          "mk",
+          "Hey Frank, good to see you! Taking a break from the screen for a bit. How's your day going?"
+        ],
+        [
+          "frank",
+          "Hey Mk, good to see you too! It's been a typical day \u2013 you know me, stocking up on liquor and taking it easy. Tried to catch some fresh air at the park earlier. How about you? How are those simulations going?"
+        ],
+        [
+          "mk",
+          "Sounds like a nice way to spend the day, Frank. The simulations are coming along, though it's a bit of a brain-burner right now. But I think I've hit a breakthrough with some new algorithm tweaks, so that's exciting!"
+        ],
+        [
+          "frank",
+          "That's awesome, Mk! I'm sure all that hard work will pay off. If you need any distractions or just want to celebrate your breakthrough, you know I'm always up for a drink. Sometimes it's good to take a breather from all those crazy algorithms."
+        ],
+        [
+          "mk",
+          "Thanks, Frank! I might just take you up on that offer once I wrap up a few more tests. It's always nice to have a friend around to celebrate and recharge with. Let's definitely catch up later for that drink!"
+        ]
+      ]
+    },
+    "linda": {
+      "movement": [
+        30,
+        42
+      ],
+      "pronunciatio": "\ud83d\udcac",
+      "description": "conversing about Linda and Christopher Gardner discussing the integration of digital tools in art projects and planning a digital art mini-workshop together. @ <persona> christopher gardner",
+      "chat": [
+        [
+          "christopher gardner",
+          "Hi Linda! Your project looks really cool. What are you working on with the virtual elements and art?"
+        ],
+        [
+          "linda",
+          "Hi Christopher! Thanks for asking. I'm currently exploring how to blend digital tools with traditional art to create something new and meaningful. It's about finding ways to make art more accessible and interactive for everyone. I'm also advocating for creative spaces where artists can express themselves freely. Do you have any interest in digital art or technology yourself?"
+        ],
+        [
+          "christopher gardner",
+          "Wow, that sounds amazing! I love art class and I'm starting a new art project too. I think it would be fun to try using digital tools in art. Maybe you could show me how it works sometime?"
+        ],
+        [
+          "linda",
+          "I'd love to show you, Christopher! We could explore some digital art tools together and see how they can be used to enhance your art project. Let me know when you have some free time, and we can plan a fun mini-workshop! Digital art can open up so many exciting possibilities."
+        ],
+        [
+          "christopher gardner",
+          "Thank you, Linda! That sounds like so much fun. I'll talk to my parents to see when I have some free time after school or during the weekend. I can't wait to learn more about digital art with you!"
+        ],
+        [
+          "linda",
+          "Great, Christopher! Just let me know when you have a moment, and we'll set something up. I'm looking forward to exploring digital art with you. Have a great day at school!"
+        ]
+      ]
+    },
+    "rajiv patel": {
+      "movement": [
+        27,
+        13
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude0c",
+      "description": "sleeping @ the ville:artist's co-living space:rajiv patel's room:bed",
+      "chat": null
+    },
+    "jane moreno": {
+      "movement": [
+        99,
+        65
+      ],
+      "pronunciatio": "\ud83e\udd14\ud83c\udfa8",
+      "description": "working on NFT music projects and researching virtual economy trends (brainstorming ideas for her NFT music projects) @ the ville:moreno family's house:jane moreno's bedroom:desk",
+      "chat": null
+    },
+    "tamara taylor": {
+      "movement": [
+        59,
+        74
+      ],
+      "pronunciatio": "\ud83d\udda5\ufe0f\ud83e\uddd0",
+      "description": "preparing for the virtual team meeting (setting up her workspace for the meeting)   @ the ville:tamara taylor and carmen ortiz's house:tamara taylor's room:desk",
+      "chat": null
+    },
+    "christopher gardner": {
+      "movement": [
+        30,
+        41
+      ],
+      "pronunciatio": "\ud83d\udcac",
+      "description": "conversing about Linda and Christopher Gardner discussing the integration of digital tools in art projects and planning a digital art mini-workshop together. @ <persona> linda",
+      "chat": [
+        [
+          "christopher gardner",
+          "Hi Linda! Your project looks really cool. What are you working on with the virtual elements and art?"
+        ],
+        [
+          "linda",
+          "Hi Christopher! Thanks for asking. I'm currently exploring how to blend digital tools with traditional art to create something new and meaningful. It's about finding ways to make art more accessible and interactive for everyone. I'm also advocating for creative spaces where artists can express themselves freely. Do you have any interest in digital art or technology yourself?"
+        ],
+        [
+          "christopher gardner",
+          "Wow, that sounds amazing! I love art class and I'm starting a new art project too. I think it would be fun to try using digital tools in art. Maybe you could show me how it works sometime?"
+        ],
+        [
+          "linda",
+          "I'd love to show you, Christopher! We could explore some digital art tools together and see how they can be used to enhance your art project. Let me know when you have some free time, and we can plan a fun mini-workshop! Digital art can open up so many exciting possibilities."
+        ],
+        [
+          "christopher gardner",
+          "Thank you, Linda! That sounds like so much fun. I'll talk to my parents to see when I have some free time after school or during the weekend. I can't wait to learn more about digital art with you!"
+        ],
+        [
+          "linda",
+          "Great, Christopher! Just let me know when you have a moment, and we'll set something up. I'm looking forward to exploring digital art with you. Have a great day at school!"
+        ]
+      ]
+    },
+    "kiki": {
+      "movement": [
+        17,
+        70
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude0c",
+      "description": "sleeping @ the ville:kiki's apartment:kiki's room:bed",
+      "chat": null
+    },
+    "tom moreno": {
+      "movement": [
+        97,
+        75
+      ],
+      "pronunciatio": "\ud83d\udca4\ud83d\ude34",
+      "description": "sleeping @ the ville:moreno family's house:tom moreno's bedroom:bed",
+      "chat": null
+    },
+    "mk": {
+      "movement": [
+        78,
+        54
+      ],
+      "pronunciatio": "\ud83d\udcac",
+      "description": "conversing about Mk and Frank discussing Mk's progress with simulations, Frank's day of relaxation, and planning to celebrate Mk's breakthrough with a drink. @ <persona> frank",
+      "chat": [
+        [
+          "mk",
+          "Hey Frank, good to see you! Taking a break from the screen for a bit. How's your day going?"
+        ],
+        [
+          "frank",
+          "Hey Mk, good to see you too! It's been a typical day \u2013 you know me, stocking up on liquor and taking it easy. Tried to catch some fresh air at the park earlier. How about you? How are those simulations going?"
+        ],
+        [
+          "mk",
+          "Sounds like a nice way to spend the day, Frank. The simulations are coming along, though it's a bit of a brain-burner right now. But I think I've hit a breakthrough with some new algorithm tweaks, so that's exciting!"
+        ],
+        [
+          "frank",
+          "That's awesome, Mk! I'm sure all that hard work will pay off. If you need any distractions or just want to celebrate your breakthrough, you know I'm always up for a drink. Sometimes it's good to take a breather from all those crazy algorithms."
+        ],
+        [
+          "mk",
+          "Thanks, Frank! I might just take you up on that offer once I wrap up a few more tests. It's always nice to have a friend around to celebrate and recharge with. Let's definitely catch up later for that drink!"
+        ]
+      ]
+    },
+    "chris gardner": {
+      "movement": [
+        123,
+        77
+      ],
+      "pronunciatio": "\ud83c\udf7d\ufe0f\ud83d\ude0a",
+      "description": "heading to work (eating breakfast with his son)   @ the ville:restaurant:dining area:table",
+      "chat": null
+    },
+    "latoya williams": {
+      "movement": [
+        17,
+        15
+      ],
+      "pronunciatio": "\ud83d\udcdd\ud83e\udd14",
+      "description": "continuing her morning routine and preparing to work on her photography series inspired by her travels (making a list of potential themes for her photography series) @ the ville:artist's co-living space:latoya williams's room:desk",
+      "chat": null
+    },
+    "francisco lopez": {
+      "movement": [
+        41,
+        19
+      ],
+      "pronunciatio": "\ud83d\udcd1\ud83d\ude13",
+      "description": "having breakfast and reviewing notes for the thesis (reviewing notes for the thesis) @ the ville:artist's co-living space:francisco lopez's room:desk",
+      "chat": null
+    },
+    "carmen ortiz": {
+      "movement": [
+        33,
+        86
+      ],
+      "pronunciatio": "\ud83c\udf7d\ufe0f\ud83d\ude42",
+      "description": "having breakfast and preparing to leave for work (eating breakfast)   @ the ville:tamara taylor and carmen ortiz's house:kitchen:toaster",
+      "chat": null
+    },
+    "arthur burton": {
+      "movement": [
+        9,
+        67
+      ],
+      "pronunciatio": "\ud83d\udcda\ud83d\ude0c",
+      "description": "learning about new mixology techniques (reading about the history of cocktails) @ the ville:arthur burton's apartment:arthur burton's room:seat",
+      "chat": null
+    },
+    "carlos gomez": {
+      "movement": [
+        41,
+        66
+      ],
+      "pronunciatio": "\ud83c\udf73\ud83d\ude0a",
+      "description": "having breakfast (eating his breakfast) @ the ville:carlos gomez's apartment:carlos gomez's room:seat",
+      "chat": null
+    },
+    "cichengege": {
+      "movement": [
+        25,
+        70
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude0c",
+      "description": "sleeping @ the ville:cichengege's apartment:cichengege's room:bed",
+      "chat": null
+    }
+  },
+  "meta": {
+    "curr_time": "March 07, 2025, 08:35:40"
+  }
+}

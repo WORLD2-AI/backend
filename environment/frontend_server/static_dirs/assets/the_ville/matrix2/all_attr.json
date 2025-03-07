@@ -212,7 +212,7 @@
             ]
         },
         "frank's apartment": {
-            "giorgio rossi's room": [
+            "frank's room": [
                 "bed",
                 "desk",
                 "refrigerator",
@@ -220,7 +220,7 @@
                 "kitchen sink",
                 "cooking area"
             ],
-            "giorgio rossi's bathroom": [
+            "frank's bathroom": [
                 "bathroom sink",
                 "shower",
                 "toilet"

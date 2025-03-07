@@ -1,0 +1,151 @@
+{
+  "persona": {
+    "frank": {
+      "movement": [
+        125,
+        41
+      ],
+      "pronunciatio": "\ud83c\udfe1\ud83d\ude0a",
+      "description": "returning home from the park (on the way to settling in at home) @ the ville:supermarket:checkout counter:computer desk",
+      "chat": null
+    },
+    "linda": {
+      "movement": [
+        23,
+        46
+      ],
+      "pronunciatio": "\ud83d\udcbb\ud83e\udd14",
+      "description": "working on integrating virtual elements with art (experimenting with digital tools) @ the ville:classroom:classroom:behind the table",
+      "chat": null
+    },
+    "rajiv patel": {
+      "movement": [
+        27,
+        13
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude0c",
+      "description": "sleeping @ the ville:artist's co-living space:rajiv patel's room:bed",
+      "chat": null
+    },
+    "jane moreno": {
+      "movement": [
+        99,
+        65
+      ],
+      "pronunciatio": "\ud83e\uddfd\ud83d\ude10",
+      "description": "having breakfast (cleaning up the kitchen) @ the ville:moreno family's house:kitchen:kitchen sink",
+      "chat": null
+    },
+    "tamara taylor": {
+      "movement": [
+        61,
+        69
+      ],
+      "pronunciatio": "\ud83d\udce7\ud83e\uddd0",
+      "description": "having breakfast and reviewing emails (reading and responding to important emails)   @ the ville:tamara taylor and carmen ortiz's house:common room:desk",
+      "chat": null
+    },
+    "tom moreno": {
+      "movement": [
+        97,
+        75
+      ],
+      "pronunciatio": "\ud83d\udca4\ud83d\ude34",
+      "description": "sleeping @ the ville:moreno family's house:tom moreno's bedroom:bed",
+      "chat": null
+    },
+    "christopher gardner": {
+      "movement": [
+        131,
+        74
+      ],
+      "pronunciatio": "\ud83c\udf92\ud83d\ude10",
+      "description": "having breakfast (getting his backpack ready for school)   @ the ville:gardner family's house:christopher gardner's room:<random>",
+      "chat": null
+    },
+    "arthur burton": {
+      "movement": [
+        9,
+        67
+      ],
+      "pronunciatio": "\ud83d\udcf0\u2615",
+      "description": "waking up and completing his morning routine (reading the morning news) @ the ville:arthur burton's apartment:arthur burton's room:seat",
+      "chat": null
+    },
+    "latoya williams": {
+      "movement": [
+        42,
+        19
+      ],
+      "pronunciatio": "\ud83e\uddf9\ud83d\ude15",
+      "description": "having breakfast (cleaning up the kitchen) @ the ville:artist's co-living space:kitchen:kitchen sink",
+      "chat": null
+    },
+    "chris gardner": {
+      "movement": [
+        122,
+        77
+      ],
+      "pronunciatio": "\ud83e\uddc3\ud83d\ude0a",
+      "description": "having breakfast with his son (packing a snack for his son to take to school)   @ the ville:gardner family's house:kitchen:refrigerator",
+      "chat": null
+    },
+    "kiki": {
+      "movement": [
+        17,
+        70
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude0c",
+      "description": "sleeping @ the ville:kiki's apartment:kiki's room:bed",
+      "chat": null
+    },
+    "francisco lopez": {
+      "movement": [
+        17,
+        23
+      ],
+      "pronunciatio": "\ud83c\udf92\ud83d\ude42",
+      "description": "waking up and completing his morning routine (preparing his bag for the day) @ the ville:artist's co-living space:francisco lopez's room:closet",
+      "chat": null
+    },
+    "carlos gomez": {
+      "movement": [
+        43,
+        65
+      ],
+      "pronunciatio": "\ud83d\udcf1\ud83e\udd14",
+      "description": "waking up and completing his morning routine (checking his phone for messages) @ the ville:carlos gomez's apartment:carlos gomez's room:common room sofa",
+      "chat": null
+    },
+    "mk": {
+      "movement": [
+        82,
+        69
+      ],
+      "pronunciatio": "\ud83d\udcdd\ud83e\udd14",
+      "description": "continuing to run algorithms and adjust parameters for his AI economic model simulations while sipping his espresso (jotting down notes and insights from the analysis) @ the ville:mk's house:common room:desk",
+      "chat": null
+    },
+    "carmen ortiz": {
+      "movement": [
+        63,
+        66
+      ],
+      "pronunciatio": "\u2615\ud83d\ude0c",
+      "description": "having breakfast and preparing to leave for work (making coffee)   @ the ville:tamara taylor and carmen ortiz's house:kitchen:cooking area",
+      "chat": null
+    },
+    "cichengege": {
+      "movement": [
+        25,
+        70
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude0c",
+      "description": "sleeping @ the ville:cichengege's apartment:cichengege's room:bed",
+      "chat": null
+    }
+  },
+  "meta": {
+    "curr_time": "March 07, 2025, 07:59:50"
+  }
+}

@@ -153,7 +153,7 @@ def ChatGPT_safe_generate_response(prompt,
 
             if func_validate(curr_gpt_response, prompt=prompt):
                 return func_clean_up(curr_gpt_response, prompt=prompt)
-            time.sleep(1)
+            time.sleep(5)
 
         except:
             pass

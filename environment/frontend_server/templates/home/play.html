@@ -86,7 +86,7 @@
             <span style="color: white;">2. When you press the Z key, the view zooms in, and when you press the X key, the view zooms out.</span>
         </div>
     </div> -->
-	<!-- botstrap 写一个容器，分成两份，左边空一个栅格占用60% 右边20% 右边再空一个栅格 -->
+	
 	<div class="container-fluid" style="min-width:1860px">
         <div class="row">
 			<div class="col-md-1"></div>
@@ -98,25 +98,77 @@
 			
             <div class="col-md-4">
 				<div class="text-white" >
-                    <div class="dialog-container" id="gameDialog">
-                        <div class="header-section">
-							<div class="character-info" >▶&nbsp;<span id="character_name"></span><span id="character_detail"></span> </div>
-							<div class="location-info"><i class="geo-alt-fill"></i><span>Position:&nbsp;</span><span id="character_pos"></span></div>
-							<div class="user_action">Action:&nbsp;<span id="character_atcion"></span></div>
+                    <div class="dialog-container" id="gameDialog" style="display: none;">
+						<div class="dialog-header">
+							<a style="margin-left: 5px;margin-top: 2px; color: #c9a769;" onclick="display_main_box()"> ◀ </a>
 						</div>
-						<div class="chat-content"  >
-							<div style="display: inline; color: #ebe7e7;">
-								Chat:
+                        <div class="header-section">
+							<div class="character-name" >&nbsp;<span id="character_name"></span><span id="character_detail"></span> </div>
+							<div class="location-info"><i class="geo-alt-fill"></i><span>Position:&nbsp;</span><span id="character_pos"></span></div>
+							<div class="user_action" style="display: inline-block; height: 100px;overflow-y: auto;" >Action:&nbsp;<span id="character_atcion"></span></div>
+						</div>
+			
+						<div class="tab-container">
+							<div class="tabs">
+								<button class="tab-button active" onclick="switchTab('schedule')">Daily</button>
+								<button class="tab-button" onclick="switchTab('dialogue')">Chat</button>
+								<button class="tab-button" onclick="switchTab('attributes')">Character</button>
 							</div>
-							<div id="dialog_content">
+						</div>
+						
+						<div id="schedule" class="tab-content" style="display: none;">
+							<div class="schedule-content" id="character_schedule">
+								<p>None</p>
+							</div>
+						</div>
+						
+						<div id="dialogue" class="tab-content">
+							<div class="chat-content">
+								<div class="user_action" style="display: inline-block; color: #ebe7e7;">
+									Chat:
+								</div>
+								<div class="user_action" style="overflow-y: auto;height: 255px;">
+									<p id="dialog_content">None</p>								
+								</div>
+								
+							</div>
+							<div class="input-section">
+								<input type="text" class="chat-input"  placeholder="input chat content..." />
+								<button style="background-color: #c9a769; color: #1a2a1a; padding: 8px 4px; border: none; border-radius: 4px; margin-left: 10px;" onclick="alert('Sorry, It will be ok as soon as possible.')">Send</button>
+							</div>
+						</div>
+						
+						<div id="attributes" class="tab-content" style="display: none;">
+							<div class="schedule-content" id="character_info">
+								<p>None</p>
+							</div>
+						</div>
+						
+                    </div>
+					<div class="dialog-container" id="main_box">
+                        <div class="header-section" >
+							<div class="character-info" style="display: flex;" >
+								{% for p_name, p_name_os in persona_names %}
+								<div id = "avatar_{{p_name_os}}" style="display: inline-block;width: 100px; text-align: center; margin-left: 10px; " onclick="display_game_dialog('{{p_name}}');">
+									<div style="text-align: center;display: block;height: 24px;overflow: hidden;">{{ p_name }}</div>
+									<div style="margin: 0 auto;">										
+										<img class="media-object" src="{% static 'assets/characters/town/profile/'|add:p_name_os|add:'.png' %}" style="width: 2em">
+									</div>
+								</div>						
+							{% endfor %}
+							</div>
+							
+						</div>
+						<div class="story-content"  >
+							<div style="display: inline; color: #ebe7e7;">
+								Story:
+							</div>
+							<div id="world_event" style="overflow-y: auto; max-height: 525px;">
 								None
 							</div>
 							
 						</div>
-						<div class="input-section">
-							<input type="text" class="chat-input"  placeholder="input chat content..." />
-							<button style="background-color: #c9a769; color: #1a2a1a; padding: 8px 4px; border: none; border-radius: 4px; margin-left: 10px;" onclick="alert('Sorry, It will be ok as soon as possible.')">Send</button>
-						</div>
+						
                     </div>
                 </div>
             </div>

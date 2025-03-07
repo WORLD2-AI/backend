@@ -2,10 +2,10 @@
   "vision_r": 8,
   "att_bandwidth": 8,
   "retention": 8,
-  "curr_time": "March 07, 2025, 06:59:20",
+  "curr_time": "March 07, 2025, 08:52:10",
   "curr_tile": [
-    133,
-    82
+    122,
+    77
   ],
   "daily_plan_req": "",
   "name": "chris gardner",
@@ -28,8 +28,8 @@
   "importance_w": 1,
   "recency_decay": 0.995,
   "importance_trigger_max": 250,
-  "importance_trigger_curr": 245,
-  "importance_ele_n": 4,
+  "importance_trigger_curr": 146,
+  "importance_ele_n": 65,
   "thought_count": 5,
   "daily_req": [
     "Wake up and complete the morning routine at 6:00 am.",
@@ -62,24 +62,80 @@
       5
     ],
     [
-      "having breakfast with his son (eating breakfast with his son, engaging in conversation)",
+      "having breakfast with his son (on the way to on the way to eating breakfast with his son, engaging in conversation)",
+      0
+    ],
+    [
+      "having breakfast with his son (conversing about Chris Gardner and his son, Christopher Gardner, discussing their morning activities, Christopher's excitement for art class at school, and Chris's enthusiasm for his work in stock market research.)",
+      5
+    ],
+    [
+      "having breakfast with his son (eating breakfast with his son, engaging in conversation)  ",
+      15
+    ],
+    [
+      "having breakfast with his son (cleaning up the breakfast dishes)  ",
+      10
+    ],
+    [
+      "having breakfast with his son (packing a snack for his son to take to school)  ",
+      10
+    ],
+    [
+      "heading to work (getting dressed for work)  ",
+      10
+    ],
+    [
+      "heading to work (preparing breakfast for himself and his son)  ",
+      15
+    ],
+    [
+      "heading to work (eating breakfast with his son)  ",
       20
     ],
     [
-      "having breakfast with his son (cleaning up the breakfast dishes)",
+      "heading to work (cleaning up after breakfast)  ",
       10
     ],
     [
-      "having breakfast with his son (packing a snack for his son to take to school)",
+      "heading to work (gathering his work materials and saying goodbye to his son)",
+      5
+    ],
+    [
+      "focusing on stock market research and professional tasks (reviewing the latest stock market news)",
+      15
+    ],
+    [
+      "focusing on stock market research and professional tasks (analyzing stock performance charts)",
+      30
+    ],
+    [
+      "focusing on stock market research and professional tasks (identifying potential investment opportunities)",
+      30
+    ],
+    [
+      "focusing on stock market research and professional tasks (updating his stock portfolio)",
+      20
+    ],
+    [
+      "focusing on stock market research and professional tasks (taking a short break)",
       10
     ],
     [
-      "heading to work",
-      60
+      "focusing on stock market research and professional tasks (attending a virtual meeting with his team)",
+      30
     ],
     [
-      "focusing on stock market research and professional tasks",
-      180
+      "focusing on stock market research and professional tasks (drafting a report on market trends)",
+      25
+    ],
+    [
+      "focusing on stock market research and professional tasks (reviewing his notes and making final adjustments)",
+      15
+    ],
+    [
+      "focusing on stock market research and professional tasks (organizing his workspace for the next task)",
+      5
     ],
     [
       "wrapping up his morning tasks and preparing for lunch",
@@ -108,6 +164,46 @@
     [
       "going to bed",
       60
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
     ],
     [
       "sleeping",
@@ -164,26 +260,28 @@
       60
     ]
   ],
-  "act_address": "the ville:gardner family's house:chris gardner's room:seat",
-  "act_start_time": "March 07, 2025, 06:00:00",
-  "act_duration": 60,
-  "act_description": "waking up and completing his morning routine",
-  "act_pronunciatio": "\ud83c\udf05\ud83d\ude42",
+  "act_address": "the ville:gardner family's house:kitchen:kitchen sink",
+  "act_start_time": "March 07, 2025, 08:48:00",
+  "act_duration": 10,
+  "act_description": "heading to work (cleaning up after breakfast)  ",
+  "act_pronunciatio": "\ud83e\uddf9\ud83d\ude10",
   "act_event": [
     "chris gardner",
-    "wake",
-    "up"
+    "clean",
+    "breakfast"
   ],
-  "act_obj_description": "unoccupied",
-  "act_obj_pronunciatio": "\ud83e\udd14\ud83d\ude10",
+  "act_obj_description": "in use and has dishes or utensils from breakfast being cleaned",
+  "act_obj_pronunciatio": "\ud83e\uddfc\ud83d\ude0a",
   "act_obj_event": [
-    "seat",
+    "kitchen sink",
     "is",
-    "unoccupied"
+    "use"
   ],
   "chatting_with": null,
   "chat": null,
-  "chatting_with_buffer": {},
+  "chatting_with_buffer": {
+    "christopher gardner": 262
+  },
   "chatting_end_time": null,
   "act_path_set": true,
   "planned_path": []

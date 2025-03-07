@@ -2,10 +2,10 @@
   "vision_r": 8,
   "att_bandwidth": 8,
   "retention": 8,
-  "curr_time": "March 07, 2025, 06:59:20",
+  "curr_time": "March 07, 2025, 08:52:10",
   "curr_tile": [
-    10,
-    70
+    9,
+    67
   ],
   "daily_plan_req": "arthur burton opens moonlight tavern at 5pm everyday, and stands at the counter until 10pm, at which point he closes the bar.",
   "name": "arthur burton",
@@ -28,8 +28,8 @@
   "importance_w": 1,
   "recency_decay": 0.995,
   "importance_trigger_max": 250,
-  "importance_trigger_curr": 225,
-  "importance_ele_n": 21,
+  "importance_trigger_curr": 228,
+  "importance_ele_n": 14,
   "thought_count": 5,
   "daily_req": [
     "Wake up and complete the morning routine at 7:00 am.",
@@ -149,6 +149,26 @@
     [
       "sleeping",
       0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
     ]
   ],
   "f_daily_schedule_hourly_org": [
@@ -201,22 +221,22 @@
       60
     ]
   ],
-  "act_address": "the ville:arthur burton's apartment:arthur burton's room:bed",
-  "act_start_time": "March 07, 2025, 06:00:00",
-  "act_duration": 420,
-  "act_description": "sleeping",
-  "act_pronunciatio": "\ud83d\udca4\ud83d\ude0c",
+  "act_address": "the ville:arthur burton's apartment:arthur burton's room:seat",
+  "act_start_time": "March 07, 2025, 08:39:00",
+  "act_duration": 30,
+  "act_description": "learning about new mixology techniques (watching online tutorials on mixology techniques)",
+  "act_pronunciatio": "\ud83e\uddd1\u200d\ud83d\udcbb",
   "act_event": [
     "arthur burton",
-    "is",
-    "sleep"
+    "watch",
+    "tutorials"
   ],
-  "act_obj_description": "being used",
-  "act_obj_pronunciatio": "\ud83d\udeb6\ud83d\ude10",
+  "act_obj_description": "unoccupied",
+  "act_obj_pronunciatio": "\ud83e\udd14\ud83d\ude10",
   "act_obj_event": [
-    "bed",
+    "seat",
     "is",
-    "used"
+    "unoccupied"
   ],
   "chatting_with": null,
   "chat": null,

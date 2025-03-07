@@ -2,10 +2,10 @@
   "vision_r": 8,
   "att_bandwidth": 8,
   "retention": 8,
-  "curr_time": "March 07, 2025, 06:59:20",
+  "curr_time": "March 07, 2025, 08:52:10",
   "curr_tile": [
-    132,
-    71
+    35,
+    43
   ],
   "daily_plan_req": "",
   "name": "christopher gardner",
@@ -28,8 +28,8 @@
   "importance_w": 1,
   "recency_decay": 0.995,
   "importance_trigger_max": 250,
-  "importance_trigger_curr": 244,
-  "importance_ele_n": 4,
+  "importance_trigger_curr": 79.6,
+  "importance_ele_n": 86,
   "thought_count": 5,
   "daily_req": [
     "Wake up and complete the morning routine at 6:00 am.",
@@ -64,28 +64,108 @@
       5
     ],
     [
-      "having breakfast (chatting with his parents)",
-      10
+      "having breakfast (on the way to on the way to chatting with his parents)",
+      0
     ],
     [
-      "having breakfast (eating a piece of fruit)",
-      10
-    ],
-    [
-      "having breakfast (helping to clear the table)",
+      "having breakfast (conversing about Chris Gardner and his son, Christopher Gardner, discussing their morning activities, Christopher's excitement for art class at school, and Chris's enthusiasm for his work in stock market research.)",
       5
     ],
     [
-      "having breakfast (brushing his teeth after breakfast)",
-      10
-    ],
-    [
-      "having breakfast (getting his backpack ready for school)",
+      "having breakfast (chatting with his parents)  ",
       5
     ],
     [
-      "attending school",
-      480
+      "having breakfast (eating a piece of fruit)  ",
+      10
+    ],
+    [
+      "having breakfast (helping to clear the table)  ",
+      5
+    ],
+    [
+      "having breakfast (brushing his teeth after breakfast)  ",
+      10
+    ],
+    [
+      "having breakfast (getting his backpack ready for school)  ",
+      5
+    ],
+    [
+      "attending school (arriving at school and hanging up his coat)  ",
+      10
+    ],
+    [
+      "attending school (attending morning circle time with his classmates)  ",
+      20
+    ],
+    [
+      "attending school (on the way to on the way to participating in a math lesson) )",
+      0
+    ],
+    [
+      "attending school (conversing about Christopher Gardner and MK discussing MK's work on an AI economic model to stabilize the financial system by eliminating speculative bubbles, and MK's approach to ensuring accurate learning by the AI.)",
+      4
+    ],
+    [
+      "attending school (on the way to participating in a math lesson) )",
+      0
+    ],
+    [
+      "attending school (conversing about Linda and Christopher Gardner discussing the integration of digital tools in art projects and planning a digital art mini-workshop together.)",
+      6
+    ],
+    [
+      "attending school (participating in a math lesson)  ",
+      30
+    ],
+    [
+      "attending school (having a snack break)  ",
+      15
+    ],
+    [
+      "attending school (engaging in a reading activity)  ",
+      30
+    ],
+    [
+      "attending school (going outside for recess)  ",
+      30
+    ],
+    [
+      "attending school (attending a science class)  ",
+      30
+    ],
+    [
+      "attending school (having lunch with his friends)  ",
+      30
+    ],
+    [
+      "attending school (participating in an art class)  ",
+      30
+    ],
+    [
+      "attending school (attending a music lesson)  ",
+      30
+    ],
+    [
+      "attending school (having another short recess)  ",
+      15
+    ],
+    [
+      "attending school (working on a group project)  ",
+      30
+    ],
+    [
+      "attending school (attending a social studies class)  ",
+      30
+    ],
+    [
+      "attending school (having a quiet reading time)  ",
+      20
+    ],
+    [
+      "attending school (preparing to go home)",
+      120
     ],
     [
       "participating in an after-school activity",
@@ -114,6 +194,62 @@
     [
       "sleeping",
       120
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
     ],
     [
       "sleeping",
@@ -166,26 +302,30 @@
       120
     ]
   ],
-  "act_address": "the ville:gardner family's house:christopher gardner's room:<random>",
-  "act_start_time": "March 07, 2025, 06:00:00",
-  "act_duration": 60,
-  "act_description": "waking up and completing the morning routine",
-  "act_pronunciatio": "\u2600\ufe0f\ud83d\ude0c",
+  "act_address": "the ville:classroom:classroom:seat",
+  "act_start_time": "March 07, 2025, 08:45:00",
+  "act_duration": 30,
+  "act_description": "attending school (participating in a math lesson)  ",
+  "act_pronunciatio": "\ud83d\udcda\ud83e\uddd0",
   "act_event": [
     "christopher gardner",
-    "wake",
-    "up"
+    "participate",
+    "lesson"
   ],
-  "act_obj_description": "starting the day with energy and focus",
-  "act_obj_pronunciatio": "\u2600\ufe0f\ud83d\ude42",
+  "act_obj_description": "occupied",
+  "act_obj_pronunciatio": "\ud83d\udcda\ud83d\ude0c",
   "act_obj_event": [
-    "<random>",
-    "start",
-    "day"
+    "seat",
+    "is",
+    "occupied"
   ],
   "chatting_with": null,
   "chat": null,
-  "chatting_with_buffer": {},
+  "chatting_with_buffer": {
+    "chris gardner": 262,
+    "mk": 630,
+    "linda": 720
+  },
   "chatting_end_time": null,
   "act_path_set": true,
   "planned_path": []

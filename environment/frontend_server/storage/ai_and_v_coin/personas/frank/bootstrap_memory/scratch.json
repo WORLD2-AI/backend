@@ -2,10 +2,10 @@
   "vision_r": 4,
   "att_bandwidth": 4,
   "retention": 3,
-  "curr_time": "March 07, 2025, 06:59:20",
+  "curr_time": "March 07, 2025, 08:52:10",
   "curr_tile": [
-    122,
-    30
+    35,
+    64
   ],
   "daily_plan_req": "At 8 PM, went to the Moonlight Tavern Bar to relax and encountered Latoya William, frank wanted to flirt with her.",
   "name": "frank",
@@ -28,8 +28,8 @@
   "importance_w": 1,
   "recency_decay": 0.995,
   "importance_trigger_max": 250,
-  "importance_trigger_curr": -4,
-  "importance_ele_n": 172,
+  "importance_trigger_curr": 165,
+  "importance_ele_n": 45,
   "thought_count": 5,
   "daily_req": [
     "Wake up and complete the morning routine at 2:00 am.",
@@ -105,12 +105,72 @@
       7
     ],
     [
-      "returning home and watching TV with drinks",
-      60
+      "returning home and watching TV with drinks (walking back home from the park)",
+      15
     ],
     [
-      "continuing to watch TV and drink",
-      60
+      "returning home and watching TV with drinks (unlocking the door to his house)",
+      5
+    ],
+    [
+      "returning home and watching TV with drinks (grabbing a drink from the fridge)",
+      10
+    ],
+    [
+      "returning home and watching TV with drinks (turning on the TV)",
+      5
+    ],
+    [
+      "returning home and watching TV with drinks (on the way to settling into his chair with a drink)",
+      0
+    ],
+    [
+      "returning home and watching TV with drinks (conversing about Mk and Frank discussing Mk's progress with simulations, Frank's day of relaxation, and planning to celebrate Mk's breakthrough with a drink.)",
+      5
+    ],
+    [
+      "returning home and watching TV with drinks (settling into his chair with a drink)  ",
+      5
+    ],
+    [
+      "returning home and watching TV with drinks (watching a show while sipping his drink)  ",
+      15
+    ],
+    [
+      "continuing to watch TV and drink (pouring himself a drink)  ",
+      5
+    ],
+    [
+      "continuing to watch TV and drink (sitting on the couch and turning on the TV)  ",
+      5
+    ],
+    [
+      "continuing to watch TV and drink (watching a comedy show while sipping his drink)  ",
+      10
+    ],
+    [
+      "continuing to watch TV and drink (laughing loudly at a joke on the show)  ",
+      5
+    ],
+    [
+      "continuing to watch TV and drink (refilling his drink)  ",
+      5
+    ],
+    [
+      "continuing to watch TV and drink (switching channels to find something interesting)  ",
+      10
+    ],
+    [
+      "continuing to watch TV and drink (watching a news segment and commenting to himself)  ",
+      10
+    ],
+    [
+      "continuing to watch TV and drink (finishing his drink and getting up to pour another)  ",
+      5
+    ],
+    [
+      "continuing to watch TV and drink (settling back on the couch with a fresh drink)",
+      5
     ],
     [
       "continuing to drink and reading newspapers",
@@ -167,6 +227,54 @@
     [
       "winding down his evening at the Moonlight Tavern Bar, reflecting on the day's events while enjoying his last drink before heading home",
       60
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
     ],
     [
       "sleeping",
@@ -271,27 +379,28 @@
       60
     ]
   ],
-  "act_address": "the ville:supermarket:food area:grocery store shelf",
-  "act_start_time": "March 07, 2025, 06:05:00",
-  "act_duration": 60,
-  "act_description": "visiting the local liquor store and stocking up",
-  "act_pronunciatio": "\ud83d\uded2\ud83e\udd14",
+  "act_address": "the ville:frank's apartment:frank's room:seat",
+  "act_start_time": "March 07, 2025, 08:46:00",
+  "act_duration": 15,
+  "act_description": "returning home and watching TV with drinks (watching a show while sipping his drink)  ",
+  "act_pronunciatio": "\ud83d\udcfa\ud83d\ude42",
   "act_event": [
     "frank",
-    "visit",
-    "liquor store"
+    "watch",
+    "show"
   ],
-  "act_obj_description": "unaffected because Frank is at a different store",
-  "act_obj_pronunciatio": "\ud83c\udfec\ud83d\ude0c",
+  "act_obj_description": "occupied and in use",
+  "act_obj_pronunciatio": "\ud83d\udeaa\ud83d\ude10",
   "act_obj_event": [
-    "grocery store shelf",
+    "seat",
     "is",
-    "unaffected"
+    "occupied"
   ],
   "chatting_with": null,
   "chat": null,
   "chatting_with_buffer": {
-    "tamara taylor": 473
+    "tamara taylor": -206,
+    "mk": 702
   },
   "chatting_end_time": null,
   "act_path_set": true,

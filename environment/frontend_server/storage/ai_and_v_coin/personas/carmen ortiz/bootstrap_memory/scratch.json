@@ -2,10 +2,10 @@
   "vision_r": 8,
   "att_bandwidth": 8,
   "retention": 8,
-  "curr_time": "March 07, 2025, 06:59:20",
+  "curr_time": "March 07, 2025, 08:52:10",
   "curr_tile": [
-    64,
-    74
+    61,
+    69
   ],
   "daily_plan_req": "At 4 PM, attended a family gathering at the Gardner family's house.\nAt 4:05 PM, delivered a speech in the common room on the future development of the virtual economy, emphasizing the importance of capital flow.\nAt 4:10 PM, met Carlos in the empty guest bedroom and had a fierce argument with him.\nAt 5 PM, concluded the family gathering and headed to the Moonlight Tavern Bar.\n\u200cAt 5:30 PM, encountered Carlos again and continued the argument with him, acknowledging the dominance of the combination of technology and capital, but still insisting on the primacy of capital.\nAt 8 PM, left the Moonlight Tavern Bar.",
   "name": "carmen ortiz",
@@ -28,8 +28,8 @@
   "importance_w": 1,
   "recency_decay": 0.995,
   "importance_trigger_max": 250,
-  "importance_trigger_curr": 223,
-  "importance_ele_n": 23,
+  "importance_trigger_curr": 132,
+  "importance_ele_n": 76,
   "thought_count": 5,
   "daily_req": [
     "Wake up and complete the morning routine at 7:00 am.",
@@ -70,32 +70,64 @@
       10
     ],
     [
-      "waking up and completing her morning routine (doing her hair and makeup)",
-      15
+      "waking up and completing her morning routine (on the way to on the way to doing her hair and makeup)",
+      0
     ],
     [
-      "having breakfast and preparing to leave for work (making coffee)",
+      "waking up and completing her morning routine (conversing about Tamara Taylor discussing her project on launching a digital currency called FitCoin with Rajiv, while Carmen Ortiz shares her plans about attending a family gathering and giving a speech on the virtual economy.)",
+      5
+    ],
+    [
+      "waking up and completing her morning routine (doing her hair and makeup)  ",
+      5
+    ],
+    [
+      "having breakfast and preparing to leave for work (making coffee)  ",
       10
     ],
     [
-      "having breakfast and preparing to leave for work (preparing breakfast)",
+      "having breakfast and preparing to leave for work (preparing breakfast)  ",
       15
     ],
     [
-      "having breakfast and preparing to leave for work (eating breakfast)",
+      "having breakfast and preparing to leave for work (eating breakfast)  ",
       15
     ],
     [
-      "having breakfast and preparing to leave for work (packing her work bag)",
+      "having breakfast and preparing to leave for work (packing her work bag)  ",
       10
     ],
     [
-      "having breakfast and preparing to leave for work (checking the weather and planning her commute)",
+      "having breakfast and preparing to leave for work (checking the weather and planning her commute)  ",
       10
     ],
     [
-      "arriving at the Supermarket and starting work",
-      60
+      "having breakfast and preparing to leave for work (on the way to leaving for work)",
+      5
+    ],
+    [
+      "arriving at the Supermarket and starting work (parking her car and walking to the Supermarket entrance)",
+      10
+    ],
+    [
+      "arriving at the Supermarket and starting work (greeting her coworkers and checking in for her shift)",
+      10
+    ],
+    [
+      "arriving at the Supermarket and starting work (organizing her workspace and reviewing the day's schedule)",
+      10
+    ],
+    [
+      "arriving at the Supermarket and starting work (checking inventory levels and restocking shelves as needed)",
+      10
+    ],
+    [
+      "arriving at the Supermarket and starting work (setting up promotional displays for the day)",
+      10
+    ],
+    [
+      "arriving at the Supermarket and starting work (ensuring the checkout area is clean and ready for customers)",
+      10
     ],
     [
       "assisting customers and managing store operations at the Supermarket",
@@ -148,6 +180,38 @@
     [
       "going to bed",
       60
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
     ],
     [
       "sleeping",
@@ -224,26 +288,28 @@
       60
     ]
   ],
-  "act_address": "the ville:tamara taylor and carmen ortiz's house:carmen ortiz's room:bed",
-  "act_start_time": "March 07, 2025, 06:00:00",
-  "act_duration": 420,
-  "act_description": "sleeping",
-  "act_pronunciatio": "\ud83d\ude34\ud83d\ude0c",
+  "act_address": "the ville:tamara taylor and carmen ortiz's house:common room:desk",
+  "act_start_time": "March 07, 2025, 08:47:00",
+  "act_duration": 10,
+  "act_description": "having breakfast and preparing to leave for work (checking the weather and planning her commute)  ",
+  "act_pronunciatio": "\ud83d\udcc6\ud83e\uddd0",
   "act_event": [
     "carmen ortiz",
-    "is",
-    "sleep"
+    "check",
+    "weather"
   ],
-  "act_obj_description": "being used by Carmen Ortiz for sleeping",
-  "act_obj_pronunciatio": "\ud83d\ude34\ud83d\ude0c",
+  "act_obj_description": "not in use as Carmen is not at her desk, but it may have items related to breakfast or work preparation",
+  "act_obj_pronunciatio": "\ud83d\udeab\ud83e\udd14",
   "act_obj_event": [
-    "bed",
+    "desk",
     "is",
-    "used"
+    "not in use"
   ],
   "chatting_with": null,
   "chat": null,
-  "chatting_with_buffer": {},
+  "chatting_with_buffer": {
+    "tamara taylor": 407
+  },
   "chatting_end_time": null,
   "act_path_set": true,
   "planned_path": []

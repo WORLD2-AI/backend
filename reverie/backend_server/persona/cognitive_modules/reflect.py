@@ -23,7 +23,7 @@ def generate_focal_points(persona, n=3):
   
   nodes = [[i.last_accessed, i]
             for i in persona.a_mem.seq_event + persona.a_mem.seq_thought
-            if "idle" not in i.embedding_key]
+            if "idle" not in i.embedding_key and "this is blank" not in i.embedding_key]
 
   nodes = sorted(nodes, key=lambda x: x[0])
   nodes = [i for created, i in nodes]

@@ -1,0 +1,151 @@
+{
+  "persona": {
+    "frank": {
+      "movement": [
+        34,
+        57
+      ],
+      "pronunciatio": "\ud83e\ude91\ud83c\udf79",
+      "description": "returning home and watching TV with drinks (settling into his chair with a drink)   @ the ville:frank's apartment:frank's room:desk",
+      "chat": null
+    },
+    "linda": {
+      "movement": [
+        29,
+        42
+      ],
+      "pronunciatio": "\ud83d\udcdd\ud83e\udd14",
+      "description": "working on integrating virtual elements with art (refining her concepts) @ the ville:classroom:classroom:seat",
+      "chat": null
+    },
+    "jane moreno": {
+      "movement": [
+        99,
+        65
+      ],
+      "pronunciatio": "\ud83e\udd14\ud83c\udfa8",
+      "description": "working on NFT music projects and researching virtual economy trends (brainstorming ideas for her NFT music projects) @ the ville:moreno family's house:jane moreno's bedroom:desk",
+      "chat": null
+    },
+    "rajiv patel": {
+      "movement": [
+        27,
+        13
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude0c",
+      "description": "sleeping @ the ville:artist's co-living space:rajiv patel's room:bed",
+      "chat": null
+    },
+    "tamara taylor": {
+      "movement": [
+        59,
+        74
+      ],
+      "pronunciatio": "\ud83d\udd0c\ud83e\udd14",
+      "description": "preparing for the virtual team meeting (checking her internet connection and equipment)   @ the ville:tamara taylor and carmen ortiz's house:tamara taylor's room:desk",
+      "chat": null
+    },
+    "christopher gardner": {
+      "movement": [
+        31,
+        41
+      ],
+      "pronunciatio": "\ud83d\udcac\ud83d\ude0a",
+      "description": "attending school (conversing about Linda and Christopher Gardner discussing the integration of digital tools in art projects and planning a digital art mini-workshop together.) @ the ville:classroom:classroom:seat",
+      "chat": null
+    },
+    "carmen ortiz": {
+      "movement": [
+        66,
+        76
+      ],
+      "pronunciatio": "\ud83c\udf92\ud83d\ude15",
+      "description": "having breakfast and preparing to leave for work (packing her work bag)   @ the ville:tamara taylor and carmen ortiz's house:carmen ortiz's room:closet",
+      "chat": null
+    },
+    "latoya williams": {
+      "movement": [
+        17,
+        16
+      ],
+      "pronunciatio": "\ud83d\udcbb\ud83e\uddd0",
+      "description": "continuing her morning routine and preparing to work on her photography series inspired by her travels (setting up her computer and software for editing) @ the ville:artist's co-living space:latoya williams's room:desk",
+      "chat": null
+    },
+    "tom moreno": {
+      "movement": [
+        97,
+        75
+      ],
+      "pronunciatio": "\ud83d\udca4\ud83d\ude34",
+      "description": "sleeping @ the ville:moreno family's house:tom moreno's bedroom:bed",
+      "chat": null
+    },
+    "francisco lopez": {
+      "movement": [
+        41,
+        19
+      ],
+      "pronunciatio": "\ud83d\udcd1\ud83d\ude13",
+      "description": "having breakfast and reviewing notes for the thesis (reviewing notes for the thesis) @ the ville:artist's co-living space:francisco lopez's room:desk",
+      "chat": null
+    },
+    "carlos gomez": {
+      "movement": [
+        41,
+        66
+      ],
+      "pronunciatio": "\ud83c\udf73\ud83d\ude0a",
+      "description": "having breakfast (eating his breakfast) @ the ville:carlos gomez's apartment:carlos gomez's room:seat",
+      "chat": null
+    },
+    "chris gardner": {
+      "movement": [
+        123,
+        77
+      ],
+      "pronunciatio": "\ud83c\udf7d\ufe0f\ud83d\ude0a",
+      "description": "heading to work (eating breakfast with his son)   @ the ville:restaurant:dining area:table",
+      "chat": null
+    },
+    "mk": {
+      "movement": [
+        53,
+        31
+      ],
+      "pronunciatio": "\ud83d\udcdd\ud83e\udd14",
+      "description": "continuing to work on his AI economic model simulations, running algorithms, and adjusting parameters, while considering taking a short break to refresh his mind (jotting down insights and potential improvements in his notebook)   @ the ville:mk's house:mk's bedroom:desk",
+      "chat": null
+    },
+    "kiki": {
+      "movement": [
+        17,
+        70
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude0c",
+      "description": "sleeping @ the ville:kiki's apartment:kiki's room:bed",
+      "chat": null
+    },
+    "arthur burton": {
+      "movement": [
+        9,
+        67
+      ],
+      "pronunciatio": "\ud83e\uddd1\u200d\ud83d\udcbb",
+      "description": "learning about new mixology techniques (watching online tutorials on mixology techniques) @ the ville:arthur burton's apartment:arthur burton's room:seat",
+      "chat": null
+    },
+    "cichengege": {
+      "movement": [
+        25,
+        70
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude0c",
+      "description": "sleeping @ the ville:cichengege's apartment:cichengege's room:bed",
+      "chat": null
+    }
+  },
+  "meta": {
+    "curr_time": "March 07, 2025, 08:44:00"
+  }
+}

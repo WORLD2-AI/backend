@@ -2,10 +2,10 @@
   "vision_r": 8,
   "att_bandwidth": 8,
   "retention": 8,
-  "curr_time": "March 07, 2025, 06:59:20",
+  "curr_time": "March 07, 2025, 08:52:10",
   "curr_tile": [
-    17,
-    13
+    26,
+    19
   ],
   "daily_plan_req": "At 10 a.m., Latoya Williams will go shopping at the supermarket and met cichenggege and kiki at the entrance. \nAt 10:10 AM, Kiki, Cichenggege, and Latoya Williams entered the supermarket together to start shopping. Latoya Williams was selecting items in the outdoor section. \nAt 10:20 AM, Latoya Williams walked towards the snack section and encountered Kiki and Cichenggege. She greeted them, but inside, she was a little unhappy.\nAt 10:30 AM,Latoya Williams left the supermarket.\nAt 3 PM, Cichenggege invited Latoya Williams to work out together at the gym.\nAt 3:05 PM, Latoya Williams arrived at the gym and found Cichenggege. \nAt 3:05 PM, Cichenggege and Latoya Williams began running on the treadmills together, chatting while they ran.\nAt 3:30 PM, Latoya Williams made fun of Kiki, calling her \"fake\" (while making a hand gesture and then a clown face).\nAt 4:05 PM, cichenggege and Latoya Williams left the gym together.\nAt 8 PM, Latoya Williams went to the Moonlight Tavern Bar to relax and encountered Frank, who wanted to flirt with her.\nAt 8:05 PM, Cichenggege helped Latoya Williams drive away Frank. Latoya Williams fell for Cichenggege at first sight, invited him for a drink, and they began a flirtatious conversation.\nAt 8:30 PM, Kiki came over and greeted them. Latoya Williams was actually quite calm inside.\nAt 8:40 PM, Kiki confessed to Cichenggege, who did not respond. Latoya Williams seemed to have anticipated this outcome.\nAt 9:00 PM, Latoya Williams left the Moonlight Tavern Bar and went home.",
   "name": "latoya williams",
@@ -28,8 +28,8 @@
   "importance_w": 1,
   "recency_decay": 0.995,
   "importance_trigger_max": 250,
-  "importance_trigger_curr": 240,
-  "importance_ele_n": 8,
+  "importance_trigger_curr": 157,
+  "importance_ele_n": 57,
   "thought_count": 5,
   "daily_req": [
     "Wake up and complete the morning routine at 6:00 am.",
@@ -88,12 +88,44 @@
       10
     ],
     [
-      "continuing her morning routine and preparing to work on her photography series inspired by her travels",
-      60
+      "continuing her morning routine and preparing to work on her photography series inspired by her travels (Latoya is tidying up her workspace)",
+      10
     ],
     [
-      "working on her photography series inspired by her travels",
-      60
+      "continuing her morning routine and preparing to work on her photography series inspired by her travels (organizing her photography equipment)",
+      10
+    ],
+    [
+      "continuing her morning routine and preparing to work on her photography series inspired by her travels (reviewing her travel photos for inspiration)",
+      10
+    ],
+    [
+      "continuing her morning routine and preparing to work on her photography series inspired by her travels (making a list of potential themes for her photography series)",
+      10
+    ],
+    [
+      "continuing her morning routine and preparing to work on her photography series inspired by her travels (setting up her computer and software for editing)",
+      10
+    ],
+    [
+      "continuing her morning routine and preparing to work on her photography series inspired by her travels (preparing a cup of coffee to start her work)",
+      10
+    ],
+    [
+      "working on her photography series inspired by her travels (reviewing her travel photos to select the best ones for her series)",
+      15
+    ],
+    [
+      "working on her photography series inspired by her travels (editing the selected photos using photo editing software)",
+      20
+    ],
+    [
+      "working on her photography series inspired by her travels (organizing the edited photos into a cohesive series)",
+      15
+    ],
+    [
+      "working on her photography series inspired by her travels (making notes on the themes and stories she wants to convey through her series)",
+      10
     ],
     [
       "Latoya is preparing to go shopping at the supermarket",
@@ -146,6 +178,50 @@
     [
       "sleeping",
       60
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
     ],
     [
       "sleeping",
@@ -226,27 +302,88 @@
       60
     ]
   ],
-  "act_address": "the ville:artist's co-living space:latoya williams's room:bed",
-  "act_start_time": "March 07, 2025, 06:00:00",
-  "act_duration": 60,
-  "act_description": "Latoya is waking up and completing her morning routine",
-  "act_pronunciatio": "\ud83c\udf05\ud83d\ude0a",
+  "act_address": "the ville:artist's co-living space:kitchen:cooking area",
+  "act_start_time": "March 07, 2025, 08:50:00",
+  "act_duration": 10,
+  "act_description": "continuing her morning routine and preparing to work on her photography series inspired by her travels (preparing a cup of coffee to start her work)",
+  "act_pronunciatio": "\u2615\ud83d\udcbc",
   "act_event": [
     "latoya williams",
-    "wake",
-    "routine"
+    "prepare",
+    "coffee"
   ],
-  "act_obj_description": "unmade and used",
-  "act_obj_pronunciatio": "\ud83d\udecf\ufe0f\ud83d\ude0c",
+  "act_obj_description": "in use, with coffee making equipment out and actively being used to prepare a cup of coffee",
+  "act_obj_pronunciatio": "\u2615\ud83d\ude0a",
   "act_obj_event": [
-    "bed",
+    "cooking area",
     "is",
-    "unmade"
+    "use"
   ],
   "chatting_with": null,
   "chat": null,
   "chatting_with_buffer": {},
   "chatting_end_time": null,
   "act_path_set": true,
-  "planned_path": []
+  "planned_path": [
+    [
+      29,
+      19
+    ],
+    [
+      30,
+      19
+    ],
+    [
+      31,
+      19
+    ],
+    [
+      32,
+      19
+    ],
+    [
+      33,
+      19
+    ],
+    [
+      34,
+      19
+    ],
+    [
+      35,
+      19
+    ],
+    [
+      36,
+      19
+    ],
+    [
+      37,
+      19
+    ],
+    [
+      38,
+      19
+    ],
+    [
+      39,
+      19
+    ],
+    [
+      40,
+      19
+    ],
+    [
+      41,
+      19
+    ],
+    [
+      42,
+      19
+    ],
+    [
+      42,
+      20
+    ]
+  ]
 }

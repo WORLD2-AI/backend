@@ -1,7 +1,7 @@
 {
   "fork_sim_code": "base_the_ville_n25-test",
   "start_date": "March 07, 2025",
-  "curr_time": "March 07, 2025, 06:59:20",
+  "curr_time": "March 07, 2025, 08:52:20",
   "sec_per_step": 10,
   "maze_name": "the_ville",
   "persona_names": [
@@ -22,5 +22,5 @@
     "frank",
     "mk"
   ],
-  "step": 875
+  "step": 1593
 }
