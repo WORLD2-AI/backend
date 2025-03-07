@@ -344,8 +344,10 @@
 		new_sprite.on('pointerup', () => {
 			if (persona_name == focus_name){
 				focus_name = ""
+				display_main_box()
 			}else{
 				focus_name = persona_name
+				display_game_dialog(persona_name)
 			}
 		})				 
 	    // Here, we are creating the persona and its pronunciatio sprites.
@@ -844,7 +846,7 @@
 
 <script>
 	let element = document.getElementById('game-container');
-	element.addEventListener('contextmenu', (e) => {e.preventDefault();focus_name = "";})
+	element.addEventListener('contextmenu', (e) => {e.preventDefault();display_main_box()})
 	function update_dialog_user_info(visible) {
 		let dialog = document.getElementById('gameDialog');
 		if (visible) {
@@ -856,6 +858,7 @@
 		}
 	}
 	function display_main_box(){
+		focus_name = "";
 		document.getElementById('gameDialog').style.display = "none";
 		document.getElementById('main_box').style.display = "inline-block";
 	}
