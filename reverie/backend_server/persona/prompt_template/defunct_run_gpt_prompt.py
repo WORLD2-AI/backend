@@ -1090,7 +1090,7 @@ def run_gpt_prompt_decide_to_talk(persona, target_persona, retrieved,test_input=
     return gpt_response.split("Answer in yes or no:")[-1].strip().lower()
 
   def get_fail_safe(): 
-    fs = "yes"
+    fs = "no"
     return fs
 
 

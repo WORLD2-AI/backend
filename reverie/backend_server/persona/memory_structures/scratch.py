@@ -167,8 +167,7 @@ class Scratch:
       self.retention = scratch_load["retention"]
 
       if scratch_load["curr_time"]: 
-        self.curr_time = datetime.datetime.strptime(scratch_load["curr_time"],
-                                                  "%B %d, %Y, %H:%M:%S")
+        self.curr_time = datetime.datetime.strptime(scratch_load["curr_time"],"%B %d, %Y, %H:%M:%S")
       else: 
         self.curr_time = None
       self.curr_tile = scratch_load["curr_tile"]
@@ -510,8 +509,12 @@ class Scratch:
     self.act_obj_description = act_obj_description
     self.act_obj_pronunciatio = act_obj_pronunciatio
     self.act_obj_event = act_obj_event
-    
-    self.act_start_time = self.curr_time
+    if self.get_f_daily_schedule_index() == 0:
+       self.act_start_time = datetime.datetime.strptime(
+                                              self.curr_time.strftime("%B %d, %Y"),
+                                              "%B %d, %Y")
+    else:
+      self.act_start_time = self.curr_time
     
     self.act_path_set = False
 

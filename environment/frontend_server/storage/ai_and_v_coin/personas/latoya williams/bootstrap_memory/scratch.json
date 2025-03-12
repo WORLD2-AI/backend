@@ -2,7 +2,7 @@
   "vision_r": 8,
   "att_bandwidth": 8,
   "retention": 8,
-  "curr_time": "March 07, 2025, 08:52:10",
+  "curr_time": "March 14, 2025, 00:00:00",
   "curr_tile": [
     26,
     19
@@ -27,8 +27,8 @@
   "relevance_w": 1,
   "importance_w": 1,
   "recency_decay": 0.995,
-  "importance_trigger_max": 250,
-  "importance_trigger_curr": 157,
+  "importance_trigger_max": 3250,
+  "importance_trigger_curr": 3157,
   "importance_ele_n": 57,
   "thought_count": 5,
   "daily_req": [
@@ -302,22 +302,18 @@
       60
     ]
   ],
-  "act_address": "the ville:artist's co-living space:kitchen:cooking area",
-  "act_start_time": "March 07, 2025, 08:50:00",
-  "act_duration": 10,
-  "act_description": "continuing her morning routine and preparing to work on her photography series inspired by her travels (preparing a cup of coffee to start her work)",
-  "act_pronunciatio": "\u2615\ud83d\udcbc",
+  "act_address": "",
+  "act_start_time": "",
+  "act_duration": 0,
+  "act_description": "",
+  "act_pronunciatio": "",
   "act_event": [
-    "latoya williams",
-    "prepare",
-    "coffee"
+    
   ],
-  "act_obj_description": "in use, with coffee making equipment out and actively being used to prepare a cup of coffee",
-  "act_obj_pronunciatio": "\u2615\ud83d\ude0a",
+  "act_obj_description": "",
+  "act_obj_pronunciatio": "",
   "act_obj_event": [
-    "cooking area",
-    "is",
-    "use"
+    
   ],
   "chatting_with": null,
   "chat": null,
@@ -325,65 +321,5 @@
   "chatting_end_time": null,
   "act_path_set": true,
   "planned_path": [
-    [
-      29,
-      19
-    ],
-    [
-      30,
-      19
-    ],
-    [
-      31,
-      19
-    ],
-    [
-      32,
-      19
-    ],
-    [
-      33,
-      19
-    ],
-    [
-      34,
-      19
-    ],
-    [
-      35,
-      19
-    ],
-    [
-      36,
-      19
-    ],
-    [
-      37,
-      19
-    ],
-    [
-      38,
-      19
-    ],
-    [
-      39,
-      19
-    ],
-    [
-      40,
-      19
-    ],
-    [
-      41,
-      19
-    ],
-    [
-      42,
-      19
-    ],
-    [
-      42,
-      20
-    ]
   ]
 }

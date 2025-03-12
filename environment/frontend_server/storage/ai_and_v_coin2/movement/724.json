@@ -1,0 +1,151 @@
+{
+  "persona": {
+    "linda": {
+      "movement": [
+        119,
+        77
+      ],
+      "pronunciatio": "\ud83d\udcc2\ud83d\ude0a",
+      "description": "working on integrating virtual elements into a new art project (organizing files and resources for the project) @ the ville:gardner family's house:kitchen:<random>",
+      "chat": null
+    },
+    "chris gardner": {
+      "movement": [
+        35,
+        86
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:gardner family's house:chris gardner's room:bed",
+      "chat": null
+    },
+    "christopher gardner": {
+      "movement": [
+        132,
+        72
+      ],
+      "pronunciatio": "\ud83d\udd0d\ud83d\ude10",
+      "description": "getting ready for school and preparing his belongings (double-checking his belongings) @ the ville:gardner family's house:christopher gardner's room:<random>",
+      "chat": null
+    },
+    "jane moreno": {
+      "movement": [
+        96,
+        68
+      ],
+      "pronunciatio": "\ud83d\udcdd\ud83d\ude10",
+      "description": "Jane is having breakfast and reviewing daily tasks (reviewing her daily tasks and schedule)   @ the ville:moreno family's house:jane moreno's bedroom:desk",
+      "chat": null
+    },
+    "tom moreno": {
+      "movement": [
+        94,
+        71
+      ],
+      "pronunciatio": "\ud83e\udd14\ud83d\udca1",
+      "description": "Tom is waking up and completing his morning routine, preparing for another energetic day as the store manager of the supermarket. He is mentally gearing up to organize shelves, analyze sales data, and strategize his next business breakthrough (mentally strategizing his business breakthrough ideas).   @ the ville:moreno family's house:tom moreno's bedroom:desk",
+      "chat": null
+    },
+    "tamara taylor": {
+      "movement": [
+        65,
+        72
+      ],
+      "pronunciatio": "\ud83d\udde3\ufe0f\ud83e\udd14",
+      "description": "having breakfast (conversing about Carmen Ortiz and Tamara Taylor discussing the role of capital in decentralized projects like FitCoin and NFT music, emphasizing the importance of community engagement, transparency, and education, and planning collaborative workshops and events to attract and educate users.) @ the ville:tamara taylor and carmen ortiz's house:common room:desk",
+      "chat": null
+    },
+    "latoya williams": {
+      "movement": [
+        17,
+        16
+      ],
+      "pronunciatio": "\ud83d\udcbe\ud83d\ude10",
+      "description": "Latoya is reviewing and organizing her photography work (backing up her photography files to an external drive) @ the ville:artist's co-living space:latoya williams's room:desk",
+      "chat": null
+    },
+    "carmen ortiz": {
+      "movement": [
+        65,
+        71
+      ],
+      "pronunciatio": "\ud83d\udde3\ufe0f\ud83e\udd14",
+      "description": "Carmen is waking up and completing her morning routine (conversing about Carmen Ortiz and Tamara Taylor discussing the role of capital in decentralized projects like FitCoin and NFT music, emphasizing the importance of community engagement, transparency, and education, and planning collaborative workshops and events to attract and educate users.) @ the ville:tamara taylor and carmen ortiz's house:common room:desk",
+      "chat": null
+    },
+    "arthur burton": {
+      "movement": [
+        10,
+        67
+      ],
+      "pronunciatio": "\ud83d\udcf1\u2615",
+      "description": "waking up and completing his morning routine (sitting down to enjoy his coffee and check his phone for messages) @ the ville:arthur burton's apartment:arthur burton's room:seat",
+      "chat": null
+    },
+    "rajiv patel": {
+      "movement": [
+        27,
+        13
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:artist's co-living space:rajiv patel's room:bed",
+      "chat": null
+    },
+    "carlos gomez": {
+      "movement": [
+        41,
+        67
+      ],
+      "pronunciatio": "\ud83e\uddf3\ud83d\ude10",
+      "description": "Carlos is waking up and completing his morning routine (grabbing his belongings and preparing to leave) @ the ville:carlos gomez's apartment:carlos gomez's room:closet",
+      "chat": null
+    },
+    "francisco lopez": {
+      "movement": [
+        34,
+        66
+      ],
+      "pronunciatio": "\ud83d\udce7\ud83d\udcc5",
+      "description": "Francisco is waking up and completing his morning routine (checking his emails and planning the day) @ the ville:artist's co-living space:francisco lopez's room:desk",
+      "chat": null
+    },
+    "kiki": {
+      "movement": [
+        17,
+        70
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:kiki's apartment:kiki's room:bed",
+      "chat": null
+    },
+    "frank": {
+      "movement": [
+        33,
+        69
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:frank's apartment:frank's room:bed",
+      "chat": null
+    },
+    "mk": {
+      "movement": [
+        78,
+        79
+      ],
+      "pronunciatio": "\ud83d\udcbb\ud83d\ude0c",
+      "description": "deeply engrossed in running algorithms and adjusting parameters for his AI economic model, while continuing to refine his notes on \"Decentralized Financial System Version 7: How to Eliminate Speculative Bubbles?\" He remains focused on exploring innovative solutions to eliminate speculative bubbles in the financial system (running a final simulation to validate the adjusted model) @ the ville:mk's house:classroom:desk",
+      "chat": null
+    },
+    "cichengege": {
+      "movement": [
+        25,
+        68
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:cichengege's apartment:cichengege's room:bed",
+      "chat": null
+    }
+  },
+  "meta": {
+    "curr_time": "March 14, 2025, 07:59:30"
+  }
+}

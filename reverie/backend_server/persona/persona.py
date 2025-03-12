@@ -218,7 +218,7 @@ class Persona:
         logger_info("retrieved data:")
         logger_info(retrieved)
         plan = self.plan(maze, personas, new_day, retrieved)
-        self.reflect()
+        # self.reflect()
         logger_info("get plan:",plan)
 
         # <execution> is a triple set that contains the following components:

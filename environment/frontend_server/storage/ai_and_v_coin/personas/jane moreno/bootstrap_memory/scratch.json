@@ -2,7 +2,7 @@
   "vision_r": 6,
   "att_bandwidth": 6,
   "retention": 8,
-  "curr_time": "March 07, 2025, 08:52:10",
+  "curr_time": "March 14, 2025, 00:00:00",
   "curr_tile": [
     99,
     65
@@ -27,8 +27,8 @@
   "relevance_w": 1,
   "importance_w": 1,
   "recency_decay": 0.995,
-  "importance_trigger_max": 250,
-  "importance_trigger_curr": 188,
+  "importance_trigger_max": 3250,
+  "importance_trigger_curr": 3188,
   "importance_ele_n": 41,
   "thought_count": 5,
   "daily_req": [
@@ -261,22 +261,18 @@
       60
     ]
   ],
-  "act_address": "the ville:moreno family's house:jane moreno's bedroom:desk",
-  "act_start_time": "March 07, 2025, 08:30:00",
-  "act_duration": 30,
-  "act_description": "working on NFT music projects and researching virtual economy trends (brainstorming ideas for her NFT music projects)",
-  "act_pronunciatio": "\ud83e\udd14\ud83c\udfa8",
+  "act_address": "",
+  "act_start_time": "",
+  "act_duration": 0,
+  "act_description": "",
+  "act_pronunciatio": "",
   "act_event": [
-    "jane moreno",
-    "brainstorm",
-    "ideas"
+    
   ],
-  "act_obj_description": "in use with notes and materials related to NFT music projects and virtual economy research",
-  "act_obj_pronunciatio": "\ud83d\udcda\ud83e\udd14",
+  "act_obj_description": "",
+  "act_obj_pronunciatio": "",
   "act_obj_event": [
-    "desk",
-    "is",
-    "use"
+    
   ],
   "chatting_with": null,
   "chat": null,

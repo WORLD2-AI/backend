@@ -1,0 +1,151 @@
+{
+  "persona": {
+    "christopher gardner": {
+      "movement": [
+        134,
+        72
+      ],
+      "pronunciatio": "\ud83d\udecf\ufe0f\ud83d\ude10",
+      "description": "attending school (waking up and getting out of bed) @ the ville:gardner family's house:christopher gardner's room:<random>",
+      "chat": null
+    },
+    "tom moreno": {
+      "movement": [
+        95,
+        73
+      ],
+      "pronunciatio": "\ud83e\udd14\ud83d\udca1",
+      "description": "Tom is waking up and completing his morning routine, preparing for another energetic day as the store manager of the supermarket. He is mentally gearing up to organize shelves, analyze sales data, and strategize his next business breakthrough (mentally strategizing his business breakthrough ideas).   @ the ville:moreno family's house:tom moreno's bedroom:desk",
+      "chat": null
+    },
+    "chris gardner": {
+      "movement": [
+        30,
+        86
+      ],
+      "pronunciatio": "\ud83d\udecc\ud83d\ude0c",
+      "description": "Chris is waking up and completing his morning routine (waking up and stretching) @ the ville:gardner family's house:chris gardner's room:bed",
+      "chat": null
+    },
+    "tamara taylor": {
+      "movement": [
+        61,
+        70
+      ],
+      "pronunciatio": "\ud83d\udde3\ufe0f\ud83e\udd14",
+      "description": "having breakfast (conversing about Carmen Ortiz and Tamara Taylor discussing the role of capital in decentralized projects like FitCoin and NFT music, emphasizing the importance of community engagement, transparency, and education, and planning collaborative workshops and events to attract and educate users.) @ the ville:tamara taylor and carmen ortiz's house:common room:desk",
+      "chat": null
+    },
+    "jane moreno": {
+      "movement": [
+        96,
+        68
+      ],
+      "pronunciatio": "\ud83d\udcdd\ud83d\ude10",
+      "description": "Jane is having breakfast and reviewing daily tasks (reviewing her daily tasks and schedule)   @ the ville:moreno family's house:jane moreno's bedroom:desk",
+      "chat": null
+    },
+    "rajiv patel": {
+      "movement": [
+        27,
+        13
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:artist's co-living space:rajiv patel's room:bed",
+      "chat": null
+    },
+    "linda": {
+      "movement": [
+        121,
+        77
+      ],
+      "pronunciatio": "\u2615\ud83c\udf5e",
+      "description": "having breakfast and reviewing plans for the day (preparing breakfast (e.g., making coffee and toast)) @ the ville:gardner family's house:kitchen:<random>",
+      "chat": null
+    },
+    "carmen ortiz": {
+      "movement": [
+        61,
+        69
+      ],
+      "pronunciatio": "\ud83d\udde3\ufe0f\ud83e\udd14",
+      "description": "Carmen is waking up and completing her morning routine (conversing about Carmen Ortiz and Tamara Taylor discussing the role of capital in decentralized projects like FitCoin and NFT music, emphasizing the importance of community engagement, transparency, and education, and planning collaborative workshops and events to attract and educate users.) @ the ville:tamara taylor and carmen ortiz's house:common room:desk",
+      "chat": null
+    },
+    "francisco lopez": {
+      "movement": [
+        36,
+        72
+      ],
+      "pronunciatio": "\ud83d\udcdd\ud83e\udd14",
+      "description": "working on thesis research and drafting sections (reviewing his thesis outline and research goals) @ the ville:frank's apartment:frank's bathroom:toilet",
+      "chat": null
+    },
+    "arthur burton": {
+      "movement": [
+        11,
+        67
+      ],
+      "pronunciatio": "\ud83c\udf73\ud83d\ude10",
+      "description": "having breakfast and reviewing bar inventory (Arthur is preparing breakfast) @ the ville:arthur burton's apartment:arthur burton's room:cooking area",
+      "chat": null
+    },
+    "latoya williams": {
+      "movement": [
+        17,
+        16
+      ],
+      "pronunciatio": "\ud83d\udcf8\ud83d\ude0a",
+      "description": "having breakfast and planning her day, including preparing for her photography work and upcoming supermarket trip (Latoya is reviewing her photography work from her recent travels) @ the ville:artist's co-living space:latoya williams's room:desk",
+      "chat": null
+    },
+    "kiki": {
+      "movement": [
+        17,
+        70
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:kiki's apartment:kiki's room:bed",
+      "chat": null
+    },
+    "cichengege": {
+      "movement": [
+        25,
+        68
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:cichengege's apartment:cichengege's room:bed",
+      "chat": null
+    },
+    "frank": {
+      "movement": [
+        33,
+        69
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:frank's apartment:frank's room:bed",
+      "chat": null
+    },
+    "mk": {
+      "movement": [
+        78,
+        79
+      ],
+      "pronunciatio": "\ud83d\udcca\ud83e\udd14",
+      "description": "continuing his research on the AI economic system, diving deeper into coding and refining the algorithms for his decentralized financial system. He remains fully immersed in his work, exploring innovative solutions to eliminate speculative bubbles and improve the model's efficiency (reviewing the latest data outputs from his AI economic model) @ the ville:mk's house:mk's bedroom:desk",
+      "chat": null
+    },
+    "carlos gomez": {
+      "movement": [
+        41,
+        67
+      ],
+      "pronunciatio": "\ud83d\udcdd\ud83d\ude10",
+      "description": "Carlos is writing poetry and exploring his inner thoughts (sitting at his desk, preparing his notebook and pen) @ the ville:carlos gomez's apartment:carlos gomez's room:desk",
+      "chat": null
+    }
+  },
+  "meta": {
+    "curr_time": "March 14, 2025, 08:01:50"
+  }
+}

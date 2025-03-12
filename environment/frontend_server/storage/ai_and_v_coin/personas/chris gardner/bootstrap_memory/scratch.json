@@ -2,7 +2,7 @@
   "vision_r": 8,
   "att_bandwidth": 8,
   "retention": 8,
-  "curr_time": "March 07, 2025, 08:52:10",
+  "curr_time": "March 14, 2025, 00:00:00",
   "curr_tile": [
     122,
     77
@@ -27,8 +27,8 @@
   "relevance_w": 1,
   "importance_w": 1,
   "recency_decay": 0.995,
-  "importance_trigger_max": 250,
-  "importance_trigger_curr": 146,
+  "importance_trigger_max": 2250,
+  "importance_trigger_curr": 2146,
   "importance_ele_n": 65,
   "thought_count": 5,
   "daily_req": [
@@ -260,22 +260,18 @@
       60
     ]
   ],
-  "act_address": "the ville:gardner family's house:kitchen:kitchen sink",
-  "act_start_time": "March 07, 2025, 08:48:00",
-  "act_duration": 10,
-  "act_description": "heading to work (cleaning up after breakfast)  ",
-  "act_pronunciatio": "\ud83e\uddf9\ud83d\ude10",
+  "act_address": "",
+  "act_start_time": "",
+  "act_duration": 0,
+  "act_description": "",
+  "act_pronunciatio": "",
   "act_event": [
-    "chris gardner",
-    "clean",
-    "breakfast"
+    
   ],
-  "act_obj_description": "in use and has dishes or utensils from breakfast being cleaned",
-  "act_obj_pronunciatio": "\ud83e\uddfc\ud83d\ude0a",
+  "act_obj_description": "",
+  "act_obj_pronunciatio": "",
   "act_obj_event": [
-    "kitchen sink",
-    "is",
-    "use"
+    
   ],
   "chatting_with": null,
   "chat": null,

@@ -2,7 +2,7 @@
   "vision_r": 6,
   "att_bandwidth": 6,
   "retention": 8,
-  "curr_time": "March 07, 2025, 08:52:10",
+  "curr_time": "March 14, 2025, 00:00:00",
   "curr_tile": [
     59,
     74
@@ -27,8 +27,8 @@
   "relevance_w": 1,
   "importance_w": 1,
   "recency_decay": 0.995,
-  "importance_trigger_max": 250,
-  "importance_trigger_curr": 132,
+  "importance_trigger_max": 4250,
+  "importance_trigger_curr": 4132,
   "importance_ele_n": 65,
   "thought_count": 5,
   "daily_req": [
@@ -305,28 +305,23 @@
       60
     ]
   ],
-  "act_address": "the ville:tamara taylor and carmen ortiz's house:tamara taylor's room:desk",
-  "act_start_time": "March 07, 2025, 08:47:00",
-  "act_duration": 15,
-  "act_description": "preparing for the virtual team meeting (making notes on key discussion points)",
-  "act_pronunciatio": "\ud83d\udcdd\ud83e\uddd0",
+  "act_address": "",
+  "act_start_time": "",
+  "act_duration": 0,
+  "act_description": "",
+  "act_pronunciatio": "",
   "act_event": [
-    "tamara taylor",
-    "make",
-    "notes"
+   
   ],
-  "act_obj_description": "being used for preparing for the virtual team meeting; it has notes and materials related to key discussion points on it",
-  "act_obj_pronunciatio": "\ud83d\udcdd\ud83d\ude10",
+  "act_obj_description": "",
+  "act_obj_pronunciatio": "",
   "act_obj_event": [
-    "desk",
-    "is",
-    "used"
+    
   ],
   "chatting_with": null,
   "chat": null,
   "chatting_with_buffer": {
-    "frank": -208,
-    "carmen ortiz": 407
+    
   },
   "chatting_end_time": null,
   "act_path_set": true,

@@ -1,0 +1,220 @@
+{
+  "vision_r": 8,
+  "att_bandwidth": 8,
+  "retention": 8,
+  "curr_time": "March 14, 2025, 10:42:20",
+  "curr_tile": [
+    16,
+    70
+  ],
+  "daily_plan_req": "From 10 AM to 11 AM, kiki invited cichenggege to go shopping together at the supermarket. \nAt 10 a.m., kiki appeared at the entrance of the supermarket, waiting for Cicenggege to arrive. \nAt 10:10 AM, kiki, Cichenggege, and Latoya Williams entered the supermarket together to start shopping. kiki followed Cichenggege as they picked out items, occasionally chatting happily with Cichenggege. \nAt 10:20 AM, kiki and Cichenggege walked towards the snack section together, with kiki hoping that Cichenggege would buy her some of her favorite snacks. \nAt 11:00 AM, kiki and Cichenggege left the supermarket together. \nFrom 2 PM to 4 PM,kiki is working out at the gym. \nAt 3:30 PM, kiki finished her workout and was resting in the gym. She saw Cichenggege running on the treadmill, with Latoya Williams on the adjacent treadmill. Seeing Cichenggege sweating profusely, kiki quickly went up to him and handed him a towel, saying, \"Cichenggege, you're so great!\" \nAt 4:00 PM, kiki left the gym. \nAt 8:25 PM, kiki went to the moonlight tavern bar to relax.\nAt 8:30 PM, kiki encountered Cichenggege engaging in flirtatious conversation with Latoya Williams.\nAt 8:40 PM, kiki confessed to Cichenggege, cichenggege did not respond.\nAt 9:00 PM, kiki left the moonlight tavern bar and went home.",
+  "name": "kiki",
+  "first_name": "ki",
+  "last_name": "ki",
+  "age": 26,
+  "innate": "friendly, helpful, cryptocurrency investor",
+  "learned": "kiki is a single man who loves making friends. she is always looking for new ways to improve himself and become an outstanding investor.",
+  "currently": "kiki is neighbors with his friend cichengege. kiki is a cryptocurrency investor and also holds some positions in the small town.",
+  "lifestyle": "kiki usually goes to bed around 11 pm., wakes up at 9 am., and has dinner around 6 pm. He enjoys entertainment.",
+  "living_area": "the ville:kiki's apartment:kiki's room",
+  "concept_forget": 100,
+  "daily_reflection_time": 180,
+  "daily_reflection_size": 5,
+  "overlap_reflect_th": 4,
+  "kw_strg_event_reflect_th": 10,
+  "kw_strg_thought_reflect_th": 9,
+  "recency_w": 1,
+  "relevance_w": 1,
+  "importance_w": 1,
+  "recency_decay": 0.995,
+  "importance_trigger_max": 2250,
+  "importance_trigger_curr": 204,
+  "importance_ele_n": 44,
+  "thought_count": 5,
+  "daily_req": [
+    "Wake up and complete the morning routine at 9:00 AM.",
+    "Go shopping with Cichenggege at the supermarket from 10:00 AM to 11:00 AM.",
+    "Have lunch at 12:00 PM.",
+    "Work out at the gym from 2:00 PM to 4:00 PM.",
+    "Rest and relax at home from 4:30 PM to 6:00 PM.",
+    "Have dinner at 6:00 PM.",
+    "Go to the Moonlight Tavern bar at 8:25 PM.",
+    "Leave the Moonlight Tavern bar and go home at 9:00 PM.",
+    "Go to bed at 11:00 PM."
+  ],
+  "f_daily_schedule": [
+    [
+      "sleeping",
+      540
+    ],
+    [
+      "waking up and completing the morning routine (waking up and stretching)",
+      10
+    ],
+    [
+      "waking up and completing the morning routine (brushing teeth and washing face)",
+      10
+    ],
+    [
+      "waking up and completing the morning routine (preparing and having breakfast)",
+      20
+    ],
+    [
+      "waking up and completing the morning routine (checking cryptocurrency updates on the phone)",
+      10
+    ],
+    [
+      "waking up and completing the morning routine (getting dressed and preparing to leave for the supermarket)",
+      10
+    ],
+    [
+      "waiting at the entrance of the supermarket for Cichenggege to arrive",
+      60
+    ],
+    [
+      "leaving the supermarket with Cichenggege after finishing their shopping",
+      60
+    ],
+    [
+      "having lunch",
+      60
+    ],
+    [
+      "relaxing at home after lunch, possibly checking cryptocurrency updates or planning his next investment moves",
+      60
+    ],
+    [
+      "working out at the gym",
+      60
+    ],
+    [
+      "working out at the gym, resting briefly and encouraging Cichenggege as he runs on the treadmill",
+      60
+    ],
+    [
+      "leaving the gym and heading home to rest and relax after the workout",
+      60
+    ],
+    [
+      "resting and relaxing at home, possibly checking cryptocurrency updates or planning his next investment moves",
+      60
+    ],
+    [
+      "having dinner at home, enjoying a relaxing meal while possibly reflecting on the day's events or planning for future cryptocurrency investments",
+      60
+    ],
+    [
+      "relaxing at home, possibly checking cryptocurrency updates or planning his next investment moves while enjoying some entertainment",
+      60
+    ],
+    [
+      "preparing to go to the Moonlight Tavern bar, possibly getting ready and reflecting on the day's events or thinking about his upcoming interactions with Cichenggege and Latoya Williams",
+      60
+    ],
+    [
+      "leaving the Moonlight Tavern bar and heading home after a day of socializing, reflecting on the events of the evening, particularly the interaction with Cichenggege and Latoya Williams",
+      60
+    ],
+    [
+      "relaxing at home, possibly reflecting on the day's events, including the shopping trip with Cichenggege, the workout at the gym, and the evening at the Moonlight Tavern bar. She might also be checking cryptocurrency updates or planning her next investment moves while winding down before bedtime",
+      60
+    ],
+    [
+      "going to bed, reflecting on the day's events, including the shopping trip with Cichenggege, the workout at the gym, and the evening at the Moonlight Tavern bar. She might also be thinking about her cryptocurrency investments and planning for the next day before falling asleep",
+      60
+    ],
+    [
+      "sleeping",
+      0
+    ]
+  ],
+  "f_daily_schedule_hourly_org": [
+    [
+      "sleeping",
+      540
+    ],
+    [
+      "waking up and completing the morning routine",
+      60
+    ],
+    [
+      "waiting at the entrance of the supermarket for Cichenggege to arrive",
+      60
+    ],
+    [
+      "leaving the supermarket with Cichenggege after finishing their shopping",
+      60
+    ],
+    [
+      "having lunch",
+      60
+    ],
+    [
+      "relaxing at home after lunch, possibly checking cryptocurrency updates or planning his next investment moves",
+      60
+    ],
+    [
+      "working out at the gym",
+      60
+    ],
+    [
+      "working out at the gym, resting briefly and encouraging Cichenggege as he runs on the treadmill",
+      60
+    ],
+    [
+      "leaving the gym and heading home to rest and relax after the workout",
+      60
+    ],
+    [
+      "resting and relaxing at home, possibly checking cryptocurrency updates or planning his next investment moves",
+      60
+    ],
+    [
+      "having dinner at home, enjoying a relaxing meal while possibly reflecting on the day's events or planning for future cryptocurrency investments",
+      60
+    ],
+    [
+      "relaxing at home, possibly checking cryptocurrency updates or planning his next investment moves while enjoying some entertainment",
+      60
+    ],
+    [
+      "preparing to go to the Moonlight Tavern bar, possibly getting ready and reflecting on the day's events or thinking about his upcoming interactions with Cichenggege and Latoya Williams",
+      60
+    ],
+    [
+      "leaving the Moonlight Tavern bar and heading home after a day of socializing, reflecting on the events of the evening, particularly the interaction with Cichenggege and Latoya Williams",
+      60
+    ],
+    [
+      "relaxing at home, possibly reflecting on the day's events, including the shopping trip with Cichenggege, the workout at the gym, and the evening at the Moonlight Tavern bar. She might also be checking cryptocurrency updates or planning her next investment moves while winding down before bedtime",
+      60
+    ],
+    [
+      "going to bed, reflecting on the day's events, including the shopping trip with Cichenggege, the workout at the gym, and the evening at the Moonlight Tavern bar. She might also be thinking about her cryptocurrency investments and planning for the next day before falling asleep",
+      60
+    ]
+  ],
+  "act_address": "the ville:kiki's apartment:kiki's room:bed",
+  "act_start_time": "March 14, 2025, 06:00:00",
+  "act_duration": 540,
+  "act_description": "sleeping",
+  "act_pronunciatio": "\ud83d\ude34\ud83d\ude10",
+  "act_event": [
+    "kiki",
+    "is",
+    "sleep"
+  ],
+  "act_obj_description": "being used",
+  "act_obj_pronunciatio": "\ud83d\udee0\ufe0f\ud83d\ude14",
+  "act_obj_event": [
+    "bed",
+    "is",
+    "used"
+  ],
+  "chatting_with": null,
+  "chat": null,
+  "chatting_with_buffer": {},
+  "chatting_end_time": null,
+  "act_path_set": true,
+  "planned_path": []
+}

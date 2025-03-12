@@ -19,7 +19,7 @@ fs_back_end = "E:\\code\\python\\town\\reverie\\backend_server"
 collision_block_id = "0"
 emb_url = "http://127.0.0.1:11434"
 # api_url = "http://127.0.0.1"
-openai_api_key = ["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"]
+openai_api_key = ["sk-ded95fe2fbac46d8995610ee473095ed"]
 
 # api_url = "http://8.130.125.153"
 # openai_api_key = ["app-cYXRNIAFUZY7ywce7OOkXcN9"]

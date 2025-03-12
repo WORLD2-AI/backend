@@ -12,7 +12,7 @@ from persona.prompt_template.gpt_structure import *
 from persona.prompt_template.run_gpt_prompt import *
 
 def generate_poig_score(persona, event_type, description): 
-  if "is idle" in description: 
+  if "is idle" in description or "sleep" in description or "is blank" in description or "in use" in description: 
     return 1
 
   if event_type == "event": 
@@ -20,7 +20,18 @@ def generate_poig_score(persona, event_type, description):
   elif event_type == "chat": 
     return run_gpt_prompt_chat_poignancy(persona, 
                            persona.scratch.act_description)[0]
+def generate_poig_score_ignore_maze(persona, event_type, description,maze): 
+  for k in maze.gob_dict:
+    if description.startswith(maze.gob_dict[k]):
+      return 1
+  if "is idle" in description or "sleep" in description or "is blank" in description or "in use" in description: 
+    return 1
 
+  if event_type == "event": 
+    return run_gpt_prompt_event_poignancy(persona, description)[0]
+  elif event_type == "chat": 
+    return run_gpt_prompt_chat_poignancy(persona, 
+                           persona.scratch.act_description)[0]
 def perceive(persona, maze): 
   """
   Perceives events around the persona and saves it to the memory, both events 
@@ -49,7 +60,6 @@ def perceive(persona, maze):
   # in the form of a tree constructed using dictionaries. 
   for k in nearby_tiles: 
     i = maze.access_tile(k)
-    logger_info(k,i)
     if i["world"]: 
       if (i["world"] not in persona.s_mem.tree): 
         persona.s_mem.tree[i["world"]] = {}
@@ -149,9 +159,9 @@ def perceive(persona, maze):
       event_embedding_pair = (desc_embedding_in, event_embedding)
       
       # Get event poignancy. 
-      event_poignancy = generate_poig_score(persona, 
+      event_poignancy = generate_poig_score_ignore_maze(persona, 
                                             "event", 
-                                            desc_embedding_in)
+                                            desc_embedding_in,maze)
 
       # If we observe the persona's self chat, we include that in the memory
       # of the persona here. 

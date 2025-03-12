@@ -1,0 +1,151 @@
+{
+  "persona": {
+    "christopher gardner": {
+      "movement": [
+        123,
+        82
+      ],
+      "pronunciatio": "\ud83c\udf93\ud83d\ude0a",
+      "description": "attending school (participating in the first class of the day)   @ the ville:gardner family's house:common room:seat",
+      "chat": null
+    },
+    "linda": {
+      "movement": [
+        141,
+        73
+      ],
+      "pronunciatio": "\ud83d\udca1\ud83e\udd14",
+      "description": "researching and brainstorming ideas for unregulated creative spaces (brainstorming potential benefits of integrating technology and art in unregulated spaces)   @ the ville:gardner family's house:linda's room:<random>",
+      "chat": null
+    },
+    "chris gardner": {
+      "movement": [
+        29,
+        86
+      ],
+      "pronunciatio": "\ud83c\udf73\ud83d\ude0a",
+      "description": "Chris is dropping Christopher off at school (eating breakfast with Christopher)   @ the ville:gardner family's house:kitchen:toaster",
+      "chat": null
+    },
+    "tamara taylor": {
+      "movement": [
+        59,
+        74
+      ],
+      "pronunciatio": "\ud83d\udcbb\ud83d\ude0a",
+      "description": "working on FitCoin project tasks and reviewing progress (creating a presentation for the FitCoin launch plan)   @ the ville:tamara taylor and carmen ortiz's house:tamara taylor's room:desk",
+      "chat": null
+    },
+    "jane moreno": {
+      "movement": [
+        101,
+        75
+      ],
+      "pronunciatio": "\ud83d\udd0d\ud83e\udd14",
+      "description": "working on NFT music projects and researching decentralization in the art field (exploring decentralized platforms for NFT art and music)   @ the ville:moreno family's house:jane moreno's bedroom:closet",
+      "chat": null
+    },
+    "rajiv patel": {
+      "movement": [
+        28,
+        14
+      ],
+      "pronunciatio": "\ud83e\uddf9\ud83d\ude0a",
+      "description": "waking up and completing his morning routine (tidying up his bedroom) @ the ville:artist's co-living space:rajiv patel's room:closet",
+      "chat": null
+    },
+    "carmen ortiz": {
+      "movement": [
+        67,
+        73
+      ],
+      "pronunciatio": "\ud83d\udcbc\ud83d\ude0a",
+      "description": "opening the Supermarket and assisting customers (organizing the checkout counter and preparing the cash register) @ the ville:tamara taylor and carmen ortiz's house:carmen ortiz's room:closet",
+      "chat": null
+    },
+    "latoya williams": {
+      "movement": [
+        18,
+        14
+      ],
+      "pronunciatio": "\ud83d\udcdd\ud83c\udf92",
+      "description": "preparing for her upcoming supermarket trip and finalizing her shopping list (setting reminders for her supermarket trip and preparing her camera bag for the outing) @ the ville:artist's co-living space:latoya williams's room:closet",
+      "chat": null
+    },
+    "tom moreno": {
+      "movement": [
+        99,
+        52
+      ],
+      "pronunciatio": "\ud83d\udcbc\ud83e\udd14",
+      "description": "Tom is reviewing the previous day's sales reports and inventory levels, making notes on which products are selling well and which need restocking. He is also brainstorming ways to optimize the supermarket's supply chain, considering potential investments in virtual economic platforms to enhance profitability. His energetic and slightly aggressive demeanor keeps the staff on their toes as he delegates tasks for the day (considering potential investments in virtual economic platforms to enhance profitability) @ the ville:supermarket:checkout counter:computer desk",
+      "chat": null
+    },
+    "carlos gomez": {
+      "movement": [
+        43,
+        70
+      ],
+      "pronunciatio": "\u270d\ufe0f\ud83d\ude0a",
+      "description": "Carlos is writing poetry and exploring his inner thoughts (writing the first draft of a poem)   @ the ville:carlos gomez's apartment:carlos gomez's room:desk",
+      "chat": null
+    },
+    "mk": {
+      "movement": [
+        72,
+        60
+      ],
+      "pronunciatio": "\ud83d\udcbb\ud83d\ude2b",
+      "description": "continuing his research on the AI economic system, diving deeper into coding and refining the algorithms for his decentralized financial system. He remains fully immersed in his work, exploring innovative solutions to eliminate speculative bubbles and improve the model's efficiency (debugging errors in the current algorithm)   @ the ville:mk's house:mk's bedroom:desk",
+      "chat": null
+    },
+    "cichengege": {
+      "movement": [
+        22,
+        74
+      ],
+      "pronunciatio": "\ud83d\udcc5\ud83e\udd14",
+      "description": "waking up and completing the morning routine (checking messages and planning the day) @ the ville:cichengege's apartment:cichengege's room:desk",
+      "chat": null
+    },
+    "frank": {
+      "movement": [
+        33,
+        69
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:frank's apartment:frank's room:bed",
+      "chat": null
+    },
+    "arthur burton": {
+      "movement": [
+        11,
+        69
+      ],
+      "pronunciatio": "\ud83d\uded2\ud83d\ude97",
+      "description": "visiting the local market to restock supplies (purchasing the supplies and loading them into his car) @ the ville:arthur burton's apartment:arthur burton's room:<random>",
+      "chat": null
+    },
+    "francisco lopez": {
+      "movement": [
+        24,
+        89
+      ],
+      "pronunciatio": "\ud83d\udcac\ud83e\udd14",
+      "description": "working on thesis research and drafting sections (conversing about Francisco Lopez and Kiki discussing the role of AI in revolutionizing financial markets, particularly in cryptocurrency trading, the challenges of over-reliance on AI, the importance of regulation, ethical frameworks, and public education to balance innovation with stability.) @ the ville:artist's co-living space:common room:desk",
+      "chat": null
+    },
+    "kiki": {
+      "movement": [
+        22,
+        89
+      ],
+      "pronunciatio": "\ud83d\udcac\ud83e\udd14",
+      "description": "waking up and completing the morning routine (conversing about Francisco Lopez and Kiki discussing the role of AI in revolutionizing financial markets, particularly in cryptocurrency trading, the challenges of over-reliance on AI, the importance of regulation, ethical frameworks, and public education to balance innovation with stability.) @ the ville:kiki's apartment:kiki's room:seat",
+      "chat": null
+    }
+  },
+  "meta": {
+    "curr_time": "March 14, 2025, 09:51:00"
+  }
+}

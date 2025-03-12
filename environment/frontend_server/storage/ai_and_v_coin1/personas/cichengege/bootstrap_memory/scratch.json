@@ -1,0 +1,270 @@
+{
+  "vision_r": 6,
+  "att_bandwidth": 8,
+  "retention": 5,
+  "curr_time": "March 14, 2025, 10:42:20",
+  "curr_tile": [
+    27,
+    70
+  ],
+  "daily_plan_req": "1. Wake up and complete the morning routine at 9:00 AM.   2. Go shopping at the supermarket with Kiki and Latoya Williams from 10:00 AM to 11:00 AM.   3. Work out at the gym with Latoya Williams from 3:00 PM to 4:05 PM.   4. Relax at the Moonlight Tavern Bar from 8:00 PM to 9:00 PM.",
+  "name": "cichengege",
+  "first_name": "ci",
+  "last_name": "cheng",
+  "age": 26,
+  "innate": "friendly, helpful, organized, often trusting of others, and without guile",
+  "learned": "cichengege is a vibrant young person who loves to help others. He is always looking for new ways to make everyone's life easier and more enjoyable.",
+  "currently": "Status: On Friday, March 14, at 6:00 AM, cichengege is peacefully asleep in his bed, embracing the comfort and stability of his well-established routine. The quiet moments of rest bring him a sense of calm and contentment, allowing him to recharge for the day ahead. While his thoughts occasionally wander to the warmth kiki brings and the mysterious allure of Latoya Williams, cichengege remains grounded in the tranquility of his morning. For now, his focus is on maintaining this steady rhythm, appreciating the consistency that keeps him centered. If there are any additional plans or tasks for the day, they remain outside the scope of this serene moment.",
+  "lifestyle": "cichengege usually goes to bed around 12 pm., wakes up at 9 am., and has dinner around 6 pm.",
+  "living_area": "the ville:cichengege's apartment:cichengege's room",
+  "concept_forget": 100,
+  "daily_reflection_time": 180,
+  "daily_reflection_size": 5,
+  "overlap_reflect_th": 4,
+  "kw_strg_event_reflect_th": 10,
+  "kw_strg_thought_reflect_th": 9,
+  "recency_w": 1,
+  "relevance_w": 1,
+  "importance_w": 1,
+  "recency_decay": 0.995,
+  "importance_trigger_max": 1250,
+  "importance_trigger_curr": 443,
+  "importance_ele_n": 566,
+  "thought_count": 5,
+  "daily_req": [
+    "Wake up and complete the morning routine at 9:00 AM.",
+    "Go shopping at the supermarket with Kiki and Latoya at 10:00 AM.",
+    "Walk towards the snack section with Kiki at 10:20 AM.",
+    "Leave the supermarket with Kiki at 11:00 AM.",
+    "Have lunch at 12:30 PM.",
+    "Invite Latoya Williams to work out together at the gym at 3:00 PM.",
+    "Start running on the treadmills with Latoya Williams at 3:05 PM.",
+    "Talk with Kiki at 3:30 PM.",
+    "Leave the gym with Latoya Williams at 4:05 PM.",
+    "Have dinner at 6:00 PM.",
+    "Go to the Moonlight Tavern Bar to relax at 8:00 PM.",
+    "Encounter Kiki at 8:30 PM.",
+    "Leave the Moonlight Tavern Bar and go home at 9:00 PM.",
+    "Relax and wind down before bed from 10:00 PM to 12:00 AM.",
+    "Go to bed at 12:00 AM."
+  ],
+  "f_daily_schedule": [
+    [
+      "sleeping",
+      540
+    ],
+    [
+      "waking up and completing his morning routine",
+      60
+    ],
+    [
+      "going shopping at the supermarket with Kiki and Latoya Williams (waking up and stretching)",
+      5
+    ],
+    [
+      "going shopping at the supermarket with Kiki and Latoya Williams (brushing his teeth and washing his face)",
+      10
+    ],
+    [
+      "going shopping at the supermarket with Kiki and Latoya Williams (getting dressed for the day)",
+      10
+    ],
+    [
+      "going shopping at the supermarket with Kiki and Latoya Williams (having a quick breakfast)",
+      10
+    ],
+    [
+      "going shopping at the supermarket with Kiki and Latoya Williams (meeting Kiki and Latoya Williams at the supermarket entrance)",
+      5
+    ],
+    [
+      "going shopping at the supermarket with Kiki and Latoya Williams (discussing the shopping list with Kiki and Latoya)",
+      10
+    ],
+    [
+      "going shopping at the supermarket with Kiki and Latoya Williams (picking up groceries from the shelves)",
+      10
+    ],
+    [
+      "leaving the supermarket with Kiki (gathering the purchased items into shopping bags)",
+      10
+    ],
+    [
+      "leaving the supermarket with Kiki (walking with Kiki to the checkout counter)",
+      10
+    ],
+    [
+      "leaving the supermarket with Kiki (paying for the groceries at the checkout)",
+      10
+    ],
+    [
+      "leaving the supermarket with Kiki (helping Kiki carry the bags to the car)",
+      10
+    ],
+    [
+      "leaving the supermarket with Kiki (loading the groceries into the car)",
+      10
+    ],
+    [
+      "leaving the supermarket with Kiki (driving away from the supermarket with Kiki)",
+      10
+    ],
+    [
+      "having lunch",
+      60
+    ],
+    [
+      "relaxing at home after lunch, possibly catching up on some light reading or planning the rest of his day",
+      60
+    ],
+    [
+      "relaxing at home, possibly catching up on some light reading or planning the rest of his day",
+      60
+    ],
+    [
+      "inviting Latoya Williams to work out together at the gym",
+      60
+    ],
+    [
+      "leaving the gym with Latoya Williams",
+      60
+    ],
+    [
+      "relaxing at home, possibly preparing for dinner or engaging in a quiet activity to unwind after the gym session",
+      60
+    ],
+    [
+      "having dinner",
+      60
+    ],
+    [
+      "relaxing at home, possibly preparing for his evening outing to the Moonlight Tavern Bar or engaging in a quiet activity to unwind before heading out",
+      60
+    ],
+    [
+      "going to the Moonlight Tavern Bar to relax",
+      60
+    ],
+    [
+      "leaving the Moonlight Tavern Bar and going home",
+      60
+    ],
+    [
+      "relaxing and winding down before bed, possibly engaging in a quiet activity like reading, listening to calming music, or reflecting on the day's events",
+      120
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ]
+  ],
+  "f_daily_schedule_hourly_org": [
+    [
+      "sleeping",
+      540
+    ],
+    [
+      "waking up and completing his morning routine",
+      60
+    ],
+    [
+      "going shopping at the supermarket with Kiki and Latoya Williams",
+      60
+    ],
+    [
+      "leaving the supermarket with Kiki",
+      60
+    ],
+    [
+      "having lunch",
+      60
+    ],
+    [
+      "relaxing at home after lunch, possibly catching up on some light reading or planning the rest of his day",
+      60
+    ],
+    [
+      "relaxing at home, possibly catching up on some light reading or planning the rest of his day",
+      60
+    ],
+    [
+      "inviting Latoya Williams to work out together at the gym",
+      60
+    ],
+    [
+      "leaving the gym with Latoya Williams",
+      60
+    ],
+    [
+      "relaxing at home, possibly preparing for dinner or engaging in a quiet activity to unwind after the gym session",
+      60
+    ],
+    [
+      "having dinner",
+      60
+    ],
+    [
+      "relaxing at home, possibly preparing for his evening outing to the Moonlight Tavern Bar or engaging in a quiet activity to unwind before heading out",
+      60
+    ],
+    [
+      "going to the Moonlight Tavern Bar to relax",
+      60
+    ],
+    [
+      "leaving the Moonlight Tavern Bar and going home",
+      60
+    ],
+    [
+      "relaxing and winding down before bed, possibly engaging in a quiet activity like reading, listening to calming music, or reflecting on the day's events",
+      120
+    ]
+  ],
+  "act_address": "the ville:cichengege's apartment:cichengege's room:refrigerator",
+  "act_start_time": "March 14, 2025, 10:40:00",
+  "act_duration": 10,
+  "act_description": "going shopping at the supermarket with Kiki and Latoya Williams (discussing the shopping list with Kiki and Latoya)",
+  "act_pronunciatio": "\ud83d\udde3\ufe0f\ud83d\ude0a",
+  "act_event": [
+    "cichengege",
+    "discuss",
+    "shopping list"
+  ],
+  "act_obj_description": "empty or being restocked",
+  "act_obj_pronunciatio": "\ud83d\uded2\ud83d\ude10",
+  "act_obj_event": [
+    "refrigerator",
+    "is",
+    "empty"
+  ],
+  "chatting_with": null,
+  "chat": null,
+  "chatting_with_buffer": {},
+  "chatting_end_time": null,
+  "act_path_set": true,
+  "planned_path": []
+}

@@ -414,7 +414,17 @@ def get_user_info(request):
         with open(memory + "/scratch.json") as json_file:
             scratch = json.load(json_file)
 
-
+        if scratch and scratch['f_daily_schedule'] and len(scratch['f_daily_schedule']):
+            daily_schedule = []
+            for i in scratch['f_daily_schedule']:
+                if len(i) == 2 and  i[1] <=0:
+                    continue
+                daily_schedule.append(i)
+                if i[0] == scratch['act_description']:
+                    break
+            # daily_schedule 倒序排序
+            daily_schedule.reverse()
+            scratch['f_daily_schedule'] = daily_schedule
         with open(memory + "/associative_memory/nodes.json") as json_file:
             associative = json.load(json_file)
 
@@ -441,12 +451,18 @@ def get_user_info(request):
 
         data[persona_name] = {"sim_code": sim_code,
                 "persona_name": persona_name,
-                "persona_names_mapping": names_mapping,
                 "persona_name_underscore": persona_name_underscore,
                 "scratch": scratch,
                 "a_mem_event": a_mem_event,
                 "a_mem_chat": a_mem_chat,
                 "a_mem_thought": a_mem_thought}
+    story_file  = f"storage/{sim_code}/reverie/story.json"
+    if os.path.exists(story_file):
+        with open(story_file) as json_file:
+            story = json.load(json_file)
+            data["story"] = story
+    else:
+        data["story"] = []
     return JsonResponse(data)
     
 

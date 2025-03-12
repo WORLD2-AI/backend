@@ -1,0 +1,151 @@
+{
+  "persona": {
+    "christopher gardner": {
+      "movement": [
+        119,
+        77
+      ],
+      "pronunciatio": "\ud83c\udf73\ud83d\ude10",
+      "description": "attending school (eating breakfast) @ the ville:gardner family's house:kitchen:<random>",
+      "chat": null
+    },
+    "linda": {
+      "movement": [
+        129,
+        77
+      ],
+      "pronunciatio": "\ud83d\udce7\ud83d\ude10",
+      "description": "having breakfast and reviewing plans for the day (checking emails and messages for any updates or changes to her plans)   @ the ville:gardner family's house:linda's room:<random>",
+      "chat": null
+    },
+    "tamara taylor": {
+      "movement": [
+        59,
+        74
+      ],
+      "pronunciatio": "\ud83d\udca1\ud83e\udd14",
+      "description": "working on FitCoin project tasks and reviewing progress (brainstorming new features for FitCoin)   @ the ville:tamara taylor and carmen ortiz's house:tamara taylor's room:desk",
+      "chat": null
+    },
+    "chris gardner": {
+      "movement": [
+        36,
+        83
+      ],
+      "pronunciatio": "\ud83d\udcac\ud83e\udd14",
+      "description": "Chris is waking up and completing his morning routine (conversing about Chris Gardner and MK discussing the integration of AI tools into trading simulations to mitigate speculative bubbles, ensure adaptability to market conditions, and bridge traditional and decentralized financial systems, with plans to collaborate and potentially co-author a paper on the topic.) @ the ville:gardner family's house:common room:common room sofa",
+      "chat": null
+    },
+    "tom moreno": {
+      "movement": [
+        94,
+        69
+      ],
+      "pronunciatio": "\ud83d\udcda\ud83d\ude0a",
+      "description": "Tom is arriving at the supermarket, greeting his staff with his usual energetic and slightly aggressive demeanor. He begins organizing shelves, ensuring everything is in perfect order for the day's customers, while also keeping an eye on the sales data to identify trends and opportunities for his supply chain investment plans (beginning to organize shelves and check inventory). @ the ville:moreno family's house:common room:shelf",
+      "chat": null
+    },
+    "jane moreno": {
+      "movement": [
+        96,
+        68
+      ],
+      "pronunciatio": "\ud83d\udd0d\ud83e\udd14",
+      "description": "working on NFT music projects and researching decentralization in the art field (researching recent trends in decentralization in the art field)   @ the ville:moreno family's house:jane moreno's bedroom:desk",
+      "chat": null
+    },
+    "latoya williams": {
+      "movement": [
+        17,
+        16
+      ],
+      "pronunciatio": "\ud83d\udcdd\ud83d\ude0a",
+      "description": "having breakfast and planning her day, including preparing for her photography work and upcoming supermarket trip (preparing her shopping list for the supermarket trip) @ the ville:artist's co-living space:latoya williams's room:desk",
+      "chat": null
+    },
+    "carlos gomez": {
+      "movement": [
+        41,
+        69
+      ],
+      "pronunciatio": "\ud83d\udcdd\ud83e\udd14",
+      "description": "Carlos is writing poetry and exploring his inner thoughts (revising and refining the structure of the poem) @ the ville:carlos gomez's apartment:carlos gomez's room:desk",
+      "chat": null
+    },
+    "francisco lopez": {
+      "movement": [
+        28,
+        87
+      ],
+      "pronunciatio": "\ud83d\udcda\ud83e\udd14",
+      "description": "working on thesis research and drafting sections (reading academic papers on AI Economics) @ the ville:artist's co-living space:francisco lopez's room:desk",
+      "chat": null
+    },
+    "carmen ortiz": {
+      "movement": [
+        60,
+        68
+      ],
+      "pronunciatio": "\ud83d\uded2\ud83d\ude0a",
+      "description": "opening the Supermarket and assisting customers (assisting customers in finding products)   @ the ville:tamara taylor and carmen ortiz's house:common room:bookshelf",
+      "chat": null
+    },
+    "cichengege": {
+      "movement": [
+        25,
+        68
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:cichengege's apartment:cichengege's room:bed",
+      "chat": null
+    },
+    "arthur burton": {
+      "movement": [
+        11,
+        70
+      ],
+      "pronunciatio": "\ud83d\udcdd\ud83d\ude10",
+      "description": "having breakfast and reviewing bar inventory (noting down items that need to be restocked) @ the ville:arthur burton's apartment:arthur burton's room:refrigerator",
+      "chat": null
+    },
+    "kiki": {
+      "movement": [
+        17,
+        70
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:kiki's apartment:kiki's room:bed",
+      "chat": null
+    },
+    "rajiv patel": {
+      "movement": [
+        27,
+        13
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:artist's co-living space:rajiv patel's room:bed",
+      "chat": null
+    },
+    "frank": {
+      "movement": [
+        33,
+        69
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:frank's apartment:frank's room:bed",
+      "chat": null
+    },
+    "mk": {
+      "movement": [
+        41,
+        77
+      ],
+      "pronunciatio": "\ud83d\udcac\ud83e\udd14",
+      "description": "continuing his research on the AI economic system, diving deeper into coding and refining the algorithms for his decentralized financial system. He remains fully immersed in his work, exploring innovative solutions to eliminate speculative bubbles and improve the model's efficiency (conversing about Chris Gardner and MK discussing the integration of AI tools into trading simulations to mitigate speculative bubbles, ensure adaptability to market conditions, and bridge traditional and decentralized financial systems, with plans to collaborate and potentially co-author a paper on the topic.) @ the ville:mk's house:classroom:desk",
+      "chat": null
+    }
+  },
+  "meta": {
+    "curr_time": "March 14, 2025, 08:44:10"
+  }
+}

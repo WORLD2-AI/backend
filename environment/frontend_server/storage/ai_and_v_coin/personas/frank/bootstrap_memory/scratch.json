@@ -2,7 +2,7 @@
   "vision_r": 4,
   "att_bandwidth": 4,
   "retention": 3,
-  "curr_time": "March 07, 2025, 08:52:10",
+  "curr_time": "March 14, 2025, 00:00:00",
   "curr_tile": [
     35,
     64
@@ -27,8 +27,8 @@
   "relevance_w": 1,
   "importance_w": 1,
   "recency_decay": 0.995,
-  "importance_trigger_max": 250,
-  "importance_trigger_curr": 165,
+  "importance_trigger_max": 12250,
+  "importance_trigger_curr": 12165,
   "importance_ele_n": 45,
   "thought_count": 5,
   "daily_req": [
@@ -379,22 +379,18 @@
       60
     ]
   ],
-  "act_address": "the ville:frank's apartment:frank's room:seat",
-  "act_start_time": "March 07, 2025, 08:46:00",
-  "act_duration": 15,
-  "act_description": "returning home and watching TV with drinks (watching a show while sipping his drink)  ",
-  "act_pronunciatio": "\ud83d\udcfa\ud83d\ude42",
+  "act_address": "",
+  "act_start_time": "",
+  "act_duration": 0,
+  "act_description": "",
+  "act_pronunciatio": "",
   "act_event": [
-    "frank",
-    "watch",
-    "show"
+    
   ],
-  "act_obj_description": "occupied and in use",
-  "act_obj_pronunciatio": "\ud83d\udeaa\ud83d\ude10",
+  "act_obj_description": "",
+  "act_obj_pronunciatio": "",
   "act_obj_event": [
-    "seat",
-    "is",
-    "occupied"
+    
   ],
   "chatting_with": null,
   "chat": null,

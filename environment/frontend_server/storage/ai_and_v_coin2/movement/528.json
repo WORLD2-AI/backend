@@ -1,0 +1,151 @@
+{
+  "persona": {
+    "linda": {
+      "movement": [
+        141,
+        73
+      ],
+      "pronunciatio": "\ud83d\udc53\ud83e\udd14",
+      "description": "working on integrating virtual elements into a new art project (experimenting with a VR headset to test visual effects) @ the ville:gardner family's house:linda's room:<random>",
+      "chat": null
+    },
+    "chris gardner": {
+      "movement": [
+        35,
+        86
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:gardner family's house:chris gardner's room:bed",
+      "chat": null
+    },
+    "jane moreno": {
+      "movement": [
+        75,
+        84
+      ],
+      "pronunciatio": "\ud83d\udcac\ud83d\ude0a",
+      "description": "Jane is having breakfast and reviewing daily tasks (conversing about Jane Moreno and Tamara Taylor discussing their respective projects\u2014FitCoin and NFT music\u2014and brainstorming potential collaborations, including integrating fitness data with creative NFTs, while also expressing excitement about an upcoming family gathering.) @ the ville:moreno family's house:common room:shelf",
+      "chat": null
+    },
+    "tamara taylor": {
+      "movement": [
+        47,
+        78
+      ],
+      "pronunciatio": "\ud83c\udf73\ud83d\ude0a",
+      "description": "having breakfast (preparing her breakfast)   @ the ville:tamara taylor and carmen ortiz's house:kitchen:toaster",
+      "chat": null
+    },
+    "carmen ortiz": {
+      "movement": [
+        68,
+        67
+      ],
+      "pronunciatio": "\ud83d\udebf\ud83d\ude0c",
+      "description": "Carmen is waking up and completing her morning routine (taking a shower) @ the ville:tamara taylor and carmen ortiz's house:bathroom:shower",
+      "chat": null
+    },
+    "rajiv patel": {
+      "movement": [
+        27,
+        13
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:artist's co-living space:rajiv patel's room:bed",
+      "chat": null
+    },
+    "francisco lopez": {
+      "movement": [
+        22,
+        26
+      ],
+      "pronunciatio": "\ud83d\udebf\ud83d\ude0c",
+      "description": "Francisco is waking up and completing his morning routine (taking a quick shower) @ the ville:artist's co-living space:francisco lopez's bathroom:shower",
+      "chat": null
+    },
+    "latoya williams": {
+      "movement": [
+        17,
+        16
+      ],
+      "pronunciatio": "\ud83d\udcc2\ud83d\ude0a",
+      "description": "Latoya is reviewing and organizing her photography work (organizing the photos into folders based on location and theme) @ the ville:artist's co-living space:latoya williams's room:desk",
+      "chat": null
+    },
+    "arthur burton": {
+      "movement": [
+        9,
+        75
+      ],
+      "pronunciatio": "\ud83d\udebf\ud83d\ude0c",
+      "description": "waking up and completing his morning routine (taking a quick shower) @ the ville:arthur burton's apartment:arthur burton's bathroom:shower",
+      "chat": null
+    },
+    "carlos gomez": {
+      "movement": [
+        42,
+        67
+      ],
+      "pronunciatio": "\u2615\ud83d\ude0c",
+      "description": "Carlos is waking up and completing his morning routine (preparing and drinking coffee) @ the ville:carlos gomez's apartment:carlos gomez's room:kitchen sink",
+      "chat": null
+    },
+    "kiki": {
+      "movement": [
+        17,
+        70
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:kiki's apartment:kiki's room:bed",
+      "chat": null
+    },
+    "cichengege": {
+      "movement": [
+        25,
+        68
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:cichengege's apartment:cichengege's room:bed",
+      "chat": null
+    },
+    "mk": {
+      "movement": [
+        78,
+        80
+      ],
+      "pronunciatio": "\ud83d\udd27\ud83e\udd14",
+      "description": "deeply engrossed in running algorithms and adjusting parameters for his AI economic model, while continuing to refine his notes on \"Decentralized Financial System Version 7: How to Eliminate Speculative Bubbles?\" He remains focused on exploring innovative solutions to eliminate speculative bubbles in the financial system (adjusting parameters to reduce speculative behavior in the model) @ the ville:mk's house:mk's bedroom:bed",
+      "chat": null
+    },
+    "frank": {
+      "movement": [
+        33,
+        69
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:frank's apartment:frank's room:bed",
+      "chat": null
+    },
+    "christopher gardner": {
+      "movement": [
+        133,
+        81
+      ],
+      "pronunciatio": "\ud83c\udf92\ud83d\ude10",
+      "description": "getting ready for school and preparing his belongings (packing his school bag with books and supplies) @ the ville:gardner family's house:chris gardner's room:seat",
+      "chat": null
+    },
+    "tom moreno": {
+      "movement": [
+        93,
+        72
+      ],
+      "pronunciatio": "\ud83d\udc54\ud83d\ude10",
+      "description": "Tom is waking up and completing his morning routine, preparing for another energetic day as the store manager of the supermarket. He is mentally gearing up to organize shelves, analyze sales data, and strategize his next business breakthrough (getting dressed in his work clothes) @ the ville:moreno family's house:tom moreno's bedroom:closet",
+      "chat": null
+    }
+  },
+  "meta": {
+    "curr_time": "March 14, 2025, 07:27:30"
+  }
+}

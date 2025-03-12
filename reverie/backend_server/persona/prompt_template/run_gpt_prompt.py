@@ -1320,7 +1320,7 @@ def run_gpt_prompt_decide_to_talk(persona, target_persona, retrieved,test_input=
         return gpt_response.split("Answer in yes or no:")[-1].strip().lower()
 
     def get_fail_safe():
-        fs = "yes"
+        fs = "no"
         return fs
 
 
@@ -1334,13 +1334,10 @@ def run_gpt_prompt_decide_to_talk(persona, target_persona, retrieved,test_input=
     prompt = generate_prompt(prompt_input, prompt_template)
 
     fail_safe = get_fail_safe()
-    output = safe_generate_response(prompt, gpt_param, 5, fail_safe,
+    output = safe_generate_response(prompt, gpt_param, 2, fail_safe,
                                     __func_validate, __func_clean_up)
-
-    if debug or verbose:
-        print_run_prompts(prompt_template, persona, gpt_param,
-                          prompt_input, prompt, output)
-
+    if output is None:
+        output = "no"
     return output, [output, prompt, gpt_param, prompt_input, fail_safe]
 
 

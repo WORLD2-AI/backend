@@ -66,6 +66,7 @@ class Maze:
     gob_rows = read_file_to_list(_gob, header=False)
     gob_dict = dict()
     for i in gob_rows: gob_dict[i[0]] = i[-1]
+    self.gob_dict = gob_dict
     
     _slb = blocks_folder + "/spawning_location_blocks.csv"
     slb_rows = read_file_to_list(_slb, header=False)

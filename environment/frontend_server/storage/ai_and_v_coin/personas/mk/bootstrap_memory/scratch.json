@@ -2,7 +2,7 @@
   "vision_r": 8,
   "att_bandwidth": 8,
   "retention": 8,
-  "curr_time": "March 07, 2025, 08:52:10",
+  "curr_time": "March 14, 2025, 00:00:00",
   "curr_tile": [
     46,
     65
@@ -27,8 +27,8 @@
   "relevance_w": 1,
   "importance_w": 1,
   "recency_decay": 0.995,
-  "importance_trigger_max": 250,
-  "importance_trigger_curr": 67,
+  "importance_trigger_max": 4250,
+  "importance_trigger_curr": 4167,
   "importance_ele_n": 48,
   "thought_count": 5,
   "daily_req": [
@@ -311,28 +311,23 @@
       120
     ]
   ],
-  "act_address": "the ville:mk's house:common room:desk",
-  "act_start_time": "March 07, 2025, 08:51:00",
-  "act_duration": 10,
-  "act_description": "continuing to work on his AI economic model simulations, running algorithms, and adjusting parameters, while considering taking a short break to refresh his mind (considering taking a short break to refresh his mind)  ",
-  "act_pronunciatio": "\ud83e\udd14\ud83d\ude0c",
+  "act_address": "",
+  "act_start_time": "",
+  "act_duration": 0,
+  "act_description": "",
+  "act_pronunciatio": "",
   "act_event": [
-    "mk",
-    "consider",
-    "break"
+   
   ],
-  "act_obj_description": "being used for AI economic model simulations, cluttered with notes, a computer, and various research materials",
-  "act_obj_pronunciatio": "\ud83d\udcbb\ud83d\udcda",
+  "act_obj_description": "",
+  "act_obj_pronunciatio": "",
   "act_obj_event": [
-    "desk",
-    "is",
-    "used"
+
   ],
   "chatting_with": null,
   "chat": null,
   "chatting_with_buffer": {
-    "christopher gardner": 630,
-    "frank": 702
+    
   },
   "chatting_end_time": null,
   "act_path_set": true,

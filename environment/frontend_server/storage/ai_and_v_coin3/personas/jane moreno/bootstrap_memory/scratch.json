@@ -1,0 +1,320 @@
+{
+  "vision_r": 6,
+  "att_bandwidth": 6,
+  "retention": 8,
+  "curr_time": "March 14, 2025, 10:13:50",
+  "curr_tile": [
+    101,
+    75
+  ],
+  "daily_plan_req": "\u200cAt 4 PM, attended a family gathering at the Gardner family's house.\nAt 4:05 PM, attended Carmen's speech in the common room.\nAt 4:15 PM, in the empty guest bedroom, joined the discussion with Carlos and Carmen Linda, supported Lina's views, showcased my own NFT music works, and emphasized the potential for decentralization in the art field.\nAt 5 PM, concluded the family gathering and headed to the Moonlight Tavern Bar.\nAt 5:30 PM, at the Moonlight Tavern Bar, chatted with Chris Gardner, discussing the combination of NFT music and visual arts, and exploring decentralized creation.\nAt 6 PM, at the Moonlight Tavern Bar, discussed collaboration details with Lina, preparing for an NFT art project.\nAt 7 PM, left the Moonlight Tavern Bar.",
+  "name": "jane moreno",
+  "first_name": "jane",
+  "last_name": "moreno",
+  "age": 46,
+  "innate": "friendly, helpful, organized",
+  "learned": "Jane is a career woman interested in the internet and the virtual economy.",
+  "currently": "Supports Lina's views, showcases her own NFT music works, and emphasizes the potential for decentralization in the art field.",
+  "lifestyle": "jane moreno goes to bed around 10pm, awakes up around 6am, eats dinner around 6pm.",
+  "living_area": "the ville:moreno family's house:jane moreno's bedroom",
+  "concept_forget": 100,
+  "daily_reflection_time": 180,
+  "daily_reflection_size": 5,
+  "overlap_reflect_th": 4,
+  "kw_strg_event_reflect_th": 10,
+  "kw_strg_thought_reflect_th": 9,
+  "recency_w": 1,
+  "relevance_w": 1,
+  "importance_w": 1,
+  "recency_decay": 0.995,
+  "importance_trigger_max": 3250,
+  "importance_trigger_curr": 2956,
+  "importance_ele_n": 142,
+  "thought_count": 5,
+  "daily_req": [
+    "Wake up and complete the morning routine at 6:00 am.",
+    "Have breakfast and review daily tasks at 7:00 am.",
+    "Work on NFT music projects and research decentralization in art from 8:00 am to 12:00 pm.",
+    "Have lunch at 12:00 pm.",
+    "Continue working on NFT music and prepare for the family gathering from 1:00 pm to 3:30 pm.",
+    "Attend a family gathering at the Gardner family's house at 4:00 pm.",
+    "Attend Carmen's speech in the common room at 4:05 pm.",
+    "Conclude the family gathering and head to the Moonlight Tavern Bar at 5:00 pm.",
+    "Chat with Chris Gardner about NFT music and visual arts at 5:30 pm.",
+    "Discuss collaboration details with Lina for an NFT art project at 6:00 pm.",
+    "Leave the Moonlight Tavern Bar at 7:00 pm.",
+    "Have dinner at 7:30 pm.",
+    "Relax and review the day's progress from 8:00 pm to 9:30 pm.",
+    "Go to bed at 10:00 pm."
+  ],
+  "f_daily_schedule": [
+    [
+      "sleeping",
+      360
+    ],
+    [
+      "Jane is waking up and completing her morning routine",
+      60
+    ],
+    [
+      "Jane is having breakfast and reviewing daily tasks (on the way to on the way to waking up and stretching)",
+      0
+    ],
+    [
+      "Jane is having breakfast and reviewing daily tasks (conversing about Tamara Taylor and Jane Moreno discussing their respective projects\u2014FitCoin and NFT music\u2014and planning to connect later to explore potential cross-collaboration and share insights on how decentralization is transforming their industries.)",
+      9
+    ],
+    [
+      "Jane is having breakfast and reviewing daily tasks (conversing about Jane Moreno and Tamara Taylor discussing their respective projects\u2014FitCoin and NFT music\u2014and brainstorming potential collaborations, including integrating fitness data with creative NFTs, while also expressing excitement about an upcoming family gathering.)",
+      11
+    ],
+    [
+      "Jane is having breakfast and reviewing daily tasks (brushing her teeth and washing her face)",
+      10
+    ],
+    [
+      "Jane is having breakfast and reviewing daily tasks (preparing breakfast)",
+      10
+    ],
+    [
+      "Jane is having breakfast and reviewing daily tasks (on the way to on the way to eating breakfast)",
+      0
+    ],
+    [
+      "Jane is having breakfast and reviewing daily tasks (conversing about Jane and Tom discussing their respective projects\u2014Jane's NFT music collaboration with Tamara Taylor and Tom's supermarket innovations, including supply chain investments and imported fruit speculation\u2014while offering to brainstorm and support each other's ideas.)",
+      11
+    ],
+    [
+      "Jane is having breakfast and reviewing daily tasks (eating breakfast)  ",
+      4
+    ],
+    [
+      "Jane is having breakfast and reviewing daily tasks (reviewing her daily tasks and schedule)  ",
+      5
+    ],
+    [
+      "working on NFT music projects and researching decentralization in the art field (reviewing her NFT music project goals and objectives)  ",
+      15
+    ],
+    [
+      "working on NFT music projects and researching decentralization in the art field (brainstorming new ideas for her NFT music project)  ",
+      20
+    ],
+    [
+      "working on NFT music projects and researching decentralization in the art field (researching recent trends in decentralization in the art field)  ",
+      25
+    ],
+    [
+      "working on NFT music projects and researching decentralization in the art field (drafting a concept for her next NFT music release)  ",
+      30
+    ],
+    [
+      "working on NFT music projects and researching decentralization in the art field (taking a short break to organize her notes)  ",
+      10
+    ],
+    [
+      "working on NFT music projects and researching decentralization in the art field (exploring decentralized platforms for NFT art and music)  ",
+      25
+    ],
+    [
+      "working on NFT music projects and researching decentralization in the art field (creating a timeline for her NFT music project)  ",
+      20
+    ],
+    [
+      "working on NFT music projects and researching decentralization in the art field (reviewing and updating her NFT music portfolio)  ",
+      15
+    ],
+    [
+      "working on NFT music projects and researching decentralization in the art field (researching potential collaborators for her NFT project)  ",
+      20
+    ],
+    [
+      "working on NFT music projects and researching decentralization in the art field (drafting a proposal for a decentralized art collaboration)  ",
+      25
+    ],
+    [
+      "working on NFT music projects and researching decentralization in the art field (finalizing her research notes on decentralization in art)  ",
+      15
+    ],
+    [
+      "working on NFT music projects and researching decentralization in the art field (organizing her workspace and preparing for lunch)",
+      20
+    ],
+    [
+      "having lunch",
+      60
+    ],
+    [
+      "working on NFT music projects and preparing for the family gathering",
+      120
+    ],
+    [
+      "preparing for the family gathering and finalizing details for showcasing her NFT music works",
+      60
+    ],
+    [
+      "attending a family gathering at the Gardner family's house",
+      60
+    ],
+    [
+      "concluding the family gathering and heading to the Moonlight Tavern Bar",
+      60
+    ],
+    [
+      "discussing collaboration details with Lina for an NFT art project at the Moonlight Tavern Bar",
+      60
+    ],
+    [
+      "leaving the Moonlight Tavern Bar and heading home for dinner",
+      60
+    ],
+    [
+      "relaxing and reviewing the day's progress",
+      120
+    ],
+    [
+      "going to bed",
+      60
+    ],
+    [
+      "sleeping",
+      60
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ]
+  ],
+  "f_daily_schedule_hourly_org": [
+    [
+      "sleeping",
+      360
+    ],
+    [
+      "Jane is waking up and completing her morning routine",
+      60
+    ],
+    [
+      "Jane is having breakfast and reviewing daily tasks",
+      60
+    ],
+    [
+      "working on NFT music projects and researching decentralization in the art field",
+      240
+    ],
+    [
+      "having lunch",
+      60
+    ],
+    [
+      "working on NFT music projects and preparing for the family gathering",
+      120
+    ],
+    [
+      "preparing for the family gathering and finalizing details for showcasing her NFT music works",
+      60
+    ],
+    [
+      "attending a family gathering at the Gardner family's house",
+      60
+    ],
+    [
+      "concluding the family gathering and heading to the Moonlight Tavern Bar",
+      60
+    ],
+    [
+      "discussing collaboration details with Lina for an NFT art project at the Moonlight Tavern Bar",
+      60
+    ],
+    [
+      "leaving the Moonlight Tavern Bar and heading home for dinner",
+      60
+    ],
+    [
+      "relaxing and reviewing the day's progress",
+      120
+    ],
+    [
+      "going to bed",
+      60
+    ],
+    [
+      "sleeping",
+      60
+    ]
+  ],
+  "act_address": "the ville:moreno family's house:jane moreno's bedroom:desk",
+  "act_start_time": "March 14, 2025, 10:09:00",
+  "act_duration": 20,
+  "act_description": "working on NFT music projects and researching decentralization in the art field (creating a timeline for her NFT music project)  ",
+  "act_pronunciatio": "\ud83d\udcc5\ud83e\udd14",
+  "act_event": [
+    "jane moreno",
+    "create",
+    "timeline"
+  ],
+  "act_obj_description": "cluttered with research materials, a laptop, notes on NFT music projects, and a timeline for her NFT music project",
+  "act_obj_pronunciatio": "\ud83d\udcbb\ud83e\udd14",
+  "act_obj_event": [
+    "desk",
+    "is",
+    "cluttered"
+  ],
+  "chatting_with": null,
+  "chat": null,
+  "chatting_with_buffer": {
+    "tamara taylor": -590,
+    "tom moreno": -80
+  },
+  "chatting_end_time": null,
+  "act_path_set": true,
+  "planned_path": []
+}

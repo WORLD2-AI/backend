@@ -61,10 +61,14 @@ class AssociativeMemory:
 
     self.kw_strength_event = dict()
     self.kw_strength_thought = dict()
-
-    self.embeddings = json.load(open(f_saved + "/embeddings.json"))
-
-    nodes_load = json.load(open(f_saved + "/nodes.json"))
+    if check_if_file_exists(f_saved + "/embeddings.json"): 
+      self.embeddings = json.load(open(f_saved + "/embeddings.json"))
+    else :
+      self.embeddings = dict()
+    if check_if_file_exists(f_saved + "/nodes.json"):
+      nodes_load = json.load(open(f_saved + "/nodes.json"))
+    else:
+      nodes_load = dict()
     for count in range(len(nodes_load.keys())): 
       node_id = f"node_{str(count+1)}"
       node_details = nodes_load[node_id]
@@ -101,8 +105,13 @@ class AssociativeMemory:
       elif node_type == "thought": 
         self.add_thought(created, expiration, s, p, o, 
                    description, keywords, poignancy, embedding_pair, filling)
-
-    kw_strength_load = json.load(open(f_saved + "/kw_strength.json"))
+    if check_if_file_exists(f_saved + "/kw_strength.json"):
+      kw_strength_load = json.load(open(f_saved + "/kw_strength.json"))
+    else:
+      kw_strength_load = {
+        "kw_strength_event":{},
+        "kw_strength_thought":{}
+      }
     if kw_strength_load["kw_strength_event"]: 
       self.kw_strength_event = kw_strength_load["kw_strength_event"]
     if kw_strength_load["kw_strength_thought"]: 

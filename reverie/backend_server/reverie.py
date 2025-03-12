@@ -426,7 +426,7 @@ class ReverieServer:
                 self.curr_time += datetime.timedelta(seconds=self.sec_per_step)
             # Sleep so we don't burn our machines.
             count += 1
-            if count %100 == 0 : # per 100 step to save data
+            if count %10 == 0 : # per 100 step to save data
                 self.save()
                 if self.step  >= 10000 and self.step - 10000 > 2000 : # start play step from cur step - 10000 
                     curr_step = dict()
@@ -627,8 +627,8 @@ class ReverieServer:
 if __name__ == '__main__':
     # rs = ReverieServer("base_the_ville_isabella_maria_klaus",
     #                    "July1_the_ville_isabella_maria_klaus-step-3-1")
-    rs = ReverieServer("base_the_ville_n25-test",
-                       "ai_and_v_coin")
+    rs = ReverieServer("ai_and_v_coin",
+                       "ai_and_v_coin2")
     rs.open_server()
 
     # origin = input("agent name: ").strip()
