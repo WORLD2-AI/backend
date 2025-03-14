@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+
+
+    <br>
+    <br>
+
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        /* video containers */
+        #video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /*z-index: -1;  */
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+        /* content containers*/
+        .content {
+            position: relative;
+            z-index: 1;
+            color: white;
+            text-align: center;
+            padding-top: 20%;
+            font-size: 2em;
+        }
+    </style>
+
+    <div>
+        <!-- video-background -->
+        <video id="video-background" autoplay muted loop>
+            <source src="{% static 'home_video.mp4' %}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <!-- content -->
+       <!--  <div class="content">
+            <h1>Welcome to My Website</h1>
+            <p>This is a fullscreen video background example.</p>
+
+        </div>-->
+    </div>
+{% endblock content %}
+
+{% block js_content %}
+
+    <script>
+        const video = document.getElementById('video-background');
+        video.addEventListener('click', () => {
+            window.location.href = 'https://www.google.com';
+        });
+    </script>
+
+{% endblock js_content %}
