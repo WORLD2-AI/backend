@@ -20,9 +20,8 @@ from django.contrib.staticfiles.templatetags.staticfiles import static
 from .global_methods import *
 from .models import *
 
-with open("./translator/name.json", "r", encoding="utf-8") as f:
-    js = f.read()
-    names_mapping = json.loads(js)['persona_names_mapping']
+
+names_mapping ={}
     # print(names_mapping)
 
 
@@ -390,3 +389,81 @@ def path_tester_update(request):
         outfile.write(json.dumps(camera, indent=2))
 
     return HttpResponse("received")
+def get_user_info(request):
+    # 获取get参数中的name
+    name = request.GET.get('name')
+    f_curr_sim_code = "temp_storage/curr_sim_code.json"
+   
+    with open(f_curr_sim_code) as json_file:
+        sim_code = json.load(json_file)["sim_code"]
+    if not name:
+        dir  = f"storage/{sim_code}/personas/"
+        # 读取dir下的所有目录 赋值给name,跳过 . ..
+        name = os.listdir(dir)
+        name = [i for i in name if i != "." and i != ".."]
+    else:
+        name = [name]
+    data = {}
+    for persona_name in name:
+        persona_name_underscore = persona_name
+        persona_name = " ".join(persona_name.split("_"))
+        memory = f"storage/{sim_code}/personas/{persona_name}/bootstrap_memory"
+        if not os.path.exists(memory):
+            memory = f"compressed_storage/{sim_code}/personas/{persona_name}/bootstrap_memory"
+
+        with open(memory + "/scratch.json") as json_file:
+            scratch = json.load(json_file)
+
+        if scratch and scratch['f_daily_schedule'] and len(scratch['f_daily_schedule']):
+            daily_schedule = []
+            for i in scratch['f_daily_schedule']:
+                if len(i) == 2 and  i[1] <=0:
+                    continue
+                daily_schedule.append(i)
+                if i[0] == scratch['act_description']:
+                    break
+            # daily_schedule 倒序排序
+            daily_schedule.reverse()
+            scratch['f_daily_schedule'] = daily_schedule
+        with open(memory + "/associative_memory/nodes.json") as json_file:
+            associative = json.load(json_file)
+
+        a_mem_event = []
+        a_mem_chat = []
+        a_mem_thought = []
+
+        for count in range(len(associative.keys()), 0, -1):
+            node_id = f"node_{str(count)}"
+            node_details = associative[node_id]
+
+            if node_details["type"] == "event":
+                if "idle" in  node_details['object'] or "sleep" in  node_details['object']:
+                    continue
+                a_mem_event += [node_details]
+
+            elif node_details["type"] == "chat":
+                a_mem_chat += [node_details]
+
+            elif node_details["type"] == "thought":
+                if "this is blank" in node_details['description']:
+                    continue
+                a_mem_thought += [node_details]
+
+        data[persona_name] = {"sim_code": sim_code,
+                "persona_name": persona_name,
+                "persona_name_underscore": persona_name_underscore,
+                "scratch": scratch,
+                "a_mem_event": a_mem_event,
+                "a_mem_chat": a_mem_chat,
+                "a_mem_thought": a_mem_thought}
+    story_file  = f"storage/{sim_code}/reverie/story.json"
+    if os.path.exists(story_file):
+        with open(story_file) as json_file:
+            story = json.load(json_file)
+            data["story"] = story
+    else:
+        data["story"] = []
+    return JsonResponse(data)
+    
+
+

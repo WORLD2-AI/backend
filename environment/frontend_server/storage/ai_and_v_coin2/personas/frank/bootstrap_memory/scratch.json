@@ -1,0 +1,209 @@
+{
+  "vision_r": 4,
+  "att_bandwidth": 4,
+  "retention": 3,
+  "curr_time": "March 14, 2025, 10:28:50",
+  "curr_tile": [
+    33,
+    69
+  ],
+  "daily_plan_req": "At 8 PM, went to the Moonlight Tavern Bar to relax and encountered Latoya William, frank wanted to flirt with her.",
+  "name": "frank",
+  "first_name": "frank",
+  "last_name": "frank",
+  "age": 45,
+  "innate": "contradictions and conflicts, immoral, shameless, helpful",
+  "learned": "frank is an inveterate drunkard. He relishes a fast-paced, alcohol-soaked existence. When things are going his way, he laughs heartily and indulges in debauchery, as if the world is bathed in the dawn of hope. When fortune turns against him, he has nowhere to hide. He thinks solitude might make him stop, but it never will.",
+  "currently": "frank is a bachelor. frank drinks all day long and is always in a semi-drunken state. frank spends his days indulging in alcohol and seeking out misfortunes, and his behavior often leaves people agape.",
+  "lifestyle": "frank is drinking all day long and always in a semi-drunken state. sleeping time is random and inconsistent.",
+  "living_area": "the ville:frank's apartment:frank's room",
+  "concept_forget": 100,
+  "daily_reflection_time": 180,
+  "daily_reflection_size": 5,
+  "overlap_reflect_th": 4,
+  "kw_strg_event_reflect_th": 10,
+  "kw_strg_thought_reflect_th": 9,
+  "recency_w": 1,
+  "relevance_w": 1,
+  "importance_w": 1,
+  "recency_decay": 0.995,
+  "importance_trigger_max": 12250,
+  "importance_trigger_curr": 7884,
+  "importance_ele_n": 4325,
+  "thought_count": 5,
+  "daily_req": [
+    "Wake up and complete the morning routine at 11:00 am.",
+    "Start drinking at 11:30 am.",
+    "Have a light lunch (mostly liquid",
+    "Continue drinking and wander aimlessly around town from 2:00 pm to 5:00 pm.",
+    "Stop by a liquor store to restock at 5:30 pm.",
+    "Drink heavily at home from 6:00 pm to 7:30 pm.",
+    "Head to the Moonlight Tavern Bar at 8:00 pm to relax and flirt with Latoya William."
+  ],
+  "f_daily_schedule": [
+    [
+      "sleeping",
+      660
+    ],
+    [
+      "waking up groggily, stumbling out of bed to complete his morning routine, which consists of splashing water on his face, brushing his teeth haphazardly, and putting on the same clothes he wore the day before. He grabs a half-empty bottle of whiskey from the nightstand and takes a swig to \"start the day right.\" (groggily waking up and sitting on the edge of the bed)",
+      5
+    ],
+    [
+      "waking up groggily, stumbling out of bed to complete his morning routine, which consists of splashing water on his face, brushing his teeth haphazardly, and putting on the same clothes he wore the day before. He grabs a half-empty bottle of whiskey from the nightstand and takes a swig to \"start the day right.\" (stumbling to the bathroom, splashing water on his face)",
+      10
+    ],
+    [
+      "waking up groggily, stumbling out of bed to complete his morning routine, which consists of splashing water on his face, brushing his teeth haphazardly, and putting on the same clothes he wore the day before. He grabs a half-empty bottle of whiskey from the nightstand and takes a swig to \"start the day right.\" (brushing his teeth haphazardly)",
+      5
+    ],
+    [
+      "waking up groggily, stumbling out of bed to complete his morning routine, which consists of splashing water on his face, brushing his teeth haphazardly, and putting on the same clothes he wore the day before. He grabs a half-empty bottle of whiskey from the nightstand and takes a swig to \"start the day right.\" (putting on the same clothes he wore the day before)",
+      10
+    ],
+    [
+      "waking up groggily, stumbling out of bed to complete his morning routine, which consists of splashing water on his face, brushing his teeth haphazardly, and putting on the same clothes he wore the day before. He grabs a half-empty bottle of whiskey from the nightstand and takes a swig to \"start the day right.\" (grabbing a half-empty bottle of whiskey from the nightstand)",
+      5
+    ],
+    [
+      "waking up groggily, stumbling out of bed to complete his morning routine, which consists of splashing water on his face, brushing his teeth haphazardly, and putting on the same clothes he wore the day before. He grabs a half-empty bottle of whiskey from the nightstand and takes a swig to \"start the day right.\" (taking a swig of whiskey to \"start the day right.\")",
+      5
+    ],
+    [
+      "waking up groggily, stumbling out of bed to complete his morning routine, which consists of splashing water on his face, brushing his teeth haphazardly, and putting on the same clothes he wore the day before. He grabs a half-empty bottle of whiskey from the nightstand and takes a swig to \"start the day right.\" (stumbling back to the kitchen table)",
+      10
+    ],
+    [
+      "waking up groggily, stumbling out of bed to complete his morning routine, which consists of splashing water on his face, brushing his teeth haphazardly, and putting on the same clothes he wore the day before. He grabs a half-empty bottle of whiskey from the nightstand and takes a swig to \"start the day right.\" (sitting at the kitchen table, nursing a glass of whiskey)",
+      10
+    ],
+    [
+      "sitting at his kitchen table, nursing a glass of whiskey while scrolling through his phone aimlessly. He occasionally chuckles at random memes or messages, but his focus is mostly on refilling his glass and maintaining his semi-drunken state. The room smells faintly of stale alcohol and unwashed dishes",
+      60
+    ],
+    [
+      "sitting at his kitchen table, still nursing his glass of whiskey. He has moved on to a second bottle, which he pours generously into his glass. The light lunch he promised himself consists of a bag of chips and another swig of whiskey. He occasionally mutters to himself, laughing at his own jokes or cursing at the world for no apparent reason. The room is a mess, but frank doesn\u2019t seem",
+      60
+    ],
+    [
+      "wandering aimlessly around town, stumbling slightly as he walks. He carries a half-empty bottle of whiskey in one hand, taking occasional swigs as he meanders through the streets. His eyes are glazed, and he mutters to himself, alternating between laughing at his own thoughts and cursing under his breath. He occasionally stops to chat with strangers, his shameless and contradictory nature leading to awkward or inappropriate interactions",
+      60
+    ],
+    [
+      "wandering aimlessly around town, still clutching his half-empty bottle of whiskey. He stumbles into a small park, where he sits on a bench and continues to drink. He strikes up a conversation with a stray dog, offering it a sip of whiskey, which the dog wisely ignores. Frank laughs heartily at the dog's refusal, muttering something about \"ungrateful creatures.\" His glazed eyes scan the park,",
+      120
+    ],
+    [
+      "stumbling out of the park, clutching his now nearly empty bottle of whiskey. He decides it's time to restock and heads toward the nearest liquor store. Along the way, he mutters to himself, alternating between laughing at his own jokes and cursing the world for its lack of appreciation for his \"genius.\" He enters the store, swaying slightly, and grabs a couple of bottles of whiskey, paying with",
+      60
+    ],
+    [
+      "sitting on his worn-out couch at home, surrounded by empty and half-empty bottles of whiskey. He pours himself another generous glass, his hands slightly trembling as he raises it to his lips. The TV is on, but he\u2019s not paying attention, instead muttering to himself about the \"cruelty of the world\" and how \"no one understands him.\" He laughs suddenly, as if remembering a joke only",
+      60
+    ],
+    [
+      "sitting on his couch, finishing the last dregs of his whiskey bottle. He\u2019s muttering to himself, alternating between laughing at his own jokes and cursing the world for its \"lack of appreciation.\" He checks the time, realizing it\u2019s almost 8 PM, and stumbles to his feet, swaying slightly. He grabs his jacket, pats his pockets to make sure he has enough cash",
+      60
+    ],
+    [
+      "stumbling into the Moonlight Tavern Bar, his jacket slightly askew and his breath reeking of whiskey. His glazed eyes scan the room until they land on Latoya William, who is sitting at the bar. With a shameless grin, he saunters over, swaying slightly, and slides into the seat next to her. He orders another whiskey, raising his glass to her with a slurred,",
+      60
+    ],
+    [
+      "sitting at the bar in the Moonlight Tavern, leaning slightly toward Latoya William with a shameless grin. He\u2019s slurring his words as he tries to charm her, telling exaggerated stories about his \"adventures\" and laughing loudly at his own jokes. His glass of whiskey is nearly empty, and he orders another, offering to buy Latoya a drink as well. Despite his intoxicated state,",
+      60
+    ],
+    [
+      "still at the Moonlight Tavern Bar, now thoroughly drunk and leaning heavily on the bar counter. His attempts to flirt with Latoya William have grown increasingly incoherent and shameless, as he slurs out compliments and inappropriate jokes. Latoya, visibly uncomfortable, tries to politely excuse herself, but frank, oblivious to her discomfort, continues to ramble on about his \"glorious past\" and \"philosophical",
+      60
+    ],
+    [
+      "stumbling out of the Moonlight Tavern Bar, thoroughly drunk and muttering to himself. Latoya William has long since left, but frank remains oblivious, still chuckling at his own jokes and slurring incoherently about his \"undeniable charm.\" He sways down the dimly lit street, clutching a half-empty bottle of whiskey he managed to snag from the bar. His steps are unsteady, and",
+      60
+    ],
+    [
+      "sleeping",
+      0
+    ]
+  ],
+  "f_daily_schedule_hourly_org": [
+    [
+      "sleeping",
+      660
+    ],
+    [
+      "waking up groggily, stumbling out of bed to complete his morning routine, which consists of splashing water on his face, brushing his teeth haphazardly, and putting on the same clothes he wore the day before. He grabs a half-empty bottle of whiskey from the nightstand and takes a swig to \"start the day right.\"",
+      60
+    ],
+    [
+      "sitting at his kitchen table, nursing a glass of whiskey while scrolling through his phone aimlessly. He occasionally chuckles at random memes or messages, but his focus is mostly on refilling his glass and maintaining his semi-drunken state. The room smells faintly of stale alcohol and unwashed dishes",
+      60
+    ],
+    [
+      "sitting at his kitchen table, still nursing his glass of whiskey. He has moved on to a second bottle, which he pours generously into his glass. The light lunch he promised himself consists of a bag of chips and another swig of whiskey. He occasionally mutters to himself, laughing at his own jokes or cursing at the world for no apparent reason. The room is a mess, but frank doesn\u2019t seem",
+      60
+    ],
+    [
+      "wandering aimlessly around town, stumbling slightly as he walks. He carries a half-empty bottle of whiskey in one hand, taking occasional swigs as he meanders through the streets. His eyes are glazed, and he mutters to himself, alternating between laughing at his own thoughts and cursing under his breath. He occasionally stops to chat with strangers, his shameless and contradictory nature leading to awkward or inappropriate interactions",
+      60
+    ],
+    [
+      "wandering aimlessly around town, still clutching his half-empty bottle of whiskey. He stumbles into a small park, where he sits on a bench and continues to drink. He strikes up a conversation with a stray dog, offering it a sip of whiskey, which the dog wisely ignores. Frank laughs heartily at the dog's refusal, muttering something about \"ungrateful creatures.\" His glazed eyes scan the park,",
+      120
+    ],
+    [
+      "stumbling out of the park, clutching his now nearly empty bottle of whiskey. He decides it's time to restock and heads toward the nearest liquor store. Along the way, he mutters to himself, alternating between laughing at his own jokes and cursing the world for its lack of appreciation for his \"genius.\" He enters the store, swaying slightly, and grabs a couple of bottles of whiskey, paying with",
+      60
+    ],
+    [
+      "sitting on his worn-out couch at home, surrounded by empty and half-empty bottles of whiskey. He pours himself another generous glass, his hands slightly trembling as he raises it to his lips. The TV is on, but he\u2019s not paying attention, instead muttering to himself about the \"cruelty of the world\" and how \"no one understands him.\" He laughs suddenly, as if remembering a joke only",
+      60
+    ],
+    [
+      "sitting on his couch, finishing the last dregs of his whiskey bottle. He\u2019s muttering to himself, alternating between laughing at his own jokes and cursing the world for its \"lack of appreciation.\" He checks the time, realizing it\u2019s almost 8 PM, and stumbles to his feet, swaying slightly. He grabs his jacket, pats his pockets to make sure he has enough cash",
+      60
+    ],
+    [
+      "stumbling into the Moonlight Tavern Bar, his jacket slightly askew and his breath reeking of whiskey. His glazed eyes scan the room until they land on Latoya William, who is sitting at the bar. With a shameless grin, he saunters over, swaying slightly, and slides into the seat next to her. He orders another whiskey, raising his glass to her with a slurred,",
+      60
+    ],
+    [
+      "sitting at the bar in the Moonlight Tavern, leaning slightly toward Latoya William with a shameless grin. He\u2019s slurring his words as he tries to charm her, telling exaggerated stories about his \"adventures\" and laughing loudly at his own jokes. His glass of whiskey is nearly empty, and he orders another, offering to buy Latoya a drink as well. Despite his intoxicated state,",
+      60
+    ],
+    [
+      "still at the Moonlight Tavern Bar, now thoroughly drunk and leaning heavily on the bar counter. His attempts to flirt with Latoya William have grown increasingly incoherent and shameless, as he slurs out compliments and inappropriate jokes. Latoya, visibly uncomfortable, tries to politely excuse herself, but frank, oblivious to her discomfort, continues to ramble on about his \"glorious past\" and \"philosophical",
+      60
+    ],
+    [
+      "stumbling out of the Moonlight Tavern Bar, thoroughly drunk and muttering to himself. Latoya William has long since left, but frank remains oblivious, still chuckling at his own jokes and slurring incoherently about his \"undeniable charm.\" He sways down the dimly lit street, clutching a half-empty bottle of whiskey he managed to snag from the bar. His steps are unsteady, and",
+      60
+    ]
+  ],
+  "act_address": "the ville:frank's apartment:frank's room:bed",
+  "act_start_time": "March 14, 2025, 00:00:00",
+  "act_duration": 660,
+  "act_description": "sleeping",
+  "act_pronunciatio": "\ud83d\ude34\ud83d\ude10",
+  "act_event": [
+    "frank",
+    "is",
+    "sleep"
+  ],
+  "act_obj_description": "being used",
+  "act_obj_pronunciatio": "\ud83d\udee0\ufe0f\ud83d\ude14",
+  "act_obj_event": [
+    "bed",
+    "is",
+    "used"
+  ],
+  "chatting_with": null,
+  "chat": null,
+  "chatting_with_buffer": {
+    "tamara taylor": -1800,
+    "mk": -892
+  },
+  "chatting_end_time": null,
+  "act_path_set": true,
+  "planned_path": []
+}

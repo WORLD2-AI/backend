@@ -1,0 +1,228 @@
+{
+  "vision_r": 4,
+  "att_bandwidth": 4,
+  "retention": 3,
+  "curr_time": "March 14, 2025, 10:42:20",
+  "curr_tile": [
+    33,
+    68
+  ],
+  "daily_plan_req": "At 8 PM, went to the Moonlight Tavern Bar to relax and encountered Latoya William, frank wanted to flirt with her.",
+  "name": "frank",
+  "first_name": "frank",
+  "last_name": "frank",
+  "age": 45,
+  "innate": "contradictions and conflicts, immoral, shameless, helpful",
+  "learned": "frank is an inveterate drunkard. He relishes a fast-paced, alcohol-soaked existence. When things are going his way, he laughs heartily and indulges in debauchery, as if the world is bathed in the dawn of hope. When fortune turns against him, he has nowhere to hide. He thinks solitude might make him stop, but it never will.",
+  "currently": "frank is a bachelor. frank drinks all day long and is always in a semi-drunken state. frank spends his days indulging in alcohol and seeking out misfortunes, and his behavior often leaves people agape.",
+  "lifestyle": "frank is drinking all day long and always in a semi-drunken state. sleeping time is random and inconsistent.",
+  "living_area": "the ville:frank's apartment:frank's room",
+  "concept_forget": 100,
+  "daily_reflection_time": 180,
+  "daily_reflection_size": 5,
+  "overlap_reflect_th": 4,
+  "kw_strg_event_reflect_th": 10,
+  "kw_strg_thought_reflect_th": 9,
+  "recency_w": 1,
+  "relevance_w": 1,
+  "importance_w": 1,
+  "recency_decay": 0.995,
+  "importance_trigger_max": 11250,
+  "importance_trigger_curr": 9077,
+  "importance_ele_n": 2173,
+  "thought_count": 5,
+  "daily_req": [
+    "Wake up and complete the morning routine at 8:00 am.",
+    "Start drinking whiskey at 8:30 am.",
+    "Wander aimlessly around town, drinking from a flask, from 10:00 am to 12:00 pm.",
+    "Have a liquid lunch (more whiskey",
+    "Nap in a park bench from 2:00 pm to 4:00 pm.",
+    "Head to the Moonlight Tavern Bar at 8:00 pm to relax and flirt with Latoya William."
+  ],
+  "f_daily_schedule": [
+    [
+      "sleeping",
+      480
+    ],
+    [
+      "waking up and completing his morning routine, which likely involves little more than splashing water on his face, grabbing a bottle of whiskey, and preparing for another day of indulgence (waking up groggily and rubbing his eyes)",
+      5
+    ],
+    [
+      "waking up and completing his morning routine, which likely involves little more than splashing water on his face, grabbing a bottle of whiskey, and preparing for another day of indulgence (stumbling to the bathroom to splash water on his face)",
+      10
+    ],
+    [
+      "waking up and completing his morning routine, which likely involves little more than splashing water on his face, grabbing a bottle of whiskey, and preparing for another day of indulgence (grabbing a bottle of whiskey from the kitchen counter)",
+      5
+    ],
+    [
+      "waking up and completing his morning routine, which likely involves little more than splashing water on his face, grabbing a bottle of whiskey, and preparing for another day of indulgence (taking a swig of whiskey and muttering to himself about the \"damn world.\")",
+      10
+    ],
+    [
+      "waking up and completing his morning routine, which likely involves little more than splashing water on his face, grabbing a bottle of whiskey, and preparing for another day of indulgence (sitting on the edge of his bed, staring blankly at the wall while sipping whiskey)",
+      15
+    ],
+    [
+      "waking up and completing his morning routine, which likely involves little more than splashing water on his face, grabbing a bottle of whiskey, and preparing for another day of indulgence (putting on a wrinkled shirt and preparing for another day of indulgence)",
+      10
+    ],
+    [
+      "waking up and completing his morning routine, which likely involves little more than splashing water on his face, grabbing a bottle of whiskey, and preparing for another day of indulgence (stumbling out of his apartment, whiskey bottle in hand, ready to wander aimlessly)",
+      5
+    ],
+    [
+      "sitting on his worn-out couch, nursing a glass of whiskey while staring blankly at the flickering TV screen, already deep in his semi-drunken haze. He occasionally mutters to himself about the \"damn world\" and takes another swig, preparing for the aimless wandering that will soon follow",
+      60
+    ],
+    [
+      "wandering aimlessly around town, sipping whiskey from a flask, muttering to himself about the \"damn world\" and occasionally stopping to leer at passersby or stumble into a lamppost. His semi-drunken state is fully in effect, and he relishes the chaos of his aimless meandering",
+      60
+    ],
+    [
+      "wandering aimlessly around town, still sipping whiskey from his flask. He stumbles into a small crowd of people, muttering incoherently about the \"damn world\" and occasionally letting out a loud, drunken laugh. His semi-drunken state is fully in effect, and he relishes the chaos of his aimless meandering, occasionally stopping to leer at passersby or stumble into a lampp",
+      60
+    ],
+    [
+      "sitting at a dingy diner, nursing a glass of whiskey and occasionally taking a bite of a greasy sandwich he barely notices. His semi-drunken state is in full swing, and he mutters to himself about the \"damn world\" while occasionally laughing at nothing in particular. The diner staff avoids him, and the other patrons give him a wide berth as he continues his liquid lunch, preparing",
+      60
+    ],
+    [
+      "sitting on a park bench, nursing a bottle of whiskey and staring blankly at the world passing by. His semi-drunken state is fully in effect, and he occasionally mutters to himself about the \"damn world\" or lets out a loud, drunken laugh. He takes another swig, relishing the chaos of his aimless existence, and begins to doze off, preparing for his afternoon nap",
+      60
+    ],
+    [
+      "sprawled on a park bench, snoring loudly with a half-empty bottle of whiskey clutched loosely in his hand. His semi-drunken state has lulled him into a deep, restless nap, and he occasionally mumbles incoherently about the \"damn world\" or lets out a drunken snort. The world passes by, but Frank is lost in his chaotic, alcohol-fueled dreams",
+      60
+    ],
+    [
+      "still sprawled on the park bench, snoring loudly with the half-empty bottle of whiskey now lying on the ground beside him. His semi-drunken nap continues, and he occasionally twitches or mumbles incoherently about the \"damn world.\" The afternoon sun casts long shadows over the park, but Frank remains oblivious, lost in his chaotic, alcohol-fueled dreams",
+      60
+    ],
+    [
+      "waking up from his drunken nap on the park bench, groggily rubbing his eyes and reaching for the half-empty bottle of whiskey on the ground. He takes a long swig, muttering to himself about the \"damn world\" and the \"damn sun\" as he slowly stands up, swaying slightly. Frank begins to wander aimlessly again, sipping from his flask and preparing for the evening ahead",
+      60
+    ],
+    [
+      "wandering aimlessly through the streets, sipping whiskey from his flask and muttering to himself about the \"damn world.\" He occasionally stops to leer at passersby or stumble into a lamppost, his semi-drunken state fully in effect. Frank is relishing the chaos of his aimless existence, preparing himself for the evening ahead at the Moonlight Tavern Bar, where he hopes to flirt with",
+      120
+    ],
+    [
+      "stumbling through the dimly lit streets, sipping whiskey from his flask and muttering to himself about the \"damn world.\" He occasionally stops to leer at passersby or adjust his disheveled appearance, preparing himself for the evening ahead. Frank is making his way toward the Moonlight Tavern Bar, his semi-drunken state fully in effect, eager to relax and flirt with Latoya William",
+      60
+    ],
+    [
+      "stumbling into the Moonlight Tavern Bar, clutching his flask of whiskey and muttering to himself about the \"damn world.\" His semi-drunken state is fully in effect as he scans the room with a leering grin, spotting Latoya William. He saunters over, slurs a poorly constructed compliment, and attempts to flirt with her, his shameless and chaotic demeanor on full display. The other",
+      60
+    ],
+    [
+      "sitting at the bar in the Moonlight Tavern, nursing another glass of whiskey while shamelessly continuing his attempts to flirt with Latoya William. His slurred compliments grow increasingly incoherent, and his leering grin widens as he leans closer, oblivious to her discomfort. The other patrons exchange glances, some amused, others annoyed, as Frank's chaotic and alcohol-fueled behavior reaches its peak. He occasionally bursts",
+      60
+    ],
+    [
+      "still at the Moonlight Tavern Bar, now thoroughly drunk and slurring his words as he continues his relentless attempts to flirt with Latoya William. His shameless behavior has escalated, and he\u2019s leaning heavily on the bar, spilling his whiskey as he tries to impress her with incoherent stories and exaggerated gestures. The other patrons are either laughing at his antics or rolling their eyes, while Latoya is",
+      60
+    ],
+    [
+      "stumbling out of the Moonlight Tavern Bar, thoroughly drunk and muttering incoherently about the \"damn world\" and Latoya William. He clutches his flask, now nearly empty, and sways unsteadily as he attempts to navigate the dimly lit streets. Frank occasionally stops to leer at passersby or shout slurred insults at the night sky, his shameless and chaotic behavior continuing unab",
+      60
+    ],
+    [
+      "sleeping",
+      0
+    ]
+  ],
+  "f_daily_schedule_hourly_org": [
+    [
+      "sleeping",
+      480
+    ],
+    [
+      "waking up and completing his morning routine, which likely involves little more than splashing water on his face, grabbing a bottle of whiskey, and preparing for another day of indulgence",
+      60
+    ],
+    [
+      "sitting on his worn-out couch, nursing a glass of whiskey while staring blankly at the flickering TV screen, already deep in his semi-drunken haze. He occasionally mutters to himself about the \"damn world\" and takes another swig, preparing for the aimless wandering that will soon follow",
+      60
+    ],
+    [
+      "wandering aimlessly around town, sipping whiskey from a flask, muttering to himself about the \"damn world\" and occasionally stopping to leer at passersby or stumble into a lamppost. His semi-drunken state is fully in effect, and he relishes the chaos of his aimless meandering",
+      60
+    ],
+    [
+      "wandering aimlessly around town, still sipping whiskey from his flask. He stumbles into a small crowd of people, muttering incoherently about the \"damn world\" and occasionally letting out a loud, drunken laugh. His semi-drunken state is fully in effect, and he relishes the chaos of his aimless meandering, occasionally stopping to leer at passersby or stumble into a lampp",
+      60
+    ],
+    [
+      "sitting at a dingy diner, nursing a glass of whiskey and occasionally taking a bite of a greasy sandwich he barely notices. His semi-drunken state is in full swing, and he mutters to himself about the \"damn world\" while occasionally laughing at nothing in particular. The diner staff avoids him, and the other patrons give him a wide berth as he continues his liquid lunch, preparing",
+      60
+    ],
+    [
+      "sitting on a park bench, nursing a bottle of whiskey and staring blankly at the world passing by. His semi-drunken state is fully in effect, and he occasionally mutters to himself about the \"damn world\" or lets out a loud, drunken laugh. He takes another swig, relishing the chaos of his aimless existence, and begins to doze off, preparing for his afternoon nap",
+      60
+    ],
+    [
+      "sprawled on a park bench, snoring loudly with a half-empty bottle of whiskey clutched loosely in his hand. His semi-drunken state has lulled him into a deep, restless nap, and he occasionally mumbles incoherently about the \"damn world\" or lets out a drunken snort. The world passes by, but Frank is lost in his chaotic, alcohol-fueled dreams",
+      60
+    ],
+    [
+      "still sprawled on the park bench, snoring loudly with the half-empty bottle of whiskey now lying on the ground beside him. His semi-drunken nap continues, and he occasionally twitches or mumbles incoherently about the \"damn world.\" The afternoon sun casts long shadows over the park, but Frank remains oblivious, lost in his chaotic, alcohol-fueled dreams",
+      60
+    ],
+    [
+      "waking up from his drunken nap on the park bench, groggily rubbing his eyes and reaching for the half-empty bottle of whiskey on the ground. He takes a long swig, muttering to himself about the \"damn world\" and the \"damn sun\" as he slowly stands up, swaying slightly. Frank begins to wander aimlessly again, sipping from his flask and preparing for the evening ahead",
+      60
+    ],
+    [
+      "wandering aimlessly through the streets, sipping whiskey from his flask and muttering to himself about the \"damn world.\" He occasionally stops to leer at passersby or stumble into a lamppost, his semi-drunken state fully in effect. Frank is relishing the chaos of his aimless existence, preparing himself for the evening ahead at the Moonlight Tavern Bar, where he hopes to flirt with",
+      120
+    ],
+    [
+      "stumbling through the dimly lit streets, sipping whiskey from his flask and muttering to himself about the \"damn world.\" He occasionally stops to leer at passersby or adjust his disheveled appearance, preparing himself for the evening ahead. Frank is making his way toward the Moonlight Tavern Bar, his semi-drunken state fully in effect, eager to relax and flirt with Latoya William",
+      60
+    ],
+    [
+      "stumbling into the Moonlight Tavern Bar, clutching his flask of whiskey and muttering to himself about the \"damn world.\" His semi-drunken state is fully in effect as he scans the room with a leering grin, spotting Latoya William. He saunters over, slurs a poorly constructed compliment, and attempts to flirt with her, his shameless and chaotic demeanor on full display. The other",
+      60
+    ],
+    [
+      "sitting at the bar in the Moonlight Tavern, nursing another glass of whiskey while shamelessly continuing his attempts to flirt with Latoya William. His slurred compliments grow increasingly incoherent, and his leering grin widens as he leans closer, oblivious to her discomfort. The other patrons exchange glances, some amused, others annoyed, as Frank's chaotic and alcohol-fueled behavior reaches its peak. He occasionally bursts",
+      60
+    ],
+    [
+      "still at the Moonlight Tavern Bar, now thoroughly drunk and slurring his words as he continues his relentless attempts to flirt with Latoya William. His shameless behavior has escalated, and he\u2019s leaning heavily on the bar, spilling his whiskey as he tries to impress her with incoherent stories and exaggerated gestures. The other patrons are either laughing at his antics or rolling their eyes, while Latoya is",
+      60
+    ],
+    [
+      "stumbling out of the Moonlight Tavern Bar, thoroughly drunk and muttering incoherently about the \"damn world\" and Latoya William. He clutches his flask, now nearly empty, and sways unsteadily as he attempts to navigate the dimly lit streets. Frank occasionally stops to leer at passersby or shout slurred insults at the night sky, his shameless and chaotic behavior continuing unab",
+      60
+    ]
+  ],
+  "act_address": "the ville:frank's apartment:frank's room:bed",
+  "act_start_time": "March 14, 2025, 06:00:00",
+  "act_duration": 480,
+  "act_description": "sleeping",
+  "act_pronunciatio": "\ud83d\ude34\ud83d\ude10",
+  "act_event": [
+    "frank",
+    "is",
+    "sleep"
+  ],
+  "act_obj_description": "being used for sleeping",
+  "act_obj_pronunciatio": "\ud83d\udecc\ud83d\ude34",
+  "act_obj_event": [
+    "bed",
+    "is",
+    "used"
+  ],
+  "chatting_with": null,
+  "chat": null,
+  "chatting_with_buffer": {
+    "tamara taylor": -1902,
+    "mk": -994
+  },
+  "chatting_end_time": null,
+  "act_path_set": true,
+  "planned_path": []
+}

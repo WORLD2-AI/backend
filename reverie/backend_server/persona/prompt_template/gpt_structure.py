@@ -10,6 +10,7 @@ import openai
 import time
 import re
 from utils import *
+import requests
 
 openai.api_key = random.choice(openai_api_key)
 
@@ -20,10 +21,11 @@ def temp_sleep(seconds=0.1):
 
 def ChatGPT_single_request(prompt):
     temp_sleep()
+    openai.base_url = "https://api.deepseek.com"
     openai.api_key = random.choice(openai_api_key)
 
     completion = openai.ChatCompletion.create(
-        model="gpt-4o-mini",
+        model="deepseek-chat",
         messages=[{"role": "user", "content": prompt}]
     )
     return completion["choices"][0]["message"]["content"]
@@ -48,8 +50,10 @@ def GPT4_request(prompt):
     temp_sleep()
 
     try:
+        openai.base_url = "https://api.deepseek.com"
+        openai.api_key = random.choice(openai_api_key)
         completion = openai.ChatCompletion.create(
-            model="gpt-4o",
+            model="deepseek-chat",
             messages=[{"role": "user", "content": prompt}]
         )
         return completion["choices"][0]["message"]["content"]
@@ -72,12 +76,15 @@ def ChatGPT_request(prompt, gpt_parameter={}):
     a str of GPT-4o's response. 
   """
     # temp_sleep()
+    openai.api_base = "https://api.deepseek.com"
     openai.api_key = random.choice(openai_api_key)
     logger_info("-----------prompt-------------------",prompt)
     try:
         completion = openai.ChatCompletion.create(
-            model="gpt-4o",
-            messages=[{"role": "user", "content": prompt}]
+            model="deepseek-chat",
+            messages=[{"role": "user", "content": prompt}],
+            stream=False,
+            timeout=30,
         )
         result =  completion["choices"][0]["message"]["content"]
         logger_info("-----------result-------------------",result)
@@ -136,7 +143,6 @@ def ChatGPT_safe_generate_response(prompt,
                                    func_clean_up=None,
                                    verbose=False):
     # prompt = 'GPT-3 Prompt:\n"""\n' + prompt + '\n"""\n'
-    openai.api_key = random.choice(openai_api_key)
 
     prompt = '"""\n' + prompt + '\n"""\n'
     prompt += f"Output the response to the prompt above in json. {special_instruction}\n"
@@ -153,7 +159,7 @@ def ChatGPT_safe_generate_response(prompt,
 
             if func_validate(curr_gpt_response, prompt=prompt):
                 return func_clean_up(curr_gpt_response, prompt=prompt)
-            time.sleep(1)
+            time.sleep(5)
 
         except:
             pass
@@ -168,7 +174,6 @@ def ChatGPT_safe_generate_response_OLD(prompt,
                                        func_clean_up=None,
                                        verbose=False):
 
-    openai.api_key = random.choice(openai_api_key)
 
     for i in range(repeat):
         try:
@@ -198,13 +203,13 @@ def GPT_request(prompt, gpt_parameter):
     a str of GPT-3's response. 
   """
     temp_sleep()
+    openai.api_base = "https://api.deepseek.com"
     openai.api_key = random.choice(openai_api_key)
-    # openai.api_key = random.choice(openai_api_key)
     print("-------------------request prompt---------------------")
     logger_info(prompt)
     try:
         response = openai.ChatCompletion.create(
-            model=gpt_parameter["engine"],
+            model="deepseek-chat",
             messages=[{"role": "user", "content": prompt}],
             temperature=gpt_parameter["temperature"],
             max_tokens=gpt_parameter["max_tokens"],
@@ -212,7 +217,9 @@ def GPT_request(prompt, gpt_parameter):
             frequency_penalty=gpt_parameter["frequency_penalty"],
             presence_penalty=gpt_parameter["presence_penalty"],
             stream=gpt_parameter["stream"],
-            stop=gpt_parameter["stop"], )
+            stop=gpt_parameter["stop"], 
+            timeout=30,
+            )
         time.sleep(1)
         print("---------------success result ---------------------------------")
         logger_info(response.choices[0]['message'], {})
@@ -260,7 +267,6 @@ def safe_generate_response(prompt,
                            func_clean_up=None,
                            verbose=False):
     # if verbose:
-    openai.api_key = random.choice(openai_api_key)
 
     for i in range(repeat):
         try:
@@ -271,16 +277,34 @@ def safe_generate_response(prompt,
             pass
     return fail_safe_response
 
-
-def get_embedding(text, model="text-embedding-3-small"):
-    text = text.replace("\n", " ")
-    if not text:
-        text = "this is blank"
-    openai.api_key = random.choice(openai_api_key)
-    respone =  openai.Embedding.create(
-        input=text, model=model)
-    # logger_info(respone)
-    return respone["data"][0]["embedding"]
+def get_embedding(text, model="nomic-embed-text"):
+    if text == "" :
+        return []
+    # use local embedding model
+    headers = {
+        "Content-Type": "application/json"
+    }
+    data = {
+        "model": "nomic-embed-text",
+        "input": text
+    }
+    url = f"{emb_url}/api/embed"
+    response = requests.post(url, headers=headers, data=json.dumps(data))
+    
+    if response.status_code == 200:
+        content  = response.json()
+        return content.get("embeddings", [[]])[0]
+    else:
+        response.raise_for_status()
+# def get_embedding(text, model="text-embedding-3-small"):
+#     text = text.replace("\n", " ")
+#     if not text:
+#         text = "this is blank"
+#     openai.api_key = random.choice(openai_api_key)
+#     respone =  openai.Embedding.create(
+#         input=text, model=model)
+#     # logger_info(respone)
+#     return respone["data"][0]["embedding"]
 
 
 if __name__ == '__main__':

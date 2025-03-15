@@ -1,0 +1,424 @@
+{
+  "vision_r": 8,
+  "att_bandwidth": 10,
+  "retention": 6,
+  "curr_time": "March 14, 2025, 10:28:50",
+  "curr_tile": [
+    118,
+    30
+  ],
+  "daily_plan_req": "10:00 AM - 12:00 PM: Organized shelves at the supermarket and analyzed sales data, secretly planning to invest in the supermarket's supply chain through virtual economic investments. Observed the interactions between Cichenggege, Kiki, and LW, and pondered the similarities between interpersonal relationships and market economics.\nAfternoon: Continued to analyze market demand, identified a potential business opportunity with a certain type of imported fruit, and planned to speculate on commodity futures in the virtual market.\nAt 6pm,tom went to the moonlight tavern bar to relax.",
+  "name": "tom moreno",
+  "first_name": "tom",
+  "last_name": "moreno",
+  "age": 52,
+  "innate": "rude, aggressive, energetic",
+  "learned": "tom moreno is a grocery shop keeper at The supermarket who loves interacting with customers. He is always willing to help out and make sure everyone is taken care of.",
+  "currently": "Tom is the store manager of a supermarket and is currently seeking a breakthrough in business.",
+  "lifestyle": "tom moreno goes to bed around 11pm, awakes up around 7am, eats dinner around 5pm.",
+  "living_area": "the ville:moreno family's house:tom moreno's bedroom",
+  "concept_forget": 100,
+  "daily_reflection_time": 180,
+  "daily_reflection_size": 5,
+  "overlap_reflect_th": 4,
+  "kw_strg_event_reflect_th": 10,
+  "kw_strg_thought_reflect_th": 9,
+  "recency_w": 1,
+  "relevance_w": 1,
+  "importance_w": 1,
+  "recency_decay": 0.995,
+  "importance_trigger_max": 4250,
+  "importance_trigger_curr": 3860,
+  "importance_ele_n": 204,
+  "thought_count": 5,
+  "daily_req": [
+    "Wake up and complete the morning routine at 7:00 AM.",
+    "Have lunch at 12:30 PM.",
+    "Eat dinner at 5:00 PM.",
+    "Go to the Moonlight Tavern Bar to relax at 6:00 PM.",
+    "Return home and wind down by 10:00 PM.",
+    "Go to bed at 11:00 PM."
+  ],
+  "f_daily_schedule": [
+    [
+      "sleeping",
+      420
+    ],
+    [
+      "Tom is waking up and completing his morning routine, preparing for another energetic day as the store manager of the supermarket. He is mentally gearing up to organize shelves, analyze sales data, and strategize his next business breakthrough (Tom is waking up and stretching)",
+      5
+    ],
+    [
+      "Tom is waking up and completing his morning routine, preparing for another energetic day as the store manager of the supermarket. He is mentally gearing up to organize shelves, analyze sales data, and strategize his next business breakthrough (brushing his teeth and washing his face)",
+      10
+    ],
+    [
+      "Tom is waking up and completing his morning routine, preparing for another energetic day as the store manager of the supermarket. He is mentally gearing up to organize shelves, analyze sales data, and strategize his next business breakthrough (taking a quick shower)",
+      10
+    ],
+    [
+      "Tom is waking up and completing his morning routine, preparing for another energetic day as the store manager of the supermarket. He is mentally gearing up to organize shelves, analyze sales data, and strategize his next business breakthrough (getting dressed in his work clothes)",
+      5
+    ],
+    [
+      "Tom is waking up and completing his morning routine, preparing for another energetic day as the store manager of the supermarket. He is mentally gearing up to organize shelves, analyze sales data, and strategize his next business breakthrough (preparing and eating a quick breakfast)",
+      10
+    ],
+    [
+      "Tom is waking up and completing his morning routine, preparing for another energetic day as the store manager of the supermarket. He is mentally gearing up to organize shelves, analyze sales data, and strategize his next business breakthrough (on the way to on the way to reviewing his to-do list for the day)",
+      0
+    ],
+    [
+      "Tom is waking up and completing his morning routine, preparing for another energetic day as the store manager of the supermarket. He is mentally gearing up to organize shelves, analyze sales data, and strategize his next business breakthrough (conversing about Jane and Tom discussing their respective projects\u2014Jane's NFT music collaboration with Tamara Taylor and Tom's supermarket innovations, including supply chain investments and imported fruit speculation\u2014while offering to brainstorm and support each other's ideas.)",
+      11
+    ],
+    [
+      "Tom is waking up and completing his morning routine, preparing for another energetic day as the store manager of the supermarket. He is mentally gearing up to organize shelves, analyze sales data, and strategize his next business breakthrough (reviewing his to-do list for the day).  ",
+      4
+    ],
+    [
+      "Tom is waking up and completing his morning routine, preparing for another energetic day as the store manager of the supermarket. He is mentally gearing up to organize shelves, analyze sales data, and strategize his next business breakthrough (mentally strategizing his business breakthrough ideas).  ",
+      10
+    ],
+    [
+      "Tom is arriving at the supermarket, greeting his staff with his usual energetic and slightly aggressive demeanor. He begins organizing shelves, ensuring everything is in perfect order for the day's customers, while also keeping an eye on the sales data to identify trends and opportunities for his supply chain investment plans (grabbing his keys and heading out the door).  ",
+      5
+    ],
+    [
+      "Tom is arriving at the supermarket, greeting his staff with his usual energetic and slightly aggressive demeanor. He begins organizing shelves, ensuring everything is in perfect order for the day's customers, while also keeping an eye on the sales data to identify trends and opportunities for his supply chain investment plans (driving to the supermarket).  ",
+      10
+    ],
+    [
+      "Tom is arriving at the supermarket, greeting his staff with his usual energetic and slightly aggressive demeanor. He begins organizing shelves, ensuring everything is in perfect order for the day's customers, while also keeping an eye on the sales data to identify trends and opportunities for his supply chain investment plans (parking his car and entering the supermarket).  ",
+      5
+    ],
+    [
+      "Tom is arriving at the supermarket, greeting his staff with his usual energetic and slightly aggressive demeanor. He begins organizing shelves, ensuring everything is in perfect order for the day's customers, while also keeping an eye on the sales data to identify trends and opportunities for his supply chain investment plans (greeting his staff with his energetic and slightly aggressive demeanor).  ",
+      5
+    ],
+    [
+      "Tom is arriving at the supermarket, greeting his staff with his usual energetic and slightly aggressive demeanor. He begins organizing shelves, ensuring everything is in perfect order for the day's customers, while also keeping an eye on the sales data to identify trends and opportunities for his supply chain investment plans (beginning to organize shelves and check inventory).",
+      30
+    ],
+    [
+      "Tom is reviewing the previous day's sales reports and inventory levels, making notes on which products are selling well and which need restocking. He is also brainstorming ways to optimize the supermarket's supply chain, considering potential investments in virtual economic platforms to enhance profitability. His energetic and slightly aggressive demeanor keeps the staff on their toes as he delegates tasks for the day (Tom is arriving at the supermarket and greeting his staff with his usual energetic and slightly aggressive demeanor)",
+      5
+    ],
+    [
+      "Tom is reviewing the previous day's sales reports and inventory levels, making notes on which products are selling well and which need restocking. He is also brainstorming ways to optimize the supermarket's supply chain, considering potential investments in virtual economic platforms to enhance profitability. His energetic and slightly aggressive demeanor keeps the staff on their toes as he delegates tasks for the day (organizing shelves, ensuring everything is in perfect order for the day's customers)",
+      10
+    ],
+    [
+      "Tom is reviewing the previous day's sales reports and inventory levels, making notes on which products are selling well and which need restocking. He is also brainstorming ways to optimize the supermarket's supply chain, considering potential investments in virtual economic platforms to enhance profitability. His energetic and slightly aggressive demeanor keeps the staff on their toes as he delegates tasks for the day (reviewing the previous day's sales reports, making notes on which products are selling well)",
+      10
+    ],
+    [
+      "Tom is reviewing the previous day's sales reports and inventory levels, making notes on which products are selling well and which need restocking. He is also brainstorming ways to optimize the supermarket's supply chain, considering potential investments in virtual economic platforms to enhance profitability. His energetic and slightly aggressive demeanor keeps the staff on their toes as he delegates tasks for the day (checking inventory levels and identifying products that need restocking)",
+      10
+    ],
+    [
+      "Tom is reviewing the previous day's sales reports and inventory levels, making notes on which products are selling well and which need restocking. He is also brainstorming ways to optimize the supermarket's supply chain, considering potential investments in virtual economic platforms to enhance profitability. His energetic and slightly aggressive demeanor keeps the staff on their toes as he delegates tasks for the day (brainstorming ways to optimize the supermarket's supply chain)",
+      10
+    ],
+    [
+      "Tom is reviewing the previous day's sales reports and inventory levels, making notes on which products are selling well and which need restocking. He is also brainstorming ways to optimize the supermarket's supply chain, considering potential investments in virtual economic platforms to enhance profitability. His energetic and slightly aggressive demeanor keeps the staff on their toes as he delegates tasks for the day (considering potential investments in virtual economic platforms to enhance profitability)",
+      10
+    ],
+    [
+      "Tom is reviewing the previous day's sales reports and inventory levels, making notes on which products are selling well and which need restocking. He is also brainstorming ways to optimize the supermarket's supply chain, considering potential investments in virtual economic platforms to enhance profitability. His energetic and slightly aggressive demeanor keeps the staff on their toes as he delegates tasks for the day (delegating tasks for the day to his staff, keeping them on their toes with his energetic and slightly aggressive demeanor)",
+      5
+    ],
+    [
+      "Tom is organizing shelves at the supermarket and analyzing sales data, secretly planning to invest in the supermarket's supply chain through virtual economic investments. He is also observing the interactions between Cichenggege, Kiki, and LW, pondering the similarities between interpersonal relationships and market economics. His energetic and slightly aggressive demeanor keeps him focused and driven as he strategizes for his next business breakthrough (Tom is reviewing the previous day's sales reports)",
+      10
+    ],
+    [
+      "Tom is organizing shelves at the supermarket and analyzing sales data, secretly planning to invest in the supermarket's supply chain through virtual economic investments. He is also observing the interactions between Cichenggege, Kiki, and LW, pondering the similarities between interpersonal relationships and market economics. His energetic and slightly aggressive demeanor keeps him focused and driven as he strategizes for his next business breakthrough (checking inventory levels for restocking needs)",
+      10
+    ],
+    [
+      "Tom is organizing shelves at the supermarket and analyzing sales data, secretly planning to invest in the supermarket's supply chain through virtual economic investments. He is also observing the interactions between Cichenggege, Kiki, and LW, pondering the similarities between interpersonal relationships and market economics. His energetic and slightly aggressive demeanor keeps him focused and driven as he strategizes for his next business breakthrough (on the way to on the way to brainstorming ways to optimize the supermarket's supply chain)",
+      0
+    ],
+    [
+      "Tom is organizing shelves at the supermarket and analyzing sales data, secretly planning to invest in the supermarket's supply chain through virtual economic investments. He is also observing the interactions between Cichenggege, Kiki, and LW, pondering the similarities between interpersonal relationships and market economics. His energetic and slightly aggressive demeanor keeps him focused and driven as he strategizes for his next business breakthrough (conversing about Carmen Ortiz and Tom Moreno discussing sales trends, virtual economy investments, and planning a collaborative workshop on decentralized innovation, supply chain optimization, and NFT integration, with plans to involve Jane for her expertise.)",
+      10
+    ],
+    [
+      "Tom is organizing shelves at the supermarket and analyzing sales data, secretly planning to invest in the supermarket's supply chain through virtual economic investments. He is also observing the interactions between Cichenggege, Kiki, and LW, pondering the similarities between interpersonal relationships and market economics. His energetic and slightly aggressive demeanor keeps him focused and driven as he strategizes for his next business breakthrough (Tom is reviewing the previous day's sales reports).  ",
+      10
+    ],
+    [
+      "Tom is organizing shelves at the supermarket and analyzing sales data, secretly planning to invest in the supermarket's supply chain through virtual economic investments. He is also observing the interactions between Cichenggege, Kiki, and LW, pondering the similarities between interpersonal relationships and market economics. His energetic and slightly aggressive demeanor keeps him focused and driven as he strategizes for his next business breakthrough (checking inventory levels for restocking needs).  ",
+      10
+    ],
+    [
+      "Tom is organizing shelves at the supermarket and analyzing sales data, secretly planning to invest in the supermarket's supply chain through virtual economic investments. He is also observing the interactions between Cichenggege, Kiki, and LW, pondering the similarities between interpersonal relationships and market economics. His energetic and slightly aggressive demeanor keeps him focused and driven as he strategizes for his next business breakthrough (on the way to brainstorming ways to optimize the supermarket's supply chain).  ",
+      0
+    ],
+    [
+      "Tom is organizing shelves at the supermarket and analyzing sales data, secretly planning to invest in the supermarket's supply chain through virtual economic investments. He is also observing the interactions between Cichenggege, Kiki, and LW, pondering the similarities between interpersonal relationships and market economics. His energetic and slightly aggressive demeanor keeps him focused and driven as he strategizes for his next business breakthrough (conversing about Carmen Ortiz and Tom Moreno discussing sales trends, virtual economy investments, and planning a collaborative workshop on decentralized innovation, supply chain optimization, and NFT integration, with plans to involve Jane for her expertise.).  ",
+      10
+    ],
+    [
+      "Tom is organizing shelves at the supermarket and analyzing sales data, secretly planning to invest in the supermarket's supply chain through virtual economic investments. He is also observing the interactions between Cichenggege, Kiki, and LW, pondering the similarities between interpersonal relationships and market economics. His energetic and slightly aggressive demeanor keeps him focused and driven as he strategizes for his next business breakthrough (researching virtual economic platforms for potential investments).  ",
+      10
+    ],
+    [
+      "Tom is organizing shelves at the supermarket and analyzing sales data, secretly planning to invest in the supermarket's supply chain through virtual economic investments. He is also observing the interactions between Cichenggege, Kiki, and LW, pondering the similarities between interpersonal relationships and market economics. His energetic and slightly aggressive demeanor keeps him focused and driven as he strategizes for his next business breakthrough (delegating tasks to staff with an energetic and slightly aggressive demeanor).  ",
+      10
+    ],
+    [
+      "Tom is organizing shelves at the supermarket and analyzing sales data, secretly planning to invest in the supermarket's supply chain through virtual economic investments. He is also observing the interactions between Cichenggege, Kiki, and LW, pondering the similarities between interpersonal relationships and market economics. His energetic and slightly aggressive demeanor keeps him focused and driven as he strategizes for his next business breakthrough (observing interactions between Cichenggege, Kiki, and LW, pondering interpersonal relationships and market economics).  ",
+      10
+    ],
+    [
+      "Tom is continuing to organize shelves and analyze sales data at the supermarket. He is also deep in thought about his plans to invest in the supply chain through virtual economic investments. His energetic and slightly aggressive demeanor drives him to stay focused on identifying trends and opportunities, while occasionally interacting with customers and staff to ensure the store runs smoothly. He is also keeping an eye on the imported fruit section, considering potential commodity futures speculation (Tom is organizing the canned goods section).  ",
+      10
+    ],
+    [
+      "Tom is continuing to organize shelves and analyze sales data at the supermarket. He is also deep in thought about his plans to invest in the supply chain through virtual economic investments. His energetic and slightly aggressive demeanor drives him to stay focused on identifying trends and opportunities, while occasionally interacting with customers and staff to ensure the store runs smoothly. He is also keeping an eye on the imported fruit section, considering potential commodity futures speculation (analyzing sales data for the past week).  ",
+      10
+    ],
+    [
+      "Tom is continuing to organize shelves and analyze sales data at the supermarket. He is also deep in thought about his plans to invest in the supply chain through virtual economic investments. His energetic and slightly aggressive demeanor drives him to stay focused on identifying trends and opportunities, while occasionally interacting with customers and",
+      10
+    ],
+    [
+      "taking a break from organizing shelves and analyzing sales data to have lunch. He is reflecting on his morning observations about the supermarket's supply chain and the potential for virtual economic investments. His energetic and slightly aggressive demeanor keeps him mentally engaged, even during his break, as he continues to strategize for his next business breakthrough. He also makes a mental note to revisit the imported fruit section later in the afternoon to further explore the commodity",
+      60
+    ],
+    [
+      "Tom is back at the supermarket after his lunch break, focusing on analyzing market demand and identifying potential business opportunities. He is particularly interested in the imported fruit section, where he is considering speculating on commodity futures in the virtual market. His energetic and slightly aggressive demeanor keeps him driven as he strategizes for his next business breakthrough, while also ensuring the store runs smoothly and customers are well taken care of",
+      60
+    ],
+    [
+      "Tom is continuing to analyze market demand and explore potential business opportunities, particularly focusing on the imported fruit section. He is actively researching commodity futures in the virtual market, considering how to leverage this for his supermarket's supply chain. His energetic and slightly aggressive demeanor keeps him sharp and focused as he strategizes for his next business breakthrough, while also ensuring the store remains well-stocked and customers are satisfied. He occasionally interacts with staff",
+      60
+    ],
+    [
+      "Tom is finalizing his analysis of the imported fruit section and preparing a detailed plan for commodity futures speculation in the virtual market. His energetic and slightly aggressive demeanor keeps him focused as he cross-references market trends with the supermarket's inventory needs. He also takes a moment to check in with his staff, ensuring the store is running smoothly and customers are satisfied. His mind is buzzing with ideas for his next business breakthrough, and",
+      60
+    ],
+    [
+      "Tom is reviewing his finalized plan for commodity futures speculation in the virtual market, focusing on the imported fruit section. His energetic and slightly aggressive demeanor keeps him sharp as he double-checks market trends and aligns them with the supermarket's inventory needs. He also takes a moment to interact with customers and staff, ensuring the store remains well-stocked and customer satisfaction is high. His mind is buzzing with ideas for his next business breakthrough, and",
+      60
+    ],
+    [
+      "eating dinner at home, reflecting on the day's progress and his plans for commodity futures speculation in the virtual market. His energetic and slightly aggressive demeanor keeps him mentally engaged as he reviews his notes and strategizes for his next business breakthrough. After dinner, he prepares to head to the Moonlight Tavern Bar to relax and unwind",
+      60
+    ],
+    [
+      "Tom is heading to the Moonlight Tavern Bar to relax and unwind after a busy day at the supermarket. He plans to enjoy a drink, chat with friends or regulars, and let go of the day's stress while still keeping his mind open to potential business ideas or networking opportunities. His energetic and slightly aggressive demeanor might make him the center of attention, but he\u2019s looking forward to a well-deserved break",
+      60
+    ],
+    [
+      "Tom is at the Moonlight Tavern Bar, enjoying a drink and engaging in lively conversations with friends and regulars. His energetic and slightly aggressive demeanor makes him the center of attention as he shares stories from his day at the supermarket and casually explores potential business ideas or networking opportunities. He\u2019s relaxed but still mentally sharp, keeping an ear out for any useful insights or connections that could contribute to his next business breakthrough",
+      60
+    ],
+    [
+      "Tom is still at the Moonlight Tavern Bar, continuing to enjoy his evening with friends and regulars. His energetic and slightly aggressive demeanor keeps the atmosphere lively as he shares more stories from his day at the supermarket and casually discusses potential business ideas. He\u2019s relaxed but remains mentally sharp, keeping an ear out for any useful insights or connections that could contribute to his next business breakthrough. He\u2019s also considering heading home soon",
+      60
+    ],
+    [
+      "Tom is wrapping up his evening at the Moonlight Tavern Bar, finishing his drink and saying goodbye to friends and regulars. His energetic and slightly aggressive demeanor remains lively as he shares a few final stories and exchanges contact information with potential business connections. He\u2019s mentally reflecting on the conversations of the evening, considering any useful insights for his next business breakthrough, and preparing to head home to wind down for the night",
+      60
+    ],
+    [
+      "Tom is at home, winding down after his evening at the Moonlight Tavern Bar. He is reflecting on the day's events, reviewing any notes or ideas he gathered from his conversations at the bar, and mentally preparing for the next day. His energetic and slightly aggressive demeanor is subdued as he relaxes, but his mind is still active, considering potential business opportunities and strategies for his next breakthrough. He is getting ready to go",
+      60
+    ],
+    [
+      "Tom is getting ready for bed, reflecting on the day's activities and his plans for the supermarket's supply chain and virtual economic investments. His energetic and slightly aggressive demeanor has quieted down as he prepares to rest, but his mind is still active, considering potential business opportunities and strategies for his next breakthrough. He sets his alarm for 7:00 AM, ensuring he\u2019s ready for another productive day tomorrow",
+      60
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ]
+  ],
+  "f_daily_schedule_hourly_org": [
+    [
+      "sleeping",
+      420
+    ],
+    [
+      "Tom is waking up and completing his morning routine, preparing for another energetic day as the store manager of the supermarket. He is mentally gearing up to organize shelves, analyze sales data, and strategize his next business breakthrough",
+      60
+    ],
+    [
+      "Tom is arriving at the supermarket, greeting his staff with his usual energetic and slightly aggressive demeanor. He begins organizing shelves, ensuring everything is in perfect order for the day's customers, while also keeping an eye on the sales data to identify trends and opportunities for his supply chain investment plans",
+      60
+    ],
+    [
+      "Tom is reviewing the previous day's sales reports and inventory levels, making notes on which products are selling well and which need restocking. He is also brainstorming ways to optimize the supermarket's supply chain, considering potential investments in virtual economic platforms to enhance profitability. His energetic and slightly aggressive demeanor keeps the staff on their toes as he delegates tasks for the day",
+      60
+    ],
+    [
+      "Tom is organizing shelves at the supermarket and analyzing sales data, secretly planning to invest in the supermarket's supply chain through virtual economic investments. He is also observing the interactions between Cichenggege, Kiki, and LW, pondering the similarities between interpersonal relationships and market economics. His energetic and slightly aggressive demeanor keeps him focused and driven as he strategizes for his next business breakthrough",
+      60
+    ],
+    [
+      "continuing to organize shelves and analyze sales data at the supermarket. He is also deep in thought about his plans to invest in the supply chain through virtual economic investments. His energetic and slightly aggressive demeanor drives him to stay focused on identifying trends and opportunities, while occasionally interacting with customers and staff to ensure the store runs smoothly. He is also keeping an eye on the imported fruit section, considering potential commodity futures speculation",
+      60
+    ],
+    [
+      "taking a break from organizing shelves and analyzing sales data to have lunch. He is reflecting on his morning observations about the supermarket's supply chain and the potential for virtual economic investments. His energetic and slightly aggressive demeanor keeps him mentally engaged, even during his break, as he continues to strategize for his next business breakthrough. He also makes a mental note to revisit the imported fruit section later in the afternoon to further explore the commodity",
+      60
+    ],
+    [
+      "Tom is back at the supermarket after his lunch break, focusing on analyzing market demand and identifying potential business opportunities. He is particularly interested in the imported fruit section, where he is considering speculating on commodity futures in the virtual market. His energetic and slightly aggressive demeanor keeps him driven as he strategizes for his next business breakthrough, while also ensuring the store runs smoothly and customers are well taken care of",
+      60
+    ],
+    [
+      "Tom is continuing to analyze market demand and explore potential business opportunities, particularly focusing on the imported fruit section. He is actively researching commodity futures in the virtual market, considering how to leverage this for his supermarket's supply chain. His energetic and slightly aggressive demeanor keeps him sharp and focused as he strategizes for his next business breakthrough, while also ensuring the store remains well-stocked and customers are satisfied. He occasionally interacts with staff",
+      60
+    ],
+    [
+      "Tom is finalizing his analysis of the imported fruit section and preparing a detailed plan for commodity futures speculation in the virtual market. His energetic and slightly aggressive demeanor keeps him focused as he cross-references market trends with the supermarket's inventory needs. He also takes a moment to check in with his staff, ensuring the store is running smoothly and customers are satisfied. His mind is buzzing with ideas for his next business breakthrough, and",
+      60
+    ],
+    [
+      "Tom is reviewing his finalized plan for commodity futures speculation in the virtual market, focusing on the imported fruit section. His energetic and slightly aggressive demeanor keeps him sharp as he double-checks market trends and aligns them with the supermarket's inventory needs. He also takes a moment to interact with customers and staff, ensuring the store remains well-stocked and customer satisfaction is high. His mind is buzzing with ideas for his next business breakthrough, and",
+      60
+    ],
+    [
+      "eating dinner at home, reflecting on the day's progress and his plans for commodity futures speculation in the virtual market. His energetic and slightly aggressive demeanor keeps him mentally engaged as he reviews his notes and strategizes for his next business breakthrough. After dinner, he prepares to head to the Moonlight Tavern Bar to relax and unwind",
+      60
+    ],
+    [
+      "Tom is heading to the Moonlight Tavern Bar to relax and unwind after a busy day at the supermarket. He plans to enjoy a drink, chat with friends or regulars, and let go of the day's stress while still keeping his mind open to potential business ideas or networking opportunities. His energetic and slightly aggressive demeanor might make him the center of attention, but he\u2019s looking forward to a well-deserved break",
+      60
+    ],
+    [
+      "Tom is at the Moonlight Tavern Bar, enjoying a drink and engaging in lively conversations with friends and regulars. His energetic and slightly aggressive demeanor makes him the center of attention as he shares stories from his day at the supermarket and casually explores potential business ideas or networking opportunities. He\u2019s relaxed but still mentally sharp, keeping an ear out for any useful insights or connections that could contribute to his next business breakthrough",
+      60
+    ],
+    [
+      "Tom is still at the Moonlight Tavern Bar, continuing to enjoy his evening with friends and regulars. His energetic and slightly aggressive demeanor keeps the atmosphere lively as he shares more stories from his day at the supermarket and casually discusses potential business ideas. He\u2019s relaxed but remains mentally sharp, keeping an ear out for any useful insights or connections that could contribute to his next business breakthrough. He\u2019s also considering heading home soon",
+      60
+    ],
+    [
+      "Tom is wrapping up his evening at the Moonlight Tavern Bar, finishing his drink and saying goodbye to friends and regulars. His energetic and slightly aggressive demeanor remains lively as he shares a few final stories and exchanges contact information with potential business connections. He\u2019s mentally reflecting on the conversations of the evening, considering any useful insights for his next business breakthrough, and preparing to head home to wind down for the night",
+      60
+    ],
+    [
+      "Tom is at home, winding down after his evening at the Moonlight Tavern Bar. He is reflecting on the day's events, reviewing any notes or ideas he gathered from his conversations at the bar, and mentally preparing for the next day. His energetic and slightly aggressive demeanor is subdued as he relaxes, but his mind is still active, considering potential business opportunities and strategies for his next breakthrough. He is getting ready to go",
+      60
+    ],
+    [
+      "Tom is getting ready for bed, reflecting on the day's activities and his plans for the supermarket's supply chain and virtual economic investments. His energetic and slightly aggressive demeanor has quieted down as he prepares to rest, but his mind is still active, considering potential business opportunities and strategies for his next breakthrough. He sets his alarm for 7:00 AM, ensuring he\u2019s ready for another productive day tomorrow",
+      60
+    ]
+  ],
+  "act_address": "the ville:supermarket:food area:computer desk",
+  "act_start_time": "March 14, 2025, 10:20:00",
+  "act_duration": 10,
+  "act_description": "Tom is organizing shelves at the supermarket and analyzing sales data, secretly planning to invest in the supermarket's supply chain through virtual economic investments. He is also observing the interactions between Cichenggege, Kiki, and LW, pondering the similarities between interpersonal relationships and market economics. His energetic and slightly aggressive demeanor keeps him focused and driven as he strategizes for his next business breakthrough (conversing about Carmen Ortiz and Tom Moreno discussing sales trends, virtual economy investments, and planning a collaborative workshop on decentralized innovation, supply chain optimization, and NFT integration, with plans to involve Jane for her expertise.)",
+  "act_pronunciatio": "\ud83d\udde3\ufe0f\ud83e\udd14",
+  "act_event": [
+    "tom moreno",
+    "is",
+    "conversing"
+  ],
+  "act_obj_description": "not in use",
+  "act_obj_pronunciatio": "\ud83d\ude42",
+  "act_obj_event": [
+    "computer desk",
+    "is",
+    "not in use"
+  ],
+  "chatting_with": null,
+  "chat": null,
+  "chatting_with_buffer": {
+    "jane moreno": -170,
+    "carmen ortiz": 746
+  },
+  "chatting_end_time": null,
+  "act_path_set": true,
+  "planned_path": []
+}

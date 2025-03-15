@@ -1,0 +1,328 @@
+{
+  "vision_r": 3,
+  "att_bandwidth": 4,
+  "retention": 5,
+  "curr_time": "March 14, 2025, 00:00:00",
+  "curr_tile": [
+    35,
+    43
+  ],
+  "daily_plan_req": "",
+  "name": "christopher gardner",
+  "first_name": "christopher",
+  "last_name": "gardner",
+  "age": 5,
+  "innate": "intelligent and adaptable, able to remain optimistic even in difficult environments.",
+  "learned": "christopher gardner having experienced various hardships with his father, he learned to cherish what he has and became stronger.",
+  "currently": "christopher gardner experienced homelessness with his parents, and now, with parents hard work, life is becoming more stable.",
+  "lifestyle": "christopher gardner goes to bed around 9pm, awakes up around 6am, eats dinner around 5pm.",
+  "living_area": "the ville:gardner family's house:christopher gardner's room",
+  "concept_forget": 100,
+  "daily_reflection_time": 180,
+  "daily_reflection_size": 5,
+  "overlap_reflect_th": 4,
+  "kw_strg_event_reflect_th": 10,
+  "kw_strg_thought_reflect_th": 9,
+  "recency_w": 1,
+  "relevance_w": 1,
+  "importance_w": 1,
+  "recency_decay": 0.995,
+  "importance_trigger_max": 5450,
+  "importance_trigger_curr": 5400,
+  "importance_ele_n": 86,
+  "thought_count": 5,
+  "daily_req": [
+    "Wake up and complete the morning routine at 6:00 am.",
+    "Have breakfast at 7:00 am.",
+    "Attend school from 8:00 am to 3:00 pm.",
+    "Participate in an after-school activity from 3:30 pm to 4:30 pm.",
+    "Have dinner with family at 5:00 pm.",
+    "Playtime or leisure activity from 6:00 pm to 7:00 pm.",
+    "Spend time reading a book or doing a quiet activity from 7:00 pm to 8:00 pm.",
+    "Prepare for bed and wind down from 8:00 pm to 9:00 pm.",
+    "Go to bed at 9:00 pm."
+  ],
+  "f_daily_schedule": [
+    [
+      "sleeping",
+      360
+    ],
+    [
+      "waking up and completing the morning routine",
+      60
+    ],
+    [
+      "having breakfast (sitting at the table and waiting for breakfast)",
+      5
+    ],
+    [
+      "having breakfast (eating cereal)",
+      10
+    ],
+    [
+      "having breakfast (drinking a glass of milk)",
+      5
+    ],
+    [
+      "having breakfast (on the way to on the way to chatting with his parents)",
+      0
+    ],
+    [
+      "having breakfast (conversing about Chris Gardner and his son, Christopher Gardner, discussing their morning activities, Christopher's excitement for art class at school, and Chris's enthusiasm for his work in stock market research.)",
+      5
+    ],
+    [
+      "having breakfast (chatting with his parents)  ",
+      5
+    ],
+    [
+      "having breakfast (eating a piece of fruit)  ",
+      10
+    ],
+    [
+      "having breakfast (helping to clear the table)  ",
+      5
+    ],
+    [
+      "having breakfast (brushing his teeth after breakfast)  ",
+      10
+    ],
+    [
+      "having breakfast (getting his backpack ready for school)  ",
+      5
+    ],
+    [
+      "attending school (arriving at school and hanging up his coat)  ",
+      10
+    ],
+    [
+      "attending school (attending morning circle time with his classmates)  ",
+      20
+    ],
+    [
+      "attending school (on the way to on the way to participating in a math lesson) )",
+      0
+    ],
+    [
+      "attending school (conversing about Christopher Gardner and MK discussing MK's work on an AI economic model to stabilize the financial system by eliminating speculative bubbles, and MK's approach to ensuring accurate learning by the AI.)",
+      4
+    ],
+    [
+      "attending school (on the way to participating in a math lesson) )",
+      0
+    ],
+    [
+      "attending school (conversing about Linda and Christopher Gardner discussing the integration of digital tools in art projects and planning a digital art mini-workshop together.)",
+      6
+    ],
+    [
+      "attending school (participating in a math lesson)  ",
+      30
+    ],
+    [
+      "attending school (having a snack break)  ",
+      15
+    ],
+    [
+      "attending school (engaging in a reading activity)  ",
+      30
+    ],
+    [
+      "attending school (going outside for recess)  ",
+      30
+    ],
+    [
+      "attending school (attending a science class)  ",
+      30
+    ],
+    [
+      "attending school (having lunch with his friends)  ",
+      30
+    ],
+    [
+      "attending school (participating in an art class)  ",
+      30
+    ],
+    [
+      "attending school (attending a music lesson)  ",
+      30
+    ],
+    [
+      "attending school (having another short recess)  ",
+      15
+    ],
+    [
+      "attending school (working on a group project)  ",
+      30
+    ],
+    [
+      "attending school (attending a social studies class)  ",
+      30
+    ],
+    [
+      "attending school (having a quiet reading time)  ",
+      20
+    ],
+    [
+      "attending school (preparing to go home)",
+      120
+    ],
+    [
+      "participating in an after-school activity",
+      60
+    ],
+    [
+      "having dinner with family",
+      60
+    ],
+    [
+      "having playtime or engaging in a leisure activity",
+      60
+    ],
+    [
+      "spending time reading a book or doing a quiet activity",
+      60
+    ],
+    [
+      "preparing for bed and winding down",
+      60
+    ],
+    [
+      "going to bed",
+      60
+    ],
+    [
+      "sleeping",
+      120
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ]
+  ],
+  "f_daily_schedule_hourly_org": [
+    [
+      "sleeping",
+      360
+    ],
+    [
+      "waking up and completing the morning routine",
+      60
+    ],
+    [
+      "having breakfast",
+      60
+    ],
+    [
+      "attending school",
+      480
+    ],
+    [
+      "participating in an after-school activity",
+      60
+    ],
+    [
+      "having dinner with family",
+      60
+    ],
+    [
+      "having playtime or engaging in a leisure activity",
+      60
+    ],
+    [
+      "spending time reading a book or doing a quiet activity",
+      60
+    ],
+    [
+      "preparing for bed and winding down",
+      60
+    ],
+    [
+      "going to bed",
+      60
+    ],
+    [
+      "sleeping",
+      120
+    ]
+  ],
+  "act_address": "",
+  "act_start_time": "",
+  "act_duration": 0,
+  "act_description": "",
+  "act_pronunciatio": "",
+  "act_event": [
+    
+  ],
+  "act_obj_description": "",
+  "act_obj_pronunciatio": "",
+  "act_obj_event": [
+    
+  ],
+  "chatting_with": null,
+  "chat": null,
+  "chatting_with_buffer": {
+    "chris gardner": 262,
+    "mk": 630,
+    "linda": 720
+  },
+  "chatting_end_time": null,
+  "act_path_set": true,
+  "planned_path": []
+}

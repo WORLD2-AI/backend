@@ -1,0 +1,394 @@
+{
+  "vision_r": 8,
+  "att_bandwidth": 8,
+  "retention": 8,
+  "curr_time": "March 14, 2025, 10:13:50",
+  "curr_tile": [
+    99,
+    51
+  ],
+  "daily_plan_req": "At 4 PM, attended a family gathering at the Gardner family's house.\nAt 4:05 PM, delivered a speech in the common room on the future development of the virtual economy, emphasizing the importance of capital flow.\nAt 4:10 PM, met Carlos in the empty guest bedroom and had a fierce argument with him.\nAt 5 PM, concluded the family gathering and headed to the Moonlight Tavern Bar.\n\u200cAt 5:30 PM, encountered Carlos again and continued the argument with him, acknowledging the dominance of the combination of technology and capital, but still insisting on the primacy of capital.\nAt 8 PM, left the Moonlight Tavern Bar.",
+  "name": "carmen ortiz",
+  "first_name": "carmen",
+  "last_name": "ortiz",
+  "age": 33,
+  "innate": "friendly, outgoing, helpful",
+  "learned": "carmen ortiz is a shopkeeper at Supermarket who loves to help people find the supplies they need. She is always looking for ways to make her customers feel welcome.",
+  "currently": "Has her own views on the virtual economy, emphasizing the importance of capital.",
+  "lifestyle": "carmen ortiz goes to bed around 11pm, awakes up around 7am, eats dinner around 8pm.",
+  "living_area": "the ville:tamara taylor and carmen ortiz's house:carmen ortiz's room",
+  "concept_forget": 100,
+  "daily_reflection_time": 180,
+  "daily_reflection_size": 5,
+  "overlap_reflect_th": 4,
+  "kw_strg_event_reflect_th": 10,
+  "kw_strg_thought_reflect_th": 9,
+  "recency_w": 1,
+  "relevance_w": 1,
+  "importance_w": 1,
+  "recency_decay": 0.995,
+  "importance_trigger_max": 3250,
+  "importance_trigger_curr": 2978,
+  "importance_ele_n": 174,
+  "thought_count": 5,
+  "daily_req": [
+    "Wake up and complete the morning routine at 7:00 am.",
+    "Open the Supermarket and assist customers from 8:00 am to 3:30 pm.",
+    "Travel to the Gardner family's house for a family gathering at 4:00 pm.",
+    "Deliver a speech in the common room on the future development of the virtual economy at 4:05 pm.",
+    "Meet Carlos in the empty guest bedroom and have a fierce argument at 4:10 pm.",
+    "Conclude the family gathering and head to the Moonlight Tavern Bar at 5:00 pm.",
+    "Encounter Carlos again and continue the argument at 5:30 pm.",
+    "Leave the Moonlight Tavern Bar at 8:00 pm.",
+    "Have dinner at 8:30 pm.",
+    "Relax and unwind from 9:00 pm to 10:30 pm.",
+    "Go to bed at 11:00 pm."
+  ],
+  "f_daily_schedule": [
+    [
+      "sleeping",
+      420
+    ],
+    [
+      "Carmen is waking up and completing her morning routine (waking up and stretching)",
+      5
+    ],
+    [
+      "Carmen is waking up and completing her morning routine (brushing her teeth and washing her face)",
+      10
+    ],
+    [
+      "Carmen is waking up and completing her morning routine (taking a shower)",
+      15
+    ],
+    [
+      "Carmen is waking up and completing her morning routine (getting dressed for the day)",
+      10
+    ],
+    [
+      "Carmen is waking up and completing her morning routine (on the way to on the way to preparing and eating breakfast)",
+      0
+    ],
+    [
+      "Carmen is waking up and completing her morning routine (conversing about Carmen Ortiz and Tamara Taylor discussing the role of capital in decentralized projects like FitCoin and NFT music, emphasizing the importance of community engagement, transparency, and education, and planning collaborative workshops and events to attract and educate users.)",
+      20
+    ],
+    [
+      "opening the Supermarket and assisting customers (unlocking the Supermarket doors and turning on the lights)  ",
+      5
+    ],
+    [
+      "opening the Supermarket and assisting customers (checking the inventory and restocking shelves)  ",
+      15
+    ],
+    [
+      "opening the Supermarket and assisting customers (greeting customers as they enter the Supermarket)  ",
+      10
+    ],
+    [
+      "opening the Supermarket and assisting customers (assisting customers in finding products)  ",
+      20
+    ],
+    [
+      "opening the Supermarket and assisting customers (organizing the checkout counter and preparing the cash register)",
+      10
+    ],
+    [
+      "opening the Supermarket and assisting customers (assisting customers in finding products)  ",
+      20
+    ],
+    [
+      "opening the Supermarket and assisting customers (organizing the checkout counter and preparing the cash register)",
+      3
+    ],
+    [
+      "opening the Supermarket and assisting customers (assisting customers in finding products)  ",
+      20
+    ],
+    [
+      "opening the Supermarket and assisting customers (organizing the checkout counter and preparing the cash register)",
+      10
+    ],
+    [
+      "assisting customers at the Supermarket and helping them find the supplies they need (unlocking the Supermarket and turning on the lights)",
+      5
+    ],
+    [
+      "assisting customers at the Supermarket and helping them find the supplies they need (organizing the checkout counter and preparing the cash register)",
+      10
+    ],
+    [
+      "assisting customers at the Supermarket and helping them find the supplies they need (restocking shelves with fresh produce)",
+      15
+    ],
+    [
+      "assisting customers at the Supermarket and helping them find the supplies they need (on the way to greeting customers as they enter the Supermarket)",
+      0
+    ],
+    [
+      "assisting customers at the Supermarket and helping them find the supplies they need (conversing about Tom Moreno and Carmen Ortiz discussing the need to reorder organic vegetables, address citrus fruit supply delays, and explore virtual economy strategies, decentralized systems, gamification, and community-driven incentives to optimize their supply chain, with plans to meet on Thursday afternoon to brainstorm actionable steps.)",
+      10
+    ],
+    [
+      "assisting customers at the Supermarket and helping them find the supplies they need (greeting customers as they enter the Supermarket)  ",
+      5
+    ],
+    [
+      "assisting customers at the Supermarket and helping them find the supplies they need (helping a customer locate dairy products)  ",
+      5
+    ],
+    [
+      "assisting customers at the Supermarket and helping them find the supplies they need (answering a customer's question about organic products)  ",
+      10
+    ],
+    [
+      "assisting customers at the Supermarket and helping them find the supplies they need (restocking the snack aisle)  ",
+      15
+    ],
+    [
+      "assisting customers at the Supermarket and helping them find the supplies they need (assisting a customer with a large order at the checkout)  ",
+      10
+    ],
+    [
+      "assisting customers at the Supermarket and helping them find the supplies they need (tidying up the store aisles and ensuring cleanliness)  ",
+      10
+    ],
+    [
+      "assisting customers at the Supermarket and helping them find the supplies they need (helping a customer find gluten-free products)  ",
+      10
+    ],
+    [
+      "assisting customers at the Supermarket and helping them find the supplies they need (taking a short break to hydrate and rest)  ",
+      5
+    ],
+    [
+      "assisting customers at the Supermarket and helping them find the supplies they need (assisting a customer with a special request for imported goods)  ",
+      15
+    ],
+    [
+      "assisting customers at the Supermarket and helping them find the supplies they need (restocking the beverage section)  ",
+      15
+    ],
+    [
+      "assisting customers at the Supermarket and helping them find the supplies they need (helping a customer locate cleaning supplies)  ",
+      10
+    ],
+    [
+      "assisting customers at the Supermarket and helping them find the supplies they need (answering a phone call from a customer inquiring about store hours)  ",
+      5
+    ],
+    [
+      "assisting customers at the Supermarket and helping them find the supplies they need (assisting a customer with a return or exchange)  ",
+      10
+    ],
+    [
+      "assisting customers at the Supermarket and helping them find the supplies they need (restocking the frozen food section)  ",
+      15
+    ],
+    [
+      "assisting customers at the Supermarket and helping them find the supplies they need (helping a customer find pet food)  ",
+      10
+    ],
+    [
+      "assisting customers at the Supermarket and helping them find the supplies they need (tidying up the store entrance and organizing shopping carts)",
+      177
+    ],
+    [
+      "assisting customers at the Supermarket and helping them find the supplies they need (tidying up the store entrance and organizing shopping carts)",
+      177
+    ],
+    [
+      "traveling to the Gardner family's house for a family gathering",
+      60
+    ],
+    [
+      "concluding the family gathering and heading to the Moonlight Tavern Bar",
+      60
+    ],
+    [
+      "at the Moonlight Tavern Bar, engaging in a heated discussion with Carlos about the dominance of technology and capital in the virtual economy",
+      60
+    ],
+    [
+      "at the Moonlight Tavern Bar, continuing her heated discussion with Carlos about the dominance of technology and capital in the virtual economy",
+      60
+    ],
+    [
+      "leaving the Moonlight Tavern Bar and heading home to have dinner",
+      60
+    ],
+    [
+      "relaxing and unwinding after a long day, reflecting on her discussions about the virtual economy and preparing for bed",
+      60
+    ],
+    [
+      "relaxing and unwinding, reflecting on her day and preparing to go to bed at 11:00 PM",
+      60
+    ],
+    [
+      "going to bed after a long and eventful day, reflecting on her discussions about the virtual economy and preparing for a restful night's sleep",
+      60
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      -53
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ]
+  ],
+  "f_daily_schedule_hourly_org": [
+    [
+      "sleeping",
+      420
+    ],
+    [
+      "Carmen is waking up and completing her morning routine",
+      60
+    ],
+    [
+      "opening the Supermarket and assisting customers",
+      60
+    ],
+    [
+      "assisting customers at the Supermarket and helping them find the supplies they need",
+      420
+    ],
+    [
+      "traveling to the Gardner family's house for a family gathering",
+      60
+    ],
+    [
+      "concluding the family gathering and heading to the Moonlight Tavern Bar",
+      60
+    ],
+    [
+      "at the Moonlight Tavern Bar, engaging in a heated discussion with Carlos about the dominance of technology and capital in the virtual economy",
+      60
+    ],
+    [
+      "at the Moonlight Tavern Bar, continuing her heated discussion with Carlos about the dominance of technology and capital in the virtual economy",
+      60
+    ],
+    [
+      "leaving the Moonlight Tavern Bar and heading home to have dinner",
+      60
+    ],
+    [
+      "relaxing and unwinding after a long day, reflecting on her discussions about the virtual economy and preparing for bed",
+      60
+    ],
+    [
+      "relaxing and unwinding, reflecting on her day and preparing to go to bed at 11:00 PM",
+      60
+    ],
+    [
+      "going to bed after a long and eventful day, reflecting on her discussions about the virtual economy and preparing for a restful night's sleep",
+      60
+    ]
+  ],
+  "act_address": "<persona> tom moreno",
+  "act_start_time": "March 14, 2025, 10:09:20",
+  "act_duration": 10,
+  "act_description": "conversing about Tom Moreno and Carmen Ortiz discussing the need to reorder organic vegetables, address citrus fruit supply delays, and explore virtual economy strategies, decentralized systems, gamification, and community-driven incentives to optimize their supply chain, with plans to meet on Thursday afternoon to brainstorm actionable steps.",
+  "act_pronunciatio": "\ud83d\udcac",
+  "act_event": [
+    "carmen ortiz",
+    "chat with",
+    "tom moreno"
+  ],
+  "act_obj_description": null,
+  "act_obj_pronunciatio": null,
+  "act_obj_event": [
+    null,
+    null,
+    null
+  ],
+  "chatting_with": "tom moreno",
+  "chat": [
+    [
+      "tom moreno",
+      "Hey Carmen, how's it going? I noticed you're restocking the fresh produce\u2014anything we need to reorder or any issues with the supply? I'm looking into optimizing our supply chain, so your input would be really helpful."
+    ],
+    [
+      "carmen ortiz",
+      "Hi Tom! It's going well, thanks. The fresh produce is selling fast, especially the organic vegetables. I think we might need to reorder more of those soon. Also, I noticed some delays with the citrus fruits last week\u2014maybe we could look into a more reliable supplier for those? By the way, I\u2019ve been thinking about how we could integrate some virtual economy strategies into our supply chain. Have you considered how capital flow in decentralized systems could optimize our operations?"
+    ],
+    [
+      "tom moreno",
+      "That's a great point, Carmen. I\u2019ve actually been exploring virtual economic investments to optimize our supply chain, and decentralized systems are definitely on my radar. If we can align our supply chain with capital flow in those systems, it could really boost efficiency. Let\u2019s set up a meeting later this week to dive deeper into this\u2014maybe we can brainstorm some actionable steps together. Also, I\u2019ll look into finding a more reliable citrus supplier right away. Thanks for the heads-up!"
+    ],
+    [
+      "carmen ortiz",
+      "That sounds like a solid plan, Tom! I\u2019d love to brainstorm some ideas with you. Let\u2019s aim for Thursday afternoon for that meeting\u2014I\u2019ll check my schedule and confirm. Also, I\u2019ve been discussing decentralized projects with Tamara Taylor, and I think there\u2019s potential for us to explore gamification or community-driven incentives in our operations. Maybe we can touch on that during the meeting too?"
+    ],
+    [
+      "tom moreno",
+      "Thursday afternoon works for me, Carmen. Let\u2019s lock that in. And I\u2019m really intrigued by the idea of gamification and community-driven incentives\u2014it could be a game-changer for customer engagement and operational efficiency. I\u2019ll make sure to bring some preliminary research on decentralized systems to the meeting so we can hit the ground running. Thanks for bringing this up!"
+    ],
+    [
+      "carmen ortiz",
+      "Great, Tom! I\u2019ll send you a calendar invite for Thursday afternoon. I\u2019ll also prepare some notes on how we can integrate gamification and community-driven incentives into our supply chain. Looking forward to it!"
+    ]
+  ],
+  "chatting_with_buffer": {
+    "tamara taylor": -14,
+    "tom moreno": 800
+  },
+  "chatting_end_time": "March 14, 2025, 10:20:00",
+  "act_path_set": true,
+  "planned_path": []
+}

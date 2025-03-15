@@ -9,17 +9,17 @@ import traceback
 # Put your name
 key_owner = "test_sim_ai"
 
-maze_assets_loc = "E:\\code\\python\\Town\\environment\\frontend_server\\static_dirs\\assets"
+maze_assets_loc = "E:\\code\\python\\town\\environment\\frontend_server\\static_dirs\\assets"
 env_matrix = f"{maze_assets_loc}/the_ville/matrix2"
 env_visuals = f"{maze_assets_loc}/the_ville/visuals"
 
-fs_storage = "E:\\code\\python\\Town\\environment\\frontend_server\\storage"
-fs_temp_storage = "E:\\code\\python\\Town\\environment\\frontend_server\\temp_storage"
-fs_back_end = "E:\\code\python\\Town\\reverie\\backend_server"
+fs_storage = "E:\\code\\python\\town\\environment\\frontend_server\\storage"
+fs_temp_storage = "E:\\code\\python\\town\\environment\\frontend_server\\temp_storage"
+fs_back_end = "E:\\code\\python\\town\\reverie\\backend_server"
 collision_block_id = "0"
 emb_url = "http://127.0.0.1:11434"
 # api_url = "http://127.0.0.1"
-openai_api_key = ["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"]
+openai_api_key = ["sk-ded95fe2fbac46d8995610ee473095ed"]
 
 # api_url = "http://8.130.125.153"
 # openai_api_key = ["app-cYXRNIAFUZY7ywce7OOkXcN9"]

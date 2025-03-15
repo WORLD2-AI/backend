@@ -1,0 +1,151 @@
+{
+  "persona": {
+    "christopher gardner": {
+      "movement": [
+        123,
+        82
+      ],
+      "pronunciatio": "\ud83c\udfeb\ud83d\ude10",
+      "description": "attending school (attending morning assembly)   @ the ville:gardner family's house:common room:seat",
+      "chat": null
+    },
+    "linda": {
+      "movement": [
+        141,
+        75
+      ],
+      "pronunciatio": "\ud83d\udca1\ud83e\udd14",
+      "description": "researching and brainstorming ideas for unregulated creative spaces (brainstorming potential benefits of integrating technology and art in unregulated spaces)   @ the ville:gardner family's house:linda's room:<random>",
+      "chat": null
+    },
+    "chris gardner": {
+      "movement": [
+        32,
+        86
+      ],
+      "pronunciatio": "\ud83e\udea5\ud83d\ude10",
+      "description": "Chris is dropping Christopher off at school (brushing his teeth and washing his face)   @ the ville:gardner family's house:chris gardner's bathroom:bathroom sink",
+      "chat": null
+    },
+    "tom moreno": {
+      "movement": [
+        124,
+        43
+      ],
+      "pronunciatio": "\ud83d\udcdd\ud83e\udd14",
+      "description": "Tom is reviewing the previous day's sales reports and inventory levels, making notes on which products are selling well and which need restocking. He is also brainstorming ways to optimize the supermarket's supply chain, considering potential investments in virtual economic platforms to enhance profitability. His energetic and slightly aggressive demeanor keeps the staff on their toes as he delegates tasks for the day (reviewing the previous day's sales reports, making notes on which products are selling well) @ the ville:supermarket:checkout counter:computer desk",
+      "chat": null
+    },
+    "jane moreno": {
+      "movement": [
+        96,
+        68
+      ],
+      "pronunciatio": "\u270d\ufe0f\ud83e\udd14",
+      "description": "working on NFT music projects and researching decentralization in the art field (drafting a concept for her next NFT music release)   @ the ville:moreno family's house:jane moreno's bedroom:desk",
+      "chat": null
+    },
+    "tamara taylor": {
+      "movement": [
+        59,
+        74
+      ],
+      "pronunciatio": "\ud83d\udcca\ud83e\udd14",
+      "description": "working on FitCoin project tasks and reviewing progress (analyzing user feedback from the FitCoin pilot program)   @ the ville:tamara taylor and carmen ortiz's house:tamara taylor's room:desk",
+      "chat": null
+    },
+    "rajiv patel": {
+      "movement": [
+        32,
+        13
+      ],
+      "pronunciatio": "\ud83d\udebf\ud83d\ude0c",
+      "description": "waking up and completing his morning routine (taking a quick shower) @ the ville:artist's co-living space:rajiv patel's bathroom:shower",
+      "chat": null
+    },
+    "carmen ortiz": {
+      "movement": [
+        59,
+        66
+      ],
+      "pronunciatio": "\ud83d\uded2\ud83d\ude0a",
+      "description": "opening the Supermarket and assisting customers (assisting customers in finding products)   @ the ville:tamara taylor and carmen ortiz's house:common room:bookshelf",
+      "chat": null
+    },
+    "arthur burton": {
+      "movement": [
+        9,
+        68
+      ],
+      "pronunciatio": "\ud83d\uded2\ud83d\ude0a",
+      "description": "visiting the local market to restock supplies (browsing the market for fresh produce) @ the ville:supermarket:food area:grocery store shelf",
+      "chat": null
+    },
+    "latoya williams": {
+      "movement": [
+        18,
+        14
+      ],
+      "pronunciatio": "\ud83d\udc5c\ud83d\ude0a",
+      "description": "preparing for her upcoming supermarket trip and finalizing her shopping list (organizing her reusable shopping bags and wallet) @ the ville:artist's co-living space:latoya williams's room:closet",
+      "chat": null
+    },
+    "carlos gomez": {
+      "movement": [
+        43,
+        70
+      ],
+      "pronunciatio": "\ud83d\udde3\ufe0f\ud83e\udd14",
+      "description": "Carlos is writing poetry and exploring his inner thoughts (conversing about MK and Carlos Gomez discussing the interplay between creativity and technology, particularly how AI can amplify human creativity and foster equitable systems, while planning a collaborative workshop to bring together poets, technologists, and economists to create an inclusive platform for underrepresented voices.) @ the ville:carlos gomez's apartment:carlos gomez's room:refrigerator",
+      "chat": null
+    },
+    "francisco lopez": {
+      "movement": [
+        27,
+        88
+      ],
+      "pronunciatio": "\ud83d\udcdd\ud83d\ude0c",
+      "description": "working on thesis research and drafting sections (drafting the introduction section of the thesis)   @ the ville:artist's co-living space:francisco lopez's room:desk",
+      "chat": null
+    },
+    "cichengege": {
+      "movement": [
+        25,
+        75
+      ],
+      "pronunciatio": "\ud83d\udebf\ud83d\ude0c",
+      "description": "waking up and completing the morning routine (taking a quick shower) @ the ville:cichengege's apartment:cichengege's bathroom:shower",
+      "chat": null
+    },
+    "kiki": {
+      "movement": [
+        19,
+        66
+      ],
+      "pronunciatio": "\ud83c\udf73\ud83d\ude0a",
+      "description": "waking up and completing the morning routine (preparing and having breakfast) @ the ville:kiki's apartment:kiki's room:cooking area",
+      "chat": null
+    },
+    "frank": {
+      "movement": [
+        33,
+        69
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:frank's apartment:frank's room:bed",
+      "chat": null
+    },
+    "mk": {
+      "movement": [
+        84,
+        77
+      ],
+      "pronunciatio": "\ud83d\udde3\ufe0f\ud83e\udd14",
+      "description": "continuing his research on the AI economic system, diving deeper into coding and refining the algorithms for his decentralized financial system. He remains fully immersed in his work, exploring innovative solutions to eliminate speculative bubbles and improve the model's efficiency (conversing about MK and Carlos Gomez discussing the interplay between creativity and technology, particularly how AI can amplify human creativity and foster equitable systems, while planning a collaborative workshop to bring together poets, technologists, and economists to create an inclusive platform for underrepresented voices.) @ the ville:mk's house:classroom:house garden",
+      "chat": null
+    }
+  },
+  "meta": {
+    "curr_time": "March 14, 2025, 09:28:20"
+  }
+}

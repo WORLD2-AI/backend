@@ -23,7 +23,7 @@ def generate_focal_points(persona, n=3):
   
   nodes = [[i.last_accessed, i]
             for i in persona.a_mem.seq_event + persona.a_mem.seq_thought
-            if "idle" not in i.embedding_key]
+            if "idle" not in i.embedding_key and "this is blank" not in i.embedding_key]
 
   nodes = sorted(nodes, key=lambda x: x[0])
   nodes = [i for created, i in nodes]
@@ -40,6 +40,8 @@ def generate_insights_and_evidence(persona, nodes, n=5):
 
   statements = ""
   for count, node in enumerate(nodes): 
+    if node.embedding_key in statements:
+      continue
     statements += f'{str(count)}. {node.embedding_key}\n'
 
   ret = run_gpt_prompt_insight_and_guidance(persona, statements, n)[0]

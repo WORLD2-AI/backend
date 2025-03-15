@@ -169,7 +169,9 @@ def generate_task_decomp(persona, task, duration):
 
   """
   logger_info("generate_task_decomp")
-  return run_gpt_prompt_task_decomp(persona, task, duration)[0]
+  ret = run_gpt_prompt_task_decomp(persona, task, duration)
+  logger_info("generate_task_decomp result",ret)
+  return ret[0]
 
 
 def generate_action_sector(act_desp, persona, maze): 

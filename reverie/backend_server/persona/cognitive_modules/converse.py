@@ -222,9 +222,8 @@ def generate_action_event_triple(act_desp, persona):
 
 
 def generate_poig_score(persona, event_type, description): 
-  if debug: print ("GNS FUNCTION: <generate_poig_score>")
 
-  if "is idle" in description: 
+  if "is idle" in description or "sleep" in description or "is blank" in description or "in use" in description: 
     return 1
 
   if event_type == "event" or event_type == "thought": 

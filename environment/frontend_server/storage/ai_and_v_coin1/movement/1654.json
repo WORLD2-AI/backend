@@ -1,0 +1,151 @@
+{
+  "persona": {
+    "christopher gardner": {
+      "movement": [
+        36,
+        50
+      ],
+      "pronunciatio": "\ud83d\udde3\ufe0f\ud83d\ude0a",
+      "description": "attending school (attending his first class of the day)   (participating in a group activity or discussion) @ the ville:classroom:classroom:seat",
+      "chat": null
+    },
+    "linda": {
+      "movement": [
+        123,
+        80
+      ],
+      "pronunciatio": "\ud83e\uddd8\ud83e\udd14",
+      "description": "researching and brainstorming ideas for unregulated creative spaces (taking a short break to reflect on ideas and gather inspiration)   @ the ville:gardner family's house:common room:seat",
+      "chat": null
+    },
+    "chris gardner": {
+      "movement": [
+        34,
+        86
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:gardner family's house:chris gardner's room:bed",
+      "chat": null
+    },
+    "tom moreno": {
+      "movement": [
+        97,
+        74
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:moreno family's house:tom moreno's bedroom:bed",
+      "chat": null
+    },
+    "jane moreno": {
+      "movement": [
+        101,
+        75
+      ],
+      "pronunciatio": "\ud83d\udcda\ud83e\udd14",
+      "description": "working on NFT music projects and researching decentralization in the art field (researching legal and technical aspects of decentralized art projects) @ the ville:moreno family's house:jane moreno's bedroom:desk",
+      "chat": null
+    },
+    "tamara taylor": {
+      "movement": [
+        59,
+        74
+      ],
+      "pronunciatio": "\ud83d\udcdd\ud83e\udd14",
+      "description": "working on refining the FitCoin launch plan (refining the technical requirements for FitCoin)   @ the ville:tamara taylor and carmen ortiz's house:tamara taylor's room:desk",
+      "chat": null
+    },
+    "carmen ortiz": {
+      "movement": [
+        63,
+        74
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:tamara taylor and carmen ortiz's house:carmen ortiz's room:bed",
+      "chat": null
+    },
+    "arthur burton": {
+      "movement": [
+        9,
+        70
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:arthur burton's apartment:arthur burton's room:bed",
+      "chat": null
+    },
+    "rajiv patel": {
+      "movement": [
+        27,
+        12
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:artist's co-living space:rajiv patel's room:bed",
+      "chat": null
+    },
+    "mk": {
+      "movement": [
+        78,
+        78
+      ],
+      "pronunciatio": "\ud83d\udcbb\ud83d\ude0a",
+      "description": "continuing his research on the AI economic system, diving deeper into coding and testing to refine the decentralized financial system model (coding a new feature to enhance the decentralized financial system) @ the ville:mk's house:mk's bedroom:desk",
+      "chat": null
+    },
+    "carlos gomez": {
+      "movement": [
+        41,
+        67
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:carlos gomez's apartment:carlos gomez's room:bed",
+      "chat": null
+    },
+    "francisco lopez": {
+      "movement": [
+        17,
+        26
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:artist's co-living space:francisco lopez's room:bed",
+      "chat": null
+    },
+    "kiki": {
+      "movement": [
+        16,
+        70
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:kiki's apartment:kiki's room:bed",
+      "chat": null
+    },
+    "frank": {
+      "movement": [
+        33,
+        68
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:frank's apartment:frank's room:bed",
+      "chat": null
+    },
+    "latoya williams": {
+      "movement": [
+        18,
+        15
+      ],
+      "pronunciatio": "\ud83d\udcdd\ud83e\udd14",
+      "description": "Latoya is going shopping at the supermarket and meeting Cichenggege and Kiki at the entrance (reviewing her photography notes for inspiration, jotting down ideas for her travel-inspired series) @ the ville:artist's co-living space:latoya williams's room:desk",
+      "chat": null
+    },
+    "cichengege": {
+      "movement": [
+        27,
+        70
+      ],
+      "pronunciatio": "\ud83c\udf73\ud83d\ude0a",
+      "description": "going shopping at the supermarket with Kiki and Latoya Williams (having a quick breakfast) @ the ville:cichengege's apartment:cichengege's room:refrigerator",
+      "chat": null
+    }
+  },
+  "meta": {
+    "curr_time": "March 14, 2025, 10:28:10"
+  }
+}

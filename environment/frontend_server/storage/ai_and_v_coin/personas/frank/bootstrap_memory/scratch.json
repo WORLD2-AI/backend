@@ -1,0 +1,404 @@
+{
+  "vision_r": 4,
+  "att_bandwidth": 4,
+  "retention": 3,
+  "curr_time": "March 14, 2025, 00:00:00",
+  "curr_tile": [
+    35,
+    64
+  ],
+  "daily_plan_req": "At 8 PM, went to the Moonlight Tavern Bar to relax and encountered Latoya William, frank wanted to flirt with her.",
+  "name": "frank",
+  "first_name": "frank",
+  "last_name": "frank",
+  "age": 45,
+  "innate": "contradictions and conflicts, immoral, shameless, helpful",
+  "learned": "frank is an inveterate drunkard. He relishes a fast-paced, alcohol-soaked existence. When things are going his way, he laughs heartily and indulges in debauchery, as if the world is bathed in the dawn of hope. When fortune turns against him, he has nowhere to hide. He thinks solitude might make him stop, but it never will.",
+  "currently": "frank is a bachelor. frank drinks all day long and is always in a semi-drunken state. frank spends his days indulging in alcohol and seeking out misfortunes, and his behavior often leaves people agape.",
+  "lifestyle": "frank is drinking all day long and always in a semi-drunken state. sleeping time is random and inconsistent.",
+  "living_area": "the ville:frank's apartment:frank's room",
+  "concept_forget": 100,
+  "daily_reflection_time": 180,
+  "daily_reflection_size": 5,
+  "overlap_reflect_th": 4,
+  "kw_strg_event_reflect_th": 10,
+  "kw_strg_thought_reflect_th": 9,
+  "recency_w": 1,
+  "relevance_w": 1,
+  "importance_w": 1,
+  "recency_decay": 0.995,
+  "importance_trigger_max": 12250,
+  "importance_trigger_curr": 12165,
+  "importance_ele_n": 45,
+  "thought_count": 5,
+  "daily_req": [
+    "Wake up and complete the morning routine at 2:00 am.",
+    "Have a drink and breakfast at 3:00 am.",
+    "Go for a walk to the park at 4:30 am.",
+    "Visit the local liquor store and stock up at 6:00 am.",
+    "Return home and watch TV with drinks at 8:00 am.",
+    "Continue drinking and reading newspapers at 10:00 am.",
+    "Have a light lunch with cocktails at 12:00 pm.",
+    "Take a short nap at 1:00 pm.",
+    "Wake up and freshen up with a drink at 3:00 pm.",
+    "Call a couple of friends to chat at 4:00 pm.",
+    "Prepare a quick dinner with more drinks at 5:30 pm.",
+    "Rest and listen to music at 6:30 pm.",
+    "Head to the Moonlight Tavern Bar at 7:30 pm.",
+    "Arrive and relax at the bar at 8:00 pm, attempt to flirt with Latoya William."
+  ],
+  "f_daily_schedule": [
+    [
+      "sleeping",
+      120
+    ],
+    [
+      "waking up and completing his morning routine",
+      60
+    ],
+    [
+      "having a drink and breakfast",
+      60
+    ],
+    [
+      "getting ready to go for a walk to the park",
+      60
+    ],
+    [
+      "continuing his walk in the park",
+      60
+    ],
+    [
+      "visiting the local liquor store and stocking up",
+      60
+    ],
+    [
+      "returning home from the park (on the way to leaving the park and starting his walk home)",
+      0
+    ],
+    [
+      "returning home from the park (conversing about Tamara Taylor asking Frank about his plans after seeing him at the liquor store, with Frank planning for an interesting weekend and Tamara preparing for a launch plan for FitCoin with Rajiv.)",
+      3
+    ],
+    [
+      "returning home from the park (on the way to stopping by a convenience store to buy a snack)  ",
+      10
+    ],
+    [
+      "returning home from the park (on the way to continuing his walk home while eating the snack)  ",
+      10
+    ],
+    [
+      "returning home from the park (on the way to pausing to chat with a passerby)  ",
+      10
+    ],
+    [
+      "returning home from the park (on the way to resuming his walk home)  ",
+      10
+    ],
+    [
+      "returning home from the park (on the way to arriving home and unlocking the door)  ",
+      10
+    ],
+    [
+      "returning home from the park (on the way to settling in at home)",
+      7
+    ],
+    [
+      "returning home and watching TV with drinks (walking back home from the park)",
+      15
+    ],
+    [
+      "returning home and watching TV with drinks (unlocking the door to his house)",
+      5
+    ],
+    [
+      "returning home and watching TV with drinks (grabbing a drink from the fridge)",
+      10
+    ],
+    [
+      "returning home and watching TV with drinks (turning on the TV)",
+      5
+    ],
+    [
+      "returning home and watching TV with drinks (on the way to settling into his chair with a drink)",
+      0
+    ],
+    [
+      "returning home and watching TV with drinks (conversing about Mk and Frank discussing Mk's progress with simulations, Frank's day of relaxation, and planning to celebrate Mk's breakthrough with a drink.)",
+      5
+    ],
+    [
+      "returning home and watching TV with drinks (settling into his chair with a drink)  ",
+      5
+    ],
+    [
+      "returning home and watching TV with drinks (watching a show while sipping his drink)  ",
+      15
+    ],
+    [
+      "continuing to watch TV and drink (pouring himself a drink)  ",
+      5
+    ],
+    [
+      "continuing to watch TV and drink (sitting on the couch and turning on the TV)  ",
+      5
+    ],
+    [
+      "continuing to watch TV and drink (watching a comedy show while sipping his drink)  ",
+      10
+    ],
+    [
+      "continuing to watch TV and drink (laughing loudly at a joke on the show)  ",
+      5
+    ],
+    [
+      "continuing to watch TV and drink (refilling his drink)  ",
+      5
+    ],
+    [
+      "continuing to watch TV and drink (switching channels to find something interesting)  ",
+      10
+    ],
+    [
+      "continuing to watch TV and drink (watching a news segment and commenting to himself)  ",
+      10
+    ],
+    [
+      "continuing to watch TV and drink (finishing his drink and getting up to pour another)  ",
+      5
+    ],
+    [
+      "continuing to watch TV and drink (settling back on the couch with a fresh drink)",
+      5
+    ],
+    [
+      "continuing to drink and reading newspapers",
+      60
+    ],
+    [
+      "continuing to drink and preparing for a light lunch with cocktails",
+      60
+    ],
+    [
+      "having a light lunch with cocktails",
+      60
+    ],
+    [
+      "taking a short nap",
+      60
+    ],
+    [
+      "continuing his nap and resting",
+      60
+    ],
+    [
+      "waking up and freshening up with a drink",
+      60
+    ],
+    [
+      "calling a couple of friends to chat",
+      60
+    ],
+    [
+      "preparing a quick dinner with more drinks",
+      60
+    ],
+    [
+      "resting and listening to music with a drink",
+      60
+    ],
+    [
+      "getting ready to head to the Moonlight Tavern Bar",
+      60
+    ],
+    [
+      "arriving at the Moonlight Tavern Bar to relax and attempting to flirt with Latoya William",
+      60
+    ],
+    [
+      "continuing to relax at the Moonlight Tavern Bar, enjoying his drinks and socializing with the patrons",
+      60
+    ],
+    [
+      "continuing to enjoy his time at the Moonlight Tavern Bar, engaging in lively conversations and savoring his drinks",
+      60
+    ],
+    [
+      "winding down his evening at the Moonlight Tavern Bar, reflecting on the day's events while enjoying his last drink before heading home",
+      60
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ]
+  ],
+  "f_daily_schedule_hourly_org": [
+    [
+      "sleeping",
+      120
+    ],
+    [
+      "waking up and completing his morning routine",
+      60
+    ],
+    [
+      "having a drink and breakfast",
+      60
+    ],
+    [
+      "getting ready to go for a walk to the park",
+      60
+    ],
+    [
+      "continuing his walk in the park",
+      60
+    ],
+    [
+      "visiting the local liquor store and stocking up",
+      60
+    ],
+    [
+      "returning home from the park",
+      60
+    ],
+    [
+      "returning home and watching TV with drinks",
+      60
+    ],
+    [
+      "continuing to watch TV and drink",
+      60
+    ],
+    [
+      "continuing to drink and reading newspapers",
+      60
+    ],
+    [
+      "continuing to drink and preparing for a light lunch with cocktails",
+      60
+    ],
+    [
+      "having a light lunch with cocktails",
+      60
+    ],
+    [
+      "taking a short nap",
+      60
+    ],
+    [
+      "continuing his nap and resting",
+      60
+    ],
+    [
+      "waking up and freshening up with a drink",
+      60
+    ],
+    [
+      "calling a couple of friends to chat",
+      60
+    ],
+    [
+      "preparing a quick dinner with more drinks",
+      60
+    ],
+    [
+      "resting and listening to music with a drink",
+      60
+    ],
+    [
+      "getting ready to head to the Moonlight Tavern Bar",
+      60
+    ],
+    [
+      "arriving at the Moonlight Tavern Bar to relax and attempting to flirt with Latoya William",
+      60
+    ],
+    [
+      "continuing to relax at the Moonlight Tavern Bar, enjoying his drinks and socializing with the patrons",
+      60
+    ],
+    [
+      "continuing to enjoy his time at the Moonlight Tavern Bar, engaging in lively conversations and savoring his drinks",
+      60
+    ],
+    [
+      "winding down his evening at the Moonlight Tavern Bar, reflecting on the day's events while enjoying his last drink before heading home",
+      60
+    ]
+  ],
+  "act_address": "",
+  "act_start_time": "",
+  "act_duration": 0,
+  "act_description": "",
+  "act_pronunciatio": "",
+  "act_event": [
+    
+  ],
+  "act_obj_description": "",
+  "act_obj_pronunciatio": "",
+  "act_obj_event": [
+    
+  ],
+  "chatting_with": null,
+  "chat": null,
+  "chatting_with_buffer": {
+    "tamara taylor": -206,
+    "mk": 702
+  },
+  "chatting_end_time": null,
+  "act_path_set": true,
+  "planned_path": []
+}

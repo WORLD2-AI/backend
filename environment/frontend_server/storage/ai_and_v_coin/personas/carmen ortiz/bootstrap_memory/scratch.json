@@ -1,0 +1,312 @@
+{
+  "vision_r": 8,
+  "att_bandwidth": 8,
+  "retention": 8,
+  "curr_time": "March 14, 2025, 00:00:00",
+  "curr_tile": [
+    61,
+    69
+  ],
+  "daily_plan_req": "At 4 PM, attended a family gathering at the Gardner family's house.\nAt 4:05 PM, delivered a speech in the common room on the future development of the virtual economy, emphasizing the importance of capital flow.\nAt 4:10 PM, met Carlos in the empty guest bedroom and had a fierce argument with him.\nAt 5 PM, concluded the family gathering and headed to the Moonlight Tavern Bar.\n\u200cAt 5:30 PM, encountered Carlos again and continued the argument with him, acknowledging the dominance of the combination of technology and capital, but still insisting on the primacy of capital.\nAt 8 PM, left the Moonlight Tavern Bar.",
+  "name": "carmen ortiz",
+  "first_name": "carmen",
+  "last_name": "ortiz",
+  "age": 33,
+  "innate": "friendly, outgoing, helpful",
+  "learned": "carmen ortiz is a shopkeeper at Supermarket who loves to help people find the supplies they need. She is always looking for ways to make her customers feel welcome.",
+  "currently": "Has her own views on the virtual economy, emphasizing the importance of capital.",
+  "lifestyle": "carmen ortiz goes to bed around 11pm, awakes up around 7am, eats dinner around 8pm.",
+  "living_area": "the ville:tamara taylor and carmen ortiz's house:carmen ortiz's room",
+  "concept_forget": 100,
+  "daily_reflection_time": 180,
+  "daily_reflection_size": 5,
+  "overlap_reflect_th": 4,
+  "kw_strg_event_reflect_th": 10,
+  "kw_strg_thought_reflect_th": 9,
+  "recency_w": 1,
+  "relevance_w": 1,
+  "importance_w": 1,
+  "recency_decay": 0.995,
+  "importance_trigger_max": 3250,
+  "importance_trigger_curr": 3132,
+  "importance_ele_n": 76,
+  "thought_count": 5,
+  "daily_req": [
+    "Wake up and complete the morning routine at 7:00 am.",
+    "Arrive at Supermarket and start work at 9:00 am.",
+    "Assist customers and manage store operations until lunch break at 12:00 pm.",
+    "Have lunch at 12:00 pm.",
+    "Return to work and continue helping customers at 1:00 pm.",
+    "Take a short break and browse economic news at 3:00 pm.",
+    "Leave work to attend a family gathering at the Gardner family's house at 4:00 pm.",
+    "Deliver a speech on the future development of the virtual economy at 4:05 pm.",
+    "Have a fierce argument with Carlos in the guest bedroom at 4:10 pm.",
+    "Conclude the family gathering and head to the Moonlight Tavern Bar at 5:00 pm.",
+    "Encounter Carlos again and continue the argument at 5:30 pm.",
+    "Eat dinner at the Moonlight Tavern Bar at 8:00 pm.",
+    "Leave the Moonlight Tavern Bar at 8:30 pm.",
+    "Reflect on the day's events at home and prepare for bed at 10:00 pm.",
+    "Go to bed at 11:00 pm."
+  ],
+  "f_daily_schedule": [
+    [
+      "sleeping",
+      420
+    ],
+    [
+      "waking up and completing her morning routine (Carmen is waking up and stretching)",
+      10
+    ],
+    [
+      "waking up and completing her morning routine (brushing her teeth)",
+      10
+    ],
+    [
+      "waking up and completing her morning routine (taking a shower)",
+      15
+    ],
+    [
+      "waking up and completing her morning routine (getting dressed)",
+      10
+    ],
+    [
+      "waking up and completing her morning routine (on the way to on the way to doing her hair and makeup)",
+      0
+    ],
+    [
+      "waking up and completing her morning routine (conversing about Tamara Taylor discussing her project on launching a digital currency called FitCoin with Rajiv, while Carmen Ortiz shares her plans about attending a family gathering and giving a speech on the virtual economy.)",
+      5
+    ],
+    [
+      "waking up and completing her morning routine (doing her hair and makeup)  ",
+      5
+    ],
+    [
+      "having breakfast and preparing to leave for work (making coffee)  ",
+      10
+    ],
+    [
+      "having breakfast and preparing to leave for work (preparing breakfast)  ",
+      15
+    ],
+    [
+      "having breakfast and preparing to leave for work (eating breakfast)  ",
+      15
+    ],
+    [
+      "having breakfast and preparing to leave for work (packing her work bag)  ",
+      10
+    ],
+    [
+      "having breakfast and preparing to leave for work (checking the weather and planning her commute)  ",
+      10
+    ],
+    [
+      "having breakfast and preparing to leave for work (on the way to leaving for work)",
+      5
+    ],
+    [
+      "arriving at the Supermarket and starting work (parking her car and walking to the Supermarket entrance)",
+      10
+    ],
+    [
+      "arriving at the Supermarket and starting work (greeting her coworkers and checking in for her shift)",
+      10
+    ],
+    [
+      "arriving at the Supermarket and starting work (organizing her workspace and reviewing the day's schedule)",
+      10
+    ],
+    [
+      "arriving at the Supermarket and starting work (checking inventory levels and restocking shelves as needed)",
+      10
+    ],
+    [
+      "arriving at the Supermarket and starting work (setting up promotional displays for the day)",
+      10
+    ],
+    [
+      "arriving at the Supermarket and starting work (ensuring the checkout area is clean and ready for customers)",
+      10
+    ],
+    [
+      "assisting customers and managing store operations at the Supermarket",
+      120
+    ],
+    [
+      "having lunch",
+      60
+    ],
+    [
+      "returning to work and continuing to help customers at the Supermarket",
+      60
+    ],
+    [
+      "assisting customers and managing store operations at the Supermarket",
+      60
+    ],
+    [
+      "taking a short break and browsing economic news",
+      60
+    ],
+    [
+      "attending a family gathering at the Gardner family's house",
+      60
+    ],
+    [
+      "concluding the family gathering and heading to the Moonlight Tavern Bar",
+      60
+    ],
+    [
+      "at the Moonlight Tavern Bar, reflecting on the argument with Carlos and engaging in discussions with other patrons about the virtual economy",
+      60
+    ],
+    [
+      "at the Moonlight Tavern Bar, continuing discussions about the virtual economy with other patrons and taking a moment to unwind before dinner",
+      60
+    ],
+    [
+      "eating dinner at the Moonlight Tavern Bar",
+      60
+    ],
+    [
+      "leaving the Moonlight Tavern Bar and heading home to reflect on the day's events",
+      60
+    ],
+    [
+      "reflecting on the day's events at home and preparing for bed",
+      60
+    ],
+    [
+      "going to bed",
+      60
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ]
+  ],
+  "f_daily_schedule_hourly_org": [
+    [
+      "sleeping",
+      420
+    ],
+    [
+      "waking up and completing her morning routine",
+      60
+    ],
+    [
+      "having breakfast and preparing to leave for work",
+      60
+    ],
+    [
+      "arriving at the Supermarket and starting work",
+      60
+    ],
+    [
+      "assisting customers and managing store operations at the Supermarket",
+      120
+    ],
+    [
+      "having lunch",
+      60
+    ],
+    [
+      "returning to work and continuing to help customers at the Supermarket",
+      60
+    ],
+    [
+      "assisting customers and managing store operations at the Supermarket",
+      60
+    ],
+    [
+      "taking a short break and browsing economic news",
+      60
+    ],
+    [
+      "attending a family gathering at the Gardner family's house",
+      60
+    ],
+    [
+      "concluding the family gathering and heading to the Moonlight Tavern Bar",
+      60
+    ],
+    [
+      "at the Moonlight Tavern Bar, reflecting on the argument with Carlos and engaging in discussions with other patrons about the virtual economy",
+      60
+    ],
+    [
+      "at the Moonlight Tavern Bar, continuing discussions about the virtual economy with other patrons and taking a moment to unwind before dinner",
+      60
+    ],
+    [
+      "eating dinner at the Moonlight Tavern Bar",
+      60
+    ],
+    [
+      "leaving the Moonlight Tavern Bar and heading home to reflect on the day's events",
+      60
+    ],
+    [
+      "reflecting on the day's events at home and preparing for bed",
+      60
+    ],
+    [
+      "going to bed",
+      60
+    ]
+  ],
+  "act_address": "",
+  "act_start_time": "",
+  "act_duration": 0,
+  "act_description": "",
+  "act_pronunciatio": "",
+  "act_event": [
+    
+  ],
+  "act_obj_description": "",
+  "act_obj_pronunciatio": "",
+  "act_obj_event": [
+    
+  ],
+  "chatting_with": null,
+  "chat": null,
+  "chatting_with_buffer": {
+    
+  },
+  "chatting_end_time": null,
+  "act_path_set": true,
+  "planned_path": []
+}

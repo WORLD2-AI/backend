@@ -1,0 +1,421 @@
+{
+  "vision_r": 8,
+  "att_bandwidth": 8,
+  "retention": 8,
+  "curr_time": "March 14, 2025, 10:28:50",
+  "curr_tile": [
+    18,
+    13
+  ],
+  "daily_plan_req": "At 10 a.m., Latoya Williams will go shopping at the supermarket and met cichenggege and kiki at the entrance. \nAt 10:10 AM, Kiki, Cichenggege, and Latoya Williams entered the supermarket together to start shopping. Latoya Williams was selecting items in the outdoor section. \nAt 10:20 AM, Latoya Williams walked towards the snack section and encountered Kiki and Cichenggege. She greeted them, but inside, she was a little unhappy.\nAt 10:30 AM,Latoya Williams left the supermarket.\nAt 3 PM, Cichenggege invited Latoya Williams to work out together at the gym.\nAt 3:05 PM, Latoya Williams arrived at the gym and found Cichenggege. \nAt 3:05 PM, Cichenggege and Latoya Williams began running on the treadmills together, chatting while they ran.\nAt 3:30 PM, Latoya Williams made fun of Kiki, calling her \"fake\" (while making a hand gesture and then a clown face).\nAt 4:05 PM, cichenggege and Latoya Williams left the gym together.\nAt 8 PM, Latoya Williams went to the Moonlight Tavern Bar to relax and encountered Frank, who wanted to flirt with her.\nAt 8:05 PM, Cichenggege helped Latoya Williams drive away Frank. Latoya Williams fell for Cichenggege at first sight, invited him for a drink, and they began a flirtatious conversation.\nAt 8:30 PM, Kiki came over and greeted them. Latoya Williams was actually quite calm inside.\nAt 8:40 PM, Kiki confessed to Cichenggege, who did not respond. Latoya Williams seemed to have anticipated this outcome.\nAt 9:00 PM, Latoya Williams left the Moonlight Tavern Bar and went home.",
+  "name": "latoya williams",
+  "first_name": "latoya",
+  "last_name": "williams",
+  "age": 25,
+  "innate": "organized, logical, attentive",
+  "learned": "latoya williams is a digital photographer who has a keen eye for details. She is very organized and analytical when it comes to her art.",
+  "currently": "latoya williams is creating a series of photography inspired by her travels. She mostly works from the artists' co-living space. Latoya is also curious about who will be running for the local mayor election next month and that is a central topic in her conversations with others.",
+  "lifestyle": "latoya williams goes to bed around 10pm, awakes up around 6am, eats dinner around 17:30pm.",
+  "living_area": "the ville:artist's co-living space:latoya williams's room",
+  "concept_forget": 100,
+  "daily_reflection_time": 180,
+  "daily_reflection_size": 5,
+  "overlap_reflect_th": 4,
+  "kw_strg_event_reflect_th": 10,
+  "kw_strg_thought_reflect_th": 9,
+  "recency_w": 1,
+  "relevance_w": 1,
+  "importance_w": 1,
+  "recency_decay": 0.995,
+  "importance_trigger_max": 3250,
+  "importance_trigger_curr": 3023,
+  "importance_ele_n": 143,
+  "thought_count": 5,
+  "daily_req": [
+    "Wake up and complete the morning routine at 6:00 am.",
+    "Have breakfast at 6:30 am.",
+    "Review and organize photography work from 7:00 am to 9:00 am.",
+    "Go shopping at the supermarket at 10:00 am.",
+    "Meet Cichenggege and Kiki at the supermarket entrance at 10:00 am.",
+    "Shop in the outdoor section at 10:10 am.",
+    "Walk to the snack section and greet Kiki and Cichenggege at 10:20 am.",
+    "Leave the supermarket at 10:30 am.",
+    "Edit travel-inspired photography from 11:00 am to 12:30 pm.",
+    "Have lunch at 12:30 pm.",
+    "Research local mayor election candidates from 1:00 pm to 2:30 pm.",
+    "Go to the gym with Cichenggege at 3:00 pm.",
+    "Run on treadmills and chat with Cichenggege from 3:05 pm to 3:30 pm.",
+    "Leave the gym with Cichenggege at 4:05 pm.",
+    "Have dinner at 5:30 pm.",
+    "Relax and prepare for the evening from 6:00 pm to 7:30 pm.",
+    "Go to the Moonlight Tavern Bar at 8:00 pm.",
+    "Encounter Frank and interact with Cichenggege from 8:05 pm to 8:30 pm.",
+    "Greet Kiki and observe her confession to Cichenggege at 8:40 pm.",
+    "Leave the Moonlight Tavern Bar at 9:00 pm.",
+    "Go home and prepare for bed at 9:30 pm.",
+    "Go to bed at 10:00 pm."
+  ],
+  "f_daily_schedule": [
+    [
+      "sleeping",
+      360
+    ],
+    [
+      "Latoya is waking up and completing her morning routine",
+      60
+    ],
+    [
+      "Latoya is reviewing and organizing her photography work (Latoya is reviewing the photos from her recent travel series)",
+      15
+    ],
+    [
+      "Latoya is reviewing and organizing her photography work (organizing the photos into folders based on location and theme)",
+      20
+    ],
+    [
+      "Latoya is reviewing and organizing her photography work (editing a few selected photos to enhance their quality)",
+      15
+    ],
+    [
+      "Latoya is reviewing and organizing her photography work (backing up her photography files to an external drive)",
+      10
+    ],
+    [
+      "having breakfast and planning her day, including preparing for her photography work and upcoming supermarket trip (Latoya is reviewing her photography work from her recent travels)",
+      15
+    ],
+    [
+      "having breakfast and planning her day, including preparing for her photography work and upcoming supermarket trip (organizing her digital photo files into folders by location and theme)",
+      10
+    ],
+    [
+      "having breakfast and planning her day, including preparing for her photography work and upcoming supermarket trip (selecting a few photos to edit for her upcoming series)",
+      10
+    ],
+    [
+      "having breakfast and planning her day, including preparing for her photography work and upcoming supermarket trip (making a list of photography supplies she needs to purchase)",
+      5
+    ],
+    [
+      "having breakfast and planning her day, including preparing for her photography work and upcoming supermarket trip (preparing her shopping list for the supermarket trip)",
+      10
+    ],
+    [
+      "having breakfast and planning her day, including preparing for her photography work and upcoming supermarket trip (checking her calendar and planning her day, including her photography work and gym session)",
+      10
+    ],
+    [
+      "preparing for her upcoming supermarket trip and finalizing her shopping list (Latoya is reviewing her pantry and fridge to identify items she needs to buy)",
+      10
+    ],
+    [
+      "preparing for her upcoming supermarket trip and finalizing her shopping list (writing down a preliminary shopping list)",
+      10
+    ],
+    [
+      "preparing for her upcoming supermarket trip and finalizing her shopping list (checking her budget for the shopping trip)",
+      5
+    ],
+    [
+      "preparing for her upcoming supermarket trip and finalizing her shopping list (organizing her reusable shopping bags and wallet)",
+      5
+    ],
+    [
+      "preparing for her upcoming supermarket trip and finalizing her shopping list (researching recipes for her photography series to add any missing ingredients to the list)",
+      10
+    ],
+    [
+      "preparing for her upcoming supermarket trip and finalizing her shopping list (finalizing her shopping list and prioritizing items)",
+      10
+    ],
+    [
+      "preparing for her upcoming supermarket trip and finalizing her shopping list (setting reminders for her supermarket trip and preparing her camera bag for the outing)",
+      10
+    ],
+    [
+      "Latoya is going shopping at the supermarket and meeting Cichenggege and Kiki at the entrance (Latoya is reviewing her shopping list and making final adjustments)",
+      10
+    ],
+    [
+      "Latoya is going shopping at the supermarket and meeting Cichenggege and Kiki at the entrance (gathering reusable shopping bags and her wallet)",
+      5
+    ],
+    [
+      "Latoya is going shopping at the supermarket and meeting Cichenggege and Kiki at the entrance (checking the weather and deciding what to wear for the supermarket trip)",
+      5
+    ],
+    [
+      "Latoya is going shopping at the supermarket and meeting Cichenggege and Kiki at the entrance (getting dressed and preparing to leave her apartment)",
+      10
+    ],
+    [
+      "Latoya is going shopping at the supermarket and meeting Cichenggege and Kiki at the entrance (walking to the supermarket while mentally planning her shopping route)",
+      15
+    ],
+    [
+      "Latoya is going shopping at the supermarket and meeting Cichenggege and Kiki at the entrance (arriving at the supermarket entrance and waiting for Cichenggege and Kiki)",
+      10
+    ],
+    [
+      "Latoya is going shopping at the supermarket and meeting Cichenggege and Kiki at the entrance (greeting Cichenggege and Kiki and exchanging pleasantries)",
+      5
+    ],
+    [
+      "Latoya is editing her travel-inspired photography (Latoya is organizing her travel-inspired photos into folders by location)",
+      10
+    ],
+    [
+      "Latoya is editing her travel-inspired photography (selecting the best shots from each location for editing)",
+      15
+    ],
+    [
+      "Latoya is editing her travel-inspired photography (adjusting the brightness and contrast of the selected photos)",
+      10
+    ],
+    [
+      "Latoya is editing her travel-inspired photography (applying color correction to enhance the vibrancy of the images)",
+      10
+    ],
+    [
+      "Latoya is editing her travel-inspired photography (cropping and framing the photos to improve composition)",
+      10
+    ],
+    [
+      "Latoya is editing her travel-inspired photography (saving the edited photos and backing them up to her cloud storage)",
+      5
+    ],
+    [
+      "having lunch",
+      60
+    ],
+    [
+      "researching local mayor election candidates",
+      60
+    ],
+    [
+      "continuing her research on local mayor election candidates",
+      60
+    ],
+    [
+      "going to the gym with Cichenggege to work out together",
+      60
+    ],
+    [
+      "having dinner at home after returning from the gym with Cichenggege",
+      60
+    ],
+    [
+      "Latoya is having dinner at home after returning from the gym with Cichenggege",
+      60
+    ],
+    [
+      "relaxing and preparing for the evening, possibly reviewing her photography work or planning her next creative project",
+      120
+    ],
+    [
+      "going to the Moonlight Tavern Bar to relax and encountered Frank, who wanted to flirt with her",
+      60
+    ],
+    [
+      "Latoya is leaving the Moonlight Tavern Bar and heading home",
+      60
+    ],
+    [
+      "going to bed and preparing to sleep after completing her evening routine",
+      60
+    ],
+    [
+      "sleeping, as she has already gone to bed at 10:00 PM and is following her usual sleep schedule",
+      60
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ],
+    [
+      "sleeping",
+      0
+    ]
+  ],
+  "f_daily_schedule_hourly_org": [
+    [
+      "sleeping",
+      360
+    ],
+    [
+      "Latoya is waking up and completing her morning routine",
+      60
+    ],
+    [
+      "Latoya is reviewing and organizing her photography work",
+      60
+    ],
+    [
+      "having breakfast and planning her day, including preparing for her photography work and upcoming supermarket trip",
+      60
+    ],
+    [
+      "preparing for her upcoming supermarket trip and finalizing her shopping list",
+      60
+    ],
+    [
+      "Latoya is going shopping at the supermarket and meeting Cichenggege and Kiki at the entrance",
+      60
+    ],
+    [
+      "Latoya is editing her travel-inspired photography",
+      60
+    ],
+    [
+      "having lunch",
+      60
+    ],
+    [
+      "researching local mayor election candidates",
+      60
+    ],
+    [
+      "continuing her research on local mayor election candidates",
+      60
+    ],
+    [
+      "going to the gym with Cichenggege to work out together",
+      60
+    ],
+    [
+      "having dinner at home after returning from the gym with Cichenggege",
+      60
+    ],
+    [
+      "Latoya is having dinner at home after returning from the gym with Cichenggege",
+      60
+    ],
+    [
+      "relaxing and preparing for the evening, possibly reviewing her photography work or planning her next creative project",
+      120
+    ],
+    [
+      "going to the Moonlight Tavern Bar to relax and encountered Frank, who wanted to flirt with her",
+      60
+    ],
+    [
+      "Latoya is leaving the Moonlight Tavern Bar and heading home",
+      60
+    ],
+    [
+      "going to bed and preparing to sleep after completing her evening routine",
+      60
+    ],
+    [
+      "sleeping, as she has already gone to bed at 10:00 PM and is following her usual sleep schedule",
+      60
+    ]
+  ],
+  "act_address": "the ville:artist's co-living space:latoya williams's room:closet",
+  "act_start_time": "March 14, 2025, 10:20:00",
+  "act_duration": 10,
+  "act_description": "Latoya is going shopping at the supermarket and meeting Cichenggege and Kiki at the entrance (getting dressed and preparing to leave her apartment)",
+  "act_pronunciatio": "\ud83d\udc57\ud83d\udeaa",
+  "act_event": [
+    "latoya williams",
+    "is",
+    "getting dressed"
+  ],
+  "act_obj_description": "being used by Latoya Williams to get dressed and prepare to leave her apartment",
+  "act_obj_pronunciatio": "\ud83d\udc57\ud83d\ude0a",
+  "act_obj_event": [
+    "closet",
+    "is",
+    "used"
+  ],
+  "chatting_with": null,
+  "chat": null,
+  "chatting_with_buffer": {},
+  "chatting_end_time": null,
+  "act_path_set": true,
+  "planned_path": []
+}

@@ -1,13 +1,13 @@
 {
-  "vision_r": 8,
-  "att_bandwidth": 8,
-  "retention": 8,
-  "curr_time": "February 09, 2025, 18:52:30",
+  "vision_r": 4,
+  "att_bandwidth": 4,
+  "retention": 3,
+  "curr_time": "",
   "curr_tile": [
     94,
     19
   ],
-  "daily_plan_req": "",
+  "daily_plan_req": "At 8 PM, went to the Moonlight Tavern Bar to relax and encountered Latoya William, frank wanted to flirt with her.",
   "name": "frank",
   "first_name": "frank",
   "last_name": "frank",
@@ -32,192 +32,30 @@
   "importance_ele_n": 9,
   "thought_count": 5,
   "daily_req": [
-    "Wake up and complete the morning routine at 11:00 am.",
-    "Have a light brunch and a drink at 11:30 am.",
-    "Spend time people-watching at a local caf\u00e9 with a drink from 12:30 pm to 2:00 pm.",
-    "Visit a local pub for a few drinks from 2:30 pm to 4:00 pm.",
-    "Go for a stroll in the park with a drink in hand from 4:30 pm to 5:30 pm.",
-    "Return home and take a nap from 6:00 pm to 7:00 pm.",
-    "Cook or order a simple dinner and enjoy it with wine at 8:00 pm.",
-    "Relax and listen to music while enjoying a drink from 9:00 pm to 10:30 pm.",
-    "Head to bed when feeling tired, likely around 11:00 pm."
   ],
   "f_daily_schedule": [
-    [
-      "sleeping",
-      660
-    ],
-    [
-      "waking up and completing his morning routine",
-      60
-    ],
-    [
-      "having a light brunch and a drink",
-      60
-    ],
-    [
-      "spending time people-watching at a local caf\u00e9 with a drink",
-      120
-    ],
-    [
-      "visiting a local pub for a few drinks",
-      120
-    ],
-    [
-      "going for a stroll in the park with a drink in hand",
-      60
-    ],
-    [
-      "returning home and taking a nap",
-      60
-    ],
-    [
-      "continuing his nap (on the way to tossing and turning in bed)",
-      0
-    ],
-    [
-      "continuing his nap (conversing about Frank and Carlos discussing the themes of nature in poetry, with Carlos encouraging Frank to explore poetry as a means of reflection and self-discovery.)",
-      8
-    ],
-    [
-      "continuing his nap (tossing and turning in bed)  ",
-      10
-    ],
-    [
-      "continuing his nap (drifting in and out of sleep)  ",
-      10
-    ],
-    [
-      "continuing his nap (snoring lightly)  ",
-      10
-    ],
-    [
-      "continuing his nap (dreaming about a past adventure)  ",
-      10
-    ],
-    [
-      "continuing his nap (waking up briefly and checking the time)  ",
-      10
-    ],
-    [
-      "continuing his nap (settling back into a deeper sleep)",
-      2
-    ],
-    [
-      "cooking or ordering a simple dinner and enjoying it with wine",
-      60
-    ],
-    [
-      "relaxing and listening to music while enjoying a drink",
-      120
-    ],
-    [
-      "heading to bed when feeling tired",
-      60
-    ],
-    [
-      "sleeping",
-      0
-    ]
+    
   ],
   "f_daily_schedule_hourly_org": [
-    [
-      "sleeping",
-      660
-    ],
-    [
-      "waking up and completing his morning routine",
-      60
-    ],
-    [
-      "having a light brunch and a drink",
-      60
-    ],
-    [
-      "spending time people-watching at a local caf\u00e9 with a drink",
-      120
-    ],
-    [
-      "visiting a local pub for a few drinks",
-      120
-    ],
-    [
-      "going for a stroll in the park with a drink in hand",
-      60
-    ],
-    [
-      "returning home and taking a nap",
-      60
-    ],
-    [
-      "continuing his nap",
-      60
-    ],
-    [
-      "cooking or ordering a simple dinner and enjoying it with wine",
-      60
-    ],
-    [
-      "relaxing and listening to music while enjoying a drink",
-      120
-    ],
-    [
-      "heading to bed when feeling tired",
-      60
-    ]
   ],
-  "act_address": "<persona> carlos gomez",
-  "act_start_time": "February 09, 2025, 18:52:10",
+  "act_address": "",
+  "act_start_time": "",
   "act_duration": 8,
-  "act_description": "conversing about Frank and Carlos discussing the themes of nature in poetry, with Carlos encouraging Frank to explore poetry as a means of reflection and self-discovery.",
-  "act_pronunciatio": "\ud83d\udcac",
+  "act_description": "",
+  "act_pronunciatio": "",
   "act_event": [
-    "frank",
-    "chat with",
-    "carlos gomez"
+    
   ],
   "act_obj_description": null,
   "act_obj_pronunciatio": null,
   "act_obj_event": [
-    null,
-    null,
-    null
   ],
-  "chatting_with": "carlos gomez",
+  "chatting_with": "",
   "chat": [
-    [
-      "frank",
-      "Hey Carlos, what poetry themes are you pondering today? Anything interesting you'd like to share?"
-    ],
-    [
-      "carlos gomez",
-      "Hey Frank, I've been exploring themes around the beauty and resilience of nature. It's quite fascinating how nature can embody both tranquility and power. I'm trying to express these complexities in my poetry."
-    ],
-    [
-      "frank",
-      "Nature is indeed a marvel. Even amidst my chaos, I find moments where the rustling of leaves or the sunset cuts through the haze. Do you find it difficult to capture this duality in words, or do you see it as a welcome challenge?"
-    ],
-    [
-      "carlos gomez",
-      "It's definitely a challenge, but I see it as an inspiring one. The struggle to find the right words often leads me to deeper insights and connections. I guess that's what makes poetry such a rewarding art form."
-    ],
-    [
-      "frank",
-      "That's true, Carlos. It's like the more challenging the task, the more fulfilling the journey becomes. Maybe I should start jotting down some of the fleeting thoughts and scenes that cut through my haze. Who knows, I might discover something profound within myself. What do you think, could poetry help someone like me?"
-    ],
-    [
-      "carlos gomez",
-      "Absolutely, Frank! Poetry has a way of unveiling hidden truths and emotions we might not be aware of. I encourage you to give it a try. Even if you start with just a few words or lines, it could lead to something meaningful. Plus, it's a great way to reflect and unwind. If you ever want to share your thoughts or get feedback, I'd be happy to help."
-    ],
-    [
-      "frank",
-      "Thanks, Carlos. I'll give it a try. Maybe I'll start jotting down things when I'm out and about today. I appreciate your encouragement and might take you up on that offer for feedback. You've given me something to think about, so let\u2019s catch up again soon. Cheers!"
-    ]
   ],
   "chatting_with_buffer": {
-    "carlos gomez": 800
   },
-  "chatting_end_time": "February 09, 2025, 19:01:00",
+  "chatting_end_time": "",
   "act_path_set": true,
   "planned_path": []
 }

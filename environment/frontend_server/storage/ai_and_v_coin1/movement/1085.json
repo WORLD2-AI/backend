@@ -1,0 +1,151 @@
+{
+  "persona": {
+    "christopher gardner": {
+      "movement": [
+        123,
+        79
+      ],
+      "pronunciatio": "\ud83d\udca1\ud83d\ude0a",
+      "description": "attending school (conversing about Linda and Christopher Gardner discussing and brainstorming ideas to enhance an art project with virtual elements, bright colors, animations, sound effects, and a hidden surprise element to make it more interactive and engaging.) @ the ville:gardner family's house:common room:seat",
+      "chat": null
+    },
+    "chris gardner": {
+      "movement": [
+        34,
+        86
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:gardner family's house:chris gardner's room:bed",
+      "chat": null
+    },
+    "tom moreno": {
+      "movement": [
+        97,
+        74
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:moreno family's house:tom moreno's bedroom:bed",
+      "chat": null
+    },
+    "jane moreno": {
+      "movement": [
+        95,
+        66
+      ],
+      "pronunciatio": "\ud83d\udca1\ud83e\udd14",
+      "description": "working on NFT music projects and researching decentralization in the art field (brainstorming new ideas for combining NFT music with visual arts) @ the ville:moreno family's house:common room:desk",
+      "chat": null
+    },
+    "rajiv patel": {
+      "movement": [
+        27,
+        12
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:artist's co-living space:rajiv patel's room:bed",
+      "chat": null
+    },
+    "tamara taylor": {
+      "movement": [
+        59,
+        74
+      ],
+      "pronunciatio": "\ud83d\udcdd\ud83e\udd14",
+      "description": "working on refining the FitCoin launch plan (drafting a timeline for the FitCoin test issuance)   @ the ville:tamara taylor and carmen ortiz's house:tamara taylor's room:desk",
+      "chat": null
+    },
+    "arthur burton": {
+      "movement": [
+        9,
+        70
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:arthur burton's apartment:arthur burton's room:bed",
+      "chat": null
+    },
+    "latoya williams": {
+      "movement": [
+        40,
+        40
+      ],
+      "pronunciatio": "\ud83d\udca1\ud83e\udd14",
+      "description": "having breakfast and reviewing her photography plans for the day (brainstorming ideas for her travel-inspired photo series) @ the ville:artist's co-living space:common room:common room table",
+      "chat": null
+    },
+    "kiki": {
+      "movement": [
+        16,
+        70
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:kiki's apartment:kiki's room:bed",
+      "chat": null
+    },
+    "carmen ortiz": {
+      "movement": [
+        63,
+        74
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:tamara taylor and carmen ortiz's house:carmen ortiz's room:bed",
+      "chat": null
+    },
+    "carlos gomez": {
+      "movement": [
+        41,
+        67
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:carlos gomez's apartment:carlos gomez's room:bed",
+      "chat": null
+    },
+    "francisco lopez": {
+      "movement": [
+        17,
+        26
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:artist's co-living space:francisco lopez's room:bed",
+      "chat": null
+    },
+    "cichengege": {
+      "movement": [
+        25,
+        70
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude0c",
+      "description": "sleeping @ the ville:cichengege's apartment:cichengege's room:bed",
+      "chat": null
+    },
+    "frank": {
+      "movement": [
+        33,
+        68
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:frank's apartment:frank's room:bed",
+      "chat": null
+    },
+    "mk": {
+      "movement": [
+        72,
+        60
+      ],
+      "pronunciatio": "\ud83d\udd0d\ud83e\udd14",
+      "description": "continuing his research on the AI economic system, diving deeper into coding and testing to refine the decentralized financial system model (identifying potential speculative bubbles in the simulated data) @ the ville:mk's house:mk's bedroom:desk",
+      "chat": null
+    },
+    "linda": {
+      "movement": [
+        123,
+        80
+      ],
+      "pronunciatio": "\ud83d\udca1\ud83e\udd14",
+      "description": "having breakfast and reviewing plans for the day (conversing about Linda and Christopher Gardner discussing and brainstorming ideas to enhance an art project with virtual elements, bright colors, animations, sound effects, and a hidden surprise element to make it more interactive and engaging.) @ the ville:gardner family's house:common room:seat",
+      "chat": null
+    }
+  },
+  "meta": {
+    "curr_time": "March 14, 2025, 08:53:20"
+  }
+}

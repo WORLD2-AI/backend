@@ -1,0 +1,151 @@
+{
+  "persona": {
+    "chris gardner": {
+      "movement": [
+        34,
+        86
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:gardner family's house:chris gardner's room:bed",
+      "chat": null
+    },
+    "linda": {
+      "movement": [
+        142,
+        73
+      ],
+      "pronunciatio": "\ud83d\udd0d\ud83e\udd14",
+      "description": "researching and brainstorming ideas for unregulated creative spaces (researching existing unregulated creative spaces and their impact on art and technology)   @ the ville:gardner family's house:linda's room:<random>",
+      "chat": null
+    },
+    "tom moreno": {
+      "movement": [
+        97,
+        74
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:moreno family's house:tom moreno's bedroom:bed",
+      "chat": null
+    },
+    "rajiv patel": {
+      "movement": [
+        27,
+        12
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:artist's co-living space:rajiv patel's room:bed",
+      "chat": null
+    },
+    "christopher gardner": {
+      "movement": [
+        133,
+        71
+      ],
+      "pronunciatio": "\ud83c\udf92\ud83d\ude0a",
+      "description": "attending school (packing his school bag with books and supplies)   @ the ville:gardner family's house:christopher gardner's room:<random>",
+      "chat": null
+    },
+    "jane moreno": {
+      "movement": [
+        95,
+        66
+      ],
+      "pronunciatio": "\ud83d\udcdd\ud83e\udd14",
+      "description": "working on NFT music projects and researching decentralization in the art field (drafting a proposal for a decentralized NFT art collaboration) @ the ville:moreno family's house:jane moreno's bedroom:desk",
+      "chat": null
+    },
+    "carlos gomez": {
+      "movement": [
+        41,
+        67
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:carlos gomez's apartment:carlos gomez's room:bed",
+      "chat": null
+    },
+    "kiki": {
+      "movement": [
+        16,
+        70
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:kiki's apartment:kiki's room:bed",
+      "chat": null
+    },
+    "carmen ortiz": {
+      "movement": [
+        63,
+        74
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:tamara taylor and carmen ortiz's house:carmen ortiz's room:bed",
+      "chat": null
+    },
+    "tamara taylor": {
+      "movement": [
+        59,
+        74
+      ],
+      "pronunciatio": "\ud83d\udd0d\ud83e\udd14",
+      "description": "working on refining the FitCoin launch plan (researching blockchain and smart contract updates relevant to FitCoin)   @ the ville:tamara taylor and carmen ortiz's house:tamara taylor's room:desk",
+      "chat": null
+    },
+    "arthur burton": {
+      "movement": [
+        9,
+        70
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:arthur burton's apartment:arthur burton's room:bed",
+      "chat": null
+    },
+    "latoya williams": {
+      "movement": [
+        18,
+        17
+      ],
+      "pronunciatio": "\ud83d\udcdd\ud83d\ude0a",
+      "description": "Latoya is preparing for her supermarket trip by organizing her shopping list and reviewing her photography notes for inspiration (Latoya is organizing her shopping list) @ the ville:artist's co-living space:latoya williams's room:desk",
+      "chat": null
+    },
+    "frank": {
+      "movement": [
+        33,
+        68
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:frank's apartment:frank's room:bed",
+      "chat": null
+    },
+    "mk": {
+      "movement": [
+        46,
+        64
+      ],
+      "pronunciatio": "\ud83d\udd27\ud83e\udd14",
+      "description": "continuing his research on the AI economic system, diving deeper into coding and testing to refine the decentralized financial system model (adjusting parameters to mitigate speculative behavior in the model) @ the ville:mk's house:classroom:desk",
+      "chat": null
+    },
+    "francisco lopez": {
+      "movement": [
+        17,
+        26
+      ],
+      "pronunciatio": "\ud83d\ude34\ud83d\ude10",
+      "description": "sleeping @ the ville:artist's co-living space:francisco lopez's room:bed",
+      "chat": null
+    },
+    "cichengege": {
+      "movement": [
+        25,
+        70
+      ],
+      "pronunciatio": "\ud83c\udf05\ud83d\ude0c",
+      "description": "waking up and completing his morning routine @ the ville:cichengege's apartment:cichengege's room:bed",
+      "chat": null
+    }
+  },
+  "meta": {
+    "curr_time": "March 14, 2025, 09:12:40"
+  }
+}

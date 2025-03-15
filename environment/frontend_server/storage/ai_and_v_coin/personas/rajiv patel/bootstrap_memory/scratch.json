@@ -1,0 +1,190 @@
+{
+  "vision_r": 6,
+  "att_bandwidth": 6,
+  "retention": 8,
+  "curr_time": "March 14, 2025, 00:00:00",
+  "curr_tile": [
+    27,
+    13
+  ],
+  "daily_plan_req": "2:00 PM - 4:00 PM: Worked out at the gym and discussed the virtual fitness data market with tamara, proposing the idea of issuing \"FitCoin\" using blockchain and smart contracts, and was very enthusiastic about it.\nEvening to late night: Refined the plan with Tamara, decided to launch the test issuance of FitCoin next week, and assessed its potential impact on the fitness industry.",
+  "name": "rajiv patel",
+  "first_name": "rajiv",
+  "last_name": "patel",
+  "age": 27,
+  "innate": "patient, reliable, cheerful",
+  "learned": "rajiv patel is a painter who wants live quietly and paint while enjoying his everyday life.",
+  "currently": "Interested in the FitCoin proposed by tamara.",
+  "lifestyle": "rajiv patel goes to bed around midnight, awakes up around 9am, eats dinner around 5pm.",
+  "living_area": "the ville:artist's co-living space:rajiv patel's room",
+  "concept_forget": 100,
+  "daily_reflection_time": 180,
+  "daily_reflection_size": 5,
+  "overlap_reflect_th": 4,
+  "kw_strg_event_reflect_th": 10,
+  "kw_strg_thought_reflect_th": 9,
+  "recency_w": 1,
+  "relevance_w": 1,
+  "importance_w": 1,
+  "recency_decay": 0.995,
+  "importance_trigger_max": 3250,
+  "importance_trigger_curr": 3243,
+  "importance_ele_n": 7,
+  "thought_count": 5,
+  "daily_req": [
+    "Wake up and complete the morning routine at 9:00 am.",
+    "Have breakfast and review painting schedule at 9:30 am.",
+    "Spend time painting at 10:00 am.",
+    "Have lunch at 12:00 pm.",
+    "Relax and enjoy some quiet time or read at 1:00 pm.",
+    "Work out at the gym and discuss the virtual fitness data market with Tamara from 2:00 pm to 4:00 pm.",
+    "Have dinner at 5:00 pm.",
+    "Refine the FitCoin plan with Tamara and assess its potential impact from 6:00 pm to 8:00 pm.",
+    "Relax, perhaps watch TV or listen to music, from 8:00 pm to 10:00 pm.",
+    "Reflect on the day's work or do light reading from 10:00 pm to 11:30 pm.",
+    "Prepare for bed and unwind from 11:30 pm to 12:00 am."
+  ],
+  "f_daily_schedule": [
+    [
+      "sleeping",
+      540
+    ],
+    [
+      "waking up and completing his morning routine (waking up and stretching in bed)",
+      5
+    ],
+    [
+      "waking up and completing his morning routine (getting out of bed and making his bed)",
+      5
+    ],
+    [
+      "waking up and completing his morning routine (brushing his teeth)",
+      5
+    ],
+    [
+      "waking up and completing his morning routine (washing his face)",
+      5
+    ],
+    [
+      "waking up and completing his morning routine (taking a shower)",
+      10
+    ],
+    [
+      "waking up and completing his morning routine (getting dressed)",
+      10
+    ],
+    [
+      "waking up and completing his morning routine (preparing breakfast)",
+      10
+    ],
+    [
+      "waking up and completing his morning routine (eating breakfast)",
+      10
+    ],
+    [
+      "spending time painting",
+      60
+    ],
+    [
+      "continuing to spend time painting",
+      60
+    ],
+    [
+      "having lunch",
+      60
+    ],
+    [
+      "relaxing and enjoying some quiet time or reading",
+      60
+    ],
+    [
+      "working out at the gym and discussing the virtual fitness data market with Tamara, proposing the idea of issuing \"FitCoin\" using blockchain and smart contracts, and is very enthusiastic about it",
+      180
+    ],
+    [
+      "having dinner",
+      60
+    ],
+    [
+      "refining the FitCoin plan with Tamara and assessing its potential impact on the fitness industry",
+      120
+    ],
+    [
+      "relaxing, perhaps watching TV or listening to music",
+      120
+    ],
+    [
+      "reflecting on the day's work or doing light reading",
+      120
+    ],
+    [
+      "sleeping",
+      0
+    ]
+  ],
+  "f_daily_schedule_hourly_org": [
+    [
+      "sleeping",
+      540
+    ],
+    [
+      "waking up and completing his morning routine",
+      60
+    ],
+    [
+      "spending time painting",
+      60
+    ],
+    [
+      "continuing to spend time painting",
+      60
+    ],
+    [
+      "having lunch",
+      60
+    ],
+    [
+      "relaxing and enjoying some quiet time or reading",
+      60
+    ],
+    [
+      "working out at the gym and discussing the virtual fitness data market with Tamara, proposing the idea of issuing \"FitCoin\" using blockchain and smart contracts, and is very enthusiastic about it",
+      180
+    ],
+    [
+      "having dinner",
+      60
+    ],
+    [
+      "refining the FitCoin plan with Tamara and assessing its potential impact on the fitness industry",
+      120
+    ],
+    [
+      "relaxing, perhaps watching TV or listening to music",
+      120
+    ],
+    [
+      "reflecting on the day's work or doing light reading",
+      120
+    ]
+  ],
+  "act_address": "",
+  "act_start_time": "",
+  "act_duration": 0,
+  "act_description": "",
+  "act_pronunciatio": "",
+  "act_event": [
+    
+  ],
+  "act_obj_description": "",
+  "act_obj_pronunciatio": "",
+  "act_obj_event": [
+    
+  ],
+  "chatting_with": null,
+  "chat": null,
+  "chatting_with_buffer": {},
+  "chatting_end_time": null,
+  "act_path_set": true,
+  "planned_path": []
+}

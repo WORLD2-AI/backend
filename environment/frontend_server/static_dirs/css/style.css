@@ -39,8 +39,17 @@ body,
   border-bottom: 1px solid #c9a76933;
   background: linear-gradient(to right, #1a2a1a, #0d1f0d);
 }
+.character-name{
+  color: #c9a769;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
 
 .character-info {
+  display: flex; 
+  overflow-x: auto;
+  height: 100px;
+  white-space: nowrap;
   color: #c9a769;
   font-size: 18px;
   margin-bottom: 8px;
@@ -60,6 +69,13 @@ body,
   color: #8d9e8d;
 }
 
+.story-content{
+  flex: 1;
+  padding: 16px;
+  background: rgba(13, 31, 13, 0.9);
+  color: #8d9e8d;
+  height: 400px;
+}
 .input-section {
   padding: 16px;
   border-top: 1px solid #c9a76933;
@@ -94,4 +110,47 @@ body,
 
 .input-section button:hover {
   background-color: #9c7d4a;
+}
+
+.tab-container {
+  height: 30px;
+  background-color: #1a2a1a;
+  padding: 2px;
+  border-bottom: 1px solid #c9a76933;
+}
+
+.tabs {
+  display: flex;
+  justify-content: space-around;
+}
+
+.tab-button {
+  background-color: #1a2a1a;
+  color: #c9a769;
+  border: none;
+  padding: 1px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 2px;
+}
+
+.tab-button.active {
+  background-color: #c9a769;
+  color: #1a2a1a;
+}
+
+.tab-content {
+  display: none;
+  padding: 16px;
+  background: rgba(13, 31, 13, 0.9);
+  color: #8d9e8d;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.schedule-content{
+  overflow-y: auto;
+  max-height: 390px;
 }

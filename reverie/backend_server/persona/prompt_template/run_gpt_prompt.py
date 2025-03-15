@@ -431,7 +431,7 @@ def run_gpt_prompt_task_decomp(persona,
         return gpt_response
 
     def get_fail_safe():
-        fs = ["asleep"]
+        fs = [["asleep",duration]]
         return fs
 
     gpt_param = {"engine": "gpt-4o", "max_tokens": 1000,
@@ -1320,7 +1320,7 @@ def run_gpt_prompt_decide_to_talk(persona, target_persona, retrieved,test_input=
         return gpt_response.split("Answer in yes or no:")[-1].strip().lower()
 
     def get_fail_safe():
-        fs = "yes"
+        fs = "no"
         return fs
 
 
@@ -1334,13 +1334,10 @@ def run_gpt_prompt_decide_to_talk(persona, target_persona, retrieved,test_input=
     prompt = generate_prompt(prompt_input, prompt_template)
 
     fail_safe = get_fail_safe()
-    output = safe_generate_response(prompt, gpt_param, 5, fail_safe,
+    output = safe_generate_response(prompt, gpt_param, 2, fail_safe,
                                     __func_validate, __func_clean_up)
-
-    if debug or verbose:
-        print_run_prompts(prompt_template, persona, gpt_param,
-                          prompt_input, prompt, output)
-
+    if output is None:
+        output = "no"
     return output, [output, prompt, gpt_param, prompt_input, fail_safe]
 
 
@@ -1896,10 +1893,14 @@ def run_gpt_prompt_event_poignancy(persona, event_description, test_input=None, 
     example_output = "5" ########
     special_instruction = "The output should only contain ONE integer value on the scale of 1 to 10." ########
     fail_safe = get_fail_safe() ########
-    output = ChatGPT_safe_generate_response(prompt, example_output, special_instruction, 3, fail_safe,
+    output = ChatGPT_safe_generate_response(prompt, example_output, special_instruction, 5, fail_safe,
                                             __chat_func_validate, __chat_func_clean_up, True)
     if output != False:
         return output, [output, prompt, gpt_param, prompt_input, fail_safe]
+    output = len(event_description)/5
+    if output > 10: output = 10
+    return output,[output, prompt, gpt_param, prompt_input, fail_safe]
+
     # ChatGPT Plugin ===========================================================
 
 

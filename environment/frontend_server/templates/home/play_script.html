@@ -50,6 +50,7 @@
 		let x = spans[i].innerText.split(",");
 		persona_names[x[0]] = [parseInt(x[1]), parseInt(x[2])]
 	}
+	var last_time = null;
 	// console.log('persona_names:',persona_names)
 	let t = null;
 
@@ -148,7 +149,7 @@
 	let isDraggingmMap = false;
 	let startPointerPos = new Phaser.Math.Vector2();
 	let focus_name = ""
-	let dial_content = '<div style="color: #c9a769; margin-bottom: 8px;word-break: break-word"><span>#name#</span><span><p>#content#</p></span></div>'
+	let dial_content = '<div style="color: #c9a769; margin-bottom: 8px;word-break: break-word"><span style="color:white;">#name#:</span><span><p>#content#</p></span></div>'
 	// ###########################################################################
 	// ENGINE
 	// ###########################################################################
@@ -344,8 +345,10 @@
 		new_sprite.on('pointerup', () => {
 			if (persona_name == focus_name){
 				focus_name = ""
+				display_main_box()
 			}else{
 				focus_name = persona_name
+				display_game_dialog(persona_name)
 			}
 		})				 
 	    // Here, we are creating the persona and its pronunciatio sprites.
@@ -533,6 +536,7 @@
 				return
 			}
 			document.getElementById("game-time-content").innerHTML = execute_movement["meta"]["curr_time"];
+			last_time = execute_movement["meta"]["curr_time"]
 			for (let i = 0; i < Object.keys(personas).length; i++) {
 				let curr_persona_name = Object.keys(personas)[i];
 				let curr_persona = personas[curr_persona_name];
@@ -552,7 +556,7 @@
 					// E.g., "Dolores Murphy" -> "DM"
 
 					initials = formatPersonName(curr_persona_name)
-					pronunciatios[curr_persona_name].setText(`(${pronunciatio_content}) ${splitAndWrap(description.slice(0, 60) + "...", 50)}`);
+					pronunciatios[curr_persona_name].setText(`(${pronunciatio_content})`);
 				}
 				x = personas[curr_persona_name].body.position.x
 				y = personas[curr_persona_name].body.position.y
@@ -640,18 +644,17 @@
 						}else{
 							fill_dialog_content = "<span>None</span>"
 						}
-						document.getElementById("dialog_content").innerHTML = fill_dialog_content					
-					}
-					if (focus_name != ""){
+						document.getElementById("dialog_content").innerHTML = fill_dialog_content
 						document.getElementById("character_name").innerHTML = focus_name
 						document.getElementById("character_pos").innerHTML = description_content.split("@")[1]
 						document.getElementById("character_atcion").innerHTML = description_content.split("@")[0]
-						document.getElementById("character_detail").innerHTML = document.getElementById("status_"+curr_persona_name_os).innerHTML
-					}else{
+						// document.getElementById("character_detail").innerHTML = document.getElementById("status_"+curr_persona_name_os).innerHTML
+											
+					}else if (focus_name == ""){
 						document.getElementById("character_name").innerHTML = "None"
 						document.getElementById("character_pos").innerHTML = "None"
 						document.getElementById("character_atcion").innerHTML = "None"
-						document.getElementById("character_detail").innerHTML = ""
+						// document.getElementById("character_detail").innerHTML = ""
 					}
 				}
 
@@ -839,10 +842,15 @@
 		updateFramesDisplay();
 	}
 	changeProgressBarToEnd(currentEndFrame)
-	const element = document.getElementById('game-container');
-	element.addEventListener('contextmenu', (e) => {e.preventDefault();focus_name = "";})
+	
+</script>
+
+
+<script>
+	let element = document.getElementById('game-container');
+	element.addEventListener('contextmenu', (e) => {e.preventDefault();display_main_box()})
 	function update_dialog_user_info(visible) {
-		const dialog = document.getElementById('gameDialog');
+		let dialog = document.getElementById('gameDialog');
 		if (visible) {
 			dialog.classList.add('dialog-visible');
 			setTimeout(() => dialog.style.overflow = 'visible', 300);
@@ -851,10 +859,122 @@
 			dialog.style.overflow = 'hidden';
 		}
 	}
+	function display_main_box(){
+		focus_name = "";
+		document.getElementById('gameDialog').style.display = "none";
+		document.getElementById('main_box').style.display = "inline-block";
+	}
+	function display_game_dialog(user_name){
+		focus_name = user_name;
+		document.getElementById('gameDialog').style.display = "inline-block";
+		document.getElementById('main_box').style.display = "none";
+	}
 </script>
 
+<script>
+	
+	
+	let all_user_data 
+	let story_template = "<p style=\"font-size:12px;\"><span></span>[ #time# ] <span>#item#</span></p>"
+	function get_all_user_data(){
+		var update_xobj = new XMLHttpRequest();
+		update_xobj.overrideMimeType("application/json");
+		var url = "{% url 'status' %}"
+		if (last_time){
+			url+= "?last_time="+last_time
+		}
+		update_xobj.open('GET',url , !first_stop);
+		update_xobj.addEventListener("load", function () {
+
+			if (this.readyState === 4) {
+				if (update_xobj.status === 200) {
+					data = JSON.parse(update_xobj.responseText);
+					if (data&& typeof data === 'object' && Object.keys(data).length > 0) {
+						all_user_data = data;
+					}
+					update_story()
+					update_user_info()
+					setTimeout(() => {
+						get_all_user_data()
+					}, 5000);
+				}
+			}
+		});
+		update_xobj.send();
+	}
+	get_all_user_data();
+	
+	function update_story(){
+		let data = []
+		if (last_time &&all_user_data&& all_user_data['story'] && all_user_data['story'].length > 0){
+			date = new Date(last_time);
+			all_user_data['story'].forEach(element => {
+				if (!element || !element.time){
+					return
+				}
+				event_time = new Date(element.time)
+				if (event_time.getTime() <= date.getTime()){
+					data.push(element)
+				}
+			});
+		}else{
+			return 
+		}
+		// data sort by created
+		data.sort((a, b) => {
+			return new Date(a.created)-new Date(b.created) ;
+		});
+		let update_content = ""
+		
+		data.forEach(element => {
+			if (element.event){
+				update_content += story_template.replace("#item#", element.event).replace("#time#", element.time)
+			}
+		});
+		document.getElementById('world_event').innerHTML = update_content
+	}
+	function update_user_info(){
+		if (!focus_name ||  focus_name == ""){
+			document.getElementById('character_schedule').innerHTML = "<p>None</p>"
+			document.getElementById('character_info').innerHTML = "<p>None</p>"
+			return 
+		}
+		user_data = all_user_data[focus_name]
+		if (user_data && user_data.scratch && user_data.scratch.daily_req){
+			content = ""
+			user_data.scratch.f_daily_schedule.forEach(req => {
+				content += "<p style=\"font-size:12px;\">"+req[0]+"</p>"
+			});
+			document.getElementById('character_schedule').innerHTML = content
+			content = "<p><span>Age: "+user_data.scratch.age+"</span></p>"
+			content += "<p><span>Innate: "+user_data.scratch.innate+"</span></p>"
+			content += "<p><span>Learned: "+user_data.scratch.learned+"</span></p>"
+			content += "<p><span>Currently: "+user_data.scratch.currently+"</span></p>"
+			content += "<p><span>Vision_r: "+user_data.scratch.vision_r+"</span></p>"
+			// content += "<p><span>Daily Plan: "+user_data.scratch.daily_plan_req+"</span></p>"
+			document.getElementById('character_info').innerHTML =content
+		}
+
+	}
+	function switchTab(tabName) {
+    document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.style.display = 'none';
+    });
 
 
+    document.getElementById(tabName).style.display = 'block';
+
+    document.querySelectorAll('.tab-button').forEach(button => {
+        button.classList.remove('active');
+    });
+
+
+    document.querySelector(`[onclick="switchTab('${tabName}')"]`).classList.add('active');
+}
+
+
+switchTab('dialogue');
+</script>
 
 
 
