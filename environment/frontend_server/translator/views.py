@@ -120,6 +120,51 @@ def demo(request, sim_code, step, play_speed="2"):
 def UIST_Demo(request):
     return demo(request, "March20_the_ville_n25_UIST_RUN-step-1-141", 2160, play_speed="3")
 
+def video(request):
+    f_curr_sim_code = "temp_storage/curr_sim_code.json"
+    f_curr_step = "temp_storage/curr_step.json"
+
+    if not check_if_file_exists(f_curr_step):
+        context = {}
+        template = "home/error_start_backend.html"
+        return render(request, template, context)
+
+    with open(f_curr_sim_code) as json_file:
+        sim_code = json.load(json_file)["sim_code"]
+
+    with open(f_curr_step) as json_file:
+        step = json.load(json_file)["step"]
+
+    # os.remove(f_curr_step)
+
+    persona_names = []
+    persona_names_set = set()
+    for i in find_filenames(f"storage/{sim_code}/personas", ""):
+        x = i.split("/")[-1].strip()
+        if x[0] != ".":
+            persona_names += [[x, x.replace(" ", "_")]]
+            persona_names_set.add(x)
+
+    persona_init_pos = []
+    file_count = []
+    for i in find_filenames(f"storage/{sim_code}/environment", ".json"):
+        x = i.split("/")[-1].strip()
+        if x[0] != ".":
+            file_count += [int(x.split(".")[0])]
+    curr_json = f'storage/{sim_code}/environment/{str(max(file_count))}.json'
+    with open(curr_json) as json_file:
+        persona_init_pos_dict = json.load(json_file)
+        for key, val in persona_init_pos_dict.items():
+            if key in persona_names_set:
+                persona_init_pos += [[key, val["x"], val["y"]]]
+
+    context = {"sim_code": sim_code,
+               "step": step,
+               "persona_names": persona_names,
+               "persona_init_pos": persona_init_pos,
+               "mode": "simulate"}
+    template = "home/home_video.html"
+    return render(request, template, context)
 
 def home(request):
     f_curr_sim_code = "temp_storage/curr_sim_code.json"
@@ -164,7 +209,7 @@ def home(request):
                "persona_names": persona_names,
                "persona_init_pos": persona_init_pos,
                "mode": "simulate"}
-    template = "home/home_video.html"
+    template = "home/home.html"
     return render(request, template, context)
 def play(request):
     f_curr_sim_code = "temp_storage/curr_sim_code.json"

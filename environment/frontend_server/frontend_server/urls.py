@@ -24,8 +24,8 @@ from translator import views as translator_views
 urlpatterns = [
     url(r'^$', translator_views.play, name='play'),
     url(r'play/', translator_views.play, name='play'),
-    url(r'home/', translator_views.home, name='home'),
-    url(r'process/', translator_views.home, name='play'),
+    url(r'video/', translator_views.video, name='video'),
+    url(r'process/', translator_views.home, name='process'),
     url(r'status/',translator_views.get_user_info, name='status'),
     url(r'^demo/(?P<sim_code>[\w-]+)/(?P<step>[\w-]+)/(?P<play_speed>[\w-]+)/$', translator_views.demo, name='demo'),
     url(r'^replay/(?P<sim_code>[\w-]+)/(?P<step>[\w-]+)/$', translator_views.replay, name='replay'),
