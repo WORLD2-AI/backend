@@ -165,7 +165,7 @@ def home(request):
                "persona_names": persona_names,
                "persona_init_pos": persona_init_pos,
                "mode": "simulate"}
-    template = "home/home.html"
+    template = "home/home_video.html"
     return render(request, template, context)
 def play(request):
     f_curr_sim_code = "temp_storage/curr_sim_code.json"
