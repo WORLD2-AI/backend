@@ -21,42 +21,95 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1; 
+            z-index: -1;
             object-fit: cover;
             cursor: pointer;
         }
 
-        /* content containers*/
-        .content {
-            position: relative;
-            z-index: 1;
-            width: 100%;
-            padding-top: 10px;
-            /* color: white; */
-            text-align: center;
-            padding-top: 0px;
-            font-size: 2em;
+        .logo-container img {
+            margin-left: 10%;
+            width: 70%;
+            height: auto;
         }
+
+        /* content containers*/
+        #video-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+            height: 100%;
+            justify-content: space-between;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            flex: 1;
+        }
+
+        .bottom-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 50px;
+            margin-bottom: 10%;
+        }
+
+        .ellipse-button {
+            width: 250px;
+            margin-bottom: 20px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .ellipse-button:hover {
+            transform: scale(1.1);
+        }
+
     </style>
 
     <div style="height: 100%;" id="video-container">
         <!-- video-background -->
         <video id="video-background" autoplay muted loop>
-            <source src="{% static 'home_video.mp4' %}" type="video/mp4">
+            <source src="{% static 'home_video2.mp4' %}" type="video/mp4">
             Your browser does not support the video tag.
         </video>
 
         <!-- content -->
-        <!-- <div class="content">
-            <img src="{% static 'img/hl.png' %}" />
-        </div> -->
+        <div class="content">
+            <div class="logo-container">
+                <img src="{% static 'img/LOGO.png' %}"/>
+            </div>
+            <div class="bottom-content">
+                <button id="ellipse-button" class="ellipse-button">JOIN THE WORLD ></button>
+                <p>Enter the Second World — a digital frontier </p>
+                <p>where your dreams awaken, evolve, and become real. </p>
+            </div>
+        </div>
     </div>
 {% endblock content %}
 
 {% block js_content %}
 
     <script>
-        const video = document.getElementById('video-container');
+        const video = document.getElementById('ellipse-button');
         video.addEventListener('click', () => {
             window.location.href = "{% url 'play' %}";
         });
