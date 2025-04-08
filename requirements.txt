@@ -3,7 +3,7 @@ django_storages==1.9.0
 googletrans==4.0.0rc1
 gpt4all==1.0.12
 litellm
-numpy==1.19.5
+numpy==1.24.4
 openai==0.27.0
 python-dotenv==1.0.0
 tqdm==4.62.3
@@ -40,7 +40,7 @@ nltk==3.6.5
 openai==0.27.0
 outcome==1.2.0
 packaging==23.0
-pandas
+pandas==2.0.3
 patsy==0.5.3
 Pillow==8.4.0
 psycopg2-binary
@@ -75,3 +75,6 @@ wsproto==1.2.0
 yarl==1.8.2
 yellowbrick==1.3.post1
 zipp==3.6.0
+flask==2.2.5
+Flask-SQLAlchemy==3.1.1
+PyMySQL==1.1.1
