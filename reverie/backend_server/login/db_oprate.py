@@ -3,7 +3,7 @@ import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='../../../environment/frontend_server/templates')
 app.secret_key = os.urandom(24)
 
 # 配置数据库
