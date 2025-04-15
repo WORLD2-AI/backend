@@ -1,12 +1,13 @@
 from flask import redirect, session, request, jsonify, render_template
 from requests_oauthlib import OAuth1Session
+import urllib.parse
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from reverie.backend_server.login.db_oprate import *
+from db_oprate import *
 
 # Twitter API credentials
-TWITTER_API_KEY = 'ySnmcu2uwwnHacFOmlvd8IuJR'
-TWITTER_API_SECRET_KEY = 'kGZyR9H40a9lroCsSSvBlKeCqRYCjBi7gplXsoHdSpSnjMtl0X'
+TWITTER_API_KEY = 'xAsAN0Sodd7sN8MjGjkFQDAWU'
+TWITTER_API_SECRET_KEY = '2mhTD5tc0zfxqCHKVVQitBJjbaT0YVqfEQjie9Nez67P3TsmIS'
 
 
 class User(db.Model):
@@ -67,13 +68,27 @@ def login():
         return '用户名或密码错误', 401
 
     return render_template('login/login.html')
-
+@app.route('/user/info')
+def get_user_info():
+# 判断session中的user_id是否存在
+    if 'user_id' in session:
+        user = User.query.filter_by(id=session['user_id']).first()
+        if user:
+            return jsonify({
+                'data': user
+            })
+    # 返回401状态
+    return jsonify({
+        'data': None
+    }), 401
 
 @app.route('/login/twitter')
 def login_twitter():
     oauth = OAuth1Session(TWITTER_API_KEY, client_secret=TWITTER_API_SECRET_KEY)
     request_token_url = 'https://api.twitter.com/oauth/request_token'
-
+    call_back_url = request.args.get('callback')
+    # 将call_bakc_url 添加到session中
+    session['call_back_url'] = call_back_url
     try:
         response = oauth.fetch_request_token(request_token_url)
     except Exception as e:
@@ -134,7 +149,13 @@ def callback():
             return redirect('/register')
 
         session['user_id'] = user.id
-        return f"登录成功！用户 ID：{user.id}"
+        # 如果session中有call_back_url，则重定向到call_back_url
+        if 'call_back_url' in session:
+            call_back_url = session['call_back_url']
+            call_back_url = urllib.parse.unquote(call_back_url)
+            return redirect(call_back_url)
+        else:
+            return "登录成功！"
 
 
 @app.route('/bind_twitter')
@@ -174,4 +195,4 @@ def profile():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False,host="0.0.0.0",port=5000)
