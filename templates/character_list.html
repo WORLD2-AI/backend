@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>角色列表</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .character-card {
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .character-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .status-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        .character-detail {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+        }
+        .detail-content {
+            position: relative;
+            width: 80%;
+            max-width: 800px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+        .schedule-item {
+            border-left: 3px solid #0d6efd;
+            padding-left: 10px;
+            margin-bottom: 10px;
+        }
+        .current-status {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="mb-4">角色列表</h1>
+        <div class="row" id="characterList">
+            <!-- 角色卡片将通过JavaScript动态添加 -->
+        </div>
+    </div>
+
+    <!-- 角色详情弹窗 -->
+    <div class="character-detail" id="characterDetail">
+        <div class="detail-content">
+            <span class="close-btn" onclick="closeDetail()">&times;</span>
+            <div id="detailContent">
+                <!-- 详情内容将通过JavaScript动态添加 -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 获取角色列表
+        async function fetchCharacters() {
+            try {
+                const response = await fetch('/api/characters');
+                const data = await response.json();
+                if (data.status === 'success') {
+                    displayCharacters(data.data);
+                } else {
+                    alert('获取角色列表失败：' + data.message);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('获取角色列表失败');
+            }
+        }
+
+        // 显示角色列表
+        function displayCharacters(characters) {
+            const container = document.getElementById('characterList');
+            container.innerHTML = '';
+
+            characters.forEach(character => {
+                const card = document.createElement('div');
+                card.className = 'col-md-4 mb-4';
+                card.setAttribute('data-id', character.id);
+                card.innerHTML = `
+                    <div class="card character-card">
+                        <div class="card-body">
+                            <span class="badge bg-${getStatusColor(character.status)} status-badge">
+                                ${character.status}
+                            </span>
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h5 class="card-title">${character.name}</h5>
+                                    <p class="card-text">
+                                        <strong>生活方式：</strong>${character.lifestyle}<br>
+                                        <strong>当前位置：</strong>${character.current_location || '未知'}<br>
+                                        <strong>当前活动：</strong>${character.current_action || '未知'}
+                                    </p>
+                                </div>
+                                <button class="btn btn-outline-danger btn-sm" onclick="deleteCharacter(${character.id}, event)">
+                                    <i class="bi bi-trash"></i> 删除
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+                
+                // 添加点击事件监听器
+                card.addEventListener('click', function() {
+                    showCharacterDetail(character.id);
+                });
+            });
+        }
+
+        // 获取角色详情
+        async function showCharacterDetail(characterId) {
+            console.log('Character ID:', characterId);
+            const url = `/api/characters/${characterId}`;
+            console.log('Request URL:', url);
+            
+            try {
+                const response = await fetch(url);
+                console.log('Response status:', response.status);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                console.log('Response data:', data);
+                if (data.status === 'success') {
+                    displayCharacterDetail(data.data);
+                } else {
+                    alert('获取角色详情失败：' + data.message);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('获取角色详情失败: ' + error.message);
+            }
+        }
+
+        // 显示角色详情
+        function displayCharacterDetail(character) {
+            const detailContent = document.getElementById('detailContent');
+            detailContent.innerHTML = `
+                <h2>${character.name}</h2>
+                <div class="current-status">
+                    <h4>当前状态</h4>
+                    <p><strong>位置：</strong>${character.current_location || '未知'}</p>
+                    <p><strong>活动：</strong>${character.current_action || '未知'}</p>
+                    <p><strong>状态：</strong>${character.status}</p>
+                </div>
+                <div class="basic-info">
+                    <h4>基本信息</h4>
+                    <p><strong>姓名：</strong>${character.first_name} ${character.last_name}</p>
+                    <p><strong>年龄：</strong>${character.age}</p>
+                    <p><strong>性别：</strong>${character.sex === 'male' ? '男' : character.sex === 'female' ? '女' : '其他'}</p>
+                    <p><strong>天性：</strong>${character.innate}</p>
+                    <p><strong>后天知识：</strong>${character.learned}</p>
+                    <p><strong>当前状态：</strong>${character.currently}</p>
+                    <p><strong>生活方式：</strong>${character.lifestyle}</p>
+                    <p><strong>起床时间：</strong>${character.wake_time}:00</p>
+                    <p><strong>睡觉时间：</strong>${character.sleep_time}:00</p>
+                </div>
+                <div class="schedule">
+                    <h4>今日日程</h4>
+                    ${character.schedules && character.schedules.length > 0 ? character.schedules.map(schedule => `
+                        <div class="schedule-item">
+                            <p><strong>时间：</strong>${schedule.time}</p>
+                            <p><strong>活动：</strong>${schedule.action}</p>
+                            <p><strong>地点：</strong>${schedule.location}</p>
+                        </div>
+                    `).join('') : '<p>暂无日程数据</p>'}
+                </div>
+            `;
+
+            document.getElementById('characterDetail').style.display = 'block';
+        }
+
+        // 关闭详情弹窗
+        function closeDetail() {
+            document.getElementById('characterDetail').style.display = 'none';
+        }
+
+        // 获取状态对应的颜色
+        function getStatusColor(status) {
+            const statusColors = {
+                '待创建': 'secondary',
+                '处理中': 'warning',
+                '创建完成': 'success',
+                '创建失败': 'danger'
+            };
+            return statusColors[status] || 'secondary';
+        }
+
+        // 删除角色
+        async function deleteCharacter(characterId, event) {
+            event.stopPropagation(); // 阻止事件冒泡
+            
+            if (confirm('确定要删除这个角色吗？此操作不可恢复。')) {
+                try {
+                    const response = await fetch(`/api/character/${characterId}`, {
+                        method: 'DELETE'
+                    });
+                    const data = await response.json();
+                    
+                    if (data.status === 'success') {
+                        // 重新加载角色列表
+                        await fetchCharacters();
+                        
+                        // 显示成功消息
+                        const alert = document.createElement('div');
+                        alert.className = 'alert alert-success alert-dismissible fade show';
+                        alert.innerHTML = `
+                            角色删除成功
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        `;
+                        document.querySelector('.container').insertBefore(alert, document.querySelector('.row'));
+                        
+                        // 3秒后自动关闭提示
+                        setTimeout(() => {
+                            alert.remove();
+                        }, 3000);
+                    } else {
+                        alert('删除失败：' + data.message);
+                    }
+                } catch (error) {
+                    console.error('Error deleting character:', error);
+                    alert('删除角色失败，请重试');
+                }
+            }
+        }
+
+        // 页面加载时获取角色列表
+        document.addEventListener('DOMContentLoaded', fetchCharacters);
+    </script>
+</body>
+</html> 
