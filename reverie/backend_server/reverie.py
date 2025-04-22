@@ -389,21 +389,35 @@ class ReverieServer:
                     #   @ double studio:double studio:common room:sofa
                     
 
-                def move_persona(persona_name, persona, maze, personas, personas_tile, curr_time):
-                    next_tile, pronunciatio, description = persona.move(
-                        maze, personas, personas_tile[persona_name], curr_time)
-                    return persona_name, next_tile, pronunciatio, description, persona.scratch.chat
+                # def move_persona(persona_name, persona, maze, personas, personas_tile, curr_time):
+                #     next_tile, pronunciatio, description = persona.move(
+                #         maze, personas, personas_tile[persona_name], curr_time)
+                #     return persona_name, next_tile, pronunciatio, description, persona.scratch.chat
 
-                with concurrent.futures.ThreadPoolExecutor() as executor:
-                    futures = {executor.submit(move_persona, persona_name, persona, self.maze, self.personas, self.personas_tile, self.curr_time): persona_name for persona_name, persona in self.personas.items()}
-                    for future in concurrent.futures.as_completed(futures):
-                        persona_name, next_tile, pronunciatio, description, chat = future.result()
+                # with concurrent.futures.ThreadPoolExecutor() as executor:
+                #     futures = {executor.submit(move_persona, persona_name, persona, self.maze, self.personas, self.personas_tile, self.curr_time): persona_name for persona_name, persona in self.personas.items()}
+                #     for future in concurrent.futures.as_completed(futures):
+                #         persona_name, next_tile, pronunciatio, description, chat = future.result()
+                #         movements["persona"][persona_name] = {}
+                #         movements["persona"][persona_name]["movement"] = next_tile
+                #         movements["persona"][persona_name]["pronunciatio"] = pronunciatio
+                #         movements["persona"][persona_name]["description"] = description
+                #         movements["persona"][persona_name]["chat"] = chat
+                for persona_name, persona in self.personas.items():
+                        # <next_tile> is a x,y coordinate. e.g., (58, 9)
+                        # <pronunciatio> is an emoji. e.g., "\ud83d\udca4"
+                        # <description> is a string description of the movement. e.g.,
+                        #   writing her next novel (editing her novel)
+                        #   @ double studio:double studio:common room:sofa
+                        next_tile, pronunciatio, description = persona.move(
+                            self.maze, self.personas, self.personas_tile[persona_name],
+                            self.curr_time)
                         movements["persona"][persona_name] = {}
                         movements["persona"][persona_name]["movement"] = next_tile
                         movements["persona"][persona_name]["pronunciatio"] = pronunciatio
                         movements["persona"][persona_name]["description"] = description
-                        movements["persona"][persona_name]["chat"] = chat
-
+                        movements["persona"][persona_name]["chat"] = (persona
+                                                                      .scratch.chat)
                 # Include the meta information about the current stage in the
                 # movements dictionary.
                 movements["meta"]["curr_time"] = (self.curr_time
