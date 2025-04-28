@@ -2,13 +2,27 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from datetime import datetime
+import pymysql
 
 # 创建Flask应用
 app = Flask(__name__)
 CORS(app)
 
+# 首先创建数据库
+try:
+    conn = pymysql.connect(
+        host='localhost',
+        user='root',
+        password='020804'
+    )
+    with conn.cursor() as cursor:
+        cursor.execute('CREATE DATABASE IF NOT EXISTS character_db')
+    conn.close()
+except Exception as e:
+    print(f"创建数据库时出错: {str(e)}")
+
 # MySQL数据库配置
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:123456@localhost:3306/character_db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:020804@localhost/character_db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 

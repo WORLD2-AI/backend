@@ -1,11 +1,36 @@
-from flask import request, jsonify, render_template
-from models import app, db, Character, Schedule, CHARACTER_STATUS
+from flask import Flask, request, jsonify, render_template
+from models import db, Character, Schedule, CHARACTER_STATUS
 from celery_tasks import makeAgentDailyTask, redis_client
 import json
 import redis
 import logging
 import traceback
 from flask_cors import CORS
+from user_visibility import user_visibility_bp
+import pymysql
+
+# 创建Flask应用
+app = Flask(__name__)
+
+# 配置数据库
+try:
+    # 首先创建数据库
+    conn = pymysql.connect(
+        host='localhost',
+        user='root',
+        password='020804'
+    )
+    with conn.cursor() as cursor:
+        cursor.execute('CREATE DATABASE IF NOT EXISTS character_db')
+    conn.close()
+except Exception as e:
+    print(f"创建数据库时出错: {str(e)}")
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:020804@localhost/character_db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+# 初始化数据库
+db.init_app(app)
 
 # 配置CORS
 CORS(app, resources={
@@ -19,6 +44,9 @@ CORS(app, resources={
 # 配置日志
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+# 注册用户可见性蓝图
+app.register_blueprint(user_visibility_bp)
 
 # 数据校验函数
 def validate_character(data):
