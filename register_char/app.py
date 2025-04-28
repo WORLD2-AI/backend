@@ -6,7 +6,16 @@ import redis
 import logging
 import traceback
 from flask_cors import CORS
+from flask import Flask
+from model.db import init_db
+# 创建Flask应用
+app = Flask(__name__)
+CORS(app)
 
+# MySQL数据库配置
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:123456@localhost:3306/character_db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+init_db(app)
 # 配置CORS
 CORS(app, resources={
     r"/api/*": {
