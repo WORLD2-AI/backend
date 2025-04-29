@@ -503,6 +503,8 @@ def make_persona_by_id(persona_id):
     persona_programmer.s_mem = MemoryTree(x)
     return persona_programmer
 def persona_daily_task(character_id:int):
+    character = Character()
+    character.update_by_id(character_id,status="PROCESSING")
     persona = make_persona_by_id(character_id)
     plan_list = born_person_schedule(persona)
     # plan_list is a two-dimensional array
@@ -528,7 +530,7 @@ def persona_daily_task(character_id:int):
     # fetch from character table where id = person_id
     # update status to success
     character = Character()
-    character.update_by_id(character_id,status="success")
+    character.update_by_id(character_id,status="COMPLETED")
 
 if __name__ == "__main__":
     persona_daily_task(1)

@@ -4,10 +4,10 @@ from sqlalchemy import  Column, Integer, String,Text,DateTime, func
 
 
 CHARACTER_STATUS = {
-    'PENDING': '待创建',
-    'PROCESSING': '处理中',
-    'COMPLETED': '创建完成',
-    'FAILED': '创建失败'
+    'PENDING': 'PENDING',
+    'PROCESSING': 'PROCESSING',
+    'COMPLETED': 'COMPLETED',
+    'FAILED': 'FAILED'
 }
 
 class Character(Base):
