@@ -1,8 +1,8 @@
 from sqlalchemy import  Column, Integer, String
 from model.db import BaseModel,Base
 
-class Schdule(BaseModel,Base):
-    __tablename__ = 'schdule'
+class Schedule(BaseModel,Base):
+    __tablename__ = 'schedule'
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, nullable=False)
     name = Column(String(100), nullable=True)

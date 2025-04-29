@@ -201,7 +201,6 @@ def GPT_request(prompt, gpt_parameter):
   RETURNS: 
     a str of GPT-3's response. 
   """
-    temp_sleep()
     openai.api_base = "https://api.deepseek.com"
     openai.api_key = random.choice(openai_api_key)
     logger_info(prompt)
@@ -218,7 +217,6 @@ def GPT_request(prompt, gpt_parameter):
             stop=gpt_parameter["stop"], 
             timeout=30,
             )
-        time.sleep(1)
         logger_info(response.choices[0]['message'], {})
         return response.choices[0]['message']['content']
     except Exception as e:
@@ -249,7 +247,6 @@ def generate_prompt(curr_input, prompt_lib_file):
     f.close()
     for count, i in enumerate(curr_input):
         prompt = prompt.replace(f"!<INPUT {count}>!", i)
-        time.sleep(1)
     if "<commentblockmarker>###</commentblockmarker>" in prompt:
         prompt = prompt.split("<commentblockmarker>###</commentblockmarker>")[1]
     return prompt.strip()

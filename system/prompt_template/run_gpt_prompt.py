@@ -524,9 +524,6 @@ def run_gpt_prompt_action_sector(action_description,
 
         action_description_1 = action_description
         action_description_2 = action_description
-        if "(" in action_description:
-            action_description_1 = action_description.split("(")[0].strip()
-            action_description_2 = action_description.split("(")[-1][:-1]
         prompt_input += [persona.scratch.get_str_name()]
         prompt_input += [action_description_1]
 
@@ -556,36 +553,6 @@ def run_gpt_prompt_action_sector(action_description,
     def get_fail_safe():
         fs = ("kitchen")
         return fs
-
-
-    # # ChatGPT Plugin ===========================================================
-    # def __chat_func_clean_up(gpt_response, prompt=""): ############
-    #   cr = gpt_response.strip()
-    #   return cr
-
-    # def __chat_func_validate(gpt_response, prompt=""): ############
-    #   try:
-    #     gpt_response = __func_clean_up(gpt_response, prompt="")
-    #   except:
-    #     return False
-    #   return True
-
-    # print ("asdhfapsh8p9hfaiafdsi;ldfj as DEBUG 20") ########
-    # gpt_param = {"engine": "text-davinci-002", "max_tokens": 15,
-    #              "temperature": 0, "top_p": 1, "stream": False,
-    #              "frequency_penalty": 0, "presence_penalty": 0, "stop": None}
-    # prompt_template = f"{fs_back_end}/persona/prompt_template/v3_ChatGPT/action_location_sector_v2.txt" ########
-    # prompt_input = create_prompt_input(action_description, persona, maze)  ########
-    # prompt = generate_prompt(prompt_input, prompt_template)
-    # example_output = "Johnson Park" ########
-    # special_instruction = "The value for the output must contain one of the area options above verbatim (including lower/upper case)." ########
-    # fail_safe = get_fail_safe() ########
-    # output = ChatGPT_safe_generate_response(prompt, example_output, special_instruction, 3, fail_safe,
-    #                                         __chat_func_validate, __chat_func_clean_up, True)
-    # if output != False:
-    #   return output, [output, prompt, gpt_param, prompt_input, fail_safe]
-    # # ChatGPT Plugin ===========================================================
-
 
 
 

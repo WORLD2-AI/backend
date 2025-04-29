@@ -68,6 +68,20 @@ def filter_result(respone:str):
     respone = respone.strip()
     return respone
 
+def validate_json(json_str):
+    """
+    Validate if the given string is a valid JSON.
+    
+    :param json_str: The string to validate.
+    :return: True if valid JSON, False otherwise.
+    """
+    try:
+        json_str = json_str.strip()
+        json.loads(json_str)
+        return True
+    except ValueError:
+        return False
+    
 if __name__ == '__main__':
     curr_gpt_response = filter_result('```json\n{"output": 8}\n```')
     print(curr_gpt_response)
