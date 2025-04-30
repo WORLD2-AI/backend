@@ -98,7 +98,7 @@ def index():
     return "server is running", 200
 
 # 注册接口
-@app.route('/api/character/register', methods=['POST', 'OPTIONS'])
+@app.route('/api/register', methods=['POST', 'OPTIONS'])
 def character_register():
     if request.method == 'OPTIONS':
         response = jsonify({'status': 'success'})
@@ -350,11 +350,11 @@ def delete_character(character_id):
 
 @app.route('/project/register.html', methods=['GET'])
 def register_page():
-    return render_template('register.html')
+    return render_template('register_char/register.html')
 
 @app.route('/project/characters.html', methods=['GET'])
 def characters_page():
-    return render_template('character_list.html')
+    return render_template('register_char/character_list.html')
 
 
 
