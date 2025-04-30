@@ -3,7 +3,8 @@ from datetime import datetime, timedelta
 import json
 import redis
 import random
-from models import db, Character, Schedule, CHARACTER_STATUS
+from model.character import  Character,CHARACTER_STATUS
+from model.schdule import  Schedule
 import time
 import logging
 import traceback

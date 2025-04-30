@@ -3,7 +3,7 @@ from celery import Celery
 # 配置Celery使用内存作为消息代理而不是Redis
 app = Celery('celery_tasks')
 app.config_from_object('celery_config')
-from born_person_schedule import persona_daily_task
+from .born_person_schedule import persona_daily_task
 # 内存模式下禁用不需要的组件
 app.conf.update(
     task_always_eager=True,  # 在同一进程中立即执行任务

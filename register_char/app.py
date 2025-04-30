@@ -1,7 +1,9 @@
 from flask import request, jsonify, render_template
-from models import app, db, Character, Schedule, CHARACTER_STATUS
+import base
+from model.character import  Character,CHARACTER_STATUS
+from model.schdule import  Schedule
 from celery_tasks.app import proecess_character_born
-from .celery_tasks import redis_client
+from celery_task import redis_client
 import json
 import redis
 import logging
@@ -9,6 +11,8 @@ import traceback
 from flask_cors import CORS
 from flask import Flask
 from model.db import BaseModel
+from user_visibility import user_visibility_bp
+from utils.utils import *
 # 创建Flask应用
 app = Flask(__name__)
 CORS(app)

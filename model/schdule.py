@@ -11,6 +11,16 @@ class Schedule(BaseModel,Base):
     action = Column(String(500), nullable=False)
     site = Column(String(500), nullable=False)
     emoji = Column(String(20), nullable=False)
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'character_id': self.character_id,
+            'time': self.time,
+            'action': self.action,
+            'location': self.location,
+            'created_at': self.created_at.strftime('%Y-%m-%d %H:%M:%S') if self.created_at else None
+        }
+
     # def create_table(self):
     #     """create action schedule table"""
     #     try:            
