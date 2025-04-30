@@ -83,3 +83,5 @@ mysql-connector-python
 redis
 celery
 schedule
+tweepy
+flask_login

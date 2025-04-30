@@ -6,6 +6,10 @@ import sys
 import time
 import traceback
 
+TWITTER_API_KEY = 'xAsAN0Sodd7sN8MjGjkFQDAWU'
+TWITTER_API_SECRET_KEY = '2mhTD5tc0zfxqCHKVVQitBJjbaT0YVqfEQjie9Nez67P3TsmIS'
+
+
 # Put your name
 key_owner = "test_sim_ai"
 
