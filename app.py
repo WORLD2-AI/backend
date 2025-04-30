@@ -367,8 +367,8 @@ def register():
         username = request.form['username']
         password = request.form['password']
 
-        session = User().get_session()
-        if session.query(User).filter_by(username=username).first():
+        s = User().get_session()
+        if s.query(User).filter_by(username=username).first():
             return 'user exists', 400
 
         hashed_password = generate_password_hash(password)
