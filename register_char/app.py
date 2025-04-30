@@ -1,13 +1,14 @@
 from flask import request, jsonify, render_template
 from models import app, db, Character, Schedule, CHARACTER_STATUS
-from celery_tasks import makeAgentDailyTask, redis_client
+from celery_tasks.app import proecess_character_born
+from .celery_tasks import redis_client
 import json
 import redis
 import logging
 import traceback
 from flask_cors import CORS
 from flask import Flask
-from model.db import init_db
+from model.db import BaseModel
 # 创建Flask应用
 app = Flask(__name__)
 CORS(app)
@@ -15,7 +16,7 @@ CORS(app)
 # MySQL数据库配置
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:123456@localhost:3306/character_db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-init_db(app)
+
 # 配置CORS
 CORS(app, resources={
     r"/api/*": {
@@ -35,53 +36,53 @@ def validate_character(data):
     
     # 检查必填字段
     required_fields = {
-        'name': '全名',
-        'first_name': '姓氏',
-        'last_name': '名字',
-        'age': '年龄',
-        'sex': '性别',
-        'innate': '天性',
-        'learned': '后天知识',
-        'currently': '当前状态',
-        'lifestyle': '生活方式'
+        'name': 'name',
+        'first_name': 'first_name',
+        'last_name': 'last_name',
+        'age': 'age',
+        'sex': 'sex',
+        'innate': 'innate',
+        'learned': 'learned',
+        'currently': 'currently',
+        'lifestyle': 'lifestyle'
     }
     
     for field, field_name in required_fields.items():
         if not data.get(field):
-            errors[field] = f"{field_name}不能为空"
+            errors[field] = f"{field_name} is null"
     
     # 验证年龄
     if data.get('age'):
         try:
             age = int(data['age'])
             if not (1 <= age <= 120):
-                errors['age'] = "年龄必须在1-120之间"
+                errors['age'] = "age must between 1 and 120"
         except ValueError:
-            errors['age'] = "年龄必须是整数"
+            errors['age'] = "age must be a number"
     
-    # 验证性别
+    # sex check
     valid_sex = {'male', 'female', 'other'}
     if data.get('sex') and data['sex'].lower() not in valid_sex:
-        errors['sex'] = "性别必须是 男/女/其他 之一"
+        errors['sex'] = "sex must be male,femal or other"
     
-    # 验证后天知识长度
+    # learned check
     if data.get('learned'):
         learned_length = len(data['learned'])
         if not (2 <= learned_length <= 100):
-            errors['learned'] = "后天知识长度必须在2-100个字符之间"
+            errors['learned'] = "learned length must between 2 and 100"
     
-    # 验证生活方式长度
+    # check lifestyle
     if data.get('lifestyle'):
         lifestyle_length = len(data['lifestyle'])
         if not (2 <= lifestyle_length <= 255):
-            errors['lifestyle'] = "生活方式长度必须在2-255个字符之间"
+            errors['lifestyle'] = "lifestyle length must between 2 and 255"
     
     return errors
 
 # 根路由测试
 @app.route('/', methods=['GET'])
 def index():
-    return "角色注册服务已启动", 200
+    return "server is running", 200
 
 # 注册接口
 @app.route('/api/register', methods=['POST', 'OPTIONS'])
@@ -98,14 +99,14 @@ def register():
         if redis_client is None:
             return jsonify({
                 "status": "error",
-                "message": "Redis连接未初始化，请检查Redis服务是否运行"
+                "message": "Redis server error"
             }), 503
             
         try:
             redis_client.ping()
-            logger.info("Redis连接正常")
+            logger.info("redis check ok")
         except (redis.ConnectionError, redis.TimeoutError) as e:
-            logger.error(f"Redis连接失败: {str(e)}")
+            logger.error(f"Redisconnect faild: {str(e)}")
             return jsonify({
                 "status": "error",
                 "message": "无法连接到Redis服务器，请检查Redis服务是否运行"
@@ -141,12 +142,13 @@ def register():
                 status=CHARACTER_STATUS['PENDING']
             )
             logger.info(f"准备创建角色: {character.name}")
-            db.session.add(character)
-            db.session.commit()
+            s = BaseModel().get_session()
+            s.add(character)
+            s.commit()
             logger.info(f"角色创建成功: {character.id}")
         except Exception as e:
             logger.error(f"数据库操作失败: {str(e)}\n{traceback.format_exc()}")
-            db.session.rollback()
+            s.rollback()
             return jsonify({
                 "status": "error",
                 "message": f"数据库操作失败: {str(e)}"
@@ -161,7 +163,7 @@ def register():
         
         # 异步执行任务
         try:
-            task = makeAgentDailyTask.apply_async(
+            task = proecess_character_born.apply_async(
                 args=[task_data],
                 queue='default'
             )

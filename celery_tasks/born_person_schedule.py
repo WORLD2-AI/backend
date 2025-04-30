@@ -479,7 +479,7 @@ class MemoryTree:
 maze = Maze("the ville")
 
 
-def make_persona_by_id(persona_id):
+def make_persona_by_id(persona_id:int):
     character = Character()
     character = character.find_by_id(id=persona_id)
     persona_programmer = Persona({
