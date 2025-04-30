@@ -14,8 +14,8 @@ app = Flask(__name__)
 CORS(app)
 
 # MySQL数据库配置
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:123456@localhost:3306/character_db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:123456@localhost:3306/character_db'
+# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # 配置CORS
 CORS(app, resources={
@@ -29,6 +29,9 @@ CORS(app, resources={
 # 配置日志
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+# 注册用户可见性蓝图
+app.register_blueprint(user_visibility_bp)
 
 # 数据校验函数
 def validate_character(data):

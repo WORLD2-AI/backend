@@ -79,3 +79,7 @@ flask
 Flask-SQLAlchemy
 SQLAlchemy
 PyMySQL==1.1.1
+mysql-connector-python
+redis
+celery
+schedule
