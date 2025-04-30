@@ -20,7 +20,11 @@ from model.db import BaseModel
 from register_char.user_visibility import user_visibility_bp
 from utils.utils import *
 # 创建Flask应用
+import os
+
 app = Flask(__name__)
+app.secret_key = os.urandom(24)
+app.permanent_session_lifetime = 3600 
 CORS(app)
 
 # MySQL数据库配置
@@ -119,7 +123,7 @@ def character_register():
             redis_client.ping()
             logger.info("redis check ok")
         except (redis.ConnectionError, redis.TimeoutError) as e:
-            logger.error(f"Redisconnect faild: {str(e)}")
+            logger.error(f"Redisconnect failed: {str(e)}")
             return jsonify({
                 "status": "error",
                 "message": "无法连接到Redis服务器，请检查Redis服务是否运行"
@@ -361,7 +365,7 @@ def characters_page():
 
 
 
-@app.route('/register', methods=['GET', 'POST'])
+@app.route('/api/register_user', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
         username = request.form['username']
@@ -382,26 +386,27 @@ def register():
         new_user = User(username=username, password_hash=hashed_password, twitter_id=twitter_id,
                         screen_name=screen_name, access_token=access_token, access_token_secret=access_token_secret)
         
-        session.add(new_user)
-        session.commit()
+        
+        s.add(new_user)
+        s.commit()
 
         session['user_id'] = new_user.id  # 登录用户
-        return f"注册成功！用户 ID：{new_user.id}"
+        return f"register success ID：{new_user.id}"
 
     return render_template('login/register.html')
 
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/api/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
 
-        user = User.query.filter_by(username=username).first()
+        user = User().first({"username":username})
         if user and check_password_hash(user.password_hash, password):
             session['user_id'] = user.id
-            return '登录成功！'
-        return '用户名或密码错误', 401
+            return 'login success'
+        return 'login failed', 401
 
     return render_template('login/login.html')
 @app.route('/user/info')
@@ -463,19 +468,20 @@ def callback():
     # 判断是登录还是绑定
     action = request.args.get('action')
 
+    s = User()
     if action == 'bind':
         # 绑定 Twitter 账户
-        user = User.query.filter_by(id=session['user_id']).first()
+        user = s.find_by_id(session['user_id'])
         if user:
             user.twitter_id = twitter_id
             user.access_token = access_token
             user.access_token_secret = access_token_secret
-            db.session.commit()
+            s.get_session().commit()
             return "Twitter 账户绑定成功！"
     else:
         # 登录逻辑
         # 检查用户是否已注册
-        user = User.query.filter_by(twitter_id=twitter_id).first()
+        user = s.first(twitter_id=twitter_id)
         if not user:
             # 用户未注册，重定向到注册页面
             session['twitter_id'] = twitter_id  # 存储 Twitter ID 以便在注册时使用
@@ -514,7 +520,7 @@ def bind_twitter():
     return redirect(authorization_url)
 
 
-@app.route('/profile')
+@app.route('/api/user/profile')
 def profile():
     """
     查询账号
@@ -522,11 +528,12 @@ def profile():
     if 'user_id' not in session:
         return redirect('/')
 
-    user = User.query.get(session['user_id'])
+    user = User().find_by_id(session['user_id'])
     return jsonify({
+        'id': user.id,
         'username': user.username,
         'twitter_id': user.twitter_id,
-        'access_token': user.access_token
+        # 'access_token': user.access_token
     })
 
 
@@ -558,7 +565,7 @@ def logout():
 
         return jsonify({
             "status": "success",
-            "message": "已安全退出"
+            "message": "logout success!"
         }), 200
 
         # # 方式二：重定向到登录页

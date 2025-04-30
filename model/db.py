@@ -11,10 +11,11 @@ Base = declarative_base()
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 class BaseModel():
-    def __init__(self):
+    def __init__(self,**kwargs):
         self.session = None 
         self.model_class = self.get_model_class()
-        # self.session = SessionLocal()
+        for key, value in kwargs.items():
+                setattr(self, key, value)
     def get_model_class(self):
         """
         动态获取当前实例所属的子类的模型类。
@@ -23,6 +24,15 @@ class BaseModel():
             if hasattr(base, "__tablename__"):  # 查找模型类
                 return base
         raise AttributeError("Model class not found for the current instance.")
+    def first(self, filters: Optional[Dict] = None) -> object:
+        """
+        获取第一条记录，支持传入过滤条件
+        """
+        query = self.get_session().query(self.model_class)
+        if filters:
+            for key, value in filters.items():
+                query = query.filter(getattr(self.model_class, key) == value)
+        return query.first()
     def find_by_id(self,id: int)-> object:
         return self.get_session().query(self.model_class).filter_by(id=id).first()
     def update_by_id(self, id: int, **kwargs):
