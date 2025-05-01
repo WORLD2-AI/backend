@@ -5,8 +5,6 @@ from model.character import Character
 from system.plan import *
 import json
 from model.schdule import *
-
-
 from maza.maze import Maze
 
 
@@ -502,6 +500,8 @@ def make_persona_by_id(persona_id:int):
     })
     persona_programmer.s_mem = MemoryTree(x)
     return persona_programmer
+
+
 def persona_daily_task(character_id:int):
     character = Character()
     character.update_by_id(character_id,status="PROCESSING")

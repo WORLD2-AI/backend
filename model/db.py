@@ -6,79 +6,83 @@ from typing import List, Optional, Dict
 # database gsn
 DATABASE_URL = 'mysql+pymysql://root:root@localhost:3306/character_db'
 
-engine = create_engine(DATABASE_URL, echo=True)
+engine = create_engine(DATABASE_URL, pool_pre_ping=True,
+    pool_recycle=1800,
+    pool_size=10,
+    max_overflow=20
+)
 Base = declarative_base()
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+SessionLocal = sessionmaker(bind=engine)
 
+def get_db():
+    db = SessionLocal()
+    return db
 class BaseModel():
-    def __init__(self,**kwargs):
-        self.session = None 
+    def __init__(self, **kwargs):
         self.model_class = self.get_model_class()
         for key, value in kwargs.items():
-                setattr(self, key, value)
+            setattr(self, key, value)
+
     def get_model_class(self):
-        """
-        动态获取当前实例所属的子类的模型类。
-        """
         for base in self.__class__.__mro__:
-            if hasattr(base, "__tablename__"):  # 查找模型类
+            if hasattr(base, "__tablename__"):
                 return base
         raise AttributeError("Model class not found for the current instance.")
+
+    def get_session(self):
+        return get_db()  # 每次调用新建 Session
+
     def first(self, filters: Optional[Dict] = None) -> object:
-        """
-        获取第一条记录，支持传入过滤条件
-        """
-        query = self.get_session().query(self.model_class)
-        if filters:
-            for key, value in filters.items():
-                query = query.filter(getattr(self.model_class, key) == value)
-        return query.first()
-    def find_by_id(self,id: int)-> object:
-        return self.get_session().query(self.model_class).filter_by(id=id).first()
+        with self.get_session() as session:
+            query = session.query(self.model_class)
+            if filters:
+                for key, value in filters.items():
+                    query = query.filter(getattr(self.model_class, key) == value)
+            return query.first()
+
+    def find_by_id(self, id: int) -> object:
+        with self.get_session() as session:
+            return session.query(self.model_class).filter_by(id=id).first()
+    def find(self, filters: Optional[Dict] = None) -> list[object]:
+         with self.get_session() as session:
+            query = session.query(self.model_class)
+            if filters:
+                for key, value in filters.items():
+                    query = query.filter(getattr(self.model_class, key) == value)
+            return query.all()
     def update_by_id(self, id: int, **kwargs):
-        instance = self.find_by_id(id)
-        if instance:
-            for key, value in kwargs.items():
-                setattr(instance, key, value)
-            self.get_session().commit()
-    def get_all(self, filters: Optional[Dict] = None) -> List[object]:
-        """
-        获取所有记录，支持传入过滤条件
-        """
-        query = self.get_session().query(self.model_class)
-        if filters:
-            for key, value in filters.items():
-                query = query.filter(getattr(self.model_class, key) == value)
-        return query.all()
+        with self.get_session() as session:
+            instance = session.query(self.model_class).filter_by(id=id).first()
+            if instance:
+                for key, value in kwargs.items():
+                    setattr(instance, key, value)
+                session.commit()
+    
     def create(self, data: dict) -> object:
-        """
-        创建一条新记录
-        """
-        try:
-            instance = self.model_class(**data)
-            self.db.add(instance)
-            self.db.commit()
-            self.db.refresh(instance)
-            return instance
-        except SQLAlchemyError as e:
-            self.db.rollback()
-            raise Exception(f"Error creating record: {e}")
+        with self.get_session() as session:
+            try:
+                instance = self.model_class(**data)
+                session.add(instance)
+                session.commit()
+                session.refresh(instance)
+                return instance
+            except SQLAlchemyError as e:
+                session.rollback()
+                raise Exception(f"Error creating record: {e}")
+    
     def add_all(self, data: List[dict]) -> List[object]:
         """
         批量添加记录
         """
-        try:
-            instances = [self.model_class(**item) for item in data]
-            self.get_session().add_all(instances)
-            self.get_session().commit()
-            return instances
-        except SQLAlchemyError as e:
-            self.get_session().rollback()
-            raise Exception(f"Error adding records: {e}")
-    def get_session(self):
-        if self.session is None:
-            self.session = SessionLocal()
-        return self.session
+        with self.get_session() as session:
+            try:
+                instances = [self.model_class(**item) for item in data]
+                session.add_all(instances)
+                session.commit()
+                return instances
+            except SQLAlchemyError as e:
+                session.rollback()
+                raise Exception(f"Error adding records: {e}")
 
 def init_tables():
     BaseModel.metadata.create_all(engine)

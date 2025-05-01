@@ -7,9 +7,10 @@ CHARACTER_STATUS = {
     'FAILED': 'FAILED'
 }
 
-class Character(Base):
+class Character(BaseModel,Base):
     __tablename__ = 'character' 
     id = Column(Integer, primary_key=True)
+    user_id = Column(Integer, nullable=False)
     name = Column(String(100), nullable=False)
     first_name = Column(String(50), nullable=False)
     last_name = Column(String(50), nullable=False)

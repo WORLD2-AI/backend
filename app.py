@@ -85,8 +85,8 @@ def validate_character(data):
     # learned check
     if data.get('learned'):
         learned_length = len(data['learned'])
-        if not (2 <= learned_length <= 100):
-            errors['learned'] = "learned length must between 2 and 100"
+        if not (2 <= learned_length <= 255):
+            errors['learned'] = "learned length must between 2 and 255"
     
     # check lifestyle
     if data.get('lifestyle'):
@@ -102,7 +102,7 @@ def index():
     return "server is running", 200
 
 # 注册接口
-@app.route('/api/register', methods=['POST', 'OPTIONS'])
+@app.route('/api/register_role', methods=['POST', 'OPTIONS'])
 def character_register():
     if request.method == 'OPTIONS':
         response = jsonify({'status': 'success'})
@@ -147,6 +147,7 @@ def character_register():
         # 创建新角色
         try:
             character = Character(
+                user_id = session.get('user_id'),  # 
                 name=data['name'],
                 first_name=data['first_name'],
                 last_name=data['last_name'],
@@ -159,7 +160,7 @@ def character_register():
                 status=CHARACTER_STATUS['PENDING']
             )
             logger.info(f"准备创建角色: {character.name}")
-            s = BaseModel().get_session()
+            s = character.get_session()
             s.add(character)
             s.commit()
             logger.info(f"角色创建成功: {character.id}")
@@ -180,9 +181,9 @@ def character_register():
         
         # 异步执行任务
         try:
-            task = proecess_character_born.apply_async(
-                args=[task_data],
-                queue='default'
+            
+            task = proecess_character_born.apply(
+                task_data
             )
             logger.info(f"任务提交成功: task_id={task.id}")
             response = jsonify({
@@ -196,8 +197,6 @@ def character_register():
         except Exception as e:
             logger.error(f"任务提交失败: {str(e)}")
             # 如果任务提交失败，删除已创建的角色
-            BaseModel().get_session().delete(character)
-            BaseModel().get_session().commit()
             return jsonify({
                 "status": "error",
                 "message": f"任务提交失败: {str(e)}"
@@ -230,7 +229,13 @@ def get_character_status(character_id):
 @app.route('/api/characters', methods=['GET'])
 def get_characters():
     try:
-        characters = Character.query.all()
+        user_id = session.get('user_id')
+        if not user_id:
+            return jsonify({
+                "status": "error",
+                "message": "用户未登录"
+            }), 401
+        characters = Character().find(user_id=user_id)
         character_list = []
         for character in characters:
             character_data = character.to_dict()
@@ -530,6 +535,7 @@ def profile():
 
     user = User().find_by_id(session['user_id'])
     return jsonify({
+        "status":"success",
         'id': user.id,
         'username': user.username,
         'twitter_id': user.twitter_id,
