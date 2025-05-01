@@ -1,5 +1,5 @@
 ---
-celery 启动命令
+celery 启动命令,在根目录下执行
 ```bash
-celery -A task worker --loglevel=INFO -P eventlet
+celery -A celery_tasks.app worker --loglevel=INFO -P eventlet
 ```
