@@ -1,10 +1,17 @@
 from celery import Celery
 from base import *
-# use redis as broker
-app = Celery('tasks', broker='redis://127.0.0.1:6379/0', backend='redis://127.0.0.1:6379/1')
 from celery_tasks.born_person_schedule import persona_daily_task
 
 
+app = Celery('tasks', broker='redis://127.0.0.1:6379/0', backend='redis://127.0.0.1:6379/1')
+
+# Celery配置
+app.conf.update(
+    # 同步调试
+    task_always_eager=True,
+    
+    
+)
 @app.task
 def process_character_action(action_info):
     """

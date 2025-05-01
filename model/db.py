@@ -43,11 +43,11 @@ class BaseModel():
     def find_by_id(self, id: int) -> object:
         with self.get_session() as session:
             return session.query(self.model_class).filter_by(id=id).first()
-    def find(self, filters: Optional[Dict] = None) -> list[object]:
+    def find(self, **kwargs) -> list[object]:
          with self.get_session() as session:
             query = session.query(self.model_class)
-            if filters:
-                for key, value in filters.items():
+            if kwargs:
+                for key, value in kwargs.items():
                     query = query.filter(getattr(self.model_class, key) == value)
             return query.all()
     def update_by_id(self, id: int, **kwargs):
