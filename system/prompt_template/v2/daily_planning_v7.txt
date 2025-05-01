@@ -11,7 +11,6 @@ Variables:
 !<INPUT 0>!
 
 In general, !<INPUT 1>!
-Today is !<INPUT 2>!. 
 Continue to make the plan of tody and formate like 
 ---
 1) do something a at sometime.
@@ -19,4 +18,4 @@ Continue to make the plan of tody and formate like
 3) xxx
 ---
 only output the plan but noting else.
-Here is !<INPUT 3>!'s plan today in broad-strokes (with the time of the day. e.g., have a lunch at 12:00 pm, watch TV from 7 to 8 pm): 1) wake up and complete the morning routine at !<INPUT 4>!
+Here is !<INPUT 2>!'s plan today in broad-strokes (with the time of the day. e.g., have a lunch at 12:00 pm, watch TV from 7 to 8 pm): 1) wake up and complete the morning routine at !<INPUT 3>!

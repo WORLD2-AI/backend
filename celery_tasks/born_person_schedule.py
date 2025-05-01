@@ -1,4 +1,3 @@
-#生成个人日程
 from datetime import datetime, timedelta
 from base import *
 from model.character import Character
