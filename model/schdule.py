@@ -14,11 +14,13 @@ class Schedule(BaseModel,Base):
     def to_dict(self):
         return {
             'id': self.id,
-            'character_id': self.character_id,
-            'time': self.time,
+            'user_id': self.user_id,
+            'name': self.name,
+            'start_minute': self.start_minute,
+            'duration': self.duration,
             'action': self.action,
-            'location': self.location,
-            'created_at': self.created_at.strftime('%Y-%m-%d %H:%M:%S') if self.created_at else None
+            'site': self.site,
+            'emoji': self.emoji
         }
 
     # def create_table(self):
