@@ -3,9 +3,9 @@
 import datetime
 from character_system.config import logger, CONSTANTS
 from character_system.services import app
-from character_system.redis_utils import get_all_characters_from_redis
+from celery_tasks.redis_utils import get_all_characters_from_redis
 from character_system.position_logic import update_character_position_by_path
-from character_system.path_generator import generate_all_paths
+from celery_tasks.path_generator import generate_all_paths
 
 @app.task(name='character_system.tasks.update_all_character_positions')
 def update_all_character_positions():

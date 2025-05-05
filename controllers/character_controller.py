@@ -296,5 +296,8 @@ def validate_character(data):
         lifestyle_length = len(data['lifestyle'])
         if not (2 <= lifestyle_length <= 255):
             errors['lifestyle'] = "lifestyle length must between 2 and 255"
-    
+    character = Character()
+    all_data = character.find(name = data.get('name'))
+    if len(all_data)>0:
+        errors['name'] = "character name has been registered"
     return errors

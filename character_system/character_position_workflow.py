@@ -7,8 +7,8 @@ import traceback
 from datetime import datetime
 
 from character_system.config import logger, get_redis_client
-from character_system.redis_utils import get_all_characters_from_redis
-from character_system.path_generator import PathGenerator
+from celery_tasks.redis_utils import get_all_characters_from_redis
+from celery_tasks.path_generator import PathGenerator
 from character_system.position_logic import update_character_position_by_path
 from character_system.tasks import app
 

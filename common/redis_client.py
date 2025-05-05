@@ -1,3 +1,4 @@
+import json
 import redis
 from config.config import REDIS_CONFIG,REDIS_PASSWORD
 redis_handler = None
@@ -10,5 +11,19 @@ try:
     
 except ImportError as e:
     print(f"Redis connect error: {e}")
+class RedisClient ():
+    def __init__(self):
+        global redis_handler
+        self.redis_handler = redis_handler
+    def get_json(self,key:str)->dict:
+        data = self.redis_handler.get(key)
+        data = data.decode('utf-8')
+        data = json.loads(data)
+        return data
+    def set_json(self,key:str,value:dict,ex = None):
+        value = json.dumps(value)
+        return self.redis_handler.set(key,value,ex = ex)
+
+
 
     

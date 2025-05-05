@@ -5,7 +5,7 @@ import sys
 from character_system.config import logger
 from character_system.tasks import update_all_character_positions
 from character_system.character_scheduler import send_character_tasks
-from character_system.path_generator import generate_all_paths
+from celery_tasks.path_generator import generate_all_paths
 from character_system.character_position_workflow import run_position_workflow
 from character_system.services import sync_character_data_to_redis, start_sync_service
 from character_system.start_services import start_all_services

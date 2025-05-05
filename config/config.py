@@ -12,6 +12,7 @@ logger = logging.getLogger(__name__)
 DB_CONFIG = {
     'host': 'localhost',
     'user': 'root',
+    'port':3306,
     'password': 'root',
     'db': 'character_db',
     'charset': 'utf8mb4',
@@ -54,3 +55,7 @@ CONSTANTS = {
         'STEP_SIZE': 1.0,
     }
 } 
+
+
+collision_block_id = "0"
+default_born_tiled = (23,52)

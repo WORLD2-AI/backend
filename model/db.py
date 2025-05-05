@@ -4,7 +4,8 @@ from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import sessionmaker
 from typing import List, Optional, Dict
 # database gsn
-DATABASE_URL = 'mysql+pymysql://root:123456@localhost:3306/character_db'
+from config.config import DB_CONFIG
+DATABASE_URL = f'mysql+pymysql://{DB_CONFIG.get("user","root")}:{DB_CONFIG.get("password","123456")}@{DB_CONFIG.get("host","127.0.0.1")}:{DB_CONFIG.get("port",3306)}/{DB_CONFIG.get("db","character_db")}'
 
 engine = create_engine(DATABASE_URL, pool_pre_ping=True,
     pool_recycle=1800,
@@ -32,11 +33,11 @@ class BaseModel():
     def get_session(self):
         return get_db()  
 
-    def first(self, filters: Optional[Dict] = None) -> object:
+    def first(self, **kwargs) -> object:
         with self.get_session() as session:
             query = session.query(self.model_class)
-            if filters:
-                for key, value in filters.items():
+            if kwargs:
+                for key, value in kwargs.items():
                     query = query.filter(getattr(self.model_class, key) == value)
             return query.first()
 

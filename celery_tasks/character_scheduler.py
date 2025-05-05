@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
+from redis_utils import get_redis_key,get_all_character_id_from_redis,set_character_to_redis
 import json
-import logging
+from model.character import Character
+
 import datetime
 import traceback
 from common.redis_client import redis_handler
@@ -60,134 +61,37 @@ def check_schedule(redis_client, character_name):
             "message": f"检查日程状态失败: {str(e)}"
         }
 
-def get_all_characters_from_redis():
-    """
-    从Redis获取所有角色的信息
-    
-    Returns:
-        list: 包含所有角色信息的列表
-    """
-    redis_client = redis_handler
-    
-    characters = []
-    try:
-        # 获取所有角色的键
-        character_keys = redis_client.keys("character:*")
-        
-        for key in character_keys:
-            key_str = key.decode('utf-8') if isinstance(key, bytes) else key
-            
-            # 获取角色数据
-            character_data_raw = redis_client.get(key_str)
-            if character_data_raw:
-                character_data = json.loads(character_data_raw)
-                
-                # 获取角色名称
-                character_name = character_data.get('name')
-                
-                # 检查日程状态
-                schedule_status = check_schedule(redis_client, character_name)
-                
-                # 收集角色信息和行动
-                character_info = {
-                    'name': character_name,
-                    'location': character_data.get('location', ''),
-                    'actions': []
-                }
-                
-                # 获取当前行动
-                current_action = character_data.get('current_action')
-                if current_action:
-                    character_info['actions'].append({
-                        'action': current_action,
-                        'location': character_data.get('action_location', character_data.get('location', '')),
-                        'schedule_status': schedule_status.get('status')
-                    })
-                
-                # 获取日程中的所有行动
-                schedule = character_data.get('schedule', [])
-                for schedule_item in schedule:
-                    action = schedule_item.get('action')
-                    if action and action != current_action:  # 避免重复添加当前行动
-                        character_info['actions'].append({
-                            'action': action,
-                            'location': schedule_item.get('site', ''),
-                            'time': schedule_item.get('start_minute', '')
-                        })
-                
-                characters.append(character_info)
-        
-        return characters
-    
-    except Exception as e:
-        logger.error(f"获取角色信息失败: {str(e)}\n{traceback.format_exc()}")
-        return []
-
 
 def send_character_tasks():
-    """
-    
-    """
     try:
-        # 获取所有角色信息
-        characters = get_all_characters_from_redis()
-        
-        if not characters:
-            logger.warning("没有找到角色信息或Redis不可用")
-            return {
-                "status": "warning",
-                "message": "没有找到角色信息或Redis不可用"
-            }
-        
-        # 记录找到的角色数量
-        logger.info(f"找到 {len(characters)} 个角色")
-        
-        # 为每个角色发送任务
-        for character in characters:
-            character_name = character.get('name')
-            
-            if not character_name:
-                logger.warning("角色缺少名称，跳过")
-                continue
-            
-            # 获取角色的所有行动
-            actions = character.get('actions', [])
-            
-            if not actions:
-                logger.warning(f"角色 {character_name} 没有行动，跳过")
-                continue
-            
-            # 为每个行动发送任务
-            for action_info in actions:
-                task_data = {
-                    'character_name': character_name,
-                    'action': action_info.get('action', ''),
-                    'location': action_info.get('location', ''),
-                    'time': action_info.get('time', ''),
-                    'schedule_status': action_info.get('schedule_status', '')
-                }
-                
-                # 发送Celery任务
-                app.send_task(
-                    'character_system.tasks.process_character_action',
-                    args=[task_data],
-                    kwargs={}
-                )
-                
-                logger.info(f"已为角色 {character_name} 的行动 '{action_info.get('action', '')}' 发送任务")
-        
-        return {
-            "status": "success",
-            "message": f"成功处理 {len(characters)} 个角色的行动"
-        }
+        ch = Character()
+        all_character = ch.find()
+        ids = get_all_character_id_from_redis()
+        exist = False
+        global redis_handler
+        if len(ids) <= 0 :
+            ids = []
+        for cha in all_character:
+            exist = False
+            for id in ids:
+                if cha.id == id:
+                    exist = True
+                    break
+            if not exist:
+                set_character_to_redis(cha)
+            else:
+                redis_handler.setex(get_redis_key(cha),24*3600)
+        for id in ids:
+            exist = False
+            for cha in all_character:
+                if cha.id == id:
+                    exist = True
+                    break
+            if not exist:
+                redis_handler.delete(get_redis_key(cha))
     
     except Exception as e:
-        logger.error(f"处理角色行动失败: {str(e)}\n{traceback.format_exc()}")
-        return {
-            "status": "error",
-            "message": f"处理角色行动失败: {str(e)}"
-        }
+        logger.error(f"del character failed: {str(e)}\n{traceback.format_exc()}")
 
 if __name__ == "__main__":
-    result = send_character_tasks()
-    logger.info(f"任务发送结果: {result}") 
+    send_character_tasks()

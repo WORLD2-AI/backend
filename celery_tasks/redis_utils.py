@@ -2,10 +2,27 @@
 
 import json
 from datetime import datetime
-from character_system.config import logger, CONSTANTS
-from character_system.services import get_redis_client, redis_key, get_all_keys_by_type, KEY_TYPES
-from character_system.model.position import Position
-from character_system.model.path import Path
+from config.config import logger, CONSTANTS
+from utils.common import copy_class_attrs
+from celery_tasks.character_redis_data import CharacterRedisData
+from model.character import Character
+
+
+def get_redis_key(character_id:int):
+    return f"character:{character_id}"
+def get_all_character_id_from_redis():
+    global redis_handler
+    redis_client = redis_handler
+    character_keys = redis_client.keys("character:*")
+    keys = [ key.decode('utf-8') if isinstance(key, bytes) else key for key in character_keys]
+    ids = [key.split(":")[-1] for key in keys]
+    return ids
+def set_character_to_redis(character:Character):
+    tmp = CharacterRedisData()
+    data =  copy_class_attrs(character,tmp)
+    key = get_redis_key(character_id=character.id)
+    global redis_handler
+    redis_handler.set(key,json.dumps(data.to_dict()), ex=24*3600)
 
 def get_all_characters_from_redis():
     """从Redis中获取所有角色信息，并同步位置数据到数据库"""
