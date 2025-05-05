@@ -9,6 +9,7 @@ import urllib.parse
 from controllers.character_controller import character_controller
 from controllers.user_controller import user_controller
 from model.schdule import  Schedule
+from model.invitation_code import InvitationCode  # 导入邀请码模型
 
 from register_char.celery_task import redis_client
 import json
@@ -17,7 +18,7 @@ import logging
 import traceback
 from flask_cors import CORS
 from flask import Flask
-from model.db import BaseModel
+from model.db import BaseModel, init_tables  # 导入初始化函数
 from register_char.user_visibility import user_visibility_bp
 from utils.utils import *
 # 创建Flask应用
@@ -56,6 +57,15 @@ logger = logging.getLogger(__name__)
 # 注册用户可见性蓝图
 app.register_blueprint(user_visibility_bp)
 
+# 确保数据库表存在 - 使用兼容的初始化方式
+def setup_database():
+    """初始化数据库表"""
+    init_tables()
+    logger.info("数据库表初始化完成")
+
+# 在应用启动时初始化数据库
+with app.app_context():
+    setup_database()
 
 # 根路由测试
 @app.route('/', methods=['GET'])

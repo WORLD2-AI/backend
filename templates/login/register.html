@@ -25,6 +25,11 @@
             border-bottom-left-radius: 0;
         }
         .form-register input[type="password"] {
+            margin-bottom: -1px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+        .invitation-code {
             margin-bottom: 10px;
             border-top-left-radius: 0;
             border-top-right-radius: 0;
@@ -70,6 +75,10 @@
                 <div class="form-floating mb-3">
                     <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="确认密码" required>
                     <label for="confirm_password">确认密码</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control invitation-code" id="invitation_code" name="invitation_code" placeholder="邀请码" required>
+                    <label for="invitation_code">请输入邀请码</label>
                 </div>
                 <button class="w-100 btn btn-lg btn-primary" type="submit">注册</button>
                 <div class="mt-3 text-center">
