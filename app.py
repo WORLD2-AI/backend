@@ -8,16 +8,17 @@ import urllib.parse
 
 from controllers.character_controller import character_controller
 from controllers.user_controller import user_controller
-from model.schdule import  Schedule
+from model.schedule import  Schedule
+from model.invitation_code import InvitationCode  # 导入邀请码模型
 
-from register_char.celery_task import redis_client
+from common.redis_client import redis_handler
 import json
 import redis
 import logging
 import traceback
 from flask_cors import CORS
 from flask import Flask
-from model.db import BaseModel
+# from model.db import BaseModel, init_tables  # 导入初始化函数
 from register_char.user_visibility import user_visibility_bp
 from utils.utils import *
 # 创建Flask应用
@@ -30,16 +31,16 @@ CORS(app)
 
 
 app.config['SESSION_TYPE'] = 'redis'
-app.config['SESSION_REDIS'] = redis.StrictRedis(host='127.0.0.1', port=6379, db=0)
+app.config['SESSION_REDIS'] = redis.StrictRedis(host='127.0.0.1', port=6379, db=0, password='000000')
 app.config['SESSION_USE_SIGNER'] = True  # 签名加密session id
 app.config['SESSION_KEY_PREFIX'] = 'session:'  # redis中 key 的前缀
 # MySQL数据库配置
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:123456@localhost:3306/character_db'
-# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:123456@localhost:3306/character_db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 app.register_blueprint(character_controller)
 app.register_blueprint(user_controller)
-
+app.register_blueprint(user_visibility_bp)
 # 配置CORS
 CORS(app, resources={
     r"/api/*": {
@@ -53,14 +54,36 @@ CORS(app, resources={
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# 注册用户可见性蓝图
-app.register_blueprint(user_visibility_bp)
 
+# # 确保数据库表存在 - 使用兼容的初始化方式
+# def setup_database():
+#     """初始化数据库表"""
+#     init_tables()
+#     logger.info("数据库表初始化完成")
+
+# # 在应用启动时初始化数据库
+# with app.app_context():
+#     setup_database()
 
 # 根路由测试
 @app.route('/', methods=['GET'])
 def index():
     return "server is running", 200
+
+# 添加用户注册路由
+@app.route('/register')
+def register_page():
+    return redirect('/api/register_user')
+
+# 添加角色注册路由
+@app.route('/register_role')
+def register_role_page():
+    return redirect('/api/register_role')
+
+# 添加角色列表路由
+@app.route('/character_list')
+def character_list_redirect():
+    return redirect('/characters')
 
 @app.route('/login/twitter')
 def login_twitter():
@@ -159,4 +182,5 @@ def bind_twitter():
     return redirect(authorization_url)
 
 if __name__ == '__main__':
+    # 启动Flask应用
     app.run(debug=True, host='0.0.0.0', port=5000)

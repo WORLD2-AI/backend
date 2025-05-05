@@ -2,15 +2,13 @@ from celery import Celery
 from base import *
 from celery_tasks.born_person_schedule import persona_daily_task
 
-
-app = Celery('tasks', broker='redis://127.0.0.1:6379/0', backend='redis://127.0.0.1:6379/1')
+app = Celery('tasks')
+app.config_from_object('celery_tasks.celery_config')
 
 # Celery配置
 app.conf.update(
     # 同步调试
     task_always_eager=True,
-    
-    
 )
 @app.task
 def process_character_action(action_info):
@@ -34,3 +32,12 @@ def process_character_action(action_info):
 @app.task
 def proecess_character_born(data):
     persona_daily_task(data['id'])
+
+
+# 新建每10s的celery定时任务 掉起 process_character_tasks
+app.conf.beat_schedule = {
+    'send_character_tasks': {
+        'task': 'celery_tasks.character_scheduler.send_character_tasks',
+        'schedule': 10.0,  # 每10秒执行一次
+    },
+}

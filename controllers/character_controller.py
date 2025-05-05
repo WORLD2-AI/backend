@@ -1,15 +1,16 @@
+import json
 from flask import Blueprint, request, jsonify, session
 from model.character import  Character,CHARACTER_STATUS
-from register_char.celery_task import redis_client
+from common.redis_client import redis_handler
 import logging
 from celery_tasks.app import proecess_character_born
-from model.db import BaseModel
+from model.schedule import Schedule
 import traceback
+
 
 character_controller = Blueprint('character', __name__,)
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-import redis
 @character_controller.route('/api/register_role', methods=['POST', 'OPTIONS'])
 def character_register():
     if request.method == 'OPTIONS':
@@ -19,24 +20,7 @@ def character_register():
         response.headers.add('Access-Control-Allow-Methods', 'POST')
         return response
         
-    try:
-        # 检查Redis连接
-        if redis_client is None:
-            return jsonify({
-                "status": "error",
-                "message": "Redis server error"
-            }), 503
-            
-        try:
-            redis_client.ping()
-            logger.info("redis check ok")
-        except (redis.ConnectionError, redis.TimeoutError) as e:
-            logger.error(f"Redisconnect failed: {str(e)}")
-            return jsonify({
-                "status": "error",
-                "message": "无法连接到Redis服务器，请检查Redis服务是否运行"
-            }), 503
-            
+    try:            
         data = request.get_json()
         if not data:
             logger.warning("收到空请求数据")
@@ -90,7 +74,7 @@ def character_register():
         # 异步执行任务
         try:
             
-            task = proecess_character_born.apply(
+            task = makeAgentDailyTask.apply(
                 task_data
             )
             logger.info(f"任务提交成功: task_id={task.id}")
@@ -121,9 +105,9 @@ def character_register():
 @character_controller.route('/api/character/<int:character_id>/status', methods=['GET'])
 def get_character_status(character_id):
     try:
-        character = Character.query.get(character_id)
+        character = Character().find_by_id(character_id)
         if not character:
-            return jsonify({'status': 'error', 'message': '角色不存在'}), 404
+            return jsonify({'status': 'error', 'message': 'character not found'}), 404
         
         return jsonify({
             'status': 'success',
@@ -131,7 +115,7 @@ def get_character_status(character_id):
             'character_id': character.id
         }), 200
     except Exception as e:
-        return jsonify({'status': 'error', 'message': f'获取状态错误：{str(e)}'}), 500
+        return jsonify({'status': 'error', 'message': f'get character status error：{str(e)}'}), 500
 
 # 获取角色列表接口
 @character_controller.route('/api/characters', methods=['GET'])
@@ -141,16 +125,15 @@ def get_characters():
         if not user_id:
             return jsonify({
                 "status": "error",
-                "message": "用户未登录"
+                "message": "user is not login"
             }), 401
         characters = Character().find(user_id=user_id)
         character_list = []
         for character in characters:
             character_data = character.to_dict()
-            # 获取角色的最新状态
             try:
                 redis_key = f"character:{character.id}"
-                redis_data = redis_client.get(redis_key)
+                redis_data = redis_handler.get(redis_key)
                 if redis_data:
                     realtime_data = json.loads(redis_data)
                     character_data.update({
@@ -159,7 +142,7 @@ def get_characters():
                         'action_location': realtime_data.get('action_location')
                     })
             except Exception as e:
-                logger.warning(f"获取角色实时数据失败: {str(e)}")
+                logger.warning(f"get character real data err: {str(e)}")
             
             character_list.append(character_data)
             
@@ -170,17 +153,17 @@ def get_characters():
         response.headers.add('Access-Control-Allow-Origin', '*')
         return response
     except Exception as e:
-        logger.error(f"获取角色列表失败: {str(e)}\n{traceback.format_exc()}")
+        logger.error(f"get character list err: {str(e)}\n{traceback.format_exc()}")
         return jsonify({
             "status": "error",
-            "message": f"获取角色列表失败: {str(e)}"
+            "message": f"get character list err: {str(e)}"
         }), 500
 
 # 获取角色详情接口
 @character_controller.route('/api/characters/<int:character_id>', methods=['GET'])
 def get_character_detail(character_id):
     try:
-        character = Character.query.get(character_id)
+        character = Character().find_by_id(character_id)
         if not character:
             return jsonify({
                 "status": "error",
@@ -192,7 +175,7 @@ def get_character_detail(character_id):
         # 获取角色的实时数据
         try:
             redis_key = f"character:{character_id}"
-            redis_data = redis_client.get(redis_key)
+            redis_data = redis_handler.get(redis_key)
             if redis_data:
                 realtime_data = json.loads(redis_data)
                 character_data.update({
@@ -205,7 +188,7 @@ def get_character_detail(character_id):
             logger.warning(f"获取角色实时数据失败: {str(e)}")
             
         # 获取角色的日程数据
-        schedules = Schedule.query.filter_by(character_id=character_id).all()
+        schedules = Schedule().find(user_id=character_id)
         character_data['schedules'] = [schedule.to_dict() for schedule in schedules]
         
         response = jsonify({
@@ -215,19 +198,23 @@ def get_character_detail(character_id):
         response.headers.add('Access-Control-Allow-Origin', '*')
         return response
     except Exception as e:
-        logger.error(f"获取角色详情失败: {str(e)}\n{traceback.format_exc()}")
+        logger.error(f"get character info failed: {str(e)}\n{traceback.format_exc()}")
         return jsonify({
             "status": "error",
-            "message": f"获取角色详情失败: {str(e)}"
+            "message": f"get character info failed: {str(e)}"
         }), 500
 
-# 个人中心接口 - 获取用户所有角色
+
 @character_controller.route('/api/user/characters', methods=['GET'])
 def get_user_characters():
     try:
-        # 这里应该根据用户ID获取角色列表
-        # 为了演示，我们返回所有角色
-        characters = Character.query.all()
+        user_id = session.get('user_id')
+        if not user_id:
+            return jsonify({
+                "status": "error",
+                "message": "user is not login"
+            }), 401
+        characters = Character().find(user_id=user_id)
         character_list = [character.to_dict() for character in characters]
         
         return jsonify({
@@ -235,35 +222,34 @@ def get_user_characters():
             'characters': character_list
         }), 200
     except Exception as e:
-        return jsonify({'status': 'error', 'message': f'获取角色列表错误：{str(e)}'}), 500
+        return jsonify({'status': 'error', 'message': f'get user character list err：{str(e)}'}), 500
 
-# 删除角色接口
+# delete character interface
 @character_controller.route('/api/character/<int:character_id>', methods=['DELETE'])
 def delete_character(character_id):
     try:
-        character = Character.query.get(character_id)
-        if not character:
-            return jsonify({'status': 'error', 'message': '角色不存在'}), 404
+        character = Character()
+        temp = character.find_by_id(character_id)
+        if not temp:
+            return jsonify({'status': 'error', 'message': 'character not found'}), 404
             
-        # 删除相关的日程
-        Schedule.query.filter_by(character_id=character_id).delete()
+   
+        character.delete(character_id)
+        character.commit()
         
-        # 删除角色
-        BaseModel().get_session().delete(character)
-        BaseModel().get_session().commit()
-        
-        # 删除Redis中的实时数据
+
         redis_key = f"character:{character_id}"
-        redis_client.delete(redis_key)
+        redis_handler.delete(redis_key)
         
         return jsonify({
             'status': 'success',
-            'message': '角色删除成功',
+            'message': 'delete character success',
             'character_id': character_id
         }), 200
     except Exception as e:
-        BaseModel().get_session().rollback()
-        return jsonify({'status': 'error', 'message': f'删除角色错误：{str(e)}'}), 500
+        character.get_session().rollback()
+        # raise e
+        return jsonify({'status': 'error', 'message': f'delete character failed{str(e)}'}), 500
 # 数据校验函数
 def validate_character(data):
     errors = {}
