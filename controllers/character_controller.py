@@ -215,10 +215,6 @@ def get_user_characters():
                 "message": "user is not login"
             }), 401
         characters = Character().find(user_id=user_id)
-
-        # 这里应该根据用户ID获取角色列表
-        # 为了演示，我们返回所有角色
-        characters = Character().find_all()
         character_list = [character.to_dict() for character in characters]
         
         return jsonify({

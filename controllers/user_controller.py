@@ -220,7 +220,7 @@ def list_invitation_codes():
     
     try:
         invitation_code = InvitationCode()
-        codes = invitation_code.find_all()
+        codes = invitation_code.find()
         
         return jsonify({
             "status": "success",

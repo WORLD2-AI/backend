@@ -80,7 +80,6 @@ class BaseModel():
             except SQLAlchemyError as e:
                 session.rollback()
                 raise Exception(f"Error adding records: {e}")
-<<<<<<< HEAD
     def delete(self, id: int):
         with self.get_session() as session:
             instance = session.query(self.model_class).filter_by(id=id).first()
@@ -92,13 +91,6 @@ class BaseModel():
     def commit(self):
         with self.get_session() as session:
             session.commit()
-=======
 
-    def find_all(self) -> list[object]:
-        with self.get_session() as session:
-            query = session.query(self.model_class)
-            return query.all()
-
->>>>>>> feature_gdj
 def init_tables():
     BaseModel.metadata.create_all(engine)
