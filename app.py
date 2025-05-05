@@ -18,7 +18,7 @@ import logging
 import traceback
 from flask_cors import CORS
 from flask import Flask
-from model.db import BaseModel, init_tables  # 导入初始化函数
+# from model.db import BaseModel, init_tables  # 导入初始化函数
 from register_char.user_visibility import user_visibility_bp
 from utils.utils import *
 # 创建Flask应用
@@ -55,15 +55,15 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
-# 确保数据库表存在 - 使用兼容的初始化方式
-def setup_database():
-    """初始化数据库表"""
-    init_tables()
-    logger.info("数据库表初始化完成")
+# # 确保数据库表存在 - 使用兼容的初始化方式
+# def setup_database():
+#     """初始化数据库表"""
+#     init_tables()
+#     logger.info("数据库表初始化完成")
 
-# 在应用启动时初始化数据库
-with app.app_context():
-    setup_database()
+# # 在应用启动时初始化数据库
+# with app.app_context():
+#     setup_database()
 
 # 根路由测试
 @app.route('/', methods=['GET'])

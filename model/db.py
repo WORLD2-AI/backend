@@ -92,5 +92,5 @@ class BaseModel():
         with self.get_session() as session:
             session.commit()
 
-def init_tables():
-    BaseModel.metadata.create_all(engine)
+# def init_tables():
+#     BaseModel.metadata.create_all(engine)

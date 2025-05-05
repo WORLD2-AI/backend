@@ -9,8 +9,6 @@ app.config_from_object('celery_tasks.celery_config')
 app.conf.update(
     # 同步调试
     task_always_eager=True,
-    
-    
 )
 @app.task
 def process_character_action(action_info):
