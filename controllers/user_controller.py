@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify, session
+from flask import Blueprint, request, jsonify, session, redirect
 from flask import request, jsonify, render_template
 from model.user import User
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -10,29 +10,56 @@ def register():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-
-        s = User().get_session()
-        if s.query(User).filter_by(username=username).first():
-            return 'user exists', 400
-
-        hashed_password = generate_password_hash(password)
-
-        # 获取 Twitter ID 和屏幕名称
-        twitter_id = session.pop('twitter_id', None)
-        screen_name = session.pop('screen_name', None)
-        access_token = session.pop('access_token', None)
-        access_token_secret = session.pop('access_token_secret', None)
-
-        new_user = User(username=username, password_hash=hashed_password, twitter_id=twitter_id,
-                        screen_name=screen_name, access_token=access_token, access_token_secret=access_token_secret)
         
+        # 验证表单数据
+        if not username or not password:
+            return render_template('login/register.html', error="用户名和密码不能为空")
         
-        s.add(new_user)
-        s.commit()
+        # 检查用户是否已存在
+        user_model = User()
+        existing_user = user_model.first({"username": username})
+        if existing_user:
+            return render_template('login/register.html', error="用户名已存在")
 
-        session['user_id'] = new_user.id  # 登录用户
-        return f"register success ID：{new_user.id}"
+        try:
+            # 密码加密
+            hashed_password = generate_password_hash(password)
 
+            # 获取 Twitter ID 和屏幕名称
+            twitter_id = session.pop('twitter_id', None)
+            screen_name = session.pop('screen_name', None)
+            access_token = session.pop('access_token', None)
+            access_token_secret = session.pop('access_token_secret', None)
+
+            # 创建新用户
+            new_user = User(
+                username=username, 
+                password_hash=hashed_password, 
+                twitter_id=twitter_id,
+                screen_name=screen_name, 
+                access_token=access_token, 
+                access_token_secret=access_token_secret
+            )
+            
+            s = user_model.get_session()
+            s.add(new_user)
+            s.commit()
+
+            # 登录用户
+            session['user_id'] = new_user.id
+            
+            # 检查是否有回调URL
+            if 'call_back_url' in session:
+                call_back_url = session.pop('call_back_url')
+                return redirect(call_back_url)
+            
+            # 否则返回注册成功页面
+            return render_template('login/register_success.html', username=username)
+        
+        except Exception as e:
+            return render_template('login/register.html', error=f"注册失败: {str(e)}")
+
+    # GET 请求，显示注册表单
     return render_template('login/register.html')
 
 
@@ -42,21 +69,40 @@ def login():
         username = request.form['username']
         password = request.form['password']
 
-        user = User().first({"username":username})
-        if user and check_password_hash(user.password_hash, password):
-            session['user_id'] = user.id
-            return 'login success'
-        return 'login failed', 401
+        # 验证表单数据
+        if not username or not password:
+            return render_template('login/login.html', error="用户名和密码不能为空")
 
+        user = User().first({"username": username})
+        if user and check_password_hash(user.password_hash, password):
+            # 登录成功，设置session
+            session['user_id'] = user.id
+            
+            # 检查是否有回调URL
+            if 'call_back_url' in session:
+                call_back_url = session.pop('call_back_url')
+                return redirect(call_back_url)
+                
+            # 否则返回登录成功消息
+            return redirect('/')
+        else:
+            # 登录失败
+            return render_template('login/login.html', error="用户名或密码错误")
+
+    # GET 请求，显示登录表单
     return render_template('login/login.html')
+
 @user_controller.route('/user/info')
 def get_user_info():
 # 判断session中的user_id是否存在
     if 'user_id' in session:
-        user = User.query.filter_by(id=session['user_id']).first()
+        user = User().find_by_id(session['user_id'])
         if user:
             return jsonify({
-                'data': user
+                'data': user.to_dict() if hasattr(user, 'to_dict') else {
+                    'id': user.id,
+                    'username': user.username
+                }
             })
     # 返回401状态
     return jsonify({

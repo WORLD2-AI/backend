@@ -3,7 +3,7 @@ from base import *
 from celery_tasks.born_person_schedule import persona_daily_task
 
 
-app = Celery('tasks', broker='redis://127.0.0.1:6379/0', backend='redis://127.0.0.1:6379/1')
+app = Celery('tasks', broker='redis://:000000@127.0.0.1:6379/0', backend='redis://:000000@127.0.0.1:6379/1')
 
 # Celery配置
 app.conf.update(

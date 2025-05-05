@@ -30,12 +30,12 @@ CORS(app)
 
 
 app.config['SESSION_TYPE'] = 'redis'
-app.config['SESSION_REDIS'] = redis.StrictRedis(host='127.0.0.1', port=6379, db=0)
+app.config['SESSION_REDIS'] = redis.StrictRedis(host='127.0.0.1', port=6379, db=0, password='000000')
 app.config['SESSION_USE_SIGNER'] = True  # 签名加密session id
 app.config['SESSION_KEY_PREFIX'] = 'session:'  # redis中 key 的前缀
 # MySQL数据库配置
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:123456@localhost:3306/character_db'
-# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:123456@localhost:3306/character_db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 app.register_blueprint(character_controller)
 app.register_blueprint(user_controller)
@@ -61,6 +61,21 @@ app.register_blueprint(user_visibility_bp)
 @app.route('/', methods=['GET'])
 def index():
     return "server is running", 200
+
+# 添加用户注册路由
+@app.route('/register')
+def register_page():
+    return redirect('/api/register_user')
+
+# 添加角色注册路由
+@app.route('/register_role')
+def register_role_page():
+    return redirect('/api/register_role')
+
+# 添加角色列表路由
+@app.route('/character_list')
+def character_list_redirect():
+    return redirect('/characters')
 
 @app.route('/login/twitter')
 def login_twitter():
@@ -159,4 +174,5 @@ def bind_twitter():
     return redirect(authorization_url)
 
 if __name__ == '__main__':
+    # 启动Flask应用
     app.run(debug=True, host='0.0.0.0', port=5000)
