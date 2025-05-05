@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String, Text
-from character_system.model.db import BaseModel, Base
+from model.db import BaseModel, Base
 from character_system.config import logger
 
 class Schedule(BaseModel, Base):

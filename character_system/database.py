@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 
-from character_system.config import logger
-from character_system.model.schedule import Schedule
-from character_system.model.character import Character
-from character_system.model.position import Position
-from character_system.model.path import Path
+import pymysql
+from character_system.config import DB_CONFIG, logger
+from model.schedule import Schedule
+from model.character import Character
+from model.position import Position
+from model.path import Path
 
 # 从数据库获取所有活动数据
 def get_all_schedules():
