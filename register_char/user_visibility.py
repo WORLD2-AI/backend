@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-import redis
+from common.redis_client import redis_handler
 import math
 from typing import List, Dict, Any
 import json
@@ -13,16 +13,7 @@ logger = logging.getLogger(__name__)
 user_visibility_bp = Blueprint('character_visibility', __name__)
 
 # Redis连接配置
-try:
-    redis_client = redis.Redis(host='localhost', port=6379, db=0, decode_responses=True)
-    # 测试连接
-    redis_client.ping()
-    logger.info("成功连接到Redis服务器")
-except redis.ConnectionError as e:
-    logger.error(f"无法连接到Redis服务器: {e}")
-    # 创建一个内存字典作为备用
-    redis_memory_dict = {}
-    logger.warning("使用内存字典作为临时存储")
+
 
 def init_test_data():
     """
@@ -30,7 +21,7 @@ def init_test_data():
     """
     try:
         # 检查是否已有角色数据
-        if not redis_client.keys("character:*"):
+        if not redis_handler.keys("character:*"):
             logger.info("未找到角色数据，正在初始化测试数据...")
             
             # 添加测试角色
@@ -56,7 +47,7 @@ def init_test_data():
             # 存储到Redis
             for character in test_characters:
                 char_id = character.pop("id")
-                redis_client.set(f"character:{char_id}", json.dumps(character))
+                redis_handler.set(f"character:{char_id}", json.dumps(character))
                 
             logger.info(f"已添加 {len(test_characters)} 个测试角色到Redis")
             return True
@@ -68,37 +59,13 @@ def init_test_data():
         return False
 
 def get_redis_data(key):
-    """
-    获取Redis数据，如果Redis不可用，则从内存字典获取
-    """
-    try:
-        return redis_client.get(key)
-    except Exception:
-        logger.warning(f"从Redis获取数据失败，尝试从内存字典获取: {key}")
-        return redis_memory_dict.get(key)
+    return redis_handler.get(key)
 
 def set_redis_data(key, value):
-    """
-    设置Redis数据，如果Redis不可用，则存储到内存字典
-    """
-    try:
-        return redis_client.set(key, value)
-    except Exception:
-        logger.warning(f"向Redis写入数据失败，存储到内存字典: {key}")
-        redis_memory_dict[key] = value
-        return True
+    return redis_handler.set(key, value)
 
 def get_redis_keys(pattern):
-    """
-    获取Redis键，如果Redis不可用，则从内存字典获取
-    """
-    try:
-        return redis_client.keys(pattern)
-    except Exception:
-        logger.warning(f"从Redis获取键失败，从内存字典获取: {pattern}")
-        import re
-        pattern_regex = re.compile(pattern.replace("*", ".*"))
-        return [k for k in redis_memory_dict.keys() if pattern_regex.match(k)]
+    return redis_handler.keys(pattern)
 
 def calculate_distance(point1: List[float], point2: List[float]) -> float:
     """
@@ -357,7 +324,7 @@ def force_init_test_data_api():
         # 删除现有角色数据
         for key in get_redis_keys("character:*"):
             try:
-                redis_client.delete(key)
+                redis_handler.delete(key)
             except Exception as e:
                 logger.error(f"删除角色数据失败: {key}, {e}")
         

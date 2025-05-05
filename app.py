@@ -8,9 +8,9 @@ import urllib.parse
 
 from controllers.character_controller import character_controller
 from controllers.user_controller import user_controller
-from model.schdule import  Schedule
+from model.schedule import  Schedule
 
-from register_char.celery_task import redis_client
+from common.redis_client import redis_handler
 import json
 import redis
 import logging
@@ -39,7 +39,7 @@ app.config['SESSION_KEY_PREFIX'] = 'session:'  # redis中 key 的前缀
 
 app.register_blueprint(character_controller)
 app.register_blueprint(user_controller)
-
+app.register_blueprint(user_visibility_bp)
 # 配置CORS
 CORS(app, resources={
     r"/api/*": {
@@ -53,8 +53,6 @@ CORS(app, resources={
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# 注册用户可见性蓝图
-app.register_blueprint(user_visibility_bp)
 
 
 # 根路由测试

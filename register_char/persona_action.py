@@ -2,7 +2,7 @@ import json
 import os
 import datetime
 from datetime import timedelta
-import redis
+from common.redis_client import redis_handler
 import logging
 from celery import Celery
 import random
@@ -12,37 +12,20 @@ import sys
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# 初始化Redis连接
-def get_redis_client():
-    try:
-        client = redis.Redis(
-            host='localhost',
-            port=6379,
-            db=1,
-            socket_timeout=5,
-            socket_connect_timeout=5
-        )
-        # 测试连接
-        client.ping()
-        logger.info("Redis连接成功")
-        return client
-    except (redis.ConnectionError, redis.TimeoutError) as e:
-        logger.error(f"Redis连接失败: {str(e)}")
-        return None
 
-# 初始化Celery
-def get_celery_app():
-    try:
-        app = Celery('character_tasks')
-        app.config_from_object('celery_config')
-        return app
-    except Exception as e:
-        logger.error(f"初始化Celery失败: {str(e)}")
-        return None
+# # 初始化Celery
+# def get_celery_app():
+#     try:
+#         app = Celery('character_tasks')
+#         app.config_from_object('celery_config')
+#         return app
+#     except Exception as e:
+#         logger.error(f"初始化Celery失败: {str(e)}")
+#         return None
 
-# 全局客户端
-redis_client = get_redis_client()
-celery_app = get_celery_app()
+# # 全局客户端
+
+# celery_app = get_celery_app()
 
 # 定义碰撞块ID（从原始代码中提取）
 collision_block_id = 1
@@ -76,7 +59,7 @@ def update_character_path(character_name, planned_path, act_path_set=True, next_
         bool: 是否成功更新
     """
     # 检查Redis客户端是否可用
-    if not redis_client:
+    if not redis_handler:
         logger.error("Redis客户端不可用，无法更新路径")
         return False
     
@@ -85,7 +68,7 @@ def update_character_path(character_name, planned_path, act_path_set=True, next_
         character_key = f"character:{character_name}"
         
         # 获取现有角色数据
-        character_data = redis_client.get(character_key)
+        character_data = redis_handler.get(character_key)
         if not character_data:
             logger.error(f"无法找到角色数据: {character_name}")
             return False
@@ -105,12 +88,12 @@ def update_character_path(character_name, planned_path, act_path_set=True, next_
         character_data["timestamp"] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         
         # 存储回Redis
-        redis_client.set(character_key, json.dumps(character_data, ensure_ascii=False))
+        redis_handler.set(character_key, json.dumps(character_data, ensure_ascii=False))
         logger.info(f"已更新角色路径: {character_name}")
         
         # 如果有路径键，也更新它
         path_key = f"path:{character_name}"
-        path_data = redis_client.get(path_key)
+        path_data = redis_handler.get(path_key)
         if path_data:
             path_data = json.loads(path_data)
             path_data["planned_path"] = planned_path
@@ -118,7 +101,7 @@ def update_character_path(character_name, planned_path, act_path_set=True, next_
             if next_location:
                 path_data["target_location"] = next_location
             path_data["timestamp"] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            redis_client.set(path_key, json.dumps(path_data, ensure_ascii=False))
+            redis_handler.set(path_key, json.dumps(path_data, ensure_ascii=False))
             logger.info(f"已更新角色路径数据: {path_key}")
         
         return True
@@ -148,10 +131,10 @@ def check_schedule(data):
     character_name = data.get("name", "unknown")
     
     # 首先检查Redis中是否有最新的日程信息
-    if redis_client:
+    if redis_handler:
         try:
             redis_key = f"schedule:{character_name}"
-            schedule_data = redis_client.get(redis_key)
+            schedule_data = redis_handler.get(redis_key)
             if schedule_data:
                 schedule_data = json.loads(schedule_data)
                 redis_expiry = schedule_data.get("expiry_time")
@@ -268,10 +251,10 @@ def update_schedule(data):
             }
             
             # 存储到Redis
-            if redis_client:
+            if redis_handler:
                 try:
                     redis_key = f"schedule:{character_name}"
-                    redis_client.set(redis_key, json.dumps(schedule_data, ensure_ascii=False))
+                    redis_handler.set(redis_key, json.dumps(schedule_data, ensure_ascii=False))
                     logger.info(f"已更新角色 {character_name} 的日程信息到Redis")
                 except Exception as e:
                     logger.error(f"存储日程信息到Redis失败: {str(e)}")
@@ -563,7 +546,7 @@ def store_to_redis_and_send_task(action_info):
         action_info: 角色行动和位置信息
     """
     # 检查Redis客户端是否可用
-    if not redis_client:
+    if not redis_handler:
         logger.error("Redis客户端不可用，无法存储数据")
         return False
     
@@ -576,7 +559,7 @@ def store_to_redis_and_send_task(action_info):
         action_info["timestamp"] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         
         # 存储到Redis
-        redis_client.set(redis_key, json.dumps(action_info, ensure_ascii=False))
+        redis_handler.set(redis_key, json.dumps(action_info, ensure_ascii=False))
         logger.info(f"角色数据已存储到Redis: {redis_key}")
         
         # 发送Celery任务（如果Celery可用）
@@ -729,18 +712,18 @@ def process_character_action(self, action_info):
         }
         
         result_key = f"path:{action_info.get('name')}"
-        redis_client.set(result_key, json.dumps(result, ensure_ascii=False))
+        redis_handler.set(result_key, json.dumps(result, ensure_ascii=False))
         logger.info(f"已计算角色路径并存储: {result_key}")
         
         # 更新角色的路径信息
         character_key = f"character:{action_info.get('name')}"
-        character_data = redis_client.get(character_key)
+        character_data = redis_handler.get(character_key)
         if character_data:
             character_data = json.loads(character_data)
             character_data["planned_path"] = persona.scratch.planned_path
             character_data["act_path_set"] = persona.scratch.act_path_set
             character_data["next_location"] = execution_result[0]
-            redis_client.set(character_key, json.dumps(character_data, ensure_ascii=False))
+            redis_handler.set(character_key, json.dumps(character_data, ensure_ascii=False))
         
         return {
             "status": "success",
@@ -819,9 +802,9 @@ class SimpleMaze:
         """
         # 从Redis获取瓷砖事件信息
         try:
-            if redis_client:
+            if redis_handler:
                 tile_key = f"tile:{tile[0]}:{tile[1]}"
-                tile_data = redis_client.get(tile_key)
+                tile_data = redis_handler.get(tile_key)
                 if tile_data:
                     return json.loads(tile_data)
         except Exception as e:
@@ -842,17 +825,17 @@ def get_all_personas_from_redis():
     """
     personas = {}
     
-    if not redis_client:
+    if not redis_handler:
         logger.warning("Redis客户端不可用，无法获取角色信息")
         return personas
     
     try:
         # 获取所有角色键
-        character_keys = redis_client.keys("character:*")
+        character_keys = redis_handler.keys("character:*")
         
         for key in character_keys:
             key_str = key.decode('utf-8') if isinstance(key, bytes) else key
-            character_data = redis_client.get(key_str)
+            character_data = redis_handler.get(key_str)
             if character_data:
                 character_data = json.loads(character_data)
                 name = character_data.get("name", "")
