@@ -1,9 +1,11 @@
+import json
 from flask import Blueprint, request, jsonify, session
 from model.character import  Character,CHARACTER_STATUS
 from register_char.celery_task import redis_client
 import logging
 from celery_tasks.app import proecess_character_born
 from model.db import BaseModel
+from model.schedule import Schedule
 import traceback
 
 character_controller = Blueprint('character', __name__,)
@@ -215,18 +217,16 @@ def get_character_detail(character_id):
         response.headers.add('Access-Control-Allow-Origin', '*')
         return response
     except Exception as e:
-        logger.error(f"获取角色详情失败: {str(e)}\n{traceback.format_exc()}")
+        logger.error(f"get character info failed: {str(e)}\n{traceback.format_exc()}")
         return jsonify({
             "status": "error",
-            "message": f"获取角色详情失败: {str(e)}"
+            "message": f"get character info failed: {str(e)}"
         }), 500
 
 # 个人中心接口 - 获取用户所有角色
 @character_controller.route('/api/user/characters', methods=['GET'])
 def get_user_characters():
     try:
-        # 这里应该根据用户ID获取角色列表
-        # 为了演示，我们返回所有角色
         characters = Character.query.all()
         character_list = [character.to_dict() for character in characters]
         
@@ -235,35 +235,34 @@ def get_user_characters():
             'characters': character_list
         }), 200
     except Exception as e:
-        return jsonify({'status': 'error', 'message': f'获取角色列表错误：{str(e)}'}), 500
+        return jsonify({'status': 'error', 'message': f'get user character list err：{str(e)}'}), 500
 
-# 删除角色接口
+# delete character interface
 @character_controller.route('/api/character/<int:character_id>', methods=['DELETE'])
 def delete_character(character_id):
     try:
-        character = Character.query.get(character_id)
-        if not character:
-            return jsonify({'status': 'error', 'message': '角色不存在'}), 404
+        character = Character()
+        temp = character.find_by_id(character_id)
+        if not temp:
+            return jsonify({'status': 'error', 'message': 'character not found'}), 404
             
-        # 删除相关的日程
-        Schedule.query.filter_by(character_id=character_id).delete()
+   
+        character.delete(character_id)
+        character.commit()
         
-        # 删除角色
-        BaseModel().get_session().delete(character)
-        BaseModel().get_session().commit()
-        
-        # 删除Redis中的实时数据
+
         redis_key = f"character:{character_id}"
         redis_client.delete(redis_key)
         
         return jsonify({
             'status': 'success',
-            'message': '角色删除成功',
+            'message': 'delete character success',
             'character_id': character_id
         }), 200
     except Exception as e:
-        BaseModel().get_session().rollback()
-        return jsonify({'status': 'error', 'message': f'删除角色错误：{str(e)}'}), 500
+        character.get_session().rollback()
+        # raise e
+        return jsonify({'status': 'error', 'message': f'delete character failed{str(e)}'}), 500
 # 数据校验函数
 def validate_character(data):
     errors = {}
