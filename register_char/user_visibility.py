@@ -14,7 +14,6 @@ user_visibility_bp = Blueprint('character_visibility', __name__)
 
 # Redis连接配置
 
-
 def init_test_data():
     """
     初始化测试数据，如果Redis中没有角色数据，添加一些测试角色

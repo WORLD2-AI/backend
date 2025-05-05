@@ -7,6 +7,7 @@ from celery_tasks.app import proecess_character_born
 from model.schedule import Schedule
 import traceback
 
+
 character_controller = Blueprint('character', __name__,)
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -73,7 +74,7 @@ def character_register():
         # 异步执行任务
         try:
             
-            task = proecess_character_born.apply(
+            task = makeAgentDailyTask.apply(
                 task_data
             )
             logger.info(f"任务提交成功: task_id={task.id}")
@@ -214,6 +215,10 @@ def get_user_characters():
                 "message": "user is not login"
             }), 401
         characters = Character().find(user_id=user_id)
+
+        # 这里应该根据用户ID获取角色列表
+        # 为了演示，我们返回所有角色
+        characters = Character().find_all()
         character_list = [character.to_dict() for character in characters]
         
         return jsonify({
