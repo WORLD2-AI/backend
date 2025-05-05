@@ -1,26 +1,20 @@
-from celery import Celery
-from datetime import datetime, timedelta
-import json
-import redis
-import random
-from model.character import Character, CHARACTER_STATUS
-from model.schdule import Schedule
-from model.db import BaseModel
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import time
+import json
 import logging
-import traceback
+import redis
 import pymysql
-import schedule as schedule_lib
+from datetime import datetime, timedelta
+import schedule
 
 # 配置日志
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
 logger = logging.getLogger(__name__)
-
-# 初始化Celery
-celery = Celery('character_tasks')
-
-# 加载Celery配置
-celery.config_from_object('celery_config')
 
 # 数据库配置
 DB_CONFIG = {
@@ -35,9 +29,9 @@ DB_CONFIG = {
 # Redis配置
 REDIS_CONFIG = {
     'host': 'localhost',
-    'port': 6379, 
+    'port': 6379,
     'db': 0,
-    'password': '000000',  # Redis密码
+    'password': '000000',  # 添加这一行
     'socket_timeout': 5,
     'decode_responses': True  # 解码响应为字符串
 }
@@ -52,13 +46,6 @@ def get_redis_client():
     except (redis.ConnectionError, redis.TimeoutError) as e:
         logger.error(f"Redis连接失败: {str(e)}")
         raise
-
-# 初始化Redis客户端
-try:
-    redis_client = get_redis_client()
-except Exception as e:
-    logger.error(f"初始化Redis客户端失败: {str(e)}")
-    redis_client = None
 
 # 从数据库获取所有活动数据
 def get_all_schedules():
@@ -176,7 +163,6 @@ def sync_schedules_to_redis():
                     "action_location": current_activity['site'],
                     "emoji": current_activity.get('emoji', ''),
                     "duration": current_activity['duration'],
-                    "position": [48, 50],  # 添加默认位置
                     "schedule": character_activities  # 存储该角色的所有活动
                 }
                 
@@ -199,69 +185,24 @@ def sync_schedules_to_redis():
     except Exception as e:
         logger.error(f"同步活动数据到Redis失败: {str(e)}")
 
-@celery.task(name='character_tasks.makeAgentDailyTask', bind=True, max_retries=3)
-def makeAgentDailyTask(self, character_data):
-    try:
-        if not character_data or not isinstance(character_data, dict):
-            raise ValueError("无效的角色数据")
-            
-        # 更新角色状态为"处理中"
-        character = Character().find_by_id(character_data.get('id'))
-        if not character:
-            raise ValueError("角色不存在")
-            
-        character.status = CHARACTER_STATUS['PROCESSING']
-        BaseModel().get_session().commit()
-        
-        # 执行同步任务，从数据库获取日程并更新到Redis
-        sync_schedules_to_redis()
-        
-        # 更新角色状态为"已完成"
-        character.status = CHARACTER_STATUS['COMPLETED']
-        BaseModel().get_session().commit()
-        
-        return {
-            "status": "success",
-            "message": "角色创建完成",
-            "character_id": character_data['id']
-        }
-        
-    except Exception as e:
-        logger.error(f"任务执行失败: {str(e)}\n{traceback.format_exc()}")
-        
-        # 更新角色状态为"失败"
-        if 'character' in locals():
-            character.status = CHARACTER_STATUS['FAILED']
-            BaseModel().get_session().commit()
-        
-        # 重试任务
-        if self.request.retries < self.max_retries:
-            self.retry(exc=e, countdown=60)
-        else:
-            return {
-                "status": "error",
-                "message": f"任务执行失败: {str(e)}"
-            }
-
-# 启动同步任务
-def start_sync_task():
+# 主函数
+def main():
     # 首次运行立即执行一次
     sync_schedules_to_redis()
     
     # 设置定时任务，每10秒执行一次
-    schedule_lib.every(10).seconds.do(sync_schedules_to_redis)
+    schedule.every(10).seconds.do(sync_schedules_to_redis)
     
     logger.info("活动同步服务已启动，每10秒检查一次")
     
     # 持续运行定时任务
     while True:
-        schedule_lib.run_pending()
+        schedule.run_pending()
         time.sleep(1)
 
-# 如果直接运行该文件，则启动同步任务
 if __name__ == "__main__":
     try:
-        start_sync_task()
+        main()
     except KeyboardInterrupt:
         logger.info("服务已停止")
     except Exception as e:
