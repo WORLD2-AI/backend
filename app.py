@@ -9,6 +9,8 @@ import urllib.parse
 from controllers.character_controller import character_controller
 from controllers.user_controller import user_controller
 from model.schdule import  Schedule
+from model.character import Character  # 导入角色模型
+from model.invitation_code import InvitationCode  # 导入邀请码模型
 
 from register_char.celery_task import redis_client
 import json
@@ -17,11 +19,12 @@ import logging
 import traceback
 from flask_cors import CORS
 from flask import Flask
-from model.db import BaseModel
+from model.db import BaseModel, init_tables  # 导入初始化函数
 from register_char.user_visibility import user_visibility_bp
 from utils.utils import *
 # 创建Flask应用
 import os
+import datetime  # 导入 datetime 模块用于处理时间
 
 app = Flask(__name__)
 app.secret_key = "ai-hello-world:0012873"
@@ -56,11 +59,102 @@ logger = logging.getLogger(__name__)
 # 注册用户可见性蓝图
 app.register_blueprint(user_visibility_bp)
 
+# 确保数据库表存在 - 使用兼容的初始化方式
+def setup_database():
+    """初始化数据库表"""
+    init_tables()
+    logger.info("数据库表初始化完成")
+
+# 在应用启动时初始化数据库
+with app.app_context():
+    setup_database()
 
 # 根路由测试
 @app.route('/', methods=['GET'])
 def index():
     return "server is running", 200
+
+# 添加获取角色详情的API路由
+@app.route('/api/character/<int:character_id>/detail', methods=['GET'])
+def get_character_detail(character_id):
+    """
+    根据角色ID获取角色详情，包括角色名字、当前时间的活动、活动地点和地点图标路径
+    """
+    try:
+        # 获取当前时间（分钟数）
+        now = datetime.datetime.now()
+        current_minutes = now.hour * 60 + now.minute
+        
+        # 获取角色的日程安排
+        schedule = Schedule()
+        schedules = schedule.find(user_id=character_id)
+        
+        if not schedules:
+            return jsonify({"error": "未找到该角色的日程安排"}), 404
+        
+        # 找出当前时间正在进行的活动
+        current_activity = None
+        for s in schedules:
+            start_minute = s.start_minute
+            end_minute = start_minute + s.duration
+            
+            # 检查当前时间是否在活动时间范围内
+            if start_minute <= current_minutes < end_minute:
+                current_activity = s
+                break
+        
+        # 如果没有找到当前活动，返回第一个活动
+        if not current_activity and schedules:
+            current_activity = schedules[0]
+        
+        # 从日程安排中获取角色名字
+        character_name = current_activity.name if current_activity else "未知角色"
+        
+        result = {
+            "id": character_id,
+            "name": character_name
+        }
+        
+        # 如果找到了活动，添加活动相关信息
+        if current_activity:
+            # 解析地点信息 - 从site字段中提取第一个冒号后第二个冒号前的文字
+            site_info = current_activity.site
+            location = ""
+            if ":" in site_info:
+                parts = site_info.split(":")
+                if len(parts) > 1:
+                    location = parts[1].strip()
+                    # 如果有第二个冒号，截取到第二个冒号前
+                    if ":" in location:
+                        location = location.split(":")[0].strip()
+            
+            # 构建地点图标路径 - 完整路径，指向根目录下的icon文件夹
+            icon_path = f"/icon/{location}.png" if location else ""
+            
+            result.update({
+                "activity": current_activity.action,
+                "location": location,
+                "icon_path": icon_path,
+                "icon_file": f"{location}.png",  # 添加图标文件名
+                "icon_dir": "icon",  # 添加图标目录
+                "start_minute": current_activity.start_minute,
+                "duration": current_activity.duration,
+                "current_time_minutes": current_minutes
+            })
+        
+        return jsonify(result), 200
+    
+    except Exception as e:
+        logger.error(f"获取角色详情失败: {str(e)}\n{traceback.format_exc()}")
+        return jsonify({"error": f"获取角色详情失败: {str(e)}"}), 500
+
+# 添加角色详情页面路由
+@app.route('/character/<int:character_id>', methods=['GET'])
+def character_detail_page(character_id):
+    """
+    角色详情页面，展示角色的信息和当前活动
+    """
+    return render_template('character_detail.html', character_id=character_id)
 
 # 添加用户注册路由
 @app.route('/register')

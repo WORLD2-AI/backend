@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify, session, redirect
 from flask import request, jsonify, render_template
 from model.user import User
+from model.invitation_code import InvitationCode
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_login import logout_user, login_required
 user_controller = Blueprint('user', __name__)
@@ -10,16 +11,22 @@ def register():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
+        invitation_code = request.form['invitation_code']
         
         # 验证表单数据
-        if not username or not password:
-            return render_template('login/register.html', error="用户名和密码不能为空")
+        if not username or not password or not invitation_code:
+            return render_template('login/register.html', error="用户名、密码和邀请码不能为空")
         
         # 检查用户是否已存在
         user_model = User()
-        existing_user = user_model.first({"username": username})
+        existing_user = user_model.first(username=username)
         if existing_user:
             return render_template('login/register.html', error="用户名已存在")
+
+        # 验证邀请码
+        inv_code_model = InvitationCode()
+        if not inv_code_model.verify_code(invitation_code):
+            return render_template('login/register.html', error="邀请码无效或已被使用")
 
         try:
             # 密码加密
@@ -44,6 +51,9 @@ def register():
             s = user_model.get_session()
             s.add(new_user)
             s.commit()
+
+            # 标记邀请码已使用
+            inv_code_model.use_code(invitation_code, new_user.id)
 
             # 登录用户
             session['user_id'] = new_user.id
@@ -73,7 +83,7 @@ def login():
         if not username or not password:
             return render_template('login/login.html', error="用户名和密码不能为空")
 
-        user = User().first({"username": username})
+        user = User().first(username=username)
         if user and check_password_hash(user.password_hash, password):
             # 登录成功，设置session
             session['user_id'] = user.id
@@ -169,4 +179,55 @@ def logout():
         return jsonify({
             "status": "error",
             "message": "退出失败，请重试"
+        }), 500
+
+# 添加邀请码生成接口（仅限管理员使用）
+@user_controller.route('/api/admin/generate_invitation_codes', methods=['POST'])
+def generate_invitation_codes():
+    # 这里应该添加管理员权限验证
+    if 'user_id' not in session:
+        return jsonify({"status": "error", "message": "未授权访问"}), 401
+    
+    # 简单示例：用户ID为1的是管理员（实际应用中应该有更完善的权限系统）
+    if session['user_id'] != 1:
+        return jsonify({"status": "error", "message": "权限不足"}), 403
+    
+    try:
+        count = request.json.get('count', 100)
+        invitation_code = InvitationCode()
+        codes = InvitationCode.generate_batch(count)
+        invitation_code.add_all(codes)
+        
+        return jsonify({
+            "status": "success",
+            "message": f"成功生成{count}个邀请码"
+        })
+    except Exception as e:
+        return jsonify({
+            "status": "error",
+            "message": f"生成邀请码失败: {str(e)}"
+        }), 500
+
+# 查看可用邀请码（仅限管理员）
+@user_controller.route('/api/admin/invitation_codes', methods=['GET'])
+def list_invitation_codes():
+    # 权限验证
+    if 'user_id' not in session:
+        return jsonify({"status": "error", "message": "未授权访问"}), 401
+    
+    if session['user_id'] != 1:
+        return jsonify({"status": "error", "message": "权限不足"}), 403
+    
+    try:
+        invitation_code = InvitationCode()
+        codes = invitation_code.find_all()
+        
+        return jsonify({
+            "status": "success",
+            "data": [code.to_dict() for code in codes]
+        })
+    except Exception as e:
+        return jsonify({
+            "status": "error",
+            "message": f"获取邀请码失败: {str(e)}"
         }), 500
