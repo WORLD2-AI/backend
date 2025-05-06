@@ -31,7 +31,7 @@ def run_position_workflow(app):
                 schedule = temp_schedule.get_session().query(Schedule).filter(Schedule.user_id == id,Schedule.start_minute > minutes_passed).order_by(text('id asc')).first()
                 logger.info(f"get schedule {schedule}")
                 if schedule is None:
-                    schedule = temp_schedule.get_session().query(Schedule).filter(Schedule.user_id == 1,Schedule.start_minute > minutes_passed).order_by(text('id asc')).first()
+                    schedule = temp_schedule.get_session().query(Schedule).filter(Schedule.user_id == 0,Schedule.start_minute > minutes_passed).order_by(text('id asc')).first()
                     logger.info(f"get schedule default: {schedule}")
                     if schedule is None:
                         schedule = Schedule()
