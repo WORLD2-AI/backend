@@ -83,11 +83,7 @@ def login():
         if not username or not password:
             return render_template('login/login.html', error="用户名和密码不能为空")
 
-<<<<<<< HEAD
-        user = User().first({"username": username})
-=======
         user = User().first(username=username)
->>>>>>> feature_character
         if user and check_password_hash(user.password_hash, password):
             # 登录成功，设置session
             session['user_id'] = user.id
@@ -223,11 +219,7 @@ def list_invitation_codes():
     
     try:
         invitation_code = InvitationCode()
-<<<<<<< HEAD
         codes = invitation_code.find()
-=======
-        codes = invitation_code.find_all()
->>>>>>> feature_character
         
         return jsonify({
             "status": "success",

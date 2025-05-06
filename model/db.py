@@ -39,12 +39,7 @@ class BaseModel():
         raise AttributeError("未找到当前实例的模型类。")
 
     def get_session(self):
-<<<<<<< HEAD
         return get_db()  
-=======
-        """获取会话"""
-        return get_db()  # 每次调用新建 Session
->>>>>>> feature_character
 
     def first(self, **filters) -> object:
         """获取符合条件的第一条记录"""
@@ -92,10 +87,6 @@ class BaseModel():
                 raise Exception(f"创建记录失败: {e}")
     
     def add_all(self, data: List[dict]) -> List[object]:
-<<<<<<< HEAD
-=======
-        """批量添加记录"""
->>>>>>> feature_character
         with self.get_session() as session:
             try:
                 instances = [self.model_class(**item) for item in data]
@@ -104,7 +95,6 @@ class BaseModel():
                 return instances
             except SQLAlchemyError as e:
                 session.rollback()
-<<<<<<< HEAD
                 raise Exception(f"Error adding records: {e}")
     def delete(self, id: int):
         with self.get_session() as session:
@@ -120,20 +110,3 @@ class BaseModel():
 
 # def init_tables():
 #     BaseModel.metadata.create_all(engine)
-=======
-                raise Exception(f"批量添加记录失败: {e}")
-
-    def find_all(self) -> list:
-        """获取所有记录"""
-        with self.get_session() as session:
-            query = session.query(self.model_class)
-            return query.all()
-
-def init_tables():
-    """初始化数据库表"""
-    try:
-        Base.metadata.create_all(engine)
-        print("数据库表初始化成功")
-    except Exception as e:
-        print(f"数据库表初始化失败: {e}")
->>>>>>> feature_character

@@ -8,12 +8,8 @@ import urllib.parse
 
 from controllers.character_controller import character_controller
 from controllers.user_controller import user_controller
-<<<<<<< HEAD
 from model.schedule import  Schedule
-=======
-from model.schdule import  Schedule
 from model.character import Character  # 导入角色模型
->>>>>>> feature_character
 from model.invitation_code import InvitationCode  # 导入邀请码模型
 
 from common.redis_client import redis_handler
@@ -23,11 +19,7 @@ import logging
 import traceback
 from flask_cors import CORS
 from flask import Flask
-<<<<<<< HEAD
 # from model.db import BaseModel, init_tables  # 导入初始化函数
-=======
-from model.db import BaseModel, init_tables  # 导入初始化函数
->>>>>>> feature_character
 from register_char.user_visibility import user_visibility_bp
 from utils.utils import *
 # 创建Flask应用
@@ -65,7 +57,6 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
-<<<<<<< HEAD
 # # 确保数据库表存在 - 使用兼容的初始化方式
 # def setup_database():
 #     """初始化数据库表"""
@@ -75,25 +66,12 @@ logger = logging.getLogger(__name__)
 # # 在应用启动时初始化数据库
 # with app.app_context():
 #     setup_database()
-=======
-# 确保数据库表存在 - 使用兼容的初始化方式
-def setup_database():
-    """初始化数据库表"""
-    init_tables()
-    logger.info("数据库表初始化完成")
-
-# 在应用启动时初始化数据库
-with app.app_context():
-    setup_database()
->>>>>>> feature_character
 
 # 根路由测试
 @app.route('/', methods=['GET'])
 def index():
     return "server is running", 200
 
-<<<<<<< HEAD
-=======
 # 添加获取角色详情的API路由
 @app.route('/api/character/<int:character_id>/detail', methods=['GET'])
 def get_character_detail(character_id):
@@ -176,7 +154,6 @@ def character_detail_page(character_id):
     """
     return render_template('character_detail.html', character_id=character_id)
 
->>>>>>> feature_character
 # 添加用户注册路由
 @app.route('/register')
 def register_page():
