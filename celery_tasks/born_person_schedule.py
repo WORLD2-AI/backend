@@ -3,7 +3,7 @@ from base import *
 from model.character import Character
 from system.plan import *
 import json
-from model.schedule import Schedule
+from model.schdule import *
 from maza.maze import Maze
 
 

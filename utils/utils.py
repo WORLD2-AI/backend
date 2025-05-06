@@ -20,7 +20,7 @@ env_visuals = f"{maze_assets_loc}/the_ville/visuals"
 fs_storage = "E:\\code\\python\\town\\environment\\frontend_server\\storage"
 fs_temp_storage = "E:\\code\\python\\town\\environment\\frontend_server\\temp_storage"
 fs_back_end = "E:\\code\\python\\town\\reverie\\backend_server"
-
+collision_block_id = "0"
 emb_url = "http://127.0.0.1:11434"
 # api_url = "http://127.0.0.1"
 openai_api_key = ["sk-058aed3cf0b942068740c516fef37c51"]

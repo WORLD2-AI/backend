@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String, Text, Float
-from character_system.model.db import BaseModel, Base
+from model.db import BaseModel, Base
 from character_system.config import logger
 import json
 
@@ -51,7 +51,7 @@ class Position(BaseModel, Base):
                 return True
             else:
                 # 需要先获取角色ID
-                from character_system.model.character import Character
+                from model.character import Character
                 character = Character().first(name=character_name)
                 if not character:
                     logger.error(f"未找到角色: {character_name}")

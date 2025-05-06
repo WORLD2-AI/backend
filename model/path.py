@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String, Text, JSON
-from character_system.model.db import BaseModel, Base
+from model.db import BaseModel, Base
 from character_system.config import logger
 import json
 from datetime import datetime
@@ -52,7 +52,7 @@ class Path(BaseModel, Base):
         """保存角色路径"""
         try:
             # 获取角色ID
-            from character_system.model.character import Character
+            from model.character import Character
             character = Character().first(name=character_name)
             if not character:
                 logger.error(f"未找到角色: {character_name}")

@@ -8,7 +8,7 @@
 
 import json
 from pprint import pprint
-from config.config import logger
+from character_system.config import logger
 from character_system.services import get_redis_client, get_all_keys_by_type, KEY_TYPES
 
 def view_all_redis_keys(pattern='*'):

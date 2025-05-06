@@ -10,7 +10,7 @@ import threading
 import time
 import redis
 from celery import Celery
-from config.config import logger, REDIS_CONFIG, CELERY_CONFIG, CELERY_BEAT_SCHEDULE, CONSTANTS
+from character_system.config import logger, REDIS_CONFIG, CELERY_CONFIG, CELERY_BEAT_SCHEDULE, CONSTANTS
 
 #-------------------------------------------------------------------------
 # Redis服务管理
