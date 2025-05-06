@@ -12,11 +12,7 @@ def init_invitation_codes():
     inv_code_model = InvitationCode()
     
     # 检查是否已有邀请码
-<<<<<<< HEAD
     existing_codes = inv_code_model.find()
-=======
-    existing_codes = inv_code_model.find_all()
->>>>>>> feature_character
     if existing_codes:
         print(f"已存在 {len(existing_codes)} 个邀请码，跳过生成")
         return

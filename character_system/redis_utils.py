@@ -4,13 +4,8 @@ import json
 from datetime import datetime
 from character_system.config import logger, CONSTANTS
 from character_system.services import get_redis_client, redis_key, get_all_keys_by_type, KEY_TYPES
-<<<<<<< HEAD
-from character_system.model.position import Position
-from character_system.model.path import Path
-=======
 from model.position import Position
 from model.path import Path
->>>>>>> feature_character
 
 def get_all_characters_from_redis():
     """从Redis中获取所有角色信息，并同步位置数据到数据库"""

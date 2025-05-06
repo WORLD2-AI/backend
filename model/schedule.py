@@ -1,19 +1,3 @@
-<<<<<<< HEAD
-from sqlalchemy import  Column, Integer, String
-from model.db import BaseModel,Base
-
-class Schedule(BaseModel,Base):
-    __tablename__ = 'schedule'
-    id = Column(Integer, primary_key=True)
-    user_id = Column(Integer, nullable=False)
-    name = Column(String(100), nullable=True)
-    start_minute = Column(Integer, nullable=False)
-    duration = Column(Integer, nullable=False)
-    action = Column(String(500), nullable=False)
-    site = Column(String(500), nullable=False)
-    emoji = Column(String(20), nullable=False)
-    def to_dict(self):
-=======
 from sqlalchemy import Column, Integer, String, Text
 from model.db import BaseModel, Base
 from character_system.config import logger
@@ -33,7 +17,6 @@ class Schedule(BaseModel, Base):
     
     def to_dict(self):
         """将模型转换为字典"""
->>>>>>> feature_character
         return {
             'id': self.id,
             'user_id': self.user_id,
@@ -44,7 +27,6 @@ class Schedule(BaseModel, Base):
             'site': self.site,
             'emoji': self.emoji
         }
-<<<<<<< HEAD
 
     # def create_table(self):
     #     """create action schedule table"""
@@ -65,7 +47,6 @@ class Schedule(BaseModel, Base):
     #     except pymysql.Error as e:
     #         print(f"create table failed,err: {e}")
     #         raise
-=======
     
     def get_all_schedules(self):
         """获取所有活动安排"""
@@ -93,4 +74,3 @@ class Schedule(BaseModel, Base):
         except Exception as e:
             logger.error(f"获取用户 {user_id} 的活动安排失败: {e}")
             return [] 
->>>>>>> feature_character
