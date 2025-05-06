@@ -13,5 +13,5 @@ result_serializer = 'json'
 accept_content = ['json']
 timezone = 'Asia/Shanghai'
 enable_utc = True
-worker_concurrency = 1 
+worker_concurrency = 10 
 task_always_eager = celery_config.get('task_always_eager', False)

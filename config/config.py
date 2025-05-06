@@ -24,7 +24,7 @@ REDIS_PASSWORD = None
 
 # Redis配置
 REDIS_CONFIG = {
-    'host': 'localhost',
+    'host': '127.0.0.1',
     'port': 6379,
     'password': REDIS_PASSWORD,  # 使用密码
     'socket_timeout': 5,

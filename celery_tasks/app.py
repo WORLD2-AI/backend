@@ -2,7 +2,7 @@ from celery import Celery
 from base import *
 from celery_tasks.born_person_schedule import persona_daily_task
 from celery_tasks.path_generator import generate_path_task
-from celery_tasks.character_position_workflow import run_position_workflow
+# from celery_tasks.character_position_workflow import run_position_workflow
 
 app = Celery('tasks')
 app.config_from_object('celery_tasks.celery_config')
@@ -49,8 +49,8 @@ app.conf.beat_schedule = {
         'task': 'celery_tasks.character_scheduler.send_character_tasks',
         'schedule': 30.0,  # exec once by 30 s
     },
-    'run_position_workflow':{
-        "task": 'celery_tasks.character_position_workflow.run_position_workflow',
-        'schedule': 60.0,  # exec once by 60 s
-    }
+    # 'run_position_workflow':{
+    #     "task": 'celery_tasks.character_position_workflow.run_position_workflow',
+    #     'schedule': 60.0,  # exec once by 60 s
+    # }
 }
