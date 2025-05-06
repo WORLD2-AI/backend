@@ -33,7 +33,7 @@ REDIS_CONFIG = {
 }
 
 celery_config = {
-    "task_always_eager": True,
+    "task_always_eager": False,
 }
 
 # 系统常量定义

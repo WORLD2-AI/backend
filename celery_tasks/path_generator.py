@@ -5,7 +5,7 @@ import json
 import random
 from base import *
 from datetime import datetime, timedelta
-import traceback
+from config.config import logger
 from common.redis_client import RedisClient
 from celery_tasks.redis_utils import get_redis_key,get_all_character_id_from_redis
 from system.path_finder import path_finder
@@ -16,9 +16,11 @@ maze_name="the ville"
 m = Maze(maze_name)
     
 def generate_path_task(character_id:int,target_position:tuple = None):
+    logger.info(f"generate_path_task start {character_id}:{target_position}")
     redis = RedisClient()
     rkey = get_redis_key(character_id=character_id)
     character_data = redis.get_json(rkey)
+    logger.info(f"ger redis data: {character_data}")
     cur_tiled = character_data.get("position",default_born_tiled)
     if not cur_tiled:
         cur_tiled =  default_born_tiled
@@ -28,9 +30,12 @@ def generate_path_task(character_id:int,target_position:tuple = None):
         target_tiles = m.address_tiles["the ville:johnson park:lake:log bridge"]
         if plan in m.address_tiles:  
             target_tiles = m.address_tiles[plan]
+    logger.info(f"get target_tiles:{target_tiles}")
+    path = []
     if len(target_tiles)> 0 :
         target = random.choice(list(target_tiles))
         path = path_finder(m.collision_maze,cur_tiled,target,collision_block_id)
+    logger.info(f"get path:{path}")
     character_data['path'] = path
     redis.set_json(rkey,character_data)
 
