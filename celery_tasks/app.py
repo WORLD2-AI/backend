@@ -2,13 +2,8 @@ from celery import Celery
 from base import *
 from celery_tasks.born_person_schedule import persona_daily_task
 
-<<<<<<< HEAD
 app = Celery('tasks')
 app.config_from_object('celery_tasks.celery_config')
-=======
-
-app = Celery('tasks', broker='redis://:000000@127.0.0.1:6379/0', backend='redis://:000000@127.0.0.1:6379/1')
->>>>>>> feature_character
 
 # Celery配置
 app.conf.update(
