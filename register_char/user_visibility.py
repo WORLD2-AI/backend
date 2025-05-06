@@ -13,6 +13,19 @@ logger = logging.getLogger(__name__)
 user_visibility_bp = Blueprint('character_visibility', __name__)
 
 # Redis连接配置
+<<<<<<< HEAD
+=======
+try:
+    redis_client = redis.Redis(host='localhost', port=6379, db=0, password='000000', decode_responses=True)
+    # 测试连接
+    redis_client.ping()
+    logger.info("成功连接到Redis服务器")
+except redis.ConnectionError as e:
+    logger.error(f"无法连接到Redis服务器: {e}")
+    # 创建一个内存字典作为备用
+    redis_memory_dict = {}
+    logger.warning("使用内存字典作为临时存储")
+>>>>>>> feature_character
 
 def init_test_data():
     """

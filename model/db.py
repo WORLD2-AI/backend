@@ -6,33 +6,48 @@ from typing import List, Optional, Dict
 # database gsn
 DATABASE_URL = 'mysql+pymysql://root:123456@localhost:3306/character_db'
 
-engine = create_engine(DATABASE_URL, pool_pre_ping=True,
+# 创建引擎
+engine = create_engine(
+    DATABASE_URL, 
+    pool_pre_ping=True,
     pool_recycle=1800,
     pool_size=10,
     max_overflow=20
 )
+
+# 创建基础模型类
 Base = declarative_base()
 SessionLocal = sessionmaker(bind=engine)
 
 def get_db():
+    """获取数据库会话"""
     db = SessionLocal()
     return db
+
 class BaseModel():
+    """基础模型类，提供通用的CRUD操作"""
     def __init__(self, **kwargs):
         self.model_class = self.get_model_class()
         for key, value in kwargs.items():
             setattr(self, key, value)
 
     def get_model_class(self):
+        """获取模型类"""
         for base in self.__class__.__mro__:
             if hasattr(base, "__tablename__"):
                 return base
-        raise AttributeError("Model class not found for the current instance.")
+        raise AttributeError("未找到当前实例的模型类。")
 
     def get_session(self):
+<<<<<<< HEAD
         return get_db()  
+=======
+        """获取会话"""
+        return get_db()  # 每次调用新建 Session
+>>>>>>> feature_character
 
-    def first(self, filters: Optional[Dict] = None) -> object:
+    def first(self, **filters) -> object:
+        """获取符合条件的第一条记录"""
         with self.get_session() as session:
             query = session.query(self.model_class)
             if filters:
@@ -41,16 +56,21 @@ class BaseModel():
             return query.first()
 
     def find_by_id(self, id: int) -> object:
+        """通过ID查找记录"""
         with self.get_session() as session:
             return session.query(self.model_class).filter_by(id=id).first()
-    def find(self, **kwargs) -> list[object]:
-         with self.get_session() as session:
+            
+    def find(self, **kwargs) -> list:
+        """查找符合条件的所有记录"""
+        with self.get_session() as session:
             query = session.query(self.model_class)
             if kwargs:
                 for key, value in kwargs.items():
                     query = query.filter(getattr(self.model_class, key) == value)
             return query.all()
+            
     def update_by_id(self, id: int, **kwargs):
+        """通过ID更新记录"""
         with self.get_session() as session:
             instance = session.query(self.model_class).filter_by(id=id).first()
             if instance:
@@ -59,6 +79,7 @@ class BaseModel():
                 session.commit()
     
     def create(self, data: dict) -> object:
+        """创建记录"""
         with self.get_session() as session:
             try:
                 instance = self.model_class(**data)
@@ -68,9 +89,13 @@ class BaseModel():
                 return instance
             except SQLAlchemyError as e:
                 session.rollback()
-                raise Exception(f"Error creating record: {e}")
+                raise Exception(f"创建记录失败: {e}")
     
     def add_all(self, data: List[dict]) -> List[object]:
+<<<<<<< HEAD
+=======
+        """批量添加记录"""
+>>>>>>> feature_character
         with self.get_session() as session:
             try:
                 instances = [self.model_class(**item) for item in data]
@@ -79,6 +104,7 @@ class BaseModel():
                 return instances
             except SQLAlchemyError as e:
                 session.rollback()
+<<<<<<< HEAD
                 raise Exception(f"Error adding records: {e}")
     def delete(self, id: int):
         with self.get_session() as session:
@@ -94,3 +120,20 @@ class BaseModel():
 
 # def init_tables():
 #     BaseModel.metadata.create_all(engine)
+=======
+                raise Exception(f"批量添加记录失败: {e}")
+
+    def find_all(self) -> list:
+        """获取所有记录"""
+        with self.get_session() as session:
+            query = session.query(self.model_class)
+            return query.all()
+
+def init_tables():
+    """初始化数据库表"""
+    try:
+        Base.metadata.create_all(engine)
+        print("数据库表初始化成功")
+    except Exception as e:
+        print(f"数据库表初始化失败: {e}")
+>>>>>>> feature_character

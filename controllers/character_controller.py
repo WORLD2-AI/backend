@@ -1,16 +1,45 @@
+<<<<<<< HEAD
 import json
 from flask import Blueprint, request, jsonify, session
+=======
+from flask import Blueprint, request, jsonify, session, render_template
+>>>>>>> feature_character
 from model.character import  Character,CHARACTER_STATUS
 from common.redis_client import redis_handler
 import logging
+<<<<<<< HEAD
 from celery_tasks.app import proecess_character_born
 from model.schedule import Schedule
+=======
+import sys
+import os
+import json
+sys.path.append(os.path.abspath(os.path.dirname(os.path.dirname(__file__))))
+from register_char.celery_task import makeAgentDailyTask  # 直接从celery_task导入任务
+from model.db import BaseModel
+>>>>>>> feature_character
 import traceback
+import redis
+from model.schdule import Schedule
 
 
 character_controller = Blueprint('character', __name__,)
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+<<<<<<< HEAD
+=======
+
+@character_controller.route('/api/register_role', methods=['GET'])
+def character_register_page():
+    """Render the character registration page"""
+    return render_template('register.html')
+
+@character_controller.route('/characters', methods=['GET'])
+def character_list_page():
+    """Render the character list page"""
+    return render_template('character_list.html')
+
+>>>>>>> feature_character
 @character_controller.route('/api/register_role', methods=['POST', 'OPTIONS'])
 def character_register():
     if request.method == 'OPTIONS':
@@ -188,8 +217,24 @@ def get_character_detail(character_id):
             logger.warning(f"获取角色实时数据失败: {str(e)}")
             
         # 获取角色的日程数据
+<<<<<<< HEAD
         schedules = Schedule().find(user_id=character_id)
         character_data['schedules'] = [schedule.to_dict() for schedule in schedules]
+=======
+        try:
+            schedule = Schedule()
+            # 检查Schedule类是否有character_id字段
+            if hasattr(Schedule, 'character_id'):
+                schedules = schedule.find(character_id=character_id)
+            else:
+                # 如果没有character_id字段，则可能使用user_id字段
+                schedules = schedule.find(user_id=character.user_id)
+            
+            character_data['schedules'] = [s.to_dict() for s in schedules]
+        except Exception as e:
+            logger.error(f"获取角色日程数据失败: {str(e)}\n{traceback.format_exc()}")
+            character_data['schedules'] = []  # 设置默认空列表
+>>>>>>> feature_character
         
         response = jsonify({
             "status": "success",
@@ -208,6 +253,7 @@ def get_character_detail(character_id):
 @character_controller.route('/api/user/characters', methods=['GET'])
 def get_user_characters():
     try:
+<<<<<<< HEAD
         user_id = session.get('user_id')
         if not user_id:
             return jsonify({
@@ -215,6 +261,11 @@ def get_user_characters():
                 "message": "user is not login"
             }), 401
         characters = Character().find(user_id=user_id)
+=======
+        # 这里应该根据用户ID获取角色列表
+        # 为了演示，我们返回所有角色
+        characters = Character().find_all()
+>>>>>>> feature_character
         character_list = [character.to_dict() for character in characters]
         
         return jsonify({
@@ -228,6 +279,7 @@ def get_user_characters():
 @character_controller.route('/api/character/<int:character_id>', methods=['DELETE'])
 def delete_character(character_id):
     try:
+<<<<<<< HEAD
         character = Character()
         temp = character.find_by_id(character_id)
         if not temp:
@@ -236,6 +288,18 @@ def delete_character(character_id):
    
         character.delete(character_id)
         character.commit()
+=======
+        character = Character().find_by_id(character_id)
+        if not character:
+            return jsonify({'status': 'error', 'message': '角色不存在'}), 404
+            
+        # 删除相关的日程
+        schedule = Schedule()
+        schedules = schedule.find(character_id=character_id)
+        for s in schedules:
+            schedule.get_session().delete(s)
+        schedule.get_session().commit()
+>>>>>>> feature_character
         
 
         redis_key = f"character:{character_id}"
@@ -247,9 +311,15 @@ def delete_character(character_id):
             'character_id': character_id
         }), 200
     except Exception as e:
+<<<<<<< HEAD
         character.get_session().rollback()
         # raise e
         return jsonify({'status': 'error', 'message': f'delete character failed{str(e)}'}), 500
+=======
+        BaseModel().get_session().rollback()
+        return jsonify({'status': 'error', 'message': f'删除角色错误：{str(e)}'}), 500
+
+>>>>>>> feature_character
 # 数据校验函数
 def validate_character(data):
     errors = {}
