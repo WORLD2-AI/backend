@@ -161,7 +161,7 @@ def logout():
         session.clear()
 
         #终止Flask-Login会话
-        logout_user()
+        # logout_user()
 
         return jsonify({
             "status": "success",
