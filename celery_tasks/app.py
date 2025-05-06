@@ -1,7 +1,7 @@
 from celery import Celery
 from base import *
 from celery_tasks.born_person_schedule import persona_daily_task
-from celery_tasks.path_generator import generate_path_task
+from celery_tasks.path_generator import generate_path_task,update_position_task
 from celery_tasks.character_position_workflow import run_position_workflow
 from celery_tasks.character_scheduler import send_character_tasks
 
@@ -28,7 +28,9 @@ def path_move_task(character_id,target_position):
 @app.task
 def character_tasks():
     send_character_tasks()
-
+@app.task
+def path_position_update():
+    update_position_task()
 
 @app.task
 def character_position_tasks():
@@ -42,5 +44,9 @@ app.conf.beat_schedule = {
     'character_position_tasks':{
         "task": 'celery_tasks.app.character_position_tasks',
         'schedule': 20.0,  # exec once by 60 s
+    },
+    'update_position_task':{
+        "task":"celery_tasks.app.update_position_task",
+        'schedule':1.0
     }
 }
