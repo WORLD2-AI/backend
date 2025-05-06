@@ -139,7 +139,6 @@ def profile():
 
 
 @user_controller.route('/logout', methods=['POST'])
-@login_required
 def logout():
     """
     安全退出登录
@@ -175,7 +174,7 @@ def logout():
         # return response
 
     except Exception as e:
-        app.logger.error(f"退出异常: {str(e)}")
+        print(f"退出异常: {str(e)}")
         return jsonify({
             "status": "error",
             "message": "退出失败，请重试"
