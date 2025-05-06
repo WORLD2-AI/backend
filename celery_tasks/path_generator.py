@@ -7,7 +7,7 @@ from base import *
 from datetime import datetime, timedelta
 import traceback
 from common.redis_client import RedisClient
-from celery_tasks.redis_utils import get_redis_key
+from celery_tasks.redis_utils import get_redis_key,get_all_character_id_from_redis
 from system.path_finder import path_finder
 from config.config import collision_block_id,default_born_tiled
 from celery_tasks.born_person_schedule import address_determine_action,make_persona_by_id
@@ -34,7 +34,8 @@ def generate_path_task(character_id:int,target_position:tuple = None):
     character_data['path'] = path
     redis.set_json(rkey,character_data)
 
-
+def update_position_task():
+    ids = get_all_character_id_from_redis()
 
 if __name__ == "__main__":
     redis = RedisClient()

@@ -2,7 +2,7 @@
 
 import datetime
 import traceback
-from character_system.config import logger
+from config.config import logger
 from celery_tasks.redis_utils import (
     get_character_path,
     update_character_position
