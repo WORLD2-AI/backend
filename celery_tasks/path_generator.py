@@ -24,7 +24,8 @@ def generate_path_task(character_id:int,target_position:tuple = None):
     cur_tiled = character_data.get("position",default_born_tiled)
     if not cur_tiled:
         cur_tiled =  default_born_tiled
-    plan = character_data.get("action")
+    plan = character_data.get("site")
+    logger.info(f"get plan {plan}")
     global m
     if target_position is None:
         target_tiles = m.address_tiles["the ville:johnson park:lake:log bridge"]
@@ -40,7 +41,7 @@ def generate_path_task(character_id:int,target_position:tuple = None):
                 break
             target = random.choice(list(target_tiles))
             path = path_finder(m.collision_maze,cur_tiled,target,collision_block_id)
-            if len(path) == 1 and path[0] == target[0] and path[1] == path[1]:
+            if len(path) == 1 and path[0][0] == target[0] and path[0][1] == target[1]:
                 continue
             else:
                 break
@@ -70,16 +71,6 @@ def update_position_task():
 if __name__ == "__main__":
     redis = RedisClient()
     now = datetime.now()
-    midnight = now.replace(hour=0, minute=0, second=0, microsecond=0)
-    minutes_passed = int((now - midnight).total_seconds() // 60)
     character_id = 5
-    rkey = get_redis_key(character_id=character_id)
-    data = redis.get_json(rkey)
-    data['action'] = "the ville:johnson park:lake:log bridge"
-    data['duration'] = 5
-    data['start_minute'] = minutes_passed
-    data['emoji'] = "🚶‍♀️😄"
-    data['position'] = default_born_tiled
-    redis.set_json(rkey,data)
     generate_path_task(character_id)
     update_position_task()

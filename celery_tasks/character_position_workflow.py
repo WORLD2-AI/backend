@@ -36,17 +36,20 @@ def run_position_workflow(app):
                     if schedule is None:
                         schedule = Schedule()
                         schedule.action = "sleeping"
+                        schedule.site = ""
                         schedule.duration = 60
                         schedule.start_minute = minutes_passed
                         schedule.emoji = "😴"
                 
                 data['action'] = schedule.action
+                data['site'] = schedule.site
                 data['duration'] = schedule.duration
                 data['start_minute'] = schedule.start_minute
                 data['emoji'] = schedule.emoji  
                 logger.info(f'set redis data:{data}')
                 redis_client.set_json(get_redis_key(id),data)
-                app.send_task('celery_tasks.app.path_find_task', kwargs={'character_id': id} )
+                if app is not None:
+                    app.send_task('celery_tasks.app.path_find_task', kwargs={'character_id': id} )
                 # path_find_task.delay(id)
 
             
@@ -61,5 +64,5 @@ def run_position_workflow(app):
 
 if __name__ == "__main__":
     # 命令行直接运行时，使用批处理模式
-    result = run_position_workflow()
+    result = run_position_workflow(None)
     

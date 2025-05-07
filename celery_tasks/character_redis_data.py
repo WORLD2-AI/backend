@@ -7,6 +7,7 @@ class CharacterRedisData(Character):
     duration = 0
     emoji = ""
     path = []
+    site= ""
     def to_dict(self):
         return {
             'id': self.id,
@@ -30,7 +31,8 @@ class CharacterRedisData(Character):
             "duration":self.duration,
             "action":self.action,
             "emoji":self.emoji,
-            "path" : self.path
+            "path" : self.path,
+            "site":self.site,
         }
         
 
