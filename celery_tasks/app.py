@@ -39,14 +39,14 @@ def character_position_tasks():
 app.conf.beat_schedule = {
     'character_tasks': {
         'task': 'celery_tasks.app.character_tasks',
-        'schedule': 60.0,  # exec once by 30 s
+        'schedule': 30.0,  # exec once by 30s
     },
     'character_position_tasks':{
         "task": 'celery_tasks.app.character_position_tasks',
-        'schedule': 10.0,  # exec once by 60 s
+        'schedule': 10.0,  # exec once by 60s
     },
     'path_position_update':{
         "task":"celery_tasks.app.path_position_update",
-        'schedule':1.0
+        'schedule':1.0 # exec once by 1s
     }
 }
