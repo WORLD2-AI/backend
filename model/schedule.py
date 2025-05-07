@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, Text
 from model.db import BaseModel, Base
-from character_system.config import logger
+from config.config import logger
 
 class Schedule(BaseModel, Base):
     """角色活动安排模型"""

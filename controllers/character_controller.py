@@ -13,7 +13,7 @@ from flask import Blueprint, request, jsonify, session, render_template
 from model.character import Character, CHARACTER_STATUS
 from model.db import BaseModel
 from model.schedule import Schedule
-from register_char.celery_task import redis_client, makeAgentDailyTask
+from common.redis_client import redis_handler
 
 # 创建蓝图
 character_controller = Blueprint('character', __name__)
@@ -86,31 +86,13 @@ def get_character_redis_data(character_id):
     """
     try:
         redis_key = f"character:{character_id}"
-        redis_data = redis_client.get(redis_key)
+        redis_data = redis_handler.get(redis_key)
         if redis_data:
             return json.loads(redis_data)
     except Exception as e:
         logger.warning(f"获取角色实时数据失败: {str(e)}")
     
     return None
-
-def check_redis_connection():
-    """
-    检查Redis连接是否正常
-    
-    返回:
-        (is_connected, error_message): 元组，第一个元素表示是否连接成功，第二个元素为错误信息
-    """
-    if redis_client is None:
-        return False, "Redis客户端未初始化"
-    
-    try:
-        redis_client.ping()
-        return True, None
-    except (redis.ConnectionError, redis.TimeoutError) as e:
-        logger.error(f"Redis连接失败: {str(e)}")
-        return False, f"无法连接到Redis服务器，请检查Redis服务是否运行: {str(e)}"
-
 def parse_location_from_site(site_info):
     """
     从site字段中解析位置信息
@@ -220,14 +202,6 @@ def character_register():
         return response
         
     try:
-        # 检查Redis连接
-        is_connected, error_message = check_redis_connection()
-        if not is_connected:
-            return jsonify({
-                "status": "error",
-                "message": error_message
-            }), 503
-            
         # 获取并验证请求数据
         data = request.get_json()
         if not data:
@@ -461,7 +435,7 @@ def delete_character(character_id):
         
         # 删除Redis中的实时数据
         redis_key = f"character:{character_id}"
-        redis_client.delete(redis_key)
+        redis_handler.delete(redis_key)
         
         return jsonify({
             'status': 'success',
