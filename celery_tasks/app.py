@@ -11,7 +11,7 @@ app.config_from_object('celery_tasks.celery_config')
 # Celery配置
 app.conf.update(
     # 同步调试
-    task_always_eager=True,
+    task_always_eager=False,
 )
  
 @app.task
@@ -39,11 +39,11 @@ def character_position_tasks():
 app.conf.beat_schedule = {
     'character_tasks': {
         'task': 'celery_tasks.app.character_tasks',
-        'schedule': 10.0,  # exec once by 30 s
+        'schedule': 60.0,  # exec once by 30 s
     },
     'character_position_tasks':{
         "task": 'celery_tasks.app.character_position_tasks',
-        'schedule': 20.0,  # exec once by 60 s
+        'schedule': 10.0,  # exec once by 60 s
     },
     'path_position_update':{
         "task":"celery_tasks.app.path_position_update",

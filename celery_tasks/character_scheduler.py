@@ -22,13 +22,13 @@ def send_character_tasks():
         for cha in all_character:
             exist = False
             for id in ids:
-                if cha.id == id:
+                if str(cha.id) == id:
                     exist = True
                     break
             if not exist:
                 set_character_to_redis(cha)
             else:
-                redis_handler.setex(get_redis_key(cha.id),24*3600)
+                redis_handler.pexpire(get_redis_key(cha.id),24*3600)
         for id in ids:
             exist = False
             for cha in all_character:

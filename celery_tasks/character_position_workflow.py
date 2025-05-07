@@ -24,6 +24,7 @@ def run_position_workflow(app):
         for id in ids:
             logger.info(f"id:{id}")
             data = redis_client.get_json(get_redis_key(id))
+            print(data)
             start_minute = data.get("start_minute",0)
             duration = data.get("duration",0)
             logger.info(f"start_minute:{start_minute}")
