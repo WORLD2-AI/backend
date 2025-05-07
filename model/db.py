@@ -62,6 +62,15 @@ class BaseModel():
             query = session.query(self.model_class)
             if kwargs:
                 for key, value in kwargs.items():
+                    if key == "limit":
+                        query = query.limit(value)
+                        continue
+                    if key == "offset":
+                        query = query.offset(value)
+                        continue
+                    if key == "order_by":
+                        query = query.order_by(value)
+                        continue
                     query = query.filter(getattr(self.model_class, key) == value)
             return query.all()
             

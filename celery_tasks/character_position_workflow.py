@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import random
 from base import *
 from sqlalchemy import text
 import traceback
@@ -29,10 +30,10 @@ def run_position_workflow(app):
             duration = data.get("duration",0)
             logger.info(f"start_minute:{start_minute}")
             if start_minute == 0 or minutes_passed >= start_minute+duration :
-                schedule = temp_schedule.get_session().query(Schedule).filter(Schedule.user_id == id,Schedule.start_minute > minutes_passed).order_by(text('id asc')).first()
+                schedule = temp_schedule.get_session().query(Schedule).filter(Schedule.user_id == id,Schedule.start_minute > minutes_passed).order_by(text('id asc')).limit(10).all()
                 logger.info(f"get schedule {schedule}")
                 if schedule is None:
-                    schedule = temp_schedule.get_session().query(Schedule).filter(Schedule.user_id == 0,Schedule.start_minute > minutes_passed).order_by(text('id asc')).first()
+                    schedule = temp_schedule.get_session().query(Schedule).filter(Schedule.user_id == 0,Schedule.start_minute > minutes_passed).order_by(text('id asc')).limit(10).all()
                     logger.info(f"get schedule default: {schedule}")
                     if schedule is None:
                         schedule = Schedule()
@@ -41,7 +42,8 @@ def run_position_workflow(app):
                         schedule.duration = 60
                         schedule.start_minute = minutes_passed
                         schedule.emoji = "😴"
-                
+                    else:
+                        schedule = random.choice(schedule)
                 data['action'] = schedule.action
                 data['site'] = schedule.site
                 data['duration'] = schedule.duration
