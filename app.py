@@ -18,7 +18,6 @@ from model.user import User
 from controllers.character_controller import character_controller
 from controllers.user_controller import user_controller
 from register_char.user_visibility import user_visibility_bp
-from register_char.celery_task import redis_client
 from utils.utils import TWITTER_API_KEY, TWITTER_API_SECRET_KEY
 from config.config import REDIS_CONFIG
 # 创建Flask应用
