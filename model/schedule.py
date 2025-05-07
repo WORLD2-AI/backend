@@ -27,26 +27,6 @@ class Schedule(BaseModel, Base):
             'site': self.site,
             'emoji': self.emoji
         }
-
-    # def create_table(self):
-    #     """create action schedule table"""
-    #     try:            
-    #         self.session.execute("""
-    #             CREATE TABLE IF NOT EXISTS schedule (
-    #             id INT AUTO_INCREMENT PRIMARY KEY,
-    #             user_id INT NOT NULL COMMENT '用户ID',
-    #             name VARCHAR(255) NOT NULL COMMENT 'user name',
-    #             start_minute INT NOT NULL COMMENT 'action start minute',
-    #             duration INT NOT NULL COMMENT 'minutes',
-    #             action VARCHAR(255) NOT NULL COMMENT 'action description',
-    #             site VARCHAR(255) COMMENT 'position of action',
-    #             emoji VARCHAR(10) COMMENT 'emoji'
-    #             )
-    #         """)
-    #         print("create tables success")
-    #     except pymysql.Error as e:
-    #         print(f"create table failed,err: {e}")
-    #         raise
     
     def get_all_schedules(self):
         """获取所有活动安排"""

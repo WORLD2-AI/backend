@@ -139,6 +139,7 @@ def profile():
 
 
 @user_controller.route('/logout', methods=['POST'])
+@login_required
 def logout():
     """
     安全退出登录
@@ -161,7 +162,7 @@ def logout():
         session.clear()
 
         #终止Flask-Login会话
-        # logout_user()
+        logout_user()
 
         return jsonify({
             "status": "success",
@@ -174,7 +175,7 @@ def logout():
         # return response
 
     except Exception as e:
-        print(f"退出异常: {str(e)}")
+        app.logger.error(f"退出异常: {str(e)}")
         return jsonify({
             "status": "error",
             "message": "退出失败，请重试"
@@ -219,7 +220,7 @@ def list_invitation_codes():
     
     try:
         invitation_code = InvitationCode()
-        codes = invitation_code.find()
+        codes = invitation_code.find_all()
         
         return jsonify({
             "status": "success",
