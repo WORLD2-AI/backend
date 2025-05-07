@@ -12,11 +12,8 @@ from flask_cors import CORS
 from requests_oauthlib import OAuth1Session
 
 # 项目内部模块
-from model.db import BaseModel, init_tables
+
 from model.user import User
-from model.schdule import Schedule
-from model.character import Character
-from model.invitation_code import InvitationCode
 
 from controllers.character_controller import character_controller
 from controllers.user_controller import user_controller
@@ -60,10 +57,10 @@ app.register_blueprint(user_controller)
 app.register_blueprint(user_visibility_bp)
 
 # 确保数据库表存在
-def setup_database():
-    """初始化数据库表"""
-    init_tables()
-    logger.info("数据库表初始化完成")
+# def setup_database():
+#     """初始化数据库表"""
+#     init_tables()
+#     logger.info("数据库表初始化完成")
 
 # 根路由测试
 @app.route('/', methods=['GET'])
