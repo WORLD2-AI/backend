@@ -45,8 +45,8 @@ app.conf.beat_schedule = {
         "task": 'celery_tasks.app.character_position_tasks',
         'schedule': 20.0,  # exec once by 60 s
     },
-    'update_position_task':{
-        "task":"celery_tasks.app.update_position_task",
+    'path_position_update':{
+        "task":"celery_tasks.app.path_position_update",
         'schedule':1.0
     }
 }
