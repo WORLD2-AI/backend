@@ -12,7 +12,7 @@ from flask import Blueprint, request, jsonify, session, render_template
 # 项目内部模块
 from model.character import Character, CHARACTER_STATUS
 from model.db import BaseModel
-from model.schdule import Schedule
+from model.schedule import Schedule
 from register_char.celery_task import redis_client, makeAgentDailyTask
 
 # 创建蓝图
