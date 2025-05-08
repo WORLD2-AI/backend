@@ -14,7 +14,7 @@ from model.character import Character, CHARACTER_STATUS
 from model.db import BaseModel
 from model.schedule import Schedule
 from common.redis_client import redis_handler
-
+from celery_tasks.app import proecess_character_born
 # 创建蓝图
 character_controller = Blueprint('character', __name__)
 
@@ -257,7 +257,7 @@ def character_register():
                 'lifestyle': character.lifestyle
             }
             
-            task = makeAgentDailyTask.apply(task_data)
+            task = proecess_character_born.apply(task_data,ignore_result=True)
             logger.info(f"任务提交成功: task_id={task.id}")
             
             response = jsonify({
