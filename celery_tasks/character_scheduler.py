@@ -1,5 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
+# 添加项目根目录到Python路径
+import sys
+import os
+root_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if root_path not in sys.path:
+    sys.path.insert(0, root_path)
+
 from base import *
 from celery_tasks.redis_utils import get_redis_key,get_all_character_id_from_redis,set_character_to_redis
 

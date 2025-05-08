@@ -20,7 +20,7 @@ logger = logging.getLogger(__name__)
 DB_CONFIG = {
     'host': 'localhost',
     'user': 'root',
-    'password': '123456',
+    'password': '020804',
     'db': 'character_db',
     'charset': 'utf8mb4',
     'cursorclass': pymysql.cursors.DictCursor
@@ -31,7 +31,7 @@ REDIS_CONFIG = {
     'host': 'localhost',
     'port': 6379,
     'db': 0,
-    'password': '000000',  # 添加这一行
+    # 'password': '020804',  # 暂时注释掉密码
     'socket_timeout': 5,
     'decode_responses': True  # 解码响应为字符串
 }

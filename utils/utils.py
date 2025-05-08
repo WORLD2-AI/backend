@@ -13,13 +13,13 @@ TWITTER_API_SECRET_KEY = '2mhTD5tc0zfxqCHKVVQitBJjbaT0YVqfEQjie9Nez67P3TsmIS'
 # Put your name
 key_owner = "test_sim_ai"
 
-maze_assets_loc = "E:\\code\\python\\town\\environment\\frontend_server\\static_dirs\\assets"
+maze_assets_loc = "D:\\aitown\\environment\\frontend_server\\static_dirs\\assets"
 env_matrix = f"{maze_assets_loc}/the_ville/matrix2"
 env_visuals = f"{maze_assets_loc}/the_ville/visuals"
 
-fs_storage = "E:\\code\\python\\town\\environment\\frontend_server\\storage"
-fs_temp_storage = "E:\\code\\python\\town\\environment\\frontend_server\\temp_storage"
-fs_back_end = "E:\\code\\python\\town\\reverie\\backend_server"
+fs_storage = "D:\\aitown\\environment\\frontend_server\\storage"
+fs_temp_storage = "D:\\aitown\\environment\\frontend_server\\temp_storage"
+fs_back_end = "D:\\aitown\\reverie\\backend_server"
 
 emb_url = "http://127.0.0.1:11434"
 # api_url = "http://127.0.0.1"

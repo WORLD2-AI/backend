@@ -5,7 +5,7 @@ from sqlalchemy.orm import sessionmaker
 from typing import List, Optional, Dict
 # database gsn
 from config.config import DB_CONFIG
-DATABASE_URL = f'mysql+pymysql://{DB_CONFIG.get("user","root")}:{DB_CONFIG.get("password","123456")}@{DB_CONFIG.get("host","127.0.0.1")}:{DB_CONFIG.get("port",3306)}/{DB_CONFIG.get("db","character_db")}'
+DATABASE_URL = f'mysql+pymysql://{DB_CONFIG.get("user","root")}:{DB_CONFIG.get("password","020804")}@{DB_CONFIG.get("host","127.0.0.1")}:{DB_CONFIG.get("port",3306)}/{DB_CONFIG.get("db","character_db")}'
 
 # 创建引擎
 engine = create_engine(

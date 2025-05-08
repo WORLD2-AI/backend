@@ -4,7 +4,7 @@ from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import sessionmaker
 from typing import List, Optional, Dict
 
-from character_system.config import DB_CONFIG, logger
+from config.config import DB_CONFIG, logger
 
 # 构建数据库连接字符串
 DATABASE_URL = f"mysql+pymysql://{DB_CONFIG['user']}:{DB_CONFIG['password']}@{DB_CONFIG['host']}/{DB_CONFIG['db']}"
