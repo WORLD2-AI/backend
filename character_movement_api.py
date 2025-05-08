@@ -27,6 +27,8 @@ import requests
 import time
 import logging
 import httpx
+import openai
+import random
 
 # 确保所有导入使用绝对路径
 import common.redis_client
@@ -35,7 +37,6 @@ from celery_tasks.redis_utils import get_redis_key
 from celery_tasks.app import path_find_task, path_move_task
 from celery_tasks.born_person_schedule import address_determine_action, make_persona_by_id, generate_position_list, MemoryTree
 from maza.maze import Maze
-from openai import OpenAI
 
 # 设置日志
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -65,25 +66,17 @@ templates = Jinja2Templates(directory=os.path.join(current_dir, "templates"))
 # 创建迷宫实例
 maze = Maze("the ville")
 
-# 初始化DeepSeek客户端
+# 初始化DeepSeek配置
+openai.api_base = "https://api.deepseek.com/v1"
+openai.api_key = os.getenv("DEEPSEEK_API_KEY", "sk-98f0451cbb1f4f75802c35923f5b0d2f")
+
+# 测试API连接
 try:
-    client = OpenAI(
-        api_key=os.getenv("DEEPSEEK_API_KEY", "sk-98f0451cbb1f4f75802c35923f5b0d2f"),
-        base_url=os.getenv("DEEPSEEK_API_BASE_URL", "https://api.deepseek.com/v1"),
-        timeout=int(os.getenv("DEEPSEEK_API_TIMEOUT", "120")),  # 增加默认超时时间到120秒
-        http_client=httpx.Client(
-            transport=httpx.HTTPTransport(
-                proxy="http://127.0.0.1:7890"
-            ),
-            verify=False,  # 禁用SSL验证
-            timeout=120.0
-        )
-    )
-    # 测试API连接
-    test_response = client.chat.completions.create(
+    response = openai.ChatCompletion.create(
         model="deepseek-chat",
         messages=[{"role": "user", "content": "test"}],
-        max_tokens=5
+        max_tokens=100,
+        timeout=30
     )
     logger.info("DeepSeek API 连接测试成功")
 except Exception as e:
@@ -162,42 +155,26 @@ def call_deepseek_api_with_retry(messages, model="deepseek-chat", max_retries=3,
         try:
             logger.info(f"尝试调用DeepSeek API (尝试 {attempt+1}/{max_retries})")
             
-            # 创建新的HTTP客户端实例
-            http_client = httpx.Client(
-                transport=httpx.HTTPTransport(
-                    proxy="http://127.0.0.1:7890"
-                ),
-                verify=False,
-                timeout=120.0
-            )
-            
-            # 更新客户端的HTTP客户端
-            client._client = http_client
-            
             if tools:
-                response = client.chat.completions.create(
+                response = openai.ChatCompletion.create(
                     model=model,
                     messages=messages,
-                    tools=tools
+                    tools=tools,
+                    timeout=30
                 )
             else:
-                response = client.chat.completions.create(
+                response = openai.ChatCompletion.create(
                     model=model,
-                    messages=messages
+                    messages=messages,
+                    timeout=30
                 )
             
             logger.info("DeepSeek API调用成功")
             return response
             
-        except httpx.ConnectError as e:
-            last_error = e
-            logger.error(f"连接错误 (尝试 {attempt+1}/{max_retries}): {str(e)}")
-        except httpx.ReadTimeout as e:
-            last_error = e
-            logger.error(f"读取超时 (尝试 {attempt+1}/{max_retries}): {str(e)}")
         except Exception as e:
             last_error = e
-            logger.error(f"未知错误 (尝试 {attempt+1}/{max_retries}): {str(e)}")
+            logger.error(f"API调用错误 (尝试 {attempt+1}/{max_retries}): {str(e)}")
         
         if attempt < max_retries - 1:
             sleep_time = retry_delay * (2 ** attempt)  # 指数退避策略
@@ -698,4 +675,5 @@ async def create_test_character(character_id: str):
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
+
 
