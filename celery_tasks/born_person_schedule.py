@@ -325,7 +325,7 @@ def run_gpt_prompt_generate_min_schedule(persona, curr_hour_str,
     gpt_param = {"engine": "gpt-4o", "max_tokens": 7000,
                  "temperature": 1, "top_p": 1, "stream": False,
                  "frequency_penalty": 0, "presence_penalty": 0, "stop":None}
-    prompt_template = f"{fs_back_end}/persona/prompt_template/v2/generate_hourly_schedule_v2.txt"
+    prompt_template = f"./system/prompt_template/v2/generate_hourly_schedule_v2.txt"
     prompt_input = create_prompt_input(persona,
                                        curr_hour_str,
                                        intermission2,
