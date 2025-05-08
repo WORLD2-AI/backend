@@ -207,7 +207,7 @@ def run_gpt_prompt_wake_up_hour(persona, test_input=None, verbose=False):
     gpt_param = {"engine": "gpt-4o", "max_tokens": 10,
                  "temperature": 0.8, "top_p": 1, "stream": False,
                  "frequency_penalty": 0, "presence_penalty": 0, "stop": ["\n"]}
-    prompt_template = f"{root_path}/system/prompt_template/v2/wake_up_hour_v1.txt"
+    prompt_template = f"./system/prompt_template/v2/wake_up_hour_v1.txt"
     prompt_input = create_prompt_input(persona, test_input)
     prompt = generate_prompt(prompt_input, prompt_template)
     fail_safe = get_fail_safe()
@@ -532,7 +532,7 @@ def persona_daily_task(character_id:int):
     character.update_by_id(character_id,status="COMPLETED")
 
 if __name__ == "__main__":
-    persona_daily_task(1)
+    persona_daily_task(5)
     # plan_tasks = [
     #     {
     #         "name": "carlos gomez",

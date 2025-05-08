@@ -145,7 +145,7 @@ def run_gpt_prompt_daily_plan(persona,
     gpt_param = {"engine": "gpt-4o", "max_tokens": 500,
                  "temperature": 1, "top_p": 1, "stream": False,
                  "frequency_penalty": 0, "presence_penalty": 0, "stop": None}
-    prompt_template = f"{root_path}/system/prompt_template/v2/daily_planning_v7.txt"
+    prompt_template = f"./system/prompt_template/v2/daily_planning_v7.txt"
     prompt_input = create_prompt_input(persona, wake_up_hour, test_input)
     prompt = generate_prompt(prompt_input, prompt_template)
     fail_safe = get_fail_safe()
