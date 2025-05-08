@@ -39,7 +39,7 @@ def run_position_workflow(app):
                         schedule = Schedule()
                         schedule.action = "sleeping"
                         schedule.site = ""
-                        schedule.duration = 60
+                        schedule.duration = 5
                         schedule.start_minute = minutes_passed
                         schedule.emoji = "😴"
                     else:
