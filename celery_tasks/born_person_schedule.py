@@ -507,7 +507,7 @@ def persona_daily_task(character_id:int):
     persona = make_persona_by_id(character_id)
     plan_list = born_person_schedule(persona)
     # plan_list is a two-dimensional array
-    s = Schedule()
+    s = Schedule().get_session()
     for i, plans in enumerate(plan_list):
         daily_plans = address_determine_action(persona, maze, plans)
         schdule_list = []
@@ -523,8 +523,8 @@ def persona_daily_task(character_id:int):
             schedule.site = plan.get("address", "")
             schedule.emoji = plan.get("emoji", "")
             schdule_list.append(schedule)
-        s.get_session().add_all(schdule_list)
-        s.get_session().commit()
+        s.add_all(schdule_list)
+        s.commit()
     # update character table update status to sucess
     # fetch from character table where id = person_id
     # update status to success
