@@ -13,7 +13,8 @@ engine = create_engine(
     pool_pre_ping=True,
     pool_recycle=1800,
     pool_size=10,
-    max_overflow=20
+    max_overflow=20,
+    echo=True
 )
 
 # 创建基础模型类

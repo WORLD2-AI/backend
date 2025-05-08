@@ -32,10 +32,10 @@ def run_position_workflow(app):
             if start_minute == 0 or minutes_passed >= start_minute+duration :
                 schedule = temp_schedule.get_session().query(Schedule).filter(Schedule.user_id == id,Schedule.start_minute > minutes_passed).order_by(text('id asc')).limit(10).all()
                 logger.info(f"get schedule {schedule}")
-                if schedule is None:
+                if schedule is None or len(schedule) <= 0:
                     schedule = temp_schedule.get_session().query(Schedule).filter(Schedule.user_id == 0,Schedule.start_minute > minutes_passed).order_by(text('id asc')).limit(10).all()
                     logger.info(f"get schedule default: {schedule}")
-                    if schedule is None:
+                    if schedule is None or len(schedule) <= 0:
                         schedule = Schedule()
                         schedule.action = "sleeping"
                         schedule.site = ""
@@ -44,6 +44,7 @@ def run_position_workflow(app):
                         schedule.emoji = "😴"
                     else:
                         schedule = random.choice(schedule)
+                logger.info(f"get schedule: {schedule}")
                 data['action'] = schedule.action
                 data['site'] = schedule.site
                 data['duration'] = schedule.duration
