@@ -37,24 +37,27 @@ def generate_path_task(character_id:int,target_position:tuple = None):
     logger.info(f"get plan {plan}")
     global m
     if target_position is None:
-        target_tiles = m.address_tiles["the ville:johnson park:lake:log bridge"]
+        if plan is None:
+            plan = "the ville:johnson park:lake:log bridge"
         if plan in m.address_tiles:  
             target_tiles = m.address_tiles[plan]
-    logger.info(f"get target_tiles:{target_tiles}")
-    paths = []
-    if len(target_tiles)> 0 :
-        count = 0
-        while True:
-            count += 1
-            if count > 5:
-                break
-            target = random.choice(list(target_tiles))
-            paths = path_finder(m.collision_maze,cur_tiled,target,collision_block_id)
-            if len(paths) == 1 and paths[0][0] == target[0] and paths[0][1] == target[1]:
-                continue
-            else:
-                break
-                
+        # logger.info(f"get target_tiles:{target_tiles}")
+        
+        paths = []
+        if len(target_tiles)> 0 :
+            count = 0
+            while True:
+                count += 1
+                if count > 5:
+                    break
+                target = random.choice(list(target_tiles))
+                paths = path_finder(m.collision_maze,cur_tiled,target,collision_block_id)
+                if len(paths) == 1 and paths[0][0] == target[0] and paths[0][1] == target[1]:
+                    continue
+                else:
+                    break
+    else:
+        paths = path_finder(m.collision_maze,cur_tiled,target_position,collision_block_id)            
     character_data['path'] = [[path[0],path[1]] for path in paths[1:]]
     logger.info(f"update character path: key:{rkey} ,data:{character_data}")
     redis.set_json(rkey,character_data)
@@ -82,5 +85,5 @@ if __name__ == "__main__":
     redis = RedisClient()
     now = datetime.now()
     character_id = 5
-    generate_path_task(character_id)
+    generate_path_task(character_id,(52,55))
     update_position_task()
