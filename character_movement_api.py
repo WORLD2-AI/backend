@@ -238,13 +238,9 @@ def process_tool_call(tool_call, character_id):
         direction = arguments.get("direction")
         steps = arguments.get("steps")
 
-        if steps is None:
-            logger.warning(f"direction_move工具调用缺少'steps'参数。角色ID: {character_id}。将默认为1步。")
-            steps = 1
-        elif not isinstance(steps, int) or steps <= 0:
-            error_msg = f"无效的步数: '{steps}'。步数必须是正整数。"
-            logger.error(error_msg)
-            return False, error_msg
+        if steps is None or not isinstance(steps, int) or steps <= 0:
+            # logger.warning(f"direction_move工具调用缺少'steps'参数。角色ID: {character_id}。将默认为1步。")
+            steps = 5
         
         current_position = character_data.get('position', [0, 0])
         if not isinstance(current_position, list) or len(current_position) != 2 or \
@@ -279,7 +275,7 @@ def process_tool_call(tool_call, character_id):
             redis.set_json(key, character_data) 
             return True, f"角色尝试向{direction}移动{steps}步，但已到达边界，停留在原位 {current_position}"
 
-        character_data['position'] = new_position
+        # character_data['position'] = new_position
 
         now = datetime.datetime.now()
         midnight = now.replace(hour=0, minute=0, second=0, microsecond=0)
@@ -317,8 +313,7 @@ def process_tool_call(tool_call, character_id):
         if persona:
             try:
                 action_list = [
-                    f"{location_name}", f"去{location_name}", f"在{location_name}",
-                    f"前往{location_name}", f"到{location_name}"
+                    f"{location_name}"
                 ]
                 positions = generate_position_list(action_list, persona, maze)
                 if positions:
@@ -386,17 +381,17 @@ def process_tool_call(tool_call, character_id):
                 logger.warning(f"未能为'{location_name}'解析出具体地址，将使用默认地址: {default_target_address}")
                 target_address = default_target_address
         
-        target_coords_list = maze.address_tiles.get(target_address)
-        if not target_coords_list or not isinstance(target_coords_list, list) or not target_coords_list:
-            error_msg = f"目标地址 '{target_address}' 在地图数据中没有对应的坐标。"
-            logger.error(error_msg)
-            return False, error_msg
+        # target_coords_list = maze.address_tiles.get(target_address)
+        # if not target_coords_list or len(target_coords_list) <= 0:
+        #     error_msg = f"目标地址 '{target_address}' 在地图数据中没有对应的坐标。"
+        #     logger.error(error_msg)
+        #     return False, error_msg
         
-        final_target_position_coords = target_coords_list[0] 
-        if not is_within_bounds(final_target_position_coords, maze.collision_maze):
-            error_msg = f"解析的目标地址 '{target_address}' 对应的坐标 {final_target_position_coords} 超出边界。"
-            logger.error(error_msg)
-            return False, error_msg
+        # final_target_position_coords = random.choice(target_coords_list) 
+        # if not is_within_bounds(final_target_position_coords, maze.collision_maze):
+        #     error_msg = f"解析的目标地址 '{target_address}' 对应的坐标 {final_target_position_coords} 超出边界。"
+        #     logger.error(error_msg)
+        #     return False, error_msg
 
         now = datetime.datetime.now()
         midnight = now.replace(hour=0, minute=0, second=0, microsecond=0)
@@ -419,7 +414,7 @@ def process_tool_call(tool_call, character_id):
                 'celery_tasks.app.path_find_task', 
                 kwargs={'character_id': character_id}
             )
-            success_msg = f"角色正在计划前往: {target_address} (目标坐标: {final_target_position_coords}). 路径规划任务已提交。"
+            success_msg = f"角色正在计划前往: {target_address} 路径规划任务已提交。"
             logger.info(success_msg)
             return True, success_msg
         except Exception as e_celery:
@@ -473,7 +468,7 @@ async def get_character_info(character_id: str):
 @app.post("/ai-deepseek-movement")
 async def ai_deepseek_movement(request: MovementRequest):
     try:
-        logger.info(f"收到AI移动请求: {request.model_dump_json()}")
+        logger.info(f"收到AI移动请求: {request.json()}")
         character_id = str(request.character_id)
         redis_client_instance = RedisClient()
         key = get_character_key(character_id)
