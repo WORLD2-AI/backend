@@ -1,7 +1,18 @@
-from flask import Flask, jsonify, send_from_directory
-from user_visibility import character_visibility_bp
-import logging
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import sys
 import os
+
+# 获取项目根目录的绝对路径
+root_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# 确保项目根目录在sys.path的最前面
+if root_path not in sys.path:
+    sys.path.insert(0, root_path)
+
+from flask import Flask, jsonify, send_from_directory
+from user_visibility import user_visibility_bp
+import logging
 
 # 配置日志
 logging.basicConfig(level=logging.INFO)
@@ -10,7 +21,7 @@ logger = logging.getLogger(__name__)
 app = Flask(__name__)
 
 # 注册蓝图
-app.register_blueprint(character_visibility_bp)
+app.register_blueprint(user_visibility_bp)
 
 @app.route('/')
 def index():
