@@ -25,34 +25,35 @@ def run_position_workflow(app):
         for id in ids:
             logger.info(f"id:{id}")
             data = redis_client.get_json(get_redis_key(id))
-            print(data)
             start_minute = data.get("start_minute",0)
             duration = data.get("duration",0)
-            logger.info(f"start_minute:{start_minute}")
+            logger.info(f"start_minute:{start_minute}, duration:{duration}, minutes_passed:{minutes_passed}, id:{id}")
             if start_minute == 0 or minutes_passed >= start_minute+duration :
-                schedule = temp_schedule.get_session().query(Schedule).filter(Schedule.user_id == id,Schedule.start_minute > minutes_passed).order_by(text('id asc')).limit(10).all()
+                if start_minute == 0:
+                    start_minute = minutes_passed
+                schedule = temp_schedule.get_session().query(Schedule).filter(Schedule.user_id == id,Schedule.start_minute > start_minute).order_by(text('id asc')).first()
                 logger.info(f"get schedule {schedule}")
-                if schedule is None or len(schedule) <= 0:
-                    schedule = temp_schedule.get_session().query(Schedule).filter(Schedule.user_id == 0,Schedule.start_minute > minutes_passed).order_by(text('id asc')).limit(10).all()
-                    logger.info(f"get schedule default: {schedule}")
-                    if schedule is None or len(schedule) <= 0:
+                if schedule is None :
+                    schedule = temp_schedule.get_session().query(Schedule).filter(Schedule.user_id == 0,Schedule.start_minute > start_minute).order_by(text('id asc')).first()
+                    if schedule is None:
                         schedule = Schedule()
                         schedule.action = "sleeping"
                         schedule.site = ""
                         schedule.duration = 5
                         schedule.start_minute = minutes_passed
                         schedule.emoji = "😴"
-                    else:
-                        schedule = random.choice(schedule)
-                logger.info(f"get schedule: {schedule}")
+                    # else:
+                    #     schedule = random.choice(schedule)
+                logger.info(f"get schedule: {schedule.id},{schedule.action},{schedule.site},{schedule.start_minute},{schedule.duration},{schedule.emoji}")
                 data['action'] = schedule.action
                 data['site'] = schedule.site
                 data['duration'] = schedule.duration
                 data['start_minute'] = schedule.start_minute
                 data['emoji'] = schedule.emoji  
-                logger.info(f'set redis data:{data}')
+                # logger.info(f'set redis data:{data}')
                 redis_client.set_json(get_redis_key(id),data)
                 if app is not None:
+                    logger.info(f"send task path_find_task to celery: {id}")
                     app.send_task('celery_tasks.app.path_find_task', kwargs={'character_id': id} )
                 # path_find_task.delay(id)
 
