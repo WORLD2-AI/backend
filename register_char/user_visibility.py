@@ -4,6 +4,7 @@ import math
 from typing import List, Dict, Any
 import json
 import logging
+import datetime
 
 # 配置日志
 logging.basicConfig(level=logging.INFO)
@@ -82,9 +83,13 @@ def get_all_characters() -> List[Dict[str, Any]]:
         character_data = get_redis_data(key)
         if character_data:
             character = json.loads(character_data)
+            # 根据角色状态添加emoji
+            status_emoji = "🟢" if character.get('status', 'offline') == 'online' else "⚫"
+            # 根据角色等级添加emoji
+            level_emoji = "⭐" * min(character.get('level', 1), 5)
             characters.append({
                 'character_id': character_id,
-                'name': character.get('name', 'Unknown'),
+                'name': f"{status_emoji} {character.get('name', 'Unknown')} {level_emoji}",
                 'avatar': character.get('avatar', ''),
                 'status': character.get('status', 'offline'),
                 'position': character.get('position', [0, 0]),
@@ -142,26 +147,87 @@ def get_visible_characters(current_character_id: str, radius: float = 20) -> Lis
         
         # 如果在指定半径内，添加到可见角色列表
         if distance <= radius:
+            # 根据角色状态添加emoji
+            status_emoji = "🟢" if character.get('status', 'offline') == 'online' else "⚫"
+            # 根据角色等级添加emoji
+            level_emoji = "⭐" * min(character.get('level', 1), 5)
+            # 根据距离添加emoji
+            distance_emoji = "👥" if distance <= 5 else "👀" if distance <= 10 else "🔍"
+            
             visible_characters.append({
                 'character_id': key.split(':')[1],
                 'position': character_position,
                 'distance': round(distance, 2),
-                'name': character.get('name', 'Unknown'),
+                'name': f"{status_emoji} {character.get('name', 'Unknown')} {level_emoji}",
                 'avatar': character.get('avatar', ''),
                 'status': character.get('status', 'offline'),
                 'level': character.get('level', 1),
-                'class': character.get('class', 'Unknown')
+                'class': character.get('class', 'Unknown'),
+                'distance_emoji': distance_emoji
             })
     
     return visible_characters
 
+@user_visibility_bp.route('/api/all-characters', methods=['GET'])
+def get_all_characters_api():
+    """
+    API接口：获取所有角色列表（带emoji）
+    """
+    try:
+        characters = []
+        for key in get_redis_keys("character:*"):
+            character_id = key.split(':')[1]
+            character_data = get_redis_data(key)
+            if character_data:
+                character = json.loads(character_data)
+                status_emoji = "🟢" if character.get('status', 'offline') == 'online' else "⚫"
+                level_emoji = "⭐" * min(character.get('level', 1), 5)
+                characters.append({
+                    'character_id': character_id,
+                    'name': character.get('name', 'Unknown'),
+                    'avatar': character.get('avatar', ''),
+                    'status': character.get('status', 'offline'),
+                    'position': character.get('position', [0, 0]),
+                    'level': character.get('level', 1),
+                    'class': character.get('class', 'Unknown'),
+                    'status_emoji': status_emoji,
+                    'level_emoji': level_emoji
+                })
+        return jsonify({
+            'status': 'success',
+            'data': {
+                'characters': characters,
+                'total': len(characters)
+            }
+        })
+    except Exception as e:
+        return jsonify({
+            'status': 'error',
+            'message': str(e)
+        }), 500
+
 @user_visibility_bp.route('/api/visible-characters/<character_id>', methods=['GET'])
 def get_visible_characters_api(character_id: str):
     """
-    API接口：获取指定角色的可见角色列表
+    API接口：获取指定角色的可见角色列表（带emoji）
     """
     try:
-        visible_characters = get_visible_characters(character_id)
+        visible_characters = []
+        base_list = get_visible_characters(character_id)
+        for char in base_list:
+            visible_characters.append({
+                'character_id': char['character_id'],
+                'name': char['name'],
+                'avatar': char['avatar'],
+                'status': char['status'],
+                'position': char['position'],
+                'level': char['level'],
+                'class': char['class'],
+                'distance': char['distance'],
+                'status_emoji': "🟢" if char['status'] == 'online' else "⚫",
+                'level_emoji': "⭐" * min(char['level'], 5),
+                'distance_emoji': char.get('distance_emoji', '')
+            })
         return jsonify({
             'status': 'success',
             'data': {
@@ -679,4 +745,102 @@ def get_visible_chars():
     API接口：获取以中心点角色(char1)为中心的可见角色（简短URL版本）
     功能与/api/visible-from-center相同
     """
-    return get_visible_from_center() 
+    return get_visible_from_center()
+
+@user_visibility_bp.route('/api/visible-characters-radius-20/<character_id>', methods=['GET'])
+def get_visible_characters_radius_20(character_id: str):
+    """
+    API接口：获取指定角色半径20单位内的可见角色列表
+    返回更详细的角色信息，包括：
+    - 基本信息（ID、名称、头像、状态）
+    - 位置信息（坐标、距离）
+    - 角色属性（等级、职业、生命值、魔法值等）
+    - 当前活动（动作、对话等）
+    """
+    try:
+        # 获取当前角色数据
+        current_character_data = get_redis_data(f"character:{character_id}")
+        if not current_character_data:
+            return jsonify({
+                'status': 'error',
+                'message': '当前角色不存在'
+            }), 404
+            
+        current_character = json.loads(current_character_data)
+        current_position = current_character.get('position', [0, 0])
+        
+        # 获取所有角色数据
+        visible_characters = []
+        for key in get_redis_keys("character:*"):
+            if key == f"character:{current_character_id}":
+                continue
+                
+            character_data = get_redis_data(key)
+            if not character_data:
+                continue
+                
+            character = json.loads(character_data)
+            character_position = character.get('position', [0, 0])
+            
+            # 计算距离
+            distance = calculate_distance(current_position, character_position)
+            
+            # 如果在20单位半径内，添加到可见角色列表
+            if distance <= 20:
+                # 获取角色的实时状态数据
+                realtime_key = f"character_realtime:{key.split(':')[1]}"
+                realtime_data = get_redis_data(realtime_key)
+                realtime_info = json.loads(realtime_data) if realtime_data else {}
+                
+                visible_characters.append({
+                    # 基本信息
+                    'character_id': key.split(':')[1],
+                    'name': character.get('name', 'Unknown'),
+                    'avatar': character.get('avatar', ''),
+                    'status': character.get('status', 'offline'),
+                    
+                    # 位置信息
+                    'position': character_position,
+                    'distance': round(distance, 2),
+                    
+                    # 角色属性
+                    'level': character.get('level', 1),
+                    'class': character.get('class', 'Unknown'),
+                    'hp': character.get('hp', 100),
+                    'mp': character.get('mp', 100),
+                    'exp': character.get('exp', 0),
+                    
+                    # 当前活动
+                    'current_action': realtime_info.get('current_action', ''),
+                    'current_dialogue': realtime_info.get('current_dialogue', ''),
+                    'current_emotion': realtime_info.get('current_emotion', 'normal'),
+                    
+                    # 其他信息
+                    'last_update': realtime_info.get('last_update', ''),
+                    'is_friend': character.get('is_friend', False),
+                    'reputation': character.get('reputation', 0)
+                })
+        
+        # 按距离排序
+        visible_characters.sort(key=lambda x: x['distance'])
+        
+        return jsonify({
+            'status': 'success',
+            'data': {
+                'current_character': {
+                    'id': character_id,
+                    'name': current_character.get('name', 'Unknown'),
+                    'position': current_position
+                },
+                'visible_characters': visible_characters,
+                'total': len(visible_characters),
+                'radius': 20,
+                'timestamp': datetime.datetime.now().isoformat()
+            }
+        })
+    except Exception as e:
+        logger.error(f"获取可见角色失败: {str(e)}")
+        return jsonify({
+            'status': 'error',
+            'message': f'获取可见角色失败: {str(e)}'
+        }), 500 
