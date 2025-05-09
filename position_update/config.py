@@ -12,7 +12,6 @@ REDIS_CONFIG = {
     'host': 'localhost',
     'port': 6379,
     'db': 1,
-    'password': None,  # 不使用密码
     'socket_timeout': 5,
     'socket_connect_timeout': 5,
     'decode_responses': True  # 自动解码响应

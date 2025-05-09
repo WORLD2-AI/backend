@@ -1,6 +1,6 @@
 # Celery配置
-broker_url = 'redis://localhost:6379/0'
-result_backend = 'redis://localhost:6379/0'
+broker_url = 'redis://:020804@localhost:6379/0'
+result_backend = 'redis://:020804@localhost:6379/0'
 
 # Redis连接设置
 broker_transport_options = {

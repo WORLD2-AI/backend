@@ -70,4 +70,3 @@ def run_position_workflow(app):
 if __name__ == "__main__":
     # 命令行直接运行时，使用批处理模式
     result = run_position_workflow(None)
-    

@@ -34,7 +34,7 @@ app.config['SESSION_USE_SIGNER'] = True  # 签名加密session id
 app.config['SESSION_KEY_PREFIX'] = 'session:'  # redis中 key 的前缀
 
 # MySQL数据库配置
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:123456@localhost:3306/character_db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:020804@localhost:3306/character_db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # 配置CORS

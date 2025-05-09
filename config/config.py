@@ -13,7 +13,7 @@ DB_CONFIG = {
     'host': 'localhost',
     'user': 'root',
     'port':3306,
-    'password': 'root',
+    'password': '020804',
     'db': 'character_db',
     'charset': 'utf8mb4',
     'cursorclass': pymysql.cursors.DictCursor
@@ -26,14 +26,17 @@ REDIS_PASSWORD = None
 REDIS_CONFIG = {
     'host': '127.0.0.1',
     'port': 6379,
-    'password': REDIS_PASSWORD,  # 使用密码
     'socket_timeout': 5,
     'socket_connect_timeout': 5,
     'decode_responses': True  # 自动解码响应
 }
 
+# 如果有密码，才添加到配置中
+if REDIS_PASSWORD:
+    REDIS_CONFIG['password'] = REDIS_PASSWORD
+
 celery_config = {
-    "task_always_eager": False,
+    "task_always_eager": True,
 }
 
 # 系统常量定义

@@ -10,7 +10,7 @@ import sys
 DB_CONFIG = {
     'host': 'localhost',
     'user': 'root',
-    'password': '123456',
+    'password': '020804',
     'charset': 'utf8mb4',
     'db': 'character_db'
 }
