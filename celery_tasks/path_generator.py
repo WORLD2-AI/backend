@@ -85,5 +85,14 @@ if __name__ == "__main__":
     redis = RedisClient()
     now = datetime.now()
     character_id = 5
-    generate_path_task(character_id,(52,55))
+    now = datetime.now()
+    midnight = now.replace(hour=0, minute=0, second=0, microsecond=0)
+    minutes_passed = int((now - midnight).total_seconds() // 60)
+    rkey = get_redis_key(character_id=character_id)
+    character_data = redis.get_json(rkey)
+    character_data['site']='the ville:gym:room:lifting weight'
+    character_data['start_minute'] = minutes_passed
+    character_data['duration'] = 1
+    redis.set_json(rkey,character_data)
+    generate_path_task(character_id,None)
     update_position_task()

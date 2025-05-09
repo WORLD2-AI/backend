@@ -401,7 +401,7 @@ def process_tool_call(tool_call, character_id):
         
         character_data['action'] = action_description
         character_data['site'] = target_address 
-        character_data['duration'] = 1
+        character_data['duration'] = 5
         character_data['start_minute'] = minutes_passed
         
         redis.set_json(key, character_data)
