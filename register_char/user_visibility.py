@@ -98,24 +98,6 @@ def get_all_characters() -> List[Dict[str, Any]]:
             })
     return characters
 
-def get_simplified_characters() -> List[Dict[str, Any]]:
-    """
-    获取简化的角色列表，只包含id、name、position和status
-    """
-    characters = []
-    for key in get_redis_keys("character:*"):
-        character_id = key.split(':')[1]
-        character_data = get_redis_data(key)
-        if character_data:
-            character = json.loads(character_data)
-            characters.append({
-                'id': character_id,
-                'name': character.get('name', 'Unknown'),
-                'position': character.get('position', [0, 0]),
-                'status': character.get('status', 'offline')
-            })
-    return characters
-
 def get_visible_characters(current_character_id: str, radius: float = 20) -> List[Dict[str, Any]]:
     """
     获取指定半径内的可见角色
@@ -212,6 +194,16 @@ def get_visible_characters_api(character_id: str):
     API接口：获取指定角色的可见角色列表（带emoji）
     """
     try:
+        # 获取当前角色数据
+        current_character_data = get_redis_data(f"character:{character_id}")
+        if not current_character_data:
+            return jsonify({
+                'status': 'error',
+                'message': f'角色不存在: {character_id}'
+            }), 404
+            
+        current_character = json.loads(current_character_data)
+        
         visible_characters = []
         base_list = get_visible_characters(character_id)
         for char in base_list:
@@ -228,9 +220,25 @@ def get_visible_characters_api(character_id: str):
                 'level_emoji': "⭐" * min(char['level'], 5),
                 'distance_emoji': char.get('distance_emoji', '')
             })
+            
+        # 构建中心角色信息
+        center_character = {
+            'character_id': character_id,
+            'name': current_character.get('name', 'Unknown'),
+            'avatar': current_character.get('avatar', ''),
+            'status': current_character.get('status', 'offline'),
+            'position': current_character.get('position', [0, 0]),
+            'level': current_character.get('level', 1),
+            'class': current_character.get('class', 'Unknown'),
+            'status_emoji': "🟢" if current_character.get('status', 'offline') == 'online' else "⚫",
+            'level_emoji': "⭐" * min(current_character.get('level', 1), 5),
+            'is_center': True
+        }
+        
         return jsonify({
             'status': 'success',
             'data': {
+                'center_character': center_character,
                 'visible_characters': visible_characters,
                 'total': len(visible_characters)
             }
@@ -272,7 +280,9 @@ def get_visible_characters_map(character_id: str):
                 'name': current_character.get('name', 'Unknown'),
                 'avatar': current_character.get('avatar', ''),
                 'level': current_character.get('level', 1),
-                'class': current_character.get('class', 'Unknown')
+                'class': current_character.get('class', 'Unknown'),
+                'status': current_character.get('status', 'offline'),
+                'character_id': character_id
             }
         }
         
@@ -334,7 +344,8 @@ def get_integrated_character_info(character_id: str):
                 'avatar': current_character.get('avatar', ''),
                 'status': current_character.get('status', 'offline'),
                 'level': current_character.get('level', 1),
-                'class': current_character.get('class', 'Unknown')
+                'class': current_character.get('class', 'Unknown'),
+                'is_current': True
             },
             'visible_radius': radius
         }
@@ -347,7 +358,16 @@ def get_integrated_character_info(character_id: str):
                 'total_characters': len(all_characters),
                 'visible_characters': visible_characters,
                 'total_visible': len(visible_characters),
-                'map_data': map_data
+                'map_data': map_data,
+                'current_character': {
+                    'character_id': character_id,
+                    'position': current_character.get('position', [0, 0]),
+                    'name': current_character.get('name', 'Unknown'),
+                    'avatar': current_character.get('avatar', ''),
+                    'status': current_character.get('status', 'offline'),
+                    'level': current_character.get('level', 1),
+                    'class': current_character.get('class', 'Unknown')
+                }
             }
         })
     except Exception as e:
@@ -512,7 +532,7 @@ def get_all_characters_with_positions():
     """
     try:
         # 获取简化的角色数据
-        characters = get_simplified_characters()
+        characters = get_visible_characters(character_id)
         
         return jsonify({
             'status': 'success',
@@ -772,7 +792,7 @@ def get_visible_characters_radius_20(character_id: str):
         # 获取所有角色数据
         visible_characters = []
         for key in get_redis_keys("character:*"):
-            if key == f"character:{current_character_id}":
+            if key == f"character:{character_id}":
                 continue
                 
             character_data = get_redis_data(key)
@@ -824,14 +844,22 @@ def get_visible_characters_radius_20(character_id: str):
         # 按距离排序
         visible_characters.sort(key=lambda x: x['distance'])
         
+        # 构建中心角色信息
+        center_character = {
+            'id': character_id,
+            'name': current_character.get('name', 'Unknown'),
+            'position': current_position,
+            'status': current_character.get('status', 'offline'),
+            'avatar': current_character.get('avatar', ''),
+            'level': current_character.get('level', 1),
+            'class': current_character.get('class', 'Unknown'),
+            'is_center': True
+        }
+        
         return jsonify({
             'status': 'success',
             'data': {
-                'current_character': {
-                    'id': character_id,
-                    'name': current_character.get('name', 'Unknown'),
-                    'position': current_position
-                },
+                'center_character': center_character,
                 'visible_characters': visible_characters,
                 'total': len(visible_characters),
                 'radius': 20,
