@@ -243,10 +243,10 @@ def process_tool_call(tool_call, character_id):
             steps = 5
         
         current_position = character_data.get('position', [0, 0])
-        if not isinstance(current_position, list) or len(current_position) != 2 or \
-           not all(isinstance(coord, (int, float)) for coord in current_position):
-            logger.warning(f"角色 {character_id} 的当前位置格式无效 ({current_position})，重置为 [0,0]")
-            current_position = [0, 0]
+        # if not isinstance(current_position, list) or len(current_position) != 2 or \
+        #    not all(isinstance(coord, (int, float)) for coord in current_position):
+
+            #  current_position = [0, 0]
         
         unit_offset = direction_to_unit_offset.get(str(direction).lower())
         if not unit_offset:
@@ -263,7 +263,6 @@ def process_tool_call(tool_call, character_id):
         ]
 
         if not is_within_bounds(new_position, maze.collision_maze):
-            logger.warning(f"角色 {character_id} 尝试移出边界到 {new_position} (从 {current_position} 向 {direction} 移动 {steps} 步)。移动被阻止，角色停在原位。")
             now = datetime.datetime.now()
             midnight = now.replace(hour=0, minute=0, second=0, microsecond=0)
             minutes_passed = int((now - midnight).total_seconds() // 60)
@@ -347,27 +346,7 @@ def process_tool_call(tool_call, character_id):
         if not target_address:
             logger.info(f"尝试从预定义映射和迷宫地图中查找位置: {location_name}")
             location_name_lower = str(location_name).lower()
-            
-            location_mapping = {
-                "公园": "the ville:johnson park:park", "park": "the ville:johnson park:park",
-                "咖啡": "the ville:hobbs cafe:cafe", "cafe": "the ville:hobbs cafe:cafe",
-                "餐厅": "the ville:oak hill cafe:cafe", "restaurant": "the ville:oak hill cafe:cafe",
-                "健身": "the ville:xavier's gym:gym", "gym": "the ville:xavier's gym:gym",
-                "图书馆": "the ville:library:library", "library": "the ville:library:library",
-                "学校": "the ville:oak hill college:generic classroom",
-                "超市": "the ville:walmart:grocery store",
-                "湖": "the ville:johnson park:lake", "lake": "the ville:johnson park:lake"
-            }
-            
-            if location_name_lower in location_mapping:
-                 target_address = location_mapping[location_name_lower]
-                 logger.info(f"通过预定义映射(精确)为'{location_name}'找到地址: {target_address}")
-            else:
-                for map_key, map_value in location_mapping.items():
-                    if map_key in location_name_lower:
-                        target_address = map_value
-                        logger.info(f"通过预定义映射(部分匹配)为'{location_name}'找到地址: {target_address} (匹配键: {map_key})")
-                        break
+        
             
             if not target_address:
                 for maze_addr_key in maze.address_tiles.keys():
@@ -468,33 +447,26 @@ async def get_character_info(character_id: str):
 @app.post("/ai-deepseek-movement")
 async def ai_deepseek_movement(request: MovementRequest):
     try:
-        logger.info(f"收到AI移动请求: {request.json()}")
+        logger.info(f"request data: {request.json()}")
         character_id = str(request.character_id)
         redis_client_instance = RedisClient()
         key = get_character_key(character_id)
         character_data = redis_client_instance.get_json(key)
         
         if character_data is None:
-            error_msg = f"未找到ID为'{character_id}'的角色"
+            error_msg = f"character not found:'{character_id}'"
             logger.error(error_msg)
             return APIResponse(
                 success=False,
                 message=error_msg,
-                data={"error_details": "请确保角色ID正确或先创建角色数据"}
+                data={"error_details": error_msg}
             )
         
         if 'position' not in character_data:
             character_data['position'] = [50, 50] 
 
         system_prompt = """
-        你是一个智能助手，能够理解用户的移动指令并将其转换为系统可执行的操作。
-        你有两个可用的工具:
-        1. direction_move: 用于向特定方向(上/下/左/右)移动指定的步数。例如，如果用户说"向上走10步"，你应该使用 direction='up' 和 steps=10。
-        2. location_move: 用于前往特定有名称的地点(如咖啡馆、公园、约翰逊公园的湖边等)。
-
-        请根据用户的指令，选择最合适的工具并提供必要的参数。
-        如果用户指令是移动到某个具体命名地点，请使用 location_move。
-        如果用户指令是简单的方向和步数移动，请使用 direction_move，并确保提供 'direction' 和 'steps' 参数。
+        You are an intelligent assistant capable of understanding the user's movement instructions and converting them into executable system operations.
         """
         
         messages = [
@@ -512,7 +484,7 @@ async def ai_deepseek_movement(request: MovementRequest):
             ai_message = api_response.choices[0].message
             
             if not ai_message.tool_calls:
-                logger.warning(f"AI未能为指令 '{request.instruction}' 返回工具调用。AI回复: {ai_message.content}")
+                # logger.warning(f"AI未能为指令 '{request.instruction}' 返回工具调用。AI回复: {ai_message.content}")
                 return APIResponse(
                     success=False,
                     message="AI未能理解您的指令或未选择工具。",
@@ -537,7 +509,7 @@ async def ai_deepseek_movement(request: MovementRequest):
                 "arguments": tool_args,
                 "timestamp": datetime.datetime.now().isoformat()
             }
-            logger.info(f"AI选择的工具调用: {tool_call_info}")
+            logger.info(f"AI call tool: {tool_call_info}")
             
             exec_success, exec_result_msg = process_tool_call(tool_call, character_id) 
             
@@ -548,25 +520,25 @@ async def ai_deepseek_movement(request: MovementRequest):
                 "execution_message": exec_result_msg,
                 "timestamp": datetime.datetime.now().isoformat()
             }
-            logger.info(f"工具执行结果: {execution_summary}")
+            logger.info(f"tool result: {execution_summary}")
             
-            summary_messages = [
-                {"role": "system", "content": "请根据用户的原始指令、AI的工具选择和工具的执行结果，用一句话清晰地总结角色将要执行的动作或已经发生的情况。"},
-                {"role": "user", "content": f"""
-                用户原始指令: {request.instruction}
-                AI选择的工具: {tool_name}
-                工具参数: {json.dumps(tool_args, ensure_ascii=False)}
-                工具执行结果: {'成功' if exec_success else '失败'} - {exec_result_msg}
-                请总结。
-                """}
-            ]
+            # summary_messages = [
+            #     {"role": "system", "content": "请根据用户的原始指令、AI的工具选择和工具的执行结果，用一句话清晰地总结角色将要执行的动作或已经发生的情况。"},
+            #     {"role": "user", "content": f"""
+            #     用户原始指令: {request.instruction}
+            #     AI选择的工具: {tool_name}
+            #     工具参数: {json.dumps(tool_args, ensure_ascii=False)}
+            #     工具执行结果: {'成功' if exec_success else '失败'} - {exec_result_msg}
+            #     请总结。
+            #     """}
+            # ]
             
-            summary_api_response = call_deepseek_api_with_retry(
-                messages=summary_messages,
-                model="deepseek-chat"
-            )
-            final_summary = summary_api_response.choices[0].message.content
-            logger.info(f"AI总结: {final_summary}")
+            # summary_api_response = call_deepseek_api_with_retry(
+            #     messages=summary_messages,
+            #     model="deepseek-chat"
+            # )
+            # final_summary = summary_api_response.choices[0].message.content
+            # logger.info(f"AI总结: {final_summary}")
             
             updated_character_data = redis_client_instance.get_json(key) 
             current_pos = updated_character_data.get('position', character_data.get('position', [0,0]))
@@ -589,14 +561,14 @@ async def ai_deepseek_movement(request: MovementRequest):
                 "original_instruction": request.instruction,
                 "tool_call": tool_call_info,
                 "execution_result": execution_summary,
-                "summary": final_summary,
+                # "summary": final_summary,
                 "position": current_pos,
                 "target_position": target_position_val 
             }
             logger.info(f"返回结果: {response_data}")
             return APIResponse(
                 success=exec_success,
-                message=final_summary,
+                # message=final_summary,
                 data=response_data
             )
         
