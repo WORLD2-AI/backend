@@ -12,6 +12,7 @@ logger = logging.getLogger(__name__)
 DB_CONFIG = {
     'host': 'localhost',
     'user': 'root',
+    'port':3306,
     'password': '123456',
     'db': 'character_db',
     'charset': 'utf8mb4',
@@ -19,47 +20,20 @@ DB_CONFIG = {
 }
 
 # Redis密码
-REDIS_PASSWORD = '000000'
+REDIS_PASSWORD = None
 
 # Redis配置
 REDIS_CONFIG = {
-    'host': 'localhost',
+    'host': '127.0.0.1',
     'port': 6379,
-    'db': 0,
     'password': REDIS_PASSWORD,  # 使用密码
     'socket_timeout': 5,
     'socket_connect_timeout': 5,
     'decode_responses': True  # 自动解码响应
 }
 
-# Celery配置
-CELERY_CONFIG = {
-    'broker_url': f'redis://:{REDIS_PASSWORD}@localhost:6379/0',
-    'result_backend': f'redis://:{REDIS_PASSWORD}@localhost:6379/0',
-    'task_serializer': 'json',
-    'accept_content': ['json'],
-    'result_serializer': 'json',
-    'timezone': 'Asia/Shanghai',
-    'enable_utc': True,
-    'task_track_started': True,
-    'worker_max_tasks_per_child': 200,
-    'broker_connection_retry_on_startup': True
-}
-
-# 定时任务配置
-CELERY_BEAT_SCHEDULE = {
-    'update-positions-every-minute': {
-        'task': 'character_system.tasks.update_all_character_positions',
-        'schedule': 60.0,  # 每60秒执行一次
-    },
-    'process-character-schedules-every-minute': {
-        'task': 'character_system.tasks.process_character_schedules',
-        'schedule': 60.0,  # 每60秒执行一次
-    },
-    'sync-data-every-30-seconds': {
-        'task': 'character_system.services.sync_data_task',
-        'schedule': 30.0,  # 每30秒执行一次
-    },
+celery_config = {
+    "task_always_eager": False,
 }
 
 # 系统常量定义
@@ -81,3 +55,7 @@ CONSTANTS = {
         'STEP_SIZE': 1.0,
     }
 } 
+
+
+collision_block_id = "0"
+default_born_tiled = (23,52)

@@ -3,8 +3,10 @@ from base import *
 from model.character import Character
 from system.plan import *
 import json
-from model.schdule import *
+from model.schedule import Schedule
 from maza.maze import Maze
+import csv
+import os
 
 
 
@@ -207,7 +209,7 @@ def run_gpt_prompt_wake_up_hour(persona, test_input=None, verbose=False):
     gpt_param = {"engine": "gpt-4o", "max_tokens": 10,
                  "temperature": 0.8, "top_p": 1, "stream": False,
                  "frequency_penalty": 0, "presence_penalty": 0, "stop": ["\n"]}
-    prompt_template = f"{root_path}/system/prompt_template/v2/wake_up_hour_v1.txt"
+    prompt_template = f"./system/prompt_template/v2/wake_up_hour_v1.txt"
     prompt_input = create_prompt_input(persona, test_input)
     prompt = generate_prompt(prompt_input, prompt_template)
     fail_safe = get_fail_safe()
@@ -325,7 +327,7 @@ def run_gpt_prompt_generate_min_schedule(persona, curr_hour_str,
     gpt_param = {"engine": "gpt-4o", "max_tokens": 7000,
                  "temperature": 1, "top_p": 1, "stream": False,
                  "frequency_penalty": 0, "presence_penalty": 0, "stop":None}
-    prompt_template = f"{fs_back_end}/persona/prompt_template/v2/generate_hourly_schedule_v2.txt"
+    prompt_template = f"./system/prompt_template/v2/generate_hourly_schedule_v2.txt"
     prompt_input = create_prompt_input(persona,
                                        curr_hour_str,
                                        intermission2,
@@ -507,7 +509,7 @@ def persona_daily_task(character_id:int):
     persona = make_persona_by_id(character_id)
     plan_list = born_person_schedule(persona)
     # plan_list is a two-dimensional array
-    s = Schedule()
+    s = Schedule().get_session()
     for i, plans in enumerate(plan_list):
         daily_plans = address_determine_action(persona, maze, plans)
         schdule_list = []
@@ -523,31 +525,68 @@ def persona_daily_task(character_id:int):
             schedule.site = plan.get("address", "")
             schedule.emoji = plan.get("emoji", "")
             schdule_list.append(schedule)
-        s.get_session().add_all(schdule_list)
-        s.get_session().commit()
+        s.add_all(schdule_list)
+        s.commit()
+    
     # update character table update status to sucess
-    # fetch from character table where id = person_id
-    # update status to success
     character = Character()
     character.update_by_id(character_id,status="COMPLETED")
 
+def get_location_by_name(location_name: str) -> dict:
+    """
+    根据地点名称返回对应的位置信息
+    
+    Args:
+        location_name (str): 地点名称，例如 "common room", "kitchen" 等
+        
+    Returns:
+        dict: 包含位置信息的字典，格式如下：
+        {
+            "world": "the ville",
+            "sector": "artist's co-living space",
+            "arena": "common room",
+            "object": "sofa",
+            "full_path": "the ville:artist's co-living space:common room:sofa"
+        }
+        如果未找到位置，返回 None
+    """
+    memory_tree = MemoryTree(f'{root_path}/map/matrix2/base.json')
+    world = "the ville"  # 默认世界
+    
+    # 获取所有可访问的位置
+    all_positions = memory_tree.get_all_str_accessible_positions(world)
+    
+    # 遍历所有位置查找匹配的地点
+    for position in all_positions:
+        if position.lower().find(location_name.lower()) != -1:
+            # 解析位置路径
+            parts = position.split(":")
+            if len(parts) >= 4:
+                return {
+                    "world": parts[0],
+                    "sector": parts[1],
+                    "arena": parts[2],
+                    "object": parts[3],
+                    "full_path": position
+                }
+    
+    return None
+
+# 使用示例
 if __name__ == "__main__":
-    persona_daily_task(1)
-    # plan_tasks = [
-    #     {
-    #         "name": "carlos gomez",
-    #         "user_id": "0",
-    #         "time": "07:51",
-    #         "duration": "5",
-    #         "action": "Gather writing materials for poetry"
-    #     },
-    #     {
-    #         "name": "carlos gomez",
-    #         "user_id": "0",
-    #         "time": "07:56",
-    #         "duration": "4",
-    #         "action": "Settle into writing space and reflect"
-    #     }
-    # ]
-    # address_determine_action(make_persona_by_id(0), maze, plan_tasks)
-    # print(run_gpt_prompt_pronunciatio(["Settle into writing space and reflect","Gather writing materials for poetry"],make_persona_by_id(0)))
+    persona_daily_task(16)
+    # 测试函数
+    test_locations = ["common room", "kitchen", "bedroom"]
+    for loc in test_locations:
+        result = get_location_by_name(loc)
+        if result:
+            print(f"找到位置 '{loc}':")
+            print(f"完整路径: {result['full_path']}")
+            print(f"世界: {result['world']}")
+            print(f"区域: {result['sector']}")
+            print(f"场所: {result['arena']}")
+            print(f"对象: {result['object']}")
+            print("-" * 50)
+        else:
+            print(f"未找到位置 '{loc}'")
+            print("-" * 50)

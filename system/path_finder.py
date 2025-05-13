@@ -107,17 +107,6 @@ def path_finder_v2(a, start, end, collision_block_char, verbose=False):
           if j<len(m[i])-1 and m[i][j+1] == 0 and a[i][j+1] == 0:
              m[i][j+1] = k + 1
 
-  new_maze = []
-  for row in a: 
-    new_row = []
-    for j in row:
-      if j == collision_block_char: 
-        new_row += [1]
-      else: 
-        new_row += [0]
-    new_maze += [new_row]
-  a = new_maze
-
   m = []
   for i in range(len(a)):
       m.append([])
@@ -127,7 +116,7 @@ def path_finder_v2(a, start, end, collision_block_char, verbose=False):
   m[i][j] = 1 
 
   k = 0
-  except_handle = 150
+  except_handle = 200
   while m[end[0]][end[1]] == 0:
       k += 1
       make_step(m, k)

@@ -37,7 +37,6 @@ REDIS_CONFIG = {
     'host': 'localhost',
     'port': 6379, 
     'db': 0,
-    'password': '000000',  # Redis密码
     'socket_timeout': 5,
     'decode_responses': True  # 解码响应为字符串
 }

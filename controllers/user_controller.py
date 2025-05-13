@@ -3,7 +3,7 @@ from flask import request, jsonify, render_template
 from model.user import User
 from model.invitation_code import InvitationCode
 from werkzeug.security import check_password_hash, generate_password_hash
-from flask_login import logout_user, login_required
+from flask_login import login_user, logout_user, login_required, current_user
 user_controller = Blueprint('user', __name__)
 
 @user_controller.route('/api/register_user', methods=['GET', 'POST'])
@@ -55,8 +55,8 @@ def register():
             # 标记邀请码已使用
             inv_code_model.use_code(invitation_code, new_user.id)
 
-            # 登录用户
-            session['user_id'] = new_user.id
+            # 使用 Flask-Login 登录用户
+            login_user(new_user)
             
             # 检查是否有回调URL
             if 'call_back_url' in session:
@@ -75,45 +75,39 @@ def register():
 
 @user_controller.route('/api/login', methods=['GET', 'POST'])
 def login():
-    if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
+    if request.method == 'GET':
+        return render_template('login/login.html')
+        
+    # POST 请求处理登录逻辑
+    # 支持 application/json 和 form-data 两种方式
+    if request.is_json:
+        data = request.get_json()
+        username = data.get('username')
+        password = data.get('password')
+    else:
+        username = request.form.get('username')
+        password = request.form.get('password')
 
-        # 验证表单数据
-        if not username or not password:
-            return render_template('login/login.html', error="用户名和密码不能为空")
+    # 验证表单数据
+    if not username or not password:
+        return jsonify({'success': False, 'message': '用户名和密码不能为空'}), 400
 
-        user = User().first(username=username)
-        if user and check_password_hash(user.password_hash, password):
-            # 登录成功，设置session
-            session['user_id'] = user.id
-            
-            # 检查是否有回调URL
-            if 'call_back_url' in session:
-                call_back_url = session.pop('call_back_url')
-                return redirect(call_back_url)
-                
-            # 否则返回登录成功消息
-            return redirect('/')
-        else:
-            # 登录失败
-            return render_template('login/login.html', error="用户名或密码错误")
-
-    # GET 请求，显示登录表单
-    return render_template('login/login.html')
+    user = User().first(username=username)
+    if user and check_password_hash(user.password_hash, password):
+        login_user(user)
+        return jsonify({'success': True, 'message': '登录成功'}), 200
+    else:
+        return jsonify({'success': False, 'message': '用户名或密码错误'}), 401
 
 @user_controller.route('/user/info')
 def get_user_info():
-# 判断session中的user_id是否存在
-    if 'user_id' in session:
-        user = User().find_by_id(session['user_id'])
-        if user:
-            return jsonify({
-                'data': user.to_dict() if hasattr(user, 'to_dict') else {
-                    'id': user.id,
-                    'username': user.username
-                }
-            })
+    if current_user.is_authenticated:
+        return jsonify({
+            'data': current_user.to_dict() if hasattr(current_user, 'to_dict') else {
+                'id': current_user.id,
+                'username': current_user.username
+            }
+        })
     # 返回401状态
     return jsonify({
         'data': None
@@ -121,19 +115,16 @@ def get_user_info():
 
 
 @user_controller.route('/api/user/profile')
+@login_required
 def profile():
     """
     查询账号
     """
-    if 'user_id' not in session:
-        return redirect('/')
-
-    user = User().find_by_id(session['user_id'])
     return jsonify({
         "status":"success",
-        'id': user.id,
-        'username': user.username,
-        'twitter_id': user.twitter_id,
+        'id': current_user.id,
+        'username': current_user.username,
+        'twitter_id': current_user.twitter_id,
         # 'access_token': user.access_token
     })
 
