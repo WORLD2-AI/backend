@@ -134,6 +134,7 @@
     </div>
 
     <script>
+        console.log('register page loaded!');
         // 页面加载完成后执行
         document.addEventListener('DOMContentLoaded', function() {
             // 自动生成全名
@@ -196,7 +197,8 @@
                 innate: document.getElementById('innate').value,
                 learned: document.getElementById('learned').value,
                 currently: document.getElementById('currently').value,
-                lifestyle: document.getElementById('lifestyle').value
+                lifestyle: document.getElementById('lifestyle').value,
+                house: document.getElementById('locationName').getAttribute('data-position-name')
             };
 
             // 发送注册请求
@@ -248,6 +250,56 @@
                 .catch(error => {
                     console.error('Error loading character details:', error);
                 });
+        }
+
+        // 检查位置
+        async function checkLocation() {
+            const x = document.getElementById('x').value;
+            const y = document.getElementById('y').value;
+            const resultDiv = document.getElementById('errorAlert');
+            const locationInfo = document.getElementById('locationInfo');
+
+            if (!x || !y) {
+                resultDiv.textContent = '请输入X和Y坐标';
+                resultDiv.style.display = 'block';
+                locationInfo.style.display = 'none';
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/check_location?x=${x}&y=${y}`);
+                const data = await response.json();
+                
+                if (data.status === 'success') {
+                    // 显示位置信息
+                    locationInfo.style.display = 'block';
+                    document.getElementById('locationName').textContent = data.location_name;
+                    document.getElementById('coordinates').textContent = `(${x}, ${y})`;
+                    document.getElementById('locationStatus').textContent = data.is_registered ? '已被注册' : '可用';
+
+                    // 保存position_name到自定义属性
+                    document.getElementById('locationName').setAttribute('data-position-name', data.position_name);
+
+                    // 将位置信息保存到隐藏字段中
+                    document.getElementById('x').setAttribute('data-validated', 'true');
+                    document.getElementById('y').setAttribute('data-validated', 'true');
+                    document.getElementById('locationName').setAttribute('data-validated', 'true');
+
+                    // 显示结果提示
+                    resultDiv.className = `alert ${data.is_registered ? 'alert-danger' : 'alert-success'}`;
+                    resultDiv.textContent = data.message;
+                    resultDiv.style.display = 'block';
+                } else {
+                    resultDiv.textContent = data.message || '检查位置失败';
+                    resultDiv.style.display = 'block';
+                    locationInfo.style.display = 'none';
+                }
+            } catch (error) {
+                console.error('检查位置错误:', error);
+                resultDiv.textContent = '检查位置失败，请检查网络连接';
+                resultDiv.style.display = 'block';
+                locationInfo.style.display = 'none';
+            }
         }
     </script>
 </body>
