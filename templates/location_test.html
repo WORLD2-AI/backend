@@ -170,6 +170,11 @@
                     document.getElementById('coordinates').textContent = `(${x}, ${y})`;
                     document.getElementById('locationStatus').textContent = data.is_registered ? '已被注册' : '可用';
 
+                    // 将位置信息保存到隐藏字段中
+                    document.getElementById('x').setAttribute('data-validated', 'true');
+                    document.getElementById('y').setAttribute('data-validated', 'true');
+                    document.getElementById('locationName').setAttribute('data-validated', 'true');
+
                     // 显示结果提示
                     resultDiv.className = `result ${data.is_registered ? 'error' : 'success'}`;
                     resultDiv.textContent = data.message;
@@ -195,6 +200,33 @@
             const locationName = document.getElementById('locationName').textContent;
             const x = document.getElementById('x').value;
             const y = document.getElementById('y').value;
+            const locationStatus = document.getElementById('locationStatus').textContent;
+
+            // 验证位置是否已选择且可用
+            if (!locationName || !x || !y) {
+                resultDiv.className = 'result error';
+                resultDiv.textContent = '请先选择并确认位置';
+                resultDiv.style.display = 'block';
+                return;
+            }
+
+            // 验证是否已经检查过位置
+            if (document.getElementById('locationInfo').style.display === 'none' || 
+                !document.getElementById('x').getAttribute('data-validated') ||
+                !document.getElementById('locationName').getAttribute('data-validated')) {
+                resultDiv.className = 'result error';
+                resultDiv.textContent = '请先点击"检查位置"按钮确认位置信息';
+                resultDiv.style.display = 'block';
+                return;
+            }
+
+            // 验证位置是否已被注册
+            if (locationStatus === '已被注册') {
+                resultDiv.className = 'result error';
+                resultDiv.textContent = '该位置已被注册，请选择其他位置';
+                resultDiv.style.display = 'block';
+                return;
+            }
 
             // 验证必填字段
             const requiredFields = ['name', 'firstName', 'lastName', 'age', 'sex', 'innate', 'learned', 'currently', 'lifestyle'];
@@ -207,14 +239,6 @@
                 }
             }
 
-            // 验证位置是否已选择
-            if (!locationName || !x || !y) {
-                resultDiv.className = 'result error';
-                resultDiv.textContent = '请先选择并确认位置';
-                resultDiv.style.display = 'block';
-                return;
-            }
-
             const characterData = {
                 name: document.getElementById('name').value,
                 first_name: document.getElementById('firstName').value,
@@ -225,8 +249,13 @@
                 learned: document.getElementById('learned').value,
                 currently: document.getElementById('currently').value,
                 lifestyle: document.getElementById('lifestyle').value,
-                house: locationName  // 使用位置名称替代坐标
+                x: parseInt(x),
+                y: parseInt(y),
+                house: locationName
             };
+
+            // 添加调试信息
+            console.log('提交的角色数据:', characterData);
 
             try {
                 const response = await fetch('/api/register_role', {
@@ -238,6 +267,7 @@
                 });
 
                 const data = await response.json();
+                console.log('服务器响应:', data);
                 
                 if (data.status === 'success') {
                     resultDiv.className = 'result success';
@@ -245,15 +275,20 @@
                     resultDiv.style.display = 'block';
                     
                     // 清空表单
-                    document.querySelectorAll('input').forEach(input => input.value = '');
+                    document.querySelectorAll('input').forEach(input => {
+                        input.value = '';
+                        input.removeAttribute('data-validated');
+                    });
                     document.getElementById('sex').value = 'male';
                     document.getElementById('locationInfo').style.display = 'none';
+                    document.getElementById('locationName').removeAttribute('data-validated');
                 } else {
                     resultDiv.className = 'result error';
-                    resultDiv.textContent = data.message;
+                    resultDiv.textContent = data.message || '注册失败，请检查所有信息是否正确';
                     resultDiv.style.display = 'block';
                 }
             } catch (error) {
+                console.error('注册错误:', error);
                 resultDiv.className = 'result error';
                 resultDiv.textContent = `注册失败: ${error.message}`;
                 resultDiv.style.display = 'block';

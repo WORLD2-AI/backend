@@ -304,7 +304,7 @@ def get_character_detail_api(character_id):
 @character_controller.route('/api/check_location', methods=['GET'])
 def check_location():
     """
-    检查地图位置是否已被非系统角色注册，检查同一房间下的所有位置
+    检查地图位置是否已被任何角色注册，检查同一房间下的所有位置
     参数：
         x: x坐标
         y: y坐标
@@ -312,7 +312,7 @@ def check_location():
         {
             "status": "success/error",
             "is_registered": true/false,
-            "message": "位置已被注册/位置可用",
+            "message": "位置已被占用/位置可用",
             "location_name": "地点名称（包含三级位置）",
             "room_name": "房间名称（二级位置）",
             "position_name": "最后一个冒号后的位置名称",
@@ -359,10 +359,9 @@ def check_location():
         # 获取当前用户ID
         user_id = current_user.id if current_user.is_authenticated else None
         
-        # 获取所有非系统角色
+        # 获取所有角色（包括系统角色）
         character = Character()
         all_characters = character.find_all()
-        non_system_characters = [char for char in all_characters if char.user_id != 0]
         
         # 获取当前位置的person_name和position_name
         current_person_name = location.get('person_name', '')
@@ -370,15 +369,15 @@ def check_location():
         
         # 检查该位置是否已被注册（通过position_name匹配）
         is_location_registered = False
-        for char in non_system_characters:
-            if char.house == current_position_name:
+        for char in all_characters:
+            if char.position_name and char.position_name == position_name:
                 is_location_registered = True
                 break
         
         # 检查同一房间是否已被注册（通过position_name匹配）
         is_room_registered = False
-        for char in non_system_characters:
-            if char.position_name and current_position_name and char.position_name == current_position_name:
+        for char in all_characters:
+            if char.position_name and char.position_name == current_position_name:
                 is_room_registered = True
                 break
         
@@ -391,7 +390,7 @@ def check_location():
         
         if user_id:
             # 查找当前用户在该房间的角色
-            for char in non_system_characters:
+            for char in all_characters:
                 if char.user_id == user_id and char.position_name == current_position_name:
                     my_room_info = {
                         "has_character": True,
@@ -405,9 +404,9 @@ def check_location():
         
         # 根据具体情况返回不同的消息
         if is_location_registered:
-            message = "该位置已被其他角色注册"
+            message = "该位置已被其他角色占用"
         elif is_room_registered:
-            message = "该房间已被其他角色注册"
+            message = "该房间已被其他角色占用"
         else:
             message = "位置可用"
         
@@ -422,7 +421,7 @@ def check_location():
             "is_location_registered": is_location_registered,
             "my_room_info": my_room_info,
             "current_person_name": current_person_name,
-            "current_position_name": current_position_name  # 添加当前position_name到响应中
+            "current_position_name": current_position_name
         })
         
     except Exception as e:
@@ -442,6 +441,7 @@ def character_register():
     try:
         # 获取请求数据
         data = request.get_json()
+        print('收到的数据:', data)  # 临时调试用
         
         # 验证必填字段
         errors = validate_character(data)
@@ -481,7 +481,8 @@ def character_register():
             learned=data['learned'],
             currently=data['currently'],
             lifestyle=data['lifestyle'],
-            house=data['house'],  # 直接使用位置名称
+            house=f"{data['x']},{data['y']}",  # 存x,y坐标
+            position_name=data['house'],  # 存地点名称
             status=CHARACTER_STATUS['PENDING']
         )
         
@@ -522,27 +523,12 @@ def get_character_status(character_id):
 
 @character_controller.route('/api/characters', methods=['GET'])
 def get_characters():
-    """获取当前用户的所有角色列表和系统角色"""
+    """获取数据库中的所有角色列表"""
     try:
-        # 获取用户登录状态
-        user_id = current_user.id if current_user.is_authenticated else None
-        
-        # 获取系统角色（user_id=0）
-        system_characters = Character().find(user_id=0)
-        system_character_list = [char.to_dict() for char in system_characters]
-        
-        # 如果用户已登录，获取用户自己的角色
-        user_character_list = []
-        if user_id:
-            user_characters = Character().find(user_id=user_id)
-            user_character_list = [char.to_dict() for char in user_characters]
-            
-            # 如果有用户角色，将第一个角色ID存入session
-            if user_character_list:
-                session['character_id'] = user_character_list[0]['id']
-        
-        # 合并角色列表
-        character_list = system_character_list + user_character_list
+        # 获取所有角色
+        character = Character()
+        all_characters = character.find_all()
+        character_list = [char.to_dict() for char in all_characters]
         
         # 处理每个角色的实时数据
         for character in character_list:
@@ -558,7 +544,7 @@ def get_characters():
         response = jsonify({
             "status": "success",
             "data": character_list,
-            "is_logged_in": user_id is not None
+            "total": len(character_list)
         })
         response.headers.add('Access-Control-Allow-Origin', '*')
         return response
