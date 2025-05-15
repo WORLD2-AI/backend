@@ -8,7 +8,6 @@ import datetime  # 添加datetime模块导入
 # 第三方库
 import redis
 from flask import Blueprint, request, jsonify, session, render_template
-from flask_login import login_required, current_user
 
 # 项目内部模块
 from model.character import Character, CHARACTER_STATUS
@@ -174,6 +173,15 @@ def get_location_name_by_coordinates(x: int, y: int) -> str:
     except Exception as e:
         logger.error(f"获取地点名称失败: {str(e)}")
         return None
+
+def login_required_view(func):
+    from functools import wraps
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        if not session.get('user_id'):
+            return jsonify({'error': '未登录'}), 401
+        return func(*args, **kwargs)
+    return wrapper
 
 # ----- 路由处理 -----
 
@@ -357,7 +365,7 @@ def check_location():
         position_name = location_name.split(':')[-1] if ':' in location_name else location_name
         
         # 获取当前用户ID
-        user_id = current_user.id if current_user.is_authenticated else None
+        user_id = session.get('user_id')
         
         # 获取所有角色（包括系统角色）
         character = Character()
@@ -432,7 +440,7 @@ def check_location():
         }), 500
 
 @character_controller.route('/api/register_role', methods=['POST', 'OPTIONS'])
-@login_required  # 添加登录要求
+@login_required_view
 def character_register():
     """注册新角色，使用位置名称（house）存储位置信息"""
     if request.method == 'OPTIONS':
@@ -471,7 +479,7 @@ def character_register():
         
         # 创建新角色，使用当前登录用户的ID
         character = Character(
-            user_id=current_user.id,  # 使用当前登录用户的ID
+            user_id=session.get('user_id'),  # 使用当前登录用户的ID
             name=data['name'],
             first_name=data['first_name'],
             last_name=data['last_name'],
@@ -609,12 +617,11 @@ def get_character_detail(character_id):
         }), 500
 
 @character_controller.route('/api/user/characters', methods=['GET'])
-@login_required
 def get_user_characters():
     """获取当前用户的所有角色（用于个人中心）"""
     try:
         # 只获取当前用户的角色
-        user_characters = Character().find(user_id=current_user.id)
+        user_characters = Character().find(user_id=session.get('user_id'))
         character_list = [character.to_dict() for character in user_characters]
         
         return jsonify({

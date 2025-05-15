@@ -1,9 +1,8 @@
-from flask import Blueprint, request, jsonify, session, redirect
-from flask import request, jsonify, render_template
+from flask import Blueprint, request, jsonify, session, redirect, render_template
 from model.user import User
 from model.invitation_code import InvitationCode
 from werkzeug.security import check_password_hash, generate_password_hash
-from flask_login import login_user, logout_user, login_required, current_user
+# from flask_login import login_user, logout_user, login_required, current_user  # 移除
 user_controller = Blueprint('user', __name__)
 
 @user_controller.route('/api/register_user', methods=['GET', 'POST'])
@@ -55,8 +54,8 @@ def register():
             # 标记邀请码已使用
             inv_code_model.use_code(invitation_code, new_user.id)
 
-            # 使用 Flask-Login 登录用户
-            login_user(new_user)
+            # 登录：直接存 user_id 到 session
+            session['user_id'] = new_user.id
             
             # 检查是否有回调URL
             if 'call_back_url' in session:
@@ -94,43 +93,62 @@ def login():
 
     user = User().first(username=username)
     if user and check_password_hash(user.password_hash, password):
-        login_user(user)
+        session['user_id'] = user.id
         return jsonify({'success': True, 'message': '登录成功'}), 200
     else:
         return jsonify({'success': False, 'message': '用户名或密码错误'}), 401
 
 @user_controller.route('/user/info')
 def get_user_info():
-    if current_user.is_authenticated:
-        return jsonify({
-            'data': current_user.to_dict() if hasattr(current_user, 'to_dict') else {
-                'id': current_user.id,
-                'username': current_user.username
+    user_id = session.get('user_id')
+    if user_id:
+        user = User().find_by_id(user_id)
+        if user:
+            user_dict = user.to_dict() if hasattr(user, 'to_dict') else {
+                'id': user.id,
+                'user_id': user.id,
+                'username': user.username
             }
-        })
+            user_dict['user_id'] = user.id
+            return jsonify({
+                'data': user_dict
+            })
     # 返回401状态
     return jsonify({
         'data': None
     }), 401
 
 
+def login_required_view(func):
+    # 用于替代 flask_login 的 login_required 装饰器
+    from functools import wraps
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        if not session.get('user_id'):
+            return jsonify({'error': '未登录'}), 401
+        return func(*args, **kwargs)
+    return wrapper
+
 @user_controller.route('/api/user/profile')
-@login_required
+@login_required_view
 def profile():
     """
     查询账号
     """
+    user_id = session.get('user_id')
+    user = User().find_by_id(user_id)
     return jsonify({
         "status":"success",
-        'id': current_user.id,
-        'username': current_user.username,
-        'twitter_id': current_user.twitter_id,
+        'id': user.id,
+        'user_id': user.id,
+        'username': user.username,
+        'twitter_id': user.twitter_id,
         # 'access_token': user.access_token
     })
 
 
 @user_controller.route('/logout', methods=['POST'])
-@login_required
+@login_required_view
 def logout():
     """
     安全退出登录
@@ -152,21 +170,12 @@ def logout():
         # 清除所有会话数据
         session.clear()
 
-        #终止Flask-Login会话
-        logout_user()
-
         return jsonify({
             "status": "success",
             "message": "logout success!"
         }), 200
 
-        # # 方式二：重定向到登录页
-        # response = redirect(url_for('login'))
-        # response.delete_cookie('session')  # 清除客户端cookie
-        # return response
-
     except Exception as e:
-        app.logger.error(f"退出异常: {str(e)}")
         return jsonify({
             "status": "error",
             "message": "退出失败，请重试"

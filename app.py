@@ -10,32 +10,27 @@ import redis
 from flask import Flask, request, jsonify, render_template, redirect, session
 from flask_cors import CORS
 from requests_oauthlib import OAuth1Session
-from flask_login import LoginManager, login_user, logout_user, login_required, current_user
+# from flask_login import LoginManager, login_user, logout_user, login_required, current_user  # 移除
 
 # 项目内部模块
-from model.db import BaseModel
+from model.db import BaseModel, get_db, init_tables
 from model.user import User
 from model.schdule import Schedule
 from model.character import Character
 from model.invitation_code import InvitationCode
+from model.sector import Sector
+from model.arena import Arena
 
 from controllers.character_controller import character_controller
 from controllers.user_controller import user_controller
 from register_char.user_visibility import user_visibility_bp
 from register_char.celery_task import redis_client
 from utils.utils import TWITTER_API_KEY, TWITTER_API_SECRET_KEY
+from config.config import REDIS_CONFIG
+from tools.area_replace import replace_area
 
 # 创建Flask应用
 app = Flask(__name__)
-
-# 初始化 Flask-Login
-login_manager = LoginManager()
-login_manager.init_app(app)
-login_manager.login_view = 'user.login'
-
-@login_manager.user_loader
-def load_user(user_id):
-    return User().find_by_id(user_id)
 
 # 应用配置
 app.secret_key = "ai-hello-world:0012873"
@@ -43,13 +38,9 @@ app.permanent_session_lifetime = 3600
 
 # Redis配置
 app.config['SESSION_TYPE'] = 'redis'
-app.config['SESSION_REDIS'] = redis.StrictRedis(host='127.0.0.1', port=6379, db=0)
-app.config['SESSION_USE_SIGNER'] = True
-app.config['SESSION_KEY_PREFIX'] = 'session:'
-
-# MySQL数据库配置
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:123456@localhost:3306/character_db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SESSION_REDIS'] = redis.StrictRedis(host=REDIS_CONFIG.get('host',"127.0.0.1"), port=REDIS_CONFIG.get('port',6379), db=REDIS_CONFIG.get('db',0), password=REDIS_CONFIG.get('password',""))
+app.config['SESSION_USE_SIGNER'] = True  # 签名加密session id
+app.config['SESSION_KEY_PREFIX'] = 'session:'  # redis中 key 的前缀
 
 # 配置CORS
 CORS(app, resources={
@@ -162,15 +153,14 @@ def callback():
     else:
         user = s.first(twitter_id=twitter_id)
         if not user:
-            session['twitter_id'] = twitter_id
-            session['screen_name'] = screen_name
+            session['twitter_id'] = twitter_id  # 存储Twitter ID以便在注册时使用
+            session['screen_name'] = screen_name  # 存储屏幕名称
             session['access_token'] = access_token
             session['access_token_secret'] = access_token_secret
             return redirect('/register')
 
-        # 使用 Flask-Login 登录用户
-        login_user(user)
-        
+        # 直接用 session 记录 user_id
+        session['user_id'] = user.id
         if 'call_back_url' in session:
             call_back_url = session['call_back_url']
             call_back_url = urllib.parse.unquote(call_back_url)
@@ -187,5 +177,52 @@ def bind_twitter():
     authorization_url = oauth.authorization_url('https://api.twitter.com/oauth/authorize', action='bind')
     return redirect(authorization_url)
 
+@app.route('/api/save_location', methods=['POST'])
+def save_location():
+    data = request.json
+    x, y = int(data['x']), int(data['y'])
+    sector_name = data['sector']
+    arena_name = data['arena']
+    character_id = data.get('character_id')
+
+    db = get_db()
+    # 1. sector 唯一性
+    sector = db.query(Sector).filter_by(name=sector_name).first()
+    if not sector:
+        sector = Sector(name=sector_name)
+        db.add(sector)
+        db.commit()
+        db.refresh(sector)
+
+    # 2. arena 唯一性
+    arena = db.query(Arena).filter_by(name=arena_name).first()
+    if arena:
+        return jsonify({'error': 'arena name already exists'}), 400
+    arena = Arena(name=arena_name)
+    db.add(arena)
+    db.commit()
+    db.refresh(arena)
+
+    # 3. 替换 csv 区域数字（自动 flood fill 替换）
+    try:
+        replace_area('map/matrix2/maze/arena_maze.csv', x, y, arena.id)
+        replace_area('map/matrix2/maze/sector_maze.csv', x, y, sector.id)
+    except Exception as e:
+        return jsonify({'error': f'csv 替换失败: {str(e)}'}), 500
+
+    # 4. character_db 表更新 sector_id
+    if character_id:
+        character = db.query(Character).filter_by(id=character_id).first()
+        if character:
+            character.sector_id = sector.id
+            db.commit()
+
+    return jsonify({'sector_id': sector.id, 'arena_id': arena.id})
+
+@app.route('/api/test_location')
+def test_location_page():
+    return render_template('test_location.html')
+
 if __name__ == '__main__':
+    init_tables()
     app.run(debug=True, host='0.0.0.0', port=5000)
