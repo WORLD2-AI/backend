@@ -23,7 +23,7 @@ fs_back_end = "D:\\aitown\\reverie\\backend_server"
 
 emb_url = "http://127.0.0.1:11434"
 # api_url = "http://127.0.0.1"
-openai_api_key = ["sk-058aed3cf0b942068740c516fef37c51"]
+openai_api_key = ["sk-6ee322061b414adf834e1733153cb9ae"]
 
 # api_url = "http://8.130.125.153"
 # openai_api_key = ["app-cYXRNIAFUZY7ywce7OOkXcN9"]

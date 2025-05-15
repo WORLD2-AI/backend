@@ -12,15 +12,24 @@ try:
     
 except ImportError as e:
     print(f"Redis connect error: {e}")
-class RedisClient ():
+class RedisClient():
     def __init__(self):
         global redis_handler
         self.redis_handler = redis_handler
-    def get_json(self,key:str)->dict:
+        
+    def get_json(self, key: str) -> dict:
         result = self.redis_handler.get(key)
-        # data_str = result.decode('utf-8')
-        data = json.loads(result)
-        return data
-    def set_json(self,key:str,value:dict,ex = None):
-        value = json.dumps(value, ensure_ascii=False)
-        return self.redis_handler.set(key,value,ex = ex)
+        try:
+            # 添加双重解析确保数据格式正确
+            if isinstance(result, str):
+                result = json.loads(result)
+            return json.loads(result) if isinstance(result, (bytes, str)) else result
+        except json.JSONDecodeError:
+            print(f"Invalid JSON data for key: {key}")
+            return {}
+
+    def set_json(self, key: str, value: dict, ex=None):
+        # 确保存储前序列化
+        if not isinstance(value, str):
+            value = json.dumps(value, ensure_ascii=False)
+        return self.redis_handler.set(key, value, ex=ex)

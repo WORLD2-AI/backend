@@ -68,7 +68,7 @@ maze = Maze("the ville")
 
 # 初始化DeepSeek配置 (旧风格)
 openai.api_base = os.getenv("DEEPSEEK_API_BASE_URL", "https://api.deepseek.com/v1") 
-openai.api_key = os.getenv("DEEPSEEK_API_KEY", "sk-98f0451cbb1f4f75802c35923f5b0d2f")
+openai.api_key = os.getenv("DEEPSEEK_API_KEY", "sk-6ee322061b414adf834e1733153cb9ae")
 
 # 禁用代理设置
 os.environ['no_proxy'] = '*'
@@ -214,7 +214,7 @@ def process_tool_call(tool_call, character_id):
     except json.JSONDecodeError as e:
         error_msg = f"工具参数JSON解析失败: {e}. 参数内容: {tool_call.function.arguments}"
         logger.error(error_msg)
-        return False, error_msg
+        return False, str(error_msg)  # 确保返回字符串
     
     logger.info(f"处理工具调用: 工具名称={tool_name}, 参数={arguments}, 角色ID={character_id}")
     character_id = str(character_id) 
@@ -225,7 +225,7 @@ def process_tool_call(tool_call, character_id):
     if character_data is None:
         error_msg = f"未找到ID为'{character_id}'的角色"
         logger.error(error_msg)
-        return False, error_msg
+        return False, str(error_msg)  # 确保返回字符串
     
     persona = None
     try:
@@ -252,7 +252,7 @@ def process_tool_call(tool_call, character_id):
         if not unit_offset:
             error_msg = f"无法识别的方向: {direction}"
             logger.error(error_msg)
-            return False, error_msg
+            return False, str(error_msg)  # 确保返回字符串
 
         actual_offset_x = unit_offset[0] * steps
         actual_offset_y = unit_offset[1] * steps
@@ -305,7 +305,7 @@ def process_tool_call(tool_call, character_id):
     elif tool_name == "location_move":
         location_name = arguments.get("location")
         if not location_name:
-            return False, "location_move工具调用缺少location参数"
+            return False, str("location_move工具调用缺少location参数")  # 确保返回字符串
 
         target_address = None 
         
@@ -359,18 +359,6 @@ def process_tool_call(tool_call, character_id):
                 default_target_address = "the ville:hobbs cafe:cafe" 
                 logger.warning(f"未能为'{location_name}'解析出具体地址，将使用默认地址: {default_target_address}")
                 target_address = default_target_address
-        
-        # target_coords_list = maze.address_tiles.get(target_address)
-        # if not target_coords_list or len(target_coords_list) <= 0:
-        #     error_msg = f"目标地址 '{target_address}' 在地图数据中没有对应的坐标。"
-        #     logger.error(error_msg)
-        #     return False, error_msg
-        
-        # final_target_position_coords = random.choice(target_coords_list) 
-        # if not is_within_bounds(final_target_position_coords, maze.collision_maze):
-        #     error_msg = f"解析的目标地址 '{target_address}' 对应的坐标 {final_target_position_coords} 超出边界。"
-        #     logger.error(error_msg)
-        #     return False, error_msg
 
         now = datetime.datetime.now()
         midnight = now.replace(hour=0, minute=0, second=0, microsecond=0)
@@ -386,7 +374,6 @@ def process_tool_call(tool_call, character_id):
         redis.set_json(key, character_data)
         logger.info(f"Updated Redis for character {character_id} with new action: {action_description}, site: {target_address}")
 
-        # --- MODIFIED: 发送 path_find_task 任务 (简化) ---
         try:
             logger.info(f"send task celery_tasks.app.path_find_task to celery: {character_id}")
             celery_app.send_task(
@@ -405,7 +392,7 @@ def process_tool_call(tool_call, character_id):
     else:
         error_msg = f"不支持的工具调用: {tool_name}"
         logger.error(error_msg)
-        return False, error_msg
+        return False, str(error_msg)  # 确保返回字符串
 
 @app.get("/")
 async def root():
@@ -517,28 +504,10 @@ async def ai_deepseek_movement(request: MovementRequest):
                 "tool_used": tool_name,
                 "arguments_used": tool_args,
                 "execution_successful": exec_success,
-                "execution_message": exec_result_msg,
+                "execution_message": exec_result_msg if exec_result_msg else "操作执行完成",
                 "timestamp": datetime.datetime.now().isoformat()
             }
             logger.info(f"tool result: {execution_summary}")
-            
-            # summary_messages = [
-            #     {"role": "system", "content": "请根据用户的原始指令、AI的工具选择和工具的执行结果，用一句话清晰地总结角色将要执行的动作或已经发生的情况。"},
-            #     {"role": "user", "content": f"""
-            #     用户原始指令: {request.instruction}
-            #     AI选择的工具: {tool_name}
-            #     工具参数: {json.dumps(tool_args, ensure_ascii=False)}
-            #     工具执行结果: {'成功' if exec_success else '失败'} - {exec_result_msg}
-            #     请总结。
-            #     """}
-            # ]
-            
-            # summary_api_response = call_deepseek_api_with_retry(
-            #     messages=summary_messages,
-            #     model="deepseek-chat"
-            # )
-            # final_summary = summary_api_response.choices[0].message.content
-            # logger.info(f"AI总结: {final_summary}")
             
             updated_character_data = redis_client_instance.get_json(key) 
             current_pos = updated_character_data.get('position', character_data.get('position', [0,0]))
@@ -566,9 +535,15 @@ async def ai_deepseek_movement(request: MovementRequest):
                 "target_position": target_position_val 
             }
             logger.info(f"返回结果: {response_data}")
+            
+            # 确保 message 字段不为空
+            response_message = exec_result_msg if exec_result_msg else "操作执行完成"
+            if not isinstance(response_message, str):
+                response_message = str(response_message)
+                
             return APIResponse(
                 success=exec_success,
-                # message=final_summary,
+                message=response_message,
                 data=response_data
             )
         

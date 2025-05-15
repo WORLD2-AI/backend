@@ -169,7 +169,7 @@ def sync_schedules_to_redis():
                 # 存储到Redis，使用名称作为键，确保每个角色只有一个键
                 redis_key = f"character:{name}"
                 try:
-                    redis_client.set(redis_key, json.dumps(redis_data))
+                    redis_client.set(redis_key, json.dumps(redis_data, ensure_ascii=False, indent=2))
                     logger.info(f"已同步角色(名称: {name}, ID: {user_id})的数据到Redis")
                 except Exception as e:
                     logger.error(f"写入Redis失败: {str(e)}")

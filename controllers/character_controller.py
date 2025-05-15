@@ -14,15 +14,15 @@ from model.db import BaseModel
 from model.schdule import Schedule
 from common.redis_client import RedisClient
 from celery_tasks.location_service import get_location_by_coordinates, get_location_by_name
+from common.redis_client import redis_handler
+from celery_tasks.app import proecess_character_born
+from register_char.user_visibility import user_visibility_bp  # 添加用户可见性蓝图导入
 
 # 创建蓝图
 character_controller = Blueprint('character', __name__)
 
 # 配置日志
 logger = logging.getLogger(__name__)
-
-# 初始化Redis客户端
-redis_client = RedisClient()
 
 # ----- 辅助函数 -----
 
@@ -34,84 +34,63 @@ def validate_character(data):
         data: 角色数据字典
         
     返回:
-        errors: 错误字典，如果没有错误则为空字典
+        errors: 错误列表，如果没有错误则为空列表
     """
-    errors = {}
+    errors = []
     
     required_fields = ['name', 'first_name', 'last_name', 'age', 'sex', 
-                      'innate', 'learned', 'currently', 'lifestyle']
+                        'innate', 'learned', 'currently', 'lifestyle']
     
     # 检查必填字段
     for field in required_fields:
         if field not in data or not data[field]:
-            errors[field] = f"缺少必填字段: {field}"
+            errors.append(f"缺少必填字段: {field}")
     
     # 验证年龄
     if 'age' in data:
         try:
             age = int(data['age'])
             if age < 1 or age > 120:
-                errors['age'] = "年龄必须在1-120之间"
+                errors.append("年龄必须在1-120之间")
         except ValueError:
-            errors['age'] = "年龄必须是数字"
+            errors.append("年龄必须是数字")
     
-    # 验证性别
+    # sex check
     valid_sex = {'male', 'female', 'other'}
     if data.get('sex') and data['sex'].lower() not in valid_sex:
-        errors['sex'] = "性别必须是'male', 'female'或'other'"
+        errors['sex'] = "sex must be male,femal or other"
     
-    # 验证learned字段长度
+    # learned check
     if data.get('learned'):
         learned_length = len(data['learned'])
         if not (2 <= learned_length <= 255):
-            errors['learned'] = "learned长度必须在2-255之间"
+            errors['learned'] = "learned length must between 2 and 255"
     
-    # 验证lifestyle字段长度
+    # check lifestyle
     if data.get('lifestyle'):
         lifestyle_length = len(data['lifestyle'])
         if not (2 <= lifestyle_length <= 255):
-            errors['lifestyle'] = "lifestyle长度必须在2-255之间"
-    
-    # 检查角色名是否已存在
+            errors['lifestyle'] = "lifestyle length must between 2 and 255"
     character = Character()
-    all_data = character.find(name=data.get('name'))
-    if len(all_data) > 0:
-        errors['name'] = "角色名已被注册"
-    
+    all_data = character.find(name = data.get('name'))
+    if len(all_data)>0:
+        errors['name'] = "character name has been registered"
     return errors
 
 def get_character_redis_data(character_id):
-    """
-    从Redis获取角色的实时数据
-    
-    参数:
-        character_id: 角色ID
-        
-    返回:
-        realtime_data: 角色实时数据字典，如果获取失败则为None
-    """
+    redis_key = f"character:{character_id}"
     try:
-        redis_key = f"character:{character_id}"
-        return redis_client.get_json(redis_key)
+        # 使用更新后的JSON解析方法
+        redis_data = RedisClient().get_json(redis_key)
+        if redis_data and isinstance(redis_data, dict):
+            # 添加数据校验
+            required_fields = ['name', 'location', 'action']
+            if all(field in redis_data for field in required_fields):
+                return redis_data
+        return None
     except Exception as e:
         logger.warning(f"获取角色实时数据失败: {str(e)}")
-    
-    return None
-
-def check_redis_connection():
-    """
-    检查Redis连接是否正常
-    
-    返回:
-        (is_connected, error_message): 元组，第一个元素表示是否连接成功，第二个元素为错误信息
-    """
-    try:
-        redis_client.redis_handler.ping()
-        return True, None
-    except Exception as e:
-        logger.error(f"Redis连接失败: {str(e)}")
-        return False, f"无法连接到Redis服务器，请检查Redis服务是否运行: {str(e)}"
-
+        return None
 def parse_location_from_site(site_info):
     """
     从site字段中解析位置信息
@@ -545,39 +524,59 @@ def get_character_status(character_id):
         logger.error(f"获取角色状态失败: {str(e)}\n{traceback.format_exc()}")
         return jsonify({'status': 'error', 'message': f'获取状态错误: {str(e)}'}), 500
 
-@character_controller.route('/api/characters', methods=['GET'])
-def get_characters():
-    """获取数据库中的所有角色列表"""
+@character_controller.route('/api/all-chars', methods=['GET'])
+def get_all_characters():
     try:
-        # 获取所有角色
-        character = Character()
-        all_characters = character.find_all()
-        character_list = [char.to_dict() for char in all_characters]
+        # 获取系统角色（user_id=0）
+        system_chars = Character().find(user_id=0)
         
-        # 处理每个角色的实时数据
-        for character in character_list:
-            realtime_data = get_character_redis_data(character['id'])
-            if realtime_data:
-                character.update({
-                    'current_location': realtime_data.get('location'),
-                    'current_action': realtime_data.get('current_action'),
-                    'action_location': realtime_data.get('action_location')
-                })
+        # 检查session中是否有user_id
+        user_id = session.get('user_id')
         
-        # 返回响应
-        response = jsonify({
-            "status": "success",
-            "data": character_list,
-            "total": len(character_list)
-        })
-        response.headers.add('Access-Control-Allow-Origin', '*')
-        return response
-    except Exception as e:
-        logger.error(f"获取角色列表失败: {str(e)}\n{traceback.format_exc()}")
+        if user_id:
+            # 如果session中有user_id，获取该用户的所有角色
+            user_chars = Character().find(user_id=user_id)
+            # 组合系统角色和用户角色
+            all_chars = system_chars + user_chars
+        else:
+            # 如果session中没有user_id，只返回系统角色
+            all_chars = system_chars
+        
+        # 获取每个角色的位置信息，只保留指定字段
+        characters_with_position = []
+        for char in all_chars:
+            char_dict = char.to_dict()
+            # 从Redis获取位置信息
+            redis_key = f"character:{char.id}"
+            redis_data = redis_handler.get(redis_key)
+            if redis_data:
+                try:
+                    redis_data = json.loads(redis_data)
+                    position = redis_data.get('position', [0, 0])
+                except json.JSONDecodeError:
+                    position = [0, 0]
+            else:
+                position = [0, 0]
+            # 只保留需要的字段
+            filtered = {
+                'age': char_dict.get('age'),
+                'id': char_dict.get('id'),
+                'user_id': char_dict.get('user_id'),
+                'name': char_dict.get('name'),
+                'position': position
+            }
+            characters_with_position.append(filtered)
+        
         return jsonify({
-            "status": "error",
-            "message": f"获取角色列表失败: {str(e)}"
-        }), 500
+            "status": "success",
+            "characters": characters_with_position,
+            "system_character_count": len(system_chars),
+            "user_character_count": len(all_chars) - len(system_chars),
+            "is_user_logged_in": bool(user_id)
+        })
+    except Exception as e:
+        logger.error(f"获取所有角色失败: {e}")
+        return jsonify({"status": "error", "message": str(e)}), 500
 
 @character_controller.route('/api/characters/<int:character_id>', methods=['GET'])
 def get_character_detail(character_id):
@@ -672,7 +671,7 @@ def delete_character(character_id):
         
         # 删除Redis中的实时数据
         redis_key = f"character:{character_id}"
-        redis_client.delete(redis_key)
+        redis_handler.delete(redis_key)
         
         return jsonify({
             'status': 'success',
@@ -681,6 +680,7 @@ def delete_character(character_id):
         }), 200
     except Exception as e:
         logger.error(f"删除角色失败: {str(e)}\n{traceback.format_exc()}")
+        BaseModel().get_session().rollback()
         return jsonify({'status': 'error', 'message': f'删除角色错误: {str(e)}'}), 500
 
 @character_controller.route('/api/character/<int:character_id>/schedule', methods=['GET'])
@@ -781,3 +781,59 @@ def get_character_schedule(character_id):
 def location_test_page():
     """渲染位置测试页面"""
     return render_template('location_test.html')
+@character_controller.route('/api/character/login', methods=['POST'])
+def character_login():
+    """处理角色登录请求"""
+    try:
+        # 检查用户是否已登录
+        user_id = session.get('user_id')
+        if not user_id:
+            return jsonify({
+                "status": "error",
+                "message": "请先登录用户账号"
+            }), 401
+
+        # 获取请求数据
+        data = request.get_json()
+        if not data or 'character_id' not in data:
+            return jsonify({
+                "status": "error",
+                "message": "缺少角色ID"
+            }), 400
+
+        character_id = data['character_id']
+        
+        # 验证角色是否存在且属于当前用户
+        character = Character().first(id=character_id, user_id=user_id)
+        if not character:
+            return jsonify({
+                "status": "error",
+                "message": "角色不存在或不属于当前用户"
+            }), 404
+
+        # 将角色ID存入session
+        session['character_id'] = character_id
+        
+        # 更新Redis中的角色状态
+        redis_key = f"character:{character_id}"
+        character_data = redis_handler.get(redis_key)
+        if character_data:
+            character_data = json.loads(character_data)
+            character_data['status'] = 'online'
+            redis_handler.set(redis_key, json.dumps(character_data))
+
+        return jsonify({
+            "status": "success",
+            "message": "角色登录成功",
+            "data": {
+                "character_id": character_id,
+                "name": character.name
+            }
+        })
+
+    except Exception as e:
+        logger.error(f"角色登录失败: {str(e)}\n{traceback.format_exc()}")
+        return jsonify({
+            "status": "error",
+            "message": f"角色登录失败: {str(e)}"
+        }), 500

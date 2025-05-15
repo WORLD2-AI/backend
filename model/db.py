@@ -3,18 +3,18 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import sessionmaker
 from typing import List, Optional, Dict
+# database gsn
 from config.config import DB_CONFIG
-
-DATABASE_URL = f"mysql+pymysql://{DB_CONFIG.get('user','root')}:{DB_CONFIG.get('password','020804')}@{DB_CONFIG.get('host','127.0.0.1')}:{DB_CONFIG.get('port',3306)}/{DB_CONFIG.get('db','character_db')}"
+DATABASE_URL = f'mysql+pymysql://{DB_CONFIG.get("user","root")}:{DB_CONFIG.get("password","020804")}@{DB_CONFIG.get("host","127.0.0.1")}:{DB_CONFIG.get("port",3306)}/{DB_CONFIG.get("db","character_db")}'
 
 # 创建引擎
 engine = create_engine(
-    DATABASE_URL,
-    echo=True,  # 打印SQL
+    DATABASE_URL, 
     pool_pre_ping=True,
     pool_recycle=1800,
     pool_size=10,
-    max_overflow=20
+    max_overflow=20,
+    echo=True
 )
 
 # 创建基础模型类
@@ -43,12 +43,11 @@ class BaseModel():
         """获取会话"""
         return get_db()  # 每次调用新建 Session
 
-    def first(self, **filters) -> object:
-        """获取符合条件的第一条记录"""
+    def first(self, **kwargs) -> object:
         with self.get_session() as session:
             query = session.query(self.model_class)
-            if filters:
-                for key, value in filters.items():
+            if kwargs:
+                for key, value in kwargs.items():
                     query = query.filter(getattr(self.model_class, key) == value)
             return query.first()
 
@@ -63,6 +62,15 @@ class BaseModel():
             query = session.query(self.model_class)
             if kwargs:
                 for key, value in kwargs.items():
+                    if key == "limit":
+                        query = query.limit(value)
+                        continue
+                    if key == "offset":
+                        query = query.offset(value)
+                        continue
+                    if key == "order_by":
+                        query = query.order_by(value)
+                        continue
                     query = query.filter(getattr(self.model_class, key) == value)
             return query.all()
             
@@ -105,11 +113,22 @@ class BaseModel():
         with self.get_session() as session:
             query = session.query(self.model_class)
             return query.all()
+    def delete(self, id: int):
+        with self.get_session() as session:
+            instance = session.query(self.model_class).filter_by(id=id).first()
+            if instance:
+                session.delete(instance)
+                session.commit()
+            else:
+                raise Exception("Record not found")
+    def commit(self):
+        with self.get_session() as session:
+            session.commit()
 
 def init_tables():
     """初始化数据库表"""
-    try:
-        Base.metadata.create_all(engine)
-        print("数据库表初始化成功")
-    except Exception as e:
-        print(f"数据库表初始化失败: {e}")
+    from model.character import Character
+    from model.user import User
+    from model.schedule import Schedule
+    
+    Base.metadata.create_all(engine)

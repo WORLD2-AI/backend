@@ -13,7 +13,7 @@ DB_CONFIG = {
     'host': 'localhost',
     'user': 'root',
     'port':3306,
-    'password': '020804',
+    'password': '123456',
     'db': 'character_db',
     'charset': 'utf8mb4',
     'cursorclass': pymysql.cursors.DictCursor
@@ -62,3 +62,8 @@ CONSTANTS = {
 
 collision_block_id = "0"
 default_born_tiled = (23,52)
+
+
+# 世界ID - 用于数据隔离
+WORLD_ID = "1"  # 默认世界ID
+

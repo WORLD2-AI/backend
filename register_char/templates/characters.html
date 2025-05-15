@@ -16,10 +16,17 @@
             padding: 15px;
             margin-bottom: 15px;
             border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        .character.current-character {
+            border: 2px solid #4CAF50;
+            background-color: #f0f9f0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         .character-info {
             display: flex;
             align-items: center;
+            justify-content: space-between;
         }
         .character-position {
             margin-left: 20px;
@@ -31,6 +38,15 @@
         }
         .status-offline {
             color: gray;
+        }
+        .current-character-badge {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            margin-top: 5px;
         }
         .map {
             border: 1px solid #ccc;
@@ -47,14 +63,14 @@
             border-radius: 50%;
             transform: translate(-50%, -50%);
         }
-        .current-character {
-            background-color: blue;
+        .current-character-marker {
+            background-color: #4CAF50;
             border: 2px solid white;
         }
-        .visible-character {
-            background-color: green;
+        .visible-character-marker {
+            background-color: #2196F3;
         }
-        .invisible-character {
+        .invisible-character-marker {
             background-color: gray;
             opacity: 0.5;
         }
@@ -62,6 +78,34 @@
             padding: 8px 15px;
             margin: 5px;
             cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .character-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .login-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+        .login-btn:hover {
+            background-color: #45a049;
+        }
+        .login-btn:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
         }
     </style>
 </head>
@@ -120,20 +164,56 @@
                 charElement.className = 'character';
                 
                 const statusClass = character.status === 'online' ? 'status-online' : 'status-offline';
+                const currentCharacterClass = character.is_current_character ? 'current-character' : '';
                 
                 charElement.innerHTML = `
-                    <div class="character-info">
+                    <div class="character-info ${currentCharacterClass}">
                         <div>
-                            <h3>${character.name} (${character.id})</h3>
+                            <h3>${character.name} (${character.character_id})</h3>
                             <p>状态: <span class="${statusClass}">${character.status}</span></p>
+                            ${character.is_current_character ? '<p class="current-character-badge">当前登录角色</p>' : ''}
                         </div>
                         <div class="character-position">
                             <p>位置: [${character.position[0]}, ${character.position[1]}]</p>
                         </div>
                     </div>
+                    <div class="character-actions">
+                        <button class="login-btn" 
+                                onclick="loginCharacter('${character.character_id}')"
+                                ${character.is_current_character ? 'disabled' : ''}>
+                            ${character.is_current_character ? '当前登录' : '登录角色'}
+                        </button>
+                    </div>
                 `;
                 
                 container.appendChild(charElement);
+            });
+        }
+
+        // 角色登录函数
+        function loginCharacter(characterId) {
+            fetch('/api/character/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    character_id: characterId
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    alert('角色登录成功！');
+                    // 重新加载角色列表
+                    document.getElementById('loadCharactersBtn').click();
+                } else {
+                    alert('角色登录失败: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('角色登录失败，请稍后重试');
             });
         }
 
@@ -168,7 +248,7 @@
             
             // 绘制当前角色
             const currentMarker = document.createElement('div');
-            currentMarker.className = 'character-marker current-character';
+            currentMarker.className = 'character-marker current-character-marker';
             currentMarker.style.left = (currentCharacter.position[0] * mapScale) + 'px';
             currentMarker.style.top = (currentCharacter.position[1] * mapScale) + 'px';
             currentMarker.title = `${currentCharacter.name} (${currentCharacter.id}) [${currentCharacter.position[0]}, ${currentCharacter.position[1]}]`;
@@ -177,7 +257,7 @@
             // 绘制可见角色
             visibleCharacters.forEach(character => {
                 const marker = document.createElement('div');
-                marker.className = 'character-marker visible-character';
+                marker.className = 'character-marker visible-character-marker';
                 marker.style.left = (character.position[0] * mapScale) + 'px';
                 marker.style.top = (character.position[1] * mapScale) + 'px';
                 marker.title = `${character.name} (${character.id}) - 距离: ${character.distance}单位`;

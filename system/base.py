@@ -8,5 +8,5 @@ if root_path is None:
 sys.path.append(root_path)
 
 
-openai_api_key = ["sk-ded95fe2fbac46d8995610ee473095ed"]
+openai_api_key = ["sk-6ee322061b414adf834e1733153cb9ae"]
 from utils.utils import *

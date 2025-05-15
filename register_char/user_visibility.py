@@ -1,5 +1,15 @@
 from flask import Blueprint, jsonify, request
 from common.redis_client import redis_handler
+import sys
+import os
+
+# 添加项目根目录到Python路径
+root_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if root_path not in sys.path:
+    sys.path.insert(0, root_path)
+
+from flask import Blueprint, jsonify, request, session, redirect
+from common.redis_client import redis_handler # 假设 common.redis_client 是您项目中的模块
 import math
 from typing import List, Dict, Any
 import json
@@ -13,58 +23,13 @@ logger = logging.getLogger(__name__)
 # 创建蓝图
 user_visibility_bp = Blueprint('character_visibility', __name__)
 
-# Redis连接配置
-
-def init_test_data():
-    """
-    初始化测试数据，如果Redis中没有角色数据，添加一些测试角色
-    """
-    try:
-        # 检查是否已有角色数据
-        if not redis_handler.keys("character:*"):
-            logger.info("未找到角色数据，正在初始化测试数据...")
-            
-            # 添加测试角色
-            test_characters = [
-                {
-                    "id": "char1",
-                    "name": "frank",
-                    "avatar": "/static/avatars/hero.png",
-                    "status": "online",
-                    "position": [50, 50],  # 公园湖边的位置(johnson park:lake)
-                    "level": 10
-                },
-                {
-                    "id": "char2",
-                    "name": "kiki",
-                    "avatar": "/static/avatars/mage.png",
-                    "status": "online",
-                    "position": [40, 40],  # 塔玛拉和卡门的房子(tamara taylor and carmen ortiz's house)
-                    "level": 8
-                }
-            ]
-            
-            # 存储到Redis
-            for character in test_characters:
-                char_id = character.pop("id")
-                redis_handler.set(f"character:{char_id}", json.dumps(character))
-                
-            logger.info(f"已添加 {len(test_characters)} 个测试角色到Redis")
-            return True
-        else:
-            logger.info("Redis中已有角色数据，跳过测试数据初始化")
-            return False
-    except Exception as e:
-        logger.error(f"初始化测试数据失败: {e}")
-        return False
-
+# Redis 辅助函数 (被保留的API所依赖)
 def get_redis_data(key):
+    """从Redis获取数据"""
     return redis_handler.get(key)
 
-def set_redis_data(key, value):
-    return redis_handler.set(key, value)
-
 def get_redis_keys(pattern):
+    """从Redis获取匹配模式的键"""
     return redis_handler.keys(pattern)
 
 def calculate_distance(point1: List[float], point2: List[float]) -> float:
@@ -73,37 +38,12 @@ def calculate_distance(point1: List[float], point2: List[float]) -> float:
     """
     return math.sqrt((point1[0] - point2[0])**2 + (point1[1] - point2[1])**2)
 
-def get_all_characters() -> List[Dict[str, Any]]:
-    """
-    获取所有角色列表
-    """
-    characters = []
-    for key in get_redis_keys("character:*"):
-        character_id = key.split(':')[1]
-        character_data = get_redis_data(key)
-        if character_data:
-            character = json.loads(character_data)
-            # 根据角色状态添加emoji
-            status_emoji = "🟢" if character.get('status', 'offline') == 'online' else "⚫"
-            # 根据角色等级添加emoji
-            level_emoji = "⭐" * min(character.get('level', 1), 5)
-            characters.append({
-                'character_id': character_id,
-                'name': f"{status_emoji} {character.get('name', 'Unknown')} {level_emoji}",
-                'avatar': character.get('avatar', ''),
-                'status': character.get('status', 'offline'),
-                'position': character.get('position', [0, 0]),
-                'level': character.get('level', 1),
-                'class': character.get('class', 'Unknown')
-            })
-    return characters
-
 def get_visible_characters(current_character_id: str, radius: float = 20) -> List[Dict[str, Any]]:
     """
-    获取指定半径内的可见角色
+    获取指定半径内的可见角色 (被 /api/visible-characters/<character_id> 依赖)
     半径单位：地图单位
+    添加 age 字段
     """
-    # 获取当前角色位置
     current_character_data = get_redis_data(f"character:{current_character_id}")
     if not current_character_data:
         return []
@@ -111,7 +51,6 @@ def get_visible_characters(current_character_id: str, radius: float = 20) -> Lis
     current_character = json.loads(current_character_data)
     current_position = current_character.get('position', [0, 0])
     
-    # 获取所有角色数据
     visible_characters = []
     for key in get_redis_keys("character:*"):
         if key == f"character:{current_character_id}":
@@ -124,16 +63,12 @@ def get_visible_characters(current_character_id: str, radius: float = 20) -> Lis
         character = json.loads(character_data)
         character_position = character.get('position', [0, 0])
         
-        # 计算距离
         distance = calculate_distance(current_position, character_position)
         
-        # 如果在指定半径内，添加到可见角色列表
         if distance <= radius:
-            # 根据角色状态添加emoji
             status_emoji = "🟢" if character.get('status', 'offline') == 'online' else "⚫"
-            # 根据角色等级添加emoji
-            level_emoji = "⭐" * min(character.get('level', 1), 5)
-            # 根据距离添加emoji
+            level_value = character.get('level', 1) # 仍然用于计算 level_emoji
+            level_emoji = "⭐" * min(level_value, 5)
             distance_emoji = "👥" if distance <= 5 else "👀" if distance <= 10 else "🔍"
             
             visible_characters.append({
@@ -145,44 +80,94 @@ def get_visible_characters(current_character_id: str, radius: float = 20) -> Lis
                 'status': character.get('status', 'offline'),
                 'level': character.get('level', 1),
                 'class': character.get('class', 'Unknown'),
-                'distance_emoji': distance_emoji
+                'distance_emoji': distance_emoji,
+                'age': character.get('age', None), # 新增 age 字段
             })
     
     return visible_characters
 
+# --- 保留的API接口 ---
+
 @user_visibility_bp.route('/api/all-characters', methods=['GET'])
 def get_all_characters_api():
     """
-    API接口：获取所有角色列表（带emoji）
+    API接口：获取所有角色列表
+    1. 始终显示系统角色（user_id=0）
+    2. 如果用户已登录：
+       - session['user_id'] 可能是单个id，也可能是列表/集合，遍历所有id
+       - 通过user_id在数据库中找到对应的角色id
+       - 从redis中读取这些id对应角色的详细信息
+       - 合并系统角色和所有登录用户角色
+    3. 如果用户未登录：
+       - 只显示系统角色
     """
     try:
-        characters = []
+        system_characters = []
+        user_characters = []
+        
+        # 从redis中读取所有角色信息，收集系统角色
         for key in get_redis_keys("character:*"):
-            character_id = key.split(':')[1]
             character_data = get_redis_data(key)
             if character_data:
                 character = json.loads(character_data)
-                status_emoji = "🟢" if character.get('status', 'offline') == 'online' else "⚫"
-                level_emoji = "⭐" * min(character.get('level', 1), 5)
-                characters.append({
-                    'character_id': character_id,
-                    'name': character.get('name', 'Unknown'),
-                    'avatar': character.get('avatar', ''),
-                    'status': character.get('status', 'offline'),
-                    'position': character.get('position', [0, 0]),
-                    'level': character.get('level', 1),
-                    'class': character.get('class', 'Unknown'),
-                    'status_emoji': status_emoji,
-                    'level_emoji': level_emoji
-                })
+                user_id = character.get('user_id', 0)
+                if user_id == 0:
+                    system_characters.append(character)
+        
+        # 检查用户是否登录
+        user_ids = []
+        if 'user_id' in session:
+            # 支持 session['user_id'] 为单个id或列表
+            if isinstance(session['user_id'], (list, set, tuple)):
+                user_ids = list(session['user_id'])
+            else:
+                user_ids = [session['user_id']]
+        
+        # 查找所有已登录用户的角色
+        if user_ids:
+            from model.character import Character
+            character_model = Character()
+            for uid in user_ids:
+                db_characters = character_model.find(user_id=uid)
+                if db_characters:
+                    for char in db_characters:
+                        redis_key = f"character:{char.id}"
+                        char_data = get_redis_data(redis_key)
+                        if char_data:
+                            user_characters.append(json.loads(char_data))
+        
+        # 合并系统角色和所有登录用户角色
+        all_characters = system_characters + user_characters
+        
+        # 构造返回数据
+        processed_chars = []
+        for char in all_characters:
+            status_emoji = "🟢" if char.get('status') == 'online' else "⚫"
+            level_emoji = "⭐" * min(char.get('level', 1), 5)
+            processed_chars.append({
+                'character_id': char.get('id'),
+                'name': char.get('name', 'Unknown'),
+                'status': char.get('status', 'offline'),
+                'position': char.get('position', [0, 0]),
+                'age': char.get('age', None),
+                'status_emoji': status_emoji,
+                'level_emoji': level_emoji,
+                'user_id': char.get('user_id', 0),
+                'is_system_character': char.get('user_id', 0) == 0
+            })
         return jsonify({
             'status': 'success',
             'data': {
-                'characters': characters,
-                'total': len(characters)
+                'characters': processed_chars,
+                'system_count': len(system_characters),
+                'user_character_count': len(user_characters),
+                'total_count': len(processed_chars),
+                'is_user_logged_in': bool(user_ids),
+                'timestamp': datetime.datetime.now().isoformat()
             }
         })
     except Exception as e:
+        logger.error(f"获取所有角色失败: {str(e)}")
         return jsonify({
             'status': 'error',
             'message': str(e)
@@ -191,10 +176,12 @@ def get_all_characters_api():
 @user_visibility_bp.route('/api/visible-characters/<character_id>', methods=['GET'])
 def get_visible_characters_api(character_id: str):
     """
-    API接口：获取指定角色的可见角色列表（带emoji）
+    API接口：获取指定角色的可见角色列表
+    移除 avatar, level, class 字段
+    添加 age 字段
+    通过查询参数 radius 指定可见半径, e.g., /api/visible-characters/some_char_id?radius=20
     """
     try:
-        # 获取当前角色数据
         current_character_data = get_redis_data(f"character:{character_id}")
         if not current_character_data:
             return jsonify({
@@ -203,672 +190,68 @@ def get_visible_characters_api(character_id: str):
             }), 404
             
         current_character = json.loads(current_character_data)
+        radius = float(request.args.get('radius', 20))
         
-        visible_characters = []
-        base_list = get_visible_characters(character_id)
-        for char in base_list:
-            visible_characters.append({
-                'character_id': char['character_id'],
-                'name': char['name'],
-                'avatar': char['avatar'],
-                'status': char['status'],
-                'position': char['position'],
-                'level': char['level'],
-                'class': char['class'],
-                'distance': char['distance'],
-                'status_emoji': "🟢" if char['status'] == 'online' else "⚫",
-                'level_emoji': "⭐" * min(char['level'], 5),
-                'distance_emoji': char.get('distance_emoji', '')
-            })
-            
-        # 构建中心角色信息
-        center_character = {
+        visible_characters_list = get_visible_characters(character_id, radius) # 此函数内部已修改返回结构
+        
+        current_level_value = current_character.get('level', 1) # 仍然用于计算 level_emoji
+        center_character_info = {
             'character_id': character_id,
             'name': current_character.get('name', 'Unknown'),
-            'avatar': current_character.get('avatar', ''),
             'status': current_character.get('status', 'offline'),
             'position': current_character.get('position', [0, 0]),
-            'level': current_character.get('level', 1),
-            'class': current_character.get('class', 'Unknown'),
+            'age': current_character.get('age', None), # 新增 age 字段
             'status_emoji': "🟢" if current_character.get('status', 'offline') == 'online' else "⚫",
-            'level_emoji': "⭐" * min(current_character.get('level', 1), 5),
+            'level_emoji': "⭐" * min(current_level_value, 5),
             'is_center': True
+            # 'avatar', 'level', 'class' 字段已移除
         }
         
         return jsonify({
             'status': 'success',
             'data': {
-                'center_character': center_character,
-                'visible_characters': visible_characters,
-                'total': len(visible_characters)
-            }
-        })
-    except Exception as e:
-        return jsonify({
-            'status': 'error',
-            'message': str(e)
-        }), 500
-
-# 前端渲染接口
-@user_visibility_bp.route('/api/visible-characters-map/<character_id>', methods=['GET'])
-def get_visible_characters_map(character_id: str):
-    """
-    API接口：获取可见角色的地图渲染数据
-    """
-    try:
-        visible_characters = get_visible_characters(character_id)
-        
-        # 获取当前角色数据
-        current_character_data = get_redis_data(f"character:{character_id}")
-        current_character = json.loads(current_character_data) if current_character_data else {}
-        
-        # 构建地图渲染数据
-        map_data = {
-            'center': current_character.get('position', [0, 0]),
-            'zoom': 15,
-            'markers': [
-                {
-                    'position': character['position'],
-                    'title': character['name'],
-                    'icon': character['avatar'],
-                    'info': f"距离: {character['distance']}单位 | 等级: {character['level']} | 职业: {character['class']}"
-                }
-                for character in visible_characters
-            ],
-            'current_character': {
-                'position': current_character.get('position', [0, 0]),
-                'name': current_character.get('name', 'Unknown'),
-                'avatar': current_character.get('avatar', ''),
-                'level': current_character.get('level', 1),
-                'class': current_character.get('class', 'Unknown'),
-                'status': current_character.get('status', 'offline'),
-                'character_id': character_id
-            }
-        }
-        
-        return jsonify({
-            'status': 'success',
-            'data': map_data
-        })
-    except Exception as e:
-        return jsonify({
-            'status': 'error',
-            'message': str(e)
-        }), 500
-
-@user_visibility_bp.route('/api/character-information/<character_id>', methods=['GET'])
-def get_integrated_character_info(character_id: str):
-    """
-    API接口：整合角色列表和半径内可见角色位置信息
-    """
-    try:
-        # 获取URL参数，默认半径为20
-        radius = float(request.args.get('radius', 20))
-        
-        # 获取所有角色列表
-        all_characters = get_all_characters()
-        
-        # 如果没有角色数据，尝试初始化测试数据
-        if not all_characters:
-            init_test_data()
-            all_characters = get_all_characters()
-        
-        # 获取可见角色列表
-        visible_characters = get_visible_characters(character_id, radius)
-        
-        # 获取当前角色数据
-        current_character_data = get_redis_data(f"character:{character_id}")
-        current_character = json.loads(current_character_data) if current_character_data else {}
-        
-        # 构建地图渲染数据
-        map_data = {
-            'center': current_character.get('position', [0, 0]),
-            'zoom': 15,
-            'markers': [
-                {
-                    'position': character['position'],
-                    'title': character['name'],
-                    'icon': character['avatar'],
-                    'info': f"距离: {character['distance']}单位 | 等级: {character['level']} | 职业: {character['class']}",
-                    'character_id': character['character_id'],
-                    'status': character['status'],
-                    'level': character['level'],
-                    'class': character['class']
-                }
-                for character in visible_characters
-            ],
-            'current_character': {
-                'character_id': character_id,
-                'position': current_character.get('position', [0, 0]),
-                'name': current_character.get('name', 'Unknown'),
-                'avatar': current_character.get('avatar', ''),
-                'status': current_character.get('status', 'offline'),
-                'level': current_character.get('level', 1),
-                'class': current_character.get('class', 'Unknown'),
-                'is_current': True
-            },
-            'visible_radius': radius
-        }
-        
-        # 整合数据返回
-        return jsonify({
-            'status': 'success',
-            'data': {
-                'all_characters': all_characters,
-                'total_characters': len(all_characters),
-                'visible_characters': visible_characters,
-                'total_visible': len(visible_characters),
-                'map_data': map_data,
-                'current_character': {
-                    'character_id': character_id,
-                    'position': current_character.get('position', [0, 0]),
-                    'name': current_character.get('name', 'Unknown'),
-                    'avatar': current_character.get('avatar', ''),
-                    'status': current_character.get('status', 'offline'),
-                    'level': current_character.get('level', 1),
-                    'class': current_character.get('class', 'Unknown')
-                }
-            }
-        })
-    except Exception as e:
-        return jsonify({
-            'status': 'error',
-            'message': str(e)
-        }), 500
-
-# 添加一个初始化数据的路由
-@user_visibility_bp.route('/api/init-test-data', methods=['GET'])
-def init_test_data_api():
-    """
-    API接口：初始化测试数据
-    """
-    try:
-        result = init_test_data()
-        if result:
-            return jsonify({
-                'status': 'success',
-                'message': '测试数据初始化成功'
-            })
-        else:
-            return jsonify({
-                'status': 'info',
-                'message': 'Redis中已有数据，跳过初始化'
-            })
-    except Exception as e:
-        return jsonify({
-            'status': 'error',
-            'message': str(e)
-        }), 500
-
-@user_visibility_bp.route('/api/force-init-test-data', methods=['GET'])
-def force_init_test_data_api():
-    """
-    API接口：强制初始化测试数据，会清除现有数据
-    """
-    try:
-        # 删除现有角色数据
-        for key in get_redis_keys("character:*"):
-            try:
-                redis_handler.delete(key)
-            except Exception as e:
-                logger.error(f"删除角色数据失败: {key}, {e}")
-        
-        # 重新初始化测试数据
-        result = init_test_data()
-        return jsonify({
-            'status': 'success',
-            'message': '测试数据强制初始化成功'
-        })
-    except Exception as e:
-        return jsonify({
-            'status': 'error',
-            'message': str(e)
-        }), 500
-
-@user_visibility_bp.route('/api/update-character-position/<character_id>', methods=['POST'])
-def update_character_position(character_id: str):
-    """
-    API接口：更新角色位置坐标
-    请求体格式：{"position": [x, y]}
-    """
-    try:
-        # 获取请求数据
-        data = request.get_json()
-        if not data or 'position' not in data:
-            return jsonify({
-                'status': 'error',
-                'message': '请求数据无效，需要提供position字段'
-            }), 400
-        
-        # 验证position格式
-        position = data['position']
-        if not isinstance(position, list) or len(position) != 2:
-            return jsonify({
-                'status': 'error',
-                'message': 'position格式无效，应为[x, y]形式的数组'
-            }), 400
-        
-        # 检查坐标是否为数字
-        try:
-            x, y = float(position[0]), float(position[1])
-            position = [x, y]
-        except (ValueError, TypeError):
-            return jsonify({
-                'status': 'error',
-                'message': 'position坐标必须为数字'
-            }), 400
-        
-        # 获取角色数据
-        character_key = f"character:{character_id}"
-        character_data = get_redis_data(character_key)
-        if not character_data:
-            return jsonify({
-                'status': 'error',
-                'message': f'角色不存在: {character_id}'
-            }), 404
-        
-        # 更新位置
-        character = json.loads(character_data)
-        character['position'] = position
-        
-        # 保存回Redis
-        set_redis_data(character_key, json.dumps(character))
-        
-        return jsonify({
-            'status': 'success',
-            'message': f'角色位置已更新: {character_id}',
-            'data': {
-                'character_id': character_id,
-                'position': position,
-                'name': character.get('name', 'Unknown')
-            }
-        })
-    except Exception as e:
-        return jsonify({
-            'status': 'error',
-            'message': str(e)
-        }), 500
-
-@user_visibility_bp.route('/api/get-character-list', methods=['GET'])
-def get_character_list_api():
-    """
-    API接口：获取所有测试角色列表
-    """
-    try:
-        characters = get_all_characters()
-        return jsonify({
-            'status': 'success',
-            'data': {
-                'characters': characters,
-                'total': len(characters)
-            }
-        })
-    except Exception as e:
-        return jsonify({
-            'status': 'error',
-            'message': str(e)
-        }), 500
-
-@user_visibility_bp.route('/api/all-characters-with-positions', methods=['GET'])
-def get_all_characters_with_positions():
-    """
-    API接口：获取所有角色数据及其位置信息
-    返回格式：
-    {
-        "status": "success",
-        "data": {
-            "characters": [
-                {
-                    "id": "char1",
-                    "name": "frank",
-                    "position": [50, 50],
-                    "status": "online"
-                },
-                ...
-            ],
-            "total": 2
-        }
-    }
-    """
-    try:
-        # 获取简化的角色数据
-        characters = get_visible_characters(character_id)
-        
-        return jsonify({
-            'status': 'success',
-            'data': {
-                'characters': characters,
-                'total': len(characters)
-            }
-        })
-    except Exception as e:
-        return jsonify({
-            'status': 'error',
-            'message': str(e)
-        }), 500
-
-@user_visibility_bp.route('/api/visible-characters-in-radius/<character_id>', methods=['GET'])
-def get_visible_characters_in_radius(character_id: str):
-    """
-    API接口：获取半径20内可见角色的信息和位置
-    可选参数：radius - 可见半径，默认为20
-    返回格式：
-    {
-        "status": "success",
-        "data": {
-            "current_character": {
-                "id": "char1",
-                "name": "frank",
-                "position": [50, 50],
-                "status": "online"
-            },
-            "visible_characters": [
-                {
-                    "id": "char2",
-                    "name": "kiki",
-                    "position": [40, 40],
-                    "distance": 14.14,
-                    "status": "online"
-                },
-                ...
-            ],
-            "total_visible": 1,
-            "radius": 20
-        }
-    }
-    """
-    try:
-        # 获取半径参数，默认为20
-        radius = float(request.args.get('radius', 20))
-        
-        # 获取当前角色数据
-        current_character_key = f"character:{character_id}"
-        current_character_data = get_redis_data(current_character_key)
-        if not current_character_data:
-            return jsonify({
-                'status': 'error',
-                'message': f'角色不存在: {character_id}'
-            }), 404
-        
-        current_character = json.loads(current_character_data)
-        
-        # 构建当前角色信息（简化版）
-        current_character_info = {
-            'id': character_id,
-            'name': current_character.get('name', 'Unknown'),
-            'position': current_character.get('position', [0, 0]),
-            'status': current_character.get('status', 'offline')
-        }
-        
-        # 获取可见角色
-        visible_characters = get_visible_characters(character_id, radius)
-        
-        # 简化可见角色列表
-        simplified_visible_characters = []
-        for char in visible_characters:
-            simplified_visible_characters.append({
-                'id': char['character_id'],
-                'name': char['name'],
-                'position': char['position'],
-                'distance': char['distance'],
-                'status': char['status']
-            })
-        
-        return jsonify({
-            'status': 'success',
-            'data': {
-                'current_character': current_character_info,
-                'visible_characters': simplified_visible_characters,
-                'total_visible': len(simplified_visible_characters),
-                'radius': radius
-            }
-        })
-    except Exception as e:
-        return jsonify({
-            'status': 'error',
-            'message': str(e)
-        }), 500
-
-@user_visibility_bp.route('/api/center-character', methods=['GET'])
-def get_center_character():
-    """
-    API接口：获取中心点角色(char1)的信息
-    返回格式：
-    {
-        "status": "success",
-        "data": {
-            "id": "char1",
-            "name": "frank",
-            "position": [50, 50],
-            "status": "online"
-        }
-    }
-    """
-    try:
-        # 中心点角色ID固定为char1
-        center_character_id = "char1"
-        center_character_key = f"character:{center_character_id}"
-        
-        # 获取角色数据
-        center_character_data = get_redis_data(center_character_key)
-        if not center_character_data:
-            # 如果中心点角色不存在，则尝试初始化测试数据
-            init_test_data()
-            center_character_data = get_redis_data(center_character_key)
-            
-            # 如果仍然不存在，返回错误
-            if not center_character_data:
-                return jsonify({
-                    'status': 'error',
-                    'message': '中心点角色不存在，初始化测试数据失败'
-                }), 404
-        
-        center_character = json.loads(center_character_data)
-        
-        # 构建中心点角色信息（简化版）
-        center_character_info = {
-            'id': center_character_id,
-            'name': center_character.get('name', 'Unknown'),
-            'position': center_character.get('position', [0, 0]),
-            'status': center_character.get('status', 'offline')
-        }
-        
-        return jsonify({
-            'status': 'success',
-            'data': center_character_info
-        })
-    except Exception as e:
-        return jsonify({
-            'status': 'error',
-            'message': str(e)
-        }), 500
-
-@user_visibility_bp.route('/api/visible-from-center', methods=['GET'])
-def get_visible_from_center():
-    """
-    API接口：获取以中心点角色(char1)为中心的可见角色
-    可选参数：radius - 可见半径，默认为20
-    返回格式：与/api/visible-characters-in-radius/<character_id>相同，但简化了字段
-    """
-    try:
-        # 中心点角色固定为char1
-        center_character_id = "char1"
-        
-        # 获取半径参数，默认为20
-        radius = float(request.args.get('radius', 20))
-        
-        # 获取当前角色数据
-        current_character_key = f"character:{center_character_id}"
-        current_character_data = get_redis_data(current_character_key)
-        if not current_character_data:
-            # 如果中心点角色不存在，则尝试初始化测试数据
-            init_test_data()
-            current_character_data = get_redis_data(current_character_key)
-            
-            # 如果仍然不存在，返回错误
-            if not current_character_data:
-                return jsonify({
-                    'status': 'error',
-                    'message': '中心点角色不存在，初始化测试数据失败'
-                }), 404
-        
-        current_character = json.loads(current_character_data)
-        
-        # 构建当前角色信息（简化版）
-        current_character_info = {
-            'id': center_character_id,
-            'name': current_character.get('name', 'Unknown'),
-            'position': current_character.get('position', [0, 0]),
-            'status': current_character.get('status', 'offline')
-        }
-        
-        # 获取可见角色
-        visible_characters = get_visible_characters(center_character_id, radius)
-        
-        # 简化可见角色列表
-        simplified_visible_characters = []
-        for char in visible_characters:
-            simplified_visible_characters.append({
-                'id': char['character_id'],
-                'name': char['name'],
-                'position': char['position'],
-                'distance': char['distance'],
-                'status': char['status']
-            })
-        
-        return jsonify({
-            'status': 'success',
-            'data': {
-                'current_character': current_character_info,
-                'visible_characters': simplified_visible_characters,
-                'total_visible': len(simplified_visible_characters),
-                'radius': radius
-            }
-        })
-    except Exception as e:
-        return jsonify({
-            'status': 'error',
-            'message': str(e)
-        }), 500
-
-@user_visibility_bp.route('/api/all-chars', methods=['GET'])
-def get_all_chars():
-    """
-    API接口：获取所有角色数据及其位置信息（简短URL版本）
-    功能与/api/all-characters-with-positions相同
-    """
-    return get_all_characters_with_positions()
-
-@user_visibility_bp.route('/api/visible-chars', methods=['GET'])
-def get_visible_chars():
-    """
-    API接口：获取以中心点角色(char1)为中心的可见角色（简短URL版本）
-    功能与/api/visible-from-center相同
-    """
-    return get_visible_from_center()
-
-@user_visibility_bp.route('/api/visible-characters-radius-20/<character_id>', methods=['GET'])
-def get_visible_characters_radius_20(character_id: str):
-    """
-    API接口：获取指定角色半径20单位内的可见角色列表
-    返回更详细的角色信息，包括：
-    - 基本信息（ID、名称、头像、状态）
-    - 位置信息（坐标、距离）
-    - 角色属性（等级、职业、生命值、魔法值等）
-    - 当前活动（动作、对话等）
-    """
-    try:
-        # 获取当前角色数据
-        current_character_data = get_redis_data(f"character:{character_id}")
-        if not current_character_data:
-            return jsonify({
-                'status': 'error',
-                'message': '当前角色不存在'
-            }), 404
-            
-        current_character = json.loads(current_character_data)
-        current_position = current_character.get('position', [0, 0])
-        
-        # 获取所有角色数据
-        visible_characters = []
-        for key in get_redis_keys("character:*"):
-            if key == f"character:{character_id}":
-                continue
-                
-            character_data = get_redis_data(key)
-            if not character_data:
-                continue
-                
-            character = json.loads(character_data)
-            character_position = character.get('position', [0, 0])
-            
-            # 计算距离
-            distance = calculate_distance(current_position, character_position)
-            
-            # 如果在20单位半径内，添加到可见角色列表
-            if distance <= 20:
-                # 获取角色的实时状态数据
-                realtime_key = f"character_realtime:{key.split(':')[1]}"
-                realtime_data = get_redis_data(realtime_key)
-                realtime_info = json.loads(realtime_data) if realtime_data else {}
-                
-                visible_characters.append({
-                    # 基本信息
-                    'character_id': key.split(':')[1],
-                    'name': character.get('name', 'Unknown'),
-                    'avatar': character.get('avatar', ''),
-                    'status': character.get('status', 'offline'),
-                    
-                    # 位置信息
-                    'position': character_position,
-                    'distance': round(distance, 2),
-                    
-                    # 角色属性
-                    'level': character.get('level', 1),
-                    'class': character.get('class', 'Unknown'),
-                    'hp': character.get('hp', 100),
-                    'mp': character.get('mp', 100),
-                    'exp': character.get('exp', 0),
-                    
-                    # 当前活动
-                    'current_action': realtime_info.get('current_action', ''),
-                    'current_dialogue': realtime_info.get('current_dialogue', ''),
-                    'current_emotion': realtime_info.get('current_emotion', 'normal'),
-                    
-                    # 其他信息
-                    'last_update': realtime_info.get('last_update', ''),
-                    'is_friend': character.get('is_friend', False),
-                    'reputation': character.get('reputation', 0)
-                })
-        
-        # 按距离排序
-        visible_characters.sort(key=lambda x: x['distance'])
-        
-        # 构建中心角色信息
-        center_character = {
-            'id': character_id,
-            'name': current_character.get('name', 'Unknown'),
-            'position': current_position,
-            'status': current_character.get('status', 'offline'),
-            'avatar': current_character.get('avatar', ''),
-            'level': current_character.get('level', 1),
-            'class': current_character.get('class', 'Unknown'),
-            'is_center': True
-        }
-        
-        return jsonify({
-            'status': 'success',
-            'data': {
-                'center_character': center_character,
-                'visible_characters': visible_characters,
-                'total': len(visible_characters),
-                'radius': 20,
+                'center_character': center_character_info,
+                'visible_characters': visible_characters_list,
+                'total': len(visible_characters_list),
+                'radius': radius,
                 'timestamp': datetime.datetime.now().isoformat()
             }
         })
     except Exception as e:
-        logger.error(f"获取可见角色失败: {str(e)}")
+        logger.error(f"获取可见角色失败 ({character_id}, radius={request.args.get('radius', 20)}): {str(e)}")
         return jsonify({
             'status': 'error',
-            'message': f'获取可见角色失败: {str(e)}'
-        }), 500 
+            'message': str(e)
+        }), 500
+
+@user_visibility_bp.route('/api/check-login', methods=['GET'])
+def check_login():
+    """
+    API接口：检查当前用户登录状态
+    返回所有登录的用户ID
+    """
+    try:
+        is_logged_in = 'user_id' in session
+        user_ids = []
+        
+        if is_logged_in:
+            if isinstance(session['user_id'], list):
+                user_ids = session['user_id']
+            else:
+                user_ids = [session['user_id']]
+        
+        return jsonify({
+            'status': 'success',
+            'data': {
+                'is_logged_in': is_logged_in,
+                'user_ids': user_ids,
+                'session_keys': list(session.keys()),
+                'timestamp': datetime.datetime.now().isoformat()
+            }
+        })
+    except Exception as e:
+        logger.error(f"检查登录状态失败: {str(e)}")
+        return jsonify({
+            'status': 'error',
+            'message': str(e)
+        }), 500

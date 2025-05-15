@@ -347,6 +347,45 @@ Twitter 账户绑定成功！
 </html>
 ```
 
+### 4. 获取所有角色（含系统角色）
+- **接口**: GET `/api/all-chars`
+- **描述**: 获取系统角色和所有在线用户角色
+- **返回示例**:
+```json
+{
+  "status": "success",
+  "data": {
+    "characters": [
+      {
+        "id": 0,
+        "name": "系统角色",
+        "user_id": 0,
+        "status": "online"
+      },
+      {
+        "id": 123,
+        "name": "用户角色",
+        "user_id": 1,
+        "status": "online"
+      }
+    ],
+    "system_character_count": 1,
+    "online_user_character_count": 1
+  }
+}
+```
+- **返回**: 角色详情页HTML
+```html
+<!DOCTYPE html>
+<html>
+  <!-- 角色详情页HTML内容 -->
+  <h1>角色详情</h1>
+  <div id="character-container">
+    <!-- 角色信息将通过JavaScript加载 -->
+  </div>
+</html>
+```
+
 ## 注意事项
 
 1. 大部分API接口需要用户登录状态

@@ -3,6 +3,13 @@ from model.user import User
 from model.invitation_code import InvitationCode
 from werkzeug.security import check_password_hash, generate_password_hash
 # from flask_login import login_user, logout_user, login_required, current_user  # 移除
+from flask import Blueprint, request, jsonify, session, redirect
+from flask import request, jsonify, render_template
+from model.user import User
+from model.invitation_code import InvitationCode
+from werkzeug.security import check_password_hash, generate_password_hash
+from flask_login import logout_user, login_required
+from common.redis_client import redis_handler
 user_controller = Blueprint('user', __name__)
 
 @user_controller.route('/api/register_user', methods=['GET', 'POST'])
@@ -54,7 +61,7 @@ def register():
             # 标记邀请码已使用
             inv_code_model.use_code(invitation_code, new_user.id)
 
-            # 登录：直接存 user_id 到 session
+            # 登录用户
             session['user_id'] = new_user.id
             
             # 检查是否有回调URL
