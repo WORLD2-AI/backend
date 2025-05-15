@@ -11,9 +11,9 @@ from flask import Blueprint, request, jsonify, session, render_template
 # 项目内部模块
 from model.character import Character, CHARACTER_STATUS
 from model.db import BaseModel
-from model.schdule import Schedule
+from model.schedule import Schedule
 from common.redis_client import RedisClient
-from celery_tasks.location_service import get_location_by_coordinates, get_location_by_name
+
 from common.redis_client import redis_handler
 from celery_tasks.app import proecess_character_born
 from register_char.user_visibility import user_visibility_bp  # 添加用户可见性蓝图导入

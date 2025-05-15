@@ -125,10 +125,10 @@ class BaseModel():
         with self.get_session() as session:
             session.commit()
 
-def init_tables():
-    """初始化数据库表"""
-    from model.character import Character
-    from model.user import User
-    from model.schedule import Schedule
+# def init_tables():
+#     """初始化数据库表"""
+#     from model.character import Character
+#     from model.user import User
+#     from model.schedule import Schedule
     
-    Base.metadata.create_all(engine)
+#     Base.metadata.create_all(engine)

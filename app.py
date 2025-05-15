@@ -13,9 +13,9 @@ from requests_oauthlib import OAuth1Session
 # from flask_login import LoginManager, login_user, logout_user, login_required, current_user  # 移除
 
 # 项目内部模块
-from model.db import BaseModel, get_db, init_tables
+from model.db import BaseModel, get_db
 from model.user import User
-from model.schdule import Schedule
+from model.schedule import Schedule
 from model.character import Character
 from model.invitation_code import InvitationCode
 from model.sector import Sector
@@ -224,5 +224,5 @@ def test_location_page():
     return render_template('test_location.html')
 
 if __name__ == '__main__':
-    init_tables()
+    # init_tables()
     app.run(debug=True, host='0.0.0.0', port=5000)
