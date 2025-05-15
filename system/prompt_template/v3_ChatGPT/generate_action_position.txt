@@ -1,0 +1,23 @@
+generate_action_position.txt
+Variables: 
+!<INPUT 0>! -- Persona full_name
+!<INPUT 1>! -- Persona living sector
+!<INPUT 2>! -- Persona living sector arenas
+!<INPUT 3>! -- Persona name
+!<INPUT 4>! -- curr actions description
+!<INPUT 5>! -- all position list
+!<INPUT 6>! -- Persona current sector
+!<INPUT 7>! -- Persona current sector arenas
+!<INPUT 8>! -- 
+!<INPUT 9>! -- Persona name
+
+<commentblockmarker>###</commentblockmarker>
+!<INPUT 0>! lives in !<INPUT 1>! that has !<INPUT 2>!.
+and then,!<INPUT 3>! needs to do the following tasks:
+!<INPUT 4>!
+
+this is all positions:
+!<INPUT 5>!
+
+Task:
+For each task, select the most suitable location from the list below, output a JSON-formatted array. Each array element must include action (the task to be completed as mentioned above) and address (the location mentioned below, case-sensitive and space-sensitive). Important: Only output the array information, no additional details are needed.

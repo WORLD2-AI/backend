@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>角色列表</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .character {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        .character.current-character {
+            border: 2px solid #4CAF50;
+            background-color: #f0f9f0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .character-info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .character-position {
+            margin-left: 20px;
+            color: #666;
+        }
+        .status-online {
+            color: green;
+            font-weight: bold;
+        }
+        .status-offline {
+            color: gray;
+        }
+        .current-character-badge {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            margin-top: 5px;
+        }
+        .map {
+            border: 1px solid #ccc;
+            margin-top: 20px;
+            padding: 20px;
+            position: relative;
+            height: 400px;
+            background-color: #f5f5f5;
+        }
+        .character-marker {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .current-character-marker {
+            background-color: #4CAF50;
+            border: 2px solid white;
+        }
+        .visible-character-marker {
+            background-color: #2196F3;
+        }
+        .invisible-character-marker {
+            background-color: gray;
+            opacity: 0.5;
+        }
+        button {
+            padding: 8px 15px;
+            margin: 5px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .character-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .login-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+        .login-btn:hover {
+            background-color: #45a049;
+        }
+        .login-btn:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <h1>角色列表</h1>
+    <div>
+        <button id="loadCharactersBtn">加载所有角色</button>
+        <button id="loadVisibleBtn">加载可见角色</button>
+    </div>
+    
+    <h2>所有角色</h2>
+    <div id="charactersList"></div>
+    
+    <h2>地图视图</h2>
+    <div class="map" id="characterMap"></div>
+
+    <script>
+        // 获取所有角色
+        document.getElementById('loadCharactersBtn').addEventListener('click', function() {
+            fetch('/api/all-chars')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        displayCharacters(data.data.characters);
+                        displayMap(data.data.characters);
+                    } else {
+                        alert('获取角色失败: ' + data.message);
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        });
+
+        // 获取可见角色
+        document.getElementById('loadVisibleBtn').addEventListener('click', function() {
+            fetch('/api/visible-chars')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        const allCharacters = [data.data.current_character, ...data.data.visible_characters];
+                        displayCharacters(allCharacters);
+                        displayVisibleMap(data.data.current_character, data.data.visible_characters, data.data.radius);
+                    } else {
+                        alert('获取角色失败: ' + data.message);
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        });
+
+        // 显示角色列表
+        function displayCharacters(characters) {
+            const container = document.getElementById('charactersList');
+            container.innerHTML = '';
+            
+            characters.forEach(character => {
+                const charElement = document.createElement('div');
+                charElement.className = 'character';
+                
+                const statusClass = character.status === 'online' ? 'status-online' : 'status-offline';
+                const currentCharacterClass = character.is_current_character ? 'current-character' : '';
+                
+                charElement.innerHTML = `
+                    <div class="character-info ${currentCharacterClass}">
+                        <div>
+                            <h3>${character.name} (${character.character_id})</h3>
+                            <p>状态: <span class="${statusClass}">${character.status}</span></p>
+                            ${character.is_current_character ? '<p class="current-character-badge">当前登录角色</p>' : ''}
+                        </div>
+                        <div class="character-position">
+                            <p>位置: [${character.position[0]}, ${character.position[1]}]</p>
+                        </div>
+                    </div>
+                    <div class="character-actions">
+                        <button class="login-btn" 
+                                onclick="loginCharacter('${character.character_id}')"
+                                ${character.is_current_character ? 'disabled' : ''}>
+                            ${character.is_current_character ? '当前登录' : '登录角色'}
+                        </button>
+                    </div>
+                `;
+                
+                container.appendChild(charElement);
+            });
+        }
+
+        // 角色登录函数
+        function loginCharacter(characterId) {
+            fetch('/api/character/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    character_id: characterId
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    alert('角色登录成功！');
+                    // 重新加载角色列表
+                    document.getElementById('loadCharactersBtn').click();
+                } else {
+                    alert('角色登录失败: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('角色登录失败，请稍后重试');
+            });
+        }
+
+        // 显示地图
+        function displayMap(characters) {
+            const map = document.getElementById('characterMap');
+            map.innerHTML = '';
+            
+            // 确定地图比例
+            const mapScale = 2; // 每个单位对应2像素
+            
+            characters.forEach(character => {
+                const marker = document.createElement('div');
+                marker.className = 'character-marker';
+                marker.style.left = (character.position[0] * mapScale) + 'px';
+                marker.style.top = (character.position[1] * mapScale) + 'px';
+                marker.style.backgroundColor = character.status === 'online' ? 'green' : 'gray';
+                
+                marker.title = `${character.name} (${character.id}) [${character.position[0]}, ${character.position[1]}]`;
+                
+                map.appendChild(marker);
+            });
+        }
+
+        // 显示可见性地图
+        function displayVisibleMap(currentCharacter, visibleCharacters, radius) {
+            const map = document.getElementById('characterMap');
+            map.innerHTML = '';
+            
+            // 确定地图比例
+            const mapScale = 2; // 每个单位对应2像素
+            
+            // 绘制当前角色
+            const currentMarker = document.createElement('div');
+            currentMarker.className = 'character-marker current-character-marker';
+            currentMarker.style.left = (currentCharacter.position[0] * mapScale) + 'px';
+            currentMarker.style.top = (currentCharacter.position[1] * mapScale) + 'px';
+            currentMarker.title = `${currentCharacter.name} (${currentCharacter.id}) [${currentCharacter.position[0]}, ${currentCharacter.position[1]}]`;
+            map.appendChild(currentMarker);
+            
+            // 绘制可见角色
+            visibleCharacters.forEach(character => {
+                const marker = document.createElement('div');
+                marker.className = 'character-marker visible-character-marker';
+                marker.style.left = (character.position[0] * mapScale) + 'px';
+                marker.style.top = (character.position[1] * mapScale) + 'px';
+                marker.title = `${character.name} (${character.id}) - 距离: ${character.distance}单位`;
+                map.appendChild(marker);
+            });
+            
+            // 绘制可见范围圆圈
+            const circle = document.createElement('div');
+            circle.style.position = 'absolute';
+            circle.style.left = (currentCharacter.position[0] * mapScale) + 'px';
+            circle.style.top = (currentCharacter.position[1] * mapScale) + 'px';
+            circle.style.width = (radius * 2 * mapScale) + 'px';
+            circle.style.height = (radius * 2 * mapScale) + 'px';
+            circle.style.borderRadius = '50%';
+            circle.style.border = '1px dashed blue';
+            circle.style.transform = 'translate(-50%, -50%)';
+            circle.style.pointerEvents = 'none';
+            map.appendChild(circle);
+        }
+        
+        // 页面加载时自动获取所有角色
+        window.onload = function() {
+            document.getElementById('loadCharactersBtn').click();
+        };
+    </script>
+</body>
+</html> 

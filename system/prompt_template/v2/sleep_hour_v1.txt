@@ -1,0 +1,13 @@
+wake_up_hour_v1.txt
+
+Variables: 
+!<INPUT 0>! -- Identity Stable Set
+!<INPUT 1>! -- Lifestyle
+!<INPUT 2>! -- Persona first names
+
+<commentblockmarker>###</commentblockmarker>
+!<INPUT 0>!
+
+In general, !<INPUT 1>!
+Important: only output one time and time formate must be 24-hour clock
+!<INPUT 2>! go to bed at:

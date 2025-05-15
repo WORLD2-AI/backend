@@ -1,0 +1,25 @@
+generate_pronunciatio_v1.txt
+
+Variables: 
+!<INPUT 0>! -- Action description
+
+<commentblockmarker>###</commentblockmarker>
+Analyze the given sentence in two steps:
+
+Identify the primary action described (physical/observable) and represent it as first emoji.
+Infer the emotional state of the user based on context/tone and represent it as second emoji.
+output the json result
+
+Examples:
+Input: "I just finished a 10k run!"  
+Output:{"action":"I just finished a 10k run!","emoji":"🏃🎉"}
+
+Input: "Sigh, another all-nighter debugging code..." 
+Output: {"action":"Sigh, another all-nighter debugging code...","emoji":"💻😫"}
+
+Input: 
+
+!<INPUT 0>!
+
+generate emoji data for per input line and output json array data.per data must include key "action" (the task above, it's case-sensitive and space-sensitive),"emoji"(required).
+Important: only output json data and no others.Ensure emojis are common Unicode symbols. Prioritize literal actions over metaphors.

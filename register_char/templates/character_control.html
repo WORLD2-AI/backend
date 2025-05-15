@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>角色管理与移动控制界面</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background-color: #4a6fa5;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 30px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+        .card-title {
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #4a6fa5;
+            font-size: 20px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #555;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+        input[type="text"]:focus {
+            border-color: #4a6fa5;
+            outline: none;
+        }
+        button {
+            background-color: #4a6fa5;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #3b5998;
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+        }
+        .secondary-button {
+            background-color: #718096;
+        }
+        .secondary-button:hover {
+            background-color: #4a5568;
+        }
+        .danger-button {
+            background-color: #e53e3e;
+        }
+        .danger-button:hover {
+            background-color: #c53030;
+        }
+        .result-container {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 20px;
+            min-height: 150px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin: 0;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+        }
+        .character-info {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .character-info div {
+            flex: 1;
+            min-width: 200px;
+        }
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #718096;
+        }
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            background-color: #4a6fa5;
+            color: white;
+            margin-left: 5px;
+        }
+        .warning {
+            color: #e53e3e;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        .success-message {
+            color: #38a169;
+            font-weight: bold;
+        }
+        .placeholder-text {
+            color: #a0aec0;
+            font-style: italic;
+        }
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #e2e8f0;
+            margin-bottom: 20px;
+        }
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+        }
+        .tab.active {
+            border-bottom: 2px solid #4a6fa5;
+            color: #4a6fa5;
+            font-weight: bold;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .location-examples {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .location-chip {
+            background-color: #e2e8f0;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .location-chip:hover {
+            background-color: #cbd5e0;
+        }
+        .search-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .search-container input {
+            flex-grow: 1;
+        }
+        @media (max-width: 768px) {
+            .button-group {
+                flex-direction: column;
+            }
+            .character-info {
+                flex-direction: column;
+            }
+            .search-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Redis角色查询与移动控制系统</h1>
+    </div>
+    
+    <div class="container">
+        <div class="card">
+            <h2 class="card-title">Redis角色查询</h2>
+            <p style="margin-bottom: 15px; color: #718096;">输入角色ID，可直接查询Redis数据库中的角色信息，如角色不存在，可点击"创建测试角色"按钮创建</p>
+            <div class="search-container">
+                <input type="text" id="characterId" placeholder="输入角色ID或名字" value="">
+                <button onclick="getCharacterInfo()">查询角色</button>
+                <button onclick="createTestCharacter()" class="secondary-button">创建测试角色</button>
+            </div>
+            
+            <div id="characterResult" class="result-container">
+                <p class="placeholder-text">请输入角色ID或名字进行查询...</p>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2 class="card-title">移动控制</h2>
+            
+            <div class="tabs">
+                <div class="tab active" onclick="switchTab('simpleMove')">简单指令</div>
+                <div class="tab" onclick="switchTab('aiMove')">AI解析指令</div>
+            </div>
+            
+            <div id="simpleMove" class="tab-content active">
+                <div class="form-group">
+                    <label for="instruction">移动指令:</label>
+                    <input type="text" id="instruction" placeholder="例如: 上, 下, 左, 右, 或地点名称..." value="上">
+                    
+                    <div class="location-examples">
+                        <span class="location-chip" onclick="setInstruction('上')">上(+5步)</span>
+                        <span class="location-chip" onclick="setInstruction('下')">下(-5步)</span>
+                        <span class="location-chip" onclick="setInstruction('左')">左(-5步)</span>
+                        <span class="location-chip" onclick="setInstruction('右')">右(+5步)</span>
+                        <span class="location-chip" onclick="setInstruction('去公园')">去公园</span>
+                        <span class="location-chip" onclick="setInstruction('去咖啡馆')">去咖啡馆</span>
+                    </div>
+                    
+                    <p style="margin-top: 10px; font-size: 14px; color: #666;">
+                        <strong>新功能:</strong> 现在可以使用方向控制(上下左右)按坐标移动角色，每次移动5个单位。
+                    </p>
+                </div>
+                
+                <button onclick="sendMovementRequest()">发送移动指令</button>
+            </div>
+            
+            <div id="aiMove" class="tab-content">
+                <div class="form-group">
+                    <label for="aiInstruction">AI解析指令:</label>
+                    <input type="text" id="aiInstruction" placeholder="输入更复杂的指令, AI将进行解析..." value="帮我去附近的咖啡厅点杯咖啡">
+                </div>
+                
+                <button onclick="sendAIMovementRequest()">发送AI解析指令</button>
+            </div>
+            
+            <div id="movementResult" class="result-container">
+                <p class="placeholder-text">移动结果将显示在这里...</p>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2 class="card-title">API调用历史</h2>
+            <button onclick="clearHistory()" class="danger-button">清除历史</button>
+            <div id="historyResult" class="result-container">
+                <p class="placeholder-text">API调用历史将显示在这里...</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // 存储API调用历史
+        let apiHistory = [];
+        // 当前角色ID
+        let currentCharacterId = "";
+        
+        // 初始化页面
+        window.onload = function() {
+            // 从localStorage加载历史记录
+            const savedHistory = localStorage.getItem('apiHistory');
+            if (savedHistory) {
+                apiHistory = JSON.parse(savedHistory);
+                updateHistoryDisplay();
+            }
+            
+            // 从URL参数中获取角色ID
+            const urlParams = new URLSearchParams(window.location.search);
+            const characterId = urlParams.get('character_id');
+            if (characterId) {
+                document.getElementById('characterId').value = characterId;
+                getCharacterInfo();
+            }
+        };
+        
+        // 切换标签页
+        function switchTab(tabId) {
+            // 移除所有标签和内容的active类
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // 给选中的标签和内容添加active类
+            document.querySelector(`.tab[onclick="switchTab('${tabId}')"]`).classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+        
+        // 设置指令文本
+        function setInstruction(text) {
+            document.getElementById('instruction').value = text;
+        }
+        
+        // 记录API调用历史
+        function addToHistory(type, request, response) {
+            const timestamp = new Date().toLocaleString();
+            apiHistory.unshift({
+                timestamp,
+                type,
+                request,
+                response
+            });
+            
+            // 限制历史记录最多保存20条
+            if (apiHistory.length > 20) {
+                apiHistory.pop();
+            }
+            
+            // 保存到localStorage
+            localStorage.setItem('apiHistory', JSON.stringify(apiHistory));
+            
+            // 更新显示
+            updateHistoryDisplay();
+        }
+        
+        // 更新历史记录显示
+        function updateHistoryDisplay() {
+            const historyElement = document.getElementById('historyResult');
+            
+            if (apiHistory.length === 0) {
+                historyElement.innerHTML = '<p class="placeholder-text">暂无API调用历史...</p>';
+                return;
+            }
+            
+            let historyHTML = '';
+            apiHistory.forEach((item, index) => {
+                historyHTML += `
+                    <div style="margin-bottom: 15px; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px;">
+                        <p><strong>${index + 1}. ${item.type}</strong> <span style="color: #718096; font-size: 12px;">${item.timestamp}</span></p>
+                        <details>
+                            <summary>查看详情</summary>
+                            <div style="margin-top: 10px;">
+                                <p><strong>请求:</strong></p>
+                                <pre style="background-color: #edf2f7; padding: 10px; border-radius: 5px;">${JSON.stringify(item.request, null, 2)}</pre>
+                                <p><strong>响应:</strong></p>
+                                <pre style="background-color: #edf2f7; padding: 10px; border-radius: 5px;">${JSON.stringify(item.response, null, 2)}</pre>
+                            </div>
+                        </details>
+                    </div>
+                `;
+            });
+            
+            historyElement.innerHTML = historyHTML;
+        }
+        
+        // 清除历史记录
+        function clearHistory() {
+            if (confirm('确定要清除所有API调用历史吗?')) {
+                apiHistory = [];
+                localStorage.removeItem('apiHistory');
+                updateHistoryDisplay();
+            }
+        }
+        
+        // 创建测试角色
+        function createTestCharacter() {
+            const characterIdOrName = document.getElementById('characterId').value.trim();
+            if (!characterIdOrName) {
+                alert('请输入角色ID或名字');
+                return;
+            }
+            
+            const resultElement = document.getElementById('characterResult');
+            resultElement.innerHTML = '<p class="loading">正在创建测试角色...</p>';
+            
+            fetch(`/create-test-character/${characterIdOrName}`, {
+                method: 'POST'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success && data.data) {
+                    // 保存当前角色ID供移动指令使用
+                    currentCharacterId = data.data.id;
+                    
+                    // 显示成功消息
+                    resultElement.innerHTML = `
+                        <p class="success-message">${data.message}</p>
+                        <p>Redis角色创建成功，现在可以使用Redis数据库中的角色进行查询和控制</p>
+                    `;
+                    
+                    // 自动查询刚创建的角色
+                    getCharacterInfo();
+                } else {
+                    resultElement.innerHTML = `
+                        <p class="warning">${data.message || '创建角色失败'}</p>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                }
+                
+                // 记录API调用
+                addToHistory('创建测试角色', { id: characterIdOrName }, data);
+            })
+            .catch(error => {
+                resultElement.innerHTML = `<p class="warning">错误: ${error.message}</p>`;
+            });
+        }
+        
+        // 获取角色信息
+        function getCharacterInfo() {
+            const characterIdOrName = document.getElementById('characterId').value.trim();
+            if (!characterIdOrName) {
+                alert('请输入角色ID或名字');
+                return;
+            }
+            
+            const resultElement = document.getElementById('characterResult');
+            resultElement.innerHTML = '<p class="loading">正在查询角色信息...</p>';
+            
+            fetch(`/characters/${characterIdOrName}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.success && data.data) {
+                    // 保存当前角色ID供移动指令使用
+                    currentCharacterId = data.data.id;
+                    
+                    // 格式化角色信息
+                    let characterInfo = `
+                        <div class="character-info">
+                            <div>
+                                <p><strong>ID:</strong> ${data.data.id}</p>
+                                <p><strong>名称:</strong> ${data.data.name}</p>
+                                <p><strong>状态:</strong> ${data.data.status} 
+                                    ${data.data.status === 'idle' ? 
+                                        '<span class="badge" style="background-color: #38a169;">空闲</span>' : 
+                                        '<span class="badge" style="background-color: #dd6b20;">忙碌</span>'}
+                                </p>
+                                <p><strong>描述:</strong> ${data.data.description}</p>
+                            </div>
+                            <div>
+                                <p><strong>当前位置:</strong> ${Array.isArray(data.data.position) ? 
+                                    `[${data.data.position.join(', ')}]` : 
+                                    (data.data.position ? `[${data.data.position}]` : '未知')}</p>
+                                <p><strong>目标位置:</strong> ${data.data.action || '无'}</p>
+                                <p><strong>特性:</strong> ${Array.isArray(data.data.traits) ? data.data.traits.join(', ') : '无'}</p>
+                                <p><strong>创建日期:</strong> ${data.data.created_at || '未知'}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <details>
+                            <summary>查看原始JSON数据</summary>
+                            <pre>${JSON.stringify(data.data, null, 2)}</pre>
+                        </details>
+                    `;
+                    resultElement.innerHTML = characterInfo;
+                    
+                    // 更新URL参数
+                    const url = new URL(window.location);
+                    url.searchParams.set('character_id', data.data.id);
+                    window.history.pushState({}, '', url);
+                } else {
+                    resultElement.innerHTML = `
+                        <p class="warning">${data.message}</p>
+                        <p>请确认输入的角色ID或名字是否正确，或使用"创建测试角色"按钮创建一个Redis测试角色</p>
+                        <div style="margin-top: 15px;">
+                            <button onclick="createTestCharacter()" class="secondary-button">点击创建Redis测试角色: ${characterIdOrName}</button>
+                        </div>
+                    `;
+                }
+                
+                // 记录API调用
+                addToHistory('查询角色信息', { identifier: characterIdOrName }, data);
+            })
+            .catch(error => {
+                resultElement.innerHTML = `<p class="warning">错误: ${error.message}</p>`;
+            });
+        }
+        
+        // 发送移动指令
+        function sendMovementRequest() {
+            const instruction = document.getElementById('instruction').value.trim();
+            const characterId = currentCharacterId;
+            
+            if (!instruction) {
+                alert('请输入移动指令');
+                return;
+            }
+            
+            if (!characterId) {
+                alert('请先查询角色信息');
+                return;
+            }
+            
+            const resultElement = document.getElementById('movementResult');
+            resultElement.innerHTML = '<p class="loading">正在处理移动指令...</p>';
+            
+            const requestData = {
+                instruction: instruction,
+                character_id: characterId
+            };
+            
+            fetch('/ai-deepseek-movement', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(requestData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    let responseHTML = `
+                        <p class="success-message">${data.message}</p>
+                        <div style="margin-top: 15px;">
+                            <p><strong>角色ID:</strong> ${data.data.character_id}</p>
+                            <p><strong>原始指令:</strong> ${data.data.original_instruction}</p>
+                            <p><strong>当前位置:</strong> [${data.data.position[0]}, ${data.data.position[1]}]</p>
+                        </div>
+                        <details>
+                            <summary>查看详细信息</summary>
+                            <pre>${JSON.stringify(data, null, 2)}</pre>
+                        </details>
+                    `;
+                    resultElement.innerHTML = responseHTML;
+                    
+                    // 自动刷新角色信息
+                    getCharacterInfo();
+                } else {
+                    resultElement.innerHTML = `
+                        <p class="warning">${data.message}</p>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                }
+                
+                // 记录API调用
+                addToHistory('发送移动指令', requestData, data);
+            })
+            .catch(error => {
+                resultElement.innerHTML = `<p class="warning">错误: ${error.message}</p>`;
+            });
+        }
+        
+        // 发送AI解析指令
+        function sendAIMovementRequest() {
+            const instruction = document.getElementById('aiInstruction').value.trim();
+            const characterId = currentCharacterId;
+            
+            if (!instruction) {
+                alert('请输入AI解析指令');
+                return;
+            }
+            
+            if (!characterId) {
+                alert('请先查询角色信息');
+                return;
+            }
+            
+            const resultElement = document.getElementById('movementResult');
+            resultElement.innerHTML = '<p class="loading">正在处理AI解析指令...</p>';
+            
+            const requestData = {
+                instruction: instruction,
+                character_id: characterId
+            };
+            
+            fetch('/ai-deepseek-movement', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(requestData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    let responseHTML = `
+                        <p class="success-message">${data.message}</p>
+                        <div style="margin-top: 15px;">
+                            <p><strong>角色ID:</strong> ${data.data.character_id}</p>
+                            <p><strong>原始指令:</strong> ${data.data.original_instruction}</p>
+                            <p><strong>AI解析:</strong> 工具: ${data.data.tool_call.tool}, 参数: ${JSON.stringify(data.data.tool_call.arguments)}</p>
+                            <p><strong>执行结果:</strong> ${data.data.execution_result.result}</p>
+                        </div>
+                        <details>
+                            <summary>查看详细信息</summary>
+                            <pre>${JSON.stringify(data, null, 2)}</pre>
+                        </details>
+                    `;
+                    resultElement.innerHTML = responseHTML;
+                    
+                    // 自动刷新角色信息
+                    getCharacterInfo();
+                } else {
+                    resultElement.innerHTML = `
+                        <p class="warning">${data.message}</p>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                }
+                
+                // 记录API调用
+                addToHistory('发送AI解析指令', requestData, data);
+            })
+            .catch(error => {
+                resultElement.innerHTML = `<p class="warning">错误: ${error.message}</p>`;
+            });
+        }
+    </script>
+</body>
+</html> 
