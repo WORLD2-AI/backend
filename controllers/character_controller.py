@@ -3,24 +3,26 @@ import sys
 import json
 import logging
 import traceback
-import datetime  # 添加datetime模块导入
+import datetime
 
 # 第三方库
-import redis
 from flask import Blueprint, request, jsonify, session, render_template
 
 # 项目内部模块
 from model.character import Character, CHARACTER_STATUS
 from model.db import BaseModel
 from model.schdule import Schedule
-from register_char.celery_task import redis_client, makeAgentDailyTask
-from celery_tasks.location_service import get_location_by_coordinates, get_location_by_name  # 添加导入
+from common.redis_client import RedisClient
+from celery_tasks.location_service import get_location_by_coordinates, get_location_by_name
 
 # 创建蓝图
 character_controller = Blueprint('character', __name__)
 
 # 配置日志
 logger = logging.getLogger(__name__)
+
+# 初始化Redis客户端
+redis_client = RedisClient()
 
 # ----- 辅助函数 -----
 
@@ -32,30 +34,49 @@ def validate_character(data):
         data: 角色数据字典
         
     返回:
-        errors: 错误列表，如果没有错误则为空列表
+        errors: 错误字典，如果没有错误则为空字典
     """
-    errors = []
+    errors = {}
     
     required_fields = ['name', 'first_name', 'last_name', 'age', 'sex', 
-                        'innate', 'learned', 'currently', 'lifestyle']
+                      'innate', 'learned', 'currently', 'lifestyle']
     
     # 检查必填字段
     for field in required_fields:
         if field not in data or not data[field]:
-            errors.append(f"缺少必填字段: {field}")
+            errors[field] = f"缺少必填字段: {field}"
     
     # 验证年龄
     if 'age' in data:
         try:
             age = int(data['age'])
             if age < 1 or age > 120:
-                errors.append("年龄必须在1-120之间")
+                errors['age'] = "年龄必须在1-120之间"
         except ValueError:
-            errors.append("年龄必须是数字")
+            errors['age'] = "年龄必须是数字"
     
     # 验证性别
-    if 'sex' in data and data['sex'] not in ['male', 'female', 'other']:
-        errors.append("性别必须是'male', 'female'或'other'")
+    valid_sex = {'male', 'female', 'other'}
+    if data.get('sex') and data['sex'].lower() not in valid_sex:
+        errors['sex'] = "性别必须是'male', 'female'或'other'"
+    
+    # 验证learned字段长度
+    if data.get('learned'):
+        learned_length = len(data['learned'])
+        if not (2 <= learned_length <= 255):
+            errors['learned'] = "learned长度必须在2-255之间"
+    
+    # 验证lifestyle字段长度
+    if data.get('lifestyle'):
+        lifestyle_length = len(data['lifestyle'])
+        if not (2 <= lifestyle_length <= 255):
+            errors['lifestyle'] = "lifestyle长度必须在2-255之间"
+    
+    # 检查角色名是否已存在
+    character = Character()
+    all_data = character.find(name=data.get('name'))
+    if len(all_data) > 0:
+        errors['name'] = "角色名已被注册"
     
     return errors
 
@@ -71,9 +92,7 @@ def get_character_redis_data(character_id):
     """
     try:
         redis_key = f"character:{character_id}"
-        redis_data = redis_client.get(redis_key)
-        if redis_data:
-            return json.loads(redis_data)
+        return redis_client.get_json(redis_key)
     except Exception as e:
         logger.warning(f"获取角色实时数据失败: {str(e)}")
     
@@ -86,13 +105,10 @@ def check_redis_connection():
     返回:
         (is_connected, error_message): 元组，第一个元素表示是否连接成功，第二个元素为错误信息
     """
-    if redis_client is None:
-        return False, "Redis客户端未初始化"
-    
     try:
-        redis_client.ping()
+        redis_client.redis_handler.ping()
         return True, None
-    except (redis.ConnectionError, redis.TimeoutError) as e:
+    except Exception as e:
         logger.error(f"Redis连接失败: {str(e)}")
         return False, f"无法连接到Redis服务器，请检查Redis服务是否运行: {str(e)}"
 
@@ -456,7 +472,7 @@ def character_register():
         if errors:
             return jsonify({
                 "status": "error",
-                "message": "\n".join(errors)
+                "message": "\n".join([f"{field}: {error}" for field, error in errors.items()])
             }), 400
             
         # 验证位置信息
