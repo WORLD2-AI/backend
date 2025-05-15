@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>测试保存位置</title>
+    <script>
+        async function saveLocation() {
+            const x = document.getElementById('x').value;
+            const y = document.getElementById('y').value;
+            const sector = document.getElementById('sector').value;
+            const arena = document.getElementById('arena').value;
+            const character_id = document.getElementById('character_id').value;
+            const res = await fetch('/api/save_location', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ x: Number(x), y: Number(y), sector, arena, character_id: character_id ? Number(character_id) : null })
+            });
+            const data = await res.json();
+            document.getElementById('result').innerText = JSON.stringify(data, null, 2);
+        }
+    </script>
+</head>
+<body>
+    <h2>测试 /save_location 接口</h2>
+    <label>x坐标: <input type="number" id="x" value="0"></label><br>
+    <label>y坐标: <input type="number" id="y" value="0"></label><br>
+    <label>sector名称: <input type="text" id="sector" value=""></label><br>
+    <label>arena名称: <input type="text" id="arena" value=""></label><br>
+    <label>character_id: <input type="number" id="character_id" value=""></label><br>
+    <button onclick="saveLocation()">提交</button>
+    <h3>返回结果：</h3>
+    <pre id="result"></pre>
+</body>
+</html> 

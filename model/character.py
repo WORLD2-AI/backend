@@ -22,6 +22,8 @@ class Character(BaseModel,Base):
     lifestyle = Column(String(255), nullable=False)
     wake_time = Column(Integer, default=7)  # wake up hour）
     sleep_time = Column(Integer, default=22)  # sleep time
+    house = Column(String(50), nullable=True)  # 添加house字段，存储格式为"x,y"
+    position_name = Column(String(255), nullable=True)  # 添加position_name字段
     status = Column(String(20), default=CHARACTER_STATUS['PENDING'], nullable=False)
     created_at = Column(DateTime, default=func.current_timestamp())
     updated_at = Column(DateTime, default=func.current_timestamp(), onupdate=func.current_timestamp())
@@ -31,7 +33,6 @@ class Character(BaseModel,Base):
     def to_dict(self):
         return {
             'id': self.id,
-            'user_id':self.user_id,
             'name': self.name,
             'first_name': self.first_name,
             'last_name': self.last_name,
@@ -43,6 +44,8 @@ class Character(BaseModel,Base):
             'lifestyle': self.lifestyle,
             'wake_time': self.wake_time,
             'sleep_time': self.sleep_time,
+            'house': self.house,  # 添加house字段到返回数据中
+            'position_name': self.position_name,  # 添加position_name到返回数据中
             'status': self.status,
             'created_at': self.created_at.strftime('%Y-%m-%d %H:%M:%S') if self.created_at else None,
             'updated_at': self.updated_at.strftime('%Y-%m-%d %H:%M:%S') if self.updated_at else None
