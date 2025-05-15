@@ -21,7 +21,7 @@ class RedisClient():
         result = self.redis_handler.get(key)
         try:
             # 添加双重解析确保数据格式正确
-            if isinstance(result, str):
+            if isinstance(result, str) and  "{" in result:
                 result = json.loads(result)
             return json.loads(result) if isinstance(result, (bytes, str)) else result
         except json.JSONDecodeError:
