@@ -12,6 +12,8 @@ ENV PYTHONUNBUFFERED 1
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     build-essential \
+    procps \
+    libpq-dev \
     supervisor \
     && rm -rf /var/lib/apt/lists/*
 # 复制 requirements.txt 并安装 Python 依赖
