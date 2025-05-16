@@ -868,8 +868,21 @@ def get_characters():
     try:
         # 获取角色列表
         character = Character()
-        # 获取所有角色
-        all_characters = character.find()
+        
+        # 获取系统角色（user_id=0）
+        system_characters = character.find(user_id=0)
+        
+        # 检查用户登录状态
+        user_id = session.get('user_id')
+        
+        if user_id:
+            # 如果用户已登录，获取该用户的所有角色
+            user_characters = character.find(user_id=user_id)
+            # 合并系统角色和用户角色
+            all_characters = system_characters + user_characters
+        else:
+            # 如果用户未登录，只返回系统角色
+            all_characters = system_characters
         
         # 构建响应数据
         character_list = []
@@ -899,20 +912,25 @@ def get_characters():
                 'user_id': c.user_id,
                 'current_location': redis_data.get('location') if redis_data else None,
                 'current_action': redis_data.get('action') if redis_data else None,
-                'position': position,  # 添加位置信息
-                'position_name': c.position_name,  # 添加position_name字段
-                'house': c.house  # 添加house字段
+                'position': position,
+                'position_name': c.position_name,
+                'house': c.house,
+                'is_system_character': c.user_id == 0  # 添加标识是否为系统角色
             }
             character_list.append(character_data)
             
         return jsonify({
+            'status': 'success',
             'total': len(character_list),
-            'data': character_list
+            'data': character_list,
+            'system_character_count': len(system_characters),
+            'user_character_count': len(all_characters) - len(system_characters),
+            'is_user_logged_in': bool(user_id)
         }), 200
         
     except Exception as e:
         logger.error(f"获取角色列表失败: {str(e)}")
-        return jsonify({'error': '获取角色列表失败'}), 500
+        return jsonify({'status': 'error', 'message': '获取角色列表失败'}), 500
 
 @character_controller.route('/api/visible-characters/<int:character_id>', methods=['GET'])
 def get_visible_characters(character_id):

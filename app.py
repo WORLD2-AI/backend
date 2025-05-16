@@ -213,8 +213,11 @@ def save_location():
 
     # 3. 替换 csv 区域数字（自动 flood fill 替换）
     try:
-        replace_area('map/matrix2/maze/arena_maze.csv', x, y, arena.id)
-        replace_area('map/matrix2/maze/sector_maze.csv', x, y, sector.id)
+        # replace_area('map/matrix2/maze/arena_maze.csv', x, y, arena.id)
+        # replace_area('map/matrix2/maze/sector_maze.csv', x, y, sector.id)
+        replace_area('map_maza/arena_maze.csv', x, y, arena.id)
+        replace_area('map_maza/sector_maze.csv', x, y, sector.id)
+
     except Exception as e:
         return jsonify({'error': f'csv 替换失败: {str(e)}'}), 500
 
