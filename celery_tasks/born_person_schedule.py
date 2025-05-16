@@ -351,6 +351,7 @@ def generate_first_daily_plan(persona, wake_up_hour):
 
 
 x = f'{root_path}/map/matrix2/base.json'
+
 class Persona:
     def __init__(self, data):
         self.scratch = self._create_scratch(data["scratch"])
@@ -437,7 +438,10 @@ class MemoryTree:
         curr_world, curr_sector = sector.split(":")
         if not curr_sector:
             return ""
-        x = ", ".join(list(self.tree[curr_world][curr_sector].keys()))
+        try:
+            x = ", ".join(list(self.tree[curr_world][curr_sector].keys()))
+        except KeyError:
+            x = ", ".join(list(all_m.tree[curr_world][curr_sector].keys()))
         return x
     def get_str_accessible_arena_game_objects(self, arena):
         curr_world, curr_sector, curr_arena = arena.split(":")
@@ -473,7 +477,8 @@ class MemoryTree:
                         result_position_list += [f"{i}:{j}"]
         return result_position_list    
 #x = MemoryTree(x)
-
+all_area = f'{root_path}/map/matrix2/all_attr.json'
+all_m = MemoryTree(all_area)
 
 maze = Maze("the ville")
 
@@ -576,17 +581,17 @@ def get_location_by_name(location_name: str) -> dict:
 if __name__ == "__main__":
     persona_daily_task(16)
     # 测试函数
-    test_locations = ["common room", "kitchen", "bedroom"]
-    for loc in test_locations:
-        result = get_location_by_name(loc)
-        if result:
-            print(f"找到位置 '{loc}':")
-            print(f"完整路径: {result['full_path']}")
-            print(f"世界: {result['world']}")
-            print(f"区域: {result['sector']}")
-            print(f"场所: {result['arena']}")
-            print(f"对象: {result['object']}")
-            print("-" * 50)
-        else:
-            print(f"未找到位置 '{loc}'")
-            print("-" * 50)
+    # test_locations = ["common room", "kitchen", "bedroom"]
+    # for loc in test_locations:
+    #     result = get_location_by_name(loc)
+    #     if result:
+    #         print(f"找到位置 '{loc}':")
+    #         print(f"完整路径: {result['full_path']}")
+    #         print(f"世界: {result['world']}")
+    #         print(f"区域: {result['sector']}")
+    #         print(f"场所: {result['arena']}")
+    #         print(f"对象: {result['object']}")
+    #         print("-" * 50)
+    #     else:
+    #         print(f"未找到位置 '{loc}'")
+    #         print("-" * 50)
