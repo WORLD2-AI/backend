@@ -959,18 +959,19 @@ def get_visible_characters(character_id):
             # 获取其他角色的位置
             other_redis_data = get_character_redis_data(c.id)
             if not other_redis_data:
+                continue
                 # 如果Redis中没有数据，创建一个新的数据对象
-                other_redis_data = {
-                    'id': c.id,
-                    'name': c.name,
-                    'position': [0, 0],
-                    'action': '',
-                    'location': '',
-                    'status': c.status
-                }
-                # 保存到Redis
-                other_redis_key = f"character:{c.id}"
-                redis_handler.set(other_redis_key, json.dumps(other_redis_data))
+                # other_redis_data = {
+                #     'id': c.id,
+                #     'name': c.name,
+                #     'position': [0, 0],
+                #     'action': '',
+                #     'location': '',
+                #     'status': c.status
+                # }
+                # # 保存到Redis
+                # other_redis_key = f"character:{c.id}"
+                # redis_handler.set(other_redis_key, json.dumps(other_redis_data))
                 
             other_position = other_redis_data.get('position', [0, 0])
             
@@ -986,8 +987,9 @@ def get_visible_characters(character_id):
                     'distance': round(distance, 2),
                     'position': other_position,
                     'current_action': other_redis_data.get('action', ''),
-                    'current_location': other_redis_data.get('location', ''),
-                    'status': other_redis_data.get('status', 'offline')
+                    'current_location': other_redis_data.get('site', ''),
+                    # 'status': other_redis_data.get('status', 'offline'),
+                    "emoji":other_redis_data.get('emoji', ''),
                 })
                 
         return jsonify({
