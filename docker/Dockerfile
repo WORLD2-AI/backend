@@ -18,7 +18,7 @@ RUN apt-get update && \
     && rm -rf /var/lib/apt/lists/*
 # 复制 requirements.txt 并安装 Python 依赖
 COPY requirements.txt .
-RUN /usr/local/bin/python -m pip install --upgrade pip
+RUN /usr/local/bin/python -m pip install --upgrade pip -i  https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
 RUN pip install --no-cache-dir -r requirements.txt -i  https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
 
 # 复制项目文件到容器中
