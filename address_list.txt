@@ -1,0 +1,287 @@
+Address List:
+--------------------------------------------------
+<spawn_loc>sp-a
+<spawn_loc>sp-b
+the ville:arthur burton's apartment
+the ville:arthur burton's apartment:arthur burton's bathroom
+the ville:arthur burton's apartment:arthur burton's bathroom:bathroom sink
+the ville:arthur burton's apartment:arthur burton's bathroom:shower
+the ville:arthur burton's apartment:arthur burton's bathroom:toilet
+the ville:arthur burton's apartment:arthur burton's room
+the ville:arthur burton's apartment:arthur burton's room:bed
+the ville:arthur burton's apartment:arthur burton's room:closet
+the ville:arthur burton's apartment:arthur burton's room:cooking area
+the ville:arthur burton's apartment:arthur burton's room:kitchen sink
+the ville:arthur burton's apartment:arthur burton's room:refrigerator
+the ville:arthur burton's apartment:arthur burton's room:seat
+the ville:artist's co-living space
+the ville:artist's co-living space:abigail chen's bathroom
+the ville:artist's co-living space:abigail chen's bathroom:bathroom sink
+the ville:artist's co-living space:abigail chen's bathroom:shower
+the ville:artist's co-living space:abigail chen's bathroom:toilet
+the ville:artist's co-living space:abigail chen's room
+the ville:artist's co-living space:abigail chen's room:bed
+the ville:artist's co-living space:abigail chen's room:closet
+the ville:artist's co-living space:abigail chen's room:shelf
+the ville:artist's co-living space:common room
+the ville:artist's co-living space:common room:common room sofa
+the ville:artist's co-living space:common room:seat
+the ville:artist's co-living space:francisco lopez's bathroom
+the ville:artist's co-living space:francisco lopez's bathroom:bathroom sink
+the ville:artist's co-living space:francisco lopez's bathroom:shower
+the ville:artist's co-living space:francisco lopez's bathroom:toilet
+the ville:artist's co-living space:francisco lopez's room
+the ville:artist's co-living space:francisco lopez's room:bed
+the ville:artist's co-living space:francisco lopez's room:closet
+the ville:artist's co-living space:francisco lopez's room:easel
+the ville:artist's co-living space:hailey johnson's bathroom
+the ville:artist's co-living space:hailey johnson's bathroom:bathroom sink
+the ville:artist's co-living space:hailey johnson's bathroom:shower
+the ville:artist's co-living space:hailey johnson's bathroom:toilet
+the ville:artist's co-living space:hailey johnson's room
+the ville:artist's co-living space:hailey johnson's room:bed
+the ville:artist's co-living space:hailey johnson's room:closet
+the ville:artist's co-living space:hailey johnson's room:easel
+the ville:artist's co-living space:hailey johnson's room:seat
+the ville:artist's co-living space:kitchen
+the ville:artist's co-living space:kitchen:cooking area
+the ville:artist's co-living space:kitchen:kitchen sink
+the ville:artist's co-living space:kitchen:refrigerator
+the ville:artist's co-living space:kitchen:toaster
+the ville:artist's co-living space:latoya williams's bathroom
+the ville:artist's co-living space:latoya williams's bathroom:bathroom sink
+the ville:artist's co-living space:latoya williams's bathroom:shower
+the ville:artist's co-living space:latoya williams's bathroom:toilet
+the ville:artist's co-living space:latoya williams's room
+the ville:artist's co-living space:latoya williams's room:bed
+the ville:artist's co-living space:latoya williams's room:closet
+the ville:artist's co-living space:latoya williams's room:desk
+the ville:artist's co-living space:latoya williams's room:seat
+the ville:artist's co-living space:rajiv patel's bathroom
+the ville:artist's co-living space:rajiv patel's bathroom:bathroom sink
+the ville:artist's co-living space:rajiv patel's bathroom:shower
+the ville:artist's co-living space:rajiv patel's bathroom:toilet
+the ville:artist's co-living space:rajiv patel's room
+the ville:artist's co-living space:rajiv patel's room:bed
+the ville:artist's co-living space:rajiv patel's room:closet
+the ville:artist's co-living space:rajiv patel's room:easel
+the ville:artist's co-living space:rajiv patel's room:guitar
+the ville:carlos gomez's apartment
+the ville:carlos gomez's apartment:carlos gomez's bathroom
+the ville:carlos gomez's apartment:carlos gomez's bathroom:bathroom sink
+the ville:carlos gomez's apartment:carlos gomez's bathroom:shower
+the ville:carlos gomez's apartment:carlos gomez's bathroom:toilet
+the ville:carlos gomez's apartment:carlos gomez's room
+the ville:carlos gomez's apartment:carlos gomez's room:bed
+the ville:carlos gomez's apartment:carlos gomez's room:closet
+the ville:carlos gomez's apartment:carlos gomez's room:common room sofa
+the ville:carlos gomez's apartment:carlos gomez's room:cooking area
+the ville:carlos gomez's apartment:carlos gomez's room:kitchen sink
+the ville:carlos gomez's apartment:carlos gomez's room:refrigerator
+the ville:carlos gomez's apartment:carlos gomez's room:seat
+the ville:cichengege's apartment
+the ville:cichengege's apartment:abigail chen's room
+the ville:cichengege's apartment:abigail chen's room:desk
+the ville:cichengege's apartment:abigail chen's room:piano
+the ville:cichengege's apartment:abigail chen's room:shelf
+the ville:cichengege's apartment:cafe
+the ville:cichengege's apartment:cafe:cafe customer seating
+the ville:cichengege's apartment:cafe:pool table
+the ville:cichengege's apartment:cichengege's bathroom
+the ville:cichengege's apartment:cichengege's bathroom:bathroom sink
+the ville:cichengege's apartment:cichengege's bathroom:shower
+the ville:cichengege's apartment:cichengege's bathroom:toilet
+the ville:cichengege's apartment:cichengege's room
+the ville:cichengege's apartment:cichengege's room:bed
+the ville:cichengege's apartment:cichengege's room:closet
+the ville:cichengege's apartment:cichengege's room:common room sofa
+the ville:cichengege's apartment:cichengege's room:cooking area
+the ville:cichengege's apartment:cichengege's room:kitchen sink
+the ville:cichengege's apartment:cichengege's room:refrigerator
+the ville:cichengege's apartment:cichengege's room:seat
+the ville:cichengege's apartment:front desk
+the ville:cichengege's apartment:front desk:behind the cafe counter
+the ville:cichengege's apartment:front desk:blackboard
+the ville:cichengege's apartment:kiki's bathroom
+the ville:cichengege's apartment:sofa
+the ville:cichengege's apartment:sofa:cafe customer seating
+the ville:cichengege's apartment:sofa:common room sofa
+the ville:cichengege's apartment:sofa:refrigerator
+the ville:cichengege's apartment:sofa:seat
+the ville:cichengege's apartment:sofa:shelf
+the ville:classroom
+the ville:classroom:classroom
+the ville:classroom:classroom:behind the table
+the ville:classroom:classroom:seat
+the ville:frank's apartment
+the ville:frank's apartment:frank's bathroom
+the ville:frank's apartment:frank's bathroom:bathroom sink
+the ville:frank's apartment:frank's bathroom:shower
+the ville:frank's apartment:frank's bathroom:toilet
+the ville:frank's apartment:frank's room
+the ville:frank's apartment:frank's room:bed
+the ville:frank's apartment:frank's room:closet
+the ville:frank's apartment:frank's room:cooking area
+the ville:frank's apartment:frank's room:desk
+the ville:frank's apartment:frank's room:kitchen sink
+the ville:frank's apartment:frank's room:refrigerator
+the ville:frank's apartment:frank's room:seat
+the ville:gardner family's house
+the ville:gardner family's house:chris gardner's bathroom
+the ville:gardner family's house:chris gardner's room
+the ville:gardner family's house:chris gardner's room:seat
+the ville:gardner family's house:christopher gardner's bathroom
+the ville:gardner family's house:christopher gardner's room
+the ville:gardner family's house:common room
+the ville:gardner family's house:common room:seat
+the ville:gardner family's house:empty bathroom
+the ville:gardner family's house:empty bathroom:seat
+the ville:gardner family's house:empty guest bathroom
+the ville:gardner family's house:empty guest bedroom
+the ville:gardner family's house:empty guest bedroom:bookshelf
+the ville:gardner family's house:kitchen
+the ville:gardner family's house:linda's bathroom
+the ville:gardner family's house:linda's room
+the ville:gym
+the ville:gym:room
+the ville:gym:room:computer desk
+the ville:gym:room:lifting weight
+the ville:gym:room:treadmill
+the ville:johnson park
+the ville:johnson park:basketball court
+the ville:johnson park:lake
+the ville:johnson park:lake:log bridge
+the ville:kiki's apartment
+the ville:kiki's apartment:kiki's bathroom
+the ville:kiki's apartment:kiki's bathroom:bathroom sink
+the ville:kiki's apartment:kiki's bathroom:shower
+the ville:kiki's apartment:kiki's bathroom:toilet
+the ville:kiki's apartment:kiki's room
+the ville:kiki's apartment:kiki's room:bed
+the ville:kiki's apartment:kiki's room:closet
+the ville:kiki's apartment:kiki's room:cooking area
+the ville:kiki's apartment:kiki's room:kitchen sink
+the ville:kiki's apartment:kiki's room:refrigerator
+the ville:kiki's apartment:kiki's room:seat
+the ville:library
+the ville:library:room
+the ville:library:room:bookshelf
+the ville:library:room:computer
+the ville:library:room:computer desk
+the ville:library:room:library sofa
+the ville:mk's house
+the ville:mk's house:bathroom
+the ville:mk's house:bathroom:bathroom sink
+the ville:mk's house:bathroom:shower
+the ville:mk's house:bathroom:toilet
+the ville:mk's house:classroom
+the ville:mk's house:classroom:desk
+the ville:mk's house:classroom:house garden
+the ville:mk's house:common room
+the ville:mk's house:common room:desk
+the ville:mk's house:common room:shelf
+the ville:mk's house:empty bedroom
+the ville:mk's house:empty bedroom:bed
+the ville:mk's house:empty bedroom:closet
+the ville:mk's house:kitchen
+the ville:mk's house:kitchen:cooking area
+the ville:mk's house:kitchen:kitchen sink
+the ville:mk's house:kitchen:refrigerator
+the ville:mk's house:mk's  bedroom
+the ville:mk's house:mk's  bedroom:bed
+the ville:mk's house:mk's  bedroom:closet
+the ville:mk's house:mk's  bedroom:seat
+the ville:moonlight tavern
+the ville:moonlight tavern:bar customer seating
+the ville:moonlight tavern:bar customer seating:bar seat
+the ville:moonlight tavern:bathroom
+the ville:moonlight tavern:bathroom:bathroom sink
+the ville:moonlight tavern:bathroom:desk
+the ville:moonlight tavern:bathroom:game console
+the ville:moonlight tavern:bathroom:toilet
+the ville:moonlight tavern:front desk
+the ville:moonlight tavern:front desk:refrigerator
+the ville:moonlight tavern:kitchen
+the ville:moonlight tavern:kitchen:bar seat
+the ville:moonlight tavern:kitchen:cooking area
+the ville:moonlight tavern:sing
+the ville:moonlight tavern:sing:game console
+the ville:moreno family's house
+the ville:moreno family's house:bathroom
+the ville:moreno family's house:bathroom:bathroom sink
+the ville:moreno family's house:bathroom:shower
+the ville:moreno family's house:bathroom:toilet
+the ville:moreno family's house:common room
+the ville:moreno family's house:common room:desk
+the ville:moreno family's house:common room:shelf
+the ville:moreno family's house:garden
+the ville:moreno family's house:garden:house garden
+the ville:moreno family's house:jane moreno's bedroom
+the ville:moreno family's house:jane moreno's bedroom:closet
+the ville:moreno family's house:jane moreno's bedroom:desk
+the ville:moreno family's house:kitchen
+the ville:moreno family's house:kitchen:cooking area
+the ville:moreno family's house:kitchen:kitchen sink
+the ville:moreno family's house:kitchen:refrigerator
+the ville:moreno family's house:tom moreno's bedroom
+the ville:moreno family's house:tom moreno's bedroom:bed
+the ville:moreno family's house:tom moreno's bedroom:closet
+the ville:moreno family's house:tom moreno's bedroom:desk
+the ville:restaurant
+the ville:restaurant:bathroom
+the ville:restaurant:bathroom:bathroom sink
+the ville:restaurant:bathroom:shower
+the ville:restaurant:bathroom:toilet
+the ville:restaurant:dining area
+the ville:restaurant:dining area:seat
+the ville:restaurant:dining area:table
+the ville:restaurant:kitchen
+the ville:restaurant:kitchen:bed
+the ville:restaurant:kitchen:cooking area
+the ville:restaurant:kitchen:kitchen sink
+the ville:restaurant:kitchen:refrigerator
+the ville:restaurant:kitchen:seat
+the ville:restaurant:vip room1
+the ville:restaurant:vip room1:seat
+the ville:restaurant:vip room1:table
+the ville:restaurant:vip room2
+the ville:restaurant:vip room2:seat
+the ville:restaurant:vip room2:table
+the ville:restaurant:vip room3
+the ville:restaurant:vip room3:seat
+the ville:restaurant:vip room3:table
+the ville:supermarket
+the ville:supermarket:checkout counter
+the ville:supermarket:checkout counter:behind the counter
+the ville:supermarket:checkout counter:computer desk
+the ville:supermarket:food area
+the ville:supermarket:food area:computer desk
+the ville:supermarket:food area:grocery store shelf
+the ville:supermarket:food area:shelf
+the ville:supermarket:home appliance area
+the ville:supermarket:home appliance area:shelf
+the ville:supermarket:outdoor gear section
+the ville:supermarket:outdoor gear section:shelf
+the ville:tamara taylor and carmen ortiz's house
+the ville:tamara taylor and carmen ortiz's house:bathroom
+the ville:tamara taylor and carmen ortiz's house:bathroom:bathroom sink
+the ville:tamara taylor and carmen ortiz's house:bathroom:shower
+the ville:tamara taylor and carmen ortiz's house:bathroom:toilet
+the ville:tamara taylor and carmen ortiz's house:carmen ortiz's room
+the ville:tamara taylor and carmen ortiz's house:carmen ortiz's room:bed
+the ville:tamara taylor and carmen ortiz's house:carmen ortiz's room:closet
+the ville:tamara taylor and carmen ortiz's house:carmen ortiz's room:guitar
+the ville:tamara taylor and carmen ortiz's house:common room
+the ville:tamara taylor and carmen ortiz's house:common room:bookshelf
+the ville:tamara taylor and carmen ortiz's house:common room:desk
+the ville:tamara taylor and carmen ortiz's house:garden
+the ville:tamara taylor and carmen ortiz's house:garden:house garden
+the ville:tamara taylor and carmen ortiz's house:kitchen
+the ville:tamara taylor and carmen ortiz's house:kitchen:cooking area
+the ville:tamara taylor and carmen ortiz's house:kitchen:kitchen sink
+the ville:tamara taylor and carmen ortiz's house:kitchen:refrigerator
+the ville:tamara taylor and carmen ortiz's house:tamara taylor's room
+the ville:tamara taylor and carmen ortiz's house:tamara taylor's room:bed
+the ville:tamara taylor and carmen ortiz's house:tamara taylor's room:closet
+the ville:tamara taylor and carmen ortiz's house:tamara taylor's room:desk
+the ville:tamara taylor and carmen ortiz's house:tamara taylor's room:refrigerator

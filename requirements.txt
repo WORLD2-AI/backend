@@ -87,3 +87,5 @@ tweepy
 flask_login
 Flask-Session
 faskapi
+requests_oauthlib
+requests[socks]

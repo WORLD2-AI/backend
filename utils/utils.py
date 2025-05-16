@@ -6,8 +6,8 @@ import sys
 import time
 import traceback
 
-TWITTER_API_KEY = 'xAsAN0Sodd7sN8MjGjkFQDAWU'
-TWITTER_API_SECRET_KEY = '2mhTD5tc0zfxqCHKVVQitBJjbaT0YVqfEQjie9Nez67P3TsmIS'
+TWITTER_API_KEY = 'dIBSg3QmpAfrJt9WQHgGOQm25'
+TWITTER_API_SECRET_KEY = 'CbbcMf70vJZtAmHOmRJKwJmhz3rycCh1fZqDypWHJYqWZ5Zcfp'
 
 
 # Put your name

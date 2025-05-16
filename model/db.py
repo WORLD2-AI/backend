@@ -25,6 +25,10 @@ def get_db():
     """获取数据库会话"""
     return SessionLocal()
 
+def get_session():
+    """获取数据库会话的别名函数"""
+    return get_db()
+
 class BaseModel():
     """基础模型类，提供通用的CRUD操作"""
     def __init__(self, **kwargs):

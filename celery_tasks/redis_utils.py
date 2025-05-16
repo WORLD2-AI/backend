@@ -65,43 +65,49 @@ def set_character_to_redis(character:Character):
     #     logger.error(f"获取角色路径失败: {str(e)}")
     #     return None
 
-# def update_character_position(character_name, position):
-#     """更新角色的当前位置，并同步到数据库"""
-#     redis_client = get_redis_client()
-#     try:
-#         character_key = redis_key(KEY_TYPES["CHARACTER"], character_name)
-#         character_data_raw = redis_client.get(character_key)
+def update_character_position(character_id, position):
+    """更新角色的当前位置"""
+    try:
+        key = get_redis_key(character_id)
+        character_data = redis_handler.get(key)
+        
+        if character_data:
+            try:
+                data = json.loads(character_data) if isinstance(character_data, bytes) else character_data
+                data['position'] = position
+                redis_handler.set(key, json.dumps(data), ex=24*3600)
+                logger.info(f"更新角色 {character_id} 位置为 {position}")
+                return True
+            except json.JSONDecodeError:
+                logger.warning(f"无法解码角色数据: {character_id}")
+                return False
+        else:
+            logger.warning(f"找不到角色数据: {character_id}")
+            return False
+            
+    except Exception as e:
+        logger.error(f"更新角色位置失败: {str(e)}")
+        return False
 
-#         if character_data_raw:
-#             try:
-#                 character_data = json.loads(character_data_raw) if isinstance(character_data_raw, bytes) else character_data_raw
-#                 # 更新position字段
-#                 character_data['position'] = position
-#                 # 保存回Redis
-#                 redis_client.set(character_key, json.dumps(character_data))
-
-#                 # 同步到数据库
-#                 if len(position) == 2:
-#                     position_model = Position()
-#                     position_model.update_position(
-#                         character_name,
-#                         position[0],
-#                         position[1],
-#                         character_data.get('location', ''),
-#                         datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-#                     )
-
-#                 return True
-#             except json.JSONDecodeError:
-#                 logger.warning(f"无法解码角色数据: {character_name}")
-#                 return False
-#         else:
-#             logger.warning(f"找不到角色数据: {character_name}")
-#             return False
-
-#     except Exception as e:
-#         logger.error(f"更新角色位置失败: {str(e)}")
-#         return False
+def get_character_path(character_id):
+    """获取角色的路径数据"""
+    try:
+        key = f"character_path:{character_id}"
+        path_data = redis_handler.get(key)
+        
+        if path_data:
+            try:
+                return json.loads(path_data) if isinstance(path_data, bytes) else path_data
+            except json.JSONDecodeError:
+                logger.warning(f"无法解码角色路径数据: {character_id}")
+                return None
+        else:
+            logger.debug(f"找不到角色路径数据: {key}")
+            return None
+            
+    except Exception as e:
+        logger.error(f"获取角色路径失败: {str(e)}")
+        return None
 
 def view_character_data(character_name=None):
     """查看角色数据，如果不指定角色名则返回所有角色"""
