@@ -7,7 +7,6 @@ import logging
 import redis
 import pymysql
 from datetime import datetime, timedelta
-import schedule
 
 # 配置日志
 logging.basicConfig(

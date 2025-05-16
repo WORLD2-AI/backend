@@ -50,3 +50,6 @@ app.conf.beat_schedule = {
         'schedule':1.0 # exec once by 1s
     }
 }
+
+if __name__ == '__main__':
+    app.start()
