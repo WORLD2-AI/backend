@@ -8,8 +8,9 @@ import datetime
 MYSQL_CONFIG = {
     'host': 'localhost',
     'user': 'root',
-    'password': '020804',
-    'database': 'character_db'
+    'password': '123456',
+    'database': 'character_db',
+    'charset': 'utf8mb4'
 }
 
 # Redis配置
@@ -17,12 +18,11 @@ REDIS_CONFIG = {
     'host': 'localhost',
     'port': 6379,
     'db': 0,
-    'password': '020804',
     'decode_responses': True
 }
 
 # Celery配置
-app = Celery('tasks', broker='redis://:020804@localhost:6379/0')
+app = Celery('tasks', broker='redis://localhost:6379/0')
 
 @app.task
 def send_location_action_task(char_id, location, action):

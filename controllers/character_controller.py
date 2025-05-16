@@ -13,6 +13,7 @@ from model.character import Character, CHARACTER_STATUS
 from model.db import BaseModel
 from model.schedule import Schedule
 from common.redis_client import RedisClient
+from celery_tasks.location_service import get_location_by_coordinates
 
 from common.redis_client import redis_handler
 from celery_tasks.app import proecess_character_born
@@ -84,13 +85,17 @@ def get_character_redis_data(character_id):
         redis_data = RedisClient().get_json(redis_key)
         if redis_data and isinstance(redis_data, dict):
             # 添加数据校验
-            required_fields = ['name', 'location', 'action']
+            required_fields = ['name', 'location', 'action', 'position']
             if all(field in redis_data for field in required_fields):
+                # 确保position是有效的坐标
+                if not isinstance(redis_data['position'], list) or len(redis_data['position']) != 2:
+                    redis_data['position'] = [0, 0]  # 设置默认位置
                 return redis_data
         return None
     except Exception as e:
         logger.warning(f"获取角色实时数据失败: {str(e)}")
         return None
+
 def parse_location_from_site(site_info):
     """
     从site字段中解析位置信息
@@ -442,6 +447,23 @@ def character_register():
         return '', 204
         
     try:
+        # 获取当前用户ID
+        user_id = session.get('user_id')
+        if not user_id:
+            return jsonify({
+                "status": "error",
+                "message": "请先登录"
+            }), 401
+
+        # 检查用户是否已有角色
+        character = Character()
+        existing_characters = character.find(user_id=user_id)
+        if existing_characters:
+            return jsonify({
+                "status": "error",
+                "message": "每个用户只能创建一个角色"
+            }), 400
+
         # 获取请求数据
         data = request.get_json()
         print('收到的数据:', data)  # 临时调试用
@@ -462,7 +484,6 @@ def character_register():
             }), 400
 
         # 检查该位置是否已被非系统角色注册
-        character = Character()
         existing_characters = character.find(house=data['house'])
         # 过滤掉系统角色（user_id=0）
         non_system_characters = [char for char in existing_characters if char.user_id != 0]
@@ -474,7 +495,7 @@ def character_register():
         
         # 创建新角色，使用当前登录用户的ID
         character = Character(
-            user_id=session.get('user_id'),  # 使用当前登录用户的ID
+            user_id=user_id,  # 使用当前登录用户的ID
             name=data['name'],
             first_name=data['first_name'],
             last_name=data['last_name'],
@@ -701,27 +722,31 @@ def get_character_schedule(character_id):
         if page_size > 20:  # 限制最大请求数量
             page_size = 20
             
-        # 查询角色的日程安排
-        schedule = Schedule()
-        schedules = schedule.find(user_id=character_id)
-        
-        if not schedules:
-            return jsonify({"status": "error", "message": "未找到该角色的日程安排"}), 404
+        # 获取角色信息
+        character = Character().find_by_id(character_id)
+        if not character:
+            return jsonify({"status": "error", "message": "角色不存在"}), 404
             
         # 检查访问权限
         # 系统角色（user_id为0）对所有用户开放
-        if character_id != 0:
+        if character.user_id != 0:
             user_id = session.get('user_id')
             if not user_id:
                 return jsonify({"status": "error", "message": "请先登录"}), 403
                 
             # 检查是否是用户自己的角色
-            character = Character().find_by_id(character_id)
-            if not character or character.user_id != user_id:
+            if character.user_id != user_id:
                 return jsonify({"status": "error", "message": "无权访问该角色"}), 403
         
+        # 查询角色的日程安排
+        schedule = Schedule()
+        schedules = schedule.find(user_id=character.user_id)  # 使用角色的user_id而不是character_id
+        
+        if not schedules:
+            return jsonify({"status": "error", "message": "未找到该角色的日程安排"}), 404
+        
         # 获取角色名字
-        character_name = schedules[0].name if schedules else "未知角色"
+        character_name = character.name
         
         # 整理活动数据
         all_activities = []
@@ -836,4 +861,150 @@ def character_login():
         return jsonify({
             "status": "error",
             "message": f"角色登录失败: {str(e)}"
+        }), 500
+
+@character_controller.route('/api/characters', methods=['GET'])
+def get_characters():
+    try:
+        # 获取角色列表
+        character = Character()
+        # 获取所有角色
+        all_characters = character.find()
+        
+        # 构建响应数据
+        character_list = []
+        for c in all_characters:
+            # 获取角色的实时数据
+            redis_data = get_character_redis_data(c.id)
+            
+            # 获取角色位置信息
+            position = [0, 0]
+            if redis_data:
+                position = redis_data.get('position', [0, 0])
+            
+            character_data = {
+                'id': c.id,
+                'name': c.name,
+                'first_name': c.first_name,
+                'last_name': c.last_name,
+                'age': c.age,
+                'sex': c.sex,
+                'innate': c.innate,
+                'learned': c.learned,
+                'currently': c.currently,
+                'lifestyle': c.lifestyle,
+                'status': c.status,
+                'created_at': c.created_at.isoformat() if c.created_at else None,
+                'updated_at': c.updated_at.isoformat() if c.updated_at else None,
+                'user_id': c.user_id,
+                'current_location': redis_data.get('location') if redis_data else None,
+                'current_action': redis_data.get('action') if redis_data else None,
+                'position': position,  # 添加位置信息
+                'position_name': c.position_name,  # 添加position_name字段
+                'house': c.house  # 添加house字段
+            }
+            character_list.append(character_data)
+            
+        return jsonify({
+            'total': len(character_list),
+            'data': character_list
+        }), 200
+        
+    except Exception as e:
+        logger.error(f"获取角色列表失败: {str(e)}")
+        return jsonify({'error': '获取角色列表失败'}), 500
+
+@character_controller.route('/api/visible-characters/<int:character_id>', methods=['GET'])
+def get_visible_characters(character_id):
+    try:
+        # 获取半径参数
+        radius = int(request.args.get('radius', 20))
+        
+        # 检查角色访问权限
+        has_access, message = check_character_access(character_id)
+        if not has_access:
+            return jsonify({'error': message}), 403
+            
+        # 获取角色信息
+        character = Character().find_by_id(character_id)
+        if not character:
+            return jsonify({'error': '角色不存在'}), 404
+            
+        # 获取角色的当前位置
+        redis_data = get_character_redis_data(character_id)
+        if not redis_data:
+            # 如果Redis中没有数据，创建一个新的数据对象
+            redis_data = {
+                'id': character.id,
+                'name': character.name,
+                'position': [0, 0],
+                'action': '',
+                'location': '',
+                'status': character.status
+            }
+            # 保存到Redis
+            redis_key = f"character:{character_id}"
+            redis_handler.set(redis_key, json.dumps(redis_data))
+            
+        current_position = redis_data.get('position', [0, 0])
+        
+        # 获取所有角色
+        all_characters = Character().find()
+        visible_characters = []
+        
+        for c in all_characters:
+            if c.id == character_id:
+                continue
+                
+            # 获取其他角色的位置
+            other_redis_data = get_character_redis_data(c.id)
+            if not other_redis_data:
+                # 如果Redis中没有数据，创建一个新的数据对象
+                other_redis_data = {
+                    'id': c.id,
+                    'name': c.name,
+                    'position': [0, 0],
+                    'action': '',
+                    'location': '',
+                    'status': c.status
+                }
+                # 保存到Redis
+                other_redis_key = f"character:{c.id}"
+                redis_handler.set(other_redis_key, json.dumps(other_redis_data))
+                
+            other_position = other_redis_data.get('position', [0, 0])
+            
+            # 计算距离
+            distance = ((current_position[0] - other_position[0]) ** 2 + 
+                       (current_position[1] - other_position[1]) ** 2) ** 0.5
+                       
+            # 如果在可见范围内，添加到列表
+            if distance <= radius:
+                visible_characters.append({
+                    'id': c.id,
+                    'name': c.name,
+                    'distance': round(distance, 2),
+                    'position': other_position,
+                    'current_action': other_redis_data.get('action', ''),
+                    'current_location': other_redis_data.get('location', ''),
+                    'status': other_redis_data.get('status', 'offline')
+                })
+                
+        return jsonify({
+            'status': 'success',
+            'data': {
+                'character_id': character_id,
+                'name': character.name,  # 添加中心角色名字
+                'radius': radius,
+                'position': current_position,
+                'visible_characters': visible_characters,
+                'total_visible': len(visible_characters)
+            }
+        }), 200
+        
+    except Exception as e:
+        logger.error(f"获取可见角色失败: {str(e)}\n{traceback.format_exc()}")
+        return jsonify({
+            'status': 'error',
+            'message': f'获取可见角色失败: {str(e)}'
         }), 500

@@ -86,3 +86,6 @@ eventlet
 uvicorn
 flask_cors
 httpx
+faskapi
+requests_oauthlib
+requests[socks]

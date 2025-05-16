@@ -108,7 +108,7 @@ try:
     app.logger.info("Initializing ModelClient with explicit API key.")
     # 初始化模型客户端时直接传入密钥
     model_client_instance = ModelClient(
-        api_key="sk-98f0451cbb1f4f75802c35923f5b0d2f",
+        api_key="sk-6ee322061b414adf834e1733153cb9ae",
         api_base_url="https://api.deepseek.com/v1"
     )
 

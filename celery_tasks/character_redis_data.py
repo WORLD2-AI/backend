@@ -1,7 +1,7 @@
 from model.character import Character
 from model.schedule import Schedule
 class CharacterRedisData(Character):
-    position = (0,0)
+    position = [0, 0]
     action = ""
     start_minute = 0
     duration = 0
@@ -26,7 +26,7 @@ class CharacterRedisData(Character):
             'status': self.status,
             'created_at': self.created_at.strftime('%Y-%m-%d %H:%M:%S') if self.created_at else None,
             'updated_at': self.updated_at.strftime('%Y-%m-%d %H:%M:%S') if self.updated_at else None,
-            "position":self.position,
+            "position": self.position if self.position else [0, 0],
             "start_minute":self.start_minute,
             "duration":self.duration,
             "action":self.action,

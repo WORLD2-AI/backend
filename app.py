@@ -4,6 +4,10 @@ import urllib.parse
 import logging
 import traceback
 import datetime
+import time
+import requests
+import socks
+import socket
 
 # 第三方库
 import redis
@@ -185,20 +189,24 @@ def save_location():
     arena_name = data['arena']
     character_id = data.get('character_id')
 
+    # 格式化 sector 和 arena 名称
+    formatted_sector_name = f"the ville:{sector_name}"
+    formatted_arena_name = f"the ville:{sector_name}:{arena_name}"
+
     db = get_db()
     # 1. sector 唯一性
-    sector = db.query(Sector).filter_by(name=sector_name).first()
+    sector = db.query(Sector).filter_by(name=formatted_sector_name).first()
     if not sector:
-        sector = Sector(name=sector_name)
+        sector = Sector(name=formatted_sector_name)
         db.add(sector)
         db.commit()
         db.refresh(sector)
 
     # 2. arena 唯一性
-    arena = db.query(Arena).filter_by(name=arena_name).first()
+    arena = db.query(Arena).filter_by(name=formatted_arena_name).first()
     if arena:
         return jsonify({'error': 'arena name already exists'}), 400
-    arena = Arena(name=arena_name)
+    arena = Arena(name=formatted_arena_name, coordinates=f"{x},{y}")
     db.add(arena)
     db.commit()
     db.refresh(arena)
@@ -222,6 +230,57 @@ def save_location():
 @app.route('/api/test_location')
 def test_location_page():
     return render_template('test_location.html')
+
+# 添加 sector_arena_pairs API
+@app.route('/api/sector_arena_pairs', methods=['GET'])
+def get_sector_arena_pairs():
+    try:
+        db = get_db()
+        arenas = db.query(Arena).all()
+        result = []
+        
+        for arena in arenas:
+            arena_data = {
+                'id': arena.id,
+                'name': arena.name,
+                'coordinates': arena.coordinates
+            }
+            result.append(arena_data)
+            
+        return jsonify({
+            'total': len(result),
+            'data': result
+        }), 200
+        
+    except Exception as e:
+        logger.error(f"获取arena数据失败: {str(e)}")
+        return jsonify({'error': '获取数据失败'}), 500
+
+# 添加用户资料 API
+@app.route('/api/user/profile', methods=['GET'])
+def get_user_profile():
+    if 'user_id' not in session:
+        return jsonify({'error': '未登录'}), 401
+    
+    try:
+        user_id = session['user_id']
+        db = get_db()
+        user = db.query(User).filter_by(id=user_id).first()
+        
+        if not user:
+            return jsonify({'error': '用户不存在'}), 404
+            
+        profile_data = {
+            'id': user.id,
+            'username': user.username,
+            'twitter_id': user.twitter_id,
+            'screen_name': user.screen_name,
+            'created_at': user.created_at.isoformat() if user.created_at else None
+        }
+        return jsonify(profile_data), 200
+    except Exception as e:
+        logger.error(f"获取用户资料失败: {str(e)}")
+        return jsonify({'error': '获取用户资料失败'}), 500
 
 if __name__ == '__main__':
     # init_tables()

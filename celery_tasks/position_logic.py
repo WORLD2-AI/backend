@@ -8,13 +8,13 @@ from celery_tasks.redis_utils import (
     update_character_position
 )
 
-def update_character_position_by_path(character_name):
+def update_character_position_by_path(character_id):
     """根据角色路径更新位置"""
     try:
         # 获取角色路径
-        path_data = get_character_path(character_name)
+        path_data = get_character_path(character_id)
         if not path_data or 'paths' not in path_data or not path_data['paths']:
-            logger.debug(f"角色 {character_name} 没有有效的路径数据，跳过")
+            logger.debug(f"角色 {character_id} 没有有效的路径数据，跳过")
             return False
         
         # 获取当前时间
@@ -30,7 +30,7 @@ def update_character_position_by_path(character_name):
             target = path_entry.get('target', '')
             
             if not path or len(path) < 2:
-                logger.debug(f"角色 {character_name} 路径 {path_index+1} 过短，跳过")
+                logger.debug(f"角色 {character_id} 路径 {path_index+1} 过短，跳过")
                 continue
             
             # 解析开始时间
@@ -45,10 +45,10 @@ def update_character_position_by_path(character_name):
             
             # 检查当前时间是否在路径的有效时间范围内
             if now < start_time:
-                logger.debug(f"角色 {character_name} 路径 ({action}) 还未开始，等待中")
+                logger.debug(f"角色 {character_id} 路径 ({action}) 还未开始，等待中")
                 continue
             elif now > end_time:
-                logger.debug(f"角色 {character_name} 路径 ({action}) 已过期，跳过")
+                logger.debug(f"角色 {character_id} 路径 ({action}) 已过期，跳过")
                 continue
             
             # 计算路径上应该在的位置
@@ -66,19 +66,19 @@ def update_character_position_by_path(character_name):
             current_position = path[path_position_index]
             
             # 更新角色位置
-            logger.info(f"更新角色 {character_name} 位置 - 活动: {action} at {target}, 进度: {progress:.2f}")
-            success = update_character_position(character_name, current_position)
+            logger.info(f"更新角色 {character_id} 位置 - 活动: {action} at {target}, 进度: {progress:.2f}")
+            success = update_character_position(character_id, current_position)
             
             if success:
-                logger.info(f"角色 {character_name} 位置更新为 {current_position}, 路径进度: {path_position_index+1}/{len(path)}")
+                logger.info(f"角色 {character_id} 位置更新为 {current_position}, 路径进度: {path_position_index+1}/{len(path)}")
                 return True
             else:
-                logger.warning(f"更新角色 {character_name} 位置失败: {current_position}")
+                logger.warning(f"更新角色 {character_id} 位置失败: {current_position}")
                 return False
             
-        logger.debug(f"角色 {character_name} 没有当前正在执行的路径")
+        logger.debug(f"角色 {character_id} 没有当前正在执行的路径")
         return False
     
     except Exception as e:
-        logger.error(f"更新角色 {character_name} 位置时出错: {str(e)}\n{traceback.format_exc()}")
+        logger.error(f"更新角色 {character_id} 位置时出错: {str(e)}\n{traceback.format_exc()}")
         return False 

@@ -7,8 +7,65 @@ from model.schedule import Schedule
 from maza.maze import Maze
 import csv
 import os
+import requests
+import urllib3
+from model.db import get_session
 
+# 禁用SSL警告
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
+# API配置
+API_KEY = "sk-6ee322061b414adf834e1733153cb9ae"
+API_URL = "https://api.deepseek.com/v1/chat/completions"
+
+# 代理设置
+# proxies = {
+#     'http': 'http://127.0.0.1:7890',
+#     'https': 'http://127.0.0.1:7890'
+# }
+
+def safe_generate_response(prompt, gpt_param, max_retries, fail_safe, __func_validate, __func_clean_up):
+    """
+    使用requests库发送API请求
+    """
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {API_KEY}"
+    }
+    
+    data = {
+        "model": "deepseek-chat",
+        "messages": [{"role": "user", "content": prompt}],
+        "temperature": gpt_param.get("temperature", 1),
+        "max_tokens": gpt_param.get("max_tokens", 7000),
+        "top_p": gpt_param.get("top_p", 1),
+        "frequency_penalty": gpt_param.get("frequency_penalty", 0),
+        "presence_penalty": gpt_param.get("presence_penalty", 0)
+    }
+
+    for i in range(max_retries):
+        try:
+            response = requests.post(
+                API_URL,
+                headers=headers,
+                json=data,
+                verify=False,
+                timeout=30
+            )
+            response.raise_for_status()
+            result = response.json()
+            gpt_response = result['choices'][0]['message']['content']
+            
+            if __func_validate(gpt_response, prompt):
+                return __func_clean_up(gpt_response, prompt)
+            
+        except requests.exceptions.RequestException as e:
+            print(f"Attempt {i+1} failed: {e}")
+            if i == max_retries - 1:
+                return fail_safe
+            continue
+    
+    return fail_safe
 
 def born_person_schedule(persona):
     wake_up_hour = generate_wake_up_hour(persona)
@@ -82,11 +139,20 @@ def generate_position_list(action_list,persona, maze):
         prompt_input = []
 
         prompt_input += [persona.scratch.get_str_name()]
-        prompt_input += [persona.scratch.living_area.split(":")[1]]
-        x = f"{act_world}:{persona.scratch.living_area.split(':')[1]}"
+        
+        # 添加living_area格式检查
+        living_area_parts = persona.scratch.living_area.split(":")
+        if len(living_area_parts) >= 2:
+            prompt_input += [living_area_parts[1]]
+        else:
+            # 如果格式不正确，使用默认值
+            prompt_input += ["artist's co-living space"]
+        
+        x = f"{act_world}:{prompt_input[-1]}"
         prompt_input += [persona.s_mem.get_str_accessible_sector_arenas(x)]
         prompt_input += [persona.scratch.get_str_firstname()]
         prompt_input += ["\n".join(action_list)]
+        
         # MAR 11 TEMP
         accessible_position = persona.s_mem.get_all_str_accessible_positions(act_world)
         accessible_position_str = "\n".join(accessible_position)
@@ -514,28 +580,70 @@ def persona_daily_task(character_id:int):
     persona = make_persona_by_id(character_id)
     plan_list = born_person_schedule(persona)
     # plan_list is a two-dimensional array
-    s = Schedule().get_session()
-    for i, plans in enumerate(plan_list):
-        daily_plans = address_determine_action(persona, maze, plans)
-        schdule_list = []
-        for i,plan in enumerate(daily_plans):
-            act_time = plan["time"]
-            start_time = int(act_time.split(":")[0]) * 60 + int(act_time.split(":")[1])
-            schedule = Schedule()
-            schedule.user_id = plan["user_id"]
-            schedule.name = plan["name"]
-            schedule.start_minute = start_time
-            schedule.duration = plan["duration"]
-            schedule.action = plan["action"]
-            schedule.site = plan.get("address", "")
-            schedule.emoji = plan.get("emoji", "")
-            schdule_list.append(schedule)
-        s.add_all(schdule_list)
-        s.commit()
+    session = get_session()
+    try:
+        for i, plans in enumerate(plan_list):
+            try:
+                daily_plans = address_determine_action(persona, maze, plans)
+                schdule_list = []
+                for plan in daily_plans:
+                    try:
+                        # Validate time format
+                        act_time = plan.get("time")
+                        if not act_time or ":" not in act_time:
+                            logger.error(f"Invalid time format in plan: {plan}")
+                            continue
+                            
+                        # Parse time and calculate start_time
+                        try:
+                            hours, minutes = map(int, act_time.split(":"))
+                            start_time = hours * 60 + minutes
+                        except ValueError as e:
+                            logger.error(f"Error parsing time {act_time}: {e}")
+                            continue
+                            
+                        # Validate duration
+                        try:
+                            duration = int(plan.get("duration", 0))
+                            if duration <= 0:
+                                logger.error(f"Invalid duration in plan: {plan}")
+                                continue
+                        except (ValueError, TypeError) as e:
+                            logger.error(f"Error parsing duration: {e}")
+                            continue
+                            
+                        schedule = Schedule()
+                        schedule.user_id = plan.get("user_id")
+                        schedule.name = plan.get("name")
+                        schedule.start_minute = start_time
+                        schedule.duration = duration
+                        schedule.action = plan.get("action", "")
+                        schedule.site = plan.get("address", "")
+                        schedule.emoji = plan.get("emoji", "")
+                        
+                        schdule_list.append(schedule)
+                    except Exception as e:
+                        logger.error(f"Error processing individual plan: {e}")
+                        continue
+                        
+                if schdule_list:
+                    session.add_all(schdule_list)
+                    session.commit()
+                    logger.info(f"Successfully saved {len(schdule_list)} schedules for plan {i}")
+            except Exception as e:
+                logger.error(f"Error processing plan list {i}: {e}")
+                continue
+                
+    except Exception as e:
+        session.rollback()
+        logger.error(f"Failed to save schedule: {e}")
+        character.update_by_id(character_id, status="FAILED")
+        raise
+    finally:
+        session.close()
     
-    # update character table update status to sucess
-    character = Character()
-    character.update_by_id(character_id,status="COMPLETED")
+    # update character table update status to success
+    character.update_by_id(character_id, status="COMPLETED")
 
 def get_location_by_name(location_name: str) -> dict:
     """
@@ -579,7 +687,7 @@ def get_location_by_name(location_name: str) -> dict:
 
 # 使用示例
 if __name__ == "__main__":
-    persona_daily_task(16)
+    persona_daily_task(17)
     # 测试函数
     # test_locations = ["common room", "kitchen", "bedroom"]
     # for loc in test_locations:
