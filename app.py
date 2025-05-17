@@ -30,7 +30,7 @@ from controllers.user_controller import user_controller
 from register_char.user_visibility import user_visibility_bp
 from register_char.celery_task import redis_client
 from utils.utils import TWITTER_API_KEY, TWITTER_API_SECRET_KEY
-from config.config import REDIS_CONFIG
+from config.config import REDIS_CONFIG,REDIS_PASSWORD
 from tools.area_replace import replace_area
 
 # 创建Flask应用
@@ -42,7 +42,7 @@ app.permanent_session_lifetime = 3600
 
 # Redis配置
 app.config['SESSION_TYPE'] = 'redis'
-app.config['SESSION_REDIS'] = redis.StrictRedis(host=REDIS_CONFIG.get('host',"127.0.0.1"), port=REDIS_CONFIG.get('port',6379), db=REDIS_CONFIG.get('db',0), password=REDIS_CONFIG.get('password',""))
+app.config['SESSION_REDIS'] = redis.StrictRedis(host=REDIS_CONFIG.get('host',"127.0.0.1"), port=REDIS_CONFIG.get('port',6379),password=REDIS_PASSWORD, db=REDIS_CONFIG.get('db',0))
 app.config['SESSION_USE_SIGNER'] = True  # 签名加密session id
 app.config['SESSION_KEY_PREFIX'] = 'session:'  # redis中 key 的前缀
 
@@ -287,4 +287,7 @@ def get_user_profile():
 
 if __name__ == '__main__':
     # init_tables()
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    from gevent import pywsgi
+    server = pywsgi.WSGIServer(('0.0.0.0', 5000), app)
+
+    server.serve_forever()

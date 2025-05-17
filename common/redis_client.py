@@ -4,9 +4,7 @@ from config.config import REDIS_CONFIG,REDIS_PASSWORD
 from utils.utils import recursive_parse
 redis_handler = None
 try:
-    redis_client = redis.Redis(host=REDIS_CONFIG.get("host","127.0.0.1"), port=REDIS_CONFIG.get("port",6379), db=0,encoding="utf-8",decode_responses=True)
-    if REDIS_PASSWORD:
-        redis_client.password = REDIS_PASSWORD
+    redis_client = redis.Redis(host=REDIS_CONFIG.get("host","127.0.0.1"), port=REDIS_CONFIG.get("port",6379),password=REDIS_PASSWORD, db=0,encoding="utf-8",decode_responses=True)
     redis_client.ping()  # 测试连接
     redis_handler = redis_client
     

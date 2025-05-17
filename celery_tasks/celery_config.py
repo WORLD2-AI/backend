@@ -4,8 +4,8 @@ import os
 broker_url = f'redis://{REDIS_CONFIG.get("host")}:{REDIS_CONFIG.get("port")}/0'
 result_backend = f'redis://{REDIS_CONFIG.get("host")}:{REDIS_CONFIG.get("port")}/0'
 if REDIS_PASSWORD is not None:
-    broker_url = f'redis://{REDIS_PASSWORD}@{REDIS_CONFIG.get("host")}:{REDIS_CONFIG.get("port")}/0'
-    result_backend = f'redis://{REDIS_PASSWORD}@{REDIS_CONFIG.get("host")}:{REDIS_CONFIG.get("port")}/0'
+    broker_url = f'redis://:{REDIS_PASSWORD}@{REDIS_CONFIG.get("host")}:{REDIS_CONFIG.get("port")}/0'
+    result_backend = f'redis://:{REDIS_PASSWORD}@{REDIS_CONFIG.get("host")}:{REDIS_CONFIG.get("port")}/0'
 
 # result_backend disabled
 task_serializer = 'json'

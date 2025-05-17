@@ -20,7 +20,7 @@ DB_CONFIG = {
 }
 
 # Redis密码
-REDIS_PASSWORD = None
+REDIS_PASSWORD = "Aitown0517"
 
 # Redis配置
 REDIS_CONFIG = {

@@ -87,4 +87,5 @@ uvicorn
 flask_cors
 httpx
 requests_oauthlib
+gevent
 requests[socks]
