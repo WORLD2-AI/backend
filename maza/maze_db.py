@@ -7,6 +7,8 @@ world in a 2-dimensional matrix.
 """
 import json
 from base import root_path
+from model.sector import Sector
+from model.arena import Arena
 import math
 import sqlite3
 from utils.global_methods import *
@@ -22,20 +24,14 @@ def get_db_connection():
 
 def load_sectors_from_db():
     """从数据库加载 sector 信息"""
-    conn = get_db_connection()
-    cursor = conn.cursor()
-    cursor.execute("SELECT id, name FROM sector")
-    sectors = {str(row['id']): row['name'] for row in cursor.fetchall()}
-    conn.close()
+    sector = Sector()
+    sectors = sector.find_all()
     return sectors
 
 def load_arenas_from_db():
     """从数据库加载 arena 信息"""
-    conn = get_db_connection()
-    cursor = conn.cursor()
-    cursor.execute("SELECT id, name FROM arena")
-    arenas = {str(row['id']): row['name'] for row in cursor.fetchall()}
-    conn.close()
+    area = Arena()
+    arenas = area.find_all()
     return arenas
 
 class Maze: 
@@ -77,10 +73,16 @@ class Maze:
     wb = wb_rows[0][-1]
    
     # 从数据库加载 sector 信息
-    sb_dict = load_sectors_from_db()
+    sb_dict = dict()
+    sector_data = load_sectors_from_db()
+    for i,v in enumerate(sector_data):
+      sb_dict[str(v.id)] = v.name.split(":")[-1].lower()
     
     # 从数据库加载 arena 信息
-    ab_dict = load_arenas_from_db()
+    ab_dict = dict()
+    area_data = load_arenas_from_db()
+    for i,v in enumerate(area_data):
+      ab_dict[str(v.id)] = v.name.split(":")[-1].lower()
     
     _gob = blocks_folder + "/game_object_blocks.csv"
     gob_rows = read_file_to_list(_gob, header=False)

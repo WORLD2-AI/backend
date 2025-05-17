@@ -4,7 +4,7 @@ from model.character import Character
 from system.plan import *
 import json
 from model.schedule import Schedule
-from maza.maze import Maze
+from maza.maze_db import Maze
 import csv
 import os
 import requests
@@ -421,7 +421,7 @@ x = f'{root_path}/map/matrix2/base.json'
 class Persona:
     def __init__(self, data):
         self.scratch = self._create_scratch(data["scratch"])
-        self.s_mem = MemoryTree(x)
+        self.s_mem = MemoryTree(data["scratch"]["living_area"] or "the ville:johnson park:lake:log bridge")
     def _create_scratch(self, scratch_data):
         class Scratch:
             def __init__(self, data):
@@ -492,10 +492,34 @@ class Persona:
 
 
 class MemoryTree:
-    def __init__(self, f_saved):
+    def __init__(self, living_area:str):
         self.tree = {}
-        if check_if_file_exists(f_saved):
-            self.tree = json.load(open(f_saved))
+        living_area = living_area.lower()
+        # if check_if_file_exists(f_saved):
+        #     self.tree = json.load(open(f_saved))
+        live_tiles = maze.address_tiles[living_area]
+        pos = random.choice(list(live_tiles))
+        nearby_tiles = maze.get_nearby_tiles(pos,50)
+        for tile in nearby_tiles:
+            x = tile[0]
+            y = tile[1]
+            tile_obj = maze.tiles[y][x]
+            world = tile_obj['world']
+            sector = tile_obj['sector']
+            arena = tile_obj['arena']
+            game_object = tile_obj['game_object']
+            if world and world not in self.tree:
+                self.tree[world] = {}
+            if world and sector and sector not in self.tree[world]:
+                self.tree[world][sector] = {}
+            if world and sector and arena and arena not in self.tree[world][sector]:
+                self.tree[world][sector][arena] = []
+            if world and sector and arena and game_object and game_object not in self.tree[world][sector][arena]:
+                self.tree[world][sector][arena].append(game_object)
+           
+        
+        
+
     def get_str_accessible_sectors(self, curr_world):
         x = ", ".join(list(self.tree[curr_world].keys()))
         return x
@@ -507,7 +531,7 @@ class MemoryTree:
         try:
             x = ", ".join(list(self.tree[curr_world][curr_sector].keys()))
         except KeyError:
-            x = ", ".join(list(all_m.tree[curr_world][curr_sector].keys()))
+            x = ""
         return x
     def get_str_accessible_arena_game_objects(self, arena):
         curr_world, curr_sector, curr_arena = arena.split(":")
@@ -543,8 +567,8 @@ class MemoryTree:
                         result_position_list += [f"{i}:{j}"]
         return result_position_list    
 #x = MemoryTree(x)
-all_area = f'{root_path}/map/matrix2/all_attr.json'
-all_m = MemoryTree(all_area)
+# all_area = f'{root_path}/map/matrix2/all_attr.json'
+# all_m = MemoryTree(all_area)
 
 maze = Maze("the ville")
 
@@ -570,7 +594,7 @@ def make_persona_by_id(persona_id:int):
             "daily_req":"",
         }
     })
-    persona_programmer.s_mem = MemoryTree(x)
+    persona_programmer.s_mem = MemoryTree(character.position_name or "the ville:artist's co-living space:common room")
     return persona_programmer
 
 
@@ -687,7 +711,7 @@ def get_location_by_name(location_name: str) -> dict:
 
 # 使用示例
 if __name__ == "__main__":
-    persona_daily_task(17)
+    persona_daily_task(16)
     # 测试函数
     # test_locations = ["common room", "kitchen", "bedroom"]
     # for loc in test_locations:

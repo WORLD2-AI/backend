@@ -13,7 +13,7 @@ DB_CONFIG = {
     'host': 'mysql',
     'user': 'root',
     'port':3306,
-    'password': 'root',
+    'password': 'aitown0517',
     'db': 'character_db',
     'charset': 'utf8mb4',
     'cursorclass': pymysql.cursors.DictCursor

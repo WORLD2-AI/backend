@@ -70,9 +70,9 @@ maze = Maze("the ville")
 openai.api_base = os.getenv("DEEPSEEK_API_BASE_URL", "https://api.deepseek.com/v1") 
 openai.api_key = os.getenv("DEEPSEEK_API_KEY", "sk-6ee322061b414adf834e1733153cb9ae")
 
-# 禁用代理设置
-os.environ['no_proxy'] = '*'
-os.environ['NO_PROXY'] = '*'
+# # 禁用代理设置
+# os.environ['no_proxy'] = '*'
+# os.environ['NO_PROXY'] = '*'
 
 # 测试API连接
 try:

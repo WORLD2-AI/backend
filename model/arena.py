@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String
-from model.db import Base
+from model.db import Base,BaseModel
 
-class Arena(Base):
+class Arena(BaseModel, Base):
     __tablename__ = 'arena'
     id = Column(Integer, primary_key=True)
     name = Column(String(100), unique=True, nullable=False)
