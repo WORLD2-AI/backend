@@ -116,7 +116,7 @@ def path_finder_v2(a, start, end, collision_block_char, verbose=False):
   m[i][j] = 1 
 
   k = 0
-  except_handle = 200
+  except_handle = 300
   while m[end[0]][end[1]] == 0:
       k += 1
       make_step(m, k)

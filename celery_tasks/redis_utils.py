@@ -21,6 +21,9 @@ def get_all_character_id_from_redis():
 def set_character_to_redis(character:Character):
     tmp = CharacterRedisData()
     data =  copy_class_attrs(character,tmp)
+    temp_arr = tmp.house.split(",")
+    if len(temp_arr) == 2:
+        tmp.position = [int(temp_arr[0]),int(temp_arr[1])]
     key = get_redis_key(character_id=character.id)
     global redis_handler
     redis_handler.set(key,json.dumps(data.to_dict()), ex=24*3600)
