@@ -1,4 +1,4 @@
-from maza.maze import Maze
+from maza.maze_db import Maze
 
 def main():
     # 初始化迷宫对象

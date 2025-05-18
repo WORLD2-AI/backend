@@ -1,7 +1,7 @@
 from base import *
 import json
 import os
-from maza.maze import Maze
+from maza.maze_db import Maze
 
 def check_if_file_exists(file_path: str) -> bool:
     """
