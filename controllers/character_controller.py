@@ -37,7 +37,7 @@ def validate_character(data):
     返回:
         errors: 错误列表，如果没有错误则为空列表
     """
-    errors = []
+    errors = {}
     
     required_fields = ['name', 'first_name', 'last_name', 'age', 'sex', 
                         'innate', 'learned', 'currently', 'lifestyle']
@@ -468,9 +468,12 @@ def character_register():
         # 验证必填字段
         errors = validate_character(data)
         if errors:
+            err = ""
+            for key in errors:
+                err = errors[key]
             return jsonify({
                 "status": "error",
-                "message": "\n".join([f"{field}: {error}" for field, error in errors])
+                "message":err
             }), 400
             
         # 验证位置信息
