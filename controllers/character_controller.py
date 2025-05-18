@@ -362,7 +362,7 @@ def check_location():
         room_name = location.get('room_name', '')
         
         # 获取最后一个冒号后的位置名称
-        position_name = location_name.split(':')[-1] if ':' in location_name else location_name
+        position_name =  location_name
         
         # 获取当前用户ID
         user_id = session.get('user_id')
@@ -383,11 +383,11 @@ def check_location():
                 break
         
         # 检查同一房间是否已被注册（通过position_name匹配）
-        is_room_registered = False
-        for char in all_characters:
-            if char.position_name and char.position_name == current_position_name:
-                is_room_registered = True
-                break
+        # is_room_registered = False
+        # for char in all_characters:
+        #     if char.position_name and char.position_name == current_position_name:
+        #         is_room_registered = True
+        #         break
         
         # 获取当前用户在该房间的角色信息
         my_room_info = {
@@ -408,13 +408,11 @@ def check_location():
                     break
         
         # 综合判断
-        is_registered = is_location_registered or is_room_registered
+        is_registered = is_location_registered
         
         # 根据具体情况返回不同的消息
         if is_location_registered:
             message = "该位置已被其他角色占用"
-        elif is_room_registered:
-            message = "该房间已被其他角色占用"
         else:
             message = "位置可用"
         
@@ -425,7 +423,6 @@ def check_location():
             "location_name": position_name,
             "room_name": room_name,
             "position_name": position_name,
-            "is_room_registered": is_room_registered,
             "is_location_registered": is_location_registered,
             "my_room_info": my_room_info,
             "current_person_name": current_person_name,
@@ -473,7 +470,7 @@ def character_register():
         if errors:
             return jsonify({
                 "status": "error",
-                "message": "\n".join([f"{field}: {error}" for field, error in errors.items()])
+                "message": "\n".join([f"{field}: {error}" for field, error in errors])
             }), 400
             
         # 验证位置信息
