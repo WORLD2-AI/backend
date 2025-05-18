@@ -36,7 +36,7 @@ from common.redis_client import RedisClient
 from celery_tasks.redis_utils import get_redis_key
 from celery_tasks.app import app as celery_app # MODIFIED: Import Celery app instance
 from celery_tasks.born_person_schedule import address_determine_action, make_persona_by_id, generate_position_list, MemoryTree
-from maza.maze import Maze
+from maza.maze_db import Maze
 
 # 设置日志
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
