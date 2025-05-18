@@ -110,7 +110,7 @@ def parse_location_from_site(site_info):
     if ":" in site_info:
         parts = site_info.split(":")
         if len(parts) > 1:
-            location = parts[1].strip()
+            location = parts[-1].strip()
             # 如果有第二个冒号，截取到第二个冒号前
             if ":" in location:
                 location = location.split(":")[-1].strip()
