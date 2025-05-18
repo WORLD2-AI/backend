@@ -113,7 +113,7 @@ def parse_location_from_site(site_info):
             location = parts[1].strip()
             # 如果有第二个冒号，截取到第二个冒号前
             if ":" in location:
-                location = location.split(":")[0].strip()
+                location = location.split(":")[-1].strip()
     return location
 
 def get_current_character_id():
