@@ -163,7 +163,7 @@ def get_location_coordinates(location_name: str) -> tuple:
                             return (x, y)
     
     return None
-
+maze = Maze("the ville")
 def get_location_by_coordinates(x: int, y: int) -> dict:
     """
     根据坐标返回对应的位置信息，只返回三级位置
@@ -183,7 +183,6 @@ def get_location_by_coordinates(x: int, y: int) -> dict:
         如果坐标无效或未找到位置，返回 None
     """
     try:
-        maze = Maze("the ville")
         tile = maze.access_tile((x, y))
         
         if not tile:
