@@ -50,7 +50,7 @@ def safe_generate_response(prompt, gpt_param, max_retries, fail_safe, __func_val
                 headers=headers,
                 json=data,
                 verify=False,
-                timeout=30
+                timeout=60
             )
             response.raise_for_status()
             result = response.json()
@@ -590,11 +590,11 @@ def make_persona_by_id(persona_id:int):
             "learned": character.learned,
             "currently": character.currently,
             "lifestyle": character.lifestyle,
-            "living_area": character.position_name if character.position_name else "the ville:artist's co-living space:common room",
+            "living_area": character.position_name if character.position_name else "the ville:magicpowerBuilding3:bedroom4",
             "daily_req":"",
         }
     })
-    persona_programmer.s_mem = MemoryTree(character.position_name or "the ville:artist's co-living space:common room")
+    persona_programmer.s_mem = MemoryTree(character.position_name or "the ville:magicpowerBuilding3:bedroom4")
     return persona_programmer
 
 
@@ -711,7 +711,7 @@ def get_location_by_name(location_name: str) -> dict:
 
 # 使用示例
 if __name__ == "__main__":
-    persona_daily_task(16)
+    persona_daily_task(11)
     # 测试函数
     # test_locations = ["common room", "kitchen", "bedroom"]
     # for loc in test_locations:

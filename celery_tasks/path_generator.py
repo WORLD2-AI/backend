@@ -11,7 +11,7 @@ from celery_tasks.redis_utils import get_redis_key,get_all_character_id_from_red
 from system.path_finder import path_finder
 from config.config import collision_block_id,default_born_tiled
 from celery_tasks.born_person_schedule import address_determine_action,make_persona_by_id
-from maza.maze import Maze
+from maza.maze_db import Maze
 import logging
 
 # 设置文件日志处理器
@@ -144,14 +144,14 @@ if __name__ == "__main__":
     redis = RedisClient()
     now = datetime.now()
     character_id = 5
-    now = datetime.now()
-    midnight = now.replace(hour=0, minute=0, second=0, microsecond=0)
-    minutes_passed = int((now - midnight).total_seconds() // 60)
-    rkey = get_redis_key(character_id=character_id)
-    character_data = redis.get_json(rkey)
-    character_data['site']='the ville:gym:room:lifting weight'
-    character_data['start_minute'] = minutes_passed
-    character_data['duration'] = 1
-    redis.set_json(rkey,character_data)
+    # now = datetime.now()
+    # midnight = now.replace(hour=0, minute=0, second=0, microsecond=0)
+    # minutes_passed = int((now - midnight).total_seconds() // 60)
+    # rkey = get_redis_key(character_id=character_id)
+    # character_data = redis.get_json(rkey)
+    # character_data['site']='the ville:gym:room:lifting weight'
+    # character_data['start_minute'] = minutes_passed
+    # character_data['duration'] = 1
+    # redis.set_json(rkey,character_data)
     generate_path_task(character_id,None)
     update_position_task()
