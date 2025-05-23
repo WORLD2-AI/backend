@@ -18,7 +18,7 @@ def get_all_character_id_from_redis():
     keys = [ key.decode('utf-8') if isinstance(key, bytes) else key for key in character_keys]
     ids = [key.split(":")[-1] for key in keys]
     return ids
-def set_character_to_redis(character:Character):
+def set_character_to_redis(character:Character)->CharacterRedisData:
     tmp = CharacterRedisData()
     data =  copy_class_attrs(character,tmp)
     temp_arr = tmp.house.split(",")
@@ -27,6 +27,7 @@ def set_character_to_redis(character:Character):
     key = get_redis_key(character_id=character.id)
     global redis_handler
     redis_handler.set(key,json.dumps(data.to_dict()), ex=24*3600)
+    return tmp
 
 
 

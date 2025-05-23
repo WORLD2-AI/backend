@@ -951,7 +951,8 @@ def get_visible_characters(character_id):
         # 获取角色的当前位置
         redis_data = get_character_redis_data(character_id)
         if not redis_data:
-            set_character_to_redis(character)
+            data = set_character_to_redis(character)
+            redis_data = data.to_dict()
             # 如果Redis中没有数据，创建一个新的数据对象
             # redis_data = {
             #     'id': character.id,
