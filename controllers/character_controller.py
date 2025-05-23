@@ -4,7 +4,7 @@ import json
 import logging
 import traceback
 import datetime
-
+from celery_tasks.redis_utils import set_character_to_redis
 # 第三方库
 from flask import Blueprint, request, jsonify, session, render_template
 
@@ -941,7 +941,7 @@ def get_visible_characters(character_id):
         # 检查角色访问权限
         has_access, message = check_character_access(character_id)
         if not has_access:
-            return jsonify({'error': message}), 403
+            return jsonify({'error': message}), 401
             
         # 获取角色信息
         character = Character().find_by_id(character_id)
@@ -951,18 +951,19 @@ def get_visible_characters(character_id):
         # 获取角色的当前位置
         redis_data = get_character_redis_data(character_id)
         if not redis_data:
+            set_character_to_redis(character)
             # 如果Redis中没有数据，创建一个新的数据对象
-            redis_data = {
-                'id': character.id,
-                'name': character.name,
-                'position': [0, 0],
-                'action': '',
-                'location': '',
-                'status': character.status
-            }
-            # 保存到Redis
-            redis_key = f"character:{character_id}"
-            redis_handler.set(redis_key, json.dumps(redis_data))
+            # redis_data = {
+            #     'id': character.id,
+            #     'name': character.name,
+            #     'position': [0, 0],
+            #     'action': '',
+            #     'location': '',
+            #     'status': character.status
+            # }
+            # # 保存到Redis
+            # redis_key = f"character:{character_id}"
+            # redis_handler.set(redis_key, json.dumps(redis_data))
             
         current_position = redis_data.get('position', [0, 0])
         
@@ -1018,7 +1019,12 @@ def get_visible_characters(character_id):
                 'radius': radius,
                 'position': current_position,
                 'visible_characters': visible_characters,
-                'total_visible': len(visible_characters)
+                'total_visible': len(visible_characters),
+                "emoji":redis_data.get("emoji",""),
+                "start_minute":redis_data.get("start_minute",""),
+                "duration":redis_data.get("duration",""),
+                "action":redis_data.get("action",""),
+                "site":redis_data.get("site",""),
             }
         }), 200
         
