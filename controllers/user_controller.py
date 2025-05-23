@@ -12,7 +12,7 @@ from flask_login import logout_user, login_required
 from common.redis_client import redis_handler
 user_controller = Blueprint('user', __name__)
 
-@user_controller.route('/api/register_user', methods=['GET', 'POST'])
+@user_controller.route('/api/register_user', methods=['POST'])
 def register():
     if request.method == 'POST':
         username = request.form['username']
@@ -21,18 +21,18 @@ def register():
         
         # 验证表单数据
         if not username or not password or not invitation_code:
-            return render_template('login/register.html', error="用户名、密码和邀请码不能为空")
+            return  jsonify({'success': False, 'message': 'username or password or invitation code could not be null'}), 500
         
         # 检查用户是否已存在
         user_model = User()
         existing_user = user_model.first(username=username)
         if existing_user:
-            return render_template('login/register.html', error="用户名已存在")
+            return  jsonify({'success': False, 'message': 'register faild, username exists'}), 500
 
         # 验证邀请码
         inv_code_model = InvitationCode()
         if not inv_code_model.verify_code(invitation_code):
-            return render_template('login/register.html', error="邀请码无效或已被使用")
+            return  jsonify({'success': False, 'message': 'register faild, inviled invitation code'}), 500
 
         try:
             # 密码加密
@@ -70,19 +70,19 @@ def register():
                 return redirect(call_back_url)
             
             # 否则返回注册成功页面
-            return render_template('login/register_success.html', username=username)
+            return  jsonify({'success': True, 'message': 'register success'}), 200
         
         except Exception as e:
-            return render_template('login/register.html', error=f"注册失败: {str(e)}")
+            return jsonify({'success': False, 'message': e}), 500
 
     # GET 请求，显示注册表单
-    return render_template('login/register.html')
+    # return render_template('login/register.html')
 
 
-@user_controller.route('/api/login', methods=['GET', 'POST'])
+@user_controller.route('/api/login', methods=['POST'])
 def login():
-    if request.method == 'GET':
-        return render_template('login/login.html')
+    # if request.method == 'GET':
+    #     return render_template('login/login.html')
         
     # POST 请求处理登录逻辑
     # 支持 application/json 和 form-data 两种方式
@@ -96,14 +96,14 @@ def login():
 
     # 验证表单数据
     if not username or not password:
-        return jsonify({'success': False, 'message': '用户名和密码不能为空'}), 400
+        return jsonify({'success': False, 'message': 'user name or password  should not be null'}), 400
 
     user = User().first(username=username)
     if user and check_password_hash(user.password_hash, password):
         session['user_id'] = user.id
-        return jsonify({'success': True, 'message': '登录成功'}), 200
+        return jsonify({'success': True, 'message': 'login success'}), 200
     else:
-        return jsonify({'success': False, 'message': '用户名或密码错误'}), 401
+        return jsonify({'success': False, 'message': 'user name or password is incorrect'}), 401
 
 @user_controller.route('/user/info')
 def get_user_info():
