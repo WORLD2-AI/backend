@@ -1025,6 +1025,7 @@ def get_visible_characters(character_id):
                 "duration":redis_data.get("duration",""),
                 "action":redis_data.get("action",""),
                 "site":redis_data.get("site",""),
+                "redis_data":redis_data,
             }
         }), 200
         
