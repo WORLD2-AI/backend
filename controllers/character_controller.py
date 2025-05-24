@@ -904,7 +904,7 @@ def get_characters():
 def get_visible_characters(character_id):
     try:
         # 获取半径参数
-        radius = int(request.args.get('radius', 20))
+        radius = int(request.args.get('radius', 300))
         
         # 检查角色访问权限
         has_access, message = check_character_access(character_id)
