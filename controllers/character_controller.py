@@ -1,5 +1,3 @@
-import os
-import sys
 import json
 import logging
 import traceback
@@ -85,7 +83,7 @@ def get_character_redis_data(character_id):
         redis_data = RedisClient().get_json(redis_key)
         if redis_data and isinstance(redis_data, dict):
             # 添加数据校验
-            required_fields = ['name', 'location', 'action', 'position']
+            required_fields = ['name', 'site', 'action', 'position']
             if all(field in redis_data for field in required_fields):
                 # 确保position是有效的坐标
                 if not isinstance(redis_data['position'], list) or len(redis_data['position']) != 2:
@@ -338,7 +336,7 @@ def check_location():
         if not x or not y:
             return jsonify({
                 "status": "error",
-                "message": "请提供x和y坐标"
+                "message": "x,y position err"
             }), 400
             
         try:
@@ -359,10 +357,10 @@ def check_location():
             }), 400
             
         location_name = location['full_path']
-        room_name = location.get('room_name', '')
-        
+        # room_name = location.get('area', '')
+        room_area,_,_ = location_name.rpartition(":")
         # 获取最后一个冒号后的位置名称
-        position_name =  location_name
+        # position_name =  location_name
         
         # 获取当前用户ID
         user_id = session.get('user_id')
@@ -371,14 +369,15 @@ def check_location():
         character = Character()
         all_characters = character.find_all()
         
-        # 获取当前位置的person_name和position_name
-        current_person_name = location.get('person_name', '')
-        current_position_name = location.get('position_name', '')
+        # # 获取当前位置的person_name和position_name
+        # current_person_name = location.get('person_name', '')
+        # current_position_name = location.get('position_name', '')
         
         # 检查该位置是否已被注册（通过position_name匹配）
         is_location_registered = False
         for char in all_characters:
-            if char.position_name and char.position_name == position_name:
+            temp_area,_,_ = char.position_name.rpartition(":")
+            if temp_area == room_area:
                 is_location_registered = True
                 break
         
@@ -396,17 +395,6 @@ def check_location():
             "character_id": None
         }
         
-        if user_id:
-            # 查找当前用户在该房间的角色
-            for char in all_characters:
-                if char.user_id == user_id and char.position_name == current_position_name:
-                    my_room_info = {
-                        "has_character": True,
-                        "character_name": char.name,
-                        "character_id": char.id
-                    }
-                    break
-        
         # 综合判断
         is_registered = is_location_registered
         
@@ -418,15 +406,13 @@ def check_location():
         
         return jsonify({
             "status": "success",
-            "is_registered": is_registered,
+            "is_registered": is_location_registered,
             "message": message,
-            "location_name": position_name,
-            "room_name": room_name,
-            "position_name": position_name,
+            "location_name": location_name,
+            "room_name": room_area,
+            "position_name": location_name,
             "is_location_registered": is_location_registered,
             "my_room_info": my_room_info,
-            "current_person_name": current_person_name,
-            "current_position_name": current_position_name
         })
         
     except Exception as e:
@@ -710,40 +696,28 @@ def get_character_schedule(character_id):
     获取角色一天的日程安排详情，支持分页加载
     """
     try:
-        # 获取分页参数
-        page = request.args.get('page', 1, type=int)
-        page_size = request.args.get('page_size', 5, type=int)
-        
-        # 验证分页参数
-        if page < 1:
-            page = 1
-        if page_size < 1:
-            page_size = 5
-        if page_size > 20:  # 限制最大请求数量
-            page_size = 20
-            
-        # 获取角色信息
         character = Character().find_by_id(character_id)
         if not character:
-            return jsonify({"status": "error", "message": "角色不存在"}), 404
+            return jsonify({"status": "error", "message": "character not found"}), 404
             
         # 检查访问权限
         # 系统角色（user_id为0）对所有用户开放
         if character.user_id != 0:
             user_id = session.get('user_id')
             if not user_id:
-                return jsonify({"status": "error", "message": "请先登录"}), 403
+                return jsonify({"status": "error", "message": "user not logined"}), 401
                 
             # 检查是否是用户自己的角色
             if character.user_id != user_id:
-                return jsonify({"status": "error", "message": "无权访问该角色"}), 403
-        
+                return jsonify({"status": "error", "message": "access forbidden"}), 403
+        now = datetime.datetime.now()
         # 查询角色的日程安排
         schedule = Schedule()
-        schedules = schedule.find(user_id=character.user_id)  # 使用角色的user_id而不是character_id
-        
+        midnight = now.replace(hour=0, minute=0, second=0, microsecond=0)
+        minutes_passed = int((now - midnight).total_seconds() // 60)
+        schedules = schedule.get_schedules_by_user_id(character_id,minutes_passed)
         if not schedules:
-            return jsonify({"status": "error", "message": "未找到该角色的日程安排"}), 404
+            return jsonify({"status": "error", "message": "not found"}), 404
         
         # 获取角色名字
         character_name = character.name
@@ -751,7 +725,7 @@ def get_character_schedule(character_id):
         # 整理活动数据
         all_activities = []
         for s in schedules:
-            # 从site字段中提取地点信息
+            
             location = parse_location_from_site(s.site)
             
             # 构建地点图标路径
@@ -769,31 +743,13 @@ def get_character_schedule(character_id):
                 "site": s.site
             })
         
-        # 按开始时间排序
+        
         all_activities.sort(key=lambda x: x["start_minute"])
         
-        # 计算总页数
-        total_activities = len(all_activities)
-        total_pages = (total_activities + page_size - 1) // page_size
-        
-        # 分页获取数据
-        start_index = (page - 1) * page_size
-        end_index = min(start_index + page_size, total_activities)
-        current_activities = all_activities[start_index:end_index]
-        
-        # 构建响应数据
         result = {
             "character_id": character_id,
             "name": character_name,
-            "activities": current_activities,
-            "pagination": {
-                "page": page,
-                "page_size": page_size,
-                "total_pages": total_pages,
-                "total_activities": total_activities,
-                "has_next": page < total_pages,
-                "has_prev": page > 1
-            }
+            "activities": all_activities,
         }
         
         return jsonify(result), 200

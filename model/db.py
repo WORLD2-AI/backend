@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine,Text
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import sessionmaker
@@ -71,9 +71,6 @@ class BaseModel():
                         continue
                     if key == "offset":
                         query = query.offset(value)
-                        continue
-                    if key == "order_by":
-                        query = query.order_by(value)
                         continue
                     query = query.filter(getattr(self.model_class, key) == value)
             return query.all()

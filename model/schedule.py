@@ -46,11 +46,17 @@ class Schedule(BaseModel, Base):
             logger.error(f"获取角色 {name} 的活动安排失败: {e}")
             return []
     
-    def get_schedules_by_user_id(self, user_id):
+    def get_schedules_by_user_id(self, user_id,minutes_passed)->list:
         """获取指定用户的所有活动安排"""
-        try:
-            schedules = self.find(user_id=user_id)
-            return [schedule.to_dict() for schedule in schedules]
-        except Exception as e:
-            logger.error(f"获取用户 {user_id} 的活动安排失败: {e}")
-            return [] 
+        with self.get_session() as session:
+            query = session.query(self.get_model_class())
+            query = query.filter(
+                Schedule.user_id == user_id ,Schedule.start_minute <= minutes_passed
+            ).order_by(Schedule.id.desc())
+            query.limit(20)
+            schedules = query.all()
+            if len(schedules) > 1:
+                list.sort(schedules,key=lambda x :x.id,reverse=False)
+        return schedules
+        
+    
