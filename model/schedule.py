@@ -58,5 +58,11 @@ class Schedule(BaseModel, Base):
             if len(schedules) > 1:
                 list.sort(schedules,key=lambda x :x.id,reverse=False)
         return schedules
-        
+    def  get_first_schdule(self,user_id)->object:
+        with self.get_session() as session:
+            query = session.query(self.get_model_class())
+            query = query.filter(
+                Schedule.user_id == user_id).order_by(Schedule.id.asc())
+            data = query.first()
+            return data   
     

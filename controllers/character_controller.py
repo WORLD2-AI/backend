@@ -702,28 +702,40 @@ def get_character_schedule(character_id):
             
         # 检查访问权限
         # 系统角色（user_id为0）对所有用户开放
-        if character.user_id != 0:
-            user_id = session.get('user_id')
-            if not user_id:
-                return jsonify({"status": "error", "message": "user not logined"}), 401
+        # if character.user_id != 0:
+        #     user_id = session.get('user_id')
+        #     if not user_id:
+        #         return jsonify({"status": "error", "message": "user not logined"}), 401
                 
-            # 检查是否是用户自己的角色
-            if character.user_id != user_id:
-                return jsonify({"status": "error", "message": "access forbidden"}), 403
+        #     # 检查是否是用户自己的角色
+        #     if character.user_id != user_id:
+        #         return jsonify({"status": "error", "message": "access forbidden"}), 403
         now = datetime.datetime.now()
         # 查询角色的日程安排
         schedule = Schedule()
         midnight = now.replace(hour=0, minute=0, second=0, microsecond=0)
         minutes_passed = int((now - midnight).total_seconds() // 60)
         schedules = schedule.get_schedules_by_user_id(character_id,minutes_passed)
+        all_activities = []
         if not schedules:
-            return jsonify({"status": "error", "message": "not found"}), 404
+            first_schedule = schedule.get_first_schdule(character_id)
+            if first_schedule is not None:
+                all_activities.append({
+                    "start_minute": 0,
+                    "duration": first_schedule.start_minute,
+                    "end_minute": first_schedule.start_minute,
+                    "action": "sleep",
+                    "location": character.house,
+                    "icon_path": "bed",
+                    "icon_file": "bed.png",
+                    "site": character.position_name
+                })
         
         # 获取角色名字
         character_name = character.name
         
         # 整理活动数据
-        all_activities = []
+        
         for s in schedules:
             
             location = parse_location_from_site(s.site)
