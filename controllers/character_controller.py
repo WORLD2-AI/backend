@@ -838,11 +838,16 @@ def get_characters():
         character = Character()
         
         # 获取系统角色（user_id=0）
-        all_characters = character.find_all()
+        
         
         # 检查用户登录状态
         user_id = session.get('user_id')
-        
+        if user_id:
+            system_characters = character.find(user_id=0)
+            user_characters = character.find(user_id=user_id)
+            all_characters = system_characters + user_characters
+        else:
+            all_characters = character.find_all()
         # if user_id:
         #     # 如果用户已登录，获取该用户的所有角色
         #     user_characters = character.find(user_id=user_id)
