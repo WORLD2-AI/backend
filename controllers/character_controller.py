@@ -726,8 +726,8 @@ def get_character_schedule(character_id):
                     "end_minute": first_schedule.start_minute,
                     "action": "sleep",
                     "location": character.house,
-                    "icon_path": "bed.png",
-                    "icon_file": "/icon/bed.png",
+                    "icon_path": "/icon/bed.png",
+                    "icon_file": "bed.png",
                     "site": character.position_name
                 })
         
