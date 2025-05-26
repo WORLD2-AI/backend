@@ -842,12 +842,7 @@ def get_characters():
         
         # 检查用户登录状态
         user_id = session.get('user_id')
-        if user_id:
-            system_characters = character.find(user_id=0)
-            user_characters = character.find(user_id=user_id)
-            all_characters = system_characters + user_characters
-        else:
-            all_characters = character.find_all()
+        all_characters = character.find_all()
         # if user_id:
         #     # 如果用户已登录，获取该用户的所有角色
         #     user_characters = character.find(user_id=user_id)
@@ -914,9 +909,9 @@ def get_visible_characters(character_id):
         radius = int(request.args.get('radius', 300))
         
         # 检查角色访问权限
-        has_access, message = check_character_access(character_id)
-        if not has_access:
-            return jsonify({'error': message}), 401
+        # has_access, message = check_character_access(character_id)
+        # if not has_access:
+        #     return jsonify({'error': message}), 401
             
         # 获取角色信息
         character = Character().find_by_id(character_id)
