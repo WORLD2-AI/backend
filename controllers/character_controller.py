@@ -358,7 +358,7 @@ def check_location():
             
         location_name = location['full_path']
         # room_name = location.get('area', '')
-        room_area,_,_ = location_name.rpartition(":")
+        room_area= location_name
         # 获取最后一个冒号后的位置名称
         # position_name =  location_name
         
