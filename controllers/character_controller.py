@@ -862,7 +862,9 @@ def get_characters():
             position = [0, 0]
             if redis_data:
                 position = redis_data.get('position', [0, 0])
-            
+            is_other_chara = True
+            if c.user_id == user_id:
+                is_other_chara = False
             character_data = {
                 'id': c.id,
                 'name': c.name,
@@ -883,7 +885,7 @@ def get_characters():
                 'position': position,
                 'position_name': c.position_name,
                 'house': c.house,
-                'is_system_character': c.user_id == 0  # 添加标识是否为系统角色
+                'is_system_character': is_other_chara  # 添加标识是否为系统角色
             }
             character_list.append(character_data)
             
