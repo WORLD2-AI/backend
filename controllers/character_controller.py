@@ -838,19 +838,19 @@ def get_characters():
         character = Character()
         
         # 获取系统角色（user_id=0）
-        system_characters = character.find(user_id=0)
+        all_characters = character.find_all()
         
         # 检查用户登录状态
         user_id = session.get('user_id')
         
-        if user_id:
-            # 如果用户已登录，获取该用户的所有角色
-            user_characters = character.find(user_id=user_id)
-            # 合并系统角色和用户角色
-            all_characters = system_characters + user_characters
-        else:
-            # 如果用户未登录，只返回系统角色
-            all_characters = system_characters
+        # if user_id:
+        #     # 如果用户已登录，获取该用户的所有角色
+        #     user_characters = character.find(user_id=user_id)
+        #     # 合并系统角色和用户角色
+        #     all_characters = system_characters + user_characters
+        # else:
+        #     # 如果用户未登录，只返回系统角色
+        #     all_characters = system_characters
         
         # 构建响应数据
         character_list = []
@@ -891,8 +891,8 @@ def get_characters():
             'status': 'success',
             'total': len(character_list),
             'data': character_list,
-            'system_character_count': len(system_characters),
-            'user_character_count': len(all_characters) - len(system_characters),
+            'system_character_count': len(all_characters),
+            'user_character_count': 1,
             'is_user_logged_in': bool(user_id)
         }), 200
         
