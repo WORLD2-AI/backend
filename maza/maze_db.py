@@ -112,7 +112,7 @@ class Maze:
     for i in range(len(game_object_maze)):
         for j in range(len(game_object_maze[i])):
             if "-" in game_object_maze[i][j] and  game_object_maze[i][j]!= "-1":  # 检查是否包含"-"
-              game_object_maze[i][j] = int(game_object_maze[i][j])+2147483648
+              game_object_maze[i][j] = str(int(game_object_maze[i][j])+2147483648)
     _slm = maze_folder + "/spawning_location_maze.csv"
     spawning_location_maze = read_file_to_list(_slm, header=False)
 
